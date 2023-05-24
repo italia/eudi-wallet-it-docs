@@ -18,10 +18,13 @@
 
 ## Intro
 
-This repository hosts the sphinx project tree of Italian eIDAS Wallet Technical Specifications, 
-published to Github Page in the following languages: 
+This repository hosts the sphinx project tree of Italian eIDAS Wallet Technical Specifications.
 
- - [English](https://italia.github.io/eidas-it-wallet-docs/en).
+> This repository may contain contents to be considered experimental until the publication of the first release.
+
+## Preview
+
+ - [English](https://italia.github.io/eidas-it-wallet-docs/en)
  - [Italian](https://italia.github.io/eidas-it-wallet-docs/it)
  
 ## Documentation
