@@ -1,0 +1,4 @@
+Sphinx==5.0.1
+sphinx-autobuild==2021.3.14
+docs-italia-theme @ git+https://github.com/italia/docs-italia-theme.git@7bfccf507a7520b5fed5eda4b5c51c1f9d45ad88
+recommonmark

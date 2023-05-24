@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generato da Microsoft Visio, esportazione SVG metadata_discovery.svg metadata_discovery -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="15.6247in" height="5.95796in"
+		viewBox="0 0 1124.98 428.973" xml:space="preserve" color-interpolation-filters="sRGB" class="st21">
+	<v:documentProperties v:langID="1040" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+			<v:ud v:nameU="visV14CFF" v:prompt="" v:val="VT0(1):26"/>
+			<v:ud v:nameU="visFlowchartType" v:prompt="" v:val="VT4(CrossFunctional)"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#d7e3bf;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
+		.st2 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st3 {fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st4 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st5 {fill:#000000;font-family:Consolas;font-size:1.00001em}
+		.st6 {font-size:1em}
+		.st7 {fill:#89bf3f;stroke:none;stroke-linecap:butt;stroke-width:5.18996}
+		.st8 {fill:#4ca71e;stroke:none;stroke-linecap:butt;stroke-width:5.18996}
+		.st9 {fill:#000000;font-family:Calibri;font-size:1.16666em;font-style:italic;font-weight:bold}
+		.st10 {fill:#000000;font-family:Calibri;font-size:1.16666em}
+		.st11 {font-size:1em;font-weight:bold}
+		.st12 {fill:#fbd7bb;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
+		.st13 {fill:#fbd7bb;stroke:#ea700d;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st14 {fill:#ffffff;stroke:#ea700d;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st15 {fill:#b7dde8;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
+		.st16 {fill:#205867;stroke:none;stroke-linecap:butt;stroke-width:1.64305}
+		.st17 {marker-end:url(#mrkr4-274);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st18 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.22935779816514}
+		.st19 {fill:#ffffff;stroke:none;stroke-linecap:butt}
+		.st20 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:7.2}
+		.st21 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-274" class="st18" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="-8.24" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-4.36,-4.36) "/>
+		</marker>
+	</defs>
+	<g v:mID="13" v:index="5" v:groupContext="foregroundPage">
+		<title>metadata_discovery</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="Diagramma di flusso" v:index="0"/>
+		<v:layer v:name="Connettore" v:index="1"/>
+		<g id="group266-1" v:mID="266" v:groupContext="group">
+			<title>Foglio.266</title>
+		</g>
+		<g id="group321-2" transform="translate(53.3327,-95.4828)" v:mID="321" v:groupContext="group">
+			<title>Foglio.321</title>
+			<g id="group200-3" transform="translate(0,-28.3295)" v:mID="200" v:groupContext="group">
+				<title>Foglio.200</title>
+				<g id="shape181-4" v:mID="181" v:groupContext="shape" transform="translate(9.92127,-40.137)">
+					<title>Rettangolo.181</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st1"/>
+				</g>
+				<g id="shape180-6" v:mID="180" v:groupContext="shape" transform="translate(9.92127,-125.961)">
+					<title>Rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st1"/>
+				</g>
+				<g id="shape169-8" v:mID="169" v:groupContext="shape" transform="translate(2.07834E-13,-4.95276E-06)">
+					<title>Rettangolo.169</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="172.058" height="215.072" class="st2"/>
+				</g>
+				<g id="shape170-10" v:mID="170" v:groupContext="shape" transform="translate(122.591,-167.039)">
+					<title>Triangolo rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L49.47 428.97 L0 380.94 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape171-12" v:mID="171" v:groupContext="shape" transform="translate(9.61731E-15,-4.95276E-06)">
+					<title>Rettangolo.155</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="0.716902" height="215.072" class="st3"/>
+				</g>
+				<g id="shape172-14" v:mID="172" v:groupContext="shape" transform="translate(172.196,0)">
+					<title>Rettangolo.156</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="262.142" width="0.716902" height="166.831" class="st3"/>
+				</g>
+				<g id="shape173-16" v:mID="173" v:groupContext="shape" transform="translate(-256.06,428.973) rotate(-90)">
+					<title>Rettangolo.158</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 256.52 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape174-18" v:mID="174" v:groupContext="shape" transform="translate(-307.099,213.901) rotate(-90)">
+					<title>Rettangolo.159</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 308.06 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape175-20" v:mID="175" v:groupContext="shape" transform="translate(7.08662,0)">
+					<title>Foglio.175</title>
+					<desc>{ “kid” : bfxafKvtP } { “iss” : RP2 “sub” : RP2 “authority_hi...</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="82.9134" cy="343.934" width="165.83" height="170.079"/>
+					<rect x="0" y="258.894" width="165.827" height="170.079" class="st4"/>
+					<text x="4" y="282.73" class="st5" v:langID="1040"><v:paragraph/><v:tabList/>{<v:newlineChar/><tspan x="4"
+								dy="1.2em" class="st6">“</tspan>kid” : bfxafKvtP<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">}<v:newlineChar/></tspan><tspan
+								x="4" dy="1.2em" class="st6">{<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">“</tspan>iss” : RP2<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">“</tspan>sub” : RP2<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">“</tspan>authority_hints” : SA<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">“</tspan>kid” : bfxafKvtP<v:newlineChar/><tspan x="4" dy="1.2em"
+								class="st6">[...]<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">}</tspan></text>				</g>
+				<g id="group193-32" transform="translate(73.4173,-178.402)" v:mID="193" v:groupContext="group">
+					<title>Foglio.193</title>
+					<g id="shape191-33" v:mID="191" v:groupContext="shape">
+						<title>Cerchio</title>
+						<v:userDefs>
+							<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+						</v:userDefs>
+						<path d="M0 400.49 A28.4882 28.4882 0 0 1 56.98 400.49 A28.4882 28.4882 0 1 1 0 400.49 Z" class="st1"/>
+					</g>
+				</g>
+				<g id="group194-35" transform="translate(84.3974,-189.438)" v:mID="194" v:groupContext="group">
+					<title>Foglio.194</title>
+					<g id="group195-36" v:mID="195" v:groupContext="group">
+						<title>Foglio.195</title>
+						<g id="shape196-37" v:mID="196" v:groupContext="shape">
+							<title>Foglio.196</title>
+							<path d="M4.15 421.24 C2.74 423.11 1.54 424.66 0.89 426.44 C0.26 428.18 0 428.97 1.44 427.17 C2.79 425.49
+										 4.04 423.86 5.88 422.32 C6 422.35 6.15 422.37 6.29 422.41 C22.91 425.71 35.02 418.23 32.89
+										 394.07 C20.09 398.5 1.96 396.7 3.84 419.41 C3.91 420.25 3.97 420.83 4.15 421.24 ZM8.08 417.98
+										 C12.43 408.62 23.59 405.41 29.13 399.01 C23.13 410.71 18.22 411.28 8.08 417.98 Z"
+									class="st7"/>
+						</g>
+						<g id="shape197-39" v:mID="197" v:groupContext="shape" transform="translate(8.08408,-10.9945)">
+							<title>Foglio.197</title>
+							<path d="M0 428.97 C4.35 419.61 15.51 416.4 21.05 410.01 C15.05 421.7 10.14 422.28 0 428.97 Z"
+									class="st8"/>
+						</g>
+					</g>
+				</g>
+				<g id="shape199-41" v:mID="199" v:groupContext="shape" transform="translate(1.59872E-13,-164.229)">
+					<title>Foglio.199</title>
+					<desc>RP2 Entity Configuration</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="51.0236" cy="404.028" width="102.05" height="49.8898"/>
+					<rect x="0" y="379.083" width="102.047" height="49.8898" class="st4"/>
+					<text x="4" y="399.83" class="st9" v:langID="1040"><v:paragraph/><v:tabList/>RP2 Entity<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">Configuration</tspan></text>				</g>
+			</g>
+			<g id="shape315-45" v:mID="315" v:groupContext="shape" transform="translate(0.868739,0)">
+				<title>Foglio.315</title>
+				<desc>RP2 .well-known endpoint</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="86.4567" cy="414.8" width="172.92" height="28.3465"/>
+				<rect x="0" y="400.627" width="172.913" height="28.3465" class="st4"/>
+				<text x="10.45" y="419" class="st10" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>RP2<tspan
+							class="st11"> </tspan><tspan class="st11">.well</tspan><tspan class="st11">-</tspan><tspan class="st11">known</tspan> endpoint</text>			</g>
+		</g>
+		<g id="group322-52" transform="translate(273.391,-95.6768)" v:mID="322" v:groupContext="group">
+			<title>Foglio.322</title>
+			<g id="group232-53" transform="translate(0,-28.1356)" v:mID="232" v:groupContext="group">
+				<title>Foglio.232</title>
+				<g id="shape216-54" v:mID="216" v:groupContext="shape" transform="translate(9.92127,-40.137)">
+					<title>Rettangolo.181</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st12"/>
+				</g>
+				<g id="shape217-56" v:mID="217" v:groupContext="shape" transform="translate(9.92127,-125.961)">
+					<title>Rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st12"/>
+				</g>
+				<g id="shape218-58" v:mID="218" v:groupContext="shape" transform="translate(6.39488E-14,-4.95276E-06)">
+					<title>Rettangolo.169</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="172.058" height="215.072" class="st2"/>
+				</g>
+				<g id="shape219-60" v:mID="219" v:groupContext="shape" transform="translate(122.591,-167.039)">
+					<title>Triangolo rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L49.47 428.97 L0 380.94 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape220-62" v:mID="220" v:groupContext="shape" transform="translate(2.55421E-14,-4.95276E-06)">
+					<title>Rettangolo.155</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="0.716902" height="215.072" class="st3"/>
+				</g>
+				<g id="shape221-64" v:mID="221" v:groupContext="shape" transform="translate(172.196,0)">
+					<title>Rettangolo.156</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="262.142" width="0.716902" height="166.831" class="st3"/>
+				</g>
+				<g id="shape222-66" v:mID="222" v:groupContext="shape" transform="translate(-256.06,428.973) rotate(-90)">
+					<title>Rettangolo.158</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 256.52 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape223-68" v:mID="223" v:groupContext="shape" transform="translate(-307.099,213.901) rotate(-90)">
+					<title>Rettangolo.159</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 308.06 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape224-70" v:mID="224" v:groupContext="shape" transform="translate(7.08662,0)">
+					<title>Foglio.224</title>
+					<desc>{ “kid” : dcEE870s } { “iss” : SA “sub” : SA “authority_hints...</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="82.9134" cy="343.934" width="165.83" height="170.079"/>
+					<rect x="0" y="258.894" width="165.827" height="170.079" class="st4"/>
+					<text x="4" y="282.73" class="st5" v:langID="1040"><v:paragraph/><v:tabList/>{<v:newlineChar/><tspan x="4"
+								dy="1.2em" class="st6">“</tspan>kid” : dcEE870s<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">}<v:newlineChar/></tspan><tspan
+								x="4" dy="1.2em" class="st6">{<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">“</tspan>iss” : SA<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">“</tspan>sub” : SA<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">“</tspan>authority_hints” : TA<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">“</tspan>kid” : dcEE870s<v:newlineChar/><tspan x="4" dy="1.2em"
+								class="st6">[...]<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">}</tspan></text>				</g>
+				<g id="shape231-82" v:mID="231" v:groupContext="shape" transform="translate(1.91847E-13,-164.229)">
+					<title>Foglio.231</title>
+					<desc>SA Entity Configuration</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="51.0236" cy="404.028" width="102.05" height="49.8898"/>
+					<rect x="0" y="379.083" width="102.047" height="49.8898" class="st4"/>
+					<text x="4" y="399.83" class="st9" v:langID="1040"><v:paragraph/><v:tabList/>SA Entity<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">Configuration</tspan></text>				</g>
+				<g id="group214-86" transform="translate(81.4961,-175.954)" v:mID="214" v:groupContext="group">
+					<title>Foglio.214</title>
+					<g id="shape202-87" v:mID="202" v:groupContext="shape">
+						<title>Cerchio</title>
+						<v:userDefs>
+							<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+						</v:userDefs>
+						<path d="M0 400.49 A28.4882 28.4882 0 0 1 56.98 400.49 A28.4882 28.4882 0 1 1 0 400.49 Z" class="st12"/>
+					</g>
+					<g id="group213-89" transform="translate(11.2921,-12.4309)" v:mID="213" v:groupContext="group">
+						<title>Foglio.213</title>
+						<g id="shape203-90" v:mID="203" v:groupContext="shape" transform="translate(13.8614,-25.885)">
+							<title>Cerchio.203</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 425.86 A3.11477 3.11477 0 0 1 6.23 425.86 A3.11477 3.11477 0 1 1 0 425.86 Z" class="st13"/>
+						</g>
+						<g id="shape204-92" v:mID="204" v:groupContext="shape" transform="translate(3.03265,-15.6954)">
+							<title>Rettangolo</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 428.97 L27.95 428.97 L0 428.97 Z" class="st14"/>
+						</g>
+						<g id="shape205-94" v:mID="205" v:groupContext="shape" transform="translate(1.14908E-14,-0.138897)">
+							<title>Cerchio.205</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 425.86 A3.11477 3.11477 0 0 1 6.23 425.86 A3.11477 3.11477 0 1 1 0 425.86 Z" class="st13"/>
+						</g>
+						<g id="shape206-96" v:mID="206" v:groupContext="shape" transform="translate(13.9343,0)">
+							<title>Cerchio.206</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 425.86 A3.11477 3.11477 0 0 1 6.23 425.86 A3.11477 3.11477 0 1 1 0 425.86 Z" class="st13"/>
+						</g>
+						<g id="shape207-98" v:mID="207" v:groupContext="shape" transform="translate(28.1627,-0.138897)">
+							<title>Cerchio.207</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 425.86 A3.11477 3.11477 0 0 1 6.23 425.86 A3.11477 3.11477 0 1 1 0 425.86 Z" class="st13"/>
+						</g>
+						<g id="shape208-100" v:mID="208" v:groupContext="shape" transform="translate(445.949,403.461) rotate(90)">
+							<title>Rettangolo.208</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 428.97 L19.14 428.97 L0 428.97 Z" class="st14"/>
+						</g>
+						<g id="shape209-102" v:mID="209" v:groupContext="shape" transform="translate(460.171,413.209) rotate(90)">
+							<title>Rettangolo.209</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 428.97 L9.4 428.97 L0 428.97 Z" class="st14"/>
+						</g>
+						<g id="shape210-104" v:mID="210" v:groupContext="shape" transform="translate(432.088,413.332) rotate(90)">
+							<title>Rettangolo.210</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 428.97 L9.27 428.97 L0 428.97 Z" class="st14"/>
+						</g>
+					</g>
+				</g>
+			</g>
+			<g id="shape317-106" v:mID="317" v:groupContext="shape">
+				<title>Foglio.317</title>
+				<desc>SA .well-known endpoint</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="86.4567" cy="414.8" width="172.92" height="28.3465"/>
+				<rect x="0" y="400.627" width="172.913" height="28.3465" class="st4"/>
+				<text x="14.15" y="419" class="st10" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>SA<tspan
+							class="st11"> </tspan><tspan class="st11">.well</tspan><tspan class="st11">-</tspan><tspan class="st11">known</tspan> endpoint</text>			</g>
+		</g>
+		<g id="group323-113" transform="translate(492.58,-99.2126)" v:mID="323" v:groupContext="group">
+			<title>Foglio.323</title>
+			<g id="group233-114" transform="translate(0.868739,-26.7644)" v:mID="233" v:groupContext="group">
+				<title>Foglio.233</title>
+				<g id="shape234-115" v:mID="234" v:groupContext="shape" transform="translate(9.92127,-47.8141)">
+					<title>Rettangolo.181</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st1"/>
+				</g>
+				<g id="shape235-117" v:mID="235" v:groupContext="shape" transform="translate(9.92127,-119.465)">
+					<title>Rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st12"/>
+				</g>
+				<g id="shape236-119" v:mID="236" v:groupContext="shape" transform="translate(6.39488E-14,-4.95276E-06)">
+					<title>Rettangolo.169</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="172.058" height="215.072" class="st2"/>
+				</g>
+				<g id="shape237-121" v:mID="237" v:groupContext="shape" transform="translate(122.591,-167.039)">
+					<title>Triangolo rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L49.47 428.97 L0 380.94 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape238-123" v:mID="238" v:groupContext="shape" transform="translate(2.55421E-14,-4.95276E-06)">
+					<title>Rettangolo.155</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="0.716902" height="215.072" class="st3"/>
+				</g>
+				<g id="shape239-125" v:mID="239" v:groupContext="shape" transform="translate(172.196,0)">
+					<title>Rettangolo.156</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="262.142" width="0.716902" height="166.831" class="st3"/>
+				</g>
+				<g id="shape240-127" v:mID="240" v:groupContext="shape" transform="translate(-256.06,428.973) rotate(-90)">
+					<title>Rettangolo.158</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 256.52 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape241-129" v:mID="241" v:groupContext="shape" transform="translate(-307.099,213.901) rotate(-90)">
+					<title>Rettangolo.159</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 308.06 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape242-131" v:mID="242" v:groupContext="shape" transform="translate(7.08662,0)">
+					<title>Foglio.242</title>
+					<desc>{ “kid” : dcEE870s } { “iss” : SA “sub” : RP2 “kid” : bfxafKv...</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="82.9134" cy="343.934" width="165.83" height="170.079"/>
+					<rect x="0" y="258.894" width="165.827" height="170.079" class="st4"/>
+					<text x="4" y="289.93" class="st5" v:langID="1040"><v:paragraph/><v:tabList/>{<v:newlineChar/><tspan x="4"
+								dy="1.2em" class="st6">“</tspan>kid” : dcEE870s<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">}<v:newlineChar/></tspan><tspan
+								x="4" dy="1.2em" class="st6">{<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">“</tspan>iss” : SA<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">“</tspan>sub” : RP2<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">“</tspan>kid” : bfxafKvtP<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">[...]<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">}</tspan></text>				</g>
+				<g id="shape243-142" v:mID="243" v:groupContext="shape" transform="translate(1.91847E-13,-164.229)">
+					<title>Foglio.243</title>
+					<desc>SA Entity Statement of RP2</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="51.0236" cy="404.028" width="102.05" height="49.8898"/>
+					<rect x="0" y="379.083" width="102.047" height="49.8898" class="st4"/>
+					<text x="4" y="391.43" class="st9" v:langID="1040"><v:paragraph/><v:tabList/>SA Entity<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">Statement of <v:newlineChar/></tspan><tspan x="4" dy="1.2em"
+								class="st6">RP2</tspan></text>				</g>
+				<g id="group244-147" transform="translate(81.4961,-175.954)" v:mID="244" v:groupContext="group">
+					<title>Foglio.244</title>
+					<g id="shape245-148" v:mID="245" v:groupContext="shape">
+						<title>Cerchio</title>
+						<v:userDefs>
+							<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+						</v:userDefs>
+						<path d="M0 400.49 A28.4882 28.4882 0 0 1 56.98 400.49 A28.4882 28.4882 0 1 1 0 400.49 Z" class="st12"/>
+					</g>
+					<g id="group246-150" transform="translate(11.2921,-12.4309)" v:mID="246" v:groupContext="group">
+						<title>Foglio.246</title>
+						<g id="shape247-151" v:mID="247" v:groupContext="shape" transform="translate(13.8614,-25.885)">
+							<title>Cerchio.203</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 425.86 A3.11477 3.11477 0 0 1 6.23 425.86 A3.11477 3.11477 0 1 1 0 425.86 Z" class="st13"/>
+						</g>
+						<g id="shape248-153" v:mID="248" v:groupContext="shape" transform="translate(3.03265,-15.6954)">
+							<title>Rettangolo</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 428.97 L27.95 428.97 L0 428.97 Z" class="st14"/>
+						</g>
+						<g id="shape249-155" v:mID="249" v:groupContext="shape" transform="translate(1.14908E-14,-0.138897)">
+							<title>Cerchio.205</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 425.86 A3.11477 3.11477 0 0 1 6.23 425.86 A3.11477 3.11477 0 1 1 0 425.86 Z" class="st13"/>
+						</g>
+						<g id="shape250-157" v:mID="250" v:groupContext="shape" transform="translate(13.9343,0)">
+							<title>Cerchio.206</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 425.86 A3.11477 3.11477 0 0 1 6.23 425.86 A3.11477 3.11477 0 1 1 0 425.86 Z" class="st13"/>
+						</g>
+						<g id="shape251-159" v:mID="251" v:groupContext="shape" transform="translate(28.1627,-0.138897)">
+							<title>Cerchio.207</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 425.86 A3.11477 3.11477 0 0 1 6.23 425.86 A3.11477 3.11477 0 1 1 0 425.86 Z" class="st13"/>
+						</g>
+						<g id="shape252-161" v:mID="252" v:groupContext="shape" transform="translate(445.949,403.461) rotate(90)">
+							<title>Rettangolo.208</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 428.97 L19.14 428.97 L0 428.97 Z" class="st14"/>
+						</g>
+						<g id="shape253-163" v:mID="253" v:groupContext="shape" transform="translate(460.171,413.209) rotate(90)">
+							<title>Rettangolo.209</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 428.97 L9.4 428.97 L0 428.97 Z" class="st14"/>
+						</g>
+						<g id="shape254-165" v:mID="254" v:groupContext="shape" transform="translate(432.088,413.332) rotate(90)">
+							<title>Rettangolo.210</title>
+							<v:userDefs>
+								<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+							</v:userDefs>
+							<path d="M0 428.97 L9.27 428.97 L0 428.97 Z" class="st14"/>
+						</g>
+					</g>
+				</g>
+			</g>
+			<g id="shape318-167" v:mID="318" v:groupContext="shape">
+				<title>Foglio.318</title>
+				<desc>SA FETCH endpoint</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="86.4567" cy="414.8" width="172.92" height="28.3465"/>
+				<rect x="0" y="400.627" width="172.913" height="28.3465" class="st4"/>
+				<text x="31.97" y="419" class="st10" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>SA<tspan
+							class="st11"> </tspan><tspan class="st11">FETCH</tspan> endpoint</text>			</g>
+		</g>
+		<g id="group324-172" transform="translate(713.507,-96.9747)" v:mID="324" v:groupContext="group">
+			<title>Foglio.324</title>
+			<g id="group296-173" transform="translate(6.39488E-14,-26.8376)" v:mID="296" v:groupContext="group">
+				<title>Foglio.296</title>
+				<g id="shape274-174" v:mID="274" v:groupContext="shape" transform="translate(9.92127,-47.8141)">
+					<title>Rettangolo.181</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st15"/>
+				</g>
+				<g id="shape275-176" v:mID="275" v:groupContext="shape" transform="translate(9.92127,-120.056)">
+					<title>Rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st15"/>
+				</g>
+				<g id="shape276-178" v:mID="276" v:groupContext="shape" transform="translate(6.39488E-14,-4.95276E-06)">
+					<title>Rettangolo.169</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="172.058" height="215.072" class="st2"/>
+				</g>
+				<g id="shape277-180" v:mID="277" v:groupContext="shape" transform="translate(122.591,-167.039)">
+					<title>Triangolo rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L49.47 428.97 L0 380.94 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape278-182" v:mID="278" v:groupContext="shape" transform="translate(8.94909E-14,-4.95276E-06)">
+					<title>Rettangolo.155</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="0.716902" height="215.072" class="st3"/>
+				</g>
+				<g id="shape279-184" v:mID="279" v:groupContext="shape" transform="translate(172.196,0)">
+					<title>Rettangolo.156</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="262.142" width="0.716902" height="166.831" class="st3"/>
+				</g>
+				<g id="shape280-186" v:mID="280" v:groupContext="shape" transform="translate(-256.06,428.973) rotate(-90)">
+					<title>Rettangolo.158</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 256.52 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape281-188" v:mID="281" v:groupContext="shape" transform="translate(-307.099,213.901) rotate(-90)">
+					<title>Rettangolo.159</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 308.06 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape282-190" v:mID="282" v:groupContext="shape" transform="translate(7.08662,0)">
+					<title>Foglio.282</title>
+					<desc>{ “kid” : pZQU9t0A } { “iss” : TA “sub” : TA “kid” : pZQU9t0A...</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="82.9134" cy="343.934" width="165.83" height="170.079"/>
+					<rect x="0" y="258.894" width="165.827" height="170.079" class="st4"/>
+					<text x="4" y="289.93" class="st5" v:langID="1040"><v:paragraph/><v:tabList/>{<v:newlineChar/><tspan x="4"
+								dy="1.2em" class="st6">“</tspan>kid” : pZQU9t0A<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">}<v:newlineChar/></tspan><tspan
+								x="4" dy="1.2em" class="st6">{<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">“</tspan>iss” : TA<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">“</tspan>sub” : TA<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">“</tspan>kid” : pZQU9t0A<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">[...]<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">}</tspan></text>				</g>
+				<g id="shape283-201" v:mID="283" v:groupContext="shape" transform="translate(2.55795E-13,-164.229)">
+					<title>Foglio.283</title>
+					<desc>TA Entity Configuration</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="51.0236" cy="404.028" width="102.05" height="49.8898"/>
+					<rect x="0" y="379.083" width="102.047" height="49.8898" class="st4"/>
+					<text x="4" y="399.83" class="st9" v:langID="1040"><v:paragraph/><v:tabList/>TA Entity<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">Configuration</tspan></text>				</g>
+				<g id="group272-205" transform="translate(84.7559,-178.119)" v:mID="272" v:groupContext="group">
+					<title>Foglio.272</title>
+					<g id="shape256-206" v:mID="256" v:groupContext="shape">
+						<title>Cerchio</title>
+						<v:userDefs>
+							<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+						</v:userDefs>
+						<path d="M0 400.49 A28.4882 28.4882 0 0 1 56.98 400.49 A28.4882 28.4882 0 1 1 0 400.49 Z" class="st15"/>
+					</g>
+					<g id="group268-208" transform="translate(216.413,39.251) rotate(30)" v:mID="268" v:groupContext="group">
+						<title>Foglio.268</title>
+						<g id="group269-209" v:mID="269" v:groupContext="group">
+							<title>Foglio.269</title>
+							<g id="shape270-210" v:mID="270" v:groupContext="shape" transform="translate(13.8363,-36.0978)">
+								<title>Foglio.270</title>
+								<path d="M3.27 428.97 C1.47 428.97 0 427.5 0 425.7 C0 423.89 1.47 422.42 3.27 422.42 C5.08 422.42
+											 6.55 423.89 6.55 425.7 C6.55 427.5 5.08 428.97 3.27 428.97 ZM3.27 423.41 C2.01 423.41
+											 0.98 424.43 0.98 425.7 C0.98 426.96 2.01 427.99 3.27 427.99 C4.54 427.99 5.57 426.96
+											 5.57 425.7 C5.57 424.43 4.54 423.41 3.27 423.41 Z" class="st16"/>
+							</g>
+							<g id="shape271-212" v:mID="271" v:groupContext="shape">
+								<title>Foglio.271</title>
+								<path d="M16.93 428.97 C16.89 428.97 16.85 428.97 16.82 428.96 C12.14 427.89 8.75 425.34 6.73 423.38
+											 C5.28 421.98 4.32 420.7 3.83 419.97 L2.96 421.21 C2.86 421.34 2.71 421.42 2.55 421.42
+											 C2.55 421.42 2.55 421.42 2.55 421.42 C2.39 421.42 2.24 421.33 2.15 421.2 C0.57 418.83
+											 0 415.96 0.5 412.88 C0.88 410.57 1.72 408.97 1.75 408.9 C1.84 408.75 2 408.65 2.18 408.64
+											 C2.18 408.64 2.18 408.64 2.19 408.64 C2.36 408.64 2.52 408.74 2.61 408.89 C4.89 412.88
+											 7.37 415.23 8.36 415.92 C8.51 416.02 8.59 416.19 8.57 416.37 C8.55 416.54 8.44 416.7
+											 8.28 416.77 L7.18 417.26 C9.22 419.11 11.7 420.33 14.41 420.8 L14.41 401.89 L6.64 401.89
+											 C6.12 402.65 5.31 403.1 4.44 403.1 C2.9 403.1 1.65 401.67 1.65 399.92 C1.65 398.17 2.9
+											 396.74 4.44 396.74 C5.31 396.74 6.12 397.19 6.64 397.95 L14.41 397.95 L14.41 395.39
+											 C12.16 394.34 10.72 392.1 10.72 389.6 C10.72 386.08 13.59 383.21 17.11 383.21 C20.63
+											 383.21 23.5 386.08 23.5 389.6 C23.5 392.25 21.88 394.59 19.45 395.55 L19.45 397.95 L27.21
+											 397.95 C27.74 397.19 28.54 396.74 29.41 396.74 C30.95 396.74 32.21 398.17 32.21 399.92
+											 C32.21 401.67 30.95 403.1 29.41 403.1 C28.54 403.1 27.74 402.65 27.21 401.89 L19.45
+											 401.89 L19.45 420.8 C22.16 420.33 24.64 419.11 26.68 417.26 L25.57 416.77 C25.41 416.7
+											 25.3 416.54 25.28 416.37 C25.27 416.19 25.35 416.02 25.49 415.92 C26.48 415.23 28.96
+											 412.88 31.24 408.89 C31.33 408.74 31.49 408.64 31.67 408.64 C31.67 408.64 31.67 408.64
+											 31.68 408.64 C31.86 408.65 32.02 408.75 32.1 408.9 C32.14 408.97 32.97 410.57 33.35
+											 412.88 C33.85 415.96 33.29 418.83 31.71 421.2 C31.62 421.33 31.47 421.42 31.31 421.42
+											 C31.3 421.42 31.3 421.42 31.3 421.42 C31.14 421.42 30.99 421.34 30.9 421.21 L30.03 419.97
+											 C29.53 420.7 28.57 421.98 27.13 423.38 C25.11 425.34 21.72 427.89 17.04 428.96 C17 428.97
+											 16.96 428.97 16.93 428.97 ZM3.84 418.59 C3.85 418.59 3.86 418.59 3.87 418.59 C4.03 418.6
+											 4.19 418.69 4.27 418.84 C4.31 418.91 8.48 426 16.93 427.98 C25.39 426 29.54 418.91 29.58
+											 418.84 C29.67 418.69 29.82 418.6 29.99 418.59 C30.16 418.58 30.32 418.67 30.41 418.8
+											 L31.27 420.03 C33.47 416.14 32.28 411.96 31.6 410.21 C29.61 413.49 27.69 415.36 26.71
+											 416.2 L27.75 416.66 C27.9 416.72 28 416.86 28.03 417.02 C28.06 417.18 28.01 417.34 27.9
+											 417.46 C25.47 419.88 22.4 421.4 19.02 421.86 C18.88 421.88 18.74 421.84 18.63 421.74
+											 C18.52 421.65 18.46 421.52 18.46 421.37 L18.46 401.39 C18.46 401.12 18.68 400.9 18.95
+											 400.9 L27.48 400.9 C27.66 400.9 27.82 401 27.91 401.15 C28.25 401.76 28.81 402.12 29.41
+											 402.12 C30.41 402.12 31.22 401.13 31.22 399.92 C31.22 398.71 30.41 397.72 29.41 397.72
+											 C28.81 397.72 28.25 398.08 27.91 398.69 C27.82 398.84 27.66 398.94 27.48 398.94 L18.95
+											 398.94 C18.68 398.94 18.46 398.72 18.46 398.45 L18.46 395.2 C18.46 394.99 18.6 394.8
+											 18.8 394.74 C21.02 394 22.52 391.94 22.52 389.6 C22.52 386.62 20.09 384.2 17.11 384.2
+											 C14.13 384.2 11.71 386.62 11.71 389.6 C11.71 391.81 13.03 393.78 15.08 394.61 C15.27
+											 394.69 15.39 394.87 15.39 395.07 L15.39 398.45 C15.39 398.72 15.17 398.94 14.9 398.94
+											 L6.37 398.94 C6.19 398.94 6.03 398.84 5.94 398.69 C5.6 398.08 5.04 397.72 4.44 397.72
+											 C3.44 397.72 2.63 398.71 2.63 399.92 C2.63 401.13 3.44 402.12 4.44 402.12 C5.04 402.12
+											 5.6 401.76 5.94 401.15 C6.03 401 6.19 400.9 6.37 400.9 L14.9 400.9 C15.17 400.9 15.39
+											 401.12 15.39 401.39 L15.39 421.37 C15.39 421.52 15.33 421.65 15.22 421.74 C15.12 421.84
+											 14.97 421.88 14.83 421.86 C11.45 421.4 8.38 419.88 5.96 417.46 C5.84 417.34 5.79 417.18
+											 5.82 417.02 C5.85 416.86 5.96 416.72 6.11 416.66 L7.14 416.2 C6.16 415.37 4.25 413.49
+											 2.25 410.21 C1.57 411.96 0.39 416.15 2.58 420.03 L3.44 418.8 C3.53 418.67 3.68 418.59
+											 3.84 418.59 Z" class="st16"/>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+			<g id="shape319-214" v:mID="319" v:groupContext="shape">
+				<title>Foglio.319</title>
+				<desc>TA .well-known endpoint</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="86.4567" cy="414.8" width="172.92" height="28.3465"/>
+				<rect x="0" y="400.627" width="172.913" height="28.3465" class="st4"/>
+				<text x="13.95" y="419" class="st10" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>TA<tspan
+							class="st11"> </tspan><tspan class="st11">.well</tspan><tspan class="st11">-</tspan><tspan class="st11">known </tspan>endpoint</text>			</g>
+		</g>
+		<g id="group325-221" transform="translate(933.565,-96.4227)" v:mID="325" v:groupContext="group">
+			<title>Foglio.325</title>
+			<g id="group297-222" transform="translate(6.39488E-14,-27.3896)" v:mID="297" v:groupContext="group">
+				<title>Foglio.297</title>
+				<g id="shape298-223" v:mID="298" v:groupContext="shape" transform="translate(9.92127,-47.8141)">
+					<title>Rettangolo.181</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st12"/>
+				</g>
+				<g id="shape299-225" v:mID="299" v:groupContext="shape" transform="translate(9.92127,-120.056)">
+					<title>Rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="411.18" width="141.732" height="17.7929" class="st15"/>
+				</g>
+				<g id="shape300-227" v:mID="300" v:groupContext="shape" transform="translate(6.39488E-14,-4.95276E-06)">
+					<title>Rettangolo.169</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="172.058" height="215.072" class="st2"/>
+				</g>
+				<g id="shape301-229" v:mID="301" v:groupContext="shape" transform="translate(122.591,-167.039)">
+					<title>Triangolo rettangolo</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L49.47 428.97 L0 380.94 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape302-231" v:mID="302" v:groupContext="shape" transform="translate(8.94909E-14,-4.95276E-06)">
+					<title>Rettangolo.155</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="213.901" width="0.716902" height="215.072" class="st3"/>
+				</g>
+				<g id="shape303-233" v:mID="303" v:groupContext="shape" transform="translate(172.196,0)">
+					<title>Rettangolo.156</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<rect x="0" y="262.142" width="0.716902" height="166.831" class="st3"/>
+				</g>
+				<g id="shape304-235" v:mID="304" v:groupContext="shape" transform="translate(-256.06,428.973) rotate(-90)">
+					<title>Rettangolo.158</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 256.52 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape305-237" v:mID="305" v:groupContext="shape" transform="translate(-307.099,213.901) rotate(-90)">
+					<title>Rettangolo.159</title>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<path d="M0 428.97 L0 308.06 L0 428.97 Z" class="st3"/>
+				</g>
+				<g id="shape306-239" v:mID="306" v:groupContext="shape" transform="translate(7.08662,0)">
+					<title>Foglio.306</title>
+					<desc>{ “kid” : pZQU9t0A } { “iss” : TA “sub” : SA “kid” : dcEE870s...</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="82.9134" cy="343.934" width="165.83" height="170.079"/>
+					<rect x="0" y="258.894" width="165.827" height="170.079" class="st4"/>
+					<text x="4" y="289.93" class="st5" v:langID="1040"><v:paragraph/><v:tabList/>{<v:newlineChar/><tspan x="4"
+								dy="1.2em" class="st6">“</tspan>kid” : pZQU9t0A<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">}<v:newlineChar/></tspan><tspan
+								x="4" dy="1.2em" class="st6">{<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">“</tspan>iss” : TA<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">“</tspan>sub” : SA<v:newlineChar/><tspan x="4" dy="1.2em" class="st6">“</tspan>kid” : dcEE870s<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">[...]<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st6">}</tspan></text>				</g>
+				<g id="shape307-250" v:mID="307" v:groupContext="shape" transform="translate(2.55795E-13,-164.229)">
+					<title>Foglio.307</title>
+					<desc>TA Entity Statement of SA</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="51.0236" cy="404.028" width="102.05" height="49.8898"/>
+					<rect x="0" y="379.083" width="102.047" height="49.8898" class="st4"/>
+					<text x="4" y="391.43" class="st9" v:langID="1040"><v:paragraph/><v:tabList/>TA Entity<v:newlineChar/><tspan
+								x="4" dy="1.2em" class="st6">Statement of<v:newlineChar/></tspan><tspan x="4" dy="1.2em"
+								class="st6">SA</tspan></text>				</g>
+				<g id="group308-255" transform="translate(84.7559,-178.119)" v:mID="308" v:groupContext="group">
+					<title>Foglio.308</title>
+					<g id="shape309-256" v:mID="309" v:groupContext="shape">
+						<title>Cerchio</title>
+						<v:userDefs>
+							<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+						</v:userDefs>
+						<path d="M0 400.49 A28.4882 28.4882 0 0 1 56.98 400.49 A28.4882 28.4882 0 1 1 0 400.49 Z" class="st15"/>
+					</g>
+					<g id="group310-258" transform="translate(216.413,39.251) rotate(30)" v:mID="310" v:groupContext="group">
+						<title>Foglio.310</title>
+						<g id="group311-259" v:mID="311" v:groupContext="group">
+							<title>Foglio.311</title>
+							<g id="shape312-260" v:mID="312" v:groupContext="shape" transform="translate(13.8363,-36.0978)">
+								<title>Foglio.312</title>
+								<path d="M3.27 428.97 C1.47 428.97 0 427.5 0 425.7 C0 423.89 1.47 422.42 3.27 422.42 C5.08 422.42
+											 6.55 423.89 6.55 425.7 C6.55 427.5 5.08 428.97 3.27 428.97 ZM3.27 423.41 C2.01 423.41
+											 0.98 424.43 0.98 425.7 C0.98 426.96 2.01 427.99 3.27 427.99 C4.54 427.99 5.57 426.96
+											 5.57 425.7 C5.57 424.43 4.54 423.41 3.27 423.41 Z" class="st16"/>
+							</g>
+							<g id="shape313-262" v:mID="313" v:groupContext="shape">
+								<title>Foglio.313</title>
+								<path d="M16.93 428.97 C16.89 428.97 16.85 428.97 16.82 428.96 C12.14 427.89 8.75 425.34 6.73 423.38
+											 C5.28 421.98 4.32 420.7 3.83 419.97 L2.96 421.21 C2.86 421.34 2.71 421.42 2.55 421.42
+											 C2.55 421.42 2.55 421.42 2.55 421.42 C2.39 421.42 2.24 421.33 2.15 421.2 C0.57 418.83
+											 0 415.96 0.5 412.88 C0.88 410.57 1.72 408.97 1.75 408.9 C1.84 408.75 2 408.65 2.18 408.64
+											 C2.18 408.64 2.18 408.64 2.19 408.64 C2.36 408.64 2.52 408.74 2.61 408.89 C4.89 412.88
+											 7.37 415.23 8.36 415.92 C8.51 416.02 8.59 416.19 8.57 416.37 C8.55 416.54 8.44 416.7
+											 8.28 416.77 L7.18 417.26 C9.22 419.11 11.7 420.33 14.41 420.8 L14.41 401.89 L6.64 401.89
+											 C6.12 402.65 5.31 403.1 4.44 403.1 C2.9 403.1 1.65 401.67 1.65 399.92 C1.65 398.17 2.9
+											 396.74 4.44 396.74 C5.31 396.74 6.12 397.19 6.64 397.95 L14.41 397.95 L14.41 395.39
+											 C12.16 394.34 10.72 392.1 10.72 389.6 C10.72 386.08 13.59 383.21 17.11 383.21 C20.63
+											 383.21 23.5 386.08 23.5 389.6 C23.5 392.25 21.88 394.59 19.45 395.55 L19.45 397.95 L27.21
+											 397.95 C27.74 397.19 28.54 396.74 29.41 396.74 C30.95 396.74 32.21 398.17 32.21 399.92
+											 C32.21 401.67 30.95 403.1 29.41 403.1 C28.54 403.1 27.74 402.65 27.21 401.89 L19.45
+											 401.89 L19.45 420.8 C22.16 420.33 24.64 419.11 26.68 417.26 L25.57 416.77 C25.41 416.7
+											 25.3 416.54 25.28 416.37 C25.27 416.19 25.35 416.02 25.49 415.92 C26.48 415.23 28.96
+											 412.88 31.24 408.89 C31.33 408.74 31.49 408.64 31.67 408.64 C31.67 408.64 31.67 408.64
+											 31.68 408.64 C31.86 408.65 32.02 408.75 32.1 408.9 C32.14 408.97 32.97 410.57 33.35
+											 412.88 C33.85 415.96 33.29 418.83 31.71 421.2 C31.62 421.33 31.47 421.42 31.31 421.42
+											 C31.3 421.42 31.3 421.42 31.3 421.42 C31.14 421.42 30.99 421.34 30.9 421.21 L30.03 419.97
+											 C29.53 420.7 28.57 421.98 27.13 423.38 C25.11 425.34 21.72 427.89 17.04 428.96 C17 428.97
+											 16.96 428.97 16.93 428.97 ZM3.84 418.59 C3.85 418.59 3.86 418.59 3.87 418.59 C4.03 418.6
+											 4.19 418.69 4.27 418.84 C4.31 418.91 8.48 426 16.93 427.98 C25.39 426 29.54 418.91 29.58
+											 418.84 C29.67 418.69 29.82 418.6 29.99 418.59 C30.16 418.58 30.32 418.67 30.41 418.8
+											 L31.27 420.03 C33.47 416.14 32.28 411.96 31.6 410.21 C29.61 413.49 27.69 415.36 26.71
+											 416.2 L27.75 416.66 C27.9 416.72 28 416.86 28.03 417.02 C28.06 417.18 28.01 417.34 27.9
+											 417.46 C25.47 419.88 22.4 421.4 19.02 421.86 C18.88 421.88 18.74 421.84 18.63 421.74
+											 C18.52 421.65 18.46 421.52 18.46 421.37 L18.46 401.39 C18.46 401.12 18.68 400.9 18.95
+											 400.9 L27.48 400.9 C27.66 400.9 27.82 401 27.91 401.15 C28.25 401.76 28.81 402.12 29.41
+											 402.12 C30.41 402.12 31.22 401.13 31.22 399.92 C31.22 398.71 30.41 397.72 29.41 397.72
+											 C28.81 397.72 28.25 398.08 27.91 398.69 C27.82 398.84 27.66 398.94 27.48 398.94 L18.95
+											 398.94 C18.68 398.94 18.46 398.72 18.46 398.45 L18.46 395.2 C18.46 394.99 18.6 394.8
+											 18.8 394.74 C21.02 394 22.52 391.94 22.52 389.6 C22.52 386.62 20.09 384.2 17.11 384.2
+											 C14.13 384.2 11.71 386.62 11.71 389.6 C11.71 391.81 13.03 393.78 15.08 394.61 C15.27
+											 394.69 15.39 394.87 15.39 395.07 L15.39 398.45 C15.39 398.72 15.17 398.94 14.9 398.94
+											 L6.37 398.94 C6.19 398.94 6.03 398.84 5.94 398.69 C5.6 398.08 5.04 397.72 4.44 397.72
+											 C3.44 397.72 2.63 398.71 2.63 399.92 C2.63 401.13 3.44 402.12 4.44 402.12 C5.04 402.12
+											 5.6 401.76 5.94 401.15 C6.03 401 6.19 400.9 6.37 400.9 L14.9 400.9 C15.17 400.9 15.39
+											 401.12 15.39 401.39 L15.39 421.37 C15.39 421.52 15.33 421.65 15.22 421.74 C15.12 421.84
+											 14.97 421.88 14.83 421.86 C11.45 421.4 8.38 419.88 5.96 417.46 C5.84 417.34 5.79 417.18
+											 5.82 417.02 C5.85 416.86 5.96 416.72 6.11 416.66 L7.14 416.2 C6.16 415.37 4.25 413.49
+											 2.25 410.21 C1.57 411.96 0.39 416.15 2.58 420.03 L3.44 418.8 C3.53 418.67 3.68 418.59
+											 3.84 418.59 Z" class="st16"/>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+			<g id="shape320-264" v:mID="320" v:groupContext="shape">
+				<title>Foglio.320</title>
+				<desc>TA FETCH endpoint</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="86.4567" cy="414.8" width="172.92" height="28.3465"/>
+				<rect x="0" y="400.627" width="172.913" height="28.3465" class="st4"/>
+				<text x="31.78" y="419" class="st10" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>TA<tspan
+							class="st11"> </tspan><tspan class="st11">FETCH</tspan> endpoint</text>			</g>
+		</g>
+		<g id="shape326-269" v:mID="326" v:groupContext="shape" v:layerMember="1" transform="translate(155.238,-365.053)">
+			<title>Connettore dinamico</title>
+			<desc>OP acquires the authority_hints to follow</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="114.733" cy="396.652" width="245.6" height="24.8035"/>
+			<path d="M0 434.84 C0 424.21 56.58 415.18 113.6 415.18 C162.25 415.17 211.23 421.74 224.59 431.79 L224.78 432.09"
+					class="st17"/>
+			<rect v:rectContext="textBkgnd" x="-2.47895" y="388.252" width="234.424" height="16.8" class="st19"/>
+			<text x="-2.48" y="400.85" class="st10" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>OP acquires the authority_hints to follow</text>		</g>
+		<g id="shape327-277" v:mID="327" v:groupContext="shape" v:layerMember="1" transform="translate(603.433,-351.821)">
+			<title>Connettore dinamico.327</title>
+			<desc>OP acquires the authority_hints to follow</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="108.869" cy="381.023" width="245.6" height="24.8035"/>
+			<path d="M0 421.89 C0 410.11 50.39 401.94 106.22 401.94 C153.52 401.94 204.71 407.81 219.26 416.76 L219.48 417.04"
+					class="st17"/>
+			<rect v:rectContext="textBkgnd" x="-8.34282" y="372.623" width="234.424" height="16.8" class="st20"/>
+			<text x="-8.34" y="385.22" class="st10" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>OP acquires the authority_hints to follow</text>		</g>
+		<g id="shape328-284" v:mID="328" v:groupContext="shape" v:layerMember="1" transform="translate(350.698,-89.7472)">
+			<title>Connettore dinamico.328</title>
+			<desc>OP acquires the federation_fetch_endpoint to query</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="106.672" cy="473.585" width="309.96" height="24.8035"/>
+			<path d="M0 422.97 C55.65 461.68 118.19 461.62 162.54 448.75 C187.11 441.62 206.1 430.56 214.82 424.72 L215.11 424.5"
+					class="st17"/>
+			<rect v:rectContext="textBkgnd" x="-42.7194" y="465.185" width="298.783" height="16.8" class="st19"/>
+			<text x="-42.72" y="477.79" class="st10" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>OP acquires the federation_fetch_endpoint to query</text>		</g>
+		<g id="shape329-291" v:mID="329" v:groupContext="shape" v:layerMember="1" transform="translate(790.068,-88.9419)">
+			<title>Connettore dinamico.329</title>
+			<desc>OP acquires the federation_fetch_endpoint to query</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="106.672" cy="473.585" width="309.96" height="24.8035"/>
+			<path d="M0 422.97 C55.65 461.68 118.19 461.62 162.54 448.75 C187.11 441.62 206.1 430.56 214.82 424.72 L215.11 424.5"
+					class="st17"/>
+			<rect v:rectContext="textBkgnd" x="-42.7194" y="465.185" width="298.783" height="16.8" class="st20"/>
+			<text x="-42.72" y="477.79" class="st10" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>OP acquires the federation_fetch_endpoint to query</text>		</g>
+	</g>
+</svg>

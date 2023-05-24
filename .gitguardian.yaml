@@ -1,0 +1,6 @@
+version: 2
+
+secret:
+  ignored-paths:
+    - docs/it/userinfo_endpoint.rst
+    - docs/en/userinfo_endpoint.rst

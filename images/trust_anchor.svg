@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generato da Microsoft Visio, esportazione SVG trust_anchor.svg trust_anchor eng -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="6.80563in" height="4.87935in"
+		viewBox="0 0 490.005 351.313" xml:space="preserve" color-interpolation-filters="sRGB" class="st7">
+	<v:documentProperties v:langID="1040" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+			<v:ud v:nameU="visV14CFF" v:prompt="" v:val="VT0(1):26"/>
+			<v:ud v:nameU="visFlowchartType" v:prompt="" v:val="VT4(CrossFunctional)"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {fill:#000000;font-family:Arial;font-size:0.843887em}
+		.st3 {fill:#eeeeee;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st4 {fill:none;stroke:#595959;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.76254}
+		.st5 {fill:#000000;font-family:Arial;font-size:1.18959em}
+		.st6 {stroke:#595959;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.76254}
+		.st7 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="22" v:index="2" v:groupContext="foregroundPage">
+		<title>trust_anchor eng</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<g id="shape3-1" v:mID="3" v:groupContext="shape" transform="translate(113.065,-276.119)">
+			<title>Foglio.3</title>
+			<desc>Exposes its Entity Configuration</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="89.0128" cy="345.236" width="178.03" height="12.1556"/>
+			<path d="M178.03 339.16 L0 339.16 L0 351.31 L178.03 351.31 L178.03 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>Exposes its Entity Configuration</text>		</g>
+		<g id="shape4-5" v:mID="4" v:groupContext="shape" transform="translate(113.065,-263.918)">
+			<title>Foglio.4</title>
+			<desc>Exposes the FETCH endpoint and releases Entity Statements</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="144.02" cy="345.236" width="288.04" height="12.1556"/>
+			<path d="M288.04 339.16 L0 339.16 L0 351.31 L288.04 351.31 L288.04 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>Exposes the FETCH endpoint and releases Entity Statements  </text>		</g>
+		<g id="shape5-9" v:mID="5" v:groupContext="shape" transform="translate(113.065,-251.717)">
+			<title>Foglio.5</title>
+			<desc>about its subordinates</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="67.9704" cy="345.236" width="135.95" height="12.1556"/>
+			<path d="M135.94 339.16 L0 339.16 L0 351.31 L135.94 351.31 L135.94 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>about its subordinates</text>		</g>
+		<g id="shape6-13" v:mID="6" v:groupContext="shape" transform="translate(122.592,-48.7545)">
+			<title>Foglio.6</title>
+			<path d="M0 319.39 C0 315.87 2.87 313 6.39 313 L152.84 313 C156.36 313 159.22 315.87 159.22 319.39 L159.22 344.94 C159.22
+						 348.46 156.36 351.31 152.84 351.31 L6.39 351.31 C2.87 351.31 0 348.46 0 344.94 L0 319.39 Z" class="st3"/>
+		</g>
+		<g id="shape7-15" v:mID="7" v:groupContext="shape" transform="translate(122.592,-48.7545)">
+			<title>Foglio.7</title>
+			<path d="M0 319.39 C0 315.87 2.87 313 6.39 313 L152.84 313 C156.36 313 159.22 315.87 159.22 319.39 L159.22 344.94 C159.22
+						 348.46 156.36 351.31 152.84 351.31 L6.39 351.31 C2.87 351.31 0 348.46 0 344.94 L0 319.39 Z" class="st4"/>
+		</g>
+		<g id="shape8-17" v:mID="8" v:groupContext="shape" transform="translate(131.785,-57.2246)">
+			<title>Foglio.8</title>
+			<desc>OpenID Relying Party</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="81.6625" cy="342.747" width="163.33" height="17.1337"/>
+			<path d="M163.32 334.18 L0 334.18 L0 351.31 L163.32 351.31 L163.32 334.18" class="st1"/>
+			<text x="0" y="347.03" class="st5" v:langID="1040"><v:paragraph/><v:tabList/>OpenID Relying Party</text>		</g>
+		<g id="shape9-21" v:mID="9" v:groupContext="shape" transform="translate(117.224,-169.787)">
+			<title>Foglio.9</title>
+			<path d="M0 319.39 C-0 315.86 2.86 313 6.39 313 L100.86 313 C104.39 313 107.24 315.86 107.24 319.39 L107.24 344.93 C107.24
+						 348.46 104.39 351.31 100.86 351.31 L6.39 351.31 C2.86 351.31 0 348.46 0 344.93 L0 319.39 Z" class="st3"/>
+		</g>
+		<g id="shape10-23" v:mID="10" v:groupContext="shape" transform="translate(117.224,-169.787)">
+			<title>Foglio.10</title>
+			<path d="M0 319.39 C-0 315.86 2.86 313 6.39 313 L100.86 313 C104.39 313 107.24 315.86 107.24 319.39 L107.24 344.93 C107.24
+						 348.46 104.39 351.31 100.86 351.31 L6.39 351.31 C2.86 351.31 0 348.46 0 344.93 L0 319.39 Z" class="st4"/>
+		</g>
+		<g id="shape11-25" v:mID="11" v:groupContext="shape" transform="translate(126.471,-184.349)">
+			<title>Foglio.11</title>
+			<desc>Intermediary</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="50.1807" cy="342.747" width="100.37" height="17.1337"/>
+			<path d="M100.36 334.18 L0 334.18 L0 351.31 L100.36 351.31 L100.36 334.18" class="st1"/>
+			<text x="0" y="347.03" class="st5" v:langID="1040"><v:paragraph/><v:tabList/>Intermediary  </text>		</g>
+		<g id="shape12-29" v:mID="12" v:groupContext="shape" transform="translate(126.471,-172.782)">
+			<title>Foglio.12</title>
+			<desc>(federation entity)</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="46.9313" cy="345.236" width="93.87" height="12.1556"/>
+			<path d="M93.86 339.16 L0 339.16 L0 351.31 L93.86 351.31 L93.86 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>(federation entity)</text>		</g>
+		<g id="shape13-33" v:mID="13" v:groupContext="shape" transform="translate(118.829,-150.145)">
+			<title>Foglio.13</title>
+			<desc>Exposes its Entity Configuration containing the Trust Marks</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="154.707" cy="345.236" width="309.42" height="12.1556"/>
+			<path d="M309.41 339.16 L0 339.16 L0 351.31 L309.41 351.31 L309.41 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>Exposes its Entity Configuration containing the Trust Marks</text>		</g>
+		<g id="shape14-37" v:mID="14" v:groupContext="shape" transform="translate(118.829,-137.944)">
+			<title>Foglio.14</title>
+			<desc>Exposes the FETCH endpoint and releases Entity Statements</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="162.463" cy="345.236" width="324.93" height="12.1556"/>
+			<path d="M324.93 339.16 L0 339.16 L0 351.31 L324.93 351.31 L324.93 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>Exposes the FETCH endpoint and releases Entity Statements</text>		</g>
+		<g id="shape17-41" v:mID="17" v:groupContext="shape" transform="translate(55.9167,-65.9882)">
+			<title>Foglio.17</title>
+			<path d="M67.88 351.31 C30.38 351.31 0 323.8 0 289.85 C0 258.31 26.35 231.88 61.02 228.69" class="st6"/>
+		</g>
+		<g id="shape18-44" v:mID="18" v:groupContext="shape" transform="translate(49.42,-190.277)">
+			<title>Foglio.18</title>
+			<path d="M67.88 351.31 C30.39 351.31 0 323.79 0 289.84 C-0 258.3 26.36 231.87 61.01 228.69" class="st6"/>
+		</g>
+		<g id="shape19-47" v:mID="19" v:groupContext="shape" transform="translate(24.2567,-107.563)">
+			<title>Foglio.19</title>
+			<path d="M0 342.16 C0 337.11 4.1 333.01 9.15 333.01 L74.54 333.01 C79.6 333.01 83.69 337.11 83.69 342.16 C83.69 347.22
+						 79.6 351.31 74.54 351.31 L9.15 351.31 C4.1 351.31 0 347.22 0 342.16 Z" class="st3"/>
+		</g>
+		<g id="shape20-49" v:mID="20" v:groupContext="shape" transform="translate(24.2567,-107.563)">
+			<title>Foglio.20</title>
+			<path d="M0 342.16 C0 337.11 4.1 333.01 9.15 333.01 L74.54 333.01 C79.6 333.01 83.69 337.11 83.69 342.16 C83.69 347.22
+						 79.6 351.31 74.54 351.31 L9.15 351.31 C4.1 351.31 0 347.22 0 342.16" class="st6"/>
+		</g>
+		<g id="shape21-52" v:mID="21" v:groupContext="shape" transform="translate(34.2683,-109.092)">
+			<title>Foglio.21</title>
+			<desc>authority</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="25.5707" cy="345.236" width="51.15" height="12.1556"/>
+			<path d="M51.14 339.16 L0 339.16 L0 351.31 L51.14 351.31 L51.14 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>authority  </text>		</g>
+		<g id="shape22-56" v:mID="22" v:groupContext="shape" transform="translate(75.8717,-109.092)">
+			<title>Foglio.22</title>
+			<desc>hint</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="11.0079" cy="345.236" width="22.02" height="12.1556"/>
+			<path d="M22.02 339.16 L0 339.16 L0 351.31 L22.02 351.31 L22.02 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>hint</text>		</g>
+		<g id="shape23-60" v:mID="23" v:groupContext="shape" transform="translate(18.7665,-229.328)">
+			<title>Foglio.23</title>
+			<path d="M0 342.16 C-0 337.11 4.1 333.01 9.15 333.01 L74.67 333.01 C79.72 333.01 83.82 337.11 83.82 342.16 C83.82 347.22
+						 79.72 351.31 74.67 351.31 L9.15 351.31 C4.1 351.31 0 347.22 0 342.16 Z" class="st3"/>
+		</g>
+		<g id="shape24-62" v:mID="24" v:groupContext="shape" transform="translate(18.7665,-229.328)">
+			<title>Foglio.24</title>
+			<path d="M0 342.16 C-0 337.11 4.1 333.01 9.15 333.01 L74.67 333.01 C79.72 333.01 83.82 337.11 83.82 342.16 C83.82 347.22
+						 79.72 351.31 74.67 351.31 L9.15 351.31 C4.1 351.31 0 347.22 0 342.16" class="st6"/>
+		</g>
+		<g id="shape25-65" v:mID="25" v:groupContext="shape" transform="translate(28.878,-230.843)">
+			<title>Foglio.25</title>
+			<desc>authority</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="25.5707" cy="345.236" width="51.15" height="12.1556"/>
+			<path d="M51.14 339.16 L0 339.16 L0 351.31 L51.14 351.31 L51.14 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>authority  </text>		</g>
+		<g id="shape26-69" v:mID="26" v:groupContext="shape" transform="translate(70.4814,-230.843)">
+			<title>Foglio.26</title>
+			<desc>hint</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="11.0079" cy="345.236" width="22.02" height="12.1556"/>
+			<path d="M22.02 339.16 L0 339.16 L0 351.31 L22.02 351.31 L22.02 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>hint</text>		</g>
+		<g id="shape27-73" v:mID="27" v:groupContext="shape" transform="translate(111.368,-294.236)">
+			<title>Foglio.27</title>
+			<path d="M0 319.39 C-0 315.86 2.86 313 6.39 313 L100.86 313 C104.39 313 107.24 315.86 107.24 319.39 L107.24 344.93 C107.24
+						 348.46 104.39 351.31 100.86 351.31 L6.39 351.31 C2.86 351.31 0 348.46 0 344.93 L0 319.39 Z" class="st3"/>
+		</g>
+		<g id="shape28-75" v:mID="28" v:groupContext="shape" transform="translate(111.368,-294.236)">
+			<title>Foglio.28</title>
+			<path d="M0 319.39 C-0 315.86 2.86 313 6.39 313 L100.86 313 C104.39 313 107.24 315.86 107.24 319.39 L107.24 344.93 C107.24
+						 348.46 104.39 351.31 100.86 351.31 L6.39 351.31 C2.86 351.31 0 348.46 0 344.93 L0 319.39 Z" class="st4"/>
+		</g>
+		<g id="shape29-77" v:mID="29" v:groupContext="shape" transform="translate(120.574,-308.815)">
+			<title>Foglio.29</title>
+			<desc>Trust Anchor</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="51.5474" cy="342.747" width="103.1" height="17.1337"/>
+			<path d="M103.09 334.18 L0 334.18 L0 351.31 L103.09 351.31 L103.09 334.18" class="st1"/>
+			<text x="0" y="347.03" class="st5" v:langID="1040"><v:paragraph/><v:tabList/>Trust Anchor  </text>		</g>
+		<g id="shape30-81" v:mID="30" v:groupContext="shape" transform="translate(120.574,-297.248)">
+			<title>Foglio.30</title>
+			<desc>(federation entity)</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="46.9313" cy="345.236" width="93.87" height="12.1556"/>
+			<path d="M93.86 339.16 L0 339.16 L0 351.31 L93.86 351.31 L93.86 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>(federation entity)</text>		</g>
+		<g id="shape31-85" v:mID="31" v:groupContext="shape" transform="translate(117.868,-125.901)">
+			<title>Foglio.31</title>
+			<desc>about its subordinates</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="67.9704" cy="345.236" width="135.95" height="12.1556"/>
+			<path d="M135.94 339.16 L0 339.16 L0 351.31 L135.94 351.31 L135.94 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>about its subordinates</text>		</g>
+		<g id="shape32-89" v:mID="32" v:groupContext="shape" transform="translate(122.592,-28.3465)">
+			<title>Foglio.32</title>
+			<desc>Exposes its Entity Configuration containing the Trust Marks</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="154.707" cy="345.236" width="309.42" height="12.1556"/>
+			<path d="M309.41 339.16 L0 339.16 L0 351.31 L309.41 351.31 L309.41 339.16" class="st1"/>
+			<text x="0" y="348.27" class="st2" v:langID="1040"><v:paragraph/><v:tabList/>Exposes its Entity Configuration containing the Trust Marks</text>		</g>
+	</g>
+</svg>
