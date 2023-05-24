@@ -39,14 +39,3 @@ Technical References
       - Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", RFC 8174, DOI 10.17487/RFC8174, May 2017.
     * - :rfc:`8725`
       - Jones, M., D. Hardt, Sheffer, Y., "JSON Web Token Best Current Practices", February 2020.
-      - Electronic Signatures and Infrastructures (ESI); Certificate Profiles;
-    * - `E164`_
-      - International Telecommunication Union, "E.164: The international public telecommunication numbering plan," 2010.
-    * - `ISO8601-2004`_
-      - International Organization for Standardization, "ISO 8601:2004. Data elements and interchange formats 
-        - Information interchange - Representation of dates and times," 2004.
-    * - `ICAO-Doc9303`_
-      - INTERNATIONAL CIVIL AVIATION ORGANIZATION, "Machine Readable Travel Documents, Seventh Edition, 2015, 
-        Part 3: Specifications Common to all MRTDs", 2015
-    * - `ISO3166`_
-      - ISO, "ISO 3166-1:1997. Codes for the representation of names of countries and their subdivisions 
