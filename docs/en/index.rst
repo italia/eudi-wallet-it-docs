@@ -4,17 +4,16 @@
 Italian eIDAS Wallet Technical Specifications
 =============================================
 
-[TODO INTRO]
+Introduction
+------------
 
-Introduzione
-
-cos'è eIDAS
+**What is eIDAS**
 
 eIDAS stands for "electronic IDentification, Authentication and trust Services" and is the commonly used name for the EU Regulation, 910/2014, on electronic identification and trust services for electronic transactions in the internal market, repealing the old signature Directive 1999/93/EC.
 
 The new eIDAS project establishes the European Digital Identity Wallet (EUDI Wallet) and proposes to overcome the dissimilarities, both in technological and user experience terms, that exist among the 21 digital identities (eIDs) currently active within as many as 16 Member States.
 
-cos’è IT-Wallet
+**What is IT Wallet**
 
 The IT Wallet project was created to improve the national digital identity governance experience and respond to the input received from the European community in the areas of innovation, decentralization and digital awareness. 
 
@@ -36,7 +35,7 @@ Therefore, the IT Wallet proposes to:
 
 In order to achieve these objectives and enhance the already active and eIDAS-notified digital identity schemes, the IT Wallet project proposes a technological and governance evolution that envisages, in a progressive way, the migration of the digital identification component of CIE and SPID to IT Wallet.
 
-scopo delle regole tecniche
+**Purpose of these technical rules**
 
 The purpose of the following technical rules is to define the technical architecture and reference framework to be used as a guideline by all the parties involved in the development of the IT Wallet project.
 
