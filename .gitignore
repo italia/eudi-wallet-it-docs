@@ -15,3 +15,5 @@ html
 env
 build
 env-preview
+.venv
+.vscode
