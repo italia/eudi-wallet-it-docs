@@ -5,15 +5,15 @@
 Wallet Instance Attestation
 +++++++++++++++++++++++++++++++
 
-As defined in `ARF <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework>`_, the Wallet Solution is the product made available by the Wallet Provider to allow users
+As defined in `ARF <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework>`_, the Wallet Solution is the product made available by the Wallet Provider to allows users
 to keep their digital credentials. The Wallet Instance is an
-instance of the Wallet Solution, which contains all the credentials
-of a specific user in a secure and unique way.
+instance of the Wallet Solution, which contains a specific user’s
+credentials securely and uniquely.
 
 Inside a **wallet solution** and, especially with regards
 to the **wallet instance**, it is essential to ensure the **authenticity,
-integrity, security and trust** in the use of the latter both by the user
-and the services connected to it, such as for example the
+integrity, security, and trust** in the use of the latter both by the user
+and the services connected to it, such as the
 **PID Provider** or one **relying party**.
 
 
@@ -29,7 +29,7 @@ The goal is:
 - Verify that the wallet instance is **authentic**, i.e. made available
   by an accredited body that complies with the trust model.
 
-In order to guarantee the above, it is necessary for each
+To guarantee the above, it is necessary for each
 wallet instance to issue a certificate of conformity,
 guaranteeing its security and compliance with the trust model.
 
@@ -38,7 +38,7 @@ and must be electronically signed by its issuer.
 
 Considering that the wallet instance does not represent an accredited
 entity and does not belong to an organization,
-but resides on the user's personal device, the trust model,
+but resides on the user's device, the trust model,
 based on sustainability and scalability criteria,
 must delegate to the **Wallet provider** the task of
 issuing the **Wallet Instance Attestation**.
@@ -71,7 +71,7 @@ respected by Wallet Instance Attestation:
    preservation, since the public key is a tracking factor
    in the presentation phase.
 7. **Can be used multiple times**:
-   The Wallet Instance Attestation should be usable multiple times
+   The Wallet Instance Attestation should be used multiple times
    during the validity period of the attestation, allowing for repeated
    authentication and authorization without the need to request
    new attestations with each interaction.
@@ -85,7 +85,7 @@ respected by Wallet Instance Attestation:
     use of the wallet instance. ⚠️
 
 .. attention::
-  ⚠️ For this DR we will not deal with how point 5 and 9 will be guaranteed as it is still under discussion. For now we will consider any authentic and non-revocable wallet instance.
+  ⚠️ For this DR we will not deal with how point 5 and 9 will be guaranteed as it is still under discussion. For now, we will consider any authentic and non-revocable wallet instance.
 
 
 High-end design
@@ -98,13 +98,13 @@ Static view of the components
 .. figure:: ../../images/wallet_solution_schema.png
    :name: wallet solution schema
    :alt: the image shows how the backend wallet and the
-         wallet instance are contained within the wallet
+         wallet instances are contained within the wallet
          solution which is managed by the wallet provider
 
 Dynamic view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 We do not go into the details of the backend wallet as it will be the
-subject of a subsequent design review. For now we will just analyze the
+subject of a subsequent design review. For now, we will just analyze the
 format of the wallet instance attestation and how it is issued by the
 backend wallet.
 
@@ -120,13 +120,13 @@ backend wallet.
   launched and every time the end user wants to request or present a
   credential.
 - **Message 2-3**: The wallet instance obtains metadata about its wallet
-  provider. Among these we also find the list of supported algorithms,
+  provider. Among these, we also find the list of supported algorithms,
   public keys, endpoints.
 - **Message 4**: The wallet instance verifies that the wallet provider is
   trustworthy by resolving the provider's trust chain up to the anchor (⚠️
   this step is skipped for now)
 - **Message 5-7**: The wallet instance instantiates a new key pair on its TEE
-  and requests a nonce from the backend wallet (as a measure against reply
+  and requests a nonce from the backend wallet (as a measure against the reply
   attacks)
 - **Message 8**: The wallet instance generates a Wallet Instance Attestation
   Request (JWT) signed with the private key associated with the public key
@@ -146,7 +146,7 @@ Detail design
 
 Format of the Wallet Instance Attestation Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In order to obtain a Wallet Instance Attestation from the wallet
+To obtain a Wallet Instance Attestation from the wallet
 provider (backend) it is necessary to send a Wallet Instance Attestation
 Request from the wallet instance containing the associated public key
 and a nonce previously requested to avoid reply attacks.
@@ -161,7 +161,7 @@ Header
 +-----------------------------------+-----------------------------------+
 | kid                               | Key id of the wallet instance     |
 +-----------------------------------+-----------------------------------+
-| type                              | Media type, in this case we use   |
+| type                              | Media type, in this case, we use  |
 |                                   | the value var+jwt (Verifiable     |
 |                                   | Assertion Request JWT).           |
 +-----------------------------------+-----------------------------------+
@@ -171,7 +171,7 @@ Payload
 +-----------------------------------+-----------------------------------+
 | **key**                           | **value**                         |
 +-----------------------------------+-----------------------------------+
-| iss                               | The public url of the issuer      |
+| iss                               | The public URL of the issuer      |
 |                                   | concatenated with the thumbprint  |
 |                                   | of the JWK of the wallet instance |
 |                                   | for which the attestation is      |
@@ -396,7 +396,7 @@ Format of the Wallet Provider Entity Configuration
 The Wallet Provider Entity Configuration is a JWT containing all the
 metadata relating to the wallet provider such as the public keys, the
 supported algorithms, the type of entity (in addition to the wallet
-provider, for example it could also be a relying party) and the list of
+provider, for example, it could also be a relying party) and the list of
 endpoints made available. It broadly mirrors openid-federation
 
 Header
@@ -408,7 +408,7 @@ Header
 +---------+----------------------------------------------------------------+
 | kid     | Thumbprint of the public key used for signing                  |
 +---------+----------------------------------------------------------------+
-| type    | Media type, in this case we use the entity-statement+jwt value |
+| type    | Media type, in this case, we use the entity-statement+jwt value|
 +---------+----------------------------------------------------------------+
 
 Payload
@@ -662,3 +662,4 @@ Open API specifications
         type: "string"
         format: "application/jwt"
         pattern: ^([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_\-\+\/=]+)$
+
