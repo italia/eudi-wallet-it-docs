@@ -95,11 +95,14 @@ High-end design
 Static view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../../images/wallet_solution_schema.png
+.. figure:: https://www.plantuml.com/plantuml/svg/XP4nJuSm44VtVehBdxbnPp2iRYx6qTHIjR7SaVQ0-EqzaICDgN4ZBxpqzTUXiCkyJCaupvJXzbH2le4hiCW7A7rsAGM6ETCQn-E7RMSloi0OJzDC691FeL1QE1BMWZBeraW2Mbv4wK8VQayPT5yX9TgCQPclpdy676lnGF0ZN93DyVs3xVsrhOU70hCi0_JshwHXFJp-Rg4dIuECo96moD7xeBQbUKBEbE0EPEwuEWx6N2zj_uXqU8wbhVMhD3tjbAX1BYIl_mq0
    :name: wallet solution schema
    :alt: the image shows how the backend wallet and the
          wallet instances are contained within the wallet
          solution which is managed by the wallet provider
+
+`PlantUML <https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>`__
+
 
 Dynamic view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
