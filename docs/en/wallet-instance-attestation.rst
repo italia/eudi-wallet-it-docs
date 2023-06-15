@@ -5,15 +5,10 @@
 Wallet Instance Attestation
 +++++++++++++++++++++++++++++++
 
-As defined in `ARF <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework>`_, the Wallet Solution is the product made available by the Wallet Provider to allows users
-to keep their digital credentials. The Wallet Instance is an
-instance of the Wallet Solution, which contains a specific user’s
-credentials securely and uniquely.
-
 Inside a **wallet solution** and, especially with regards
 to the **wallet instance**, it is essential to ensure the **authenticity,
-integrity, security, and trust** in the use of the latter both by the user
-and the services connected to it, such as the
+integrity, security, privacy and trust** in the use of the latter both
+by the user and the services connected to it, such as the
 **PID Provider** or one **relying party**.
 
 
@@ -36,12 +31,13 @@ guaranteeing its security and compliance with the trust model.
 This attestation is called **Wallet Instance Attestation**
 and must be electronically signed by its issuer.
 
-Considering that the wallet instance does not represent an accredited
-entity and does not belong to an organization,
-but resides on the user's device, the trust model,
-based on sustainability and scalability criteria,
-must delegate to the **Wallet provider** the task of
-issuing the **Wallet Instance Attestation**.
+.. hint::
+  Considering that the wallet instance does not represent an accredited
+  entity and does not belong to an organization,
+  but resides on the user's device, the trust model,
+  based on sustainability and scalability criteria,
+  must delegate to the **Wallet provider** the task of
+  issuing the **Wallet Instance Attestation**.
 
 
 Requirements
@@ -83,9 +79,16 @@ respected by Wallet Instance Attestation:
     If the public key associated with the wallet instance is lost or deleted,
     the attestation automatically becomes invalid to prevent unauthorized
     use of the wallet instance. ⚠️
+10. **Pseudo-anonymous**:
+    The attestations are designed to be pseudo-anonymous
+    (i.e. they do not contain direct references to the person, so that it is
+    not possible to identify them in the absence of additional information).
+    In the absence of such measure, the use of the attestation on multiple RPs
+    would constitute an appreciable risk, as it would theoretically allow
+    the RPs to merge databases and track users.
 
 .. attention::
-  ⚠️ For this DR we will not deal with how point 5 and 9 will be guaranteed as it is still under discussion. For now, we will consider any authentic and non-revocable wallet instance.
+  ⚠️ At this point we will not deal with how point 5 and 9 will be guaranteed as it is still under discussion. For now, we will consider any authentic and non-revocable wallet instance.
 
 
 High-end design
@@ -458,12 +461,12 @@ Payload `eudi_wallet_provider`
 | token_endpoint                    | Endpoint for obtaining the Wallet |
 |                                   | Instance Attestation              |
 +-----------------------------------+-----------------------------------+
-| asc_values_supported              | List of supported values ​​for    |
+| asc_values_supported              | List of supported values for      |
 |                                   | the certified security context.   |
-|                                   | These values ​​define a level of  |
+|                                   | These values define a level of    |
 |                                   | assurance about the security of   |
 |                                   | the app. In particular we will    |
-|                                   | mainly have 3 values ​​associated |
+|                                   | mainly have 3 values associated   |
 |                                   | with low, medium and high         |
 |                                   | security. An attested security    |
 |                                   | context is defined according to   |
