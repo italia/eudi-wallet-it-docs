@@ -129,7 +129,7 @@ backend wallet.
   trustworthy by resolving the provider's trust chain up to the anchor (⚠️
   this step is skipped for now)
 - **Message 5-7**: The wallet instance instantiates a new key pair on its TEE
-  and requests a nonce from the backend wallet (as a measure against the reply
+  and requests a nonce from the backend wallet (as a measure against the replay
   attacks)
 - **Message 8**: The wallet instance generates a Wallet Instance Attestation
   Request (JWT) signed with the private key associated with the public key
@@ -152,7 +152,7 @@ Format of the Wallet Instance Attestation Request
 To obtain a Wallet Instance Attestation from the wallet
 provider (backend) it is necessary to send a Wallet Instance Attestation
 Request from the wallet instance containing the associated public key
-and a nonce previously requested to avoid reply attacks.
+and a nonce previously requested to avoid replay attacks.
 
 Header
 ^^^^^^
@@ -185,7 +185,7 @@ Payload
 +-----------------------------------+-----------------------------------+
 | jti                               | Unique identifier of the request. |
 |                                   | This parameter will be used to    |
-|                                   | avoid reply attacks               |
+|                                   | avoid replay attacks              |
 +-----------------------------------+-----------------------------------+
 | type                              | WalletInstanceAttestationRequest  |
 +-----------------------------------+-----------------------------------+
