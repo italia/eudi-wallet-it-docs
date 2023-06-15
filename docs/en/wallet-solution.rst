@@ -34,12 +34,12 @@ The Wallet Instance serves as a unique and secure representation of the user wit
 
 The Wallet Instance establishes trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These attestations, provided by the underlying backend services operated by the Wallet Provider, reference a pair of asymmetric cryptographic keys exclusively owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its legitimacy when engaging with other ecosystem actors.
 
-To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)⁴. This ensures that only the User can access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the Wallet Instance Attestation section² and the Trust Model section⁵ of this document.
+To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)³. This ensures that only the User can access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Instance Attestation section`_ and the `Trust Model section`_ of this document.
 
 
 Wallet Instance Lifecycle
 -----------------------------
-The Wallet Instance can exist in three distinct states: Operational, Valid and Deactivated. Each state represents a specific functional status and determines the actions that can be performed³.
+The Wallet Instance can exist in three distinct states: Operational, Valid and Deactivated. Each state represents a specific functional status and determines the actions that can be performed².
 
 Initialization Process:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,10 +74,11 @@ External references
 -------------------
 ¹ Definitions are inherited by the EUDI Wallet Architecture and Reference Framework, version 1.1.0 at the time of writing; please refer to https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#2-definitions for extended definitions and details.
 
-² TODO: link to https://github.com/italia/eidas-it-wallet-docs/blob/versione-corrente/docs/en/wallet-instance-attestation.rst
+² Wallet Instance states adhere to the EUDI Wallet Architecture and Reference Framework, see https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#424-eudi-wallet-instance-lifecycle
 
-³ Wallet Instance states adhere to the EUDI Wallet Architecture and Reference Framework, see https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/arf.md#424-eudi-wallet-instance-lifecycle
+³ Depending on the device operating system, TEE is defined by `Trusty`_ or `Secure Enclave`_ for Android and iOS devices respectively.
 
-⁴ Depending on the device operating system, TEE is defined by https://source.android.com/docs/security/features/trusty or https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web for Android and iOS devices respectively.
-
-⁵ TODO: link to https://github.com/italia/eidas-it-wallet-docs/blob/versione-corrente/docs/en/trust.rst
+.. _Trust Model section: trust.html 
+.. _Wallet Instance Attestation section: wallet-instance-attestation.html
+.. _Trusty: https://source.android.com/docs/security/features/trusty
+.. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
