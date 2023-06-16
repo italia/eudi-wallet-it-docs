@@ -17,8 +17,9 @@ General Properties
 
 The goal is:
 
-- Ensure that the wallet instance is **genuine**, preventing any attempts
-  of manipulation or forgery by unauthorized third parties.
+- Ensure that the wallet instance maintains a level of **integrity**,
+  capable of preventing any attempts of manipulation or forgery
+  by unauthorized third parties.
 - Make sure the private keys have been generated and stored securely
   within a **trusted execution environment** (TEE).
 - Verify that the wallet instance is **authentic**, i.e. made available
@@ -43,8 +44,7 @@ and must be electronically signed by its issuer.
 Requirements
 ------------
 
-Let's see below some requirements that we want to be
-respected by Wallet Instance Attestation:
+We assume the following requirements for the Wallet Instance Attestation:
 
 1. **Efficiency**: The Wallet Instance Attestation should use an efficient
    format such as JSON Web Token (JWT) to ensure light and fast data management
@@ -55,17 +55,18 @@ respected by Wallet Instance Attestation:
    securely linked to the Wallet Instance public key.
 4. **Issued and signed by an accredited wallet provider**:
    The Wallet Instance Attestation must be issued and signed by an accredited
-   and reliable wallet provider, thus conferring authenticity and authenticity
+   and reliable wallet provider, thus conferring integrity and authenticity
    to the attestation itself.
 5. **Authenticity/Genuineness of the wallet instance**:
-   The Wallet Instance Attestation must guarantee the genuineness
+   The Wallet Instance Attestation must guarantee the integrity
    and authenticity of the wallet instance, confirming that it was
    created and provided correctly by the wallet provider. ⚠️
 6. **Ability to request multiple claims for several public keys**:
    Each single wallet instance should be able to request multiple attestations
-   for different public keys associated with it, thus allowing privacy
-   preservation, since the public key is a tracking factor
-   in the presentation phase.
+   for different public keys associated with it. This requirement constitutes
+   a privacy-preserving measure since the public key may be exploited as a
+   tracking tool in the credentials’ disclosure phase
+   (see also point 10 below).
 7. **Can be used multiple times**:
    The Wallet Instance Attestation should be used multiple times
    during the validity period of the attestation, allowing for repeated
@@ -79,16 +80,21 @@ respected by Wallet Instance Attestation:
     If the public key associated with the wallet instance is lost or deleted,
     the attestation automatically becomes invalid to prevent unauthorized
     use of the wallet instance. ⚠️
-10. **Pseudo-anonymous**:
-    The attestations are designed to be pseudo-anonymous
-    (i.e. they do not contain direct references to the person, so that it is
-    not possible to identify them in the absence of additional information).
-    In the absence of such measure, the use of the attestation on multiple RPs
-    would constitute an appreciable risk, as it would theoretically allow
-    the RPs to merge databases and track users.
+10. **Pseudonymisation**:
+    The attestations are designed to be pseudonymised
+    (i.e. they do not contain direct references to the person, so that it
+    is not possible to identify them in the absence of additional information
+    \- see art. 4(5) GDPR for a comprehensive definition).
+    In the absence of such a measure, the use of the attestation on multiple
+    RPs would constitute an appreciable risk, as it would theoretically
+    allow the RPs to merge databases and track users.
+    This requirement enriches the measures adopted in accordance
+    with art. 32 GDPR.
 
 .. attention::
-  ⚠️ At this point we will not deal with how point 5 and 9 will be guaranteed as it is still under discussion. For now, we will consider any authentic and non-revocable wallet instance.
+  ⚠️ Implementation of points no. 5 and 9 is still under discussion.
+  This version assumes the authenticity and non-revocability of the wallet instance.
+
 
 
 High-end design
@@ -121,23 +127,23 @@ backend wallet.
 
 `PlantUML <https://www.plantuml.com/plantuml/uml/XPB1RjH038RlynIc9v1OSU-XAk9GWSG50RtqucH-HLOJJ_1u6csVdcbsTqG85LVxy-VypjncP_CoZU7DR3nCJ8xqJ6u5WOidBLC72s6kbFGoipfT_SYmA-9CPLk_vt64qsUjKksn8elya-cuVuJ64zA5KEXmKzdhEYmkFCepQ3cXSjOzQ38o_2h8_c4sP5HVRuZGbuaS5ZdSBDqrtS4lixEb9uamck0SsJaitQ5ITT7NSuNwfCwYeiCVDlBZZFoU7d5STufXWdgjGEESHFsyhvf-yYZLXDrIjvATHibUsKl0EoYiqgjwPh4SGbDzChoq_ZeaVSmPvfAKlftoqvVxxu5xbwTrRxV9per--r_HktgGTNANGYup0xI8Gf7p7iuoA7injDPmoSSQr_PEsBwl_OpN0--F_BejOdkHwYvDtNXf3om-g87ZaJnHwfn5IR5idjGjD9Pf_0q0>`__
 
-- **Message 1**: The end user initializes the wallet instance. In particular,
-  this process is both what happens when the mobile application is
-  launched and every time the end user wants to request or present a
-  credential.
+- **Message 1**: The end user initializes the wallet instance.
+  In particular, this process happens when the mobile application
+  is launched and every time the end user wants to request or present
+  (disclose) a credential.
 - **Message 2-3**: The wallet instance obtains metadata about its wallet
   provider. Among these, we also find the list of supported algorithms,
   public keys, endpoints.
 - **Message 4**: The wallet instance verifies that the wallet provider is
   trustworthy by resolving the provider's trust chain up to the anchor (⚠️
-  this step is skipped for now)
+  this step is skipped in this version)
 - **Message 5-7**: The wallet instance instantiates a new key pair on its TEE
-  and requests a nonce from the backend wallet (as a measure against the replay
+  and requests a nonce from the backend wallet (as a measure against replay
   attacks)
 - **Message 8**: The wallet instance generates a Wallet Instance Attestation
   Request (JWT) signed with the private key associated with the public key
   for which it wants to obtain the attestation containing the nonce and
-  other useful parameters
+  other useful parameters.
 - **Message 9-13**: The wallet instance sends the Wallet Instance Attestation
   Request to the backend wallet which verifies its validity and issues the
   signed attestation.
@@ -263,8 +269,8 @@ Header
 +-----------------------------------+-----------------------------------+
 | type                              | Media type, in this case we use   |
 |                                   | the value va+jwt (Verifiable      |
-|                                   | Assertion JWT). We remind you     |
-|                                   | that this parameter is currently  |
+|                                   | Assertion JWT).                   |
+|                                   | This parameter is currently       |
 |                                   | non-standard as it is not yet     |
 |                                   | registered as `IANA Media         |
 |                                   | Types <https://www.iana.org/assig |
@@ -310,13 +316,13 @@ Payload
 | type                              | String:                           |
 |                                   | "WalletInstanceAttestation"       |
 +-----------------------------------+-----------------------------------+
-| policy_uri                        | Url to the policy of wallet       |
-|                                   | provider                          |
+| policy_uri                        | Url to the privacy policy         |
+|                                   | of the wallet                     |
 +-----------------------------------+-----------------------------------+
-| tos_uri                           | Url to the terms and conditions   |
+| tos_uri                           | Url to the terms                  |
 |                                   | of use of the wallet provider     |
 +-----------------------------------+-----------------------------------+
-| logo_uri                          | Logo url of wallet provider       |
+| logo_uri                          | Logo url of the wallet provider   |
 +-----------------------------------+-----------------------------------+
 | asc                               | Attested security context:        |
 |                                   | Represents a level of "trust" of  |
@@ -399,11 +405,11 @@ attested in the related Trust Chain
 Format of the Wallet Provider Entity Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Wallet Provider Entity Configuration is a JWT containing all the
-metadata relating to the wallet provider such as the public keys, the
-supported algorithms, the type of entity (in addition to the wallet
-provider, for example, it could also be a relying party) and the list of
-endpoints made available. It broadly mirrors openid-federation
+The Wallet Provider Entity Configuration is a JWT containing all the metadata
+relating to the wallet provider such as the public keys, the supported algorithms,
+the type of entity (in addition to the wallet provider, for example, it could also
+be a relying party) and the list of the available endpoints.
+It broadly implements openid-federation protocol.
 
 Header
 ^^^^^^
@@ -501,9 +507,9 @@ Payload `federation_entity`
 +-------------------+----------------------------------------+
 | homepage_uri      | Organization website                   |
 +-------------------+----------------------------------------+
-| tos_uri           | Url to the terms and conditions of use |
+| tos_uri           | Url to the terms of use                |
 +-------------------+----------------------------------------+
-| policy_uri        | Url to privacy policy                  |
+| policy_uri        | Url to the privacy policy              |
 +-------------------+----------------------------------------+
 | logo_uri          | URL of the organization logo           |
 +-------------------+----------------------------------------+
