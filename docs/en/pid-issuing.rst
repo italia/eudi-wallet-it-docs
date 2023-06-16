@@ -254,6 +254,43 @@ Where the JWT looks like this:
 PAR endpoint
 ------------
 
+Request
+^^^^^^^
+
+The requests at the Pushed Authorization Request endpoint of the PID Povider MUST be HTTP POST requests with the following mandatory parameters in the HTTP request message body using the ``application/x-www-form-urlencoded`` format.
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **response_type**
+      - MUST be set to ``code``
+      - TBD
+    * - **client_id**
+      - MUST be set to the ``jwk`` value in the ``cnf`` parameter inside the Wallet Instance Attestation
+      - TBD
+    * - **code_challenge**
+      - A challenge derived from the **code verifier** that is sent in the authorization request
+      - :rfc:`7636#section-4.2`.
+    * - **code_challenge_method**
+      - A method that was used to derive **code challenge**. MUST be set to ``S256`` 
+      - :rfc:`7636#section-4.3`.
+    * - **request**
+      - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the requet object.
+      - TBD
+    * - **client_assertion_type**
+      - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwtbearer``.
+      - TBD
+    * - **client_assertion**
+      - It MUST be the Wallet Instance Attestation signed JWT.
+      - TBD
+
+Response
+^^^^^^^^
+
 Authorization endpoint
 ----------------------
 
