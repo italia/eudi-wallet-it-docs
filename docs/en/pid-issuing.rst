@@ -108,7 +108,7 @@ The JWT payload of PAR is given as the following:
     Cache-Control: no-cache, no-store
     
     {
-        "request_uri":"urn:example:bwc4JK-ESC0w8acc191e-Y1LTC2",
+        "request_uri":"urn:ietf:params:oauth:request_uri:bwc4JK-ESC0w8acc191e-Y1LTC2",
         "expires_in": 60
     }
 
@@ -117,7 +117,7 @@ The JWT payload of PAR is given as the following:
 .. code-block:: 
 
     GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
-        &request_uri=urn%3Aexample%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
+        &request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
     Host: pid.it
  
 
@@ -259,7 +259,8 @@ Request
 
 The requests at the Pushed Authorization Request endpoint of the PID Povider MUST be HTTP POST requests with the following mandatory parameters in the HTTP request message body using the ``application/x-www-form-urlencoded`` format.
 
-.. list-table:: 
+.. _table_http_request_claim: 
+.. list-table:: PAR http request parameters
     :widths: 20 60 20
     :header-rows: 1
 
@@ -288,8 +289,87 @@ The requests at the Pushed Authorization Request endpoint of the PID Povider MUS
       - It MUST be the Wallet Instance Attestation signed JWT.
       - TBD
 
+The JWT Request Object has the following JOSE header parameters
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **JOSE header**
+      - **Description**
+      - **Reference**
+    * - **alg**
+      - It MUST be set to one of the supported value specified in Section [...]
+      - :rfc:`7516#section-4.1.1`.
+    * - **kid**
+      - Unique identifier of the JWK as base64url-encoded JWK Thumbprint value
+      - See :rfc:`7638#section_3`. 
+
+.. note::
+  The parameter **typ**, if omitted, assumes the implicit value **JWT**.
+
+
+The JWT payload is given by the following parameters
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **response_type**
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+    * - **client_id**
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+    * - **state**
+      - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication.It MUST be a random string with at least 32 alphanumeric characters.
+      - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
+    * - **code_challenge**
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+    * - **code_challenge_method**
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+    * - **authorization_details**
+      - JSON Object. It MUST include the following claims:
+            
+            - **type**: it MUST be set to ``openid_credential``
+            - **format**: it MUST be set to ``vc+sd-jwt``,
+            - **credential_definition**: JSON Object. It MUST have the **type** claim which MUST be set to ``eu.eudiw.pid.it``
+      - See [RAR :rfc:`9396`] and `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    * - **redirect_uri**
+      -  Redirection URI to which the response will be sent. It MUST be an universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.
+      - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_
+    * - **client_assertion_type**
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+    * - **client_assertion**
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+
+
 Response
 ^^^^^^^^
+
+If the verification is successful, the PID Provider MUST provide the response with a *201 HTTP status code*. The following parameters are included as top-level members in the message body of the HTTP response using the ``application/json`` media type as defined by [:rfc:`8259`].
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **request_uri**
+      - The request URI corresponding to the authorization request posted. This URI MUST be a single-use reference to the respective authorization request. it MUST contain some part generated using a cryptographically strong pseudorandom algorithm. The value format MUST be ``urn:ietf:params:oauth:request_uri:<reference-value>`` with ``<reference-value>`` as the random part of the URI that references the respective authorization request data.
+      - [:rfc:`9126`]
+    * - **expires_in**
+      - A JSON number that represents the lifetime of the request URI in seconds as a positive integer.
+      - [:rfc:`9126`]
+
 
 Authorization endpoint
 ----------------------
