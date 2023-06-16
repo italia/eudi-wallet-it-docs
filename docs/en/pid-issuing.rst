@@ -43,7 +43,7 @@ The PID Issuing phase is based on the **Authorization Code Flow** with **Pushed 
 .. figure:: ../../images/Low-Level-Flow-EUDIW-PID-Issuing.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/png/hLHHQoCt47xNhnXo1qt0eUy17vTSt8jfA2RDSI-5HTuTUuUifQqqii_zzHr9tgtMJQyf5FombcRc--RxPlJHitOSTftIWQq9kpKwfNevevfwRHWkldXq5w0z1ANMzbi--C63tqbKtrg35_3kaROjttK1fxbtpXx6T3sz-wgx3XcMHYYO6bFCGQ5fG53Kgx4hP_VKdEgjps9Mo_jf09q5uFB-zbSem-0ty-o2PspWaJodB5PApUSfZBmFPBO0yxbI1xZ-0E46x9er6JZQu6AG2d0j5uSREA9NoXdB27OljGypXdTV7vRF2tNAqT092jWD3AWbcTXwIXUiwm-2L5kp8RS3RX4yTbWpMIFPqomL15_WxSiPEeahoyyFpv-V5ejVr9dQKBTOltYfhJa2J6KX3r4vmKftFw4SweIkJJCeGEnXXwmRpRha3b4E4FeEDKlXdpyjf9K6GMZHXj2TOaXYLhTFy8I_1_GCbmvzRut7Yeyzpg3k20rNrCnIUbMtiGMpnVF_bR1ehOIvN6bCrTwZYxIBYkNn_7rMPH3bbbdIKwFlhw1KasRhYPeJjSwbp4NVekRtwtZQ6it1eMIMXGkQa0o9JknrHmtn4Geh5ENP78NE-iBbIQWgE9e1Vkj9fA_8N4dA8QK4VGEtGLHrz4S66bqgR2dANAcWKoRzvqGr5JeCInCyEj1IIxAepiKEn2taFNwWRPkwhsDFXek-wTG3d74f58WJD78-_5jWCTLRDD4zXFkLNS4B7l_nhdTMVDjODzqjjYzeGCZsbeHriGpFSZFgbLej2vNwRPqsF0orROQD61RiVrc0w5933kl19ifjPfwbHBgkqVigDJPB_MMyShG4kp9M8CQFwg_BL_NTo5qR1KuIra8cpe7k_lx2P7tarrllXKaqyFA4aaeNyTztfyGPBIeS-ZJUlc9JAKCSpAbvOsRLu8OCHOrd4N-dUPQZhif565xlkySl2_M4M_8if-8MS8i5pMk7dMPiG979rQHmwYjFGrwS7ntkRVw4yeKOF2qwAumziIlGtcoZY3e-IKcCE5R1vpUkYFDi7PRkVXHoOTVz2G00
+    :target: http://www.plantuml.com/plantuml/png/hLHHQoCt47xNhnXo1xt0Xhu7V5noSI-cePWqnxqK5dbtx1sobhRIA3xtrtSaUHUjcnuf5FpWrSmttyptQVJ9itOSzhtIWQq9-mqwfGOveuO6RHWkldfq5w0z1AKszdi--Cc3tqlMq5c35_3kWNOTt_O1vzXRPmyJNCzZttJV8yFAI0kcmPHpK6XQ41RrQkxQsHTgJ_KsPpdhrTqyWSuIS7LtypkKQV27UNB1CxRmG9uJYfLIYqLA8-y3cHt0Og7K0Qu-GhW6ks5D1eusk9Ya0bn9u70DH_HAEMCPmRv8xKF5yExR_UffgKuO3RsmWDt2o5es4qTFSE6w-YXCZJLRSdlW3i5ZZmsJDOAUerGGVg6tpsVi9Awiljm_VNbSBdzJPsf3qs7pxAMsvaWmbuKyHEM4AyL-GJdKYLsRTbI0sCCUMRUQTTaxH3b0sdUeMGh_-dafexG8qXPj2TqfXoHdVVC8Z_XdGC_mmQ4VhF5Oyt702fgUq71DRPNWTTF54SmEpxzhwQApakPofGcglKSNsougbiUBzrcLKPGRPe6dGTzVGgacLPkPcZErpgNCHT-Yve_hUDePpS6X8Cl2HPiG3KbElEYUMk8Z55OeodTp4ZhhAqfdeUhWg0ByFf18NvEv5CWXGOA-XfiWgZhwAnDDBXMs56KkLT09IVyPgEP2Xt5fWfTlBRK4HKqkTY3k8E_nFUswD7qJPp9Sp4sd6U2ibqA1U8CgY2hYrFhXZVd57T-XYLuYtAtj6fxn-A-nmLbnSMlTVDFOFgC1QNsm93CKg_4aaKczF7XHg5HpvxJXyOhRTjoFSTt-btM8dhNai1bDepncxhDKIZSDUb-dmQeyN-OhBffmryOAnVIdnYdughvRYNLHu2HX8ysWOTBzFz-Rh8_y1Yk3UHzz_91PidL5_e_TANacYmg7Fa_HLsmgPOZNT6xUXAnRt9AXg74L-VUQgvnrMQx5-9RVFdnTgaVSaMSv5RU0EopQl7BOQyOM59bSJGgdkV9jo6lqiyCNs-GOb7kJfIadAumzTLUmlTd6AEhqG8aOQP62pozUaUVPEYpT_IJDXNt_Dm00
 
     PID Issuing - Detailed flow
 
@@ -134,7 +134,7 @@ The JWT payload of PAR is given as the following:
 .. code-block:: 
 
     HTTP/1.1 302 Found
-    Location: eudiw://start.wallet.it?code=SplxlOBeZQQYbYS6WxSbIA
+    Location: eudiw://start.wallet.it?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
  
 **Steps 12-13:** The Wallet Instance creates a key for DPoP and a fresh DPoP proof for the token request to the PID Provider. DPoP provides a way to bind the access token to a certain sender (Wallet Instance) `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Thus, it mitigates the misuse of leaked or stolen access tokens at the credential endpoint of PID Provider as the attacker needs to present a valid DPoP proof.
 
@@ -285,7 +285,7 @@ The requests at the Pushed Authorization Request endpoint of the PID Provider MU
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the requet object.
       - TBD
     * - **client_assertion_type**
-      - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwtbearer``.
+      - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-bearer``.
       - TBD
     * - **client_assertion**
       - It MUST be the Wallet Instance Attestation signed JWT.
@@ -313,6 +313,7 @@ The JWT Request Object has the following JOSE header parameters
 
 The JWT payload is given by the following parameters
 
+.. _table_jwt_request:
 .. list-table:: 
     :widths: 20 60 20
     :header-rows: 1
@@ -327,7 +328,7 @@ The JWT payload is given by the following parameters
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
     * - **state**
-      - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication.It MUST be a random string with at least 32 alphanumeric characters.
+      - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string with at least 32 alphanumeric characters.
       - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
     * - **code_challenge**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
@@ -358,6 +359,7 @@ Response
 
 If the verification is successful, the PID Provider MUST provide the response with a *201 HTTP status code*. The following parameters are included as top-level members in the message body of the HTTP response using the ``application/json`` media type as defined by [:rfc:`8259`].
 
+.. _table_http_response_claim:
 .. list-table:: 
     :widths: 20 60 20
     :header-rows: 1
@@ -366,7 +368,7 @@ If the verification is successful, the PID Provider MUST provide the response wi
       - **Description**
       - **Reference**
     * - **request_uri**
-      - The request URI corresponding to the authorization request posted. This URI MUST be a single-use reference to the respective authorization request. it MUST contain some part generated using a cryptographically strong pseudorandom algorithm. The value format MUST be ``urn:ietf:params:oauth:request_uri:<reference-value>`` with ``<reference-value>`` as the random part of the URI that references the respective authorization request data.
+      - The request URI corresponding to the authorization request posted. This URI MUST be a single-use reference to the respective authorization request. It MUST contain some part generated using a cryptographically strong pseudorandom algorithm. The value format MUST be ``urn:ietf:params:oauth:request_uri:<reference-value>`` with ``<reference-value>`` as the random part of the URI that references the respective authorization request data.
       - [:rfc:`9126`]
     * - **expires_in**
       - A JSON number that represents the lifetime of the request URI in seconds as a positive integer.
@@ -376,8 +378,69 @@ If the verification is successful, the PID Provider MUST provide the response wi
 Authorization endpoint
 ----------------------
 
+Request
+^^^^^^^
+
+The Authorization request passes through the Browser of the Wallet Instance and both **HTTP POST** and **GET** methon MAY be used. With the method **POST** the parameters MUST be sent using the *Form Serialization*. With the method **GET** the parameters MUST be sent using the *Query String Serialization*. For more details see `OpenID.Core#Serializations <https://openid.net/specs/openid-connect-core-1_0.html#Serializations>`_.
+
+The mandatory parameters in the HTTP authentication request are specified in the following table.
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **client_id**
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+    * - **request_uri**
+      - It MUST be set to the same value as obtained by PAR Response. See :ref:`Table of the HTTP PAR Response parameters <table_http_response_claim>`
+      - [:rfc:`9126`]
+
+
+Response
+^^^^^^^^
+An Authentication response is returned by the authorization endpoint of the PID Provider at the end of the authentication flow. 
+
+If the authentication is successful the PID Provider redirects the user by adding the following parameters required as query parameters to the *redirect_uri* which MUST be an universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **code**
+      - Unique *Authorization Code* that the client can pass to the Token Endpoint
+      - [TBD]
+    * - **state**
+      - The client MUST check the correspondence with the state value in the request object. It is defined as in the :ref:`Table of the JWT Request parameters <table_jwt_request>`
+      - [TBD] 
+
 Token endpoint
 --------------
 
+Request
+^^^^^^^
+
+[TBD]
+
+Response
+^^^^^^^^
+
+[TBD]
+
 Credential endpoint
 -------------------
+
+Request
+^^^^^^^
+
+[TBD]
+
+Response
+^^^^^^^^
+[TBD]
