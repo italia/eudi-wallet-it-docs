@@ -1,5 +1,3 @@
-.. `[...] <>`_
-.. ``
 
 .. include:: ../common/common_definitions.rst
 
@@ -28,7 +26,7 @@ The PID data format and the mechanism through which it is issued into the IT Wal
 SD-JWT
 ======
 
-The PID is given as a Verifiable Credentials with JSON payload based on the `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html>`_.
+The PID is given as a Verifiable Credentials with JSON payload based on the `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html>`__.
 
 An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in `[SD-JWT]. Section 5.1.2. <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
@@ -48,7 +46,7 @@ The Disclosures are sent to the Holder together with the SD-JWT in the *Combined
 
   <SD-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
-See `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ for more details. 
+See `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
 
 
 
@@ -64,7 +62,7 @@ The JOSE header contains the following mandatory parameters:
     - **Description**
     - **Reference**
   * - **typ**
-    - MUST be set to ``vc+sd-jwt`` as defined in `[draft-terbu-sd-jwt-vc-latest] <https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html>`_. 
+    - MUST be set to ``vc+sd-jwt`` as defined in `[draft-terbu-sd-jwt-vc-latest] <https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html>`__. 
     - `[RFC7515, Section 4.1.9] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9>`_.
   * - **alg**
     - Signature Algorithm. 
@@ -108,7 +106,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
     * - **type**
       - Credential type as a string, MUST be set to ``eu.eudiw.pid.it``.
-      - `[draft-terbu-sd-jwt-vc-latest. Section 4.2.2.2] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#section-4.2.2.2>`_.
+      - `[draft-terbu-sd-jwt-vc-latest. Section 4.2.2.2] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#section-4.2.2.2>`__.
     * - **verified_claims**
       - JSON object containing the following sub-elements: 
 
