@@ -192,6 +192,7 @@ The JWT payload of PAR is given as the following:
     POST /credential HTTP/1.1
     Host: pid.it
     Content-Type: application/x-www-form-urlencoded
+    Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
         VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
         nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
@@ -203,7 +204,7 @@ The JWT payload of PAR is given as the following:
     
     credential_definition=%7B%22type%22:%5B%22eu.eudiw.pid.it%22%5D%7D
     &format=vc+sd-jwt
-    &proof=%7B%22type%22:%22...-ace0-9c5210e16c32%22%7D
+    &proof=%7B%22proof_type%22:%22...-ace0-9c5210e16c32%22%7D
 
 
 
@@ -223,16 +224,17 @@ Where the JWT looks like this:
 
     {
     "alg": "ES256",
-    "typ": "JWT",
-    "jwk": … 
+    "typ": "openid4vci-proof+jwt",
+    "jwk": <…> 
     }
     .
     {
     "iss": "0b434530-e151-4c40-98b7-74c75a5ef760",
-    "aud": "https://pid.issuer.it",
+    "aud": "https://pid.it",
     "iat": "1504699136",
-    "nonce": "tZignsnFbp"
+    "nonce": "tZign[...]snFbp"
     }
+
 
 
 **Steps 20-22:** The PID Provider checks the *DPoP proof* and whether the *access token* is valid and suitable for the requested PID. It also checks the proof of possession for the key material the new credential shall be bound to. If all checks succeed, the PID Provider creates a new credential bound to the key material and sends it to the Wallet Instance. The Wallet Instance MUST perform the PID integrity and authenticity checks and if it is successful can proceed with secure storage of the PID credential. 
