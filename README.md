@@ -64,7 +64,6 @@ Versioning*](https://semver.org/).
 
 Furthermore, this project uses the git *branches* and *tags* in the following way:
 * the branch `versione-corrente` contains the last stable version of the standard;
-* the branch `dev` contains the proposed updates to be discussed in the next version of the standard;
 * The [release page](https://github.com/italia/publiccode.yml/releases) of
   GitHub contains all the released versions of the standard. For the sake of coherence, the *releases* are made according to the tag names.
 
