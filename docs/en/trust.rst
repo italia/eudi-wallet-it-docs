@@ -30,40 +30,13 @@ General Properties
 
 OpenID Federation allows to build an infrastructure that is:
 
-- *Secure and Tamper proof*, entities' attestations of metadata and keys 
-are cryptographically signed in the chain of trust, composed by attestation
-issued by multiple parties that cannot be forged or tampered by an adversary;
-
-- *Privacy preserving*, The infrastructure is public and only exposes 
-public data such as public keys and metadata of the participants for 
-interoperability needs, it does not require authentication of the 
-requestors therefore it does not track who is assessing trust against 
-whom;
-
-- *Guarantor of the non-repudiation of long-lived attestations*, historical 
-keys endpoints and historical Trust Chains, saved for years according 
-to data retention policy, allow to certify the validity of a historical 
-compliance, even in case of revocation, expiration or rotation of the 
-keys to be used for signature verification;
-
-- *Dynamic and flexible*, any participant is free to modify parts of its 
-metadata in total autonomy, these being published within its domain and 
-verified through the Trust Chain. At the same time, an accreditation body 
-or the Trust Anchor may publish a metadata policy to dynamically modify 
-the metadata of all participants, as for disabling a vulnerable signature 
-algorithm, and obtain certainty of propagation within a configured period 
-of time, to all the participants;
-
-- *Efficient*, JWT and JSON formats have been adopted on the web for 
-years, they are cheap both in terms of storage and processing and there 
-is a wide range of solutions, such as libraries and software development 
-kits, which allow rapid implementation of the solution.
-
-- *Scalable*, the Trust Model scales to more than a single organization 
-by means of intermediates.
-
-- *Simple*, it is based on REST technology and formats widely used on 
-the web and have become popular over the years.
+- *Secure and Tamper proof*, entities' attestations of metadata and keys are cryptographically signed in the chain of trust, composed by attestation issued by multiple parties that cannot be forged or tampered by an adversary;
+- *Privacy preserving*, The infrastructure is public and only exposes public data such as public keys and metadata of the participants for interoperability needs, it does not require authentication of the requestors therefore it does not track who is assessing trust against whom;
+- *Guarantor of the non-repudiation of long-lived attestations*, historical keys endpoints and historical Trust Chains, saved for years according to data retention policy, allow to certify the validity of a historical compliance, even in case of revocation, expiration or rotation of the keys to be used for signature verification;
+- *Dynamic and flexible*, any participant is free to modify parts of its metadata in total autonomy, these being published within its domain and verified through the Trust Chain. At the same time, an accreditation body or the Trust Anchor may publish a metadata policy to dynamically modify the metadata of all participants, as for disabling a vulnerable signature algorithm, and obtain certainty of propagation within a configured period of time, to all the participants;
+- *Efficient*, JWT and JSON formats have been adopted on the web for years, they are cheap both in terms of storage and processing and there is a wide range of solutions, such as libraries and software development kits, which allow rapid implementation of the solution.
+- *Scalable*, the Trust Model scales to more than a single organization by means of intermediates.
+- *Simple*, it is based on REST technology and formats widely used on the web and have become popular over the years.
 
 
 This implementation profile
@@ -189,6 +162,7 @@ such as the Trust Anchor or its Intermediate, in relation of one of its
 Subordinate:
 
 .. code-block:: python
+
     {
         "alg": "RS256",
         "kid": "em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg",
@@ -323,6 +297,7 @@ Trust Chain higher than the one configured by the Trust Anchor.
 Below an abstract representation of a Trust Chain.
 
 .. code-block:: python
+
     [
         "EntityConfiguration-as-SignedJWT-selfissued-byLeaf",
         "EntityStatement-as-SignedJWT-issued-byTrustAnchor",
@@ -333,6 +308,7 @@ Below a non-normative example of a Trust Chain in its original format
 (JSON Array or JWS).
 
 .. code-block:: python
+
     [
     'eyJhbGciOiJFUzI1NiIsImtpZCI6ImVEUkNOSGhWYXpWd01VRlpjMVU0UlRremMxSjRNMGRVYUU4MWVVWk5VMVUyWkdSM1lqRmZTV2h1UVEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk1OTA2MDIsImlhdCI6MTY0OTQxNzg2MiwiaXNzIjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vcnAuZXhhbXBsZS5vcmciLCJqd2tzIjp7ImtleXMiOlt7Imt0eSI6IkVDIiwia2lkIjoiZURSQ05IaFZhelZ3TVVGWmMxVTRSVGt6YzFKNE0wZFVhRTgxZVVaTlUxVTJaR1IzWWpGZlNXaHVRUSIsImNydiI6IlAtMjU2IiwieCI6Ik1wVlVHeUhlOGhQVHh5dklZRFd2NnJpZHN5aDFDUFB2TG94ZU0wUWhaN3ciLCJ5IjoidF95ZlBRd1Z1am5oS25fNVZnT05WcW93UzJvZGZwVWxfWnNvV1UzTDRHTSJ9XX0sIm1ldGFkYXRhIjp7Im9wZW5pZF9yZWx5aW5nX3BhcnR5Ijp7ImFwcGxpY2F0aW9uX3R5cGUiOiJ3ZWIiLCJjbGllbnRfaWQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnLyIsImNsaWVudF9yZWdpc3RyYXRpb25fdHlwZXMiOlsiYXV0b21hdGljIl0sImp3a3MiOnsia2V5cyI6W3sia3R5IjoiRUMiLCJraWQiOiJlRFJDTkhoVmF6VndNVUZaYzFVNFJUa3pjMUo0TTBkVWFFODFlVVpOVTFVMlpHUjNZakZmU1dodVFRIiwiY3J2IjoiUC0yNTYiLCJ4IjoiTXBWVUd5SGU4aFBUeHl2SVlEV3Y2cmlkc3loMUNQUHZMb3hlTTBRaFo3dyIsInkiOiJ0X3lmUFF3VnVqbmhLbl81VmdPTlZxb3dTMm9kZnBVbF9ac29XVTNMNEdNIn1dfSwiY2xpZW50X25hbWUiOiJOYW1lIG9mIGFuIGV4YW1wbGUgb3JnYW5pemF0aW9uIiwiY29udGFjdHMiOlsib3BzQHJwLmV4YW1wbGUuaXQiXSwiZ3JhbnRfdHlwZXMiOlsicmVmcmVzaF90b2tlbiIsImF1dGhvcml6YXRpb25fY29kZSJdLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vcnAuZXhhbXBsZS5vcmcvb2lkYy9ycC9jYWxsYmFjay8iXSwicmVzcG9uc2VfdHlwZXMiOlsiY29kZSJdLCJzY29wZXMiOiJldS5ldXJvcGEuZWMuZXVkaXcucGlkLjEgZXUuZXVyb3BhLmVjLmV1ZGl3LnBpZC5pdC4xIGVtYWlsIiwic3ViamVjdF90eXBlIjoicGFpcndpc2UifSwiZmVkZXJhdGlvbl9lbnRpdHkiOnsiZmVkZXJhdGlvbl9yZXNvbHZlX2VuZHBvaW50IjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZy9yZXNvbHZlLyIsIm9yZ2FuaXphdGlvbl9uYW1lIjoiRXhhbXBsZSBSUCIsImhvbWVwYWdlX3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdCIsInBvbGljeV91cmkiOiJodHRwczovL3JwLmV4YW1wbGUuaXQvcG9saWN5IiwibG9nb191cmkiOiJodHRwczovL3JwLmV4YW1wbGUuaXQvc3RhdGljL2xvZ28uc3ZnIiwiY29udGFjdHMiOlsidGVjaEBleGFtcGxlLml0Il19fSwidHJ1c3RfbWFya3MiOlt7ImlkIjoiaHR0cHM6Ly9yZWdpc3RyeS5laWRhcy50cnVzdC1hbmNob3IuZXhhbXBsZS5ldS9vcGVuaWRfcmVseWluZ19wYXJ0eS9wdWJsaWMvIiwidHJ1c3RfbWFyayI6ImV5SmggXHUyMDI2In1dLCJhdXRob3JpdHlfaGludHMiOlsiaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZWlkYXMuZXhhbXBsZS5vcmciXX0.dIRBRyfEsmi_6oGrJAHaYUPCtXSvBZBMdokVZtjyYgzMKEP6eSLixa8nUU9BWBWP_ELNgdKbPquSbWIGx66D5w',
      'eyJhbGciOiJFUzI1NiIsImtpZCI6IlFWUnVXSE5FWTJzMFdHNW5hSHB3VjJKVGRtd3hiRUpVY2pCdk9FeHNWMFExT0dnMFZWQnhhbTUyT0EiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZWlkYXMuZXhhbXBsZS5vcmciLCJzdWIiOiJodHRwczovL3JwLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6ImVEUkNOSGhWYXpWd01VRlpjMVU0UlRremMxSjRNMGRVYUU4MWVVWk5VMVUyWkdSM1lqRmZTV2h1UVEiLCJjcnYiOiJQLTI1NiIsIngiOiJNcFZVR3lIZThoUFR4eXZJWURXdjZyaWRzeWgxQ1BQdkxveGVNMFFoWjd3IiwieSI6InRfeWZQUXdWdWpuaEtuXzVWZ09OVnFvd1Myb2RmcFVsX1pzb1dVM0w0R00ifV19LCJtZXRhZGF0YV9wb2xpY3kiOnsib3BlbmlkX3JlbHlpbmdfcGFydHkiOnsic2NvcGVzIjp7InN1YnNldF9vZiI6WyJldS5ldXJvcGEuZWMuZXVkaXcucGlkLjEsICBldS5ldXJvcGEuZWMuZXVkaXcucGlkLml0LjEiXX0sInJlcXVlc3RfYXV0aGVudGljYXRpb25fbWV0aG9kc19zdXBwb3J0ZWQiOnsib25lX29mIjpbInJlcXVlc3Rfb2JqZWN0Il19LCJyZXF1ZXN0X2F1dGhlbnRpY2F0aW9uX3NpZ25pbmdfYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOnsic3Vic2V0X29mIjpbIlJTMjU2IiwiUlM1MTIiLCJFUzI1NiIsIkVTNTEyIiwiUFMyNTYiLCJQUzUxMiJdfX19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmV1L29wZW5pZF9yZWx5aW5nX3BhcnR5L3B1YmxpYy8iLCJ0cnVzdF9tYXJrIjoiZXlKaGIgXHUyMDI2In1dfQ.rIgdHa7CoaP3SO3ZNsjDWt7-8Tea41An3YBw-qaWFNdQMUzcTqRwcD4vtX6TZEEoRO3KEu8bJeaKlikHRHzoBg',
@@ -396,54 +372,19 @@ Privacy considerations
 ----------------------
 
 - The EUDI Wallet Instances don’t publish their metadata in an online service;
-- The Federation endpoints are public and not protected by a client 
-authentication, the Relying Party that looks for the Entity Statement 
-of a Wallet is anonymous;
-- The infrastructure of trust should be public, and all its endpoints 
-publicly accessible, without any client credentials that may disclose 
-who are requesting access;
-- When a Wallet asks the Entity Statements to build the Trust Chain for 
-a specific Relying Party, or validates online a Trust Mark, issued to a 
-specific Relying Party, the Trust Anchor or its Intermediate doesn’t know 
-that a specific Wallet is asking for a specific Relying Party, but only 
-serve the statements related to that Relying Party, as a public resource.
-- The metadata of the EUDI Wallet instance must not contain any 
-information that may disclose technical information about the hardware used.
-- Leaf entity, Intermediate and Trust Anchor metadata may contain the 
-necessary amount data, as part of administrative, technical and security 
-contact information. As a general rule it is not recommended to use personal 
-contact details in such cases. From a legal perspective the publication of 
-such information is needed in operational support of technical and security 
-matters and hence in line with GDPR.
+- The Federation endpoints are public and not protected by a client authentication, the Relying Party that looks for the Entity Statement of a Wallet is anonymous;
+- The infrastructure of trust should be public, and all its endpoints publicly accessible, without any client credentials that may disclose who are requesting access;
+- When a Wallet asks the Entity Statements to build the Trust Chain for a specific Relying Party, or validates online a Trust Mark, issued to a specific Relying Party, the Trust Anchor or its Intermediate doesn’t know that a specific Wallet is asking for a specific Relying Party, but only serve the statements related to that Relying Party, as a public resource.
+- The metadata of the EUDI Wallet instance must not contain any information that may disclose technical information about the hardware used.
+- Leaf entity, Intermediate and Trust Anchor metadata may contain the necessary amount data, as part of administrative, technical and security contact information. As a general rule it is not recommended to use personal contact details in such cases. From a legal perspective the publication of such information is needed in operational support of technical and security matters and hence in line with GDPR.
 
 Considerations about Decentralization
 -------------------------------------
 
 - There should be more than a single Trust Anchor.
-- There may be some cases where a trust verifier trusts an Intermediate, 
-considering that an Intermediate may represent itself as a Trust Anchor 
-in a specific perimeter, such cases where the Leafs are both in the 
-same perimeter like a Member State giurisdiction.
-- The Wallet Instance doesn’t have to publish its Entity Configuration 
-(.well-known/openid-federation) since its attestation of reliability is 
-contained in the Wallet Instance Attestation, issued by its Wallet Provider. 
-The Wallet Provider must publish its Entity Configuration.
-- The trust attestations (Trust Chain) should be contained in the JWS 
-issued by Credential Issuers, as well the Presentation Requests of the 
-RPs should contain the Trust Chain related to them 
-(issuers of the presentation requests) and the presentation must be signed. 
-The Wallet Instance by saving the signed presentation requests and the 
-obtained credentials, having the Trust Chain contained in these, it has 
-for each signed artifact the snapshot of the federation configuration 
-(Trust Anchor Entity Configuration in the Trust Chain) and the verifiable 
-reliability of the RP it has interacted with. These informations must 
-be stored in the Wallet Device and backuped in a remote and secure cloud 
-storage under the sole explicit will of its User (owner).
-- Each signed attestation is long-lived, since it can be cryptographically 
-validated even when the federation configuration changes or the keys of 
-its issuers will be renewed.
-- Each participant should be able to update its Entity Configuration 
-without notifying the changes to any third party. The Metadata Policy of a 
-Trust Chain must be applied to overload whatever related to protocol 
-metadata and allowed grants of the participants.
+- There may be some cases where a trust verifier trusts an Intermediate, considering that an Intermediate may represent itself as a Trust Anchor in a specific perimeter, such cases where the Leafs are both in the same perimeter like a Member State giurisdiction.
+- The Wallet Instance doesn’t have to publish its Entity Configuration (.well-known/openid-federation) since its attestation of reliability is contained in the Wallet Instance Attestation, issued by its Wallet Provider. The Wallet Provider must publish its Entity Configuration.
+- The trust attestations (Trust Chain) should be contained in the JWS issued by Credential Issuers, as well the Presentation Requests of the RPs should contain the Trust Chain related to them (issuers of the presentation requests) and the presentation must be signed. The Wallet Instance by saving the signed presentation requests and the obtained credentials, having the Trust Chain contained in these, it has for each signed artifact the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the RP it has interacted with. These informations must be stored in the Wallet Device and backuped in a remote and secure cloud storage under the sole explicit will of its User (owner).
+- Each signed attestation is long-lived, since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers will be renewed.
+- Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The Metadata Policy of a Trust Chain must be applied to overload whatever related to protocol metadata and allowed grants of the participants.
 
