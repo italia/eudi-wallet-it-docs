@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | Wallet Instance Attestation</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css">
+
+  <!-- Relations -->
+  <link rel="index" title="Index" href="index.html">
+  <link rel="top" title="Italian eIDAS Wallet Technical Specifications version: latest documentation" href="index.html">
+  <link rel="next" title="issuance.rst" href="issuance.html">
+  <link rel="prev" title="wallet-solution.rst" href="wallet-solution.html">
+
+  
+  
+  <!-- No Index - keep if out of docs.italia.it -->
+  
+  <meta name="robots" content="noindex, nofollow">
+  
+</head>
+
+<body class="docs-italia">
+  <script>
+	if (document.location.href.indexOf('?payload=') >= 0)
+		document.body.className += ' loading';
+</script>
+  <header class="container-fluid container-fluid--desktop px-0 header">
+  <nav class="navbar navbar-expand-lg primary-bg-a7 navbar-dark slim-header justify-content-start p-0 pl-lg-4 pr-lg-5">
+    <span class="navbar-brand ml-4"><a class="text-white" href="https://www.agid.gov.it">AGID</a> + <a class="text-white" href="https://teamdigitale.governo.it">Team Digitale</a></span>
+    <button class="navbar-toggler collapsed text-white px-2 py-0 mr-3"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+    <span class="navbar__icon it-expand my-auto ml-1"></span></button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="http://pianotriennale-ict.italia.it">Piano Triennale</a>
+        </li>
+        <li role="separator" class="nav-item divider ml-lg-0 ml-3"></li>
+        <li class="nav-item nav-text px-lg-2 pl-3 d-lg-none ">
+          <span class="nav-text text-uppercase text-white">Communities</span>
+        </li>
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="https://developers.italia.it">Developers</a>
+        </li>
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="https://designers.italia.it">Designers</a>
+        </li>
+        <li role="separator" class="nav-item divider ml-lg-0 ml-3"></li>
+        <li class="nav-item nav-text px-lg-2 pl-3 d-lg-none ">
+          <span class="nav-text text-uppercase text-white">Tools</span>
+        </li>
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="https://forum.italia.it">Forum</a>
+        </li>
+        <li class="nav-item px-lg-2 pl-3 active">
+          <a class="nav-link" href="https://docs.italia.it">Docs</a>
+        </li>
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="https://github.com/italia">GitHub</a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="ml-auto">
+      
+    </div>
+  </nav>
+
+  <div class="row p-4 px-lg-5 m-0 bg-primary--dark align-items-center">
+    <div class="row w-100">
+      <div class="logo--header">
+        <a href="/" tabindex="-1" aria-hidden="true" class="d-block">
+          <svg class="svg--header align-bottom" xmlns="http://www.w3.org/2000/svg" height="78.187" width="97.387" viewBox="0 0 91.300002 73.300002"><g fill="#fff"><path d="M31.799 71.9V15.7h15.1V72h-15.1zM91.099 28.5h-13.8v23.1c0 2.3.1 3.8.2 4.8.1.9.5 1.7 1.2 2.4s1.8 1 3.3 1l8.6-.2.7 12c-5 1.1-8.9 1.7-11.5 1.7-6.8 0-11.4-1.5-13.8-4.6-2.5-3-3.7-8.6-3.7-16.8V0h15.1v15.6h13.8v12.9zM9.099 32.8c-2.6 0-4.8-.9-6.5-2.7s-2.6-4-2.6-6.6.9-4.8 2.5-6.6c1.7-1.8 3.9-2.6 6.5-2.6s4.8.9 6.5 2.7 2.5 4 2.5 6.7-.8 4.8-2.5 6.6c-1.6 1.6-3.7 2.5-6.4 2.5z"/></g></svg>
+        </a>
+      </div>
+      <div class="col pl-3 pl-sm-4">
+        <h1 class="h1--header mb-1">
+          <a href="/" class="site-title text-white">
+            Docs Italia
+            
+              <span class="badge badge-pill bg-primary--mid-dark align-middle">beta</span>
+            
+          </a>
+        </h1>
+        <h2 class="text-white mb-0 h2--header">Public documents, made digital.</h2>
+      </div>
+    </div>
+    <div class="row mt-4 w-100 docs__document-info">
+      <div class="col-md-6">
+        <i class="docs-icon-document docs__document-info__icon"></i>
+        <a href="index.html" class="text-white font-weight-normal">
+          Italian eIDAS Wallet Technical Specifications version: latest documentation
+        </a>
+      </div>
+      <div class="docs__document-info__ownership col-md-5 offset-md-1 mt-3 mt-md-0">
+        
+        <div class="w-100">
+          <i class="docs-icon-project docs__document-info__icon"></i>
+          <span class="docs__document-info__label ml-1">Project:</span>
+          <a href="/organizzazione-demo/progetto-demo" class="text-white font-weight-normal">
+            <u>Progetto demo</u>
+          </a>
+        </div>
+        
+        
+        <div class="w-100 mt-1">
+          <i class="docs-icon-publisher docs__document-info__icon"></i>
+          <span class="docs__document-info__label ml-1">Administration:</span>
+          <a href="/organizzazione-demo/" class="text-white font-weight-normal">
+            <u>Organizzazione demo</u>
+          </a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</header>
+<div class="doc-header container-fluid container-fluid--desktop bg-white">
+  <div class="row py-3 px-4 px-lg-5 align-items-center flex-nowrap justify-content-between">
+    <div class="col-auto d-md-none d-flex align-items-center order-1">
+      <a href="#" class="btn p-2" role="button" id="searchbox-toggle" data-toggle="collapse" data-target="#searchbox" aria-controls="searchbox" aria-expanded="false" aria-label="Toggle searchbox">
+        <span class="docs-icon-search d-inline-block">
+          <span class="sr-only">Search in Document</span>
+        </span>
+      </a>
+    </div>
+    <div class="col-3 d-none d-md-flex pl-0">
+      
+  <div class="w-100" role="search">
+    <form class="mr-md-3" id="rtd-search-form" action="search.html" method="get">
+      <div class="input-group" role="search">
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+        <input type="text" class="p-2 text-grey form-control" style="" required="" id="cerca" name="q" placeholder="Search in Document...">
+				<span class="input-group-append">
+					<button type="submit" class="btn btn-default text-primary px-3 py-2" role="search">
+            <span class="docs-icon-search d-block my-auto">
+							<span class="sr-only">Search in Document</span>
+						</span>
+					</button>
+				</span>
+			</div>
+    </form>
+  </div>
+    </div>
+    <div class="col-auto d-flex align-items-center justify-content-center flex-md-grow-1 order-0 order-md-1 pl-0">
+      
+      <a href="#" role="button" class="btn p-2" data-toggle="modal" data-target="#document-info">
+        <span class="docs-icon-info"></span>
+        <span class="d-none d-md-inline align-middle">About this document</span>
+      </a>
+      
+    </div>
+    <div class="col-4 col-sm-auto d-flex flex-md-grow-1 align-items-center justify-content-center order-1">
+      <div id="rst-menu" class="px-2">
+        <div class="dropdown" id="version-list">
+            <button class="btn btn-primary dropdown-toggle badge badge-pill bg-primary text-nowrap px-3 py-2" type="button" id="dropdownVersionButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="current-version">bozza</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownVersionButton">
+              <div class="version-list-wrapper"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto d-none d-md-flex flex-grow-1 align-items-center order-1">
+      <div class="document-actions d-flex flex-column flex-md-row justify-content-around w-100 p-2 p-md-0 text-blue">
+  <div class="dropdown p-3 px-md-2 py-md-0 d-flex flex-wrap">
+    <a class="btn dropdown-toggle p-2 flex-grow-1 text-left" href="#" id="downloads-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="docs-icon-download align-middle"></span>
+      <span class="align-middle">Download</span>
+    </a>
+    <div class="dropdown-menu w-100" aria-labelledby="downloads-dropdown" aria-disabled="false">
+      <div class="link-list-wrapper">
+        <ul class="link-list">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="p-3 px-md-2 py-md-0">
+    <a href="#" role="button" class="btn p-2 disabled" aria-disabled="true">
+        <span class="docs-icon-github"></span>
+        <span class="align-middle">Source</span>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="col-auto pr-0 d-md-none d-flex align-items-center justify-content-end order-1">
+      <a href="#" role="button" class="btn py-2 px-0" data-toggle="modal" data-target="#document-actions">
+        <span class="docs-icon-more"></span>
+        <span class="sr-only">Actions</span>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="progress-container">
+      <div class="progress-bar" id="scrollprogressBar"></div>
+    </div>
+  </div>
+</div>
+
+	<!--
+  Forum Italia comments templates
+-->
+
+<script id="forum-italia-comments" type="text/template">
+  <div class="block-comments" id="accordion-comments-{{ topicId }}" data-topic="{{ topicId }}">
+    <!-- Top header -->
+    <div class="block-comments__header d-flex border-top border-bottom border-width-2 pt-3 pb-3 align-items-center justify-content-between">
+      <h6 class="col-auto text-uppercase mb-0">{{ commentsCount }} Commenti</h6>
+      <button class="col-auto block-comments__toggle-btn rounded-circle border border-medium-blue border-width-2 collapsed" data-toggle="collapse" data-target="#comments-{{ topicId }}" aria-expanded="false">
+        <span class="docs-icon-plus"></span>
+        <span class="docs-icon-minus"></span>
+      </button>
+    </div>
+  </div>
+  <div class="block-comments__body collapse" data-parent="#accordion-comments-{{ topicId }}" id="comments-{{ topicId }}">
+    <!-- Input row -->
+    <div class="d-flex align-items-center mb-4 block-comments__input">
+      <div class="box-comment {{ canPost }}" data-topic="{{ topicId }}"></div>
+    </div>
+    <div class="row">
+      <div class="block-comments__container col">
+        <div class="row mt-4">
+          <ul class="block-comments__list col items mb-0" id="accordion-comment-item" data-topic="{{ topicId }}"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="block-comments__header d-flex border-bottom border-width-2 pt-3 pb-3 mb-4 align-items-center justify-content-end">
+      <button class="col-auto block-comments__toggle-btn rounded-circle border border-medium-blue border-width-2 collapsed" data-toggle="collapse" data-target="#comments-{{ topicId }}" aria-expanded="false">
+        <span class="docs-icon-plus"></span>
+        <span class="docs-icon-minus"></span>
+      </button>
+    </div>
+  </div>
+</script>
+
+<script id="forum-italia__comment" type="text/template">
+  <li id="comment-{{ post.id }}" class="row mb-4 block-comments__item {{ hidden }} {{ isNew }}"
+      data-topic="{{ post.topic_id }}" data-comment="{{ post.id }}">
+    <div id="reply-to-{{ post.id }}" class="block-comments__reply-anchor"></div>
+    <figure class="col-auto mb-0">
+      <img class="block-comments__img rounded-circle" src="{{ avatarUrl }}">
+    </figure>
+    <div class="col block-comments__content">
+      <div class="row align-items-center justify-content-between" id="comment-heading-1">
+        <div class="col-auto">
+          <span class="block-comments__name text-capitalize mb-0">{{ displayName }}</span>
+        </div>
+        <div class="col-auto">
+          <p class="d-inline-block mr-2 block-comments__date mb-0">{{ date }}</p>
+          <button class="block-comments__item-btn" data-toggle="collapse"
+                  data-target="#collapse-{{ post.id }}">
+            <i class="it-collapse"></i>
+            <i class="it-expand"></i>
+          </button>
+        </div>
+      </div>
+      <p class="text-uppercase block-comments__role">{{ publicUserField }}</p>
+      <div class="my-3">{{ replyLink }}</div>
+      <div id="collapse-{{ post.id }}" class="block-comments__paragraph pl-3 border-left collapse show"
+           aria-labelledby="comment-heading-1">
+        {{ post.cooked }}
+      </div>
+      <div class="block-comments__actions mb-2 mt-3">
+        {{ postActions }}
+      </div>
+    </div>
+  </li>
+</script>
+
+<script id="forum-italia__like-button" type="text/template">
+  <small>
+      <button id="{{ buttonAction }}-like-{{ post.id }}" type="button" class="btn btn-primary btn-sm mr-2 px-2 py-1">
+        {{ likeCount }}
+        <i class="it-favorite ml-1 mr-0"></i>
+      </button>
+      {{ likeDone }}
+    </small>
+</script>
+
+<script id="forum-italia__like-info" type="text/template">
+  <small>
+      <span id="like-{{ post.id }}" class="border rounded btn-sm mr-2 px-2 py-1">
+        {{ likeCount }}
+        <i class="it-favorite ml-1 mr-0"></i>
+      </span>
+      {{ likeDone }}
+    </small>
+</script>
+
+<script id="forum-italia__reply-link" type="text/template">
+  <div>
+    <small>In risposta al 
+      <a class="reply-to-post" href="#reply-to-{{ replyDest.id }}">
+        commento di {{ replyDest.name }}
+      </a>
+    </small>
+  </div>
+</script>
+
+<script id="forum__login" type="text/template">
+  <div class="box-comment__user-image box-comment__user-image--anon">
+    <i class="docs-icon-user"></i>
+  </div>
+  <div class="box-comment__login">
+    <div><button class="login-button btn-link p-0 border-0 align-baseline">Accedi al Forum</button> per commentare</div>
+  </div>
+</script>
+
+<script id="forum__comment" type="text/template">
+  <div class="form group">
+    <div class="box-comment__errors-box"></div>
+    <!-- Write -->
+    <div class="d-flex align-items-center mt-4 mb-4 block-comments__input box-comment__write">
+      <figure class="col-auto mb-0">
+        <img class="block-comments__img box-comment__figure rounded-circle" src="">
+          <figcaption>
+            <a href="#logout" class="block-comments__logout-link block-comments__logout-link--visible" data-toggle="modal" data-target="#logout-modal" title="Logout" alt="Logout">Logout</a>
+          </figcaption>
+      </figure>
+      <textarea class="form-control box-comment__body col ml-2 p-2" id="comments-input" placeholder="Scrivi qui un commento. Per formattare il testo puoi usare Markdown. Clicca sul bottone 'suggerimenti' per vedere alcuni esempi." rows="4"></textarea>
+    </div>
+    <!-- Buttons -->
+    <div class="box-comment__buttons">
+      <button type="button" class="btn btn-primary btn-sm box-comment__submit mr-2" disabled="true"><div>invia</div></button>
+      <button type="button" class="btn btn-sm btn-secondary new-comment__suggestions" data-container="body" data-toggle="popover" data-content="html">suggerimenti</button><span class="loading no-bg">&nbsp;</span>
+    </div>
+    <div class="box-comment__required">
+      <span>Scrivi almeno altri <span class="required-chars">20</span> caratteri</span>
+    </div>
+  </div>
+</script>
+
+<script id="forum-italia__missing_permission" type="text/template">
+	<div class="pl-2 block-comments__input missing_permission error error--{{ errorCode }} row">
+		<figure class="col-auto mb-0 mr-2">
+			<img class="block-comments__img new-comment__figure rounded-circle" src="">
+			<figcaption>
+				<a href="#logout" class="block-comments__logout-link block-comments__logout-link--visible" data-toggle="modal" data-target="#logout-modal" title="Logout" alt="Logout">Logout</a>
+			</figcaption>
+		</figure>
+
+		<div class="missing_permission__text col pt-2">{{ errorText }}</div>
+	</div>
+</script>
+
+<script id="forum__logout--modal" type="text/template">
+  <div class="modal logout-modal" id="logout-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Logout</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Dopo il logout non sarà possibile scrivere nuovi commenti. Sicuro di voler procedere?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="logout-modal__submit">Conferma</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="logout-modal__cancel">Annulla</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id="forum-italia__markup__tooltip" type="text/template">
+  <div class="tooltip tooltip--active doc-tooltip box-comment__suggestions__tooltip" role="tooltip">
+    <div class="tooltip__wrap">
+      Markdown per la formattazione del testo:
+      <ul class="tooltip__content">
+        <li><b>Grassetto:</b> __testo__ (o **testo**)</li>
+        <li><i>Corsivo</i>: _testo_</li>
+        <li>Link: [Testo](http://example.com)</li>
+        <li>Citazione: &gt; Testo citazione</li>
+      </ul>
+    </div>
+  </div>
+</script>
+
+<script id="forum-italia__silenced" type="text/template">
+  <div class="error error__silenced">
+    Il tuo account è stato temporaneamente sospeso, scopri di più leggendo
+    <a href="{{ notificationsUrl }}" target="_blank">le tue notifiche</a> su Forum Italia.
+    <br>
+  </div>
+</script>
+
+<script id="forum-italia__closedTopic" type="text/template">
+  <div class="error error__closed">
+    Questa discussione è in sola lettura.
+    <br>
+  </div>
+</script>
+
+<script id="section_navigation__comments" type="text/template">
+  <li class="chapter-nav__item">
+      <span class="it-comment mr-2 align-middle"></span>
+      <a href="#forum-italia-comments-{{ topicId }}" class="chapter-link chapter-link--expand">
+          {{ postsCount }} commenti
+      </a>
+  </li>
+</script>
+
+
+<!--
+  markup_modifier templates
+-->
+
+<script id="markup_modifier__chapter-header" type="text/template"> <div class="chapter-header clearfix"><div class="title-wrap"> </script>
+
+<script id="markup_modifier__icon" type="text/template">
+	<span class="docs-icon-{{ i }}"></span>
+</script>
+
+<script id="markup_modifier__note-action" type="text/template">
+	<div class='note-action'>
+		<button type='button' class='note-close-btn'>×</button>
+		<button type='button' class='note-back-btn'><i class='it-arrow-up'></i> {{ text }} </button>
+	</div>
+</script>
+
+<script id="markup_modifier__admonition" type="text/template">
+	<div class='admonition__toggle-wrap'>
+		<button type='button' class='admonition__toggle-btn'>
+			<span class='admonition__toggle-show-more'>
+				{{ more }} <span class='docs-icon-plus'></span>
+			</span>
+			<span class='admonition__toggle-show-less'>
+				{{ less }} <span class='docs-icon-minus'></span>
+			</span>
+		</button>
+	</div>
+</script>
+
+
+<!--
+  glossary_page templates
+-->
+
+<script id="glossary__btn" type="text/template">
+	<button class='glossary-page__btn collapsed border-top border-grey-light border-width-2 pt-3 pb-3' data-toggle='collapse' data-target='#glossary-{{ id }}' aria-expanded='true' aria-controls='glossary-{{ id }}'>
+		<span class='docs-icon-plus mr-3'> </span>
+		<span class='docs-icon-minus mr-3'> </span>
+		{{ text }}
+	</button>
+</script>
+
+<script id="glossary__copy-link" type="text/template">
+	<div class='glossary-page__copy-link-wrap mt-3'>
+		<i class='it-link mr-2 align-middle'></i>
+		<button type='button' class='glossary-page__copy-link'> {{ copyLink }} </button>
+	</div>
+</script>
+
+
+<!--
+  searchbox_collapse templates
+-->
+
+<script id="searchbox-collapse" type="text/template">
+	<div class="row p-2"><div class="col"></div></div>
+</script>
+
+
+<!--
+  section_navigation templates
+-->
+
+<script id="section_navigation__nav" type="text/template">
+    <div class="chapter-nav">
+        <div class="chapter-nav__wrap">
+            <ul class="chapter-nav__list chapter-nav__list--visible">
+                <li class="chapter-nav__item">
+                    <span class="it-more-items mr-2 align-middle"></span>
+                    <button type="button" data-toggle="modal"
+                        class="chapter-link chapter-link--expand">{{ seeActions }}</button>
+                </li>
+            </ul>
+            <div class="{{ modalClass }} chapter-nav__list--hidden" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="{{ modalContainerClass }}">
+                    <div class="{{ modalContentClass }} chapter-nav__list-wrap">
+                        <div class="chapter-nav__title"> {{ title }} </div>
+                        <ul class="chapter-nav__list">
+                            <li class="chapter-nav__item">
+                                <i class="it-link mr-2 align-middle"></i>
+                                <button type="button" class="chapter-link">{{ copyLink }}</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<!--
+  tooltip templates
+-->
+
+<script id="tooltip__main" type="text/template">
+	<div class='tooltip tooltip--active doc-tooltip' role='tooltip'>
+		<div class='tooltip__wrap'>
+			<button type='button' role='button' class='tooltip__close-btn' data-ref="{{ item.ref }}"></button>
+			<h2 class='tooltip__title'>{{ item.title }}</h2>
+			<p class='tooltip__content'>{{ item.body }}</p>
+		</div>
+	</div>
+</script>
+
+<script id="tooltip__glossary" type="text/template">
+	<div class='tooltip tooltip--active doc-tooltip' role='tooltip'>
+		<div class='tooltip__wrap'>
+			<button type='button' role='button' class='tooltip__close-btn' data-ref="{{ item.ref }}"></button>
+			<h2 class='tooltip__title'>{{ item.title }}</h2>
+			<p class='tooltip__content'>{{ trimmedSummary }}</p> {{ btnToGlossary }}
+		</div>
+	</div>
+</script>
+
+<script id="tooltip__note" type="text/template">
+	<div class='tooltip tooltip--active doc-tooltip doc-tooltip--note' role='tooltip'>
+		<div class='tooltip__wrap'>
+			<button type='button' role='button' class='tooltip__close-btn' data-ref="{{ item.ref }}"></button>
+			<h2 class='tooltip__title'>{{ item.title }}</h2>
+			<p class='tooltip__content'> {{ item.body }}</p>
+		</div>
+	</div>
+</script>
+
+
+  <div id="main" role="document">
+    <div class="container-fluid container-fluid--desktop main-container">
+      <div class="row">
+        <nav class="col--nav">
+          <section class="docs-menu">
+  <div id="desktop-menu" class="sidebar-nav">
+    <a class=""
+      aria-controls="desktop-menu" aria-label="exit navigation" title="exit navigation" href="#">
+      <span class="" aria-hidden="true"></span>
+    </a>
+
+    <button data-toggle="collapse" data-target="#content-index" aria-expanded="true" class="sidebar-btn p-3 sidebar-btn--desktop" type="button" aria-controls="content-index">
+      content index
+      <span class="it-collapse float-right"></span>
+      <span class="it-expand float-right"></span>
+    </button>
+    <div id="content-index" class="content-index--menu sidebar-list--wrapper sidebar-accordion-content collapse show">
+      <ul class="">
+        <li class="toctree-l1 ">
+          <a href='index.html'>Summary</a>
+        </li>
+      </ul>
+      
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">ssi-introduction.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">defined-terms.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">trust.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data.html">pid-eaa-data.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-mdoc-cbor.html">pid-eaa-mdoc-cbor.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-sd-jwt.html">pid-eaa-sd-jwt.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">wallet-solution.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#high-end-design">High-end design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detail-design">Detail design</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="issuance.html">issuance.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="presentation.html">presentation.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+          <!-- Toggle -->
+<div class="navbar-toggler--wrap navbar-toggler--wrap--bottom p-3">
+  <div class="navbar-toggler navbar-toggler--open p-0 border-0 ml-auto">
+    <div class="navbar-toggler-bottom__chapter align-middle text-truncate">
+      <span class="it-list mr-2"></span>Wallet Instance Attestation
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-tabs">
+
+  <!-- Back button. -->
+  <div class="row">
+    <div class="col">
+      <button class="navbar-toggler navbar-toggler--back border-0 ml-auto" type="button" data-toggle="offcanvas">
+        <span class="it-arrow-left align-middle"></span>
+        <span class="navbar-toggler__chapter align-middle ml-2">
+          indices and glossary
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Tab -->
+  <ul class="row ml-3 mr-3 nav nav-tabs" role="tablist">
+    <li class="col text-center active">
+      <a id="content-index-mobile-tab" data-toggle="tab" href="#content-index-mobile" aria-controls="content-index-mobile" role="tab" aria-selected="true" class="sidebar-btn p-2 sidebar-btn--mobile active show">
+        contents
+      </a>
+    </li>
+    <li class="col text-center">
+      <a id="figures-index-mobile-tab" data-toggle="tab" href="#figures-index-mobile" aria-controls="figures-index-mobile" role="tab" aria-selected="false" class="col sidebar-btn p-2 sidebar-btn--mobile">
+        figures
+      </a>
+    </li>
+    <li class="col text-center">
+      <a id="table-index-mobile-tab" data-toggle="tab" href="#table-index-mobile" aria-controls="table-index-mobile" role="tab" aria-selected="false" class="col sidebar-btn p-2 sidebar-btn--mobile">
+        tables
+      </a>
+    </li>
+    <li class="col text-center">
+      <a id="glossary-index-mobile-tab" data-toggle="tab" href="#glossary-index-mobile" aria-controls="glossary-index-mobile" role="tab" aria-selected="false" class="col sidebar-btn p-2 sidebar-btn--mobile">
+        glossary
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+<!-- Off canvas -->
+<section class="docs-offcanvas-menu" id="sidebar-nav">
+  <div class="tab-content sidebar-nav">
+
+      <div id="content-index-mobile" class="content-index--menu tab-pane sidebar-list--wrapper fade show active" role="tabpanel" aria-labelledby="content-index-mobile-tab">
+        <ul class="">
+          <li class="toctree-l1 ">
+            <a href='index.html'>Summary</a>
+          </li>
+        </ul>
+        
+        <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">ssi-introduction.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">defined-terms.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">trust.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data.html">pid-eaa-data.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-mdoc-cbor.html">pid-eaa-mdoc-cbor.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-sd-jwt.html">pid-eaa-sd-jwt.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">wallet-solution.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#high-end-design">High-end design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detail-design">Detail design</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="issuance.html">issuance.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuance.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="presentation.html">presentation.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presentation.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+</ul>
+
+        
+      </div>
+
+      <div id="figures-index-mobile" class="figures-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="figures-index-mobile-tab">
+        None
+      </div>
+
+      <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
+        None
+      </div>
+
+      <div id="glossary-index-mobile" class="glossary-mobile--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="glossary-index-mobile-tab">
+        None
+      </div>
+
+  </div>
+</section>
+        </nav>
+        <div id="doc-content" class="col-content">
+          <!--<div class="doc-content__consultation">
+            <span class="it-icon-edit"></span>
+            in consultation
+          </div>-->
+          
+            <div class="footer-buttons footer-buttons--prev" role="navigation" aria-label="footer navigation">
+                <a href="wallet-solution.html" class="" title="wallet-solution.rst" accesskey="p" rel="prev"> Torna a wallet-solution.rst</a>
+            </div>
+          
+          
+  <section id="wallet-instance-attestation">
+<span id="wallet-instance-attestation-rst"></span><h1>Wallet Instance Attestation<a class="headerlink" href="#wallet-instance-attestation" title="Permalink to this heading">¶</a></h1>
+<p>Inside a <strong>wallet solution</strong> and, especially with regards
+to the <strong>wallet instance</strong>, it is essential to ensure the <strong>authenticity,
+integrity, security, privacy and trust</strong> in the use of the latter both
+by the user and the services connected to it, such as the
+<strong>PID Provider</strong> or one <strong>relying party</strong>.</p>
+<section id="general-properties">
+<h2>General Properties<a class="headerlink" href="#general-properties" title="Permalink to this heading">¶</a></h2>
+<p>The goal is:</p>
+<ul class="simple">
+<li><p>Ensure that the wallet instance maintains a level of <strong>integrity</strong>,
+capable of preventing any attempts of manipulation or forgery
+by unauthorized third parties.</p></li>
+<li><p>Make sure the private keys have been generated and stored securely
+within a <strong>trusted execution environment</strong> (TEE).</p></li>
+<li><p>Verify that the wallet instance is <strong>authentic</strong>, i.e. made available
+by an accredited body that complies with the trust model.</p></li>
+</ul>
+<p>To guarantee the above, it is necessary for each
+wallet instance to issue a certificate of conformity,
+guaranteeing its security and compliance with the trust model.</p>
+<p>This attestation is called <strong>Wallet Instance Attestation</strong>
+and must be electronically signed by its issuer.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Considering that the wallet instance does not represent an accredited
+entity and does not belong to an organization,
+but resides on the user's device, the trust model,
+based on sustainability and scalability criteria,
+must delegate to the <strong>Wallet provider</strong> the task of
+issuing the <strong>Wallet Instance Attestation</strong>.</p>
+</div>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
+<p>We assume the following requirements for the Wallet Instance Attestation:</p>
+<ol class="arabic simple">
+<li><p><strong>Efficiency</strong>: The Wallet Instance Attestation should use an efficient
+format such as JSON Web Token (JWT) to ensure light and fast data management
+and be compliant with the various formats used for EUDIW solutions.</p></li>
+<li><p><strong>Simplicity</strong>: The Wallet Provider should be based on a REST architecture
+for issuing wallet instance attestations.</p></li>
+<li><p><strong>Public key holder binding</strong>: The Wallet Instance Attestation must be
+securely linked to the Wallet Instance public key.</p></li>
+<li><p><strong>Issued and signed by an accredited wallet provider</strong>:
+The Wallet Instance Attestation must be issued and signed by an accredited
+and reliable wallet provider, thus conferring integrity and authenticity
+to the attestation itself.</p></li>
+<li><p><strong>Authenticity/Genuineness of the wallet instance</strong>:
+The Wallet Instance Attestation must guarantee the integrity
+and authenticity of the wallet instance, confirming that it was
+created and provided correctly by the wallet provider. ⚠️</p></li>
+<li><p><strong>Ability to request multiple claims for several public keys</strong>:
+Each single wallet instance should be able to request multiple attestations
+for different public keys associated with it. This requirement constitutes
+a privacy-preserving measure since the public key may be exploited as a
+tracking tool in the credentials’ disclosure phase
+(see also point 10 below).</p></li>
+<li><p><strong>Can be used multiple times</strong>:
+The Wallet Instance Attestation should be used multiple times
+during the validity period of the attestation, allowing for repeated
+authentication and authorization without the need to request
+new attestations with each interaction.</p></li>
+<li><p><strong>Expiration</strong>:
+The Wallet Instance Attestation should have a well-defined expiration date,
+after which it will no longer be considered valid, thus ensuring
+the security and updating of the attestations over time.</p></li>
+<li><p><strong>Disability in case of loss/deletion of the public key</strong>:
+If the public key associated with the wallet instance is lost or deleted,
+the attestation automatically becomes invalid to prevent unauthorized
+use of the wallet instance. ⚠️</p></li>
+<li><p><strong>Pseudonymisation</strong>:
+The attestations are designed to be pseudonymised
+(i.e. they do not contain direct references to the person, so that it
+is not possible to identify them in the absence of additional information
+- see art. 4(5) GDPR for a comprehensive definition).
+In the absence of such a measure, the use of the attestation on multiple
+RPs would constitute an appreciable risk, as it would theoretically
+allow the RPs to merge databases and track users.
+This requirement enriches the measures adopted in accordance
+with art. 32 GDPR.</p></li>
+</ol>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>⚠️ Implementation of points no. 5 and 9 is still under discussion.
+This version assumes the authenticity and non-revocability of the wallet instance.</p>
+</div>
+</section>
+<section id="high-end-design">
+<h2>High-end design<a class="headerlink" href="#high-end-design" title="Permalink to this heading">¶</a></h2>
+<section id="static-view-of-the-components">
+<h3>Static view of the components<a class="headerlink" href="#static-view-of-the-components" title="Permalink to this heading">¶</a></h3>
+<figure class="align-default" id="wallet-solution-schema">
+<img alt="the image shows how the backend wallet and the wallet instances are contained within the wallet solution which is managed by the wallet provider" src="https://www.plantuml.com/plantuml/svg/XP4nJuSm44VtVehBdxbnPp2iRYx6qTHIjR7SaVQ0-EqzaICDgN4ZBxpqzTUXiCkyJCaupvJXzbH2le4hiCW7A7rsAGM6ETCQn-E7RMSloi0OJzDC691FeL1QE1BMWZBeraW2Mbv4wK8VQayPT5yX9TgCQPclpdy676lnGF0ZN93DyVs3xVsrhOU70hCi0_JshwHXFJp-Rg4dIuECo96moD7xeBQbUKBEbE0EPEwuEWx6N2zj_uXqU8wbhVMhD3tjbAX1BYIl_mq0" />
+</figure>
+<p><a class="reference external" href="https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000">PlantUML</a></p>
+</section>
+<section id="dynamic-view-of-the-components">
+<h3>Dynamic view of the components<a class="headerlink" href="#dynamic-view-of-the-components" title="Permalink to this heading">¶</a></h3>
+<p>We do not go into the details of the backend wallet as it will be the
+subject of a subsequent design review. For now, we will just analyze the
+format of the wallet instance attestation and how it is issued by the
+backend wallet.</p>
+<figure class="align-default" id="sequence-diagram-for-wallet-instance-attestation-request">
+<img alt="The figure shows the sequence diagram for issuing a wallet instance attestation. The steps will be described below." src="https://www.plantuml.com/plantuml/svg/XPB1RjH038RlynIc9v1OSU-XAk9GWSG50RtqucH-HLOJJ_1u6csVdcbsTqG85LVxy-VypjncP_CoZU7DR3nCJ8xqJ6u5WOidBLC72s6kbFGoipfT_SYmA-9CPLk_vt64qsUjKksn8elya-cuVuJ64zA5KEXmKzdhEYmkFCepQ3cXSjOzQ38o_2h8_c4sP5HVRuZGbuaS5ZdSBDqrtS4lixEb9uamck0SsJaitQ5ITT7NSuNwfCwYeiCVDlBZZFoU7d5STufXWdgjGEESHFsyhvf-yYZLXDrIjvATHibUsKl0EoYiqgjwPh4SGbDzChoq_ZeaVSmPvfAKlftoqvVxxu5xbwTrRxV9per--r_HktgGTNANGYup0xI8Gf7p7iuoA7injDPmoSSQr_PEsBwl_OpN0--F_BejOdkHwYvDtNXf3om-g87ZaJnHwfn5IR5idjGjD9Pf_0q0" />
+</figure>
+<p><a class="reference external" href="https://www.plantuml.com/plantuml/uml/XPB1RjH038RlynIc9v1OSU-XAk9GWSG50RtqucH-HLOJJ_1u6csVdcbsTqG85LVxy-VypjncP_CoZU7DR3nCJ8xqJ6u5WOidBLC72s6kbFGoipfT_SYmA-9CPLk_vt64qsUjKksn8elya-cuVuJ64zA5KEXmKzdhEYmkFCepQ3cXSjOzQ38o_2h8_c4sP5HVRuZGbuaS5ZdSBDqrtS4lixEb9uamck0SsJaitQ5ITT7NSuNwfCwYeiCVDlBZZFoU7d5STufXWdgjGEESHFsyhvf-yYZLXDrIjvATHibUsKl0EoYiqgjwPh4SGbDzChoq_ZeaVSmPvfAKlftoqvVxxu5xbwTrRxV9per--r_HktgGTNANGYup0xI8Gf7p7iuoA7injDPmoSSQr_PEsBwl_OpN0--F_BejOdkHwYvDtNXf3om-g87ZaJnHwfn5IR5idjGjD9Pf_0q0">PlantUML</a></p>
+<ul class="simple">
+<li><p><strong>Message 1</strong>: The end user initializes the wallet instance.
+In particular, this process happens when the mobile application
+is launched and every time the end user wants to request or present
+(disclose) a credential.</p></li>
+<li><p><strong>Message 2-3</strong>: The wallet instance obtains metadata about its wallet
+provider. Among these, we also find the list of supported algorithms,
+public keys, endpoints.</p></li>
+<li><p><strong>Message 4</strong>: The wallet instance verifies that the wallet provider is
+trustworthy by resolving the provider's trust chain up to the anchor (⚠️
+this step is skipped in this version)</p></li>
+<li><p><strong>Message 5-7</strong>: The wallet instance instantiates a new key pair on its TEE
+and requests a nonce from the backend wallet (as a measure against replay
+attacks)</p></li>
+<li><p><strong>Message 8</strong>: The wallet instance generates a Wallet Instance Attestation
+Request (JWT) signed with the private key associated with the public key
+for which it wants to obtain the attestation containing the nonce and
+other useful parameters.</p></li>
+<li><p><strong>Message 9-13</strong>: The wallet instance sends the Wallet Instance Attestation
+Request to the backend wallet which verifies its validity and issues the
+signed attestation.</p></li>
+<li><p><strong>Message 13-14</strong>:The wallet instance receives the wallet instance
+attestation signed by the wallet provider and proceeds with a formal
+verification</p></li>
+<li><p><strong>Message 15</strong>:The wallet instance attestation is ready to be consumed</p></li>
+</ul>
+</section>
+</section>
+<section id="detail-design">
+<h2>Detail design<a class="headerlink" href="#detail-design" title="Permalink to this heading">¶</a></h2>
+<section id="format-of-the-wallet-instance-attestation-request">
+<h3>Format of the Wallet Instance Attestation Request<a class="headerlink" href="#format-of-the-wallet-instance-attestation-request" title="Permalink to this heading">¶</a></h3>
+<p>To obtain a Wallet Instance Attestation from the wallet
+provider (backend) it is necessary to send a Wallet Instance Attestation
+Request from the wallet instance containing the associated public key
+and a nonce previously requested to avoid replay attacks.</p>
+<section id="header">
+<h4>Header<a class="headerlink" href="#header" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>alg</p></td>
+<td><p>Algorithm to verify the token
+signature (es. ES256)</p></td>
+</tr>
+<tr class="row-odd"><td><p>kid</p></td>
+<td><p>Key id of the wallet instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>Media type, in this case, we use
+the value var+jwt (Verifiable
+Assertion Request JWT).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="payload">
+<h4>Payload<a class="headerlink" href="#payload" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>iss</p></td>
+<td><p>The public URL of the issuer
+concatenated with the thumbprint
+of the JWK of the wallet instance
+for which the attestation is
+being requested</p></td>
+</tr>
+<tr class="row-odd"><td><p>sub</p></td>
+<td><p>The public url of the wallet
+instance attestation issuer.</p></td>
+</tr>
+<tr class="row-even"><td><p>jti</p></td>
+<td><p>Unique identifier of the request.
+This parameter will be used to
+avoid replay attacks</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>WalletInstanceAttestationRequest</p></td>
+</tr>
+<tr class="row-even"><td><p>cnf</p></td>
+<td><p>This parameter will contain the
+configuration of the wallet
+instance in JSON format. Among
+the mandatory attributes there
+will be the jwk parameter
+containing the public key of the
+wallet instance. It will also
+contain all the information
+useful for the backend wallet to
+verify that the app is genuine</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="non-normative-example">
+<h4>Non-normative example<a class="headerlink" href="#non-normative-example" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;var+jwt&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;jti&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;6ec69324-60a8-4e5b-a697-a766d85790ea&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestationRequest&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686645115</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686652315</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Whose corresponding JWT is as follows:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0</span><span class="p">.</span><span class="nx">eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC8iLCJqdGkiOiI2ZWM2OTMyNC02MGE4LTRlNWItYTY5Ny1hNzY2ZDg1NzkwZWEiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjQ1MTE1LCJleHAiOjE2ODY2NTIzMTV9</span><span class="mf">.3</span><span class="nx">KInOD_N4zh5PmXj9QhS5aIVFF8zxMl6326KxDTAFYMPJbweD2ny95Nk6y_xTCOioail2WHDLpF3Rju16Q7Z7Q</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Verifiable through the public key of the wallet instance present in the JWT.</p>
+</section>
+</section>
+<section id="format-of-the-wallet-instance-attestation">
+<h3>Format of the Wallet Instance Attestation<a class="headerlink" href="#format-of-the-wallet-instance-attestation" title="Permalink to this heading">¶</a></h3>
+<p>To ensure the above requirements, a JWT was chosen as the format for the
+Wallet Instance Attestation. Let's see below the various fields that
+compose it</p>
+<section id="id1">
+<h4>Header<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>alg</p></td>
+<td><p>Algorithm to verify the token
+signature (es. ES256)</p></td>
+</tr>
+<tr class="row-odd"><td><p>kid</p></td>
+<td><p>Key id used by the wallet
+provider to sign the attestation</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>Media type, in this case we use
+the value va+jwt (Verifiable
+Assertion JWT).
+This parameter is currently
+non-standard as it is not yet
+registered as <a class="reference external" href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media
+Types</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>x5c</p></td>
+<td><p>Array containing the X.509
+certificate (and the entire chain
+of certificates) used to certify
+the public key of the issuer.</p></td>
+</tr>
+<tr class="row-even"><td><p>trust_chain</p></td>
+<td><div class="line-block">
+<div class="line">Array containing the JWS of the
+trust chain relating to its
+issuer (Wallet Provider).</div>
+<div class="line">⚠️ This topic will be addressed
+at a later stage</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h4>Payload<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>iss</p></td>
+<td><p>The public url of the wallet
+instance attestation issuer. (see
+example below)</p></td>
+</tr>
+<tr class="row-odd"><td><p>sub</p></td>
+<td><p>The public url of the issuer
+concatenated with the thumbprint
+of the JWK of the wallet instance
+for which the attestation is
+being issued</p></td>
+</tr>
+<tr class="row-even"><td><p>iat</p></td>
+<td><p>Timestamp of issue of the
+attestation</p></td>
+</tr>
+<tr class="row-odd"><td><p>exp</p></td>
+<td><p>Attestation expiration timestamp.
+A good practice to avoid security
+problems is to have a limited
+duration of the attestation.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>String:
+&quot;WalletInstanceAttestation&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p>policy_uri</p></td>
+<td><p>Url to the privacy policy
+of the wallet</p></td>
+</tr>
+<tr class="row-even"><td><p>tos_uri</p></td>
+<td><p>Url to the terms
+of use of the wallet provider</p></td>
+</tr>
+<tr class="row-odd"><td><p>logo_uri</p></td>
+<td><p>Logo url of the wallet provider</p></td>
+</tr>
+<tr class="row-even"><td><p>asc</p></td>
+<td><p>Attested security context:
+Represents a level of &quot;trust&quot; of
+the service containing a Level Of
+Agreement defined in the metadata
+of the wallet provider</p></td>
+</tr>
+<tr class="row-odd"><td><p>cnf</p></td>
+<td><p>This parameter contains the JSON
+object called jwk containing the
+public key of the Wallet
+Instance, necessary for the
+holder binding</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="signature">
+<h4>Signature<a class="headerlink" href="#signature" title="Permalink to this heading">¶</a></h4>
+<p>The JWT (Wallet Instance Attestation) thus composed is signed using the
+private key of the wallet provider present to which the backend wallet
+has access.</p>
+</section>
+<section id="id3">
+<h4>Non-normative example<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
+<p>Below is an example of Wallet Instance Attestation:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;trust_chain&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;va+jwt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;x5c&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MIIBjDCCATGgAwIBAgIUZiFoj7bvmhTQvDQtCOY19fMVq/gwCgYIKoZIzj0EAwIwGzEZMBcGA1UEAwwQd2FsbGV0Lml0YWxpYS5pdDAeFw0yMzA2MTMxNDI1NDRaFw0yNjAzMDkxNDI1NDRaMBsxGTAXBgNVBAMMEHdhbGxldC5pdGFsaWEuaXQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASqsmuPcB/8Hnuxs4hGtwEztuvvA5zzKePuUcU9N599SdR9HFg8hoL1PMPpDylP8cnDglDU9qNG8LJSELZz1Oojo1MwUTAdBgNVHQ4EFgQUj5fkXeflngzbABlwT6ra1bOQ11cwHwYDVR0jBBgwFoAUj5fkXeflngzbABlwT6ra1bOQ11cwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA+avjz/CVnxq+50iAxKLjyRvK/W9XgCp6cKDXs7Y4tugCIQDMWGYL0adwYKhKitYsk8HRIKFDGOZmqZFI35XFehgKQA==&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;policy_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/privacy_policy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;tos_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/info_policy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;logo_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/logo.svg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;asc&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/LoA/basic&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686666443</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686673643</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Whose corresponding JWT is as follows:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6W10sInR5cCI6InZhK2p3dCIsIng1YyI6WyJNSUlCakRDQ0FUR2dBd0lCQWdJVVppRm9qN2J2bWhUUXZEUXRDT1kxOWZNVnEvZ3dDZ1lJS29aSXpqMEVBd0l3R3pFWk1CY0dBMVVFQXd3UWQyRnNiR1YwTG1sMFlXeHBZUzVwZERBZUZ3MHlNekEyTVRNeE5ESTFORFJhRncweU5qQXpNRGt4TkRJMU5EUmFNQnN4R1RBWEJnTlZCQU1NRUhkaGJHeGxkQzVwZEdGc2FXRXVhWFF3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVNxc211UGNCLzhIbnV4czRoR3R3RXp0dXZ2QTV6ektlUHVVY1U5TjU5OVNkUjlIRmc4aG9MMVBNUHBEeWxQOGNuRGdsRFU5cU5HOExKU0VMWnoxT29qbzFNd1VUQWRCZ05WSFE0RUZnUVVqNWZrWGVmbG5nemJBQmx3VDZyYTFiT1ExMWN3SHdZRFZSMGpCQmd3Rm9BVWo1ZmtYZWZsbmd6YkFCbHdUNnJhMWJPUTExY3dEd1lEVlIwVEFRSC9CQVV3QXdFQi96QUtCZ2dxaGtqT1BRUURBZ05KQURCR0FpRUErYXZqei9DVm54cSs1MGlBeEtManlSdksvVzlYZ0NwNmNLRFhzN1k0dHVnQ0lRRE1XR1lMMGFkd1lLaEtpdFlzazhIUklLRkRHT1ptcVpGSTM1WEZlaGdLUUE9PSJdfQ</span><span class="p">.</span><span class="nx">eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInR5cGUiOiJXYWxsZXRJbnN0YW5jZUF0dGVzdGF0aW9uIiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyIsImFzYyI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvYmFzaWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjY2NDQzLCJleHAiOjE2ODY2NzM2NDN9</span><span class="p">.</span><span class="nx">G4TYxEov2CvmwEgmVp4cN2iWkCtiJJY2afkSbDrNwJ</span><span class="o">-</span><span class="nx">yqfLP4v7AKZs5EUsvmbbvhFTaKrNcn6</span><span class="o">-</span><span class="nx">ZnJ9d0ej6Zg</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Verifiable through the following public key (Wallet Provider Public Key)
+obtained within the Entity Configuration of the Wallet Provider,
+attested in the related Trust Chain</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="format-of-the-wallet-provider-entity-configuration">
+<h3>Format of the Wallet Provider Entity Configuration<a class="headerlink" href="#format-of-the-wallet-provider-entity-configuration" title="Permalink to this heading">¶</a></h3>
+<p>The Wallet Provider Entity Configuration is a JWT containing all the metadata
+relating to the wallet provider such as the public keys, the supported algorithms,
+the type of entity (in addition to the wallet provider, for example, it could also
+be a relying party) and the list of the available endpoints.
+It broadly implements openid-federation protocol.</p>
+<section id="id4">
+<h4>Header<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>alg</p></td>
+<td><p>Algorithm to verify the token signature (es. ES256)</p></td>
+</tr>
+<tr class="row-odd"><td><p>kid</p></td>
+<td><p>Thumbprint of the public key used for signing</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>Media type, in this case, we use the entity-statement+jwt value</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h4>Payload<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>iss</p></td>
+<td><p>The public url of the wallet
+provider</p></td>
+</tr>
+<tr class="row-odd"><td><p>sub</p></td>
+<td><p>The public url of the wallet
+provider</p></td>
+</tr>
+<tr class="row-even"><td><p>iat</p></td>
+<td><p>Configuration release timestamp</p></td>
+</tr>
+<tr class="row-odd"><td><p>exp</p></td>
+<td><p>Configuration expiration
+timestamp.</p></td>
+</tr>
+<tr class="row-even"><td><p>jwks</p></td>
+<td><p>Containing the keys attribute
+which is an array of all the
+public keys associated with the
+domain (they could also match
+those of the wallet provider)</p></td>
+</tr>
+<tr class="row-odd"><td><p>metadata</p></td>
+<td><p>This attribute will contain for
+each entity its own
+configuration. In our case we
+will have for now the wallet
+provider entity contained within
+the <cite>eudi_wallet_provider</cite>
+attribute and the more generic
+entity <cite>federation_entity</cite></p></td>
+</tr>
+</tbody>
+</table>
+<section id="payload-eudi-wallet-provider">
+<h5>Payload <cite>eudi_wallet_provider</cite><a class="headerlink" href="#payload-eudi-wallet-provider" title="Permalink to this heading">¶</a></h5>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>jwks</p></td>
+<td><p>Containing the keys attribute
+which is an array of all the
+wallet provider's public keys</p></td>
+</tr>
+<tr class="row-odd"><td><p>token_endpoint</p></td>
+<td><p>Endpoint for obtaining the Wallet
+Instance Attestation</p></td>
+</tr>
+<tr class="row-even"><td><p>asc_values_supported</p></td>
+<td><p>List of supported values for
+the certified security context.
+These values define a level of
+assurance about the security of
+the app. In particular we will
+mainly have 3 values associated
+with low, medium and high
+security. An attested security
+context is defined according to
+the proof that the wallet
+instance is able to send to the
+wallet provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p>grant_types_supported</p></td>
+<td><p>The type of grants supported by
+the endpoint token. Therefore,
+for the wallet provider the token
+is equivalent only to the wallet
+instance attestation, therefore
+this attribute will contain an
+array with only one element:
+<a class="reference external" href="urn:ietf:params:oauth:grant-type">urn:ietf:params:oauth:grant-type</a>:
+wallet-instance-attestation</p></td>
+</tr>
+<tr class="row-even"><td><p>token_endpoint_auth_methods_suppo
+rted</p></td>
+<td><p>Supported authentication method
+for the endpoint token. In our
+case it's just private_key_jwt</p></td>
+</tr>
+<tr class="row-odd"><td><p>token_endpoint_auth_signing_alg_v
+alues_supported</p></td>
+<td><p>List of supported signature
+algorithms</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="payload-federation-entity">
+<h5>Payload <cite>federation_entity</cite><a class="headerlink" href="#payload-federation-entity" title="Permalink to this heading">¶</a></h5>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>organization_name</p></td>
+<td><p>Organization name</p></td>
+</tr>
+<tr class="row-odd"><td><p>homepage_uri</p></td>
+<td><p>Organization website</p></td>
+</tr>
+<tr class="row-even"><td><p>tos_uri</p></td>
+<td><p>Url to the terms of use</p></td>
+</tr>
+<tr class="row-odd"><td><p>policy_uri</p></td>
+<td><p>Url to the privacy policy</p></td>
+</tr>
+<tr class="row-even"><td><p>logo_uri</p></td>
+<td><p>URL of the organization logo</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id6">
+<h4>Non-normative example<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;entity-statement+jwt&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;keys&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;metadata&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;eudi_wallet_provider&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;keys&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;token_endpoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/token&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;asc_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;https://wallet.italia.it/LoA/basic&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;https://wallet.italia.it/LoA/medium&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;https://wallet.italia.it/LoA/high&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;grant_types_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;urn:ietf:params:oauth:grant-type:wallet-instance-attestation&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;token_endpoint_auth_methods_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;private_key_jwt&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;token_endpoint_auth_signing_alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;ES512&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;federation_entity&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;organization_name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PagoPa S.p.A.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;homepage_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;policy_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/privacy_policy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;tos_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/info_policy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;logo_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/logo.svg&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686667326</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1708785726</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Whose corresponding JWT is as follows:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9</span><span class="p">.</span><span class="nx">eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJqd2siOnsia2V5cyI6W3siY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiJxckpyajNBZl9CNTdzYk9JUnJjQk03YnI3d09jOHluajdsSEZQVGVmZlVrIiwieSI6IjFIMGNXRHlHZ3ZVOHcta1BLVV94eWNPQ1VOVDJvMGJ3c2xJUXRuUFU2aU0iLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIn1dfSwibWV0YWRhdGEiOnsiZXVkaV93YWxsZXRfcHJvdmlkZXIiOnsiandrIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoicXJKcmozQWZfQjU3c2JPSVJyY0JNN2JyN3dPYzh5bmo3bEhGUFRlZmZVayIsInkiOiIxSDBjV0R5R2d2VTh3LWtQS1VfeHljT0NVTlQybzBid3NsSVF0blBVNmlNIiwia2lkIjoiNXQ1WVlwQmhOLUVnSUVFSTVpVXpyNnIwTVIwMkxuVlEwT21la21OS2NqWSJ9XX0sInRva2VuX2VuZHBvaW50IjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L3Rva2VuIiwiYXNjX3ZhbHVlc19zdXBwb3J0ZWQiOlsiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9iYXNpYyIsImh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvbWVkaXVtIiwiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9oaWdoIl0sImdyYW50X3R5cGVzX3N1cHBvcnRlZCI6WyJ1cm46aWV0ZjpwYXJhbXM6b2F1dGg6Z3JhbnQtdHlwZTp3YWxsZXQtaW5zdGFuY2UtYXR0ZXN0YXRpb24iXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9tZXRob2RzX3N1cHBvcnRlZCI6WyJwcml2YXRlX2tleV9qd3QiXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9zaWduaW5nX2FsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2IiwiRVMzODQiLCJFUzUxMiJdfSwiZmVkZXJhdGlvbl9lbnRpdHkiOnsib3JnYW5pemF0aW9uX25hbWUiOiJQYWdvUGEgUy5wLkEuIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyJ9fSwiaWF0IjoxNjg2NjY3MzI2LCJleHAiOjE3MDg3ODU3MjZ9</span><span class="p">.</span><span class="nx">GiPss36QHS29YRmKkxPDNdS6lHmlNLLaLYQIVMGupXiTmQlhLANulePcKFkVBzq7tj1UUKu7zxfPfZMcuCo_EQ</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Verifiable through the public key of the wallet provider itself.</p>
+</section>
+</section>
+<section id="endpoints">
+<h3>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this heading">¶</a></h3>
+<p>The backend wallet that issues the wallet instance attestations must
+make available a series of APIs in REST format that follow the OpenId
+Federation standard.</p>
+<section id="metadata">
+<h4>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h4>
+<p>A <strong>GET /.well-known/openid-federation endpoint</strong> for retrieving the Wallet
+Provider Entity Configuration</p>
+</section>
+<section id="id7">
+<h4>Wallet Instance Attestation<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h4>
+<p>A second <strong>POST /token</strong> endpoint that takes two parameters as input:</p>
+<p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> which in our case is a string:
+<code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:grant-type:wallet-instance-attestation</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">assertion`</span></code> which contains the JWT of the Wallet Instance Attestation
+Request</p>
+<p>The response will then contain the Wallet Instance Attestation</p>
+</section>
+<section id="open-api-specifications">
+<h4>Open API specifications<a class="headerlink" href="#open-api-specifications" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span><span class="w"></span>
+<span class="nt">info</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Wallet Backend</span><span class="w"></span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span><span class="w"></span>
+<span class="nt">servers</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://wallet.italia.it</span><span class="w"></span>
+<span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">/.well-known/openid-federation</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get wallet provider metadata</span><span class="w"></span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Successful response</span><span class="w"></span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Jwt&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="s">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJqd2siOnsia2V5cyI6W3siY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiI0SE5wdEkteHIycGp5UkpLR01uejRXbWRuUURfdUpTcTRSOTVOajk4YjQ0IiwieSI6IkxJWm5TQjM5dkZKaFlnUzNrN2pYRTRyMy1Db0dGUXdadFBCSVJxcE5scmciLCJraWQiOiJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn1dfSwibWV0YWRhdGEiOnsiZXVkaV93YWxsZXRfcHJvdmlkZXIiOnsiandrIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9XX0sInRva2VuX2VuZHBvaW50IjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L3Rva2VuIiwiYWNyX3ZhbHVlc19zdXBwb3J0ZWQiOlsiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9iYXNpYyIsImh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvbWVkaXVtIiwiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9oaWdoIl0sImdyYW50X3R5cGVzX3N1cHBvcnRlZCI6WyJ1cm46aWV0ZjpwYXJhbXM6b2F1dGg6Z3JhbnQtdHlwZTp3YWxsZXQtaW5zdGFuY2UtYXR0ZXN0YXRpb24iXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9tZXRob2RzX3N1cHBvcnRlZCI6WyJwcml2YXRlX2tleV9qd3QiXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9zaWduaW5nX2FsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2IiwiRVMzODQiLCJFUzUxMiJdfSwiZmVkZXJhdGlvbl9lbnRpdHkiOnsib3JnYW5pemF0aW9uX25hbWUiOiJQYWdvUGEgUy5wLkEuIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyJ9fSwiaWF0IjoxNjg2NjYzODg0LCJleHAiOjE3MDg3ODIyODR9.cvL5gH1Wm6A9ii2iQ-TNsQnccY7MMPdlDb57jPwGqCMTM9JGygu_nzObjqADvMO2hcbLMKjb17WA5okdn9x9Aw&quot;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">/token</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">post</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create Wallet Instance Attestation</span><span class="w"></span>
+<span class="w">      </span><span class="nt">requestBody</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">content</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/CreateWalletInstanceAttestation&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Successful response</span><span class="w"></span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Jwt&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="s">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6W10sInR5cCI6InZhK2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInR5cGUiOiJXYWxsZXRJbnN0YW5jZUF0dGVzdGF0aW9uIiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyIsImFzYyI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvYmFzaWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjQ1MTE1LCJleHAiOjE2ODY2NTIzMTV9.hJ7oGn3RYO8ctF1Orl10zdFKjTk9-oowPZ3QeKuJC5tgdEPjesaZImQKjTOcx8v0IwSMMQ4YHX63hIGBMtnRFA&quot;</span><span class="w"></span>
+<span class="nt">components</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">CreateWalletInstanceAttestation</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w"></span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">grant_type</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">assertion</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Jwt&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">example</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">grant_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;urn:ietf:params:oauth:grant-type:wallet-instance-attestation&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">assertion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC8iLCJqdGkiOiI2ZWM2OTMyNC02MGE4LTRlNWItYTY5Ny1hNzY2ZDg1NzkwZWEiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjQ1MTE1LCJleHAiOjE2ODY2NTIzMTV9.3KInOD_N4zh5PmXj9QhS5aIVFF8zxMl6326KxDTAFYMPJbweD2ny95Nk6y_xTCOioail2WHDLpF3Rju16Q7Z7Q&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nt">Jwt</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;application/jwt&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_\-\+\/=]+)$</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+          
+            <div class="footer-buttons footer-buttons--next" role="navigation" aria-label="footer navigation">
+                  <a href="issuance.html" class="" title="issuance.rst" accesskey="n" rel="next">issuance.rst</a>
+              </div>
+            
+          </div>
+
+        </div>
+      </div>
+  </div>
+  <footer class="footer container-fluid container-fluid--desktop">
+  <div class="px-3 pt-md-3 pb-md-2 mx-md-5 mb-4 mb-md-0">
+    <div class="row align-items-center d-flex">
+      <div class="col-xs-12 col-sm-6 col-lg-4 pt-4 pt-sm-5">
+        <a href="http://teamdigitale.governo.it/" target="_blank" class="d-inline-block" rel="noopener">
+          <div class="d-flex align-items-center">
+            <div class="px-2">
+              <img class="team-logo--icon" src="_static/images/team-digitale-logo.svg" alt="Team per la Trasformazione Digitale">
+            </div>
+            <div class="px-2 border-white border-left team-logo--text text-white">
+              Team per la Trasformazione Digitale
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4">
+        <span class="d-block m-2 in-collaboration">in collaboration with</span>
+        <a href="https://www.agid.gov.it/" target="_blank" class="d-inline-block" rel="noopener">
+          <div class="d-flex align-items-center">
+            <div class="px-2">
+              <img class="agid-logo--icon" src="_static/images/agid-logo.svg" alt="Agenzia per l'Italia Digitale">
+            </div>
+            <span class="agid-logo--separator border-white border-left"></span>
+            <div class="px-2 agid-logo--text text-white">
+              Agenzia per l'Italia Digitale
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-12 col-lg-4 pt-4 pt-sm-5">
+        <div class="text-center text-lg-right social d-flex align-items-center justify-content-center justify-content-lg-end flex-column flex-lg-row">
+          <div class="mr-lg-1 mb-2 mb-lg-0">Follow us on</div>
+          <div>
+            <a href="https://github.com/italia/" class="d-inline-flex small-prints mx-1 social__link"><i class="d-inline-block it-github"></i></a>
+            <a href="https://twitter.com/teamdigitaleIT" class="d-inline-flex small-prints mx-1 social__link"><i class="d-inline-block it-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/teamdigitale/" class="d-finline-lex small-prints mx-1 social__link"><i class="d-inline-block it-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/row-->
+
+    <div class="row pb-4 colophon mt-md-5 mt-sm-3 pt-3 pt-sm-2">
+      <ul class="col list-inline small">
+        
+        <li class="list-inline-item">
+          <strong><a class="footer-menu__link text-light-blue small-prints" href="/privacy-policy/">Privacy policy</a></strong>
+        </li>
+        
+        <li class="list-inline-item">
+          <strong><a class="footer-menu__link text-light-blue small-prints" href="/cookies-policy">Cookie policy</a></strong>
+        </li>
+        
+        <li class="list-inline-item">
+          <strong><a class="footer-menu__link text-light-blue small-prints" href="/note-legali">Legal notes</a></strong>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</footer>
+  <script type="text/javascript">
+var t = {
+  this : "en",
+  locale : "en_US",
+  about_these_documents : "About these Documents",
+  active_lang : "current language",
+  cookiebar_accept : "Accept",
+  cookiebar_msg : "We are using cookies to provide statistics that help us give you the best experience of our site. By continuing to use the site you are agreeing to our use of cookies.",
+  cookiebar_privacy_policy : "Cookie policy",
+  copyright : "Copyright",
+  documents : "Documents",
+  download : "Download",
+  footer_link_privacy_policy : "Privacy policy",
+  footer_link_cookies : "Cookie policy",
+  footer_link_legal_notes : "Legal notes",
+  go_to : "Go to",
+  index : "Index",
+  last_updated : "Last updated",
+  most_viewed_this_month : "Most viewed this month",
+  navigation_menu_label : "Navigation menu",
+  navigation_menu_esc : "exit navigation",
+  search : "Search",
+  search_form_label : "Search in Document",
+  search_form_off : "exit search form",
+  search_form_on : "enter search form",
+  search_form_start : "start searching",
+  search_results : "Search Results",
+  search_no_results : "Your search did not match any documents. Please make sure that all words are spelled correctly.",
+  site_subtitle : "Public documents, made digital.",
+  site_title : "Docs Italia",
+  share_msg : "share",
+  skiplinks_goto_content : "go to content",
+  skiplinks_goto_navigation : "go to site navigation",
+  toggle_menu_label : "go to navigation",
+  version : "version",
+  compare : "Compare",
+  copy_link : "copy link",
+  copied_link : "copied link",
+  see_actions : "see actions",
+  other_actions : "other actions",
+  comments : "comments",
+  back_to_text : "back to the text",
+  glossary_empty : "information not found",
+  glossary : "glossary",
+  go_to_glossary : "vai al glossario",
+  deepening : "deepening",
+  example : "example",
+  must : "must",
+  must_not : "must not",
+  should : "should",
+  should_not : "should not",
+  may : "may",
+  use : "use",
+  use_not : "don't use",
+  consultation : "consultation",
+  show_more : "show more",
+  show_less : "show less",
+  content_index : "content index",
+  table_index : "table index",
+  figures_index : "index of figures",
+  figures : "figures",
+  tables : "tables",
+  contents : "contents",
+  in_consultation : "in consultation",
+  indices_and_glossary : "indices and glossary",
+  note : "note",
+  no_description : "no description",
+  no_content : "no sections",
+  no_glossary : "no glossary",
+  no_figures : "no figures",
+  no_tables : "no tables",
+  summary : "summary",
+  project : "Project",
+  administration : "Administration",
+  info : "About this document",
+  related : "Related documents",
+  actions : "Actions",
+  tags : "Tags",
+  view_source : "Source",
+  previous : "previous",
+  next : "next",
+  in_collaboration_with : "in collaboration with",
+  follow_us : "follow us on",
+  header_link_trasformazione : "Piano Triennale",
+  header_link_piattaforme : "Platforms",
+  header_link_software : "Software",
+  header_link_api : "API",
+  header_link_community : "Communities",
+  header_link_developers : "Developers",
+  header_link_design : "Designers",
+  header_link_tools : "Tools",
+  header_link_forum : "Forum",
+  header_link_docs : "Docs",
+  header_link_github : "GitHub",
+  header_link_projects : "Projects",
+  header_link_documents : "Documents",
+  header_link_administrations : "Administrations",
+  header_link_whatis : "What is",
+}
+</script>
+  <a href="#" aria-hidden="true" data-attribute="return-to-top" class="return-to-top">
+  <i class="it-collapse"></i>
+</a>
+  
+  <script type="text/javascript">
+var PRODUCTION_DOMAIN = 'localhost';
+var DOCSITALIA_DATA = {
+  publisher_slug: 'organizzazione-demo',
+  publisher_project_slug: 'progetto-demo'
+}
+
+LOCAL = true;
+READTHEDOCS_DATA = {
+  project: 'demo-document',
+  version: 'bozza',
+  language: 'it',
+  api_host: '//' + PRODUCTION_DOMAIN
+}
+
+var DOCUMENTATION_OPTIONS = {
+    URL_ROOT: './',
+    VERSION: 'version: latest',
+    LANGUAGE: 'en',
+    COLLAPSE_INDEX: false,
+    FILE_SUFFIX: '.html',
+    HAS_SOURCE: true,
+    SOURCELINK_SUFFIX: '.txt'
+};
+</script>
+<script src="_static/js/theme.js"></script>
+<script type="text/javascript" src="_static/documentation_options.js"></script>
+<script type="text/javascript" src="_static/underscore.js"></script>
+<script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script type="text/javascript" src="_static/doctools.js"></script>
+  
+  <script type="text/javascript">
+  <!-- Google analytics -->
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  $(document).ready(function() {
+    var sendGaPageview = function() {
+      ga('create', '', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+      
+    };
+    if ($.fn['cookiebar'].Constructor._getCookieEU()) {
+      sendGaPageview();
+    } else {
+      $(document).on('close.bs.cookiebar', sendGaPageview);
+    }
+  });
+  <!-- End Google analytics -->
+  <!-- Matomo -->
+  /*
+  var _paq = _paq || [];
+  _paq.push(['setSiteId', '']);
+  (function () {
+    var u = '//italia.piwikpro.com/';
+    _paq.push(['setTrackerUrl', u + 'piwik.php']);
+    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+    g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
+  })();
+
+  $(document).ready(function() {
+    var sendMatomoPageview = function() {
+      _paq.push(['setDocumentTitle', document.domain + '/' + document.title]);
+      _paq.push(['enableLinkTracking']);
+      _paq.push(['setDoNotTrack', 1]);
+      _paq.push(['trackPageView']);
+    };
+    if ($.fn['cookiebar'].Constructor._getCookieEU()) {
+      sendMatomoPageview();
+    } else {
+      $(document).on('close.bs.cookiebar', sendMatomoPageview);
+    }
+  });*/
+  <!-- End Matomo -->
+</script>
+  
+    <div class="cookiebar bg-dark p-4 hide" aria-hidden="true">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col-12 col-md-7">
+        <span class="text-white">We are using cookies to provide statistics that help us give you the best experience of our site. By continuing to use the site you are agreeing to our use of cookies.</span>
+      </div>
+      <div class="col-12 col-md-5 mt-2 mt-md-0 text-right">
+        <a class="btn btn-link" href="/cookies-policy/">Cookie policy</a>
+        <button class="btn btn-sm btn-primary mr-2" data-accept="cookiebar">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+  <div class="modal fade modal-sm-full" id="document-info" tabindex="-1" role="dialog" aria-labelledby="document-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content rounded">
+      <div class="modal-header">
+        <h4 class="modal-title" id="document-title">Titolo del documento non impostato</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p></p>
+        <p class="text-sans-serif">
+          <i class="docs-icon-project font-weight-bold"></i>
+          <span class="font-weight-bold ml-1 align-middle">Project:</span>
+          <a href="/organizzazione-demo/progetto-demo" class="align-middle">
+            Progetto demo
+          </a>
+        </p>
+        <p class="text-sans-serif">
+          <i class="docs-icon-publisher font-weight-bold"></i>
+          <span class="font-weight-bold ml-1 align-middle">Administration:</span>
+          <a href="/organizzazione-demo/" class="align-middle">
+            Organizzazione demo
+          </a>
+        </p>
+        <div class="d-flex text-sans-serif my-4">
+          <div class="d-flex font-weight-bold align-items-center"><span class="mr-2">Tags:</span></div>
+          <div class="d-flex flex-wrap">
+            
+            <span class="border border-primary rounded m-1 py-1 px-2 tag"><a href="#">demo</a></span>
+            
+            <span class="border border-primary rounded m-1 py-1 px-2 tag"><a href="#">docs italia</a></span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="document-actions" aria-hidden="true">
+  <div class="modal-dialog mt-5" role="document">
+     <div class="modal-content rounded">
+        <div class="modal-body p-1">
+          <div class="document-actions d-flex flex-column flex-md-row justify-content-around w-100 p-2 p-md-0 text-blue">
+  <div class="dropdown p-3 px-md-2 py-md-0 d-flex flex-wrap">
+    <a class="btn dropdown-toggle p-2 flex-grow-1 text-left" href="#" id="downloads-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="docs-icon-download align-middle"></span>
+      <span class="align-middle">Download</span>
+    </a>
+    <div class="dropdown-menu w-100" aria-labelledby="downloads-dropdown" aria-disabled="false">
+      <div class="link-list-wrapper">
+        <ul class="link-list">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="p-3 px-md-2 py-md-0">
+    <a href="#" role="button" class="btn p-2 disabled" aria-disabled="true">
+        <span class="docs-icon-github"></span>
+        <span class="align-middle">Source</span>
+    </a>
+  </div>
+</div>
+        </div>
+     </div>
+  </div>
+</div>
+
+  
+</body>
+</html>
