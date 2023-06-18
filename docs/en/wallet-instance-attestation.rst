@@ -3,7 +3,7 @@
 .. _wallet-instance-attestation.rst:
 
 Wallet Instance Attestation
-+++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
 
 Inside a **wallet solution** and, especially with regards
 to the **wallet instance**, it is essential to ensure the **authenticity,
