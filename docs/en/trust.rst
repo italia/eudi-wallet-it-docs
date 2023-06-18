@@ -7,30 +7,28 @@ The Infrastructure of Trust
 
 The EUDI Wallet Architecture Reference Framework (`EIDAS-ARF`_) defines the Trust Model as *"Collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem."*.
 
-In this section is defined how the Trust Model is implemented in a infrastructure of Trust based on
-OpenID Connect Federation 1.0 `OIDC-FED`_, where its Federation API, is used for the distribution of metadata, raw public keys, metadata policies, X.509 certificates and their revocation status.
+This section defines how the Trust Model is implemented in a Trust Infrastructure based on OpenID Connect Federation 1.0 (`OIDC-FED`_), where its Federation API is used for the distribution of metadata, raw public keys, metadata policies, X.509 certificates and their revocation status.
 
-The infrastructure of Trust allows the trust assessment mechanism to be applied between the parties defined in the `EIDAS-ARF`_.
+The Trust Infrastructure allows the trust assessment mechanism to be applied between the parties defined in the `EIDAS-ARF`_.
 
 ..  figure:: ../../images/trust-roles.svg
     :alt: federation portrain
     :width: 100%
     
-    The roles of the Federation infrastructure, where a Trust Anchor has one or more Intermediates and Leafs.
+    The roles of the Federation Infrastructure, where a Trust Anchor has one or more Intermediates and Leafs.
 
 General Properties
 ------------------
 
-OpenID Federation allows to build an infrastructure that is:
+OpenID Federation allows the building of an infrastructure that is:
 
-- **Secure and Tamper proof**, entities' attestations of metadata and keys are cryptographically signed in the chain of trust, composed by attestation issued by multiple parties that cannot be forged or tampered by an adversary;
-- **Privacy preserving**, The infrastructure is public and only exposes public data such as public keys and metadata of the participants for interoperability needs, it does not require authentication of the requesters therefore it does not track who is assessing trust against whom;
-- **Guarantor of the non-repudiation of long-lived attestations**, historical keys endpoints and historical Trust Chains, saved for years according to data retention policy, allow to certify the validity of a historical compliance, even in case of revocation, expiration or rotation of the keys to be used for signature verification;
-- **Dynamic and flexible**, any participants is free to modify parts of their metadata in total autonomy, these being published within their domains and verified through the Trust Chain. At the same time, the Trust Anchor or its Intermediate may publish a metadata policy to dynamically modify the metadata of all participants, as for disabling a vulnerable signature algorithm, and obtain certainty of propagation within a configured period of time, to all the participants;
-- **Efficient**, JWT and JSON formats have been adopted on the web for years, they are cheap both in terms of storage and processing and there is a wide range of solutions, such as libraries and software development kits, which allow rapid implementation of the solution.
-- **Scalable**, the Trust Model scales to more than a single organization by means of Intermediates.
-- **Simple**, it is based on REST technology and formats widely used on the web and have become popular over the years.
-
+- **Secure and Tamper proof**: Entities' attestations of metadata and keys are cryptographically signed in the chain of trust, composed by attestation issued by multiple parties that cannot be forged or tampered by an adversary.
+- **Privacy preserving**: The infrastructure is public and only exposes public data such as public keys and metadata of the participants for interoperability needs, it does not require authentication of the requesters therefore it does not track who is assessing trust against whom.
+- **Guarantor of the non-repudiation of long-lived attestations**: Historical keys endpoints and historical Trust Chains, saved for years according to data retention policy, allow to certify the validity of a historical compliance, even in case of revocation, expiration or rotation of the keys to be used for signature verification.
+- **Dynamic and flexible**: Any participants is free to modify parts of their metadata in total autonomy, these being published within their domains and verified through the Trust Chain. At the same time, the Trust Anchor or its Intermediate may publish a metadata policy to dynamically modify the metadata of all participants, as for disabling a vulnerable signature algorithm, and obtain certainty of propagation within a configured period of time, to all the participants.
+- **Efficient**: JWT and JSON formats have been adopted on the web for years, they are cheap both in terms of storage and processing and there is a wide range of solutions, such as libraries and software development kits, which allow rapid implementation of the solution.
+- **Scalable**: The Trust Model scales to more than a single organization by means of Intermediates.
+- **Simple**: It is based on REST technology and formats widely used on the web and have become popular over the years.
 
 This implementation profile
 ---------------------------
@@ -43,17 +41,14 @@ The Wallet Instance, as personal devices, is certified as trusted by means of a 
 
 This is called *Wallet Instance Attestation* and documented in the section dedicated to the Wallet Solution.
 
-
 Configuration of the Federation
 -------------------------------
 
 The configuration of the Federation is published by the Trust Anchor inside its Entity Configuration, available at a well known web path and corresponding to a **.well-known/openid-federation**.
 
-All the entities MUST obtain the Federation configuration before the operational phase and they
-MUST keep it up-to-date. The Federation configuration contains the Trust Anchor
-public keys for the signature operations, the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (**max_path length**).
+All the entities MUST obtain the Federation configuration before the operational phase and they MUST keep it up-to-date. The Federation configuration contains the Trust Anchor public keys for the signature operations, the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (**max_path length**).
 
-Below a non-normative example of Trust Anchor Entity Configuration, where each parameter is documented in the `OIDC-FED`_ specifications:
+Below a non-normative example of Trust Anchor Entity
 
 .. code-block:: python
 
