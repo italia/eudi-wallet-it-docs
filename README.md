@@ -59,7 +59,7 @@ pandoc -o eidas-it-wallet-docs.odt index.html
 
 ## Versioning
 
-This project participates in the versioning model  [*Semantic
+This project participates in the versioning model [*Semantic
 Versioning*](https://semver.org/).
 
 Furthermore, this project uses the git *branches* and *tags* in the following way:
