@@ -543,73 +543,67 @@ Non-normative example
 .. code-block:: javascript
 
   {
-    "alg": "ES256",
-    "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
-    "typ": "entity-statement+jwt"
-  }
-  .
-  {
-    "iss": "https://wallet.italia.it",
-    "sub": "https://wallet.italia.it",
-    "jwk": {
-      "keys": [
-        {
-          "crv": "P-256",
-          "kty": "EC",
-          "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
-          "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
-          "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
-        }
-      ]
-    },
-    "metadata": {
-      "eudi_wallet_provider": {
-        "jwk": {
-          "keys": [
-            {
-              "crv": "P-256",
-              "kty": "EC",
-              "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
-              "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
-              "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
-            }
-          ]
-        },
-        "token_endpoint": "https://wallet.italia.it/token",
-        "asc_values_supported": [
-          "https://wallet.italia.it/LoA/basic",
-          "https://wallet.italia.it/LoA/medium",
-          "https://wallet.italia.it/LoA/high"
-        ],
-        "grant_types_supported": [
-          "urn:ietf:params:oauth:grant-type:wallet-instance-attestation"
-        ],
-        "token_endpoint_auth_methods_supported": [
-          "private_key_jwt"
-        ],
-        "token_endpoint_auth_signing_alg_values_supported": [
-          "ES256",
-          "ES384",
-          "ES512"
+  "iss": "https://wallet.italia.it",
+  "sub": "https://wallet.italia.it",
+  "jwks": {
+    "keys": [
+      {
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
+        "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
+        "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
+      }
+    ]
+  },
+  "metadata": {
+    "eudi_wallet_provider": {
+      "jwks": {
+        "keys": [
+          {
+            "crv": "P-256",
+            "kty": "EC",
+            "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
+            "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
+            "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
+          }
         ]
       },
-      "federation_entity": {
-        "organization_name": "PagoPa S.p.A.",
-        "homepage_uri": "https://wallet.italia.it",
-        "policy_uri": "https://wallet.italia.it/privacy_policy",
-        "tos_uri": "https://wallet.italia.it/info_policy",
-        "logo_uri": "https://wallet.italia.it/logo.svg"
-      }
+      "token_endpoint": "https://wallet.italia.it/token",
+      "asc_values_supported": [
+        "https://wallet.italia.it/LoA/basic",
+        "https://wallet.italia.it/LoA/medium",
+        "https://wallet.italia.it/LoA/high"
+      ],
+      "grant_types_supported": [
+        "urn:ietf:params:oauth:grant-type:wallet-instance-attestation"
+      ],
+      "token_endpoint_auth_methods_supported": [
+        "private_key_jwt"
+      ],
+      "token_endpoint_auth_signing_alg_values_supported": [
+        "ES256",
+        "ES384",
+        "ES512"
+      ]
     },
-    "iat": 1686667326,
-    "exp": 1708785726
+    "federation_entity": {
+      "organization_name": "PagoPa S.p.A.",
+      "homepage_uri": "https://wallet.italia.it",
+      "policy_uri": "https://wallet.italia.it/privacy_policy",
+      "tos_uri": "https://wallet.italia.it/info_policy",
+      "logo_uri": "https://wallet.italia.it/logo.svg"
+    }
+  },
+  "iat": 1687171759,
+  "exp": 1709290159
   }
 
 Whose corresponding JWS is as follows:
 
 .. code-block:: javascript
 
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJqd2siOnsia2V5cyI6W3siY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiJxckpyajNBZl9CNTdzYk9JUnJjQk03YnI3d09jOHluajdsSEZQVGVmZlVrIiwieSI6IjFIMGNXRHlHZ3ZVOHcta1BLVV94eWNPQ1VOVDJvMGJ3c2xJUXRuUFU2aU0iLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIn1dfSwibWV0YWRhdGEiOnsiZXVkaV93YWxsZXRfcHJvdmlkZXIiOnsiandrIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoicXJKcmozQWZfQjU3c2JPSVJyY0JNN2JyN3dPYzh5bmo3bEhGUFRlZmZVayIsInkiOiIxSDBjV0R5R2d2VTh3LWtQS1VfeHljT0NVTlQybzBid3NsSVF0blBVNmlNIiwia2lkIjoiNXQ1WVlwQmhOLUVnSUVFSTVpVXpyNnIwTVIwMkxuVlEwT21la21OS2NqWSJ9XX0sInRva2VuX2VuZHBvaW50IjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L3Rva2VuIiwiYXNjX3ZhbHVlc19zdXBwb3J0ZWQiOlsiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9iYXNpYyIsImh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvbWVkaXVtIiwiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9oaWdoIl0sImdyYW50X3R5cGVzX3N1cHBvcnRlZCI6WyJ1cm46aWV0ZjpwYXJhbXM6b2F1dGg6Z3JhbnQtdHlwZTp3YWxsZXQtaW5zdGFuY2UtYXR0ZXN0YXRpb24iXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9tZXRob2RzX3N1cHBvcnRlZCI6WyJwcml2YXRlX2tleV9qd3QiXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9zaWduaW5nX2FsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2IiwiRVMzODQiLCJFUzUxMiJdfSwiZmVkZXJhdGlvbl9lbnRpdHkiOnsib3JnYW5pemF0aW9uX25hbWUiOiJQYWdvUGEgUy5wLkEuIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyJ9fSwiaWF0IjoxNjg2NjY3MzI2LCJleHAiOjE3MDg3ODU3MjZ9.GiPss36QHS29YRmKkxPDNdS6lHmlNLLaLYQIVMGupXiTmQlhLANulePcKFkVBzq7tj1UUKu7zxfPfZMcuCo_EQ
+  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJqd2tzIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoicXJKcmozQWZfQjU3c2JPSVJyY0JNN2JyN3dPYzh5bmo3bEhGUFRlZmZVayIsInkiOiIxSDBjV0R5R2d2VTh3LWtQS1VfeHljT0NVTlQybzBid3NsSVF0blBVNmlNIiwia2lkIjoiNXQ1WVlwQmhOLUVnSUVFSTVpVXpyNnIwTVIwMkxuVlEwT21la21OS2NqWSJ9XX0sIm1ldGFkYXRhIjp7ImV1ZGlfd2FsbGV0X3Byb3ZpZGVyIjp7Imp3a3MiOnsia2V5cyI6W3siY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiJxckpyajNBZl9CNTdzYk9JUnJjQk03YnI3d09jOHluajdsSEZQVGVmZlVrIiwieSI6IjFIMGNXRHlHZ3ZVOHcta1BLVV94eWNPQ1VOVDJvMGJ3c2xJUXRuUFU2aU0iLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIn1dfSwidG9rZW5fZW5kcG9pbnQiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvdG9rZW4iLCJhc2NfdmFsdWVzX3N1cHBvcnRlZCI6WyJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvTG9BL2Jhc2ljIiwiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9tZWRpdW0iLCJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvTG9BL2hpZ2giXSwiZ3JhbnRfdHlwZXNfc3VwcG9ydGVkIjpbInVybjppZXRmOnBhcmFtczpvYXV0aDpncmFudC10eXBlOndhbGxldC1pbnN0YW5jZS1hdHRlc3RhdGlvbiJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX21ldGhvZHNfc3VwcG9ydGVkIjpbInByaXZhdGVfa2V5X2p3dCJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX3NpZ25pbmdfYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiLCJFUzM4NCIsIkVTNTEyIl19LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJvcmdhbml6YXRpb25fbmFtZSI6IlBhZ29QYSBTLnAuQS4iLCJob21lcGFnZV91cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJwb2xpY3lfdXJpIjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L3ByaXZhY3lfcG9saWN5IiwidG9zX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L2xvZ28uc3ZnIn19LCJpYXQiOjE2ODcxNzE3NTksImV4cCI6MTcwOTI5MDE1OX0.SgpvvRx7JTRB27pRHQi30rRri1c4EovfcuYINxkeekSAfOYN9ogoQnVCF-os0jdNNIxN_B5pdEtXA7ScZu1aBQ
 
 Verifiable through the public key of the Wallet Provider itself.
 
