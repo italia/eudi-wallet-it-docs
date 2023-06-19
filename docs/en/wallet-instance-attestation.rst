@@ -239,7 +239,7 @@ Non-normative example
     "exp": 1686652315
   }
 
-Whose corresponding JWT is as follows:
+Whose corresponding JWS is as follows:
 
 .. code-block:: javascript
 
@@ -405,7 +405,7 @@ Below is an example of Wallet Instance Attestation:
   }
 
 
-Whose corresponding JWT is as follows:
+Whose corresponding JWS is as follows:
 
 .. code-block:: javascript
 
@@ -605,7 +605,7 @@ Non-normative example
     "exp": 1708785726
   }
 
-Whose corresponding JWT is as follows:
+Whose corresponding JWS is as follows:
 
 .. code-block:: javascript
 
@@ -632,7 +632,7 @@ A second **POST /token** endpoint that takes two parameters as input:
 ``grant_type`` which in our case is a string:
 ``urn:ietf:params:oauth:grant-type:wallet-instance-attestation``
 
-``assertion``` which contains the JWT of the Wallet Instance Attestation
+``assertion``` which contains the signed JWT of the Wallet Instance Attestation
 Request
 
 The response will then contain the Wallet Instance Attestation
