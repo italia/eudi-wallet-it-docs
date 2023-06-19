@@ -115,10 +115,10 @@ Static view of the components
 
 Dynamic view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We do not go into the details of the Wallet Provider's backend as it will be the
-subject of a subsequent design review. For now, we will just analyze the
-format of the Wallet Instance Attestation and how it is issued by the
-Wallet Provider's backend.
+We do not go into the details of the Wallet Provider's backend as
+it will be the subject of a subsequent design review. For now, we
+will just analyze the format of the Wallet Instance Attestation and
+how it is issued by the Wallet Provider's backend.
 
 .. figure:: https://www.plantuml.com/plantuml/svg/XPB1RjH038RlynIc9v1OSU-XAk9GWSG50RtqucH-HLOJJ_1u6csVdcbsTqG85LVxy-VypjncP_CoZU7DR3nCJ8xqJ6u5WOidBLC72s6kbFGoipfT_SYmA-9CPLk_vt64qsUjKksn8elya-cuVuJ64zA5KEXmKzdhEYmkFCepQ3cXSjOzQ38o_2h8_c4sP5HVRuZGbuaS5ZdSBDqrtS4lixEb9uamck0SsJaitQ5ITT7NSuNwfCwYeiCVDlBZZFoU7d5STufXWdgjGEESHFsyhvf-yYZLXDrIjvATHibUsKl0EoYiqgjwPh4SGbDzChoq_ZeaVSmPvfAKlftoqvVxxu5xbwTrRxV9per--r_HktgGTNANGYup0xI8Gf7p7iuoA7injDPmoSSQr_PEsBwl_OpN0--F_BejOdkHwYvDtNXf3om-g87ZaJnHwfn5IR5idjGjD9Pf_0q0
    :name: sequence diagram for Wallet Instance Attestation request
