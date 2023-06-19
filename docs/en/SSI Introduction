@@ -11,7 +11,7 @@ Introduction to SSI
 **Definition**
 
 Self-Sovereign Identity (SSI) refers to a new paradigm in Identity and Access Management (IAM). It consists of a digital identity model that, differently from existing identity management ecosystems, gives individuals total control and ownership over their personal data.
-Users will hold the digital documents of their identity, will control to which actors they will share those documents and also have the ability to revoke the use of those documents - all of this along with activity history.
+Users hold the digital documents of their identity, will control to which actors they will share those documents and also have the ability to revoke the use of those documents - all of this along with activity history.
 
 SSI is also significant in the field of data exchange or data governance. This is relevant both at the national and European levels, including the new eIDAS Regulation. Indeed, it envisages a login option intended for European Users - be them citizens, public administrations and companies - who want to access another Member State's services using their national authentication systems.
 
