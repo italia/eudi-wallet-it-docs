@@ -104,7 +104,7 @@ High-end design
 Static view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: https://www.plantuml.com/plantuml/svg/XP4nJuSm44VtVehBdxbnPp2iRYx6qTHIjR7SaVQ0-EqzaICDgN4ZBxpqzTUXiCkyJCaupvJXzbH2le4hiCW7A7rsAGM6ETCQn-E7RMSloi0OJzDC691FeL1QE1BMWZBeraW2Mbv4wK8VQayPT5yX9TgCQPclpdy676lnGF0ZN93DyVs3xVsrhOU70hCi0_JshwHXFJp-Rg4dIuECo96moD7xeBQbUKBEbE0EPEwuEWx6N2zj_uXqU8wbhVMhD3tjbAX1BYIl_mq0
+.. figure:: ../../images/static_view_wallet_instance_attestation.svg
    :name: wallet solution schema
    :alt: the image shows how the Wallet Provider's backend and the
          wallet instances are contained within the wallet
@@ -120,7 +120,7 @@ it will be the subject of a subsequent design review. For now, we
 will just analyze the format of the Wallet Instance Attestation and
 how it is issued by the Wallet Provider's backend.
 
-.. figure:: https://www.plantuml.com/plantuml/svg/XPB1RjH038RlynIc9v1OSU-XAk9GWSG50RtqucH-HLOJJ_1u6csVdcbsTqG85LVxy-VypjncP_CoZU7DR3nCJ8xqJ6u5WOidBLC72s6kbFGoipfT_SYmA-9CPLk_vt64qsUjKksn8elya-cuVuJ64zA5KEXmKzdhEYmkFCepQ3cXSjOzQ38o_2h8_c4sP5HVRuZGbuaS5ZdSBDqrtS4lixEb9uamck0SsJaitQ5ITT7NSuNwfCwYeiCVDlBZZFoU7d5STufXWdgjGEESHFsyhvf-yYZLXDrIjvATHibUsKl0EoYiqgjwPh4SGbDzChoq_ZeaVSmPvfAKlftoqvVxxu5xbwTrRxV9per--r_HktgGTNANGYup0xI8Gf7p7iuoA7injDPmoSSQr_PEsBwl_OpN0--F_BejOdkHwYvDtNXf3om-g87ZaJnHwfn5IR5idjGjD9Pf_0q0
+.. figure:: ../../images/dynamic_view_sequence_wallet_instance_attestation.svg
    :name: sequence diagram for Wallet Instance Attestation request
    :alt: The figure shows the sequence diagram for issuing a Wallet Instance Attestation.
          The steps will be described below.
