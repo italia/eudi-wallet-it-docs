@@ -27,56 +27,17 @@ In the SSI model, the data source (e.g., an educational insitution) gives creden
 A secure Self-Sovereign Identity Wallet is essential because it allows people to carry their credentials anywhere on their digital devices. Indeed, the Wallet usually comes in the form of an application on the User's mobile phone. Portability is hence one of the principles of SSI.
 
 Other key elements that characterize an SSI system include:
- - Privacy and control: SSI enables individuals to maintain control over their personal data. They can choose what information to share, with whom and for what purpose. This reduces the risk of personal data being collected, stored or misused by centralized entities;
- - Security: SSI leverages advanced cryptographic techniques to ensure the integrity and security of identity information. It reduces the risk of identity theft, fraud and unauthorized access, as the data remain in the individual's control and is not stored in a single vulnerable location;
+ - Privacy and control: SSI enables individuals to maintain control over their personal data. They can choose what information to release, with whom and for what purpose. This reduces the risk of personal data being collected, stored or misused;
+ - Security: SSI leverages advanced cryptographic techniques to ensure the integrity and security of identity information. It avoids the risk of identity theft, fraud and unauthorized access, as the data remain in the individual's control and is not stored in a single vulnerable location;
  - Interoperability: SSI promotes interoperability by enabling different systems and organizations to recognize and verify identities without relying on a central authority. This allows for seamless and trusted interactions between individuals, organizations and even across borders;
  - Efficiency and cost reduction: individuals can manage their own identities with SSI, eliminating the need for multiple identity credentials and repetitive identity verification processes. This can streamline administrative processes, reduce costs and enhance user experience.
     
 **Example**
 
 When a User wants to purchase a service, the service provider asks the User for a certain proof. Instead of presenting physical identification documents or disclosing their full data, the individual can use their SSI system.
-An example of SSI in action could be a scenario where an individual needs to prove their age to access a restricted service, such as purchasing age-restricted items. They would share only the necessary information, such as a digitally signed proof of being above the legal age, without revealing any other personal details.
-The verifier can then cryptographically validate the proof without needing to rely on a centralized authority or store the individual's personal information.
+An example of SSI in action could be a scenario where an individual needs to prove their age to access a restricted service, such as purchasing age-restricted items. They would release only the necessary information, such as a digitally signed proof of being above the legal age, without revealing any other personal details.
+The verifier can then cryptographically validate the proof.
     
-General Properties
-------------------
-    
-[TODO]
-
-    
-Requirements
-------------
-
- - req 1
- - req 2
-
-
-Attributes
-----------
-
-[Table with parameters/attributes]
-    
-.. list-table:: 
-   :widths: 20 60
-   :header-rows: 1
-
-   * - **Claim**
-     - **Description**
-   * - key
-     - value
-
-          
-Implementation considerations
------------------------------
-
-TODO
-
-
-Libraries and code snippets
---------------------------- 
-
-TODO
-
 
 External references
 -------------------
