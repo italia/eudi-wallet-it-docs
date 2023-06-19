@@ -331,11 +331,26 @@ Payload
 |                                   | of the wallet provider            |
 +-----------------------------------+-----------------------------------+
 | cnf                               | This parameter contains the JSON  |
-|                                   | object called jwk containing the  |
-|                                   | public key of the Wallet          |
-|                                   | Instance, necessary for the       |
-|                                   | holder binding                    |
+|                                   | the payload of which is shown     |
+|                                   | below                             |
 +-----------------------------------+-----------------------------------+
+
+Payload of `cnf`
+''''''''''''''''
+
++-----------------------+-------------------------------------------------+
+| **key**               | **value**                                       |
++-----------------------+-------------------------------------------------+
+|| jwk                  || The public key of the Wallet                   |
+||                      || instance necessary for the                     |
+||                      || holder binding                                 |
++-----------------------+-------------------------------------------------+
+|| vp_formats_supported || The Verifiable Credential and                  |
+||                      || Verifiable Presentation formats                |
+||                      || supported by the Wallet                        |
+||                      || See paragraph. 8.1 of                          |
+||                      || OpenID for Verifiable Presentations - draft 19 |
++-----------------------+-------------------------------------------------+
 
 Signature
 ^^^^^^^^^
@@ -377,6 +392,14 @@ Below is an example of Wallet Instance Attestation:
         "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
         }
       },
+      "vp_formats_supported": {
+        "jwt_vc_json": {
+          "alg_values_supported": ["ES256K", "ES384"],
+        },
+        "jwt_vp_json": {
+          "alg_values_supported": ["ES256K", "EdDSA"],
+        },
+      },
     "iat": 1686666443,
     "exp": 1686673643
   }
@@ -386,7 +409,7 @@ Whose corresponding JWT is as follows:
 
 .. code-block:: javascript
 
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6W10sInR5cCI6InZhK2p3dCIsIng1YyI6WyJNSUlCakRDQ0FUR2dBd0lCQWdJVVppRm9qN2J2bWhUUXZEUXRDT1kxOWZNVnEvZ3dDZ1lJS29aSXpqMEVBd0l3R3pFWk1CY0dBMVVFQXd3UWQyRnNiR1YwTG1sMFlXeHBZUzVwZERBZUZ3MHlNekEyTVRNeE5ESTFORFJhRncweU5qQXpNRGt4TkRJMU5EUmFNQnN4R1RBWEJnTlZCQU1NRUhkaGJHeGxkQzVwZEdGc2FXRXVhWFF3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVNxc211UGNCLzhIbnV4czRoR3R3RXp0dXZ2QTV6ektlUHVVY1U5TjU5OVNkUjlIRmc4aG9MMVBNUHBEeWxQOGNuRGdsRFU5cU5HOExKU0VMWnoxT29qbzFNd1VUQWRCZ05WSFE0RUZnUVVqNWZrWGVmbG5nemJBQmx3VDZyYTFiT1ExMWN3SHdZRFZSMGpCQmd3Rm9BVWo1ZmtYZWZsbmd6YkFCbHdUNnJhMWJPUTExY3dEd1lEVlIwVEFRSC9CQVV3QXdFQi96QUtCZ2dxaGtqT1BRUURBZ05KQURCR0FpRUErYXZqei9DVm54cSs1MGlBeEtManlSdksvVzlYZ0NwNmNLRFhzN1k0dHVnQ0lRRE1XR1lMMGFkd1lLaEtpdFlzazhIUklLRkRHT1ptcVpGSTM1WEZlaGdLUUE9PSJdfQ.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInR5cGUiOiJXYWxsZXRJbnN0YW5jZUF0dGVzdGF0aW9uIiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyIsImFzYyI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvYmFzaWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjY2NDQzLCJleHAiOjE2ODY2NzM2NDN9.G4TYxEov2CvmwEgmVp4cN2iWkCtiJJY2afkSbDrNwJ-yqfLP4v7AKZs5EUsvmbbvhFTaKrNcn6-ZnJ9d0ej6Zg
+  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6W10sInR5cCI6InZhK2p3dCIsIng1YyI6WyJNSUlCakRDQ0FUR2dBd0lCQWdJVVppRm9qN2J2bWhUUXZEUXRDT1kxOWZNVnEvZ3dDZ1lJS29aSXpqMEVBd0l3R3pFWk1CY0dBMVVFQXd3UWQyRnNiR1YwTG1sMFlXeHBZUzVwZERBZUZ3MHlNekEyTVRNeE5ESTFORFJhRncweU5qQXpNRGt4TkRJMU5EUmFNQnN4R1RBWEJnTlZCQU1NRUhkaGJHeGxkQzVwZEdGc2FXRXVhWFF3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVNxc211UGNCLzhIbnV4czRoR3R3RXp0dXZ2QTV6ektlUHVVY1U5TjU5OVNkUjlIRmc4aG9MMVBNUHBEeWxQOGNuRGdsRFU5cU5HOExKU0VMWnoxT29qbzFNd1VUQWRCZ05WSFE0RUZnUVVqNWZrWGVmbG5nemJBQmx3VDZyYTFiT1ExMWN3SHdZRFZSMGpCQmd3Rm9BVWo1ZmtYZWZsbmd6YkFCbHdUNnJhMWJPUTExY3dEd1lEVlIwVEFRSC9CQVV3QXdFQi96QUtCZ2dxaGtqT1BRUURBZ05KQURCR0FpRUErYXZqei9DVm54cSs1MGlBeEtManlSdksvVzlYZ0NwNmNLRFhzN1k0dHVnQ0lRRE1XR1lMMGFkd1lLaEtpdFlzazhIUklLRkRHT1ptcVpGSTM1WEZlaGdLUUE9PSJdfQ.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInR5cGUiOiJXYWxsZXRJbnN0YW5jZUF0dGVzdGF0aW9uIiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyIsImFzYyI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvYmFzaWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9LCJ2cF9mb3JtYXRzX3N1cHBvcnRlZCI6eyJqd3RfdmNfanNvbiI6eyJhbGdfdmFsdWVzX3N1cHBvcnRlZCI6WyJFUzI1NksiLCJFUzM4NCJdfSwiand0X3ZwX2pzb24iOnsiYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTZLIiwiRWREU0EiXX19fSwiaWF0IjoxNjg3MTYzOTUyLCJleHAiOjE2ODcxNzExNTJ9.piIg2QCRNG4sXsjdX1Q7oOQYL1f2urzE46CPiDUpdiGn0BmQ64DdL_mQUgCTS9rifgQB27qtG1mmklXYM8Hmpg
 
 Verifiable through the following public key (Wallet Provider Public Key)
 obtained within the Entity Configuration of the Wallet Provider,
