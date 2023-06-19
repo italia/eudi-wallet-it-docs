@@ -599,6 +599,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#configuration-of-the-federation">Configuration of the Federation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -791,6 +792,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#configuration-of-the-federation">Configuration of the Federation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -1131,8 +1133,9 @@ offline trust evaluation mechanisms.</p>
 <p>The Wallet Instance that verifies the request issued by the Relying Party can then use the Trust Anchor public keys to validate the entire Trust Chain related to the Relying Party and attest to its reliability.</p>
 <p>Furthermore, the Wallet Instance can apply the metadata policy, if available, to filter out any user attributes not attested in the trusted metadata from the Relying Party's request, which is obtained from the Trust Chain.</p>
 </section>
+</section>
 <section id="privacy-considerations">
-<h3>Privacy Considerations<a class="headerlink" href="#privacy-considerations" title="Permalink to this heading">¶</a></h3>
+<h2>Privacy Considerations<a class="headerlink" href="#privacy-considerations" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>EUDI Wallet Instances do not publish their metadata through an online service;</p></li>
 <li><p>Federation endpoints are public and do not require client authentication, making the Relying Party that searches for the Entity Statement of a Wallet anonymous;</p></li>
@@ -1141,7 +1144,6 @@ offline trust evaluation mechanisms.</p>
 <li><p>The metadata of the EUDI Wallet instance must not contain any information that may disclose technical information about the hardware used.</p></li>
 <li><p>Leaf entity, Intermediate, and Trust Anchor metadata may include the necessary amount of data as part of administrative, technical, and security contact information. It is generally not recommended to use personal contact details in such cases. From a legal perspective, the publication of such information is needed for operational support concerning technical and security matters and is in line with GDPR.</p></li>
 </ul>
-</section>
 </section>
 <section id="considerations-about-decentralization">
 <h2>Considerations about Decentralization<a class="headerlink" href="#considerations-about-decentralization" title="Permalink to this heading">¶</a></h2>
