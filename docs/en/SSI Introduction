@@ -18,7 +18,7 @@ SSI is also significant in the field of data exchange or data governance. This i
 The main roles in an SSI ecosystem are, therefore, as follows:
  - Issuers: parties who can issue attributes or "credentials" about a person;
  - Verifiers: parties who request Holders' attributes as they want to know something about them;
- - Hoders: individuals who own a Wallet and have control over the attributes that they can acquire, store and present to Verifiers;
+ - Holders: individuals who own a Wallet and have control over the attributes that they can acquire, store and present to Verifiers;
  - Verifiable Data Registries: parties or places that keep track of which metadata and schemas can be used to share attributes and identifiers.
 
 **What it is useful for**
