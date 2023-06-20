@@ -3,7 +3,7 @@
 .. _wallet-solution.rst:
 
 Wallet Solution
-+++++++++++++++++++++++++++
+-------------------
 
 The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of users in managing their digital assets securely. Designed to provide a seamless user experience, this solution enables users to leverage the capabilities of the Wallet effectively.
 
