@@ -118,7 +118,7 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
 Entity Configuration and Entity Statement
 `````````````````````````````````````````
 
-The Entity Configuration is the federation metadata that an Entity publishes about itself, which is verifiable by a trusted third party. The Entity Configuration is signed, and it can be verified with one of the public keys contained within it, as well as within the Entity Statement issued by the Trust Anchor or its Intermediate. This is defined in a parameter called authority_hints. The Entity Configuration may also contain one or more Trust Marks regarding its issuer.
+The Entity Configuration is the federation metadata that an Entity publishes about itself, which is verifiable thanks to a trusted third party. The Entity Configuration is signed, and it can be verified with one of the public keys contained within it, as well as within the Entity Statement issued by the Trust Anchor or its Intermediate. This is defined in a parameter called authority_hints. The Entity Configuration may also contain one or more Trust Marks regarding its issuer.
 
 Trust Anchors and Intermediates publish their Entity Configuration containing public keys and X.509 certificates. They also publish the Federation Entity endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures.
 
