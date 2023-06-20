@@ -5,7 +5,7 @@
 Wallet Solution
 -------------------
 
-The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of users in managing their digital assets securely. Designed to provide a seamless user experience, this solution enables users to leverage the capabilities of the Wallet effectively.
+The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of Users in managing their digital assets securely. Designed to provide a seamless User experience, this solution enables Users to leverage the capabilities of the Wallet effectively.
 
 Requirements
 ------------
@@ -13,19 +13,19 @@ Requirements
  - Trustworthiness within the Wallet ecosystem: the Wallet Instance must establish trust and reliability within the Wallet ecosystem.
  - Compliance with Provider specifications for obtaining PID and (Q)EAA: the Wallet Instance must adhere to the specifications set by Providers for obtaining Personal Identification (PID) and Qualified or non-qualified Electronic Address Authentication (Q)EAA.
  - Support for Android and iOS operating systems: the Wallet Instance should be compatible and functional on both Android and iOS operating systems, as well as available on the Play Store and App Store respectively.
- - Verification of device ownership by the user: the Wallet Instance must provide a mechanism to verify the user's actual possession of the device.
+ - Verification of device ownership by the User: the Wallet Instance must provide a mechanism to verify the User's actual possession of the device.
 
 Wallet Solution
 -----------------------------
 The Wallet Solution comprises a mobile app and backend services that work together to deliver a holistic Wallet experience.
 
-The mobile app serves as the primary interface for users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID¹), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes (QEAAs and EAAs respectively, or (Q)EAAs for short¹). Once a user installs the mobile app on their device, we refer to such an installation as a Wallet Instance for the user.
+The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID¹), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes (QEAAs and EAAs respectively, or (Q)EAAs for short¹). Once a User installs the mobile app on their device, we refer to such an installation as a Wallet Instance for the User.
 
-Supporting the mobile app, the backend services play a vital role in ensuring the security and reliability of the Wallet Solution. These services are responsible for issuing the Wallet Instance Attestation—a cryptographic proof that verifies the authenticity and integrity of the Wallet Instance. Additionally, the backend services handle revocation requests, allowing users to securely revoke access or privileges associated with their Wallet Instance when needed.
+Supporting the mobile app, the backend services play a vital role in ensuring the security and reliability of the Wallet Solution. These services are responsible for issuing the Wallet Instance Attestation—a cryptographic proof that verifies the authenticity and integrity of the Wallet Instance. Additionally, the backend services handle revocation requests, allowing Users to securely revoke access or privileges associated with their Wallet Instance when needed.
 
 Wallet Instance
 -----------------------------
-The Wallet Instance serves as a unique and secure representation of the user within the Wallet ecosystem. It establishes a strong and reliable identity for the user, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.
+The Wallet Instance serves as a unique and secure representation of the User within the Wallet ecosystem. It establishes a strong and reliable identity for the User, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.
 
 The Wallet Instance establishes trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These attestations, provided by the underlying backend services operated by the Wallet Provider, reference a pair of asymmetric cryptographic keys exclusively owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its legitimacy when engaging with other ecosystem actors.
 
@@ -37,7 +37,7 @@ The Wallet Instance can exist in three distinct states: Operational, Valid, and 
 
 Initialization Process:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To activate the Wallet Instance, users must install the mobile application on their device and open it. Furthermore, users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their device's capabilities.
+To activate the Wallet Instance, Users must install the mobile application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their device's capabilities.
 
 After completing these steps, the Wallet Instance is in the Operational state.
 
@@ -45,7 +45,7 @@ Transition to Valid state:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To transition from the Operational state to the Valid state, the Wallet Instance must obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes active, enabling secure transaction execution.
 
-In order to securely and unambiguously identify users, the Wallet Instance adopts a Level of Assurance (LoA) 3 authentication, which guarantees a high level of confidence in the user's identity. The authentication method is chosen by the PID provider from among the notified eID solutions at the national level.
+In order to securely and unambiguously identify Users, the Wallet Instance adopts a Level of Assurance (LoA) 3 authentication, which guarantees a high level of confidence in the User's identity. The authentication method is chosen by the PID provider from among the notified eID solutions at the national level.
 
 Once the Wallet Instance is in the Operational state, Users can:
  - Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers¹
@@ -60,7 +60,7 @@ A Valid Wallet Instance may revert to the Operational state under specific circu
 
 Deactivation:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Users have the ability to deactivate the Wallet Instance voluntarily. This action removes the operational capabilities of the Wallet Instance and sets it to the deactivated state. Deactivation provides users with control over access and usage according to their preferences.
+Users have the ability to deactivate the Wallet Instance voluntarily. This action removes the operational capabilities of the Wallet Instance and sets it to the deactivated state. Deactivation provides Users with control over access and usage according to their preferences.
 
 External references
 -------------------
