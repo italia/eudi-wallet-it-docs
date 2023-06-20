@@ -967,7 +967,7 @@ response_type=code
 &amp;code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
 &amp;code_challenge_method=S256
 &amp;request=eyJhbGciOiJSUzI1NiIsImtpZCI6ImsyYmRjIn0.ew0KIC Jpc3MiOiAiczZCaGRSa3F0MyIsDQogImF1ZCI6ICJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbSIsDQo gInJlc3BvbnNlX3R5cGUiOiAiY29kZSBpZF90b2tlbiIsDQogImNsaWVudF9pZCI6ICJzNkJoZFJrcXQz IiwNCiAicmVkaXJlY3RfdXJpIjogImh0dHBzOi8vY2xpZW50LmV4YW1...
-&amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+&amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation
 &amp;client_assertion=$WalletInstanceAttestation$
 </pre></div>
 </div>
@@ -988,7 +988,7 @@ response_type=code
 }
 ],
 &quot;redirect_uri&quot;:&quot;eudiw://start.wallet.example.org&quot;,
-&quot;client_assertion_type&quot;:&quot;urn:ietf:params:oauth:client-assertion-type:jwt-bearer&quot;,
+&quot;client_assertion_type&quot;:&quot;urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation&quot;,
 &quot;client_assertion&quot;:$WalletInstanceAttestation$
 }
 </pre></div>
@@ -1045,7 +1045,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 &amp;code=SplxlOBeZQQYbYS6WxSbIA
 &amp;redirect_uri=eudiw://start.wallet.example.org
 &amp;code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
-&amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+&amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation
 &amp;client_assertion=$WalletInstanceAttestation$
 </pre></div>
 </div>
@@ -1164,7 +1164,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p>TBD</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_assertion_type</strong></p></td>
-<td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-bearer</span></code>.</p></td>
+<td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation</span></code>.</p></td>
 <td><p>TBD</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_assertion</strong></p></td>

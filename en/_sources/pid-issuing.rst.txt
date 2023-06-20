@@ -68,7 +68,7 @@ The following is a non-normative example of the PAR.
     &code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
     &code_challenge_method=S256
     &request=eyJhbGciOiJSUzI1NiIsImtpZCI6ImsyYmRjIn0.ew0KIC Jpc3MiOiAiczZCaGRSa3F0MyIsDQogImF1ZCI6ICJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbSIsDQo gInJlc3BvbnNlX3R5cGUiOiAiY29kZSBpZF90b2tlbiIsDQogImNsaWVudF9pZCI6ICJzNkJoZFJrcXQz IiwNCiAicmVkaXJlY3RfdXJpIjogImh0dHBzOi8vY2xpZW50LmV4YW1...
-    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation
     &client_assertion=$WalletInstanceAttestation$ 
 
 The JWT payload of PAR is given as the following:
@@ -91,7 +91,7 @@ The JWT payload of PAR is given as the following:
     }
     ],
     "redirect_uri":"eudiw://start.wallet.example.org",
-    "client_assertion_type":"urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+    "client_assertion_type":"urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation",
     "client_assertion":$WalletInstanceAttestation$ 
     }
 
@@ -158,7 +158,7 @@ The JWT payload of PAR is given as the following:
     &code=SplxlOBeZQQYbYS6WxSbIA
     &redirect_uri=eudiw://start.wallet.example.org
     &code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
-    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation
     &client_assertion=$WalletInstanceAttestation$
 
 
@@ -285,7 +285,7 @@ The requests at the Pushed Authorization Request endpoint of the PID Provider MU
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the requet object.
       - TBD
     * - **client_assertion_type**
-      - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-bearer``.
+      - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation``.
       - TBD
     * - **client_assertion**
       - It MUST be the Wallet Instance Attestation signed JWT.
