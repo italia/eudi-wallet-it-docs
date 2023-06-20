@@ -17,17 +17,17 @@ Requirements
 
 Wallet Solution
 -----------------------------
-The Wallet Solution comprises a mobile app and backend services that work together to deliver a holistic Wallet experience.
+The Wallet Solution is implemented by a mobile app that deliver a holistic Wallet experience.
 
 The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID¹), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes (QEAAs and EAAs respectively, or (Q)EAAs for short¹). Once a User installs the mobile app on their device, we refer to such an installation as a Wallet Instance for the User.
 
-Supporting the mobile app, the backend services play a vital role in ensuring the security and reliability of the Wallet Solution. These services are responsible for issuing the Wallet Instance Attestation—a cryptographic proof that verifies the authenticity and integrity of the Wallet Instance. Additionally, the backend services handle revocation requests, allowing Users to securely revoke access or privileges associated with their Wallet Instance when needed.
+Supporting the mobile app, the Wallet Provider play a vital role in ensuring the security and reliability of the Wallet Solution. These services are responsible for issuing the Wallet Instance Attestation — a cryptographic proof that verifies the authenticity and integrity of the Wallet Instance.
 
 Wallet Instance
 -----------------------------
 The Wallet Instance serves as a unique and secure representation of the User within the Wallet ecosystem. It establishes a strong and reliable identity for the User, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.
 
-The Wallet Instance establishes trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These attestations, provided by the underlying backend services operated by the Wallet Provider, reference a pair of asymmetric cryptographic keys exclusively owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its legitimacy when engaging with other ecosystem actors.
+The Wallet Instance establishes trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These attestations, provided by the underlying Wallet Provider operated by the Wallet Provider, reference a pair of asymmetric cryptographic keys exclusively owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its legitimacy when engaging with other ecosystem actors.
 
 To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)³. This ensures that only the User can access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Instance Attestation section`_ and the `Trust Model section`_ of this document.
 
