@@ -579,15 +579,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">defined-terms.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#external-references">External references</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">defined-terms.rst</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#this-implementation-profile">This implementation profile</a></li>
@@ -767,15 +759,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">defined-terms.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#external-references">External references</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">defined-terms.rst</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#this-implementation-profile">This implementation profile</a></li>
@@ -911,25 +895,7 @@
           
   <section id="defined-terms-rst">
 <span id="id1"></span><h1>defined-terms.rst<a class="headerlink" href="#defined-terms-rst" title="Permalink to this heading">¶</a></h1>
-<p>[What is it]</p>
-<p>[What it is usefull for]</p>
-<p>[Example]</p>
-<section id="general-properties">
-<h2>General Properties<a class="headerlink" href="#general-properties" title="Permalink to this heading">¶</a></h2>
-<p>[TODO]</p>
-</section>
-<section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><p>req 1</p></li>
-<li><p>req 2</p></li>
-</ul>
-</div></blockquote>
-</section>
-<section id="attributes">
-<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">¶</a></h2>
-<p>[Table with parameters/attributes]</p>
+<p>The terms <em>User</em>, <em>Trust Service</em>, <em>Trust Model</em>, <em>Trusted List</em>, <em>Trust Framework</em>, <em>Attribute</em>, <em>Electronic Attestations of Attributes Provider</em> or <em>Trust Service Provider (TSP)</em>, <em>Person Identification Data (PID)</em>, <em>Revocation List</em>, <em>Qualified Electronic Attestations of Attributes Provider</em> or <em>Qualified Trust Service Provider (QTSP)</em>, <em>Electronic Attestation of Attributes (EAA)</em>, are defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
@@ -941,24 +907,41 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>key</p></td>
-<td><p>value</p></td>
+<tr class="row-even"><td><p>Accreditation Body</p></td>
+<td><p>An entity accredited by the Federation Authority, responsible for managing the process of verification and certification of accreditation requirements for ecosystem roles.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Digital Identity Provider</p></td>
+<td><p>An entity, recognized and accredited by the State, responsible for identifying citizens for the issuance of an Electronic Identity Certificate.</p></td>
+</tr>
+<tr class="row-even"><td><p>Electronic Attestation of Identity</p></td>
+<td><p>Electronic attestation of attributes referring to master data already present in Italian digital identity systems.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Federation Authority</p></td>
+<td><p>A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.</p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Instance</p></td>
+<td><p>An instance of the IT Wallet, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wallet Provider</p></td>
+<td><p>All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.</p></td>
+</tr>
+<tr class="row-even"><td><p>Qualified Electronic Attestation of Attributes (QEAA)</p></td>
+<td><p>A digitally verifiable attestation in electronic form, issued by a QTSP, that substantiates a person's possession of attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qualified Electronic Signature Provider</p></td>
+<td><p>The Electronic Trust Service Provider responsible for the issuing of Qualified Electronic Signature certificates to the User.</p></td>
+</tr>
+<tr class="row-even"><td><p>Relying Party</p></td>
+<td><p>A natural or legal person that implements an authentication system requiring electronic attribute attestation submissions as an authentication mechanism.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trust Attestation</p></td>
+<td><p>Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.</p></td>
+</tr>
+<tr class="row-even"><td><p>Trust Layer</p></td>
+<td><p>An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.</p></td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="implementation-considerations">
-<h2>Implementation considerations<a class="headerlink" href="#implementation-considerations" title="Permalink to this heading">¶</a></h2>
-<p>TODO</p>
-</section>
-<section id="libraries-and-code-snippets">
-<h2>Libraries and code snippets<a class="headerlink" href="#libraries-and-code-snippets" title="Permalink to this heading">¶</a></h2>
-<p>TODO</p>
-</section>
-<section id="external-references">
-<h2>External references<a class="headerlink" href="#external-references" title="Permalink to this heading">¶</a></h2>
-<p>TODO</p>
-</section>
 </section>
 
 
