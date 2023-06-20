@@ -249,14 +249,14 @@ offline trust evaluation mechanisms.
   The offline flows do not allow for real-time evaluation of an Entity's status, such as its revocation. At the same time, using short-lived Trust Chains enables the attainment of trust attestations compatible with the required revocation administrative protocols (e.g., a revocation must be propagated in less than 24 hours, thus the Trust Chain must not be valid for more than that period).
 
 Offline EUDI Wallet Trust Attestation
-```````````````````````````
+`````````````````````````````````````
 
 Given that a mobile device should not publish its metadata online at the *.well-known/openid-federation* endpoint, or in any other way, it is not mandatory for the EUDI Wallet to publish its metadata if the user does not want this. As a result, the EUDI Wallet does not need to publish its federation metadata online.
 
 However, the EUDI Wallet can still obtain a Wallet Attestation Instance issued by its Wallet Provider, which should contain a Trust Chain related to its issuer (Wallet Provider).
 
 Offline Relying Party Metadata
-```````````````````````````
+``````````````````````````````
 
 Since the Federation Entity Discovery is only applicable in online scenarios, it is possible to include the Trust Chain in the presentation requests that a Relying Party may issue for an EUDI Wallet.
 
@@ -277,7 +277,7 @@ Privacy Considerations
 - Leaf entity, Intermediate, and Trust Anchor metadata may include the necessary amount of data as part of administrative, technical, and security contact information. It is generally not recommended to use personal contact details in such cases. From a legal perspective, the publication of such information is needed for operational support concerning technical and security matters and is in line with GDPR.
 
 Considerations about Decentralization
---------------------------------------
+-------------------------------------
 
 - There should be more than one Trust Anchor.
 - In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may represent itself as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction.
