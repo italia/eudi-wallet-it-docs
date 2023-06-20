@@ -2,8 +2,8 @@
 
 .. _defined-terms.rst:
 
-defined-terms.rst
-+++++++++++++++++++++++++++
+Defined Terms
++++++++++++++
 
 The terms *User*, *Trust Service*, *Trust Model*, *Trusted List*, *Trust Framework*, *Attribute*, *Electronic Attestations of Attributes Provider* or *Trust Service Provider (TSP)*, *Person Identification Data (PID)*, *Revocation List*, *Qualified Electronic Attestations of Attributes Provider* or *Qualified Trust Service Provider (QTSP)*, *Electronic Attestation of Attributes (EAA)*, are defined in the `EIDAS-ARF`_.
     
