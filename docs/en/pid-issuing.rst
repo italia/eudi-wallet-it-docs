@@ -43,7 +43,7 @@ The PID Issuing phase is based on the **Authorization Code Flow** with **Pushed 
 .. figure:: ../../images/Low-Level-Flow-EUDIW-PID-Issuing.svg
     :figwidth: 100%
     :align: center
-    :target: http://www.plantuml.com/plantuml/png/hLHHQoCt47xNhnXo1xt0Xhu7V5noSI-cePWqnxqK5dbtx1sobhRIA3xtrtSaUHUjcnuf5FpWrSmttyptQVJ9itOSzhtIWQq9-mqwfGOveuO6RHWkldfq5w0z1AKszdi--Cc3tqlMq5c35_3kWNOTt_O1vzXRPmyJNCzZttJV8yFAI0kcmPHpK6XQ41RrQkxQsHTgJ_KsPpdhrTqyWSuIS7LtypkKQV27UNB1CxRmG9uJYfLIYqLA8-y3cHt0Og7K0Qu-GhW6ks5D1eusk9Ya0bn9u70DH_HAEMCPmRv8xKF5yExR_UffgKuO3RsmWDt2o5es4qTFSE6w-YXCZJLRSdlW3i5ZZmsJDOAUerGGVg6tpsVi9Awiljm_VNbSBdzJPsf3qs7pxAMsvaWmbuKyHEM4AyL-GJdKYLsRTbI0sCCUMRUQTTaxH3b0sdUeMGh_-dafexG8qXPj2TqfXoHdVVC8Z_XdGC_mmQ4VhF5Oyt702fgUq71DRPNWTTF54SmEpxzhwQApakPofGcglKSNsougbiUBzrcLKPGRPe6dGTzVGgacLPkPcZErpgNCHT-Yve_hUDePpS6X8Cl2HPiG3KbElEYUMk8Z55OeodTp4ZhhAqfdeUhWg0ByFf18NvEv5CWXGOA-XfiWgZhwAnDDBXMs56KkLT09IVyPgEP2Xt5fWfTlBRK4HKqkTY3k8E_nFUswD7qJPp9Sp4sd6U2ibqA1U8CgY2hYrFhXZVd57T-XYLuYtAtj6fxn-A-nmLbnSMlTVDFOFgC1QNsm93CKg_4aaKczF7XHg5HpvxJXyOhRTjoFSTt-btM8dhNai1bDepncxhDKIZSDUb-dmQeyN-OhBffmryOAnVIdnYdughvRYNLHu2HX8ysWOTBzFz-Rh8_y1Yk3UHzz_91PidL5_e_TANacYmg7Fa_HLsmgPOZNT6xUXAnRt9AXg74L-VUQgvnrMQx5-9RVFdnTgaVSaMSv5RU0EopQl7BOQyOM59bSJGgdkV9jo6lqiyCNs-GOb7kJfIadAumzTLUmlTd6AEhqG8aOQP62pozUaUVPEYpT_IJDXNt_Dm00
+    :target: https://www.plantuml.com/plantuml/png/hLHHQoCt47xNhnXo1xt0Xhu7V5noSI-cePWqnxqK5dbtx1sobhRIA3xtrtSaUHUjcnuf5FpWrSmttyptQVJ9itOSzhtIWQq9-mqwfGOveuO6RHWkldfq5w0z1AKszdi--Cc3tqlMq5c35_3kWNOTt_O1vzXRPmyJNCzZttJV8yFAI0kcmPHpK6XQ41RrQkxQsHTgJ_KsPpdhrTqyWSuIS7LtypkKQV27UNB1CxRmG9uJYfLIYqLA8-y3cHt0Og7K0Qu-GhW6ks5D1eusk9Ya0bn9u70DH_HAEMCPmRv8xKF5yExR_UffgKuO3RsmWDt2o5es4qTFSE6w-YXCZJLRSdlW3i5ZZmsJDOAUerGGVg6tpsVi9Awiljm_VNbSBdzJPsf3qs7pxAMsvaWmbuKyHEM4AyL-GJdKYLsRTbI0sCCUMRUQTTaxH3b0sdUeMGh_-dafexG8qXPj2TqfXoHdVVC8Z_XdGC_mmQ4VhF5Oyt702fgUq71DRPNWTTF54SmEpxzhwQApakPofGcglKSNsougbiUBzrcLKPGRPe6dGTzVGgacLPkPcZErpgNCHT-Yve_hUDePpS6X8Cl2HPiG3KbElEYUMk8Z55OeodTp4ZhhAqfdeUhWg0ByFf18NvEv5CWXGOA-XfiWgZhwAnDDBXMs56KkLT09IVyPgEP2Xt5fWfTlBRK4HKqkTY3k8E_nFUswD7qJPp9Sp4sd6U2ibqA1U8CgY2hYrFhXZVd57T-XYLuYtAtj6fxn-A-nmLbnSMlTVDFOFgC1QNsm93CKg_4aaKczF7XHg5HpvxJXyOhRTjoFSTt-btM8dhNai1bDepncxhDKIZSDUb-dmQeyN-OhBffmryOAnVIdnYdughvRYNLHu2HX8ysWOTBzFz-Rh8_y1Yk3UHzz_91PidL5_e_TANacYmg7Fa_HLsmgPOZNT6xUXAnRt9AXg74L-VUQgvnrMQx5-9RVFdnTgaVSaMSv5RU0EopQl7BOQyOM59bSJGgdkV9jo6lqiyCNs-GOb7kJfIadAumzTLUmlTd6AEhqG8aOQP62pozUaUVPEYpT_IJDXNt_Dm00
 
     PID Issuing - Detailed flow
 
@@ -90,14 +90,14 @@ The JWT payload of PAR is given as the following:
         }
     }
     ],
-    "redirect_uri":"eudiw://start.wallet.it",
+    "redirect_uri":"eudiw://start.wallet.example.org",
     "client_assertion_type":"urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
     "client_assertion":$WalletInstanceAttestation$ 
     }
 
 
 .. note::
-    **Federation Check:** PID Provider needs to check that the Wallet Provider is part of the federation and in addition it should verify Wallet Instance Attestation validity by checking its signature and the validity of the claims inside it. 
+    **Federation Check:** PID Provider needs to check that the Wallet Provider is part of the federation and in addition it MUST verify Wallet Instance Attestation validity by checking its signature and the validity of the claims inside it. 
 
 **Step 7:** The PID Provider creates a new request URI representing this new authorization request and returns it to the Wallet Instance. 
 
@@ -143,7 +143,7 @@ The JWT payload of PAR is given as the following:
 .. code-block::
 
     POST /token HTTP/1.1
-    Host: pid.it
+    Host: pid.example.org
     Content-Type: application/x-www-form-urlencoded
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
         VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
@@ -156,7 +156,7 @@ The JWT payload of PAR is given as the following:
     client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
     &grant_type=authorization_code
     &code=SplxlOBeZQQYbYS6WxSbIA
-    &redirect_uri=eudiw://start.wallet.it
+    &redirect_uri=eudiw://start.wallet.example.org
     &code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
     &client_assertion=$WalletInstanceAttestation$
@@ -190,7 +190,7 @@ The JWT payload of PAR is given as the following:
 .. code-block::
 
     POST /credential HTTP/1.1
-    Host: pid.it
+    Host: pid.example.org
     Content-Type: application/x-www-form-urlencoded
     Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
@@ -230,7 +230,7 @@ Where the JWT looks like this:
     .
     {
     "iss": "0b434530-e151-4c40-98b7-74c75a5ef760",
-    "aud": "https://pid.it",
+    "aud": "https://pid.example.org",
     "iat": "1504699136",
     "nonce": "tZign[...]snFbp"
     }
@@ -273,7 +273,7 @@ The requests at the Pushed Authorization Request endpoint of the PID Provider MU
       - MUST be set to ``code``
       - TBD
     * - **client_id**
-      - MUST be set to the ``jwk`` value in the ``cnf`` parameter inside the Wallet Instance Attestation
+      - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Instance Attestation
       - TBD
     * - **code_challenge**
       - A challenge derived from the **code verifier** that is sent in the authorization request
@@ -301,7 +301,7 @@ The JWT Request Object has the following JOSE header parameters
       - **Description**
       - **Reference**
     * - **alg**
-      - It MUST be set to one of the supported value specified in Section [...]
+      - It MUST be set to one of the supported values specified in Section [...]
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
       - Unique identifier of the JWK as base64url-encoded JWK Thumbprint value
@@ -311,7 +311,7 @@ The JWT Request Object has the following JOSE header parameters
   The parameter **typ**, if omitted, assumes the implicit value **JWT**.
 
 
-The JWT payload is given by the following parameters
+The JWT payload is given by the following parameters:
 
 .. _table_jwt_request:
 .. list-table:: 
@@ -426,7 +426,10 @@ Token endpoint
 Request
 ^^^^^^^
 
-The requests at the Token Request endpoint of the PID Provider MUST be HTTP POST requests in the HTTP request message body using the ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with *private_key_jwt* authentication and a *DPoP proof* containing the following parameters (mandatory unless otherwise specified).
+The request at the Token endpoint of the PID Provider MUST be an HTTP POST request in the HTTP request message body using the ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with *private_key_jwt* authentication and a *DPoP proof* containing parameters in the table below (all mandatory unless otherwise specified).
+
+The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP field of the Header. The Token endpoint MUST validate the DPoP proof based on the steps defined in Section 4.3 of DPoP document `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Thus, it mitigates the misuse of leaked or stolen access tokens at the credential endpoint of PID Provider as the attacker needs to present a. If the DPoP proof is invalid, the Token endpoint returns an error response per Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter. 
+
 
 .. list-table:: 
     :widths: 20 60 20
@@ -464,6 +467,50 @@ The requests at the Token Request endpoint of the PID Provider MUST be HTTP POST
         - **jti**: Unique Identifier uuid4 for this authentication request, generated by the client. E.g., it can be in uuid4 format.
       - [TBD]
 
+A **DPoP proof** is included in an HTTP request using ``DPoP`` as a request header claim containing a DPoP signed JWT.
+
+The JOSE header of a **DPoP JWT** MUST contain at least the following parameters:
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **JOSE header**
+      - **Description**
+      - **Reference**
+    * - **typ** 
+      - It MUST be equal to ``dpop+jwt``. 
+      - [:rfc:`7515`] and [:rfc:`8725`. Section 3.11].
+    * - **alg** 
+      - an identifier for a JWS asymmetric digital signature algorithm from [IANA.JOSE.ALGS]. MUST NOT be none or an identifier for a symmetric algorithm (MAC).
+      - [:rfc:`7515`]
+    * - **jwk** 
+      - representing the public key chosen by the client, in JSON Web Key (JWK) [RFC7517] format, as defined in Section 4.1.3 of [RFC7515]. MUST NOT contain a private key.
+      - [:rfc:`7517`] and [:rfc:`7515`]
+
+
+The payload of a **DPoP proof** MUST contain at least the following claims:
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **jti**
+      - Unique identifier for the DPoP proof JWT. The value MUST be assigned in a *UUID v4* string format according to [:rfc:`4122`].
+      - [:rfc:`7519`. Section 4.1.7].
+    * - **htm**
+      - The value of the HTTP method of the request to which the JWT is attached.
+      - [:rfc:`9110`. Section 9.1].
+    * - **htu**
+      - The HTTP target URI, without query and fragment parts, of the request to which the JWT is attached.
+      - [:rfc:`9110`. Section 7.1].
+    * - **iat**
+      - Creation timestamp of the JWT.
+      - [:rfc:`7519`. Section 4.1.6].
+
 
 Response
 ^^^^^^^^
@@ -478,7 +525,7 @@ The response to Token endpoint MUST contain the following mandatory claims.
       - **Description**
       - **Reference**
     * - **access_token**
-      - The *Access Token*, in signed JWT format, allows accessing the Credential Endpoint for obtaining the PID.
+      - The *DPoP-bound Access Token*, in signed JWT format, allows accessing the Credential Endpoint for obtaining the PID.
       - [TBD]
     * - **token_type**
       - Type of *Access Token* returned. It MUST be equal to ``DPoP``.
@@ -492,6 +539,46 @@ The response to Token endpoint MUST contain the following mandatory claims.
     * - **c_nonce_expires_in**
       - JSON integer denoting the lifetime in seconds of the **c_nonce**.
       - [OpenID4VCI]
+
+Access Token
+^^^^^^^^^^^^
+
+A DPoP-bound Access Token is provided by PID Provider token endpoint as a result of a successful token request. The Access Token is represented as JWT according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_.
+
+.. list-table:: 
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Claim**
+    - **Description**
+    - **Supported by**
+  * - **iss** 
+    - It MUST be an HTTPS URL that uniquely identifies the PID Provider. The client MUST verify that this value matches the called PID Provider.
+    - [TBD]
+  * - **sub** 
+    - identifies the principal that is the subject of the JWT. It MUST be of type *pairwise*. 
+    - [:rfc:`7519`] and [`OpenID.Core#SubjectIDTypes <https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes>`_]
+  * - **client_id** 
+    - It MUST contain a HTTPS URL that uniquely identifies the RP. 
+    - [TBD]
+  * - **aud** 
+    - It MUST match the value *client_id*. The RP MUST verify that this value matches its client ID.
+    - [TBD]
+  * - **iat** 
+    - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
+    - [TBD]
+  * - **exp**
+    - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
+    - [TBD]
+  * - **jti** 
+    - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP MAY use to prevent reuse by rejecting the Token ID if already processed.
+    - [TBD]
+  * - **nonce** 
+    -  It MUST be a random string of at least 32 alphanumeric characters. This value MUST match the value sent by the RP in the authentication request.
+    - [`OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_]
+  * - jkt
+    - JWK SHA-256 Thumbprint Confirmation Method. The value of the jkt member MUST be the base64url encoding (as defined in [RFC7515]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the access token is bound.
+    - [`DPoP-draft16 <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Section 6.1] and [:rfc:`7638`]
 
 
 

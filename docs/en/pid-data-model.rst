@@ -6,7 +6,7 @@
 PID Data Model
 ++++++++++++++
 
-The Person Identification Data (PID) is issued following national law by the PID Provider and allows a natural person to be identified. 
+The Person Identification Data (PID) is issued by the PID Provider following national laws and allows a natural person to be authenitcated and identified. 
 
 The User attributes carried in the Italian PID are:
 
@@ -17,9 +17,9 @@ The User attributes carried in the Italian PID are:
     - Unique Identifier
     - Taxpayer identification number
 
-The PID is issued following the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.
+The PID is issued according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.
 
-The PID data format and the mechanism through which it is issued into the IT Wallet and presented to a RP will be detailed in the next sections. 
+The PID data format and the mechanism through which it is issued into the Wallet Instance and presented to a RP will be detailed in the next sections. 
 
         
 
@@ -251,12 +251,12 @@ The corresponding SD-JWT verson for PID is given by
      ]
   }.
   { 
-    "iss": "https://pidprovider.it",
+    "iss": "https://pidprovider.example.org",
     "sub": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
     "jti": "nw4J0zMwRk4kRbQ53G7z",
     "iat": "1541493724",
     "exp": "1541493724",
-    "status": "https://pidprovider.it/status",
+    "status": "https://pidprovider.example.org/status",
     "cnf": {
       "jwk": {
         [...]
