@@ -10,12 +10,14 @@ Introduction to SSI
 
 **Definition**
 
-Self-Sovereign Identity (SSI) refers to a new paradigm in Identity and Access Management (IAM). It consists of a digital identity model that, unlike existing identity management ecosystems, grants individuals complete control and ownership over their personal data.
-Users possess their digital documents and determine to which actors they present these documents, with the ability to revoke the use of said documents, all while maintaining a history of their activities.
+Self-Sovereign Identity (SSI) refers to a new paradigm in Identity and Access Management (IAM) that improves the privacy and grants complete control and ownership over the personal data by their owner, the citizens.
+Users possess their digital documents and determine to which actors they present these documents, with the ability to revoke the use of said documents, all while maintaining a history of their activities. 
+
+The main difference between this new approach and the traditional IAM infrastructure is that during the presentation phase there are no intermediate between the Wallet (Holder of the credentials) and the Relying Party, while in the SAML2 or OIDC based infrastructure an Identity Provider is always involved, knowing which services a citizen is accessing to.
 
 SSI is also significant in the field of data exchange and data governance. This is relevant at both national and European levels, including the new eIDAS Regulation. In fact, it envisions a login option designed for European Users - be they citizens, public administrations, or companies - who want to access another Member State's services using their national authentication systems.
 
-The main roles in an SSI ecosystem are as follows:
+The main roles in an SSI ecosystem are the followings:
  - Issuers: parties who can issue attributes or "credentials" about a person;
  - Verifiers: parties who request Holders' attributes because they want to know something about them;
  - Holders: individuals who own a Wallet and have control over the attributes they can acquire, store, and present to Verifiers;
@@ -34,12 +36,6 @@ Other key elements that characterize an SSI system include:
 
 **Example**
 
-When a User wants to purchase a service, the service provider asks the User for specific proof. Instead of presenting physical identification documents or disclosing their full data, the individual can use their SSI system.
-An example of SSI in action could be a scenario where an individual needs to prove their age to access a restricted service, such as purchasing age-restricted items. They would release only the necessary information, such as a digitally signed proof of being above the legal age, without revealing any other personal details.
-The verifier can then cryptographically validate the proof.
-    
+When a User wants to purchase a good or access to a service, the service provider asks the User for specific proof. Instead of presenting physical identification documents or disclosing their full data, the individual can use their SSI system.
+An example of SSI in action could be a scenario where an individual needs to prove their age to access a restricted service, such as purchasing age-restricted items. They would release only the necessary information, such as a digitally signed proof of being above the legal age, without revealing any other personal details. The verifier can then cryptographically validate the proof.
 
-External references
--------------------
-
-TODO
