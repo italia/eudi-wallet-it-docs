@@ -41,9 +41,8 @@ Index of content
    ssi-introduction.rst
    defined-terms.rst
    trust.rst
-   pid-eaa-data.rst
-   pid-eaa-mdoc-cbor.rst
-   pid-eaa-sd-jwt.rst
+   pid-data-model.rst
+   pid-issuing.rst
    wallet-solution.rst
    wallet-instance-attestation.rst
    issuance.rst
@@ -51,5 +50,7 @@ Index of content
    pseudonyms.rst
    backup-restore.rst
    revocation-lists.rst
+   algorithms.rst
    contribute.rst
    standards.rst
+

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | Wallet Instance Attestation</title>
+  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | wallet-instance-attestation.rst</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -602,31 +602,17 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data.html">pid-eaa-data.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-mdoc-cbor.html">pid-eaa-mdoc-cbor.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#external-references">External references</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-sd-jwt.html">pid-eaa-sd-jwt.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-issuing.html">PID Issuing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#par-endpoint">PAR endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#authorization-endpoint">Authorization endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#token-endpoint">Token endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">wallet-solution.rst</a><ul>
@@ -638,11 +624,13 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance Attestation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">wallet-instance-attestation.rst</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="issuance.html">issuance.rst</a><ul>
@@ -690,6 +678,7 @@
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
@@ -700,6 +689,18 @@
     
 
     
+    <button data-toggle="collapse" data-target="#table-index" aria-expanded="true" class="sidebar-btn p-3 sidebar-btn--desktop collapsed" type="button" aria-controls="table-index">
+      table index
+      <span class="it-collapse float-right"></span>
+      <span class="it-expand float-right"></span>
+    </button>
+    <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
+      <ul>
+<li><a class="reference internal" href="pid-issuing.html#id16">Tab. 1 - PAR http request parameters</a></li>
+</ul>
+
+    </div>
+    
 
     
   </div>
@@ -708,7 +709,7 @@
 <div class="navbar-toggler--wrap navbar-toggler--wrap--bottom p-3">
   <div class="navbar-toggler navbar-toggler--open p-0 border-0 ml-auto">
     <div class="navbar-toggler-bottom__chapter align-middle text-truncate">
-      <span class="it-list mr-2"></span>Wallet Instance Attestation
+      <span class="it-list mr-2"></span>wallet-instance-attestation.rst
     </div>
   </div>
 </div>
@@ -792,31 +793,17 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data.html">pid-eaa-data.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-mdoc-cbor.html">pid-eaa-mdoc-cbor.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#external-references">External references</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-sd-jwt.html">pid-eaa-sd-jwt.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-issuing.html">PID Issuing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#par-endpoint">PAR endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#authorization-endpoint">Authorization endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#token-endpoint">Token endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">wallet-solution.rst</a><ul>
@@ -828,11 +815,13 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance Attestation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">wallet-instance-attestation.rst</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="issuance.html">issuance.rst</a><ul>
@@ -880,6 +869,7 @@
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
@@ -892,7 +882,10 @@
       </div>
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
-        None
+        <ul>
+<li><a class="reference internal" href="pid-issuing.html#id16">Tab. 1 - PAR http request parameters</a></li>
+</ul>
+
       </div>
 
       <div id="glossary-index-mobile" class="glossary-mobile--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="glossary-index-mobile-tab">
@@ -913,715 +906,55 @@
             </div>
           
           
-  <section id="wallet-instance-attestation">
-<span id="wallet-instance-attestation-rst"></span><h1>Wallet Instance Attestation<a class="headerlink" href="#wallet-instance-attestation" title="Permalink to this heading">¶</a></h1>
-<p>Inside a <strong>wallet solution</strong> and, especially with regards
-to the <strong>wallet instance</strong>, it is essential to ensure the <strong>authenticity,
-integrity, security, privacy and trust</strong> in the use of the latter both
-by the user and the services connected to it, such as the
-<strong>PID Provider</strong> or one <strong>relying party</strong>.</p>
+  <section id="wallet-instance-attestation-rst">
+<span id="id1"></span><h1>wallet-instance-attestation.rst<a class="headerlink" href="#wallet-instance-attestation-rst" title="Permalink to this heading">¶</a></h1>
+<p>[What is it]</p>
+<p>[What it is usefull for]</p>
+<p>[Example]</p>
 <section id="general-properties">
 <h2>General Properties<a class="headerlink" href="#general-properties" title="Permalink to this heading">¶</a></h2>
-<p>The goal is:</p>
-<ul class="simple">
-<li><p>Ensure that the wallet instance maintains a level of <strong>integrity</strong>,
-capable of preventing any attempts of manipulation or forgery
-by unauthorized third parties.</p></li>
-<li><p>Make sure the private keys have been generated and stored securely
-within a <strong>trusted execution environment</strong> (TEE).</p></li>
-<li><p>Verify that the wallet instance is <strong>authentic</strong>, i.e. made available
-by an accredited body that complies with the trust model.</p></li>
-</ul>
-<p>To guarantee the above, it is necessary for each
-wallet instance to issue a certificate of conformity,
-guaranteeing its security and compliance with the trust model.</p>
-<p>This attestation is called <strong>Wallet Instance Attestation</strong>
-and must be electronically signed by its issuer.</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Considering that the wallet instance does not represent an accredited
-entity and does not belong to an organization,
-but resides on the user's device, the trust model,
-based on sustainability and scalability criteria,
-must delegate to the <strong>Wallet provider</strong> the task of
-issuing the <strong>Wallet Instance Attestation</strong>.</p>
-</div>
+<p>[TODO]</p>
 </section>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
-<p>We assume the following requirements for the Wallet Instance Attestation:</p>
-<ol class="arabic simple">
-<li><p><strong>Efficiency</strong>: The Wallet Instance Attestation should use an efficient
-format such as JSON Web Token (JWT) to ensure light and fast data management
-and be compliant with the various formats used for EUDIW solutions.</p></li>
-<li><p><strong>Simplicity</strong>: The Wallet Provider should be based on a REST architecture
-for issuing wallet instance attestations.</p></li>
-<li><p><strong>Public key holder binding</strong>: The Wallet Instance Attestation must be
-securely linked to the Wallet Instance public key.</p></li>
-<li><p><strong>Issued and signed by an accredited wallet provider</strong>:
-The Wallet Instance Attestation must be issued and signed by an accredited
-and reliable wallet provider, thus conferring integrity and authenticity
-to the attestation itself.</p></li>
-<li><p><strong>Authenticity/Genuineness of the wallet instance</strong>:
-The Wallet Instance Attestation must guarantee the integrity
-and authenticity of the wallet instance, confirming that it was
-created and provided correctly by the wallet provider. ⚠️</p></li>
-<li><p><strong>Ability to request multiple claims for several public keys</strong>:
-Each single wallet instance should be able to request multiple attestations
-for different public keys associated with it. This requirement constitutes
-a privacy-preserving measure since the public key may be exploited as a
-tracking tool in the credentials’ disclosure phase
-(see also point 10 below).</p></li>
-<li><p><strong>Can be used multiple times</strong>:
-The Wallet Instance Attestation should be used multiple times
-during the validity period of the attestation, allowing for repeated
-authentication and authorization without the need to request
-new attestations with each interaction.</p></li>
-<li><p><strong>Expiration</strong>:
-The Wallet Instance Attestation should have a well-defined expiration date,
-after which it will no longer be considered valid, thus ensuring
-the security and updating of the attestations over time.</p></li>
-<li><p><strong>Disability in case of loss/deletion of the public key</strong>:
-If the public key associated with the wallet instance is lost or deleted,
-the attestation automatically becomes invalid to prevent unauthorized
-use of the wallet instance. ⚠️</p></li>
-<li><p><strong>Pseudonymisation</strong>:
-The attestations are designed to be pseudonymised
-(i.e. they do not contain direct references to the person, so that it
-is not possible to identify them in the absence of additional information
-- see art. 4(5) GDPR for a comprehensive definition).
-In the absence of such a measure, the use of the attestation on multiple
-RPs would constitute an appreciable risk, as it would theoretically
-allow the RPs to merge databases and track users.
-This requirement enriches the measures adopted in accordance
-with art. 32 GDPR.</p></li>
-</ol>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>⚠️ Implementation of points no. 5 and 9 is still under discussion.
-This version assumes the authenticity and non-revocability of the wallet instance.</p>
-</div>
-</section>
-<section id="high-end-design">
-<h2>High-end design<a class="headerlink" href="#high-end-design" title="Permalink to this heading">¶</a></h2>
-<section id="static-view-of-the-components">
-<h3>Static view of the components<a class="headerlink" href="#static-view-of-the-components" title="Permalink to this heading">¶</a></h3>
-<figure class="align-default" id="wallet-solution-schema">
-<img alt="the image shows how the backend wallet and the wallet instances are contained within the wallet solution which is managed by the wallet provider" src="https://www.plantuml.com/plantuml/svg/XP4nJuSm44VtVehBdxbnPp2iRYx6qTHIjR7SaVQ0-EqzaICDgN4ZBxpqzTUXiCkyJCaupvJXzbH2le4hiCW7A7rsAGM6ETCQn-E7RMSloi0OJzDC691FeL1QE1BMWZBeraW2Mbv4wK8VQayPT5yX9TgCQPclpdy676lnGF0ZN93DyVs3xVsrhOU70hCi0_JshwHXFJp-Rg4dIuECo96moD7xeBQbUKBEbE0EPEwuEWx6N2zj_uXqU8wbhVMhD3tjbAX1BYIl_mq0" />
-</figure>
-<p><a class="reference external" href="https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000">PlantUML</a></p>
-</section>
-<section id="dynamic-view-of-the-components">
-<h3>Dynamic view of the components<a class="headerlink" href="#dynamic-view-of-the-components" title="Permalink to this heading">¶</a></h3>
-<p>We do not go into the details of the backend wallet as it will be the
-subject of a subsequent design review. For now, we will just analyze the
-format of the wallet instance attestation and how it is issued by the
-backend wallet.</p>
-<figure class="align-default" id="sequence-diagram-for-wallet-instance-attestation-request">
-<img alt="The figure shows the sequence diagram for issuing a wallet instance attestation. The steps will be described below." src="https://www.plantuml.com/plantuml/svg/XPB1RjH038RlynIc9v1OSU-XAk9GWSG50RtqucH-HLOJJ_1u6csVdcbsTqG85LVxy-VypjncP_CoZU7DR3nCJ8xqJ6u5WOidBLC72s6kbFGoipfT_SYmA-9CPLk_vt64qsUjKksn8elya-cuVuJ64zA5KEXmKzdhEYmkFCepQ3cXSjOzQ38o_2h8_c4sP5HVRuZGbuaS5ZdSBDqrtS4lixEb9uamck0SsJaitQ5ITT7NSuNwfCwYeiCVDlBZZFoU7d5STufXWdgjGEESHFsyhvf-yYZLXDrIjvATHibUsKl0EoYiqgjwPh4SGbDzChoq_ZeaVSmPvfAKlftoqvVxxu5xbwTrRxV9per--r_HktgGTNANGYup0xI8Gf7p7iuoA7injDPmoSSQr_PEsBwl_OpN0--F_BejOdkHwYvDtNXf3om-g87ZaJnHwfn5IR5idjGjD9Pf_0q0" />
-</figure>
-<p><a class="reference external" href="https://www.plantuml.com/plantuml/uml/XPB1RjH038RlynIc9v1OSU-XAk9GWSG50RtqucH-HLOJJ_1u6csVdcbsTqG85LVxy-VypjncP_CoZU7DR3nCJ8xqJ6u5WOidBLC72s6kbFGoipfT_SYmA-9CPLk_vt64qsUjKksn8elya-cuVuJ64zA5KEXmKzdhEYmkFCepQ3cXSjOzQ38o_2h8_c4sP5HVRuZGbuaS5ZdSBDqrtS4lixEb9uamck0SsJaitQ5ITT7NSuNwfCwYeiCVDlBZZFoU7d5STufXWdgjGEESHFsyhvf-yYZLXDrIjvATHibUsKl0EoYiqgjwPh4SGbDzChoq_ZeaVSmPvfAKlftoqvVxxu5xbwTrRxV9per--r_HktgGTNANGYup0xI8Gf7p7iuoA7injDPmoSSQr_PEsBwl_OpN0--F_BejOdkHwYvDtNXf3om-g87ZaJnHwfn5IR5idjGjD9Pf_0q0">PlantUML</a></p>
-<ul class="simple">
-<li><p><strong>Message 1</strong>: The end user initializes the wallet instance.
-In particular, this process happens when the mobile application
-is launched and every time the end user wants to request or present
-(disclose) a credential.</p></li>
-<li><p><strong>Message 2-3</strong>: The wallet instance obtains metadata about its wallet
-provider. Among these, we also find the list of supported algorithms,
-public keys, endpoints.</p></li>
-<li><p><strong>Message 4</strong>: The wallet instance verifies that the wallet provider is
-trustworthy by resolving the provider's trust chain up to the anchor (⚠️
-this step is skipped in this version)</p></li>
-<li><p><strong>Message 5-7</strong>: The wallet instance instantiates a new key pair on its TEE
-and requests a nonce from the backend wallet (as a measure against replay
-attacks)</p></li>
-<li><p><strong>Message 8</strong>: The wallet instance generates a Wallet Instance Attestation
-Request (JWT) signed with the private key associated with the public key
-for which it wants to obtain the attestation containing the nonce and
-other useful parameters.</p></li>
-<li><p><strong>Message 9-13</strong>: The wallet instance sends the Wallet Instance Attestation
-Request to the backend wallet which verifies its validity and issues the
-signed attestation.</p></li>
-<li><p><strong>Message 13-14</strong>:The wallet instance receives the wallet instance
-attestation signed by the wallet provider and proceeds with a formal
-verification</p></li>
-<li><p><strong>Message 15</strong>:The wallet instance attestation is ready to be consumed</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p>req 1</p></li>
+<li><p>req 2</p></li>
 </ul>
+</div></blockquote>
 </section>
-</section>
-<section id="detail-design">
-<h2>Detail design<a class="headerlink" href="#detail-design" title="Permalink to this heading">¶</a></h2>
-<section id="format-of-the-wallet-instance-attestation-request">
-<h3>Format of the Wallet Instance Attestation Request<a class="headerlink" href="#format-of-the-wallet-instance-attestation-request" title="Permalink to this heading">¶</a></h3>
-<p>To obtain a Wallet Instance Attestation from the wallet
-provider (backend) it is necessary to send a Wallet Instance Attestation
-Request from the wallet instance containing the associated public key
-and a nonce previously requested to avoid replay attacks.</p>
-<section id="header">
-<h4>Header<a class="headerlink" href="#header" title="Permalink to this heading">¶</a></h4>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">¶</a></h2>
+<p>[Table with parameters/attributes]</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
 <tbody>
-<tr class="row-odd"><td><p><strong>key</strong></p></td>
-<td><p><strong>value</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>alg</p></td>
-<td><p>Algorithm to verify the token
-signature (es. ES256)</p></td>
-</tr>
-<tr class="row-odd"><td><p>kid</p></td>
-<td><p>Key id of the wallet instance</p></td>
-</tr>
-<tr class="row-even"><td><p>type</p></td>
-<td><p>Media type, in this case, we use
-the value var+jwt (Verifiable
-Assertion Request JWT).</p></td>
+<tr class="row-even"><td><p>key</p></td>
+<td><p>value</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="payload">
-<h4>Payload<a class="headerlink" href="#payload" title="Permalink to this heading">¶</a></h4>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>key</strong></p></td>
-<td><p><strong>value</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>iss</p></td>
-<td><p>The public URL of the issuer
-concatenated with the thumbprint
-of the JWK of the wallet instance
-for which the attestation is
-being requested</p></td>
-</tr>
-<tr class="row-odd"><td><p>sub</p></td>
-<td><p>The public url of the wallet
-instance attestation issuer.</p></td>
-</tr>
-<tr class="row-even"><td><p>jti</p></td>
-<td><p>Unique identifier of the request.
-This parameter will be used to
-avoid replay attacks</p></td>
-</tr>
-<tr class="row-odd"><td><p>type</p></td>
-<td><p>WalletInstanceAttestationRequest</p></td>
-</tr>
-<tr class="row-even"><td><p>cnf</p></td>
-<td><p>This parameter will contain the
-configuration of the wallet
-instance in JSON format. Among
-the mandatory attributes there
-will be the jwk parameter
-containing the public key of the
-wallet instance. It will also
-contain all the information
-useful for the backend wallet to
-verify that the app is genuine</p></td>
-</tr>
-</tbody>
-</table>
+<section id="implementation-considerations">
+<h2>Implementation considerations<a class="headerlink" href="#implementation-considerations" title="Permalink to this heading">¶</a></h2>
+<p>TODO</p>
 </section>
-<section id="non-normative-example">
-<h4>Non-normative example<a class="headerlink" href="#non-normative-example" title="Permalink to this heading">¶</a></h4>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;var+jwt&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="p">.</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;jti&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;6ec69324-60a8-4e5b-a697-a766d85790ea&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestationRequest&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686645115</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686652315</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Whose corresponding JWT is as follows:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0</span><span class="p">.</span><span class="nx">eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC8iLCJqdGkiOiI2ZWM2OTMyNC02MGE4LTRlNWItYTY5Ny1hNzY2ZDg1NzkwZWEiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjQ1MTE1LCJleHAiOjE2ODY2NTIzMTV9</span><span class="mf">.3</span><span class="nx">KInOD_N4zh5PmXj9QhS5aIVFF8zxMl6326KxDTAFYMPJbweD2ny95Nk6y_xTCOioail2WHDLpF3Rju16Q7Z7Q</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Verifiable through the public key of the wallet instance present in the JWT.</p>
+<section id="libraries-and-code-snippets">
+<h2>Libraries and code snippets<a class="headerlink" href="#libraries-and-code-snippets" title="Permalink to this heading">¶</a></h2>
+<p>TODO</p>
 </section>
-</section>
-<section id="format-of-the-wallet-instance-attestation">
-<h3>Format of the Wallet Instance Attestation<a class="headerlink" href="#format-of-the-wallet-instance-attestation" title="Permalink to this heading">¶</a></h3>
-<p>To ensure the above requirements, a JWT was chosen as the format for the
-Wallet Instance Attestation. Let's see below the various fields that
-compose it</p>
-<section id="id1">
-<h4>Header<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>key</strong></p></td>
-<td><p><strong>value</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>alg</p></td>
-<td><p>Algorithm to verify the token
-signature (es. ES256)</p></td>
-</tr>
-<tr class="row-odd"><td><p>kid</p></td>
-<td><p>Key id used by the wallet
-provider to sign the attestation</p></td>
-</tr>
-<tr class="row-even"><td><p>type</p></td>
-<td><p>Media type, in this case we use
-the value va+jwt (Verifiable
-Assertion JWT).
-This parameter is currently
-non-standard as it is not yet
-registered as <a class="reference external" href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media
-Types</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>x5c</p></td>
-<td><p>Array containing the X.509
-certificate (and the entire chain
-of certificates) used to certify
-the public key of the issuer.</p></td>
-</tr>
-<tr class="row-even"><td><p>trust_chain</p></td>
-<td><div class="line-block">
-<div class="line">Array containing the JWS of the
-trust chain relating to its
-issuer (Wallet Provider).</div>
-<div class="line">⚠️ This topic will be addressed
-at a later stage</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="id2">
-<h4>Payload<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>key</strong></p></td>
-<td><p><strong>value</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>iss</p></td>
-<td><p>The public url of the wallet
-instance attestation issuer. (see
-example below)</p></td>
-</tr>
-<tr class="row-odd"><td><p>sub</p></td>
-<td><p>The public url of the issuer
-concatenated with the thumbprint
-of the JWK of the wallet instance
-for which the attestation is
-being issued</p></td>
-</tr>
-<tr class="row-even"><td><p>iat</p></td>
-<td><p>Timestamp of issue of the
-attestation</p></td>
-</tr>
-<tr class="row-odd"><td><p>exp</p></td>
-<td><p>Attestation expiration timestamp.
-A good practice to avoid security
-problems is to have a limited
-duration of the attestation.</p></td>
-</tr>
-<tr class="row-even"><td><p>type</p></td>
-<td><p>String:
-&quot;WalletInstanceAttestation&quot;</p></td>
-</tr>
-<tr class="row-odd"><td><p>policy_uri</p></td>
-<td><p>Url to the privacy policy
-of the wallet</p></td>
-</tr>
-<tr class="row-even"><td><p>tos_uri</p></td>
-<td><p>Url to the terms
-of use of the wallet provider</p></td>
-</tr>
-<tr class="row-odd"><td><p>logo_uri</p></td>
-<td><p>Logo url of the wallet provider</p></td>
-</tr>
-<tr class="row-even"><td><p>asc</p></td>
-<td><p>Attested security context:
-Represents a level of &quot;trust&quot; of
-the service containing a Level Of
-Agreement defined in the metadata
-of the wallet provider</p></td>
-</tr>
-<tr class="row-odd"><td><p>cnf</p></td>
-<td><p>This parameter contains the JSON
-object called jwk containing the
-public key of the Wallet
-Instance, necessary for the
-holder binding</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="signature">
-<h4>Signature<a class="headerlink" href="#signature" title="Permalink to this heading">¶</a></h4>
-<p>The JWT (Wallet Instance Attestation) thus composed is signed using the
-private key of the wallet provider present to which the backend wallet
-has access.</p>
-</section>
-<section id="id3">
-<h4>Non-normative example<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
-<p>Below is an example of Wallet Instance Attestation:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;trust_chain&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;va+jwt&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;x5c&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MIIBjDCCATGgAwIBAgIUZiFoj7bvmhTQvDQtCOY19fMVq/gwCgYIKoZIzj0EAwIwGzEZMBcGA1UEAwwQd2FsbGV0Lml0YWxpYS5pdDAeFw0yMzA2MTMxNDI1NDRaFw0yNjAzMDkxNDI1NDRaMBsxGTAXBgNVBAMMEHdhbGxldC5pdGFsaWEuaXQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASqsmuPcB/8Hnuxs4hGtwEztuvvA5zzKePuUcU9N599SdR9HFg8hoL1PMPpDylP8cnDglDU9qNG8LJSELZz1Oojo1MwUTAdBgNVHQ4EFgQUj5fkXeflngzbABlwT6ra1bOQ11cwHwYDVR0jBBgwFoAUj5fkXeflngzbABlwT6ra1bOQ11cwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA+avjz/CVnxq+50iAxKLjyRvK/W9XgCp6cKDXs7Y4tugCIQDMWGYL0adwYKhKitYsk8HRIKFDGOZmqZFI35XFehgKQA==&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="p">.</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestation&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;policy_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/privacy_policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;tos_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/info_policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;logo_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/logo.svg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;asc&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/LoA/basic&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686666443</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686673643</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Whose corresponding JWT is as follows:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6W10sInR5cCI6InZhK2p3dCIsIng1YyI6WyJNSUlCakRDQ0FUR2dBd0lCQWdJVVppRm9qN2J2bWhUUXZEUXRDT1kxOWZNVnEvZ3dDZ1lJS29aSXpqMEVBd0l3R3pFWk1CY0dBMVVFQXd3UWQyRnNiR1YwTG1sMFlXeHBZUzVwZERBZUZ3MHlNekEyTVRNeE5ESTFORFJhRncweU5qQXpNRGt4TkRJMU5EUmFNQnN4R1RBWEJnTlZCQU1NRUhkaGJHeGxkQzVwZEdGc2FXRXVhWFF3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVNxc211UGNCLzhIbnV4czRoR3R3RXp0dXZ2QTV6ektlUHVVY1U5TjU5OVNkUjlIRmc4aG9MMVBNUHBEeWxQOGNuRGdsRFU5cU5HOExKU0VMWnoxT29qbzFNd1VUQWRCZ05WSFE0RUZnUVVqNWZrWGVmbG5nemJBQmx3VDZyYTFiT1ExMWN3SHdZRFZSMGpCQmd3Rm9BVWo1ZmtYZWZsbmd6YkFCbHdUNnJhMWJPUTExY3dEd1lEVlIwVEFRSC9CQVV3QXdFQi96QUtCZ2dxaGtqT1BRUURBZ05KQURCR0FpRUErYXZqei9DVm54cSs1MGlBeEtManlSdksvVzlYZ0NwNmNLRFhzN1k0dHVnQ0lRRE1XR1lMMGFkd1lLaEtpdFlzazhIUklLRkRHT1ptcVpGSTM1WEZlaGdLUUE9PSJdfQ</span><span class="p">.</span><span class="nx">eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInR5cGUiOiJXYWxsZXRJbnN0YW5jZUF0dGVzdGF0aW9uIiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyIsImFzYyI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvYmFzaWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjY2NDQzLCJleHAiOjE2ODY2NzM2NDN9</span><span class="p">.</span><span class="nx">G4TYxEov2CvmwEgmVp4cN2iWkCtiJJY2afkSbDrNwJ</span><span class="o">-</span><span class="nx">yqfLP4v7AKZs5EUsvmbbvhFTaKrNcn6</span><span class="o">-</span><span class="nx">ZnJ9d0ej6Zg</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Verifiable through the following public key (Wallet Provider Public Key)
-obtained within the Entity Configuration of the Wallet Provider,
-attested in the related Trust Chain</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="format-of-the-wallet-provider-entity-configuration">
-<h3>Format of the Wallet Provider Entity Configuration<a class="headerlink" href="#format-of-the-wallet-provider-entity-configuration" title="Permalink to this heading">¶</a></h3>
-<p>The Wallet Provider Entity Configuration is a JWT containing all the metadata
-relating to the wallet provider such as the public keys, the supported algorithms,
-the type of entity (in addition to the wallet provider, for example, it could also
-be a relying party) and the list of the available endpoints.
-It broadly implements openid-federation protocol.</p>
-<section id="id4">
-<h4>Header<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>key</strong></p></td>
-<td><p><strong>value</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>alg</p></td>
-<td><p>Algorithm to verify the token signature (es. ES256)</p></td>
-</tr>
-<tr class="row-odd"><td><p>kid</p></td>
-<td><p>Thumbprint of the public key used for signing</p></td>
-</tr>
-<tr class="row-even"><td><p>type</p></td>
-<td><p>Media type, in this case, we use the entity-statement+jwt value</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="id5">
-<h4>Payload<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>key</strong></p></td>
-<td><p><strong>value</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>iss</p></td>
-<td><p>The public url of the wallet
-provider</p></td>
-</tr>
-<tr class="row-odd"><td><p>sub</p></td>
-<td><p>The public url of the wallet
-provider</p></td>
-</tr>
-<tr class="row-even"><td><p>iat</p></td>
-<td><p>Configuration release timestamp</p></td>
-</tr>
-<tr class="row-odd"><td><p>exp</p></td>
-<td><p>Configuration expiration
-timestamp.</p></td>
-</tr>
-<tr class="row-even"><td><p>jwks</p></td>
-<td><p>Containing the keys attribute
-which is an array of all the
-public keys associated with the
-domain (they could also match
-those of the wallet provider)</p></td>
-</tr>
-<tr class="row-odd"><td><p>metadata</p></td>
-<td><p>This attribute will contain for
-each entity its own
-configuration. In our case we
-will have for now the wallet
-provider entity contained within
-the <cite>eudi_wallet_provider</cite>
-attribute and the more generic
-entity <cite>federation_entity</cite></p></td>
-</tr>
-</tbody>
-</table>
-<section id="payload-eudi-wallet-provider">
-<h5>Payload <cite>eudi_wallet_provider</cite><a class="headerlink" href="#payload-eudi-wallet-provider" title="Permalink to this heading">¶</a></h5>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>key</strong></p></td>
-<td><p><strong>value</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>jwks</p></td>
-<td><p>Containing the keys attribute
-which is an array of all the
-wallet provider's public keys</p></td>
-</tr>
-<tr class="row-odd"><td><p>token_endpoint</p></td>
-<td><p>Endpoint for obtaining the Wallet
-Instance Attestation</p></td>
-</tr>
-<tr class="row-even"><td><p>asc_values_supported</p></td>
-<td><p>List of supported values for
-the certified security context.
-These values define a level of
-assurance about the security of
-the app. In particular we will
-mainly have 3 values associated
-with low, medium and high
-security. An attested security
-context is defined according to
-the proof that the wallet
-instance is able to send to the
-wallet provider.</p></td>
-</tr>
-<tr class="row-odd"><td><p>grant_types_supported</p></td>
-<td><p>The type of grants supported by
-the endpoint token. Therefore,
-for the wallet provider the token
-is equivalent only to the wallet
-instance attestation, therefore
-this attribute will contain an
-array with only one element:
-<a class="reference external" href="urn:ietf:params:oauth:grant-type">urn:ietf:params:oauth:grant-type</a>:
-wallet-instance-attestation</p></td>
-</tr>
-<tr class="row-even"><td><p>token_endpoint_auth_methods_suppo
-rted</p></td>
-<td><p>Supported authentication method
-for the endpoint token. In our
-case it's just private_key_jwt</p></td>
-</tr>
-<tr class="row-odd"><td><p>token_endpoint_auth_signing_alg_v
-alues_supported</p></td>
-<td><p>List of supported signature
-algorithms</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="payload-federation-entity">
-<h5>Payload <cite>federation_entity</cite><a class="headerlink" href="#payload-federation-entity" title="Permalink to this heading">¶</a></h5>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>key</strong></p></td>
-<td><p><strong>value</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>organization_name</p></td>
-<td><p>Organization name</p></td>
-</tr>
-<tr class="row-odd"><td><p>homepage_uri</p></td>
-<td><p>Organization website</p></td>
-</tr>
-<tr class="row-even"><td><p>tos_uri</p></td>
-<td><p>Url to the terms of use</p></td>
-</tr>
-<tr class="row-odd"><td><p>policy_uri</p></td>
-<td><p>Url to the privacy policy</p></td>
-</tr>
-<tr class="row-even"><td><p>logo_uri</p></td>
-<td><p>URL of the organization logo</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="id6">
-<h4>Non-normative example<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;entity-statement+jwt&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="p">.</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;keys&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">      </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;metadata&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;eudi_wallet_provider&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;keys&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">          </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="w"></span>
-<span class="w">          </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;token_endpoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/token&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;asc_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;https://wallet.italia.it/LoA/basic&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;https://wallet.italia.it/LoA/medium&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;https://wallet.italia.it/LoA/high&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;grant_types_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;urn:ietf:params:oauth:grant-type:wallet-instance-attestation&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;token_endpoint_auth_methods_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;private_key_jwt&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;token_endpoint_auth_signing_alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;ES512&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;federation_entity&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;organization_name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PagoPa S.p.A.&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;homepage_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;policy_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/privacy_policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;tos_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/info_policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;logo_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it/logo.svg&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686667326</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1708785726</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Whose corresponding JWT is as follows:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9</span><span class="p">.</span><span class="nx">eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJqd2siOnsia2V5cyI6W3siY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiJxckpyajNBZl9CNTdzYk9JUnJjQk03YnI3d09jOHluajdsSEZQVGVmZlVrIiwieSI6IjFIMGNXRHlHZ3ZVOHcta1BLVV94eWNPQ1VOVDJvMGJ3c2xJUXRuUFU2aU0iLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIn1dfSwibWV0YWRhdGEiOnsiZXVkaV93YWxsZXRfcHJvdmlkZXIiOnsiandrIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoicXJKcmozQWZfQjU3c2JPSVJyY0JNN2JyN3dPYzh5bmo3bEhGUFRlZmZVayIsInkiOiIxSDBjV0R5R2d2VTh3LWtQS1VfeHljT0NVTlQybzBid3NsSVF0blBVNmlNIiwia2lkIjoiNXQ1WVlwQmhOLUVnSUVFSTVpVXpyNnIwTVIwMkxuVlEwT21la21OS2NqWSJ9XX0sInRva2VuX2VuZHBvaW50IjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L3Rva2VuIiwiYXNjX3ZhbHVlc19zdXBwb3J0ZWQiOlsiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9iYXNpYyIsImh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvbWVkaXVtIiwiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9oaWdoIl0sImdyYW50X3R5cGVzX3N1cHBvcnRlZCI6WyJ1cm46aWV0ZjpwYXJhbXM6b2F1dGg6Z3JhbnQtdHlwZTp3YWxsZXQtaW5zdGFuY2UtYXR0ZXN0YXRpb24iXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9tZXRob2RzX3N1cHBvcnRlZCI6WyJwcml2YXRlX2tleV9qd3QiXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9zaWduaW5nX2FsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2IiwiRVMzODQiLCJFUzUxMiJdfSwiZmVkZXJhdGlvbl9lbnRpdHkiOnsib3JnYW5pemF0aW9uX25hbWUiOiJQYWdvUGEgUy5wLkEuIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyJ9fSwiaWF0IjoxNjg2NjY3MzI2LCJleHAiOjE3MDg3ODU3MjZ9</span><span class="p">.</span><span class="nx">GiPss36QHS29YRmKkxPDNdS6lHmlNLLaLYQIVMGupXiTmQlhLANulePcKFkVBzq7tj1UUKu7zxfPfZMcuCo_EQ</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Verifiable through the public key of the wallet provider itself.</p>
-</section>
-</section>
-<section id="endpoints">
-<h3>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this heading">¶</a></h3>
-<p>The backend wallet that issues the wallet instance attestations must
-make available a series of APIs in REST format that follow the OpenId
-Federation standard.</p>
-<section id="metadata">
-<h4>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h4>
-<p>A <strong>GET /.well-known/openid-federation endpoint</strong> for retrieving the Wallet
-Provider Entity Configuration</p>
-</section>
-<section id="id7">
-<h4>Wallet Instance Attestation<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h4>
-<p>A second <strong>POST /token</strong> endpoint that takes two parameters as input:</p>
-<p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> which in our case is a string:
-<code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:grant-type:wallet-instance-attestation</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">assertion`</span></code> which contains the JWT of the Wallet Instance Attestation
-Request</p>
-<p>The response will then contain the Wallet Instance Attestation</p>
-</section>
-<section id="open-api-specifications">
-<h4>Open API specifications<a class="headerlink" href="#open-api-specifications" title="Permalink to this heading">¶</a></h4>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span><span class="w"></span>
-<span class="nt">info</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Wallet Backend</span><span class="w"></span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span><span class="w"></span>
-<span class="nt">servers</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://wallet.italia.it</span><span class="w"></span>
-<span class="nt">paths</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">/.well-known/openid-federation</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get wallet provider metadata</span><span class="w"></span>
-<span class="w">      </span><span class="nt">responses</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Successful response</span><span class="w"></span>
-<span class="w">          </span><span class="nt">content</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"></span>
-<span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Jwt&#39;</span><span class="w"></span>
-<span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="s">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJqd2siOnsia2V5cyI6W3siY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiI0SE5wdEkteHIycGp5UkpLR01uejRXbWRuUURfdUpTcTRSOTVOajk4YjQ0IiwieSI6IkxJWm5TQjM5dkZKaFlnUzNrN2pYRTRyMy1Db0dGUXdadFBCSVJxcE5scmciLCJraWQiOiJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn1dfSwibWV0YWRhdGEiOnsiZXVkaV93YWxsZXRfcHJvdmlkZXIiOnsiandrIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9XX0sInRva2VuX2VuZHBvaW50IjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L3Rva2VuIiwiYWNyX3ZhbHVlc19zdXBwb3J0ZWQiOlsiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9iYXNpYyIsImh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvbWVkaXVtIiwiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9oaWdoIl0sImdyYW50X3R5cGVzX3N1cHBvcnRlZCI6WyJ1cm46aWV0ZjpwYXJhbXM6b2F1dGg6Z3JhbnQtdHlwZTp3YWxsZXQtaW5zdGFuY2UtYXR0ZXN0YXRpb24iXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9tZXRob2RzX3N1cHBvcnRlZCI6WyJwcml2YXRlX2tleV9qd3QiXSwidG9rZW5fZW5kcG9pbnRfYXV0aF9zaWduaW5nX2FsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2IiwiRVMzODQiLCJFUzUxMiJdfSwiZmVkZXJhdGlvbl9lbnRpdHkiOnsib3JnYW5pemF0aW9uX25hbWUiOiJQYWdvUGEgUy5wLkEuIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyJ9fSwiaWF0IjoxNjg2NjYzODg0LCJleHAiOjE3MDg3ODIyODR9.cvL5gH1Wm6A9ii2iQ-TNsQnccY7MMPdlDb57jPwGqCMTM9JGygu_nzObjqADvMO2hcbLMKjb17WA5okdn9x9Aw&quot;</span><span class="w"></span>
-
-<span class="w">  </span><span class="nt">/token</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">post</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create Wallet Instance Attestation</span><span class="w"></span>
-<span class="w">      </span><span class="nt">requestBody</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">        </span><span class="nt">content</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
-<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/CreateWalletInstanceAttestation&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">responses</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Successful response</span><span class="w"></span>
-<span class="w">          </span><span class="nt">content</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"></span>
-<span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Jwt&#39;</span><span class="w"></span>
-<span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="s">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6W10sInR5cCI6InZhK2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInR5cGUiOiJXYWxsZXRJbnN0YW5jZUF0dGVzdGF0aW9uIiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyIsImFzYyI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvYmFzaWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjQ1MTE1LCJleHAiOjE2ODY2NTIzMTV9.hJ7oGn3RYO8ctF1Orl10zdFKjTk9-oowPZ3QeKuJC5tgdEPjesaZImQKjTOcx8v0IwSMMQ4YHX63hIGBMtnRFA&quot;</span><span class="w"></span>
-<span class="nt">components</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">CreateWalletInstanceAttestation</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w"></span>
-<span class="w">      </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">grant_type</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
-<span class="w">        </span><span class="nt">assertion</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Jwt&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">example</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">grant_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;urn:ietf:params:oauth:grant-type:wallet-instance-attestation&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">assertion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC8iLCJqdGkiOiI2ZWM2OTMyNC02MGE4LTRlNWItYTY5Ny1hNzY2ZDg1NzkwZWEiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjQ1MTE1LCJleHAiOjE2ODY2NTIzMTV9.3KInOD_N4zh5PmXj9QhS5aIVFF8zxMl6326KxDTAFYMPJbweD2ny95Nk6y_xTCOioail2WHDLpF3Rju16Q7Z7Q&quot;</span><span class="w"></span>
-
-<span class="w">    </span><span class="nt">Jwt</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;application/jwt&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_\-\+\/=]+)$</span><span class="w"></span>
-</pre></div>
-</div>
-</section>
-</section>
+<section id="external-references">
+<h2>External references<a class="headerlink" href="#external-references" title="Permalink to this heading">¶</a></h2>
+<p>TODO</p>
 </section>
 </section>
 
