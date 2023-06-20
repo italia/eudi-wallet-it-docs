@@ -481,46 +481,46 @@ Payload
 
 Payload `eudi_wallet_provider`
 ''''''''''''''''''''''''''''''
-+-----------------------------------+-----------------------------------+
-| **key**                           | **value**                         |
-+-----------------------------------+-----------------------------------+
-| jwks                              | Containing the keys attribute     |
-|                                   | which is an array of all the      |
-|                                   | Wallet Provider's public keys     |
-+-----------------------------------+-----------------------------------+
-| token_endpoint                    | Endpoint for obtaining the Wallet |
-|                                   | Instance Attestation              |
-+-----------------------------------+-----------------------------------+
-| asc_values_supported              | List of supported values for      |
-|                                   | the certified security context.   |
-|                                   | These values define a level of    |
-|                                   | assurance about the security of   |
-|                                   | the app. In particular we will    |
-|                                   | mainly have 3 values associated   |
-|                                   | with low, medium and high         |
-|                                   | security. An attested security    |
-|                                   | context is defined according to   |
-|                                   | the proof that the wallet         |
-|                                   | instance is able to send to the   |
-|                                   | Wallet Provider.                  |
-+-----------------------------------+-----------------------------------+
-| grant_types_supported             | The type of grants supported by   |
-|                                   | the endpoint token. Therefore,    |
-|                                   | for the Wallet Provider the token |
-|                                   | is equivalent only to the wallet  |
-|                                   | instance attestation, therefore   |
-|                                   | this attribute will contain an    |
-|                                   | array with only one element:      |
-|                                   | urn:ietf:params:oauth:grant-type: |
-|                                   | wallet-instance-attestation       |
-+-----------------------------------+-----------------------------------+
-| token_endpoint_auth_methods_suppo | Supported authentication method   |
-| rted                              | for the endpoint token. In our    |
-|                                   | case it's just private_key_jwt    |
-+-----------------------------------+-----------------------------------+
-| token_endpoint_auth_signing_alg_v | List of supported signature       |
-| alues_supported                   | algorithms                        |
-+-----------------------------------+-----------------------------------+
++------------------------------------+------------------------------------+
+| **key**                            | **value**                          |
++------------------------------------+------------------------------------+
+|| jwks                              || Containing the keys attribute     |
+||                                   || which is an array of all the      |
+||                                   || Wallet Provider's public keys     |
++------------------------------------+------------------------------------+
+|| token_endpoint                    || Endpoint for obtaining the Wallet |
+||                                   || Instance Attestation              |
++------------------------------------+------------------------------------+
+|| asc_values_supported              || List of supported values for      |
+||                                   || the certified security context.   |
+||                                   || These values define a level of    |
+||                                   || assurance about the security of   |
+||                                   || the app. In particular we will    |
+||                                   || mainly have 3 values associated   |
+||                                   || with low, medium and high         |
+||                                   || security. An attested security    |
+||                                   || context is defined according to   |
+||                                   || the proof that the wallet         |
+||                                   || instance is able to send to the   |
+||                                   || Wallet Provider.                  |
++------------------------------------+------------------------------------+
+|| grant_types_supported             || The type of grants supported by   |
+||                                   || the endpoint token. Therefore,    |
+||                                   || for the Wallet Provider the token |
+||                                   || is equivalent only to the wallet  |
+||                                   || instance attestation, therefore   |
+||                                   || this attribute will contain an    |
+||                                   || array with only one element:      |
+||                                   || client-assertion-type:            |
+||                                   || jwt-key-attestation               |
++------------------------------------+------------------------------------+
+|| token_endpoint_auth_methods_suppo || Supported authentication method   |
+|| rted                              || for the endpoint token. In our    |
+||                                   || case it's just private_key_jwt    |
++------------------------------------+------------------------------------+
+|| token_endpoint_auth_signing_alg_v || List of supported signature       |
+|| alues_supported                   || algorithms                        |
++------------------------------------+------------------------------------+
 
 Payload `federation_entity`
 '''''''''''''''''''''''''''
@@ -577,7 +577,7 @@ Non-normative example
         "https://wallet.italia.it/LoA/high"
       ],
       "grant_types_supported": [
-        "urn:ietf:params:oauth:grant-type:wallet-instance-attestation"
+        "urn:ietf:params:oauth:client-assertion-type:jwt-key-attestationn"
       ],
       "token_endpoint_auth_methods_supported": [
         "private_key_jwt"
@@ -625,7 +625,7 @@ Wallet Instance Attestation
 A second **POST /token** endpoint that takes two parameters as input:
 
 ``grant_type`` which in our case is a string:
-``urn:ietf:params:oauth:grant-type:wallet-instance-attestation``
+``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestationn``
 
 ``assertion``` which contains the signed JWT of the Wallet Instance Attestation
 Request
@@ -685,7 +685,7 @@ Open API specifications
           assertion:
             $ref: '#/components/schemas/Jwt'
         example:
-          grant_type: "urn:ietf:params:oauth:grant-type:wallet-instance-attestation"
+          grant_type: "urn:ietf:params:oauth:client-assertion-type:jwt-key-attestationn"
           assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC8iLCJqdGkiOiI2ZWM2OTMyNC02MGE4LTRlNWItYTY5Ny1hNzY2ZDg1NzkwZWEiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjQ1MTE1LCJleHAiOjE2ODY2NTIzMTV9.3KInOD_N4zh5PmXj9QhS5aIVFF8zxMl6326KxDTAFYMPJbweD2ny95Nk6y_xTCOioail2WHDLpF3Rju16Q7Z7Q"
 
       Jwt:

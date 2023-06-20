@@ -1483,50 +1483,109 @@ entity <cite>federation_entity</cite></p></td>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
 <td><p><strong>value</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>jwks</p></td>
-<td><p>Containing the keys attribute
-which is an array of all the
-Wallet Provider's public keys</p></td>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">jwks</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Containing the keys attribute</div>
+<div class="line">which is an array of all the</div>
+<div class="line">Wallet Provider's public keys</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td><p>token_endpoint</p></td>
-<td><p>Endpoint for obtaining the Wallet
-Instance Attestation</p></td>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">token_endpoint</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Endpoint for obtaining the Wallet</div>
+<div class="line">Instance Attestation</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td><p>asc_values_supported</p></td>
-<td><p>List of supported values for
-the certified security context.
-These values define a level of
-assurance about the security of
-the app. In particular we will
-mainly have 3 values associated
-with low, medium and high
-security. An attested security
-context is defined according to
-the proof that the wallet
-instance is able to send to the
-Wallet Provider.</p></td>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">asc_values_supported</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">List of supported values for</div>
+<div class="line">the certified security context.</div>
+<div class="line">These values define a level of</div>
+<div class="line">assurance about the security of</div>
+<div class="line">the app. In particular we will</div>
+<div class="line">mainly have 3 values associated</div>
+<div class="line">with low, medium and high</div>
+<div class="line">security. An attested security</div>
+<div class="line">context is defined according to</div>
+<div class="line">the proof that the wallet</div>
+<div class="line">instance is able to send to the</div>
+<div class="line">Wallet Provider.</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td><p>grant_types_supported</p></td>
-<td><p>The type of grants supported by
-the endpoint token. Therefore,
-for the Wallet Provider the token
-is equivalent only to the wallet
-instance attestation, therefore
-this attribute will contain an
-array with only one element:
-<a class="reference external" href="urn:ietf:params:oauth:grant-type">urn:ietf:params:oauth:grant-type</a>:
-wallet-instance-attestation</p></td>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">grant_types_supported</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">The type of grants supported by</div>
+<div class="line">the endpoint token. Therefore,</div>
+<div class="line">for the Wallet Provider the token</div>
+<div class="line">is equivalent only to the wallet</div>
+<div class="line">instance attestation, therefore</div>
+<div class="line">this attribute will contain an</div>
+<div class="line">array with only one element:</div>
+<div class="line">client-assertion-type:</div>
+<div class="line">jwt-key-attestation</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td><p>token_endpoint_auth_methods_suppo
-rted</p></td>
-<td><p>Supported authentication method
-for the endpoint token. In our
-case it's just private_key_jwt</p></td>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">token_endpoint_auth_methods_suppo</div>
+<div class="line">rted</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Supported authentication method</div>
+<div class="line">for the endpoint token. In our</div>
+<div class="line">case it's just private_key_jwt</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td><p>token_endpoint_auth_signing_alg_v
-alues_supported</p></td>
-<td><p>List of supported signature
-algorithms</p></td>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">token_endpoint_auth_signing_alg_v</div>
+<div class="line">alues_supported</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">List of supported signature</div>
+<div class="line">algorithms</div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1593,7 +1652,7 @@ algorithms</p></td>
 <span class="w">      </span><span class="s2">&quot;https://wallet.italia.it/LoA/high&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;grant_types_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;urn:ietf:params:oauth:grant-type:wallet-instance-attestation&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;urn:ietf:params:oauth:client-assertion-type:jwt-key-attestationn&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;token_endpoint_auth_methods_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="s2">&quot;private_key_jwt&quot;</span><span class="w"></span>
@@ -1638,7 +1697,7 @@ Provider Entity Configuration</p>
 <h4>Wallet Instance Attestation<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h4>
 <p>A second <strong>POST /token</strong> endpoint that takes two parameters as input:</p>
 <p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> which in our case is a string:
-<code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:grant-type:wallet-instance-attestation</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-key-attestationn</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">assertion`</span></code> which contains the signed JWT of the Wallet Instance Attestation
 Request</p>
 <p>The response will then contain the Wallet Instance Attestation</p>
@@ -1693,7 +1752,7 @@ Request</p>
 <span class="w">        </span><span class="nt">assertion</span><span class="p">:</span><span class="w"></span>
 <span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Jwt&#39;</span><span class="w"></span>
 <span class="w">      </span><span class="nt">example</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">grant_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;urn:ietf:params:oauth:grant-type:wallet-instance-attestation&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">grant_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;urn:ietf:params:oauth:client-assertion-type:jwt-key-attestationn&quot;</span><span class="w"></span>
 <span class="w">        </span><span class="nt">assertion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC8iLCJqdGkiOiI2ZWM2OTMyNC02MGE4LTRlNWItYTY5Ny1hNzY2ZDg1NzkwZWEiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjQ1MTE1LCJleHAiOjE2ODY2NTIzMTV9.3KInOD_N4zh5PmXj9QhS5aIVFF8zxMl6326KxDTAFYMPJbweD2ny95Nk6y_xTCOioail2WHDLpF3Rju16Q7Z7Q&quot;</span><span class="w"></span>
 
 <span class="w">    </span><span class="nt">Jwt</span><span class="p">:</span><span class="w"></span>
