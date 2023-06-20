@@ -2,8 +2,8 @@
 
 .. _ssi-introduction.rst:
 
-ssi-introduction.rst
-+++++++++++++++++++++++++++
+Self Sovereign Identity
++++++++++++++++++++++++
 
 Introduction to SSI
 -------------------
@@ -13,11 +13,12 @@ Introduction to SSI
 Self-Sovereign Identity (SSI) refers to a new paradigm in Identity and Access Management (IAM) that improves the privacy and grants complete control and ownership over the personal data by their owner, the citizens.
 Users possess their digital documents and determine to which actors they present these documents, with the ability to revoke the use of said documents, all while maintaining a history of their activities. 
 
-The main difference between this new approach and the traditional IAM infrastructure is that during the presentation phase there are no intermediate between the Wallet (Holder of the credentials) and the Relying Party, while in the SAML2 or OIDC based infrastructure an Identity Provider is always involved, knowing which services a citizen is accessing to.
+The main difference between this new approach and the traditional IAM infrastructure is that during the presentation phase there are no intermediates between the Wallet (Holder of the credentials) and the Relying Party, while in the SAML2 or OIDC based infrastructure an Identity Provider is always involved, knowing which services a citizen is accessing to.
 
 SSI is also significant in the field of data exchange and data governance. This is relevant at both national and European levels, including the new eIDAS Regulation. In fact, it envisions a login option designed for European Users - be they citizens, public administrations, or companies - who want to access another Member State's services using their national authentication systems.
 
-The main roles in an SSI ecosystem are the followings:
+The main roles in an SSI ecosystem are are listed as follow:
+
  - Issuers: parties who can issue attributes or "credentials" about a person;
  - Verifiers: parties who request Holders' attributes because they want to know something about them;
  - Holders: individuals who own a Wallet and have control over the attributes they can acquire, store, and present to Verifiers;

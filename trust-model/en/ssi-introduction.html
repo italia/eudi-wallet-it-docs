@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | ssi-introduction.rst</title>
+  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | Self Sovereign Identity</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -575,7 +575,7 @@
       </ul>
       
       <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ssi-introduction.rst</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Self Sovereign Identity</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction-to-ssi">Introduction to SSI</a></li>
 </ul>
 </li>
@@ -698,7 +698,7 @@
 <div class="navbar-toggler--wrap navbar-toggler--wrap--bottom p-3">
   <div class="navbar-toggler navbar-toggler--open p-0 border-0 ml-auto">
     <div class="navbar-toggler-bottom__chapter align-middle text-truncate">
-      <span class="it-list mr-2"></span>ssi-introduction.rst
+      <span class="it-list mr-2"></span>Self Sovereign Identity
     </div>
   </div>
 </div>
@@ -755,7 +755,7 @@
         </ul>
         
         <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ssi-introduction.rst</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Self Sovereign Identity</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction-to-ssi">Introduction to SSI</a></li>
 </ul>
 </li>
@@ -893,24 +893,24 @@
             </div>
           
           
-  <section id="ssi-introduction-rst">
-<span id="id1"></span><h1>ssi-introduction.rst<a class="headerlink" href="#ssi-introduction-rst" title="Permalink to this heading">¶</a></h1>
+  <section id="self-sovereign-identity">
+<span id="ssi-introduction-rst"></span><h1>Self Sovereign Identity<a class="headerlink" href="#self-sovereign-identity" title="Permalink to this heading">¶</a></h1>
 <section id="introduction-to-ssi">
 <h2>Introduction to SSI<a class="headerlink" href="#introduction-to-ssi" title="Permalink to this heading">¶</a></h2>
 <p><strong>Definition</strong></p>
 <p>Self-Sovereign Identity (SSI) refers to a new paradigm in Identity and Access Management (IAM) that improves the privacy and grants complete control and ownership over the personal data by their owner, the citizens.
 Users possess their digital documents and determine to which actors they present these documents, with the ability to revoke the use of said documents, all while maintaining a history of their activities.</p>
-<p>The main difference between this new approach and the traditional IAM infrastructure is that during the presentation phase there are no intermediate between the Wallet (Holder of the credentials) and the Relying Party, while in the SAML2 or OIDC based infrastructure an Identity Provider is always involved, knowing which services a citizen is accessing to.</p>
+<p>The main difference between this new approach and the traditional IAM infrastructure is that during the presentation phase there are no intermediates between the Wallet (Holder of the credentials) and the Relying Party, while in the SAML2 or OIDC based infrastructure an Identity Provider is always involved, knowing which services a citizen is accessing to.</p>
 <p>SSI is also significant in the field of data exchange and data governance. This is relevant at both national and European levels, including the new eIDAS Regulation. In fact, it envisions a login option designed for European Users - be they citizens, public administrations, or companies - who want to access another Member State's services using their national authentication systems.</p>
-<dl class="simple">
-<dt>The main roles in an SSI ecosystem are the followings:</dt><dd><ul class="simple">
+<p>The main roles in an SSI ecosystem are are listed as follow:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Issuers: parties who can issue attributes or &quot;credentials&quot; about a person;</p></li>
 <li><p>Verifiers: parties who request Holders' attributes because they want to know something about them;</p></li>
 <li><p>Holders: individuals who own a Wallet and have control over the attributes they can acquire, store, and present to Verifiers;</p></li>
 <li><p>Verifiable Data Registries: Authorities that publish certificates, attestations, metadata, and schemes needed for trust establishment between the parties.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p><strong>What it is useful for</strong></p>
 <p>In the SSI model, the data source (e.g., an educational institution) provides credentials to the User, who can store them in their digital Wallet.
 A secure Self-Sovereign Identity Wallet is crucial, as it allows people to carry their credentials on their digital devices. The Wallet typically comes in the form of an application on the User's mobile phone. Portability is, therefore, one of the principles of SSI.</p>
