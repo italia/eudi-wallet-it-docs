@@ -269,11 +269,10 @@ Furthermore, the Wallet Instance can apply the metadata policy, if available, to
 Privacy Considerations
 ----------------------
 
-- EUDI Wallet Instances do not publish their metadata through an online service;
-- Federation endpoints are public and do not require client authentication, making the Relying Party that searches for the Entity Statement of a Wallet anonymous;
-- The trust infrastructure should be public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access;
+- EUDI Wallet Instances do not publish their metadata through an online service.
+- The trust infrastructure is public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.
 - When a Wallet requests the Entity Statements to build the Trust Chain for a specific Relying Party or validates a Trust Mark online, issued for a specific Relying Party, the Trust Anchor or its Intermediate do not know that a particular Wallet is inquiring about a specific Relying Party; instead, they only serve the statements related to that Relying Party as a public resource.
-- The metadata of the EUDI Wallet instance must not contain any information that may disclose technical information about the hardware used.
+- The metadata of the EUDI Wallet instance must not contain information that may disclose technical information about the hardware used.
 - Leaf entity, Intermediate, and Trust Anchor metadata may include the necessary amount of data as part of administrative, technical, and security contact information. It is generally not recommended to use personal contact details in such cases. From a legal perspective, the publication of such information is needed for operational support concerning technical and security matters and is in line with GDPR.
 
 Considerations about Decentralization
@@ -281,7 +280,6 @@ Considerations about Decentralization
 
 - There should be more than one Trust Anchor.
 - In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may represent itself as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction.
-- The Wallet Instance does not need to publish its Entity Configuration (.well-known/openid-federation) since its reliability attestation is contained in the Wallet Instance Attestation, issued by its Wallet Provider. The Wallet Provider must publish its Entity Configuration.
-- Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests). The presentation must be signed. By saving the signed presentation requests and the obtained credentials, which include the Trust Chain, the Wallet Instance has a snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the RP it has interacted with. This information must be stored on the Wallet Device and backed up in a remote and secure cloud storage, with the explicit permission of its User (owner).
+- Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests). The presentation must be signed. By saving the signed presentation requests and the obtained credentials, which include the Trust Chain, the Wallet Instance has a snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the RP it has interacted with. This information must be stored on the Wallet Device and backed up in a remote and secure cloud storage, with the explicit permission of its User.
 - Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.
 - Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The Metadata Policy of a Trust Chain must be applied to overload any information related to protocol metadata and allowed grants of the participants.
