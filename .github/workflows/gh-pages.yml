@@ -4,7 +4,7 @@ name: gh-pages
 
 on:
   push:
-    branches: [ "versione-corrente" ]
+    branches: [ "*" ]
     paths-ignore:
     - README.md
     - CONTRIBUTING.md
