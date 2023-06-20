@@ -7,7 +7,7 @@ The Infrastructure of Trust
 
 The EUDI Wallet Architecture Reference Framework (`EIDAS-ARF`_) defines the Trust Model as a *"collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem."*.
 
-In this section, we define how the Trust Model is implemented in an infrastructure of Trust based on
+This section defines how the Trust Model is implemented in an infrastructure of Trust based on
 OpenID Connect Federation 1.0 `OIDC-FED`_, where its Federation API is used for the distribution of metadata, raw public keys, metadata policies, X.509 certificates, and their revocation statuses.
 
 The infrastructure of Trust enables the trust assessment mechanism to be applied between the parties defined in the `EIDAS-ARF`_.
