@@ -9,7 +9,7 @@ Inside a **Wallet Solution** and, especially with regards
 to the **Wallet Instance**, it is essential to ensure the **authenticity,
 integrity, security, privacy and trust** in the use of the latter both
 by the User and the services connected to it, such as the
-**PID Provider** or one **Relying Party **.
+**PID Provider** or one **Relying Party**.
 
 
 General Properties
@@ -474,9 +474,9 @@ Payload
 |                                   | configuration. In our case we     |
 |                                   | will have for now the wallet      |
 |                                   | provider entity contained within  |
-|                                   | the `eudi_wallet_provider`        |
+|                                   | the ``eudi_wallet_provider``      |
 |                                   | attribute and the more generic    |
-|                                   | entity `federation_entity`        |
+|                                   | entity ``federation_entity``      |
 +-----------------------------------+-----------------------------------+
 
 Payload `eudi_wallet_provider`
