@@ -432,7 +432,7 @@ Format of the Wallet Provider Entity Configuration
 The Wallet Provider Entity Configuration is a JWT containing all the metadata
 relating to the Wallet Provider such as the public keys, the supported algorithms,
 the type of entity (in addition to the Wallet Provider, for example, it could also
-be a Relying Party ) and the list of the available endpoints.
+be a Relying Party) and the list of the available endpoints.
 It broadly implements openid-federation protocol.
 
 Header
