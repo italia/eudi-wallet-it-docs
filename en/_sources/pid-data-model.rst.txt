@@ -17,7 +17,7 @@ The User attributes carried in the Italian PID are:
     - Unique Identifier
     - Taxpayer identification number
 
-The PID is issued according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.
+The italian PID is extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.
 
 The PID data format and the mechanism through which it is issued into the Wallet Instance and presented to a RP will be detailed in the next sections. 
 
