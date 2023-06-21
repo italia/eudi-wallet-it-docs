@@ -8,7 +8,13 @@ Technical References
     :header-rows: 0
 
     * - `OIDC-FED`_
-      - OpenID Connect Federation 1.0 
+      - OpenID Connect Federation 1.0
+    * - `EUDI-ARF`_
+      - EUDI Wallet - Architecture and Reference Framework
+    * - `OID4VP`_
+      - OpenID for Verifiable Presentations - draft 19 
+    * - `PrExch 2.0`_
+      - Presentation Exchange 2.0 for Presentation Definition
     * - :rfc:`2119`
       - Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels," BCP 14, RFC 2119, March 1997.
     * - :rfc:`2616`
