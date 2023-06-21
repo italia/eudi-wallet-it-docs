@@ -1478,6 +1478,117 @@ entity <code class="docutils literal notranslate"><span class="pre">federation_e
 </table>
 <section id="payload-eudi-wallet-provider">
 <h5>Payload <cite>eudi_wallet_provider</cite><a class="headerlink" href="#payload-eudi-wallet-provider" title="Permalink to this heading">¶</a></h5>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>value</strong></p></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">jwks</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Containing the keys attribute</div>
+<div class="line">which is an array of all the</div>
+<div class="line">Wallet Provider's public keys.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">token_endpoint</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Endpoint for obtaining the Wallet</div>
+<div class="line">Instance Attestation.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">asc_values_supported</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">List of supported values for</div>
+<div class="line">the certified security context.</div>
+<div class="line">These values define a level of</div>
+<div class="line">assurance about the security of</div>
+<div class="line">the app. In particular we will</div>
+<div class="line">mainly have 3 values associated</div>
+<div class="line">with low, medium and high</div>
+<div class="line">security. An attested security</div>
+<div class="line">context is defined according to</div>
+<div class="line">the proof that the wallet</div>
+<div class="line">instance is able to send to the</div>
+<div class="line">Wallet Provider.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">grant_types_supported</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">The type of grants supported by</div>
+<div class="line">the endpoint token. Therefore,</div>
+<div class="line">for the Wallet Provider the token</div>
+<div class="line">is equivalent only to the wallet</div>
+<div class="line">instance attestation, therefore</div>
+<div class="line">this attribute will contain an</div>
+<div class="line">array with only one element:</div>
+<div class="line">client-assertion-type:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">jwt-key-attestation</span></code>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">token_endpoint_auth_methods_suppo</div>
+<div class="line">rted</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Supported authentication method</div>
+<div class="line">for the endpoint token. In our</div>
+<div class="line">case it's just <code class="docutils literal notranslate"><span class="pre">private_key_jwt</span></code>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">token_endpoint_auth_signing_alg_v</div>
+<div class="line">alues_supported</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">List of supported signature</div>
+<div class="line">algorithms.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="payload-federation-entity">
 <h5>Payload <cite>federation_entity</cite><a class="headerlink" href="#payload-federation-entity" title="Permalink to this heading">¶</a></h5>
