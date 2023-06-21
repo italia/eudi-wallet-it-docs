@@ -135,11 +135,11 @@ how it is issued by the Wallet Provider's backend.
   trustworthy by resolving the provider's trust chain up to the anchor (⚠️
   this step is skipped in this version).
 - **Message 5-7**: The Wallet Instance instantiates a new key pair on its TEE
-  and requests a nonce from the Wallet Provider's backend (as a measure
+  and requests a ``nonce`` from the Wallet Provider's backend (as a measure
   against replay attacks).
 - **Message 8**: The Wallet Instance generates a Wallet Instance Attestation
   Request (JWT) signed with the private key associated with the public key
-  for which it wants to obtain the attestation containing the nonce and
+  for which it wants to obtain the attestation containing the ``nonce`` and
   other useful parameters.
 - **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation
   Request to the Wallet Provider's backend which verifies its validity and
@@ -158,7 +158,7 @@ Format of the Wallet Instance Attestation Request
 To obtain a Wallet Instance Attestation from the wallet
 provider (backend) it is necessary to send a Wallet Instance Attestation
 Request from the Wallet Instance containing the associated public key
-and a nonce previously requested to avoid replay attacks.
+and a ``nonce`` previously requested to avoid replay attacks.
 
 Header
 ^^^^^^
@@ -172,7 +172,7 @@ Header
 +-----------------------------------+-----------------------------------+
 | type                              | Media type, in this case, we use  |
 |                                   | the value var+jwt (Verifiable     |
-|                                   | Assertion Request JWT).           |
+|                                   | Assertion Request JWT)            |
 +-----------------------------------+-----------------------------------+
 
 Payload
@@ -184,14 +184,14 @@ Payload
 ||        || concatenated with the thumbprint          |
 ||        || of the JWK of the Wallet Instance         |
 ||        || for which the attestation is              |
-||        || being requested                           |
+||        || being requested.                          |
 +---------+--------------------------------------------+
 || sub    || The public url of the wallet              |
 ||        || instance attestation issuer.              |
 +---------+--------------------------------------------+
 || jti    || Unique identifier of the request.         |
 ||        || This parameter will be used to            |
-||        || avoid replay attacks                      |
+||        || avoid replay attacks.                     |
 +---------+--------------------------------------------+
 | type    | WalletInstanceAttestationRequest           |
 +---------+--------------------------------------------+
@@ -204,7 +204,7 @@ Payload
 ||        || Wallet Instance. It will also             |
 ||        || contain all the information               |
 ||        || useful for the Wallet Provider            |
-||        || backend to verify that the app is genuine |
+||        || backend to verify that the app is genuine.|
 +---------+--------------------------------------------+
 
 Non-normative example
@@ -259,10 +259,10 @@ Header
 | **key**                           | **value**                         |
 +-----------------------------------+-----------------------------------+
 | alg                               | Algorithm to verify the token     |
-|                                   | signature (es. ES256)             |
+|                                   | signature (es. ES256).            |
 +-----------------------------------+-----------------------------------+
 | kid                               | Key id used by the wallet         |
-|                                   | provider to sign the attestation  |
+|                                   | provider to sign the attestation. |
 +-----------------------------------+-----------------------------------+
 | type                              | Media type, in this case we use   |
 |                                   | the value va+jwt (Verifiable      |
@@ -272,7 +272,7 @@ Header
 |                                   | registered as `IANA Media         |
 |                                   | Types <https://www.iana.org/assig |
 |                                   | nments/media-types/media-types.xh |
-|                                   | tml>`__                           |
+|                                   | tml>`__.                          |
 +-----------------------------------+-----------------------------------+
 | x5c                               | Array containing the X.509        |
 |                                   | certificate (and the entire chain |
@@ -283,7 +283,7 @@ Header
 |                                   |   trust chain relating to its     |
 |                                   |   issuer (Wallet Provider).       |
 |                                   | | ⚠️ This topic will be addressed |
-|                                   |   at a later stage                |
+|                                   |   at a later stage.               |
 +-----------------------------------+-----------------------------------+
 
 Payload
@@ -300,10 +300,10 @@ Payload
 |                                   | concatenated with the thumbprint  |
 |                                   | of the JWK of the Wallet Instance |
 |                                   | for which the attestation is      |
-|                                   | being issued                      |
+|                                   | being issued.                     |
 +-----------------------------------+-----------------------------------+
 | iat                               | Timestamp of issue of the         |
-|                                   | attestation                       |
+|                                   | attestation.                      |
 +-----------------------------------+-----------------------------------+
 | exp                               | Attestation expiration timestamp. |
 |                                   | A good practice to avoid security |
@@ -311,25 +311,25 @@ Payload
 |                                   | duration of the attestation.      |
 +-----------------------------------+-----------------------------------+
 | type                              | String:                           |
-|                                   | "WalletInstanceAttestation"       |
+|                                   | "WalletInstanceAttestation".      |
 +-----------------------------------+-----------------------------------+
 | policy_uri                        | Url to the privacy policy         |
-|                                   | of the wallet                     |
+|                                   | of the wallet.                    |
 +-----------------------------------+-----------------------------------+
 | tos_uri                           | Url to the terms                  |
-|                                   | of use of the Wallet Provider     |
+|                                   | of use of the Wallet Provider.    |
 +-----------------------------------+-----------------------------------+
-| logo_uri                          | Logo url of the Wallet Provider   |
+| logo_uri                          | Logo url of the Wallet Provider.  |
 +-----------------------------------+-----------------------------------+
 | asc                               | Attested security context:        |
 |                                   | Represents a level of "trust" of  |
 |                                   | the service containing a Level Of |
 |                                   | Agreement defined in the metadata |
-|                                   | of the Wallet Provider            |
+|                                   | of the Wallet Provider.           |
 +-----------------------------------+-----------------------------------+
 | cnf                               | This parameter contains the JSON  |
 |                                   | the payload of which is shown     |
-|                                   | below                             |
+|                                   | below.                            |
 +-----------------------------------+-----------------------------------+
 
 Payload of `cnf`
@@ -340,13 +340,13 @@ Payload of `cnf`
 +-----------------------+-------------------------------------------------+
 || jwk                  || The public key of the Wallet                   |
 ||                      || instance necessary for the                     |
-||                      || holder binding                                 |
+||                      || holder binding.                                |
 +-----------------------+-------------------------------------------------+
 || vp_formats_supported || The Verifiable Credential and                  |
 ||                      || Verifiable Presentation formats                |
 ||                      || supported by the Wallet                        |
 ||                      || See paragraph. 8.1 of                          |
-||                      || OpenID for Verifiable Presentations - draft 19 |
+||                      || OpenID for Verifiable Presentations - draft 19.|
 +-----------------------+-------------------------------------------------+
 
 Signature
@@ -414,7 +414,7 @@ Whose corresponding JWS is as follows:
 
 Verifiable through the following public key (Wallet Provider Public Key)
 obtained within the Entity Configuration of the Wallet Provider,
-attested in the related Trust Chain
+attested in the related trust chain.
 
 .. code-block:: javascript
 
@@ -433,19 +433,19 @@ The Wallet Provider Entity Configuration is a JWT containing all the metadata
 relating to the Wallet Provider such as the public keys, the supported algorithms,
 the type of entity (in addition to the Wallet Provider, for example, it could also
 be a Relying Party) and the list of the available endpoints.
-It broadly implements openid-federation protocol.
+It broadly implements ``OIDC-FED`` protocol.
 
 Header
 ^^^^^^
-+---------+----------------------------------------------------------------+
-| **key** | **value**                                                      |
-+---------+----------------------------------------------------------------+
-| alg     | Algorithm to verify the token signature (es. ES256)            |
-+---------+----------------------------------------------------------------+
-| kid     | Thumbprint of the public key used for signing                  |
-+---------+----------------------------------------------------------------+
-| type    | Media type, in this case, we use the entity-statement+jwt value|
-+---------+----------------------------------------------------------------+
++---------+-----------------------------------------------------------------+
+| **key** | **value**                                                       |
++---------+-----------------------------------------------------------------+
+| alg     | Algorithm to verify the token signature (es. ES256).            |
++---------+-----------------------------------------------------------------+
+| kid     | Thumbprint of the public key used for signing.                  |
++---------+-----------------------------------------------------------------+
+| type    | Media type, in this case, we use the entity-statement+jwt value.|
++---------+-----------------------------------------------------------------+
 
 Payload
 ^^^^^^^
@@ -453,12 +453,12 @@ Payload
 | **key**                           | **value**                         |
 +-----------------------------------+-----------------------------------+
 | iss                               | The public url of the wallet      |
-|                                   | provider                          |
+|                                   | provider.                         |
 +-----------------------------------+-----------------------------------+
 | sub                               | The public url of the wallet      |
-|                                   | provider                          |
+|                                   | provider.                         |
 +-----------------------------------+-----------------------------------+
-| iat                               | Configuration release timestamp   |
+| iat                               | Configuration release timestamp.  |
 +-----------------------------------+-----------------------------------+
 | exp                               | Configuration expiration          |
 |                                   | timestamp.                        |
@@ -467,7 +467,7 @@ Payload
 |                                   | which is an array of all the      |
 |                                   | public keys associated with the   |
 |                                   | domain (they could also match     |
-|                                   | those of the Wallet Provider)     |
+|                                   | those of the Wallet Provider).    |
 +-----------------------------------+-----------------------------------+
 | metadata                          | This attribute will contain for   |
 |                                   | each entity its own               |
@@ -476,50 +476,50 @@ Payload
 |                                   | provider entity contained within  |
 |                                   | the ``eudi_wallet_provider``      |
 |                                   | attribute and the more generic    |
-|                                   | entity ``federation_entity``      |
+|                                   | entity ``federation_entity``.     |
 +-----------------------------------+-----------------------------------+
 
 Payload `eudi_wallet_provider`
 ''''''''''''''''''''''''''''''
-+------------------------------------+------------------------------------+
-| **key**                            | **value**                          |
-+------------------------------------+------------------------------------+
-|| jwks                              || Containing the keys attribute     |
-||                                   || which is an array of all the      |
-||                                   || Wallet Provider's public keys     |
-+------------------------------------+------------------------------------+
-|| token_endpoint                    || Endpoint for obtaining the Wallet |
-||                                   || Instance Attestation              |
-+------------------------------------+------------------------------------+
-|| asc_values_supported              || List of supported values for      |
-||                                   || the certified security context.   |
-||                                   || These values define a level of    |
-||                                   || assurance about the security of   |
-||                                   || the app. In particular we will    |
-||                                   || mainly have 3 values associated   |
-||                                   || with low, medium and high         |
-||                                   || security. An attested security    |
-||                                   || context is defined according to   |
-||                                   || the proof that the wallet         |
-||                                   || instance is able to send to the   |
-||                                   || Wallet Provider.                  |
-+------------------------------------+------------------------------------+
-|| grant_types_supported             || The type of grants supported by   |
-||                                   || the endpoint token. Therefore,    |
-||                                   || for the Wallet Provider the token |
-||                                   || is equivalent only to the wallet  |
-||                                   || instance attestation, therefore   |
-||                                   || this attribute will contain an    |
-||                                   || array with only one element:      |
-||                                   || client-assertion-type:            |
-||                                   || ``jwt-key-attestation``           |
-+------------------------------------+------------------------------------+
-|| token_endpoint_auth_methods_suppo || Supported authentication method   |
-|| rted                              || for the endpoint token. In our    |
-||                                   || case it's just ``private_key_jwt``|
-+------------------------------------+------------------------------------+
-|| token_endpoint_auth_signing_alg_v || List of supported signature       |
-|| alues_supported                   || algorithms                        |
++------------------------------------+-------------------------------------+
+| **key**                            | **value**                           |
++------------------------------------+-------------------------------------+
+|| jwks                              || Containing the keys attribute      |
+||                                   || which is an array of all the       |
+||                                   || Wallet Provider's public keys.     |
++------------------------------------+-------------------------------------+
+|| token_endpoint                    || Endpoint for obtaining the Wallet  |
+||                                   || Instance Attestation.              |
++------------------------------------+-------------------------------------+
+|| asc_values_supported              || List of supported values for       |
+||                                   || the certified security context.    |
+||                                   || These values define a level of     |
+||                                   || assurance about the security of    |
+||                                   || the app. In particular we will     |
+||                                   || mainly have 3 values associated    |
+||                                   || with low, medium and high          |
+||                                   || security. An attested security     |
+||                                   || context is defined according to    |
+||                                   || the proof that the wallet          |
+||                                   || instance is able to send to the    |
+||                                   || Wallet Provider.                   |
++------------------------------------+-------------------------------------+
+|| grant_types_supported             || The type of grants supported by    |
+||                                   || the endpoint token. Therefore,     |
+||                                   || for the Wallet Provider the token  |
+||                                   || is equivalent only to the wallet   |
+||                                   || instance attestation, therefore    |
+||                                   || this attribute will contain an     |
+||                                   || array with only one element:       |
+||                                   || client-assertion-type:             |
+||                                   || ``jwt-key-attestation``.           |
++------------------------------------+-------------------------------------+
+|| token_endpoint_auth_methods_suppo || Supported authentication method    |
+|| rted                              || for the endpoint token. In our     |
+||                                   || case it's just ``private_key_jwt``.|
++------------------------------------+-------------------------------------+
+|| token_endpoint_auth_signing_alg_v || List of supported signature        |
+|| alues_supported                   || algorithms.                        |
 +------------------------------------+------------------------------------+
 
 Payload `federation_entity`
@@ -527,15 +527,15 @@ Payload `federation_entity`
 +-------------------+----------------------------------------+
 | **key**           | **value**                              |
 +-------------------+----------------------------------------+
-| organization_name | Organization name                      |
+| organization_name | Organization name.                     |
 +-------------------+----------------------------------------+
-| homepage_uri      | Organization website                   |
+| homepage_uri      | Organization website.                  |
 +-------------------+----------------------------------------+
-| tos_uri           | Url to the terms of use                |
+| tos_uri           | Url to the terms of use.               |
 +-------------------+----------------------------------------+
-| policy_uri        | Url to the privacy policy              |
+| policy_uri        | Url to the privacy policy.             |
 +-------------------+----------------------------------------+
-| logo_uri          | URL of the organization logo           |
+| logo_uri          | URL of the organization logo.          |
 +-------------------+----------------------------------------+
 
 Non-normative example
