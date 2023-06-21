@@ -919,7 +919,7 @@
 to the <strong>Wallet Instance</strong>, it is essential to ensure the <strong>authenticity,
 integrity, security, privacy and trust</strong> in the use of the latter both
 by the User and the services connected to it, such as the
-<strong>PID Provider</strong> or one <a href="#id1"><span class="problematic" id="id2">**</span></a>Relying Party <a href="#id3"><span class="problematic" id="id4">**</span></a>.</p>
+<strong>PID Provider</strong> or one <strong>Relying Party</strong>.</p>
 <section id="general-properties">
 <h2>General Properties<a class="headerlink" href="#general-properties" title="Permalink to this heading">¶</a></h2>
 <p>The goal is:</p>
@@ -1197,8 +1197,8 @@ Assertion Request JWT).</p></td>
 <p>To ensure the above requirements, a JWT was chosen as the format for the
 Wallet Instance Attestation. Let's see below the various fields that
 compose it</p>
-<section id="id5">
-<h4>Header<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
+<section id="id1">
+<h4>Header<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -1240,8 +1240,8 @@ at a later stage</div>
 </tbody>
 </table>
 </section>
-<section id="id6">
-<h4>Payload<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
+<section id="id2">
+<h4>Payload<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -1345,8 +1345,8 @@ below</p></td>
 private key of the Wallet Provider present to which the Wallet Provider's
 backend has access.</p>
 </section>
-<section id="id7">
-<h4>Non-normative example<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h4>
+<section id="id3">
+<h4>Non-normative example<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <p>Below is an example of Wallet Instance Attestation:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1416,8 +1416,8 @@ relating to the Wallet Provider such as the public keys, the supported algorithm
 the type of entity (in addition to the Wallet Provider, for example, it could also
 be a Relying Party ) and the list of the available endpoints.
 It broadly implements openid-federation protocol.</p>
-<section id="id8">
-<h4>Header<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h4>
+<section id="id4">
+<h4>Header<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -1435,8 +1435,8 @@ It broadly implements openid-federation protocol.</p>
 </tbody>
 </table>
 </section>
-<section id="id9">
-<h4>Payload<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h4>
+<section id="id5">
+<h4>Payload<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -1470,9 +1470,9 @@ each entity its own
 configuration. In our case we
 will have for now the wallet
 provider entity contained within
-the <cite>eudi_wallet_provider</cite>
+the <code class="docutils literal notranslate"><span class="pre">eudi_wallet_provider</span></code>
 attribute and the more generic
-entity <cite>federation_entity</cite></p></td>
+entity <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1616,8 +1616,8 @@ entity <cite>federation_entity</cite></p></td>
 </table>
 </section>
 </section>
-<section id="id10">
-<h4>Non-normative example<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h4>
+<section id="id6">
+<h4>Non-normative example<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.italia.it&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1693,8 +1693,8 @@ Federation standard.</p>
 <p>A <strong>GET /.well-known/openid-federation endpoint</strong> for retrieving the Wallet
 Provider Entity Configuration</p>
 </section>
-<section id="id11">
-<h4>Wallet Instance Attestation<a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h4>
+<section id="id7">
+<h4>Wallet Instance Attestation<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h4>
 <p>A second <strong>POST /token</strong> endpoint that takes two parameters as input:</p>
 <p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> which in our case is a string:
 <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation</span></code></p>
