@@ -48,6 +48,7 @@ Index of content
    wallet-instance-attestation.rst
    issuance.rst
    presentation.rst
+   relying-party-solution.rst
    pseudonyms.rst
    backup-restore.rst
    revocation-lists.rst

@@ -1,6 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
-.. _soluzione-relying-party.rst:
+.. _relying-party-solution:
 
 Soluzione Relying Party
 +++++++++++++++++++++++
@@ -106,6 +106,7 @@ L'utente scansiona il codice QR utilizzando il Wallet, fornendo così gli attrib
 
 
 .. code-block:: javascript
+
   POST /oid4vp HTTP/1.1
   HOST: <VERIFIER_RELYING_PARTY_HOST>
 
@@ -162,7 +163,7 @@ Header
 
 
 Payload
-^^^^^^
+^^^^^^^
 .. list-table:: 
   :widths: 25 50
   :header-rows: 1
@@ -193,6 +194,7 @@ Il claim "requestUri" fornito nell'oggetto AuthorizationRequest sarà il payload
 Il Wallet chiamerà il Relying Party attraverso il parametro "request_uri" che sarà fornito nel QR Code l' oggetto AuthorizationRequest.
 
 .. code-block:: javascript
+
   GET /oid4vp/{id} HTTP/1.1
   HOST: <VERIFIER_RELYING_PARTY_HOST>
 
@@ -260,7 +262,7 @@ Header
 
 
 Payload
-^^^^^^
+^^^^^^^
 .. list-table:: 
   :widths: 25 50
   :header-rows: 1

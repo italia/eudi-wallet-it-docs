@@ -1,9 +1,9 @@
 .. include:: ../common/common_definitions.rst
 
-.. _relying-party-solution.rst:
+.. _relying-party-solution:
 
 Relying Party Solution
-+++++++++++++++++++++++
+++++++++++++++++++++++
 
 This document defines the implementation of the online presentation and verification flow of a credential (PID or (Q)EAA), in accordance with the "OpenID for Verifiable Credential Presentation - draft 19" specifications [OID4VCP], in the context of a Cross-Device flow scenario.
 
@@ -23,7 +23,7 @@ NOTE: Use Cases about other flows will be analysed in next sprints.
   :target: http://www.plantuml.com/plantuml/umla/TLFDZjem4BxxAKPKgjf3Ns0bgkrIMj5M8eKiU-7Y91DmrnbJ_soMFdtjiCOcY5iqy_rydntV6ykrTPrat5b5hgjGCtRmCr6B0oSBaqU3UWBSW6EiKgymMQ4y2jf1uL772Rpx9NPx-o0TNl8sg4KhKCE7RrgHdLFpSP1fR-8UUFryXbN8a1hmZgCyJrnAjB0W7vrg7C0zOzCfV75sZ-IHt0f50DCfS_3fC_HtmqffyG-X5tOF9mt6QojUk4LmwRDdVU2qU0VhS3PdwY3A6ap8H6gHjHXebQVDD8RP1GzM-DUXIPQXN-Kf9wkuXiVL8hUeecwRT7-lOAQQkEXzpBtg_JGCyngiZ_kQqvaLX_DNgpquDzvIgrMNaB7FztbvXYshF-XPMwgEEVMwLZ0PiKR5Of8Dbw89inzF9Qp5ZhXrEgqBhMeqPfpW_PQowqO8VscAN2pNvTK5c8CYWwCR7EKEz9kH4Y26kccHwxATLku0XP8oF1ld8qlG4TjYEkTHvk6KIyt913b5YwytyiwyakiGDWMKwXafMote9PR9bAwLyvzn-NFK0AbXRq5TzfQQ7DPUr7RitfDS9_y3
 
 .. list-table:: 
-  :widths: 25 25 50
+  :widths: 25 25 25 25
   :header-rows: 1
 
   * - **Id**
@@ -90,7 +90,7 @@ NOTE: Use Cases about other flows will be analysed in next sprints.
     - **Verifier (BE)**
     - **-**     
     - Consume the VP Token
-  *  - **18**
+  * - **18**
     - **Verifier (BE)**
     - **-**     
     - Requests the invalidation of the current session as the transaction has been successfully completed
@@ -106,6 +106,7 @@ The AuthorizationRequest object is required by the Relying Party FrontEnd in ord
 The User will scan the QR Code using the Wallet granting the attributes to the RP.
 
 .. code-block:: javascript
+
   POST /oid4vp HTTP/1.1
   HOST: <VERIFIER_RELYING_PARTY_HOST>
 
@@ -164,7 +165,7 @@ Header
 
 
 Payload
-^^^^^^
+^^^^^^^
 .. list-table:: 
   :widths: 25 50
   :header-rows: 1
@@ -195,6 +196,7 @@ The "requestUri" claim provided in AuthorizationRequest response object will be 
 The Wallet will invoke the Relying Party using the "request_uri" param found in QR Code in order to obtain the entire Authorization Request Object.
 
 .. code-block:: javascript
+  
   GET /oid4vp/{id} HTTP/1.1
   HOST: <VERIFIER_RELYING_PARTY_HOST>
 
@@ -263,7 +265,7 @@ Header
 
 
 Payload
-^^^^^^
+^^^^^^^
 .. list-table:: 
   :widths: 25 50
   :header-rows: 1
