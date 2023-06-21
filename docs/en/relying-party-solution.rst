@@ -18,7 +18,7 @@ Below is explained the Cross Device Authentication flow.
 NOTE: Use Cases about other flows will be analysed in next sprints.
 
 
-.. image:: ..\\images\\cross_device_auth_seq_diagram.svg
+.. image:: ../../images/cross_device_auth_seq_diagram.svg
   :align: center
   :target: http://www.plantuml.com/plantuml/umla/TLFDZjem4BxxAKPKgjf3Ns0bgkrIMj5M8eKiU-7Y91DmrnbJ_soMFdtjiCOcY5iqy_rydntV6ykrTPrat5b5hgjGCtRmCr6B0oSBaqU3UWBSW6EiKgymMQ4y2jf1uL772Rpx9NPx-o0TNl8sg4KhKCE7RrgHdLFpSP1fR-8UUFryXbN8a1hmZgCyJrnAjB0W7vrg7C0zOzCfV75sZ-IHt0f50DCfS_3fC_HtmqffyG-X5tOF9mt6QojUk4LmwRDdVU2qU0VhS3PdwY3A6ap8H6gHjHXebQVDD8RP1GzM-DUXIPQXN-Kf9wkuXiVL8hUeecwRT7-lOAQQkEXzpBtg_JGCyngiZ_kQqvaLX_DNgpquDzvIgrMNaB7FztbvXYshF-XPMwgEEVMwLZ0PiKR5Of8Dbw89inzF9Qp5ZhXrEgqBhMeqPfpW_PQowqO8VscAN2pNvTK5c8CYWwCR7EKEz9kH4Y26kccHwxATLku0XP8oF1ld8qlG4TjYEkTHvk6KIyt913b5YwytyiwyakiGDWMKwXafMote9PR9bAwLyvzn-NFK0AbXRq5TzfQQ7DPUr7RitfDS9_y3
 
@@ -26,7 +26,7 @@ NOTE: Use Cases about other flows will be analysed in next sprints.
   :widths: 25 25 50
   :header-rows: 1
 
-  * - **Message**
+  * - **Id**
     - **Source**
     - **Destination**
     - **Description**
