@@ -153,7 +153,7 @@ Below is a non-normative example of an Entity Statement issued by an authority (
         },
         "metadata_policy": {
             "openid_relying_party": {
-                "scopes": {
+                "scope": {
                     "subset_of": [
                          "eu.europa.ec.eudiw.pid.1,  eu.europa.ec.eudiw.pid.it.1"
                       ]
