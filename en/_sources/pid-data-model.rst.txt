@@ -249,22 +249,25 @@ The corresponding SD-JWT verson for PID is given by
       "eyJhbGciOiJSUzI1NiIsImtpZCI6 ...",
       "IkJYdmZybG5oQU11SFIwN2FqVW1B ..."
      ]
-  }.
-  { 
+  }
+
+.. code-block:: JSON
+  
+  {
     "iss": "https://pidprovider.example.org",
     "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...",
     "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
-    "iat": 1541493724,
-    "exp": 1541493724,
+    "iat": "1541493724",
+    "exp": "1541493724",
     "status": "https://pidprovider.example.org/status",
     "cnf": {
       "jwk": {
-                "kty": "RSA",
-                "use": "sig",
-                "n": "1Ta-sE …",
-                "e": "AQAB",
-                "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-      },
+        "kty": "RSA",
+        "use": "sig",
+        "n": "1Ta-sE …",
+        "e": "AQAB",
+        "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
+      }
     },
     "type": "eu.eudiw.pid.it",
     "verified_claims": {
