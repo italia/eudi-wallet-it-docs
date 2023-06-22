@@ -22,7 +22,7 @@ The terms *User*, *Trust Service*, *Trust Model*, *Trusted List*, *Trust Framewo
    * - Federation Authority
      - A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.
    * - Wallet Instance
-     - An instance of the IT Wallet, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.
+     - An instance of the Wallet Solution, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.
    * - Wallet Provider
      - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
    * - Qualified Electronic Attestation of Attributes (QEAA)
