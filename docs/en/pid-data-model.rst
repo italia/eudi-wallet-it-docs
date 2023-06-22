@@ -26,15 +26,15 @@ The PID data format and the mechanism through which it is issued into the Wallet
 SD-JWT
 ======
 
-The PID is given as a Verifiable Credentials with JSON payload based on the `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html>`__.
+The PID is given as a Verifiable Credential with JSON payload based on the `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`__.
 
 An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in `[SD-JWT]. Section 5.1.2. <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
-The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section [TBD].
+The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
-Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective Disclosures and potentially decoy digests are contained as an array in a new JWT claim, **_sd**. 
+Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, **_sd**. 
 
-Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the Disclosures, each of which contains 
+Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains 
 
   - a random salt, 
   - the claim name (only when the claim is an object property), 
@@ -46,7 +46,7 @@ The Disclosures are sent to the Holder together with the SD-JWT in the *Combined
 
   <SD-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
-See `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
+See `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
 
 
 
@@ -71,10 +71,10 @@ The JOSE header contains the following mandatory parameters:
     - Unique identifier of the public key. 
     - `[RFC7515, Section 4.1.8] <https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.8>`_.
   * - **trust_chain**
-    - JSON array containing the trust chain that proves the trust of the issuer of this JWT. 
+    - JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
     - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-connect-federation-1_0.html#name-trust-chain-header-paramete>`_.
 
-The following claims MUST be in the JWT payload and MUST NOT be included in the Disclosures,  i.e. cannot be selectively disclosed. 
+The following claims MUST be in the JWT payload and MUST NOT be included in the disclosures,  i.e. cannot be selectively disclosed. 
 
 .. list-table:: 
     :widths: 20 60 20
@@ -90,7 +90,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
       - Thumbprint of the JWK in the ``cnf`` parameter
       - `[RFC7519, Section 4.1.2] <https://www.iana.org/go/rfc7519>`_.
     * - **jti**
-      - Unique Token ID identifier of this JWT. It MUST be a String in *uuid4* format.
+      - Unique Token ID identifier of this JWT. It SHOULD be a String in *uuid4* format.
       - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7519>`_.
     * - **iat**
       - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
@@ -252,14 +252,18 @@ The corresponding SD-JWT verson for PID is given by
   }.
   { 
     "iss": "https://pidprovider.example.org",
-    "sub": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
-    "jti": "nw4J0zMwRk4kRbQ53G7z",
-    "iat": "1541493724",
-    "exp": "1541493724",
+    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...",
+    "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
+    "iat": 1541493724,
+    "exp": 1541493724,
     "status": "https://pidprovider.example.org/status",
     "cnf": {
       "jwk": {
-        [...]
+                "kty": "RSA",
+                "use": "sig",
+                "n": "1Ta-sE …",
+                "e": "AQAB",
+                "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
       },
     },
     "type": "eu.eudiw.pid.it",
