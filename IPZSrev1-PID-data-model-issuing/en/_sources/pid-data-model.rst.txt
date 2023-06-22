@@ -102,7 +102,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
       - HTTPS URL where the credential validity status is available
       - `[SD-JWT-VC. Section 4.2.2.2] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#section-4.2.2.2>`_.
     * - **cnf**
-      - JSON object containing the proof-of-possession key materials
+      - JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the presenter possesses a private key related to the public one in the **cnf** parameter. The recipient MUST cryptographically verify that the presenter is in control of that key. 
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
     * - **type**
       - Credential type as a string, MUST be set to ``eu.eudiw.pid.it``.
