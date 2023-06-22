@@ -151,21 +151,33 @@ Below is a non-normative example of an Entity Statement issued by an authority (
                 }
             ]
         },
-           "metadata_policy": {
-                "openid_relying_party”: {
-                    "scopes": {
-                        "subset_of": [
-                             "eu.europa.ec.eudiw.pid.1,  eu.europa.ec.eudiw.pid.it.1"
-                          ]
-                    },
+        "metadata_policy": {
+            "openid_relying_party": {
+                "scopes": {
+                    "subset_of": [
+                         "eu.europa.ec.eudiw.pid.1,  eu.europa.ec.eudiw.pid.it.1"
+                      ]
+                },
                "request_authentication_methods_supported": {
                 "one_of": ["request_object"]
                 },
                "request_authentication_signing_alg_values_supported": {
-                "subset_of": ["RS256", "RS512", "ES256", "ES512", "PS256", "PS512"]
-                  }
-                  }
+                    "subset_of": ["RS256", "RS512", "ES256", "ES512", "PS256", "PS512"]
+               }
+            },
+            "client_metadata": {
+                "vp_formats": {
+                    "jwt_vp": {
+                        "alg": 
+                            "subset_of": [
+                                "EdDSA",
+                                "ES256K"
+                            ]
+                        }
+                    }
+                }
             }
+        }
     }
 
 

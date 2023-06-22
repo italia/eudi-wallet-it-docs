@@ -1021,21 +1021,33 @@ public keys for signature operations and the maximum number of Intermediates all
             <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">},</span>
-       <span class="s2">&quot;metadata_policy&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;openid_relying_party”: {</span>
-                <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;subset_of&quot;</span><span class="p">:</span> <span class="p">[</span>
-                         <span class="s2">&quot;eu.europa.ec.eudiw.pid.1,  eu.europa.ec.eudiw.pid.it.1&quot;</span>
-                      <span class="p">]</span>
-                <span class="p">},</span>
+    <span class="s2">&quot;metadata_policy&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;openid_relying_party&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;subset_of&quot;</span><span class="p">:</span> <span class="p">[</span>
+                     <span class="s2">&quot;eu.europa.ec.eudiw.pid.1,  eu.europa.ec.eudiw.pid.it.1&quot;</span>
+                  <span class="p">]</span>
+            <span class="p">},</span>
            <span class="s2">&quot;request_authentication_methods_supported&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;one_of&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;request_object&quot;</span><span class="p">]</span>
             <span class="p">},</span>
            <span class="s2">&quot;request_authentication_signing_alg_values_supported&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;subset_of&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span> <span class="s2">&quot;RS512&quot;</span><span class="p">,</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span> <span class="s2">&quot;ES512&quot;</span><span class="p">,</span> <span class="s2">&quot;PS256&quot;</span><span class="p">,</span> <span class="s2">&quot;PS512&quot;</span><span class="p">]</span>
-              <span class="p">}</span>
-              <span class="p">}</span>
+                <span class="s2">&quot;subset_of&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span> <span class="s2">&quot;RS512&quot;</span><span class="p">,</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span> <span class="s2">&quot;ES512&quot;</span><span class="p">,</span> <span class="s2">&quot;PS256&quot;</span><span class="p">,</span> <span class="s2">&quot;PS512&quot;</span><span class="p">]</span>
+           <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;client_metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;vp_formats&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;jwt_vp&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;alg&quot;</span><span class="p">:</span>
+                        <span class="s2">&quot;subset_of&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;EdDSA&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;ES256K&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
