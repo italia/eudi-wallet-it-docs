@@ -924,11 +924,11 @@
 <p>The PID data format and the mechanism through which it is issued into the Wallet Instance and presented to a RP will be detailed in the next sections.</p>
 <section id="id1">
 <h2>SD-JWT<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
-<p>The PID is given as a Verifiable Credentials with JSON payload based on the <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">Selective Disclosure JWT format</a> as specified in <a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html">[draft-terbu-sd-jwt-vc-latest]</a>.</p>
+<p>The PID is given as a Verifiable Credential with JSON payload based on the <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">Selective Disclosure JWT format</a> as specified in <a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html">[draft-terbu-sd-jwt-vc-latest]</a>.</p>
 <p>An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the <strong>_sd_alg</strong> claim described in <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">[SD-JWT]. Section 5.1.2.</a> and other claims specified in this section, some of them may be selectively disclosable claims.</p>
-<p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The <strong>_sd_alg</strong> claim MUST be set to one of the specified algorithms in Section [TBD].</p>
-<p>Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective Disclosures and potentially decoy digests are contained as an array in a new JWT claim, <strong>_sd</strong>.</p>
-<p>Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the Disclosures, each of which contains</p>
+<p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The <strong>_sd_alg</strong> claim MUST be set to one of the specified algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a>.</p>
+<p>Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, <strong>_sd</strong>.</p>
+<p>Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>a random salt,</p></li>
@@ -940,7 +940,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">SD</span><span class="o">-</span><span class="n">JWT</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">1</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">2</span><span class="o">&gt;~...~&lt;</span><span class="n">Disclosure</span> <span class="n">N</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html">[draft-terbu-sd-jwt-vc-latest]</a> and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">[SD-JWT]</a> for more details.</p>
+<p>See <a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html">[draft-terbu-sd-jwt-vc-latest]</a> and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">[SD-JWT]</a> for more details.</p>
 <p>The JOSE header contains the following mandatory parameters:</p>
 <table class="docutils align-default" id="pid-jose-header">
 <colgroup>
@@ -968,12 +968,12 @@
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.8">[RFC7515, Section 4.1.8]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
-<td><p>JSON array containing the trust chain that proves the trust of the issuer of this JWT.</p></td>
+<td><p>JSON array containing the trust chain that proves the reliability of the issuer of the JWT.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html#name-trust-chain-header-paramete">[OIDC-FED, Section 3.2.1]</a>.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The following claims MUST be in the JWT payload and MUST NOT be included in the Disclosures,  i.e. cannot be selectively disclosed.</p>
+<p>The following claims MUST be in the JWT payload and MUST NOT be included in the disclosures,  i.e. cannot be selectively disclosed.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -996,7 +996,7 @@
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.2]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
-<td><p>Unique Token ID identifier of this JWT. It MUST be a String in <em>uuid4</em> format.</p></td>
+<td><p>Unique Token ID identifier of this JWT. It SHOULD be a String in <em>uuid4</em> format.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.7]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
@@ -1198,14 +1198,18 @@
 }.
 {
   &quot;iss&quot;: &quot;https://pidprovider.example.org&quot;,
-  &quot;sub&quot;: &quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;,
-  &quot;jti&quot;: &quot;nw4J0zMwRk4kRbQ53G7z&quot;,
-  &quot;iat&quot;: &quot;1541493724&quot;,
-  &quot;exp&quot;: &quot;1541493724&quot;,
+  &quot;sub&quot;: &quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...&quot;,
+  &quot;jti&quot;: &quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;,
+  &quot;iat&quot;: 1541493724,
+  &quot;exp&quot;: 1541493724,
   &quot;status&quot;: &quot;https://pidprovider.example.org/status&quot;,
   &quot;cnf&quot;: {
     &quot;jwk&quot;: {
-      [...]
+              &quot;kty&quot;: &quot;RSA&quot;,
+              &quot;use&quot;: &quot;sig&quot;,
+              &quot;n&quot;: &quot;1Ta-sE …&quot;,
+              &quot;e&quot;: &quot;AQAB&quot;,
+              &quot;kid&quot;: &quot;YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;
     },
   },
   &quot;type&quot;: &quot;eu.eudiw.pid.it&quot;,
