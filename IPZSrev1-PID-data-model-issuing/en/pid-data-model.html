@@ -1186,54 +1186,56 @@
 </pre></div>
 </div>
 <p>The corresponding SD-JWT verson for PID is given by</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>{
-   &quot;typ&quot;:&quot;vc+sd-jwt&quot;,
-   &quot;alg&quot;:&quot;RS512&quot;,
-   &quot;kid&quot;:&quot;dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw&quot;,
-   &quot;trust_chain&quot; : [
-    &quot;NEhRdERpYnlHY3M5WldWTWZ2aUhm ...&quot;,
-    &quot;eyJhbGciOiJSUzI1NiIsImtpZCI6 ...&quot;,
-    &quot;IkJYdmZybG5oQU11SFIwN2FqVW1B ...&quot;
-   ]
-}.
-{
-  &quot;iss&quot;: &quot;https://pidprovider.example.org&quot;,
-  &quot;sub&quot;: &quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...&quot;,
-  &quot;jti&quot;: &quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;,
-  &quot;iat&quot;: 1541493724,
-  &quot;exp&quot;: 1541493724,
-  &quot;status&quot;: &quot;https://pidprovider.example.org/status&quot;,
-  &quot;cnf&quot;: {
-    &quot;jwk&quot;: {
-              &quot;kty&quot;: &quot;RSA&quot;,
-              &quot;use&quot;: &quot;sig&quot;,
-              &quot;n&quot;: &quot;1Ta-sE …&quot;,
-              &quot;e&quot;: &quot;AQAB&quot;,
-              &quot;kid&quot;: &quot;YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;
-    },
-  },
-  &quot;type&quot;: &quot;eu.eudiw.pid.it&quot;,
-  &quot;verified_claims&quot;: {
-    &quot;verification&quot;: {
-      &quot;_sd&quot;: [
-        &quot;OGm7ryXgt5Xzlevp-Hu-UTk0a-TxAaPAobqv1pIWMfw&quot;
-      ],
-      &quot;trust_framework&quot;: &quot;eidas&quot;,
-      &quot;assurance_level&quot;: &quot;high&quot;
-    },
-    &quot;claims&quot;: {
-      &quot;_sd&quot;: [
-        &quot;8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E&quot;,
-        &quot;BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig&quot;,
-        &quot;CFLGzentGNRFngnLVVQVcoAFi05r6RJUX-rdbLdEfew&quot;,
-        &quot;JU_sTaHCngS32X-0ajHrd1-HCLCkpT5YqgcfQme168w&quot;,
-        &quot;VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA&quot;,
-        &quot;zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o&quot;
-      ]
-    }
-  },
-  &quot;_sd_alg&quot;: &quot;sha-256&quot;
-}
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;RS512&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;trust_chain&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;NEhRdERpYnlHY3M5WldWTWZ2aUhm ...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6 ...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;IkJYdmZybG5oQU11SFIwN2FqVW1B ...&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1541493724&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1541493724&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org/status&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sig&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1Ta-sE …&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;e&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AQAB&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.eudiw.pid.it&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;OGm7ryXgt5Xzlevp-Hu-UTk0a-TxAaPAobqv1pIWMfw&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;assurance_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;CFLGzentGNRFngnLVVQVcoAFi05r6RJUX-rdbLdEfew&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;JU_sTaHCngS32X-0ajHrd1-HCLCkpT5YqgcfQme168w&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In the following the disclosure list is given</p>
