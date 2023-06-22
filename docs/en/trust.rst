@@ -155,7 +155,9 @@ Below is a non-normative example of an Entity Statement issued by an authority (
             "openid_relying_party": {
                 "scope": {
                     "subset_of": [
-                         "eu.europa.ec.eudiw.pid.1,  eu.europa.ec.eudiw.pid.it.1"
+                         "eu.europa.ec.eudiw.pid.1",  
+                         "eu.europa.ec.eudiw.pid.1:given_name",
+                         "email"
                       ]
                 },
                "request_authentication_methods_supported": {
