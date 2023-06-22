@@ -40,3 +40,13 @@ Other key elements that characterize an SSI system include:
 When a User wants to purchase a good or access to a service, the service provider asks the User for specific proof. Instead of presenting physical identification documents or disclosing their full data, the individual can use their SSI system.
 An example of SSI in action could be a scenario where an individual needs to prove their age to access a restricted service, such as purchasing age-restricted items. They would release only the necessary information, such as a digitally signed proof of being above the legal age, without revealing any other personal details. The verifier can then cryptographically validate the proof.
 
+** External references**
+
+External references
+
+ 1.	European Self-Sovereign Identity Framework (ESSIF): The European Commission has been actively working on the development of the SSI framework and related initiatives. More specifically, the ESSIF project aims to establish a European framework for SSI and interoperability. Further information is available at this link: https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/European+Self-Sovereign+Identity+Framework 
+ 2.	European Blockchain Partnership (EBP) – 30 European countries and the European Commission participate to the EBP initiative to explore the potential of blockchain technology for public services, including SSI. The provide information on SSI pilots, use cases and standards development. More information is available here: https://ec.europa.eu/digital-single-market/en/european-blockchain-partnership 
+ 3.	SURF: SURF is a cooperative association of Dutch educational and research institutions. A number of projects are in progress at SURF in the area of self-sovereign identity. You can read their report “SSI wallet for education and research. A technical exploration” at this link: https://www.surf.nl/files/2023-05/technical-exploration-ssi-wallet-for-education-and-research.pdf 
+ 4.	Sovrin Foundation: Sovrin is a global public utility for self-sovereign identity. Their website provides extensive resources and documentation on SSI. These include whitepapers, technical specifications and educational materials. You can access further information at this link: https://sovrin.org/
+ 5.	Decentralized Identity Foundation (DIF): DIF is a community-driven organization that focuses on advancing decentralized identity technologies. Their website offers resources, specifications and research papers related to SSI and decentralized identity. You can find more information at: https://identity.foundation/
+
