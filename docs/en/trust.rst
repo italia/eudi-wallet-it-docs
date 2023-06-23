@@ -205,7 +205,7 @@ are intended to be defined in this technical reference.
 |                  |                             |              |
 | Wallet Provider  | ``federation_entity``       | --           |
 |                  |                             |              |
-|                  | ``wallet provider``         |              |
+|                  | ``wallet_provider``         |              |
 |                  |                             |              |
 |                  |                             |              |
 +------------------+-----------------------------+--------------+
