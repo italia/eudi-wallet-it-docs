@@ -186,10 +186,17 @@ Below is a non-normative example of an Entity Statement issued by an authority (
 Roles of the ecosystem
 ----------------------
 
+In this section are defined the main roles of the ecosystems, assuming 
+the Trust Anchor and Intermediates as Accreditation Bodies.
 
+The table below maps the metadata types with the roles of the ecosystem,
+and also gives the references of the metadata protocol.
+
+The entities that doesn't have any references to a known draft or standard
+are intended to be defined in this technical reference.
 
 +------------------+-----------------------------+--------------+
-| Entity           | metadata roles              | references   |
+| Entity           | metadata type               | references   |
 +==================+=============================+==============+
 | Trust Anchor     | ``federation_entity``       | `OIDC-FED`_  |
 +------------------+-----------------------------+--------------+
@@ -215,7 +222,9 @@ Roles of the ecosystem
 |                  |                             | `OpenID4VP`_ |
 +------------------+-----------------------------+--------------+
 
-
+.. note::
+    Wallet Provider metadata is defined in the section below.
+    .. _Wallet Solution section: wallet-solution.html 
 
 Trust Evaluation Mechanism
 --------------------------
