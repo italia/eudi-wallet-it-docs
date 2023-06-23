@@ -576,7 +576,7 @@ A DPoP-bound Access Token is provided by the PID Provider token endpoint as a re
     - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP MAY use to prevent reuse by rejecting the Token ID if already processed.
     - [TBD]
   * - **nonce** 
-    - It MUST be a random string of at least 32 alphanumeric characters. This value MUST match the value sent by the RP in the authentication request.
+    - It MUST be a random string of at least 32 alphanumeric characters. The value type of this claim MUST be a string, where the value is a **c_nonce** provided by the PID Provider.
     - [`OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_]
   * - jkt
     - JWK SHA-256 Thumbprint Confirmation Method. The value of the jkt member MUST be the base64url encoding (as defined in [RFC7515]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the access token is bound.
