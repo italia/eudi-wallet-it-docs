@@ -1554,7 +1554,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p>[TBD]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nonce</strong></p></td>
-<td><p>It MUST be a random string of at least 32 alphanumeric characters. This value MUST match the value sent by the RP in the authentication request.</p></td>
+<td><p>It MUST be a random string of at least 32 alphanumeric characters. The value type of this claim MUST be a string, where the value is a <strong>c_nonce</strong> provided by the PID Provider.</p></td>
 <td><p>[<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">OpenID.Core#AuthRequest</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p>jkt</p></td>
