@@ -284,7 +284,7 @@ The requests at the Pushed Authorization Request endpoint of the PID Provider MU
       - A method that was used to derive **code challenge**. MUST be set to ``S256`` 
       - :rfc:`7636#section-4.3`.
     * - **request**
-      - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the requet object.
+      - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the request object.
       - TBD
     * - **client_assertion_type**
       - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation``.
@@ -536,7 +536,7 @@ The response to Token endpoint MUST contain the following mandatory claims.
       - Expiry time of the *Access Token* in seconds.
       - [TBD]
     * - **c_nonce**
-      - JSON string containing a nonce to be used to create a *proof of possession* of key material when requesting a Credential 
+      - JSON string containing a nonce to be used to create a *proof of possession* of key material when requesting a Credential. 
       - [OpenID4VCI]
     * - **c_nonce_expires_in**
       - JSON integer denoting the lifetime in seconds of the **c_nonce**.
@@ -545,7 +545,7 @@ The response to Token endpoint MUST contain the following mandatory claims.
 Access Token
 ^^^^^^^^^^^^
 
-A DPoP-bound Access Token is provided by PID Provider token endpoint as a result of a successful token request. The Access Token is represented as JWT according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_.
+A DPoP-bound Access Token is provided by the PID Provider token endpoint as a result of a successful token request. The Access Token is represented as JWT according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_.
 
 .. list-table:: 
   :widths: 20 60 20
@@ -558,7 +558,7 @@ A DPoP-bound Access Token is provided by PID Provider token endpoint as a result
     - It MUST be an HTTPS URL that uniquely identifies the PID Provider. The client MUST verify that this value matches the called PID Provider.
     - `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
   * - **sub** 
-    - identifies the principal that is the subject of the JWT. It MUST be of type *pairwise*. 
+    - It identifies the principal that is the subject of the JWT. It MUST be of type *pairwise*. 
     - [:rfc:`7519`] and [`OpenID.Core#SubjectIDTypes <https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes>`_]
   * - **client_id** 
     - It MUST contain a HTTPS URL that uniquely identifies the RP. 
@@ -592,10 +592,10 @@ Request
 
 A Wallet Instance makes a PID Request to the PID Provider Credential endpoint by sending the following mandatory parameters in the entity-body of an HTTP POST request using the application/json media type.
 
-The Credential endpoint MUST accept and validate the DPoP proof sent in the DPoP field of the Header. The Credential endpoint MUST validate the DPoP proof based on the steps defined in Section 4.3 of `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. If the DPoP proof is invalid, the Credential endpoint returns an error response per Section 5.2 of [:rfc:`6749`] with `invalid_dpop_proof` as the value of the error parameter.  
+The Credential endpoint MUST accept and validate the DPoP proof sent in the DPoP field of the Header based on the steps defined in Section 4.3 of `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. If the DPoP proof is invalid, the Credential endpoint returns an error response per Section 5.2 of [:rfc:`6749`] with `invalid_dpop_proof` as the value of the error parameter.  
 
 .. warning::
-  The Wallet instance MUST create a **new DPoP proof** for the Credential request and MUST NOT use the previously created proof for the Token Endpoint. 
+  The Wallet Instance MUST create a **new DPoP proof** for the Credential request and MUST NOT use the previously created proof for the Token Endpoint. 
 
 
 .. list-table:: 
@@ -612,7 +612,7 @@ The Credential endpoint MUST accept and validate the DPoP proof sent in the DPoP
     - Format of the Credential to be issued. This MUST be `vc+sd-jwt`.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
   * - **proof**
-    - JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain a following mandatory claims:
+    - JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain the following mandatory claims:
 
       - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
       - **jwt**: the JWT used as proof of possession. 
@@ -639,7 +639,7 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - MUST be `openid4vci-proof+jwt`.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`],
   * - **kid** 
-    - It MUST contain the identifier of tehe key material the PID shall be bound to.
+    - It MUST contain the identifier of the key material the PID shall be bound to.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`],
 
 .. list-table:: 
@@ -659,7 +659,7 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7519`. Section 4.1.6].
   * - **nonce**
-    - The value type of this claim MUST be a string, where the value is a **c_nonce** provided by the PID Provider in the subsequent response.
+    - The value type of this claim MUST be a string, where the value is a **c_nonce** provided by the PID Provider in the Token response.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
 
 
@@ -681,10 +681,10 @@ Credential Response to the Wallet Instance MUST be sent using `application/json`
     - Format of the Credential to be issued. This MUST be `vc+sd-jwt`.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
   * - **credential**
-    - Contains the issued PID. it MUST be an SD-JWT JSON Object (see Section :ref:`PID Data Model <pid_data_model.rst>`)    
+    - Contains the issued PID. It MUST be an SD-JWT JSON Object (see Section :ref:`PID Data Model <pid_data_model.rst>`)    
     - Appendix E in `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
   * - **c_nonce**
-    - JSON string containing a nonce to be used to create a *proof of possession* of key material when requesting a PID 
+    - JSON string containing a nonce to be used to create a *proof of possession* of key material when requesting a further credential or for renewal credential. 
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
   * - **c_nonce_expires_in**
     - JSON integer denoting the lifetime in seconds of the **c_nonce**.
