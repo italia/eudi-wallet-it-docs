@@ -224,7 +224,8 @@ are intended to be defined in this technical reference.
 
 .. note::
     Wallet Provider metadata is defined in the section below.
-    .. _Wallet Solution section: wallet-solution.html 
+
+    `Wallet Solution section <wallet-solution.html>`_. 
 
 Trust Evaluation Mechanism
 --------------------------
