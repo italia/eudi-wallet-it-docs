@@ -8,7 +8,11 @@ Technical References
     :header-rows: 0
 
     * - `OIDC-FED`_
-      - OpenID Connect Federation 1.0 
+      - OpenID Connect Federation 1.0
+    * - `OPENID4VCI`_
+      - T. Lodderstedt, K. Yasuda, T. Looker, "OpenID for Verifiable Credential Issuance", February 2023.
+    * - `SD-JWT-VC`_
+      - O. Terbu, D.Fett, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
     * - :rfc:`2119`
       - Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels," BCP 14, RFC 2119, March 1997.
     * - :rfc:`2616`

@@ -167,7 +167,7 @@ Below is a non-normative example of an Entity Statement issued by an authority (
                     "subset_of": ["RS256", "RS512", "ES256", "ES512", "PS256", "PS512"]
                }
             },
-            "client_metadata": {
+            "client": {
                 "vp_formats": {
                     "jwt_vp": {
                         "alg": 
@@ -181,6 +181,39 @@ Below is a non-normative example of an Entity Statement issued by an authority (
             }
         }
     }
+
+
+Roles of the ecosystem
+----------------------
+
+
+
++------------------+-----------------------------+--------------+
+| Entity           | metadata roles              | references   |
++==================+=============================+==============+
+| Trust Anchor     | ``federation_entity``       | `OIDC-FED`_  |
++------------------+-----------------------------+--------------+
+| Intermediate     | ``federation_entity``       | `OIDC-FED`_  |
++------------------+-----------------------------+--------------+
+|                  |                             |              |
+| Wallet Provider  | ``federation_entity``       | --           |
+|                  |                             |              |
+|                  | ``wallet provider``         |              |
+|                  |                             |              |
+|                  |                             |              |
++------------------+-----------------------------+--------------+
+|                  |                             |              |
+| Credential Issuer| ``federation_entity``       |              |
+|                  |                             |              |
+|                  | ``openid_credential_issuer``| `OPENID4VCI`_|
++------------------+-----------------------------+--------------+
+|                  |                             |              |
+| Relying Party    | ``federation_entity``       |              |
+|                  |                             |              |
+|                  | ``openid_relying_party``    | `OIDC-FED`_  |
+|                  |                             |              |
+|                  |                             | `OpenID4VP`_ |
++------------------+-----------------------------+--------------+
 
 
 
