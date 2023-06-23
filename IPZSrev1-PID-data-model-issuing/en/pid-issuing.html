@@ -1161,7 +1161,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>request</strong></p></td>
-<td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Instance Attestation MUST be used for signing the requet object.</p></td>
+<td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Instance Attestation MUST be used for signing the request object.</p></td>
 <td><p>TBD</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_assertion_type</strong></p></td>
@@ -1499,7 +1499,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p>[TBD]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>c_nonce</strong></p></td>
-<td><p>JSON string containing a nonce to be used to create a <em>proof of possession</em> of key material when requesting a Credential</p></td>
+<td><p>JSON string containing a nonce to be used to create a <em>proof of possession</em> of key material when requesting a Credential.</p></td>
 <td><p>[OpenID4VCI]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>c_nonce_expires_in</strong></p></td>
@@ -1511,7 +1511,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 </section>
 <section id="access-token">
 <h3>Access Token<a class="headerlink" href="#access-token" title="Permalink to this heading">¶</a></h3>
-<p>A DPoP-bound Access Token is provided by PID Provider token endpoint as a result of a successful token request. The Access Token is represented as JWT according to [<span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16">[DPoP-draft16]</a>.</p>
+<p>A DPoP-bound Access Token is provided by the PID Provider token endpoint as a result of a successful token request. The Access Token is represented as JWT according to [<span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16">[DPoP-draft16]</a>.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -1530,7 +1530,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.1]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>identifies the principal that is the subject of the JWT. It MUST be of type <em>pairwise</em>.</p></td>
+<td><p>It identifies the principal that is the subject of the JWT. It MUST be of type <em>pairwise</em>.</p></td>
 <td><p>[<span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">OpenID.Core#SubjectIDTypes</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
@@ -1570,10 +1570,10 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <section id="id12">
 <h3>Request<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h3>
 <p>A Wallet Instance makes a PID Request to the PID Provider Credential endpoint by sending the following mandatory parameters in the entity-body of an HTTP POST request using the application/json media type.</p>
-<p>The Credential endpoint MUST accept and validate the DPoP proof sent in the DPoP field of the Header. The Credential endpoint MUST validate the DPoP proof based on the steps defined in Section 4.3 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16">[DPoP-draft16]</a>. If the DPoP proof is invalid, the Credential endpoint returns an error response per Section 5.2 of [<span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <cite>invalid_dpop_proof</cite> as the value of the error parameter.</p>
+<p>The Credential endpoint MUST accept and validate the DPoP proof sent in the DPoP field of the Header based on the steps defined in Section 4.3 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16">[DPoP-draft16]</a>. If the DPoP proof is invalid, the Credential endpoint returns an error response per Section 5.2 of [<span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <cite>invalid_dpop_proof</cite> as the value of the error parameter.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The Wallet instance MUST create a <strong>new DPoP proof</strong> for the Credential request and MUST NOT use the previously created proof for the Token Endpoint.</p>
+<p>The Wallet Instance MUST create a <strong>new DPoP proof</strong> for the Credential request and MUST NOT use the previously created proof for the Token Endpoint.</p>
 </div>
 <table class="docutils align-default">
 <colgroup>
@@ -1597,7 +1597,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>proof</strong></p></td>
-<td><p>JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain a following mandatory claims:</p>
+<td><p>JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain the following mandatory claims:</p>
 <ul class="simple">
 <li><p><strong>proof_type</strong>: JSON string denoting the proof type. It MUST be <cite>jwt</cite>.</p></li>
 <li><p><strong>jwt</strong>: the JWT used as proof of possession.</p></li>
@@ -1634,7 +1634,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a>, [<span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>],</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>kid</strong></p></td>
-<td><p>It MUST contain the identifier of tehe key material the PID shall be bound to.</p></td>
+<td><p>It MUST contain the identifier of the key material the PID shall be bound to.</p></td>
 <td><p><a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a>, [<span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>],</p></td>
 </tr>
 </tbody>
@@ -1665,7 +1665,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a>, [<span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nonce</strong></p></td>
-<td><p>The value type of this claim MUST be a string, where the value is a <strong>c_nonce</strong> provided by the PID Provider in the subsequent response.</p></td>
+<td><p>The value type of this claim MUST be a string, where the value is a <strong>c_nonce</strong> provided by the PID Provider in the Token response.</p></td>
 <td><p><a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a></p></td>
 </tr>
 </tbody>
@@ -1693,11 +1693,11 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential</strong></p></td>
-<td><p>Contains the issued PID. it MUST be an SD-JWT JSON Object (see Section <a class="reference internal" href="pid-data-model.html#pid-data-model-rst"><span class="std std-ref">PID Data Model</span></a>)</p></td>
+<td><p>Contains the issued PID. It MUST be an SD-JWT JSON Object (see Section <a class="reference internal" href="pid-data-model.html#pid-data-model-rst"><span class="std std-ref">PID Data Model</span></a>)</p></td>
 <td><p>Appendix E in <a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>c_nonce</strong></p></td>
-<td><p>JSON string containing a nonce to be used to create a <em>proof of possession</em> of key material when requesting a PID</p></td>
+<td><p>JSON string containing a nonce to be used to create a <em>proof of possession</em> of key material when requesting a further credential or for renewal credential.</p></td>
 <td><p><a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>c_nonce_expires_in</strong></p></td>
