@@ -138,7 +138,7 @@ The JWT payload of PAR is given as the following:
  
 **Steps 12-13:** The Wallet Instance creates a key for DPoP and a fresh DPoP proof for the token request to the PID Provider. DPoP provides a way to bind the access token to a certain sender (Wallet Instance) `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Thus, it mitigates the misuse of leaked or stolen access tokens at the credential endpoint of PID Provider as the attacker needs to present a valid DPoP proof.
 
-**Step 14:** The Wallet Instance sends a token request to the PID Provider's token endpoint using the authorization *code*, *code_verifier* and *DPoP proof*, and *Wallet Instance Attestation*. The *Wallet Instance Attestation* is used to perform the Wallet Instance authentication at the token endpoint as it is defined in [:rfc:`7521`]. 
+**Step 14:** The Wallet Instance sends a token request to the PID Provider's token endpoint using the authorization *code*, *code_verifier* and *DPoP proof*, and *private_key_jwt*.
 
 .. code-block::
 
@@ -158,8 +158,8 @@ The JWT payload of PAR is given as the following:
     &code=SplxlOBeZQQYbYS6WxSbIA
     &redirect_uri=eudiw://start.wallet.example.org
     &code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
-    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation 
-    &client_assertion=$WalletInstanceAttestation$
+    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+    &client_assertion=eyJhbGciOiJIUzI1NiI
 
 
 **Step 15:** The PID Provider validates the request and if it is successful, it issues an *access token* (bound to the DPoP key) and a fresh *c_nonce*.  
