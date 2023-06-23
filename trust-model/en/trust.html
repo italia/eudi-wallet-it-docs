@@ -584,6 +584,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#this-implementation-profile">This implementation profile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-of-the-federation">Configuration of the Federation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#roles-of-the-ecosystem">Roles of the ecosystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#privacy-considerations">Privacy Considerations</a></li>
@@ -767,6 +768,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#this-implementation-profile">This implementation profile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-of-the-federation">Configuration of the Federation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#roles-of-the-ecosystem">Roles of the ecosystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#privacy-considerations">Privacy Considerations</a></li>
@@ -1043,7 +1045,7 @@ public keys for signature operations and the maximum number of Intermediates all
                 <span class="s2">&quot;subset_of&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span> <span class="s2">&quot;RS512&quot;</span><span class="p">,</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span> <span class="s2">&quot;ES512&quot;</span><span class="p">,</span> <span class="s2">&quot;PS256&quot;</span><span class="p">,</span> <span class="s2">&quot;PS512&quot;</span><span class="p">]</span>
            <span class="p">}</span>
         <span class="p">},</span>
-        <span class="s2">&quot;client_metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;client&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;vp_formats&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s2">&quot;jwt_vp&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s2">&quot;alg&quot;</span><span class="p">:</span>
@@ -1060,6 +1062,47 @@ public keys for signature operations and the maximum number of Intermediates all
 </pre></div>
 </div>
 </section>
+</section>
+<section id="roles-of-the-ecosystem">
+<h2>Roles of the ecosystem<a class="headerlink" href="#roles-of-the-ecosystem" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Entity</p></th>
+<th class="head"><p>metadata roles</p></th>
+<th class="head"><p>references</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Trust Anchor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Intermediate</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Provider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">wallet</span> <span class="pre">provider</span></code></p>
+</td>
+<td><p>--</p></td>
+</tr>
+<tr class="row-odd"><td><p>Credential Issuer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code></p>
+</td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OPENID4VCI</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Relying Party</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">openid_relying_party</span></code></p>
+</td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p>
+<p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p>
+</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="trust-evaluation-mechanism">
 <h2>Trust Evaluation Mechanism<a class="headerlink" href="#trust-evaluation-mechanism" title="Permalink to this heading">¶</a></h2>
