@@ -229,7 +229,7 @@ Header
   * - **kid**
     - Key ID used identifying the key used to sign the JWT. Required if ``trust_chain`` is used
   * - **trust_chain**
-    - Sequence of verified Entity Statements that validates a participant's compliance with the Federation
+    - Sequence of verified Entity Statements that validates Relying Party compliance with the Federation
 
 
 Payload
