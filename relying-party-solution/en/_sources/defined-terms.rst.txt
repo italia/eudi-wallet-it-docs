@@ -7,6 +7,10 @@ defined-terms.rst
 
 Below are the description of acronyms and definitions which are useful for further insights into topics that complement the it-wallet and the interacting components.
 
+
+Acronyms
+--------
+
 .. list-table:: 
   :widths: 20 80
   :header-rows: 1
@@ -25,8 +29,8 @@ Below are the description of acronyms and definitions which are useful for furth
     - Application Programming Interface
 
 
-Acronyms
---------
+Definitions
+-----------
 
 .. list-table:: 
   :widths: 20 80
@@ -34,10 +38,10 @@ Acronyms
 
   * - **Definition**
     - **Description**
-  * - **WALLET**
+  * - **Wallet Instance**
     - Mobile app that manages, stores, and protects the Verifiable Credentials of a holder and allows the presentation to a Relying Party
-  * - **RELYING PARTY**
-    - Entity that receives one or more VC/VP from an instance of a Wallet and processes them
+  * - **Relying Party**
+    - Entity that receives one or more VP from a Wallet Instance and processes them
 
 
 General Properties
