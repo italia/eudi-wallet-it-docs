@@ -16,8 +16,8 @@ This section describes how a Relying Party may ask to a Wallet Instance the pres
 
 In this section the following flows are descripted:
 
-- Same Device Flow: the Verifier and the Wallet Instance acts in the same device.
-- Remote Cross Device Flow: the Verifier and the Wallet Instance acts in different devices, where the Verifier is a remote Relying Party.
+- **Same Device Flow**, where the Verifier and the Wallet Instance acts in the same device.
+- **Remote Cross Device Flow**, where the Verifier and the Wallet Instance acts in different devices, where the Verifier is a remote Relying Party.
 
 The flows will be discussed and analyzed in this chapter, taking into account security and privacy considerations.
 
