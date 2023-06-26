@@ -8,7 +8,7 @@
 Relying Party Solution
 +++++++++++++++++++++++
 
-This section defines the implementation of the online presentation of PID or (Q)EAAs, according the following specifications: 
+This section defines how a Relying Party may ask to a Wallet Instance the presentation of one or more PID and/or (Q)EAAs, according the following specifications: 
 
 - `OpenID for Verifiable Presentations - draft 19 <OID4VP>`_.
 - `Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP) <DPOP>`_.
@@ -17,9 +17,9 @@ This section defines the implementation of the online presentation of PID or (Q)
 In this section the following flows are descripted:
 
 - Same Device Flow: the Verifier and the Wallet Instance acts in the same device.
-- Cross Device Flow: the Verifier and the Wallet Instance acts in different devices.
+- Remote Cross Device Flow: the Verifier and the Wallet Instance acts in different devices, where the Verifier is a remote Relying Party.
 
-Both of the scenarios will be discussed and analyzed in this chapter, taking into account differences between.
+Both of the scenarios will be discussed and analyzed in this chapter, taking into account security and privacy considerations.
 
 Same Device Flow
 ----------------
@@ -28,15 +28,17 @@ This scenario utilizes HTTP redirects to finalize the authorization phase and ob
 
 Once authentication is performed, the User requests the display of attributes provided by the Wallet Instance.
 
-⚠️ This flow will be described more in detail.
+.. note::
+
+    This flow will be described more in detail in future releases of this documentation.
 
 
-Cross Device Flow
------------------
-In a Cross Device Authorization Flow, the User interacts with a Verifier that resides in a different device on which the Wallet Instance is active.
+Remote Cross Device Flow
+---------------------------
+In a Cross Device Authorization Flow, the User interacts with a remote Relying Party.
 This scenario requests the Verifier to show a QR Code which the User frames with their Wallet Instance.
 
-Once relying party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a verifiable presentation.
+Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a verifiable presentation.
 
 .. image:: ../../images/cross_device_auth_seq_diagram.svg
   :align: center
@@ -181,15 +183,20 @@ Below a non-normative example of this interaction:
 
 More detailed information about the `Wallet Instance Attestation`_ is available in its dedicated section of this tecnichal specification.
 
+To attest an high level of security, the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.
+
+Herein the description of the parameters defined in *OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)*.
+
+.. note::
+    The use of DPoP doesn't represent any breaking changes to Wallet Instances that do not support DPoP to a *request_uri* endpoint, since it is assumed to use it as an additional security mechanisms for the attestation of the status of the Wallet Instance.
+
+    If the DPoP HTTP Header is missing, the Relying Party would assume the lowest attestable level of security to the Wallet Instance it is interacting with.
+
 DPoP HTTP Header
 ^^^^^^^^^^^^^^^^
 
-To attest an high level of security the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, making known its capabilities and the security level attested by its Wallet Provider.
+A **DPoP proof** is included in the request using the HTTP Header ``DPoP`` and containing a JWS. The JWS must be signed with the public key made available in the Wallet Instance Attestation (``Authorization: DPoP``).
 
-.. note::
-    The use of DPoP in this implementation profiles allows to increase the security level and the interoperability efficiency without making any breaking change to Wallet Instances that do not support DPoP to a *request_uri* endpoint.
-
-A **DPoP proof** is included in an HTTP request using ``DPoP`` as a request header claim containing a JWS signed with the same public kkey made available in the Wallet Instance Attestation (Authorization: DPoP).
 
 The JOSE header of the **DPoP JWS** MUST contain at least the following parameters:
 
@@ -233,6 +240,14 @@ The payload of a **DPoP proof** MUST contain at least the following claims:
       - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
       - [:rfc:`7519`. Section 4.1.6].
 
+
+Therein a non-normative example of the DPoP HTTP Header:
+
+.. note::
+
+    TBD.
+
+
 Request URI response
 --------------------
 
@@ -262,15 +277,15 @@ Header
   * - **Name**
     - **Description**
   * - **alg**
-    - Algorithm used to sign the JWT, according to :rfc:`7516#section-4.1.1`. It MUST be one of the supported algorithms in Section *Cryptographic Algorithms* and MUST NOT be none or an identifier for a symmetric algorithm (MAC).
+    - Algorithm used to sign the JWT, according to [:rfc:`7516#section-4.1.1`]. It MUST be one of the supported algorithms in Section *Cryptographic Algorithms* and MUST NOT be none or an identifier for a symmetric algorithm (MAC).
   * - **typ**
-    - Media Type of the JWT.
+    - Media Type of the JWT, as defined in [:rfc:`7519`].
   * - **x5c**
-    - X.509 Certificate containing the key used to verify the JWS.
+    - X.509 Certificate containing the key used to verify the JWS, as defined in [:rfc:`7517`].
   * - **kid**
-    - Key ID of the public key needed to verify the JWS signature. Required if ``trust_chain`` is used.
+    - Key ID of the public key needed to verify the JWS signature, as defined in [:rfc:`7517`]. Required if ``trust_chain`` is used.
   * - **trust_chain**
-    - Sequence of Entity Statements that composes a Trust Chain related to the Relying Party.
+    - Sequence of Entity Statements that composes a Trust Chain related to the Relying Party, as defined in `OIDC-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
 
 
 Payload
@@ -302,13 +317,13 @@ Payload
   * - **scope**
     - Aliases for well-defined Presentation Definitions IDs. It will be used to identify which required credentials and User attributes are requested by the Relying Party.
   * - **client_id_scheme**
-    - String identifying the scheme of the value in the ``client_id``. It will be ``entity_id``.
+    - String identifying the scheme of the value in the ``client_id``. It must be ``entity_id``.
   * - **client_id**
-    - Client Identifier.
+    - Unique Identifier of the Relying Party.
   * - **response_mode**
-    - Used to ask the Wallet Instance in which way it has to send the response. It will be ``direct_post.jwt``
+    - Used to ask the Wallet Instance in which way it has to send the response. It must be ``direct_post.jwt``
   * - **response_type**
-    - The supported response type, that must be set to``vp_token``.
+    - The supported response type, must be set to``vp_token``.
   * - **response_uri**
     - The Response URI to which the Wallet Instance must send the Authorization Response using an HTTPs POST.
   * - **nonce**
@@ -372,12 +387,12 @@ The following parameters, even if defined in [OID4VP], are not mentioned in the 
 
 Authorization Response Details
 ------------------------------
-After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Verifier ``response_uri`` endpoint, crypting the content according `OPENID4VP`_ Section 6.3 and the Relying Party public key.
+After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Verifier ``response_uri`` endpoint, the content should be encrypted according `OPENID4VP`_ Section 6.3, using the Relying Party public key.
 
 .. note::
     **Why the response is encrypted?**
     The response sent from the Wallet Instance to the Relying Party is encrypted
-    to prevent a technique called `SSL split attack <https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/>`_, that could be enabled by malicious app installed or by network environments where a next-generation firewalls or any other security device may reduce the privacy of the Users.
+    to prevent a technique called `SSL split attack <https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/>`_, that could be enabled by malicious app installed locally by Users and that intecepts the traffic or by network environments where a next-generation firewalls or any other security device may reduce the privacy of the Users.
 
 Below a non-normative example of the request:
 
@@ -415,7 +430,7 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
     }
   }
 
-Where: 
+Where the following parameters are used: 
 
 .. list-table::
   :widths: 25 50
@@ -424,14 +439,14 @@ Where:
   * - **Name**
     - **Description**
   * - **vp_token**
-    - JWS containing a single (or an array) of Verifiable Presentation(s)
+    - JWS containing a single (or an array) of Verifiable Presentation(s) in the form of JWS.
   * - **presentation_submission**
-    - JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token
+    - JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token.
   * - **state**
     - Unique identifier provided by the Verifier inside the Authorization Request
 
 
-Below is a non-normative example of the ``vp_token`` JWS content:
+Below is a non-normative example of the ``vp_token`` decoded content, represented in the form of JWS header and payload, separated by a period:
 
 .. code-block:: text
 
@@ -453,7 +468,7 @@ Below is a non-normative example of the ``vp_token`` JWS content:
 
 Relying Party Entity Configuration
 ---------------------------------------------
-According to the `Trust Model`_ section, the Verifier as a Federation participant needs to expose a well-known endpoint containing its Entity Configuration. 
+According to the `Trust Model`_ section, the Verifier is a Federation Entity and must expose a well-known endpoint containing its Entity Configuration. 
 
 Below a non-normative example of the request made by the Wallet Instance to the *openid-federation* well-known endpoint to obtain the Relying Party Entity Configuration:
 

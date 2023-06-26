@@ -660,7 +660,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#same-device-flow">Same Device Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cross-device-flow">Cross Device Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-cross-device-flow">Remote Cross Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-uri-response">Request URI response</a></li>
@@ -855,7 +855,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#same-device-flow">Same Device Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cross-device-flow">Cross Device Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-cross-device-flow">Remote Cross Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-uri-response">Request URI response</a></li>
@@ -925,7 +925,7 @@
           
   <section id="relying-party-solution">
 <span id="id1"></span><h1>Relying Party Solution<a class="headerlink" href="#relying-party-solution" title="Permalink to this heading">¶</a></h1>
-<p>This section defines the implementation of the online presentation of PID or (Q)EAAs, according the following specifications:</p>
+<p>This section defines how a Relying Party may ask to a Wallet Instance the presentation of one or more PID and/or (Q)EAAs, according the following specifications:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="OID4VP">OpenID for Verifiable Presentations - draft 19</a>.</p></li>
 <li><p><a class="reference external" href="DPOP">Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)</a>.</p></li>
@@ -933,21 +933,24 @@
 <p>In this section the following flows are descripted:</p>
 <ul class="simple">
 <li><p>Same Device Flow: the Verifier and the Wallet Instance acts in the same device.</p></li>
-<li><p>Cross Device Flow: the Verifier and the Wallet Instance acts in different devices.</p></li>
+<li><p>Remote Cross Device Flow: the Verifier and the Wallet Instance acts in different devices, where the Verifier is a remote Relying Party.</p></li>
 </ul>
-<p>Both of the scenarios will be discussed and analyzed in this chapter, taking into account differences between.</p>
+<p>Both of the scenarios will be discussed and analyzed in this chapter, taking into account security and privacy considerations.</p>
 <section id="same-device-flow">
 <h2>Same Device Flow<a class="headerlink" href="#same-device-flow" title="Permalink to this heading">¶</a></h2>
 <p>In a Same Device Authorization Flow, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
 This scenario utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).</p>
 <p>Once authentication is performed, the User requests the display of attributes provided by the Wallet Instance.</p>
-<p>⚠️ This flow will be described more in detail.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This flow will be described more in detail in future releases of this documentation.</p>
+</div>
 </section>
-<section id="cross-device-flow">
-<h2>Cross Device Flow<a class="headerlink" href="#cross-device-flow" title="Permalink to this heading">¶</a></h2>
-<p>In a Cross Device Authorization Flow, the User interacts with a Verifier that resides in a different device on which the Wallet Instance is active.
+<section id="remote-cross-device-flow">
+<h2>Remote Cross Device Flow<a class="headerlink" href="#remote-cross-device-flow" title="Permalink to this heading">¶</a></h2>
+<p>In a Cross Device Authorization Flow, the User interacts with a remote Relying Party.
 This scenario requests the Verifier to show a QR Code which the User frames with their Wallet Instance.</p>
-<p>Once relying party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a verifiable presentation.</p>
+<p>Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a verifiable presentation.</p>
 <a class="reference external image-reference" href="//www.plantuml.com/plantuml/png/ZPF1Rjf048Rl-nIZd5gfUG4agaGqgcXLuG99Bf6gnJlWRSmidPsrIv--QpjhOn1IRlZtDpyp_upll6YMi2-L3k8ex3V8IXsYPdDxq2Hmy-YHRq1x26FzMPSb2imfMb2EBLAFaIMMHqixoA9uR84AbPfEuJv8WHH1BTOHm7Ig0jn-ZgydiCG_0Rr0naum5pHHyIvmZahdOYijsDXKc0fcZ55hFHtRVwrbShd4VYvXvaoghoUmAbmTrLOqUFeN_UzQgJhHkQRaqOiFVuKZtBV-k9o_q9RTVY1J5ryVrZsssFp6MFL2c-DfQHHgAmMS1Gpt8f5enuk8zl0bSnc8UqMwaanNSM6qvl2MJDV-k9zn26d6v3LQQUVK8q_8TdiyGtwWQAD53vGkRHGGlZslOMLtf2KmNhnENQ61f-o3_zW1OUXswnXoHnv9Xl632ccgcQEjvJsQqu72i8biiLfV78q_D8unNcXNK1r-lIFV6QD14gjBc7iVa5F22Rmsym1ax7Bq7gH0o7kxI-1AmugS8BWAUGGV2kqHE0Pc6QEvcyJ9Rg5AtLWItB6LuoVGwOlidiX0uKg331jBfjccstPxQ0oGV624U5QT1Ze-bPPUqRIvTPTWaTy5vu4PIS2ZzyrGv2Z7yyfPKydzITWu7AD7EhtZnNTbyFIZFJlbEoGJzkL_"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
 <table class="docutils align-default">
 <colgroup>
@@ -1103,14 +1106,16 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </pre></div>
 </div>
 <p>More detailed information about the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation</a> is available in its dedicated section of this tecnichal specification.</p>
-<section id="dpop-http-header">
-<h3>DPoP HTTP Header<a class="headerlink" href="#dpop-http-header" title="Permalink to this heading">¶</a></h3>
-<p>To attest an high level of security the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, making known its capabilities and the security level attested by its Wallet Provider.</p>
+<p>To attest an high level of security, the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.</p>
+<p>Herein the description of the parameters defined in <em>OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The use of DPoP in this implementation profiles allows to increase the security level and the interoperability efficiency without making any breaking change to Wallet Instances that do not support DPoP to a <em>request_uri</em> endpoint.</p>
+<p>The use of DPoP doesn't represent any breaking changes to Wallet Instances that do not support DPoP to a <em>request_uri</em> endpoint, since it is assumed to use it as an additional security mechanisms for the attestation of the status of the Wallet Instance.</p>
+<p>If the DPoP HTTP Header is missing, the Relying Party would assume the lowest attestable level of security to the Wallet Instance it is interacting with.</p>
 </div>
-<p>A <strong>DPoP proof</strong> is included in an HTTP request using <code class="docutils literal notranslate"><span class="pre">DPoP</span></code> as a request header claim containing a JWS signed with the same public kkey made available in the Wallet Instance Attestation (Authorization: DPoP).</p>
+<section id="dpop-http-header">
+<h3>DPoP HTTP Header<a class="headerlink" href="#dpop-http-header" title="Permalink to this heading">¶</a></h3>
+<p>A <strong>DPoP proof</strong> is included in the request using the HTTP Header <code class="docutils literal notranslate"><span class="pre">DPoP</span></code> and containing a JWS. The JWS must be signed with the public key made available in the Wallet Instance Attestation (<code class="docutils literal notranslate"><span class="pre">Authorization:</span> <span class="pre">DPoP</span></code>).</p>
 <p>The JOSE header of the <strong>DPoP JWS</strong> MUST contain at least the following parameters:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1171,6 +1176,11 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </tr>
 </tbody>
 </table>
+<p>Therein a non-normative example of the DPoP HTTP Header:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TBD.</p>
+</div>
 </section>
 </section>
 <section id="request-uri-response">
@@ -1203,19 +1213,19 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>Algorithm used to sign the JWT, according to <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>. It MUST be one of the supported algorithms in Section <em>Cryptographic Algorithms</em> and MUST NOT be none or an identifier for a symmetric algorithm (MAC).</p></td>
+<td><p>Algorithm used to sign the JWT, according to [<span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]. It MUST be one of the supported algorithms in Section <em>Cryptographic Algorithms</em> and MUST NOT be none or an identifier for a symmetric algorithm (MAC).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
-<td><p>Media Type of the JWT.</p></td>
+<td><p>Media Type of the JWT, as defined in [<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
-<td><p>X.509 Certificate containing the key used to verify the JWS.</p></td>
+<td><p>X.509 Certificate containing the key used to verify the JWS, as defined in [<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>Key ID of the public key needed to verify the JWS signature. Required if <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> is used.</p></td>
+<td><p>Key ID of the public key needed to verify the JWS signature, as defined in [<span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. Required if <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> is used.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>trust_chain</strong></p></td>
-<td><p>Sequence of Entity Statements that composes a Trust Chain related to the Relying Party.</p></td>
+<td><p>Sequence of Entity Statements that composes a Trust Chain related to the Relying Party, as defined in <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> Section <em>3.2.1. Trust Chain Header Parameter</em>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1252,16 +1262,16 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <td><p>Aliases for well-defined Presentation Definitions IDs. It will be used to identify which required credentials and User attributes are requested by the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_id_scheme</strong></p></td>
-<td><p>String identifying the scheme of the value in the <code class="docutils literal notranslate"><span class="pre">client_id</span></code>. It will be <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></td>
+<td><p>String identifying the scheme of the value in the <code class="docutils literal notranslate"><span class="pre">client_id</span></code>. It must be <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>Client Identifier.</p></td>
+<td><p>Unique Identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_mode</strong></p></td>
-<td><p>Used to ask the Wallet Instance in which way it has to send the response. It will be <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code></p></td>
+<td><p>Used to ask the Wallet Instance in which way it has to send the response. It must be <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_type</strong></p></td>
-<td><p>The supported response type, that must be set to``vp_token``.</p></td>
+<td><p>The supported response type, must be set to``vp_token``.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_uri</strong></p></td>
 <td><p>The Response URI to which the Wallet Instance must send the Authorization Response using an HTTPs POST.</p></td>
@@ -1327,12 +1337,12 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </section>
 <section id="authorization-response-details">
 <h2>Authorization Response Details<a class="headerlink" href="#authorization-response-details" title="Permalink to this heading">¶</a></h2>
-<p>After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Verifier <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, crypting the content according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3 and the Relying Party public key.</p>
+<p>After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Verifier <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3, using the Relying Party public key.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong>
 The response sent from the Wallet Instance to the Relying Party is encrypted
-to prevent a technique called <a class="reference external" href="https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/">SSL split attack</a>, that could be enabled by malicious app installed or by network environments where a next-generation firewalls or any other security device may reduce the privacy of the Users.</p>
+to prevent a technique called <a class="reference external" href="https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/">SSL split attack</a>, that could be enabled by malicious app installed locally by Users and that intecepts the traffic or by network environments where a next-generation firewalls or any other security device may reduce the privacy of the Users.</p>
 </div>
 <p>Below a non-normative example of the request:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/callback</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1365,7 +1375,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Where:</p>
+<p>Where the following parameters are used:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1378,17 +1388,17 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
-<td><p>JWS containing a single (or an array) of Verifiable Presentation(s)</p></td>
+<td><p>JWS containing a single (or an array) of Verifiable Presentation(s) in the form of JWS.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>presentation_submission</strong></p></td>
-<td><p>JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token</p></td>
+<td><p>JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
 <td><p>Unique identifier provided by the Verifier inside the Authorization Request</p></td>
 </tr>
 </tbody>
 </table>
-<p>Below is a non-normative example of the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> JWS content:</p>
+<p>Below is a non-normative example of the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> decoded content, represented in the form of JWS header and payload, separated by a period:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
   &quot;alg&quot;: &quot;ES256&quot;,
   &quot;typ&quot;: &quot;JWT&quot;,
@@ -1409,7 +1419,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 </section>
 <section id="relying-party-entity-configuration">
 <h2>Relying Party Entity Configuration<a class="headerlink" href="#relying-party-entity-configuration" title="Permalink to this heading">¶</a></h2>
-<p>According to the <a class="reference external" href="trust.html">Trust Model</a> section, the Verifier as a Federation participant needs to expose a well-known endpoint containing its Entity Configuration.</p>
+<p>According to the <a class="reference external" href="trust.html">Trust Model</a> section, the Verifier is a Federation Entity and must expose a well-known endpoint containing its Entity Configuration.</p>
 <p>Below a non-normative example of the request made by the Wallet Instance to the <em>openid-federation</em> well-known endpoint to obtain the Relying Party Entity Configuration:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/openid-federation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">verifier.example.org</span>
