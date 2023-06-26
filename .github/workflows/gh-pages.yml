@@ -44,8 +44,8 @@ jobs:
 
       - name: Build branch
         run: |-
-          sphinx-build -b html -d html/${GITHUB_HEAD_REF}/it/doctrees docs/it/  html/${GITHUB_HEAD_REF}/it
-          sphinx-build -b html -d html/${GITHUB_HEAD_REF}/en/doctrees docs/en/  html/${GITHUB_HEAD_REF}/en
+          sphinx-build -b html docs/it/ html/${GITHUB_HEAD_REF}/it
+          sphinx-build -b html docs/en/ html/${GITHUB_HEAD_REF}/en
 
       # Runs a single command using the runners shell
       - name: Create GH page index
