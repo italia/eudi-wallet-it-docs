@@ -303,7 +303,7 @@ The JWS payload of the request object is represented below:
 .. code-block:: 
 
     HTTP/1.1 302 Found
-    Location: eudiw://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
+    Location: eudiw://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Fpid-provider.example.org
  
     Host: pid-provider.example.org
 
@@ -590,6 +590,11 @@ If the authentication is successful the PID Provider redirects the User by addin
     * - **state**
       - The client MUST check the correspondence with the state value in the request object. It is defined as in the :ref:`Table of the JWT Request parameters <table_jwt_request>`
       - [:rfc:`6749#section-4.1.2`],
+    * - **iss**
+      - Unique identifier of the PID PRovider who created the Authentication Response. The Wallet Instance MUST validate this parameter.
+      - `OAuth 2.0 Authorization Server Issuer Identifier in Authorization Response <https://www.ietf.org/archive/id/draft-meyerzuselhausen-oauth-iss-auth-resp-02.html>`_, `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_
+
+
 
 Token endpoint
 --------------
