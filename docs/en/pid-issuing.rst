@@ -298,7 +298,7 @@ The requests to the authorization endpoint of the PID Provider MUST be HTTP with
       - :rfc:`7636#section-4.3`.
     * - **request**
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the request object.
-      - `OIDC-CORE`_
+      - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
     * - **client_assertion_type**
       - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation``.
       - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
