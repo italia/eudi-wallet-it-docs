@@ -177,7 +177,13 @@ Below follows its Base64 decoded content:
 
 Request Object Details
 ----------------------
-Once the Wallet Instance scans the QR Code, it extracts from the payload the ``request_uri`` parameter. Then the Wallet Instance invokes the retrieved URI in order to obtain the signed request object from the Relying Party. The Wallet Instance also provides in the request its Wallet instance Attestation, using `DPOP`_ to proof the legitimate possession of it.
+The following actions are made by The Wallet Instance:
+
+- scan the QR Code;
+- extract from the payload the ``request_uri`` parameter;
+- invoke the retrieved URI;
+- obtain the signed request object from the Relying Party;
+- provide in the request its Wallet instance Attestation, using `DPOP`_ to proof the legitimate possession of it.
 
 Below a non-normative example of this interaction:
 
