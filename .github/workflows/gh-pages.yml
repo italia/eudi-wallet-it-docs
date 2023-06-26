@@ -4,19 +4,19 @@ name: gh-pages
 
 on:
   push:
-    branches: [ "versione-corrente" ]
+    branches: ["versione-corrente"]
     paths-ignore:
-    - README.md
-    - CONTRIBUTING.md
-    - LICENSE.md
-    - .gitignore
+      - README.md
+      - CONTRIBUTING.md
+      - LICENSE.md
+      - .gitignore
   pull_request:
-    branches: [ "*" ]
+    branches: ["*"]
     paths-ignore:
-    - README.md
-    - CONTRIBUTING.md
-    - LICENSE.md
-    - .gitignore
+      - README.md
+      - CONTRIBUTING.md
+      - LICENSE.md
+      - .gitignore
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -35,17 +35,17 @@ jobs:
 
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+          python-version: "3.8" # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: "x64" # optional x64 or x86. Defaults to x64 if not specified
 
       - name: Install deps
         run: |-
-            python -m pip install -r requirements-dev.txt
+          python -m pip install -r requirements-dev.txt
 
       - name: Build branch
         run: |-
-          sphinx-build -b html -d html/${GITHUB_HEAD_REF}/it/doctrees docs/it/  html/${GITHUB_HEAD_REF}/it
-          sphinx-build -b html -d html/${GITHUB_HEAD_REF}/en/doctrees docs/en/  html/${GITHUB_HEAD_REF}/en
+          sphinx-build -b html docs/it/  html/${GITHUB_HEAD_REF}/it
+          sphinx-build -b html docs/en/  html/${GITHUB_HEAD_REF}/en
 
       # Runs a single command using the runners shell
       - name: Create GH page index
@@ -59,7 +59,7 @@ jobs:
           </head>
           <body>
           <h1>Italian eIDAS Wallet Technical Specifications</h1>
-          
+
           <ul>
             <li><a href="it/">Italian version</a></li>
             <li><a href="en/">English version</a></li>
