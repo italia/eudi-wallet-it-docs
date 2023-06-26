@@ -51,7 +51,163 @@ The PID Issuing phase is based on the **Authorization Code Flow** with **Pushed 
 
 .. note::
 
-    **Federation Check:** The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata.
+    **Federation Check:** The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata. In the following a non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID Provider
+
+    .. code-block::
+    
+      HTTP/1.1 200 OK
+      Content-Type: application/entity-statement+jwt
+
+      {
+
+        "alg": "RS256",
+        "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
+        "typ": "entity-statement+jwt"
+
+      }
+      .{
+        "exp": "1649610249",
+        "iat": "1649437449",
+        "iss": "https://pid-provider.example.org",
+        "sub": "https://pid-provider.example.org",
+        "jwks": {
+          "keys": [{
+            "kty": "RSA",
+            "use": "sig",
+            "n": "1Ta-sE …",
+            "e": "AQAB",
+            "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
+          }]
+        },
+        "metadata": {
+          "openid_credential_issuer": {
+            "credential_issuer": "https://pid-provider.example.org",
+            "authorization_endpoint": "https://pid-provider.example.org/connect/authorize",
+            "token_endpoint": "https://pid-provider.example.org/connect/token",
+            "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
+            "dpop_signing_alg_values_supported": ["RS256", "RS512", "RSA-OAEP", "...", "ES256", "ES512"],
+            "credential_endpoint": "https://pid-provider.example.org/credential",
+            "credentials_supported": {
+              "eu.eudiw.pid.it": {
+                "format": "vc+sd-jwt",
+                "cryptographic_binding_methods_supported": ["jwk"],
+                "cryptographic_suites_supported": ["RS256", "RS512", "RSA-OAEP", "...", "ES256", "ES512"],
+                "display": [{
+                    "name": "PID Provider Italiano di esempio",
+                    "locale": "it-IT",
+                    "logo": {
+                      "url": "https://pid-provider example.org/public/logo.svg",
+                      "alt_text": "logo di questo PID Provider"
+                    },
+                    "background_color": "#12107c",
+                    "text_color": "#FFFFFF"
+                  },
+                  {
+                    "name": "Example Italian PID Provider",
+                    "locale": "en-US",
+                    "logo": {
+                      "url": "https://pid-provider.example.org/public/logo.svg",
+                      "alt_text": "a logo of this PID Provider"
+                    },
+                    "background_color": "#12107c",
+                    "text_color": "#FFFFFF"
+                  }
+                ],
+                "credential_definition": {
+                  "type": ["PIDCredential"],
+                  "credentialSubject": {
+                    "given_name": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Current First Name",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Nome",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "family_name": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Current Family Name",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Cognome",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "birthdate": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Date of Birth",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Data di Nascita",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "place_of_birth": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Place of Birth",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Luogo di Nascita",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "unique_id": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Unique Identifier",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Identificativo univoco",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "tax_id_number": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Tax Id Number",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Codice Fiscale",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+
+          "federation_entity": {
+            "organization_name": "Pid Provider Organization Example",
+            "homepage_uri": "https://pid-provider.example.org",
+            "policy_uri": "https://pid-provider.example.org/privacy_policy",
+            "tos_uri": "https://pid-provider.example.org/info_policy",
+            "logo_uri": "https://pid-provider.example.org/logo.svg"
+          },
+
+          "openid_relying_party": {
+            <This is the metadata of the PID Provider acting as a Relying Party in the national digital identity framework (CIE/SPID)>
+          }
+        }
+      }         
+
 
 **Steps 5-6:** The Wallet Instance creates a fresh PKCE code verifier and sends this along in a *pushed authorization request* using the request parameter (see :rfc:`9126` Section 3) to the authorization endpoint of the PID Provider. The Wallet Instance signs this request using its attested private key. A standard OAuth2 client authentication method must be involved, because the pushed authorization endpoint is a protected endpoint, in this flow. The client authentication can be based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the **client_assertion** parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify types of the credentials when requesting authorization for the PID issuance.
 
@@ -298,7 +454,7 @@ The requests to the authorization endpoint of the PID Provider MUST be HTTP with
       - :rfc:`7636#section-4.3`.
     * - **request**
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the request object.
-      - `OIDC-CORE`_
+      - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
     * - **client_assertion_type**
       - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation``.
       - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
