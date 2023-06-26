@@ -131,7 +131,7 @@ The JWS payload of the request object is represented below:
 
     GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
         &request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
-    Host: pid.example.org
+    Host: pid-provider.example.org
  
 
 .. note::
@@ -156,7 +156,7 @@ The JWS payload of the request object is represented below:
 .. code-block::
 
     POST /token HTTP/1.1
-    Host: pid.example.org
+    Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
         VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
@@ -203,7 +203,7 @@ The JWS payload of the request object is represented below:
 .. code-block::
 
     POST /credential HTTP/1.1
-    Host: pid.example.org
+    Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
