@@ -599,7 +599,9 @@ Payload
     - The NumericDate representing the expiration time on or after which the JWT MUST NOT be accepted for processing.
 
 
-⚠ The usage of ``scope`` instead of ``presentation_definition`` is still under discussion.
+.. warning::
+
+    The usage of ``scope`` instead of ``presentation_definition`` is still under discussion and needs better refinements.
 
 Here a non-normative example of ``presentation_definition``:
 
@@ -647,6 +649,11 @@ The following parameters, even if defined in [OID4VP], are not mentioned in the 
 Authorization Response Details
 ------------------------------
 After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Verifier ``response_uri`` endpoint, crypting the content according `OPENID4VP`_ Section 6.3 and the Relying Party public key.
+
+.. note::
+    **Why the response is encrypted?**
+    The response sent from the Wallet Instance to the Relying Party is encrypted
+    to prevent a technique called `SSL split attack <https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/>`_, that could be enabled by malicious app installed or by network environments where a next-generation firewalls or any other security device may reduce the privacy of the Users.
 
 Below a non-normative example of the request:
 
