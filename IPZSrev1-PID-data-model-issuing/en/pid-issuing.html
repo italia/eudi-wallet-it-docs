@@ -1021,7 +1021,7 @@ response_type=code
 <p><strong>Steps 8-9:</strong> The Wallet Instance sends an authorization request to the PID Provider authorization endpoint.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
     &amp;request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
-Host: pid.example.org
+Host: pid-provider.example.org
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1041,7 +1041,7 @@ Host: pid-provider.example.org
 </div>
 <p><strong>Step 14:</strong> The Wallet Instance sends a token request to the PID Provider's token endpoint using the authorization <em>code</em>, <em>code_verifier</em> and <em>DPoP proof</em>, and <em>private_key_jwt</em>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /token HTTP/1.1
-Host: pid.example.org
+Host: pid-provider.example.org
 Content-Type: application/x-www-form-urlencoded
 DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
     VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
@@ -1081,7 +1081,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <p><strong>PID Credential Schema and Status registration:</strong>  The PID Provider MUST register all the PID credential related information for the later status verification and revocation.</p>
 </div></blockquote>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">credential</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="n">Host</span><span class="p">:</span> <span class="n">pid</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">pid</span><span class="o">-</span><span class="n">provider</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">urlencoded</span>
 <span class="n">Authorization</span><span class="p">:</span> <span class="n">DPoP</span> <span class="n">Kz</span><span class="o">~</span><span class="mi">8</span><span class="n">mXK1EalYznwH</span><span class="o">-</span><span class="n">LC</span><span class="o">-</span><span class="mi">1</span><span class="n">fBAo</span><span class="mf">.4</span><span class="n">Ljp</span><span class="o">~</span><span class="n">zsPE_NeO</span><span class="o">.</span><span class="n">gxU</span>
 <span class="n">DPoP</span><span class="p">:</span> <span class="n">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>
