@@ -1059,7 +1059,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <h2>Authorization Request Details<a class="headerlink" href="#authorization-request-details" title="Permalink to this heading">¶</a></h2>
 <p>In a Cross Device Flow, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request.</p>
 <p>The User frames the QR Code using the Wallet Instance, then grants the consent to release their attributes to the RP.</p>
-<p>The payload of the QR Code is a Base64 encoded string based on the following format:</p>
+<p>The payload of the QR Code is a <strong>Base64 encoded string</strong> based on the following format:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1085,7 +1085,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <em>error correction level</em> chosen for the QR Code is Q (Quartily - up to 25%), that offers a good balance between error correction capability and data density/space and it will allow the QR Code to remain readable even if it is damaged or partially obscured.</p>
+<p>The <em>error correction level</em> chosen for the QR Code must be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.</p>
 </div>
 <p>Below is a non-normative example of a QR Code issued by the Relying Party:</p>
 <img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the payload and its Base64 decoded content:</p>
