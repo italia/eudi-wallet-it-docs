@@ -255,7 +255,7 @@ The payload of a **DPoP proof** MUST contain at least the following claims:
       - [:rfc:`7519`. Section 4.1.6].
 
 
-Therein a non-normative example of the DPoP HTTP Header:
+Therein a non-normative example of the DPoP decoded content:
 
 .. note::
 
