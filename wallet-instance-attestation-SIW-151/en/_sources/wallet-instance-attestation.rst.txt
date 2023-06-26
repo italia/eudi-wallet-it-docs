@@ -76,8 +76,8 @@ We assume the following requirements for the Wallet Instance Attestation:
    The Wallet Instance Attestation should have a well-defined expiration date,
    after which it will no longer be considered valid, thus ensuring
    the security and updating of the attestations over time.
-9.  **Disability in case of loss/deletion of the public key**:
-    If the public key associated with the Wallet Instance is lost or deleted,
+9.  **Revocation in case of loss/deletion of the private key**:
+    If the private key associated with the Wallet Instance is lost or deleted,
     the attestation automatically becomes invalid to prevent unauthorized
     use of the Wallet Instance. ⚠️
 10. **Pseudonymisation**:
@@ -170,7 +170,7 @@ Header
 +-----------------------------------+-----------------------------------+
 | kid                               | Key id of the Wallet Instance     |
 +-----------------------------------+-----------------------------------+
-| type                              | Media type, in this case, we use  |
+| typ                               | Media type, in this case we use   |
 |                                   | the value var+jwt (Verifiable     |
 |                                   | Assertion Request JWT)            |
 +-----------------------------------+-----------------------------------+
@@ -186,8 +186,8 @@ Payload
 ||        || for which the attestation is              |
 ||        || being requested.                          |
 +---------+--------------------------------------------+
-|| sub    || The public url of the wallet              |
-||        || instance attestation issuer.              |
+|| sub    || The public url of the Wallet              |
+||        || Instance attestation issuer.              |
 +---------+--------------------------------------------+
 || jti    || Unique identifier of the request.         |
 ||        || This parameter will be used to            |
@@ -219,8 +219,8 @@ Non-normative example
   }
   .
   {
-    "iss": "https://wallet.italia.it/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "sub": "https://wallet.italia.it/",
+    "iss": "https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
+    "sub": "https://wallet-provider.example.org/",
     "jti": "6ec69324-60a8-4e5b-a697-a766d85790ea",
     "type": "WalletInstanceAttestationRequest",
     "cnf": {
@@ -240,7 +240,7 @@ Whose corresponding JWS is as follows:
 
 .. code-block:: javascript
 
-  eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC8iLCJqdGkiOiI2ZWM2OTMyNC02MGE4LTRlNWItYTY5Ny1hNzY2ZDg1NzkwZWEiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiaWF0IjoxNjg2NjQ1MTE1LCJleHAiOjE2ODY2NTIzMTV9.3KInOD_N4zh5PmXj9QhS5aIVFF8zxMl6326KxDTAFYMPJbweD2ny95Nk6y_xTCOioail2WHDLpF3Rju16Q7Z7Q
+  eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbnN0YW5jZS92YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIiwic3ViIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvIiwianRpIjoiMzhjZTczMDUtMWEyYi00MTc1LWJkOGUtZmRjNTY0ZDZkYzVlIiwidHlwZSI6IldhbGxldEluc3RhbmNlQXR0ZXN0YXRpb25SZXF1ZXN0IiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImlhdCI6MTY4Nzc5MjE3NywiZXhwIjoxNjg3Nzk5Mzc3fQ.t3HL_nrqe_3L8C1XrtgEFdb8M2q1_Nmwa-Ij6vL2digbu34JF2N5GB3dc_XIRPjZbG7BeQJOW6OZ1sSiWJWgjA
 
 Verifiable through the public key of the Wallet Instance present in the JWT.
 
@@ -250,7 +250,7 @@ Format of the Wallet Instance Attestation
 
 To ensure the above requirements, a JWT was chosen as the format for the
 Wallet Instance Attestation. Let's see below the various fields that
-compose it
+compose it.
 
 Header
 ^^^^^^
@@ -282,72 +282,75 @@ Header
 | trust_chain                       | | Array containing the JWS of the |
 |                                   |   trust chain relating to its     |
 |                                   |   issuer (Wallet Provider).       |
-|                                   | | ⚠️ This topic will be addressed |
-|                                   |   at a later stage.               |
 +-----------------------------------+-----------------------------------+
 
 Payload
 ^^^^^^^
 
-+-----------------------------------+-----------------------------------+
-| **key**                           | **value**                         |
-+-----------------------------------+-----------------------------------+
-| iss                               | The public url of the wallet      |
-|                                   | instance attestation issuer. (see |
-|                                   | example below)                    |
-+-----------------------------------+-----------------------------------+
-| sub                               | The public url of the issuer      |
-|                                   | concatenated with the thumbprint  |
-|                                   | of the JWK of the Wallet Instance |
-|                                   | for which the attestation is      |
-|                                   | being issued.                     |
-+-----------------------------------+-----------------------------------+
-| iat                               | Timestamp of issue of the         |
-|                                   | attestation.                      |
-+-----------------------------------+-----------------------------------+
-| exp                               | Attestation expiration timestamp. |
-|                                   | A good practice to avoid security |
-|                                   | problems is to have a limited     |
-|                                   | duration of the attestation.      |
-+-----------------------------------+-----------------------------------+
-| type                              | String:                           |
-|                                   | "WalletInstanceAttestation".      |
-+-----------------------------------+-----------------------------------+
-| policy_uri                        | Url to the privacy policy         |
-|                                   | of the wallet.                    |
-+-----------------------------------+-----------------------------------+
-| tos_uri                           | Url to the terms                  |
-|                                   | of use of the Wallet Provider.    |
-+-----------------------------------+-----------------------------------+
-| logo_uri                          | Logo url of the Wallet Provider.  |
-+-----------------------------------+-----------------------------------+
-| asc                               | Attested security context:        |
-|                                   | Represents a level of "trust" of  |
-|                                   | the service containing a Level Of |
-|                                   | Agreement defined in the metadata |
-|                                   | of the Wallet Provider.           |
-+-----------------------------------+-----------------------------------+
-| cnf                               | This parameter contains the JSON  |
-|                                   | the payload of which is shown     |
-|                                   | below.                            |
-+-----------------------------------+-----------------------------------+
-
-Payload of `cnf`
-''''''''''''''''
-
-+-----------------------+-------------------------------------------------+
-| **key**               | **value**                                       |
-+-----------------------+-------------------------------------------------+
-|| jwk                  || The public key of the Wallet                   |
-||                      || instance necessary for the                     |
-||                      || holder binding.                                |
-+-----------------------+-------------------------------------------------+
-|| vp_formats_supported || The Verifiable Credential and                  |
-||                      || Verifiable Presentation formats                |
-||                      || supported by the Wallet                        |
-||                      || See paragraph. 8.1 of                          |
-||                      || OpenID for Verifiable Presentations - draft 19.|
-+-----------------------+-------------------------------------------------+
++---------------------------+-------------------------------------------+
+| **key**                   | **value**                                 |
++---------------------------+-------------------------------------------+
+|| iss                      || The public url of the Wallet             |
+||                          || Instance attestation issuer. (see        |
+||                          || example below)                           |
++---------------------------+-------------------------------------------+
+|| sub                      || The public url of the issuer             |
+||                          || concatenated with the thumbprint         |
+||                          || of the JWK of the Wallet Instance        |
+||                          || for which the attestation is             |
+||                          || being issued.                            |
++---------------------------+-------------------------------------------+
+|| iat                      || Unix timestamp of attestation            |
+||                          || issuance time.                           |
++---------------------------+-------------------------------------------+
+|| exp                      || Unix timestamp regarding the             |
+||                          || expiration date time.                    |
+||                          || A good practice to avoid security        |
+||                          || problems is to have a limited            |
+||                          || duration of the attestation.             |
++---------------------------+-------------------------------------------+
+|| type                     || String:                                  |
+||                          || "WalletInstanceAttestation".             |
++---------------------------+-------------------------------------------+
+|| policy_uri               || Url to the privacy policy                |
+||                          || of the wallet.                           |
++---------------------------+-------------------------------------------+
+|| tos_uri                  || Url to the terms                         |
+||                          || of use of the Wallet Provider.           |
++---------------------------+-------------------------------------------+
+| logo_uri                  | Logo url of the Wallet Provider.          |
++---------------------------+-------------------------------------------+
+|| asc                      || Attested security context:               |
+||                          || Represents a level of "trust" of         |
+||                          || the service containing a Level Of        |
+||                          || Agreement defined in the metadata        |
+||                          || of the Wallet Provider.                  |
++---------------------------+-------------------------------------------+
+|| cnf                      || This parameter contains the ``jwk``      |
+||                          || parameter                                |
+||                          || with the public key of the Wallet        |
+||                          || ecessary for the holder binding.         |
++---------------------------+-------------------------------------------+
+|| authorization_endpoint   || URL of the OP's OAuth 2.0                |
+||                          || Authorization Endpoint.                  |
++---------------------------+-------------------------------------------+
+|| response_types_supported || JSON array containing a list of          |
+||                          || the OAuth 2.0 response_type values       |
+||                          || that this OP supports.                   |
++---------------------------+-------------------------------------------+
+|| vp_formats_supported     || JSON object containing                   |
+||                          || ``jwt_vp_json`` and ``jwt_vc_json``      |
+||                          || supported algoithms array                |
++---------------------------+-------------------------------------------+
+|| request_object_signing   || JSON array containing a list of the      |
+|| _alg_values_supported    || JWS signing algorithms (alg values)      |
+||                          || supported by the OP for Request Objects  |
++---------------------------+-------------------------------------------+
+|| presentation_definition  || Boolean value specifying whether the OP  |
+|| _uri_supported           || supports the transfer of                 |
+||                          || presentation_definition by               |
+||                          || reference, with true indicating support. |
++---------------------------+-------------------------------------------+
 
 Signature
 ^^^^^^^^^
@@ -375,13 +378,13 @@ Below is an example of Wallet Instance Attestation:
   }
   .
   {
-    "iss": "https://wallet.italia.it",
-    "sub": "https://wallet.italia.it/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
+    "iss": "https://wallet-provider.example.org",
+    "sub": "https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "type": "WalletInstanceAttestation",
-    "policy_uri": "https://wallet.italia.it/privacy_policy",
-    "tos_uri": "https://wallet.italia.it/info_policy",
-    "logo_uri": "https://wallet.italia.it/logo.svg",
-    "asc": "https://wallet.italia.it/LoA/basic",
+    "policy_uri": "https://wallet-provider.example.org/privacy_policy",
+    "tos_uri": "https://wallet-provider.example.org/info_policy",
+    "logo_uri": "https://wallet-provider.example.org/logo.svg",
+    "asc": "https://wallet-provider.example.org/LoA/basic",
     "cnf":
     {
       "jwk":
@@ -391,16 +394,24 @@ Below is an example of Wallet Instance Attestation:
         "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
         "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg",
         "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-        }
+      }
+    },
+    "authorization_endpoint": "eudiw:",
+    "response_types_supported": [
+      "vp_token"
+    ],
+    "vp_formats_supported": {
+      "jwt_vp_json": {
+        "alg_values_supported": ["ES256"]
       },
-      "vp_formats_supported": {
-        "jwt_vc_json": {
-          "alg_values_supported": ["ES256K", "ES384"],
-        },
-        "jwt_vp_json": {
-          "alg_values_supported": ["ES256K", "EdDSA"],
-        },
-      },
+      "jwt_vc_json": {
+        "alg_values_supported": ["ES256"]
+      }
+    },
+    "request_object_signing_alg_values_supported": [
+      "ES256"
+    ],
+    "presentation_definition_uri_supported": false,
     "iat": 1687281195,
     "exp": 1687288395
   }
@@ -410,7 +421,7 @@ Whose corresponding JWS is as follows:
 
 .. code-block:: javascript
 
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6WyJleUpoYkdjaU9pSkZVekkxTmlJc0luUjVjQ0k2SW1Gd2NHeHBZMkYwYVc5dUwyVnVkR2wwZVMxemRHRjBaVzFsYm5RcmFuZDBJbjAuZXlKcGMzTWlPaUpvZEhSd2N6b3ZMM2RoYkd4bGRDNXBkR0ZzYVdFdWFYUWlMQ0p6ZFdJaU9pSm9kSFJ3Y3pvdkwzZGhiR3hsZEM1cGRHRnNhV0V1YVhRaUxDSnFkMnR6SWpwN0ltdGxlWE1pT2x0N0ltdDBlU0k2SWtWRElpd2lZM0oySWpvaVVDMHlOVFlpTENKNElqb2ljWEpLY21velFXWmZRalUzYzJKUFNWSnlZMEpOTjJKeU4zZFBZemg1Ym1vM2JFaEdVRlJsWm1aVmF5SXNJbmtpT2lJeFNEQmpWMFI1UjJkMlZUaDNMV3RRUzFWZmVIbGpUME5WVGxReWJ6QmlkM05zU1ZGMGJsQlZObWxOSW4xZGZTd2liV1YwWVdSaGRHRWlPbnNpWlhWa2FWOTNZV3hzWlhSZmNISnZkbWxrWlhJaU9uc2lhbmRyY3lJNmV5SnJaWGx6SWpwYmV5SnJkSGtpT2lKRlF5SXNJbU55ZGlJNklsQXRNalUySWl3aWVDSTZJbkZ5U25KcU0wRm1YMEkxTjNOaVQwbFNjbU5DVFRkaWNqZDNUMk00ZVc1cU4yeElSbEJVWldabVZXc2lMQ0o1SWpvaU1VZ3dZMWRFZVVkbmRsVTRkeTFyVUV0VlgzaDVZMDlEVlU1VU1tOHdZbmR6YkVsUmRHNVFWVFpwVFNKOVhYMHNJblJ2YTJWdVgyVnVaSEJ2YVc1MElqb2lhSFIwY0hNNkx5OTNZV3hzWlhRdWFYUmhiR2xoTG1sMEwzUnZhMlZ1SWl3aVlYTmpYM1poYkhWbGMxOXpkWEJ3YjNKMFpXUWlPbHNpYUhSMGNITTZMeTkzWVd4c1pYUXVhWFJoYkdsaExtbDBMMHh2UVM5aVlYTnBZeUlzSW1oMGRIQnpPaTh2ZDJGc2JHVjBMbWwwWVd4cFlTNXBkQzlNYjBFdmJXVmthWFZ0SWl3aWFIUjBjSE02THk5M1lXeHNaWFF1YVhSaGJHbGhMbWwwTDB4dlFTOW9hV2RvSWwwc0ltZHlZVzUwWDNSNWNHVnpYM04xY0hCdmNuUmxaQ0k2V3lKMWNtNDZhV1YwWmpwd1lYSmhiWE02YjJGMWRHZzZZMnhwWlc1MExXRnpjMlZ5ZEdsdmJpMTBlWEJsT21wM2RDMXJaWGt0WVhSMFpYTjBZWFJwYjI0aVhTd2lkRzlyWlc1ZlpXNWtjRzlwYm5SZllYVjBhRjl0WlhSb2IyUnpYM04xY0hCdmNuUmxaQ0k2V3lKd2NtbDJZWFJsWDJ0bGVWOXFkM1FpWFN3aWRHOXJaVzVmWlc1a2NHOXBiblJmWVhWMGFGOXphV2R1YVc1blgyRnNaMTkyWVd4MVpYTmZjM1Z3Y0c5eWRHVmtJanBiSWtWVE1qVTJJaXdpUlZNek9EUWlMQ0pGVXpVeE1pSmRmU3dpWm1Wa1pYSmhkR2x2Ymw5bGJuUnBkSGtpT25zaWIzSm5ZVzVwZW1GMGFXOXVYMjVoYldVaU9pSlFZV2R2VUdFZ1V5NXdMa0V1SWl3aWFHOXRaWEJoWjJWZmRYSnBJam9pYUhSMGNITTZMeTkzWVd4c1pYUXVhWFJoYkdsaExtbDBJaXdpY0c5c2FXTjVYM1Z5YVNJNkltaDBkSEJ6T2k4dmQyRnNiR1YwTG1sMFlXeHBZUzVwZEM5d2NtbDJZV041WDNCdmJHbGplU0lzSW5SdmMxOTFjbWtpT2lKb2RIUndjem92TDNkaGJHeGxkQzVwZEdGc2FXRXVhWFF2YVc1bWIxOXdiMnhwWTNraUxDSnNiMmR2WDNWeWFTSTZJbWgwZEhCek9pOHZkMkZzYkdWMExtbDBZV3hwWVM1cGRDOXNiMmR2TG5OMlp5SjlmU3dpYVdGMElqb3hOamczTWpneE1EQXpMQ0psZUhBaU9qRTNNRGt6T1RrME1ETjkuUHFIbzBpMklGZUhBTkxpQlBnZmRuaElfS0xGTGplV2xRVVhGandBcHRDRERfcTlhUkJxNjJPTEF5U081OUZqZ0kwWGNwSlUyaDBMTTBHRjdkM1lpU1EiLCJleUpoYkdjaU9pSkZVekkxTmlJc0ltdHBaQ0k2SWxaSGVFdGhNVnBIWW10ak1GUXdiRFJsYlRsVFdsVXhWV0pJVmxsU01uQkhZVVpTUldSWGNESmhiRlpzWkVkNFIwOVdXakpTYTJ4NFkzY2lMQ0owZVhBaU9pSmhjSEJzYVdOaGRHbHZiaTlsYm5ScGRIa3RjM1JoZEdWdFpXNTBLMnAzZENKOS5leUpsZUhBaU9qRTJORGsyTWpNMU5EWXNJbWxoZENJNk1UWTBPVFExTURjME5pd2lhWE56SWpvaWFIUjBjSE02THk5cGJuUmxjbTFsWkdsaGRHVXVaV2xrWVhNdVpYaGhiWEJzWlM1dmNtY2lMQ0p6ZFdJaU9pSm9kSFJ3Y3pvdkwzSndMbVY0WVcxd2JHVXViM0puSWl3aWFuZHJjeUk2ZXlKclpYbHpJanBiZXlKcmRIa2lPaUpGUXlJc0ltdHBaQ0k2SWxaSGVFdGhNVnBIWW10ak1GUXdiRFJsYlRsVFdsVXhWV0pJVmxsU01uQkhZVVpTUldSWGNESmhiRlpzWkVkNFIwOVdXakpTYTJ4NFkzY2lMQ0pqY25ZaU9pSlFMVEkxTmlJc0luZ2lPaUpTY1ZsNU1qTnViVTV2T1VZekxVVXRjVFZoUVZwVVVDMVFZa1ozWmtsYVZWZGplSGhwWjFKS05UYzBJaXdpZVNJNklrZDFWRE5DTW5kNk0yNUNjVXBOZERoaU9HeFlWbTlTYjNZeldsVnNVM0YxTmw5c0xWQmFhRzVrUm5NaWZWMTlMQ0p0WlhSaFpHRjBZVjl3YjJ4cFkza2lPbnNpYjNCbGJtbGtYM0psYkhscGJtZGZjR0Z5ZEhraU9uc2ljMk52Y0dWeklqcDdJbk4xWW5ObGRGOXZaaUk2V3lKbGRTNWxkWEp2Y0dFdVpXTXVaWFZrYVhjdWNHbGtMakVzSUNCbGRTNWxkWEp2Y0dFdVpXTXVaWFZrYVhjdWNHbGtMbWwwTGpFaVhYMHNJbkpsY1hWbGMzUmZZWFYwYUdWdWRHbGpZWFJwYjI1ZmJXVjBhRzlrYzE5emRYQndiM0owWldRaU9uc2liMjVsWDI5bUlqcGJJbkpsY1hWbGMzUmZiMkpxWldOMElsMTlMQ0p5WlhGMVpYTjBYMkYxZEdobGJuUnBZMkYwYVc5dVgzTnBaMjVwYm1kZllXeG5YM1poYkhWbGMxOXpkWEJ3YjNKMFpXUWlPbnNpYzNWaWMyVjBYMjltSWpwYklsSlRNalUySWl3aVVsTTFNVElpTENKRlV6STFOaUlzSWtWVE5URXlJaXdpVUZNeU5UWWlMQ0pRVXpVeE1pSmRmWDE5TENKMGNuVnpkRjl0WVhKcmN5STZXM3NpYVdRaU9pSm9kSFJ3Y3pvdkwzUnlkWE4wTFdGdVkyaHZjaTVsZUdGdGNHeGxMbVYxTDI5d1pXNXBaRjl5Wld4NWFXNW5YM0JoY25SNUwzQjFZbXhwWXk4aUxDSjBjblZ6ZEY5dFlYSnJJam9pWlhsS2FHSWdYSFV5TURJMkluMWRmUS5OdWE5TFFqNmt6UnN2ZzFUQ2l1TzVmcjhQT0ZMeUUzUURaWXBTRzZxMW9vRG8zNUlsUi1FcGRyZ25tamdoZUVLakxPcGEtTWxnQjBjU0hFUXFFaDFLZyIsImV5SmhiR2NpT2lKRlV6STFOaUlzSW10cFpDSTZJbVZGU21aYU1rbDVVekZrWm1GSWNHdFdNVnAyVjFWb1VtTnJjRE5STVZWNFVrWm9VbGRGUmpaVVZHc3lUakZPU1U1VVp6UlVSamxwVTFFaUxDSjBlWEFpT2lKaGNIQnNhV05oZEdsdmJpOWxiblJwZEhrdGMzUmhkR1Z0Wlc1MEsycDNkQ0o5LmV5SmxlSEFpT2pFMk5EazJNak0xTkRZc0ltbGhkQ0k2TVRZME9UUTFNRGMwTml3aWFYTnpJam9pYUhSMGNITTZMeTkwY25WemRDMWhibU5vYjNJdVpYaGhiWEJzWlM1bGRTSXNJbk4xWWlJNkltaDBkSEJ6T2k4dmFXNTBaWEp0WldScFlYUmxMbVZwWkdGekxtVjRZVzF3YkdVdWIzSm5JaXdpYW5kcmN5STZleUpyWlhseklqcGJleUpyZEhraU9pSkZReUlzSW10cFpDSTZJbFpIZUV0aE1WcEhZbXRqTUZRd2JEUmxiVGxUV2xVeFZXSklWbGxTTW5CSFlVWlNSV1JYY0RKaGJGWnNaRWQ0UjA5V1dqSlNhMng0WTNjaUxDSmpjbllpT2lKUUxUSTFOaUlzSW5naU9pSlNjVmw1TWpOdWJVNXZPVVl6TFVVdGNUVmhRVnBVVUMxUVlrWjNaa2xhVlZkamVIaHBaMUpLTlRjMElpd2llU0k2SWtkMVZETkNNbmQ2TTI1Q2NVcE5kRGhpT0d4WVZtOVNiM1l6V2xWc1UzRjFObDlzTFZCYWFHNWtSbk1pZlYxOUxDSjBjblZ6ZEY5dFlYSnJjeUk2VzNzaWFXUWlPaUpvZEhSd2N6b3ZMM1J5ZFhOMExXRnVZMmh2Y2k1bGVHRnRjR3hsTG1WMUwyWmxaR1Z5WVhScGIyNWZaVzUwYVhSNUwzUm9ZWFF0Y0hKdlptbHNaU0lzSW5SeWRYTjBYMjFoY21zaU9pSmxlVXBvWWlCY2RUSXdNallpZlYxOS5qaWVHQWhwcVNuWEtMeldCYy11N0N4QzFkNkFxQVFiMkNNYUF5ZElTc3B3aVlPWmhPOGI0b1dGdzVLaVotblYtbC1EajVwU0FDa3lXY0xXSzV3eHFvdyJdLCJ0eXAiOiJ2YStqd3QiLCJ4NWMiOlsiTUlJQmpEQ0NBVEdnQXdJQkFnSVVaaUZvajdidm1oVFF2RFF0Q09ZMTlmTVZxL2d3Q2dZSUtvWkl6ajBFQXdJd0d6RVpNQmNHQTFVRUF3d1FkMkZzYkdWMExtbDBZV3hwWVM1cGREQWVGdzB5TXpBMk1UTXhOREkxTkRSYUZ3MHlOakF6TURreE5ESTFORFJhTUJzeEdUQVhCZ05WQkFNTUVIZGhiR3hsZEM1cGRHRnNhV0V1YVhRd1dUQVRCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFTcXNtdVBjQi84SG51eHM0aEd0d0V6dHV2dkE1enpLZVB1VWNVOU41OTlTZFI5SEZnOGhvTDFQTVBwRHlsUDhjbkRnbERVOXFORzhMSlNFTFp6MU9vam8xTXdVVEFkQmdOVkhRNEVGZ1FVajVma1hlZmxuZ3piQUJsd1Q2cmExYk9RMTFjd0h3WURWUjBqQkJnd0ZvQVVqNWZrWGVmbG5nemJBQmx3VDZyYTFiT1ExMWN3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFLQmdncWhrak9QUVFEQWdOSkFEQkdBaUVBK2F2anovQ1ZueHErNTBpQXhLTGp5UnZLL1c5WGdDcDZjS0RYczdZNHR1Z0NJUURNV0dZTDBhZHdZS2hLaXRZc2s4SFJJS0ZER09abXFaRkkzNVhGZWhnS1FBPT0iXX0.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5zdGFuY2UvdmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInR5cGUiOiJXYWxsZXRJbnN0YW5jZUF0dGVzdGF0aW9uIiwicG9saWN5X3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvaW5mb19wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9sb2dvLnN2ZyIsImFzYyI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9Mb0EvYmFzaWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9LCJ2cF9mb3JtYXRzX3N1cHBvcnRlZCI6eyJqd3RfdmNfanNvbiI6eyJhbGdfdmFsdWVzX3N1cHBvcnRlZCI6WyJFUzI1NksiLCJFUzM4NCJdfSwiand0X3ZwX2pzb24iOnsiYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTZLIiwiRWREU0EiXX19fSwiaWF0IjoxNjg3MjgxMTk1LCJleHAiOjE2ODcyODgzOTV9.2JAAYAvzJ2z9qi6Stn7gmYg8FMKhUiujNzzkuqnLsa60-7iCi1RbWfgrksb1YtVw1PqEgeDL4MpbATNSTz2A3g
+  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6WyJleUpoYkdjaU9pSkZVekkxTmlJc0luUjVjQ0k2SW1Gd2NHeHBZMkYwYVc5dUwyVnVkR2wwZVMxemRHRjBaVzFsYm5RcmFuZDBJbjAuZXlKcGMzTWlPaUpvZEhSd2N6b3ZMM2RoYkd4bGRDNXBkR0ZzYVdFdWFYUWlMQ0p6ZFdJaU9pSm9kSFJ3Y3pvdkwzZGhiR3hsZEM1cGRHRnNhV0V1YVhRaUxDSnFkMnR6SWpwN0ltdGxlWE1pT2x0N0ltdDBlU0k2SWtWRElpd2lZM0oySWpvaVVDMHlOVFlpTENKNElqb2ljWEpLY21velFXWmZRalUzYzJKUFNWSnlZMEpOTjJKeU4zZFBZemg1Ym1vM2JFaEdVRlJsWm1aVmF5SXNJbmtpT2lJeFNEQmpWMFI1UjJkMlZUaDNMV3RRUzFWZmVIbGpUME5WVGxReWJ6QmlkM05zU1ZGMGJsQlZObWxOSW4xZGZTd2liV1YwWVdSaGRHRWlPbnNpWlhWa2FWOTNZV3hzWlhSZmNISnZkbWxrWlhJaU9uc2lhbmRyY3lJNmV5SnJaWGx6SWpwYmV5SnJkSGtpT2lKRlF5SXNJbU55ZGlJNklsQXRNalUySWl3aWVDSTZJbkZ5U25KcU0wRm1YMEkxTjNOaVQwbFNjbU5DVFRkaWNqZDNUMk00ZVc1cU4yeElSbEJVWldabVZXc2lMQ0o1SWpvaU1VZ3dZMWRFZVVkbmRsVTRkeTFyVUV0VlgzaDVZMDlEVlU1VU1tOHdZbmR6YkVsUmRHNVFWVFpwVFNKOVhYMHNJblJ2YTJWdVgyVnVaSEJ2YVc1MElqb2lhSFIwY0hNNkx5OTNZV3hzWlhRdWFYUmhiR2xoTG1sMEwzUnZhMlZ1SWl3aVlYTmpYM1poYkhWbGMxOXpkWEJ3YjNKMFpXUWlPbHNpYUhSMGNITTZMeTkzWVd4c1pYUXVhWFJoYkdsaExtbDBMMHh2UVM5aVlYTnBZeUlzSW1oMGRIQnpPaTh2ZDJGc2JHVjBMbWwwWVd4cFlTNXBkQzlNYjBFdmJXVmthWFZ0SWl3aWFIUjBjSE02THk5M1lXeHNaWFF1YVhSaGJHbGhMbWwwTDB4dlFTOW9hV2RvSWwwc0ltZHlZVzUwWDNSNWNHVnpYM04xY0hCdmNuUmxaQ0k2V3lKMWNtNDZhV1YwWmpwd1lYSmhiWE02YjJGMWRHZzZZMnhwWlc1MExXRnpjMlZ5ZEdsdmJpMTBlWEJsT21wM2RDMXJaWGt0WVhSMFpYTjBZWFJwYjI0aVhTd2lkRzlyWlc1ZlpXNWtjRzlwYm5SZllYVjBhRjl0WlhSb2IyUnpYM04xY0hCdmNuUmxaQ0k2V3lKd2NtbDJZWFJsWDJ0bGVWOXFkM1FpWFN3aWRHOXJaVzVmWlc1a2NHOXBiblJmWVhWMGFGOXphV2R1YVc1blgyRnNaMTkyWVd4MVpYTmZjM1Z3Y0c5eWRHVmtJanBiSWtWVE1qVTJJaXdpUlZNek9EUWlMQ0pGVXpVeE1pSmRmU3dpWm1Wa1pYSmhkR2x2Ymw5bGJuUnBkSGtpT25zaWIzSm5ZVzVwZW1GMGFXOXVYMjVoYldVaU9pSlFZV2R2VUdFZ1V5NXdMa0V1SWl3aWFHOXRaWEJoWjJWZmRYSnBJam9pYUhSMGNITTZMeTkzWVd4c1pYUXVhWFJoYkdsaExtbDBJaXdpY0c5c2FXTjVYM1Z5YVNJNkltaDBkSEJ6T2k4dmQyRnNiR1YwTG1sMFlXeHBZUzVwZEM5d2NtbDJZV041WDNCdmJHbGplU0lzSW5SdmMxOTFjbWtpT2lKb2RIUndjem92TDNkaGJHeGxkQzVwZEdGc2FXRXVhWFF2YVc1bWIxOXdiMnhwWTNraUxDSnNiMmR2WDNWeWFTSTZJbWgwZEhCek9pOHZkMkZzYkdWMExtbDBZV3hwWVM1cGRDOXNiMmR2TG5OMlp5SjlmU3dpYVdGMElqb3hOamczTWpneE1EQXpMQ0psZUhBaU9qRTNNRGt6T1RrME1ETjkuUHFIbzBpMklGZUhBTkxpQlBnZmRuaElfS0xGTGplV2xRVVhGandBcHRDRERfcTlhUkJxNjJPTEF5U081OUZqZ0kwWGNwSlUyaDBMTTBHRjdkM1lpU1EiLCJleUpoYkdjaU9pSkZVekkxTmlJc0ltdHBaQ0k2SWxaSGVFdGhNVnBIWW10ak1GUXdiRFJsYlRsVFdsVXhWV0pJVmxsU01uQkhZVVpTUldSWGNESmhiRlpzWkVkNFIwOVdXakpTYTJ4NFkzY2lMQ0owZVhBaU9pSmhjSEJzYVdOaGRHbHZiaTlsYm5ScGRIa3RjM1JoZEdWdFpXNTBLMnAzZENKOS5leUpsZUhBaU9qRTJORGsyTWpNMU5EWXNJbWxoZENJNk1UWTBPVFExTURjME5pd2lhWE56SWpvaWFIUjBjSE02THk5cGJuUmxjbTFsWkdsaGRHVXVaV2xrWVhNdVpYaGhiWEJzWlM1dmNtY2lMQ0p6ZFdJaU9pSm9kSFJ3Y3pvdkwzSndMbVY0WVcxd2JHVXViM0puSWl3aWFuZHJjeUk2ZXlKclpYbHpJanBiZXlKcmRIa2lPaUpGUXlJc0ltdHBaQ0k2SWxaSGVFdGhNVnBIWW10ak1GUXdiRFJsYlRsVFdsVXhWV0pJVmxsU01uQkhZVVpTUldSWGNESmhiRlpzWkVkNFIwOVdXakpTYTJ4NFkzY2lMQ0pqY25ZaU9pSlFMVEkxTmlJc0luZ2lPaUpTY1ZsNU1qTnViVTV2T1VZekxVVXRjVFZoUVZwVVVDMVFZa1ozWmtsYVZWZGplSGhwWjFKS05UYzBJaXdpZVNJNklrZDFWRE5DTW5kNk0yNUNjVXBOZERoaU9HeFlWbTlTYjNZeldsVnNVM0YxTmw5c0xWQmFhRzVrUm5NaWZWMTlMQ0p0WlhSaFpHRjBZVjl3YjJ4cFkza2lPbnNpYjNCbGJtbGtYM0psYkhscGJtZGZjR0Z5ZEhraU9uc2ljMk52Y0dWeklqcDdJbk4xWW5ObGRGOXZaaUk2V3lKbGRTNWxkWEp2Y0dFdVpXTXVaWFZrYVhjdWNHbGtMakVzSUNCbGRTNWxkWEp2Y0dFdVpXTXVaWFZrYVhjdWNHbGtMbWwwTGpFaVhYMHNJbkpsY1hWbGMzUmZZWFYwYUdWdWRHbGpZWFJwYjI1ZmJXVjBhRzlrYzE5emRYQndiM0owWldRaU9uc2liMjVsWDI5bUlqcGJJbkpsY1hWbGMzUmZiMkpxWldOMElsMTlMQ0p5WlhGMVpYTjBYMkYxZEdobGJuUnBZMkYwYVc5dVgzTnBaMjVwYm1kZllXeG5YM1poYkhWbGMxOXpkWEJ3YjNKMFpXUWlPbnNpYzNWaWMyVjBYMjltSWpwYklsSlRNalUySWl3aVVsTTFNVElpTENKRlV6STFOaUlzSWtWVE5URXlJaXdpVUZNeU5UWWlMQ0pRVXpVeE1pSmRmWDE5TENKMGNuVnpkRjl0WVhKcmN5STZXM3NpYVdRaU9pSm9kSFJ3Y3pvdkwzUnlkWE4wTFdGdVkyaHZjaTVsZUdGdGNHeGxMbVYxTDI5d1pXNXBaRjl5Wld4NWFXNW5YM0JoY25SNUwzQjFZbXhwWXk4aUxDSjBjblZ6ZEY5dFlYSnJJam9pWlhsS2FHSWdYSFV5TURJMkluMWRmUS5OdWE5TFFqNmt6UnN2ZzFUQ2l1TzVmcjhQT0ZMeUUzUURaWXBTRzZxMW9vRG8zNUlsUi1FcGRyZ25tamdoZUVLakxPcGEtTWxnQjBjU0hFUXFFaDFLZyIsImV5SmhiR2NpT2lKRlV6STFOaUlzSW10cFpDSTZJbVZGU21aYU1rbDVVekZrWm1GSWNHdFdNVnAyVjFWb1VtTnJjRE5STVZWNFVrWm9VbGRGUmpaVVZHc3lUakZPU1U1VVp6UlVSamxwVTFFaUxDSjBlWEFpT2lKaGNIQnNhV05oZEdsdmJpOWxiblJwZEhrdGMzUmhkR1Z0Wlc1MEsycDNkQ0o5LmV5SmxlSEFpT2pFMk5EazJNak0xTkRZc0ltbGhkQ0k2TVRZME9UUTFNRGMwTml3aWFYTnpJam9pYUhSMGNITTZMeTkwY25WemRDMWhibU5vYjNJdVpYaGhiWEJzWlM1bGRTSXNJbk4xWWlJNkltaDBkSEJ6T2k4dmFXNTBaWEp0WldScFlYUmxMbVZwWkdGekxtVjRZVzF3YkdVdWIzSm5JaXdpYW5kcmN5STZleUpyWlhseklqcGJleUpyZEhraU9pSkZReUlzSW10cFpDSTZJbFpIZUV0aE1WcEhZbXRqTUZRd2JEUmxiVGxUV2xVeFZXSklWbGxTTW5CSFlVWlNSV1JYY0RKaGJGWnNaRWQ0UjA5V1dqSlNhMng0WTNjaUxDSmpjbllpT2lKUUxUSTFOaUlzSW5naU9pSlNjVmw1TWpOdWJVNXZPVVl6TFVVdGNUVmhRVnBVVUMxUVlrWjNaa2xhVlZkamVIaHBaMUpLTlRjMElpd2llU0k2SWtkMVZETkNNbmQ2TTI1Q2NVcE5kRGhpT0d4WVZtOVNiM1l6V2xWc1UzRjFObDlzTFZCYWFHNWtSbk1pZlYxOUxDSjBjblZ6ZEY5dFlYSnJjeUk2VzNzaWFXUWlPaUpvZEhSd2N6b3ZMM1J5ZFhOMExXRnVZMmh2Y2k1bGVHRnRjR3hsTG1WMUwyWmxaR1Z5WVhScGIyNWZaVzUwYVhSNUwzUm9ZWFF0Y0hKdlptbHNaU0lzSW5SeWRYTjBYMjFoY21zaU9pSmxlVXBvWWlCY2RUSXdNallpZlYxOS5qaWVHQWhwcVNuWEtMeldCYy11N0N4QzFkNkFxQVFiMkNNYUF5ZElTc3B3aVlPWmhPOGI0b1dGdzVLaVotblYtbC1EajVwU0FDa3lXY0xXSzV3eHFvdyJdLCJ0eXAiOiJ2YStqd3QiLCJ4NWMiOlsiTUlJQmpEQ0NBVEdnQXdJQkFnSVVaaUZvajdidm1oVFF2RFF0Q09ZMTlmTVZxL2d3Q2dZSUtvWkl6ajBFQXdJd0d6RVpNQmNHQTFVRUF3d1FkMkZzYkdWMExtbDBZV3hwWVM1cGREQWVGdzB5TXpBMk1UTXhOREkxTkRSYUZ3MHlOakF6TURreE5ESTFORFJhTUJzeEdUQVhCZ05WQkFNTUVIZGhiR3hsZEM1cGRHRnNhV0V1YVhRd1dUQVRCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFTcXNtdVBjQi84SG51eHM0aEd0d0V6dHV2dkE1enpLZVB1VWNVOU41OTlTZFI5SEZnOGhvTDFQTVBwRHlsUDhjbkRnbERVOXFORzhMSlNFTFp6MU9vam8xTXdVVEFkQmdOVkhRNEVGZ1FVajVma1hlZmxuZ3piQUJsd1Q2cmExYk9RMTFjd0h3WURWUjBqQkJnd0ZvQVVqNWZrWGVmbG5nemJBQmx3VDZyYTFiT1ExMWN3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFLQmdncWhrak9QUVFEQWdOSkFEQkdBaUVBK2F2anovQ1ZueHErNTBpQXhLTGp5UnZLL1c5WGdDcDZjS0RYczdZNHR1Z0NJUURNV0dZTDBhZHdZS2hLaXRZc2s4SFJJS0ZER09abXFaRkkzNVhGZWhnS1FBPT0iXX0.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnL2luc3RhbmNlL3ZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvbiIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmciLCJhc2MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9Mb0EvYmFzaWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwia2lkIjoidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyJ9fSwiYXV0aG9yaXphdGlvbl9lbmRwb2ludCI6ImV1ZGl3OiIsInJlc3BvbnNlX3R5cGVzX3N1cHBvcnRlZCI6WyJ2cF90b2tlbiJdLCJ2cF9mb3JtYXRzX3N1cHBvcnRlZCI6eyJqd3RfdnBfanNvbiI6eyJhbGdfdmFsdWVzX3N1cHBvcnRlZCI6WyJFUzI1NiJdfSwiand0X3ZjX2pzb24iOnsiYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiXX19LCJyZXF1ZXN0X29iamVjdF9zaWduaW5nX2FsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2Il0sInByZXNlbnRhdGlvbl9kZWZpbml0aW9uX3VyaV9zdXBwb3J0ZWQiOmZhbHNlLCJpYXQiOjE2ODc3OTIxNzcsImV4cCI6MTY4Nzc5OTM3N30.RHSJ_-xKa43HqgN155yqfxJ0Tp6sTE34yJX6KQuvpuOsASYXnE880q_nlI2lrjDeD9lvP3_5Q9UPodZlxMsy4A
 
 Verifiable through the following public key (Wallet Provider Public Key)
 obtained within the Entity Configuration of the Wallet Provider,
@@ -429,10 +440,9 @@ attested in the related trust chain.
 Format of the Wallet Provider Entity Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Wallet Provider Entity Configuration is a JWT containing all the metadata
-relating to the Wallet Provider such as the public keys, the supported algorithms,
-the type of entity (in addition to the Wallet Provider, for example, it could also
-be a Relying Party) and the list of the available endpoints.
+The Wallet Provider Entity Configuration is a JWS containing
+the public keys and the supported algorithms
+within the Wallet Provider metadata definition.
 It broadly implements ``OIDC-FED`` protocol.
 
 Header
@@ -452,11 +462,11 @@ Payload
 +-----------------------------------+-----------------------------------+
 | **key**                           | **value**                         |
 +-----------------------------------+-----------------------------------+
-| iss                               | The public url of the wallet      |
-|                                   | provider.                         |
+| iss                               | The public url of the Wallet      |
+|                                   | Provider.                         |
 +-----------------------------------+-----------------------------------+
-| sub                               | The public url of the wallet      |
-|                                   | provider.                         |
+| sub                               | The public url of the Wallet      |
+|                                   | Provider.                         |
 +-----------------------------------+-----------------------------------+
 | iat                               | Configuration release timestamp.  |
 +-----------------------------------+-----------------------------------+
@@ -481,46 +491,48 @@ Payload
 
 Payload `eudi_wallet_provider`
 ''''''''''''''''''''''''''''''
-+------------------------------------+-------------------------------------+
-| **key**                            | **value**                           |
-+------------------------------------+-------------------------------------+
-|| jwks                              || Containing the keys attribute      |
-||                                   || which is an array of all the       |
-||                                   || Wallet Provider's public keys.     |
-+------------------------------------+-------------------------------------+
-|| token_endpoint                    || Endpoint for obtaining the Wallet  |
-||                                   || Instance Attestation.              |
-+------------------------------------+-------------------------------------+
-|| asc_values_supported              || List of supported values for       |
-||                                   || the certified security context.    |
-||                                   || These values define a level of     |
-||                                   || assurance about the security of    |
-||                                   || the app. In particular we will     |
-||                                   || mainly have 3 values associated    |
-||                                   || with low, medium and high          |
-||                                   || security. An attested security     |
-||                                   || context is defined according to    |
-||                                   || the proof that the wallet          |
-||                                   || instance is able to send to the    |
-||                                   || Wallet Provider.                   |
-+------------------------------------+-------------------------------------+
-|| grant_types_supported             || The type of grants supported by    |
-||                                   || the endpoint token. Therefore,     |
-||                                   || for the Wallet Provider the token  |
-||                                   || is equivalent only to the wallet   |
-||                                   || instance attestation, therefore    |
-||                                   || this attribute will contain an     |
-||                                   || array with only one element:       |
-||                                   || client-assertion-type:             |
-||                                   || ``jwt-key-attestation``.           |
-+------------------------------------+-------------------------------------+
-|| token_endpoint_auth_methods_suppo || Supported authentication method    |
-|| rted                              || for the endpoint token. In our     |
-||                                   || case it's just ``private_key_jwt``.|
-+------------------------------------+-------------------------------------+
-|| token_endpoint_auth_signing_alg_v || List of supported signature        |
-|| alues_supported                   || algorithms.                        |
-+------------------------------------+-------------------------------------+
++------------------------------------+------------------------------------+
+| **key**                            | **value**                          |
++------------------------------------+------------------------------------+
+|| jwks                              || Containing the keys attribute     |
+||                                   || which is an array of all the      |
+||                                   || Wallet Provider's public keys.    |
++------------------------------------+------------------------------------+
+|| token_endpoint                    || Endpoint for obtaining the Wallet |
+||                                   || Instance Attestation.             |
++------------------------------------+------------------------------------+
+|| asc_values_supported              || List of supported values for      |
+||                                   || the certified security context.   |
+||                                   || These values define a level of    |
+||                                   || assurance about the security of   |
+||                                   || the app. In particular we will    |
+||                                   || mainly have 3 values associated   |
+||                                   || with low, medium and high         |
+||                                   || security. An attested security    |
+||                                   || context is defined according to   |
+||                                   || the proof that the wallet         |
+||                                   || instance is able to send to the   |
+||                                   || Wallet Provider.                  |
+||                                   || ⚠️ This parameter is not standard |
+||                                   || and is still under discussion.    |
++------------------------------------+------------------------------------+
+|| grant_types_supported             || The type of grants supported by   |
+||                                   || the endpoint token. Therefore,    |
+||                                   || for the Wallet Provider the token |
+||                                   || is equivalent only to the wallet  |
+||                                   || instance attestation, therefore   |
+||                                   || this attribute will contain an    |
+||                                   || array with only one element:      |
+||                                   || client-assertion-type:            |
+||                                   || ``jwt-key-attestation``.          |
++------------------------------------+------------------------------------+
+|| token_endpoint_auth_methods_suppo || Supported authentication method   |
+|| rted                              || for the endpoint token. In our    |
+||                                   ||                                   |
++------------------------------------+------------------------------------+
+|| token_endpoint_auth_signing_alg_v || List of supported signature       |
+|| alues_supported                   || algorithms.                       |
++------------------------------------+------------------------------------+
 
 Payload `federation_entity`
 '''''''''''''''''''''''''''
@@ -544,8 +556,8 @@ Non-normative example
 .. code-block:: javascript
 
   {
-  "iss": "https://wallet.italia.it",
-  "sub": "https://wallet.italia.it",
+  "iss": "https://wallet-provider.example.org",
+  "sub": "https://wallet-provider.example.org",
   "jwks": {
     "keys": [
       {
@@ -570,11 +582,11 @@ Non-normative example
           }
         ]
       },
-      "token_endpoint": "https://wallet.italia.it/token",
+      "token_endpoint": "https://wallet-provider.example.org/token",
       "asc_values_supported": [
-        "https://wallet.italia.it/LoA/basic",
-        "https://wallet.italia.it/LoA/medium",
-        "https://wallet.italia.it/LoA/high"
+        "https://wallet-provider.example.org/LoA/basic",
+        "https://wallet-provider.example.org/LoA/medium",
+        "https://wallet-provider.example.org/LoA/high"
       ],
       "grant_types_supported": [
         "urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation"
@@ -590,10 +602,10 @@ Non-normative example
     },
     "federation_entity": {
       "organization_name": "PagoPa S.p.A.",
-      "homepage_uri": "https://wallet.italia.it",
-      "policy_uri": "https://wallet.italia.it/privacy_policy",
-      "tos_uri": "https://wallet.italia.it/info_policy",
-      "logo_uri": "https://wallet.italia.it/logo.svg"
+      "homepage_uri": "https://wallet-provider.example.org",
+      "policy_uri": "https://wallet-provider.example.org/privacy_policy",
+      "tos_uri": "https://wallet-provider.example.org/info_policy",
+      "logo_uri": "https://wallet-provider.example.org/logo.svg"
     }
   },
   "iat": 1687171759,
@@ -604,7 +616,7 @@ Whose corresponding JWS is as follows:
 
 .. code-block:: javascript
 
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJzdWIiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJqd2tzIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoicXJKcmozQWZfQjU3c2JPSVJyY0JNN2JyN3dPYzh5bmo3bEhGUFRlZmZVayIsInkiOiIxSDBjV0R5R2d2VTh3LWtQS1VfeHljT0NVTlQybzBid3NsSVF0blBVNmlNIiwia2lkIjoiNXQ1WVlwQmhOLUVnSUVFSTVpVXpyNnIwTVIwMkxuVlEwT21la21OS2NqWSJ9XX0sIm1ldGFkYXRhIjp7ImV1ZGlfd2FsbGV0X3Byb3ZpZGVyIjp7Imp3a3MiOnsia2V5cyI6W3siY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiJxckpyajNBZl9CNTdzYk9JUnJjQk03YnI3d09jOHluajdsSEZQVGVmZlVrIiwieSI6IjFIMGNXRHlHZ3ZVOHcta1BLVV94eWNPQ1VOVDJvMGJ3c2xJUXRuUFU2aU0iLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIn1dfSwidG9rZW5fZW5kcG9pbnQiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvdG9rZW4iLCJhc2NfdmFsdWVzX3N1cHBvcnRlZCI6WyJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvTG9BL2Jhc2ljIiwiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L0xvQS9tZWRpdW0iLCJodHRwczovL3dhbGxldC5pdGFsaWEuaXQvTG9BL2hpZ2giXSwiZ3JhbnRfdHlwZXNfc3VwcG9ydGVkIjpbInVybjppZXRmOnBhcmFtczpvYXV0aDpjbGllbnQtYXNzZXJ0aW9uLXR5cGU6and0LWtleS1hdHRlc3RhdGlvbiJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX21ldGhvZHNfc3VwcG9ydGVkIjpbInByaXZhdGVfa2V5X2p3dCJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX3NpZ25pbmdfYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiLCJFUzM4NCIsIkVTNTEyIl19LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJvcmdhbml6YXRpb25fbmFtZSI6IlBhZ29QYSBTLnAuQS4iLCJob21lcGFnZV91cmkiOiJodHRwczovL3dhbGxldC5pdGFsaWEuaXQiLCJwb2xpY3lfdXJpIjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L3ByaXZhY3lfcG9saWN5IiwidG9zX3VyaSI6Imh0dHBzOi8vd2FsbGV0Lml0YWxpYS5pdC9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQuaXRhbGlhLml0L2xvZ28uc3ZnIn19LCJpYXQiOjE2ODcyODEwMDMsImV4cCI6MTcwOTM5OTQwM30.KT5oz4UQ2NBdkj4qrC5i9zr07bIhQOE-zDg3NtvetUO7YYT67iO_QzNTkOe4OgwfeQmNCZuCGgPMLVbBfuKpAg
+  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6InFySnJqM0FmX0I1N3NiT0lScmNCTTdicjd3T2M4eW5qN2xIRlBUZWZmVWsiLCJ5IjoiMUgwY1dEeUdndlU4dy1rUEtVX3h5Y09DVU5UMm8wYndzbElRdG5QVTZpTSIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkifV19LCJtZXRhZGF0YSI6eyJldWRpX3dhbGxldF9wcm92aWRlciI6eyJqd2tzIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoicXJKcmozQWZfQjU3c2JPSVJyY0JNN2JyN3dPYzh5bmo3bEhGUFRlZmZVayIsInkiOiIxSDBjV0R5R2d2VTh3LWtQS1VfeHljT0NVTlQybzBid3NsSVF0blBVNmlNIiwia2lkIjoiNXQ1WVlwQmhOLUVnSUVFSTVpVXpyNnIwTVIwMkxuVlEwT21la21OS2NqWSJ9XX0sInRva2VuX2VuZHBvaW50IjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvdG9rZW4iLCJhc2NfdmFsdWVzX3N1cHBvcnRlZCI6WyJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9Mb0EvYmFzaWMiLCJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9Mb0EvbWVkaXVtIiwiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvTG9BL2hpZ2giXSwiZ3JhbnRfdHlwZXNfc3VwcG9ydGVkIjpbInVybjppZXRmOnBhcmFtczpvYXV0aDpjbGllbnQtYXNzZXJ0aW9uLXR5cGU6and0LWtleS1hdHRlc3RhdGlvbiJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX21ldGhvZHNfc3VwcG9ydGVkIjpbInByaXZhdGVfa2V5X2p3dCJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX3NpZ25pbmdfYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiLCJFUzM4NCIsIkVTNTEyIl19LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJvcmdhbml6YXRpb25fbmFtZSI6IlBhZ29QYSBTLnAuQS4iLCJob21lcGFnZV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmcifX0sImlhdCI6MTY4Nzc5MjE3NywiZXhwIjoxNzA5OTEwNTc3fQ.hGG7WvGdP1jXO39WZ5WxnN62MLI4XsW2Wr4a809MoRqNTlW6DjzKJotk2SpT2Xq6qcxcctTFnmEMYUuRrJRnXA
 
 Verifiable through the public key of the Wallet Provider itself.
 
