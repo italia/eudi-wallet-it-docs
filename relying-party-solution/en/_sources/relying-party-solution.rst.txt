@@ -23,7 +23,7 @@ The flows are analyzed in this chapter, taking into account security and privacy
 
 Same Device Flow
 ----------------
-In a Same Device Authorization Flow, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
+In the Same Device Authorization Flow, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
 This scenario utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).
 
 Once authentication is performed, the User requests the display of attributes provided by the Wallet Instance.
@@ -40,6 +40,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 
 Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a verifiable presentation.
 
+
 .. image:: ../../images/cross_device_auth_seq_diagram.svg
   :align: center
   :target: //www.plantuml.com/plantuml/png/ZPF1Rjf048Rl-nIZd5gfUG4agaGqgcXLuG99Bf6gnJlWRSmidPsrIv--QpjhOn1IRlZtDpyp_upll6YMi2-L3k8ex3V8IXsYPdDxq2Hmy-YHRq1x26FzMPSb2imfMb2EBLAFaIMMHqixoA9uR84AbPfEuJv8WHH1BTOHm7Ig0jn-ZgydiCG_0Rr0naum5pHHyIvmZahdOYijsDXKc0fcZ55hFHtRVwrbShd4VYvXvaoghoUmAbmTrLOqUFeN_UzQgJhHkQRaqOiFVuKZtBV-k9o_q9RTVY1J5ryVrZsssFp6MFL2c-DfQHHgAmMS1Gpt8f5enuk8zl0bSnc8UqMwaanNSM6qvl2MJDV-k9zn26d6v3LQQUVK8q_8TdiyGtwWQAD53vGkRHGGlZslOMLtf2KmNhnENQ61f-o3_zW1OUXswnXoHnv9Xl632ccgcQEjvJsQqu72i8biiLfV78q_D8unNcXNK1r-lIFV6QD14gjBc7iVa5F22Rmsym1ax7Bq7gH0o7kxI-1AmugS8BWAUGGV2kqHE0Pc6QEvcyJ9Rg5AtLWItB6LuoVGwOlidiX0uKg331jBfjccstPxQ0oGV624U5QT1Ze-bPPUqRIvTPTWaTy5vu4PIS2ZzyrGv2Z7yyfPKydzITWu7AD7EhtZnNTbyFIZFJlbEoGJzkL_
@@ -55,7 +56,7 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **1**
     - **User**
     - **Relying Party**
-    - The User asks for access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the Login with Wallet button. The Authorization flow starts.
+    - The User asks for access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the *Login with the Wallet* button. The Authorization flow starts.
   * - **2**
     - **Relying Party**
     - **-**
