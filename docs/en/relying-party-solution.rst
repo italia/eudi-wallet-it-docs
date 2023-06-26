@@ -114,11 +114,11 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **17**
     - **Relying Party**
     - **-**
-    - Verifies Authorization Response JWT signature.
+    - The Relying Party verifies the signature of the Authorization Response JWS.
   * - **18**
     - **Relying Party**
     - **-**
-    - Received and verifies the Authorization Response, performs checks for integrity and proof of possession of the presented credentials.
+    - The Relying verifies the Authorization Response, performs checks for integrity and proof of possession of the presented credentials.
   * - **19**
     - **Relying Party**
     - **Wallet Instance**
