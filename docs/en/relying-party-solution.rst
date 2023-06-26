@@ -127,7 +127,7 @@ In a Cross Device Flow, a QR Code is shown by the Relying Party to the User in o
 
 The User frames the QR Code using the Wallet Instance, then grants the consent to release their attributes to the RP.
 
-The payload of the QR Code is a Base64 encoded string based on the following format:
+The payload of the QR Code is a **Base64 encoded string** based on the following format:
 
 .. code-block:: javascript
 
@@ -148,7 +148,7 @@ Where:
     - The Verifier request URI used by the Wallet Instance to retrieve the Request Object.
 
 .. note::
-    The *error correction level* chosen for the QR Code is Q (Quartily - up to 25%), that offers a good balance between error correction capability and data density/space and it will allow the QR Code to remain readable even if it is damaged or partially obscured.
+    The *error correction level* chosen for the QR Code must be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.
 
 
 Below is a non-normative example of a QR Code issued by the Relying Party:
