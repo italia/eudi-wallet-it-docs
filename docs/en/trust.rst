@@ -31,24 +31,49 @@ OpenID Federation facilitates the building of an infrastructure that is:
 - **Scalable**, the Trust Model can accommodate more than a single organization by using Intermediates;
 - **Simple**, as it is based on widely used REST technology and formats that have become popular over the years.
 
-Requirements
-------------
+Trust Model Requirements
+------------------------
 
 In the table below there’s the map of the components that the ARF defines within the Trust Model and their coverage in `OIDC-FED`_.
 
-+----------------------------------------------------+----------------------+
-|  Component                                         |    Satisfied         |
-+====================================================+======================+
-|    Issuers identification                          |          |check-icon||
-+----------------------------------------------------+----------------------+
-|    Issuers registration                            |          |check-icon||
-+----------------------------------------------------+----------------------+
-|    Recognised data models and schemas              |          |check-icon||
-+----------------------------------------------------+----------------------+
-|    Relying Parties’ registration and authentication|          |check-icon||
-+----------------------------------------------------+----------------------+
-|    Trust mechanisms in a cross-domain scenario     |          |check-icon||
-+----------------------------------------------------+----------------------+
++----------------------------------------------------+--------------+--------------+
+|  Component                                         |  Satisfied   | how          |
++====================================================+==============+==============+
+|  Issuers identification                            | |check-icon| | Trust Chain  |
++----------------------------------------------------+--------------+--------------+
+|  Issuers registration                              | |check-icon| | Trust Anchor |
+|                                                    |              | or           |
+|                                                    |              | Intermediate |
+|                                                    |              | OnBoarding   |
+|                                                    |              | systems      |
++----------------------------------------------------+--------------+--------------+
+|  Recognised data models and schemas                | |check-icon| | Entity       |
+|                                                    |              | Configuration|
+|                                                    |              |              |
+|                                                    |              | and          |
+|                                                    |              |              |
+|                                                    |              | Entity       |
+|                                                    |              | Statements   |
++----------------------------------------------------+--------------+--------------+
+|  Relying Parties’ registration and authentication  | |check-icon| | static       |
+|                                                    |              | Trust Chains |
+|                                                    |              |              |
+|                                                    |              | and          |
+|                                                    |              |              |
+|                                                    |              | Federation   |
+|                                                    |              | Entity       |
+|                                                    |              | Discovery    |
++----------------------------------------------------+--------------+--------------+
+|  Trust mechanisms in a cross-domain scenario       | |check-icon| | static       |
+|                                                    |              | Trust Chains |
+|                                                    |              |              |
+|                                                    |              | and          |
+|                                                    |              |              |
+|                                                    |              | Federation   |
+|                                                    |              | Entity       |
+|                                                    |              | Discovery    |
++----------------------------------------------------+--------------+--------------+
+
 
 
 This implementation profile
