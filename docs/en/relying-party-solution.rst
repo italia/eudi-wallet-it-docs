@@ -195,7 +195,7 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
   DPoP: $WalletInstanceAttestationProofOfPossession
 
 
-More detailed information about the `Wallet Instance Attestation`_ is available in its dedicated section of this tecnichal specification.
+More detailed information about the `Wallet Instance Attestation`_ is available in its dedicated section of this technical specification.
 
 To attest an high level of security, the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.
 
