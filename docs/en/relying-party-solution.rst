@@ -381,7 +381,7 @@ Here a non-normative example of ``presentation_definition``:
 
 ℹ️ Note:
 
-The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional to the presence of other ones.
+The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional and may change in future release of this documentation.
 
 - ``presentation_definition``: JSON object according to `Presentation Exchange <PresentationExch>`_. This parameter MUST not be present when ``presentation_definition_uri`` or ``scope`` are present.
 - ``presentation_definition_uri``: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when ``presentation_definition parameter`` or a ``scope`` value representing a Presentation Definition is not present.
@@ -391,12 +391,12 @@ The following parameters, even if defined in [OID4VP], are not mentioned in the 
 
 Authorization Response Details
 ------------------------------
-After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Verifier ``response_uri`` endpoint, the content should be encrypted according `OPENID4VP`_ Section 6.3, using the Relying Party public key.
+After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party ``response_uri`` endpoint, the content should be encrypted according `OPENID4VP`_ Section 6.3, using the Relying Party public key.
 
 .. note::
     **Why the response is encrypted?**
     The response sent from the Wallet Instance to the Relying Party is encrypted
-    to prevent a technique called `SSL split attack <https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/>`_, that could be enabled by malicious app installed locally by Users and that intecepts the traffic or by network environments where a next-generation firewalls or any other security device may reduce the privacy of the Users.
+    to prevent a technique called `SSL split attack <https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/>`_, that could be enabled by malicious app installed locally by Users,that intecepts the network traffic, or be present by-design in network environments where a next-generation firewalls or other security devices may reduce the privacy of the Users.
 
 Below a non-normative example of the request:
 
