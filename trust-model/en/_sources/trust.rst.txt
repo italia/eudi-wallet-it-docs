@@ -36,19 +36,19 @@ Requirements
 
 In the table below there’s the map of the components that the ARF defines within the Trust Model and their coverage in `OIDC-FED`_.
 
-+----------------------------------------------------+---------------------------------+
-|  Component                                         |    Covered by OIDC Federation   |
-+====================================================+=================================+
-|    Issuers identification                          |          |check-icon|           |
-+----------------------------------------------------+---------------------------------+
-|    Issuers registration                            |          |check-icon|           |
-+----------------------------------------------------+---------------------------------+
-|    Recognised data models and schemas              |          |check-icon|           |
-+----------------------------------------------------+---------------------------------+
-|    Relying Parties’ registration and authentication|          |check-icon|           |
-+----------------------------------------------------+---------------------------------+
-|    Trust mechanisms in a cross-domain scenario     |          |check-icon|           |
-+----------------------------------------------------+---------------------------------+
++----------------------------------------------------+----------------------+
+|  Component                                         |    Satisfied         |
++====================================================+======================+
+|    Issuers identification                          |          |check-icon||
++----------------------------------------------------+----------------------+
+|    Issuers registration                            |          |check-icon||
++----------------------------------------------------+----------------------+
+|    Recognised data models and schemas              |          |check-icon||
++----------------------------------------------------+----------------------+
+|    Relying Parties’ registration and authentication|          |check-icon||
++----------------------------------------------------+----------------------+
+|    Trust mechanisms in a cross-domain scenario     |          |check-icon||
++----------------------------------------------------+----------------------+
 
 
 This implementation profile
