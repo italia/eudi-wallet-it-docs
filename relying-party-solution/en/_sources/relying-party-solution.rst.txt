@@ -185,7 +185,7 @@ The following actions are made by The Wallet Instance:
 - obtain the signed request object from the Relying Party;
 - provide in the request its Wallet instance Attestation, using `DPOP`_ to proof the legitimate possession of it.
 
-Below a non-normative example of this interaction:
+Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed request object:
 
 .. code-block:: javascript
 

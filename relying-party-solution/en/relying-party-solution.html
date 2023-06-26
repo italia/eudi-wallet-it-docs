@@ -1110,7 +1110,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <li><p>obtain the signed request object from the Relying Party;</p></li>
 <li><p>provide in the request its Wallet instance Attestation, using <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">DPOP</a> to proof the legitimate possession of it.</p></li>
 </ul>
-<p>Below a non-normative example of this interaction:</p>
+<p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed request object:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">request_uri</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="w"></span>
 <span class="nx">HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">verifier</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span><span class="w"></span>
 <span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="nx">DPoP</span><span class="w"> </span><span class="nx">$WalletInstanceAttestation</span><span class="w"></span>
