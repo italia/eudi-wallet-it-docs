@@ -217,7 +217,7 @@ are intended to be defined in this technical reference.
 |                  |                             |              |
 | Relying Party    | ``federation_entity``       |              |
 |                  |                             |              |
-|                  | ``openid_relying_party``    | `OIDC-FED`_  |
+|                  | ``wallet_verifier``         | `OIDC-FED`_  |
 |                  |                             |              |
 |                  |                             | `OpenID4VP`_ |
 +------------------+-----------------------------+--------------+
