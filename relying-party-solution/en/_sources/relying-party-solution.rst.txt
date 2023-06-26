@@ -30,7 +30,7 @@ Once authentication is performed, the User requests the display of attributes pr
 Cross Device Flow
 -----------------
 In a Cross Device Authorization Flow, the User interacts with a Verifier that resides in a different device on which the Wallet Instance (and VCs) are stored.
-This scenario requests the Verifier to show a QR Code which the User will scan with his Wallet Instance.
+This scenario requests the Verifier to show a QR Code which the User will scan with their Wallet Instance.
 
 Once authentication is performed, the User requests the display of attributes provided by the Wallet Instance.
 
@@ -49,7 +49,7 @@ Once authentication is performed, the User requests the display of attributes pr
   * - **1**
     - **User**
     - **Relying Party**
-    - The user tries to access to a protected resource, the Relying Party redirect it to a discovery page in which the User selects the Login with Wallet button. The Authorization flow starts.
+    - The User tries to access to a protected resource, the Relying Party redirect it to a discovery page in which the User selects the Login with Wallet button. The Authorization flow starts.
   * - **2**
     - **Relying Party**
     - **-**
@@ -81,7 +81,7 @@ Once authentication is performed, the User requests the display of attributes pr
   * - **9**
     - **Relying Party**
     - **Wallet Instance**
-    - The Relying Party build the Request Object and returns it as response
+    - The Relying Party builds the Request Object and returns it as response
   * - **10**
     - **Wallet Instance**
     - **-**
@@ -109,7 +109,7 @@ Once authentication is performed, the User requests the display of attributes pr
   * - **16**
     - **Wallet Instance**
     - **-**
-    - Process the Request Object and create an Authorization Response
+    - Process the Request Object
   * - **17**
     - **Wallet Instance**
     - **Relying Party**
@@ -130,11 +130,11 @@ Once authentication is performed, the User requests the display of attributes pr
 Authorization Request Details
 -----------------------------
 In a Cross Device Flow, The Authorization Request is required by the Relying Party in order to show the QR Code.
-The User will scan it using the Wallet Instance that will grant the attributes to the RP.
+The User frames the QR Code using the Wallet Instance, then grants consent to release their attributes to the RP.
 
 The payload of the QR Code is a Base64 encoded string based on the following format:
 
-.. code-block:: html
+.. code-block:: javascript
 
   eudiw://authorize?client_id=`client_id`&request_uri=`request_uri`
 
@@ -153,7 +153,7 @@ Where:
     - The Verifier's request URI used by the Wallet Instance to retrieve the Request Object
 
 
-The Error Correction Level chosen for the QR Code is Q (Quartily - up to 25%), that offers a good balance between error correction capability and data density/space and it will allow the QR Code to remain readable even if it is damaged or partially obscured.
+The *error correction level* chosen for the QR Code is Q (Quartily - up to 25%), that offers a good balance between error correction capability and data density/space and it will allow the QR Code to remain readable even if it is damaged or partially obscured.
 
 
 Below is a non-normative example of a QR Code displayed by the Verifier:
@@ -164,7 +164,7 @@ Below is a non-normative example of a QR Code displayed by the Verifier:
 
 Below is a non-normative example of the payload and its Base64 decoded content:
 
-.. code-block:: html
+.. code-block:: javascript
 
   ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9hMTI1MmY5MC1hNjUyLTRjNDctODAzOS1mNjAwOTZjYXZ6cXc=
 
@@ -174,7 +174,7 @@ Below is a non-normative example of the payload and its Base64 decoded content:
 
 Request Object Details
 ----------------------
-Once the Wallet Instance scan the QR Code, it extracts from the payload the ``request_uri`` parameter, then it will invoke the retrieved URI providing a Wallet instance Attestation in order to obtain the entire Request Object.
+Once the Wallet Instance scans the QR Code, it extracts from the payload the ``request_uri`` parameter, then it will invoke the retrieved URI providing a Wallet instance Attestation, using an HTTP POST method, in order to obtain the entire Request Object.
 
 The following is a non-normative example of this interaction:
 
@@ -241,7 +241,6 @@ Payload
     "scope": "eu.europa.ec.eudiw.pid.it.1 eu.europa.ec.eudiw.pid.it.1:unique_id eu.europa.ec.eudiw.pid.it.1:given_name",
     "client_id_scheme": "entity_id",
     "client_id": "https://verifier.example.org",
-    "client_metadata": "TBD",
     "response_mode": "direct_post.jwt",
     "response_type": "vp_token",
     "response_uri": "https://verifier.example.org/callback",
@@ -266,7 +265,7 @@ Payload
   * - **client_id**
     - Client Identifier
   * - **client_metadata**
-    - JSON object containing the Verifier metadata. It will be ``null`` since we will use ``entity_id`` as ``client_id_scheme``. Relying Party metadata will be present in the ``trust_chain`` statements
+    - JSON object containing the Verifier metadata. It will be ``null`` since we will use ``entity_id`` as ``client_id_scheme``. Relying Party metadata is derived from the ``trust_chain``
   * - **response_mode**
     - Used to ask the Wallet Instance in which way it has to send the response. It will be ``direct_post.jwt``
   * - **response_type**
@@ -287,14 +286,14 @@ Payload
 
 ⚠ The usage of ``scope`` instead of ``presentation_definition`` is still under discussion.
 
-Here a non-normative example of ``presentation_definition`` that can be used instead of the ``scope`` example:
+Here a non-normative example of ``presentation_definition``:
 
 
 .. code-block:: JSON
 
   {
     "presentation_definition": {
-      "id": "32f54163-7166-48f1-93d8-ff217bdb0653",
+      "id": "person-identitifcation-data-sd-jwt",
       "input_descriptors": [
         {
           "id": "eu.europa.ec.eudiw.pid.it.1",
@@ -324,10 +323,9 @@ Here a non-normative example of ``presentation_definition`` that can be used ins
 The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional to the presence of other ones.
 
 - ``presentation_definition``: string containing a Presentation Definition JSON object that articulate what proofs a Verifier requires. This parameter MUST not be present when ``presentation_definition_uri`` or ``scope`` are present
-- ``presentation_definition_uri``: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST not be present when ``presentation_definition`` or ``scope`` are present
+- ``presentation_definition_uri``: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when ``presentation_definition parameter`` or a ``scope`` value representing a Presentation Definition is not present.
 - ``client_metadata_uri``: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. This parameter MUST not be present when ``client_metadata`` is present
 - ``redirect_uri``: the redirect URI to which the Wallet Instance must redirect the Authorization Response. This parameter MUST not be present when ``response_uri`` is present
-- ``aud``: the audience of the JWT. Since it would be equal to ``iss`` value, it is omitted
 
 
 Authorization Response Details

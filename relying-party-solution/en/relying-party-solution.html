@@ -940,7 +940,7 @@ This scenario utilizes HTTP redirects to finalize the authorization phase and ob
 <section id="cross-device-flow">
 <h2>Cross Device Flow<a class="headerlink" href="#cross-device-flow" title="Permalink to this heading">¶</a></h2>
 <p>In a Cross Device Authorization Flow, the User interacts with a Verifier that resides in a different device on which the Wallet Instance (and VCs) are stored.
-This scenario requests the Verifier to show a QR Code which the User will scan with his Wallet Instance.</p>
+This scenario requests the Verifier to show a QR Code which the User will scan with their Wallet Instance.</p>
 <p>Once authentication is performed, the User requests the display of attributes provided by the Wallet Instance.</p>
 <a class="reference external image-reference" href="https://www.plantuml.com/plantuml/umla/ZLB1ZXen3BtdAwmzLAtK_O6Lg7Q5UjXM5HJOtGkNC36GTd2eup2bNr-78LDc459lCo_FptxsUunYMTAkDZP9eBHR8HkpLynNVcz9uEub8j-1ZP3w-9kjQnHu9fMW2a-Kfa-PONtqj86fWiSJuO36Z4Rmb6IBf4GhFX30Q6GIt7_IvmUOuQ-4KM3AGR0IT8h4aBX2Ooln1okOPGvO2iQC6SkQWVsVLlAiSatxFeDnSAM-UO3vDZIAda27boswxyQOfh0hIqMZ0p__5bPoD_hBx7b9QmwxFZDFCPtC5nrlilg1MhQarR5VstZPmc31y2IYX9Ez6vje6LU52qxdJRJZzjiFJ1TFhxRsBcDVtXOmznkoahWyTwrw5putwXIG_Veue7n3iIfhh_gKgT31w_Hz_D0Iqhzfru6X2hJsl1li89bKh8rR0hfBLwbhffcgCCRX0TujwIAH23doWvCDqnNtWUADHDxQNI5qSznIfQ2ruO3S8--tDYAmZkuP8qXuqEJSmw4qyoIuOI_7Zs2Bc_QF76n3xP1XvSdbOuHrk-KiW1GJ8sXeMWoi_jMUVgA37CJsa1xvlyXLOaOIY3foDaM1AXnMZdCbTmVtQauj8LscTFBryeQDCOEWFYAvjAl_0W00"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
 <table class="docutils align-default">
@@ -961,7 +961,7 @@ This scenario requests the Verifier to show a QR Code which the User will scan w
 <tr class="row-even"><td><p><strong>1</strong></p></td>
 <td><p><strong>User</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
-<td><p>The user tries to access to a protected resource, the Relying Party redirect it to a discovery page in which the User selects the Login with Wallet button. The Authorization flow starts.</p></td>
+<td><p>The User tries to access to a protected resource, the Relying Party redirect it to a discovery page in which the User selects the Login with Wallet button. The Authorization flow starts.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>2</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
@@ -1001,7 +1001,7 @@ This scenario requests the Verifier to show a QR Code which the User will scan w
 <tr class="row-even"><td><p><strong>9</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
-<td><p>The Relying Party build the Request Object and returns it as response</p></td>
+<td><p>The Relying Party builds the Request Object and returns it as response</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>10</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
@@ -1036,7 +1036,7 @@ This scenario requests the Verifier to show a QR Code which the User will scan w
 <tr class="row-odd"><td><p><strong>16</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
 <td><p><strong>-</strong></p></td>
-<td><p>Process the Request Object and create an Authorization Response</p></td>
+<td><p>Process the Request Object</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>17</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
@@ -1064,9 +1064,9 @@ This scenario requests the Verifier to show a QR Code which the User will scan w
 <section id="authorization-request-details">
 <h2>Authorization Request Details<a class="headerlink" href="#authorization-request-details" title="Permalink to this heading">¶</a></h2>
 <p>In a Cross Device Flow, The Authorization Request is required by the Relying Party in order to show the QR Code.
-The User will scan it using the Wallet Instance that will grant the attributes to the RP.</p>
+The User frames the QR Code using the Wallet Instance, then grants consent to release their attributes to the RP.</p>
 <p>The payload of the QR Code is a Base64 encoded string based on the following format:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=`client_id`&amp;request_uri=`request_uri`
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`client_id`&amp;request_uri=`request_uri`</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Where:</p>
@@ -1089,18 +1089,18 @@ The User will scan it using the Wallet Instance that will grant the attributes t
 </tr>
 </tbody>
 </table>
-<p>The Error Correction Level chosen for the QR Code is Q (Quartily - up to 25%), that offers a good balance between error correction capability and data density/space and it will allow the QR Code to remain readable even if it is damaged or partially obscured.</p>
+<p>The <em>error correction level</em> chosen for the QR Code is Q (Quartily - up to 25%), that offers a good balance between error correction capability and data density/space and it will allow the QR Code to remain readable even if it is damaged or partially obscured.</p>
 <p>Below is a non-normative example of a QR Code displayed by the Verifier:</p>
 <img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the payload and its Base64 decoded content:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9hMTI1MmY5MC1hNjUyLTRjNDctODAzOS1mNjAwOTZjYXZ6cXc=
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">ZXVkaXc6Ly9hdXRob3JpemU</span><span class="o">/</span><span class="nx">Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9hMTI1MmY5MC1hNjUyLTRjNDctODAzOS1mNjAwOTZjYXZ6cXc</span><span class="o">=</span><span class="w"></span>
 
-eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https://verifier.example.org/a1252f90-a652-4c47-8039-f60096cavzqw
+<span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=https://verifier.example.org&amp;request_uri=https://verifier.example.org/a1252f90-a652-4c47-8039-f60096cavzqw</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="request-object-details">
 <h2>Request Object Details<a class="headerlink" href="#request-object-details" title="Permalink to this heading">¶</a></h2>
-<p>Once the Wallet Instance scan the QR Code, it extracts from the payload the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter, then it will invoke the retrieved URI providing a Wallet instance Attestation in order to obtain the entire Request Object.</p>
+<p>Once the Wallet Instance scans the QR Code, it extracts from the payload the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter, then it will invoke the retrieved URI providing a Wallet instance Attestation, using an HTTP POST method, in order to obtain the entire Request Object.</p>
 <p>The following is a non-normative example of this interaction:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="w"></span>
 <span class="nx">HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">verifier</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span><span class="w"></span>
@@ -1164,7 +1164,6 @@ eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https:/
 <span class="w">  </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1 eu.europa.ec.eudiw.pid.it.1:unique_id eu.europa.ec.eudiw.pid.it.1:given_name&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;client_id_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;entity_id&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://verifier.example.org&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;client_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TBD&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;response_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;direct_post.jwt&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;response_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vp_token&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;response_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://verifier.example.org/callback&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1197,7 +1196,7 @@ eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https:/
 <td><p>Client Identifier</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_metadata</strong></p></td>
-<td><p>JSON object containing the Verifier metadata. It will be <code class="docutils literal notranslate"><span class="pre">null</span></code> since we will use <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> as <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code>. Relying Party metadata will be present in the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> statements</p></td>
+<td><p>JSON object containing the Verifier metadata. It will be <code class="docutils literal notranslate"><span class="pre">null</span></code> since we will use <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> as <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code>. Relying Party metadata is derived from the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_mode</strong></p></td>
 <td><p>Used to ask the Wallet Instance in which way it has to send the response. It will be <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code></p></td>
@@ -1226,10 +1225,10 @@ eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https:/
 </tbody>
 </table>
 <p>⚠ The usage of <code class="docutils literal notranslate"><span class="pre">scope</span></code> instead of <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code> is still under discussion.</p>
-<p>Here a non-normative example of <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code> that can be used instead of the <code class="docutils literal notranslate"><span class="pre">scope</span></code> example:</p>
+<p>Here a non-normative example of <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;presentation_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;32f54163-7166-48f1-93d8-ff217bdb0653&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person-identitifcation-data-sd-jwt&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1257,10 +1256,9 @@ eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https:/
 <p>The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional to the presence of other ones.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>: string containing a Presentation Definition JSON object that articulate what proofs a Verifier requires. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code> or <code class="docutils literal notranslate"><span class="pre">scope</span></code> are present</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code>: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code> or <code class="docutils literal notranslate"><span class="pre">scope</span></code> are present</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code>: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition</span> <span class="pre">parameter</span></code> or a <code class="docutils literal notranslate"><span class="pre">scope</span></code> value representing a Presentation Definition is not present.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code>: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is present</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>: the redirect URI to which the Wallet Instance must redirect the Authorization Response. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is present</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">aud</span></code>: the audience of the JWT. Since it would be equal to <code class="docutils literal notranslate"><span class="pre">iss</span></code> value, it is omitted</p></li>
 </ul>
 </section>
 </section>
