@@ -8,7 +8,7 @@
 Relying Party Solution
 +++++++++++++++++++++++
 
-This section describes how a Relying Party may ask to a Wallet Instance the presentation of PID and (Q)EAAs, according the following specifications: 
+This section describes how a Relying Party may ask to a Wallet Instance the presentation of the PID and the (Q)EAAs, according the following specifications: 
 
 - `OpenID for Verifiable Presentations - draft 19 <OID4VP>`_.
 - `Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP) <DPOP>`_.
