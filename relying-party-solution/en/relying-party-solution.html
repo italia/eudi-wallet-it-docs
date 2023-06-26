@@ -1107,8 +1107,8 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <li><p>scan the QR Code;</p></li>
 <li><p>extract from the payload the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter;</p></li>
 <li><p>invoke the retrieved URI;</p></li>
-<li><p>obtain the signed request object from the Relying Party;</p></li>
-<li><p>provide in the request its Wallet instance Attestation, using <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">DPOP</a> to proof the legitimate possession of it.</p></li>
+<li><p>provide in the request its Wallet instance Attestation, using <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">DPOP</a> to proof the legitimate possession of it;</p></li>
+<li><p>obtain the signed request object from the Relying Party.</p></li>
 </ul>
 <p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed request object:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">request_uri</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="w"></span>
