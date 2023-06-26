@@ -27,7 +27,7 @@ The flows are analyzed in this chapter, taking into account security and privacy
 
 Same Device Flow
 ----------------
-In the Same Device Authorization Flow, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
+In the **Same Device Authorization Flow**, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
 This scenario utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).
 
 .. note::
@@ -37,7 +37,7 @@ This scenario utilizes HTTP redirects to finalize the authorization phase and ob
 
 Remote Cross Device Flow
 ---------------------------
-In a Cross Device Authorization Flow, the User interacts with a remote Relying Party.
+In the **Cross Device Authorization Flow**, the User interacts with a remote Relying Party.
 This scenario requests the Verifier to show a QR Code which the User frames with their Wallet Instance.
 
 Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.
