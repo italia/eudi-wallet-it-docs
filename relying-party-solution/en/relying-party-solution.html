@@ -659,13 +659,13 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#entity-configuration-details">Entity Configuration Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#same-device-flow">Same Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cross-device-flow">Cross Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -854,13 +854,13 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#entity-configuration-details">Entity Configuration Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#same-device-flow">Same Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cross-device-flow">Cross Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -925,290 +925,17 @@
           
   <section id="relying-party-solution">
 <span id="id1"></span><h1>Relying Party Solution<a class="headerlink" href="#relying-party-solution" title="Permalink to this heading">¶</a></h1>
-<p>This section defines the implementation of the online presentation and verification flow of a credential (PID or EAA), in accordance with the &quot;OpenID for Verifiable Presentations - draft 19&quot; specifications [OID4VP].</p>
-<p>The specification defines the following flows:</p>
+<p>This section defines the implementation of the online presentation of PID or (Q)EAAs, according the following specifications:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="OID4VP">OpenID for Verifiable Presentations - draft 19</a>.</p></li>
+<li><p><a class="reference external" href="DPOP">Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)</a>.</p></li>
+</ul>
+<p>In this section the following flows are descripted:</p>
 <ul class="simple">
 <li><p>Same Device Flow: the Verifier and the Wallet Instance acts in the same device.</p></li>
 <li><p>Cross Device Flow: the Verifier and the Wallet Instance acts in different devices.</p></li>
 </ul>
 <p>Both of the scenarios will be discussed and analyzed in this chapter, taking into account differences between.</p>
-<section id="entity-configuration-details">
-<h2>Entity Configuration Details<a class="headerlink" href="#entity-configuration-details" title="Permalink to this heading">¶</a></h2>
-<p>According to <a class="reference external" href="trust.html">Trust Model</a> section, the Verifier as a Federation participant needs to expose a well-known endpoint containing its Entity Configuration.</p>
-<p>The following is a non-normative example of this endpoint:</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/openid-federation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">HOST</span><span class="o">:</span> <span class="l">verifier.example.org</span>
-</pre></div>
-</div>
-<p>Below is a non-normative response example:</p>
-<section id="header">
-<h3>Header<a class="headerlink" href="#header" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;entity-statement+jwt&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>Algorithm used to sign the JWT</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>typ</strong></p></td>
-<td><p>Media Type of the JWT</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>kid</strong></p></td>
-<td><p>Key ID used identifying the key used to sign the JWT</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="payload">
-<h3>Payload<a class="headerlink" href="#payload" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1649590602</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1649417862</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://rp.example.it&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://rp.example.it&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5s4qi …&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;e&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AQAB&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;wallet_verifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;application_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://verifier.example.org&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;client_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name of an example organization&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                    </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sig&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1Ta-sE …&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;e&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AQAB&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
-<span class="w">                    </span><span class="p">}</span><span class="w"></span>
-<span class="w">                </span><span class="p">]</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-
-<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;ops@verifier.example.org&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-
-<span class="w">            </span><span class="nt">&quot;request_uris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;https://verifier.example.org/request_uri&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;redirect_uris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;https://verifier.example.org/callback&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-
-<span class="w">            </span><span class="nt">&quot;default_acr_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL2&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL3&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-
-<span class="w">              </span><span class="nt">&quot;vp_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                 </span><span class="nt">&quot;jwt_vp_json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                       </span><span class="s2">&quot;EdDSA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                       </span><span class="s2">&quot;ES256K&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">]</span><span class="w"></span>
-<span class="w">                 </span><span class="p">}</span><span class="w"></span>
-<span class="w">              </span><span class="p">},</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;presentation_definitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                  </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:uniqueid+given_name+family_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sd-jwt&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                </span><span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                        </span><span class="s2">&quot;EdDSA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                        </span><span class="s2">&quot;ES256&quot;</span><span class="w"></span>
-<span class="w">                                    </span><span class="p">]</span><span class="w"></span>
-<span class="w">                                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                    </span><span class="nt">&quot;limit_disclosure&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;required&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                    </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.sd-jwt.type&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                                </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">}</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.sd-jwt.cnf&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">}</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.sd-jwt.family_name&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;intent_to_retain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.sd-jwt.given_name&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;intent_to_retain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.sd-jwt.unique_id&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;intent_to_retain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">}</span><span class="w"></span>
-<span class="w">                                    </span><span class="p">]</span><span class="w"></span>
-<span class="w">                                </span><span class="p">}</span><span class="w"></span>
-<span class="w">                            </span><span class="p">}</span><span class="w"></span>
-<span class="w">                        </span><span class="p">}</span><span class="w"></span>
-<span class="w">                    </span><span class="p">]</span><span class="w"></span>
-<span class="w">                  </span><span class="p">},</span><span class="w"></span>
-<span class="w">                  </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL-sample-req&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                </span><span class="nt">&quot;mso_mdoc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                        </span><span class="s2">&quot;EdDSA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                        </span><span class="s2">&quot;ES256&quot;</span><span class="w"></span>
-<span class="w">                                    </span><span class="p">]</span><span class="w"></span>
-<span class="w">                                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                    </span><span class="nt">&quot;limit_disclosure&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;required&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                    </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.mdoc.doctype&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                                </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1.mDL&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">}</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.mdoc.namespace&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                                </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">}</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.mdoc.family_name&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;intent_to_retain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.mdoc.portrait&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;intent_to_retain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">},</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                                </span><span class="s2">&quot;$.mdoc.driving_privileges&quot;</span><span class="w"></span>
-<span class="w">                                            </span><span class="p">],</span><span class="w"></span>
-<span class="w">                                            </span><span class="nt">&quot;intent_to_retain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"></span>
-<span class="w">                                        </span><span class="p">}</span><span class="w"></span>
-<span class="w">                                    </span><span class="p">]</span><span class="w"></span>
-<span class="w">                                </span><span class="p">}</span><span class="w"></span>
-<span class="w">                            </span><span class="p">}</span><span class="w"></span>
-<span class="w">                        </span><span class="p">}</span><span class="w"></span>
-<span class="w">                    </span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-
-<span class="w">            </span><span class="nt">&quot;default_max_age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1111</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">            </span><span class="c1">// JARM related</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;authorization_signed_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;P-256&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;authorization_encrypted_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;RSA-OAEP&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;RSA-OAEP-256&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;authorization_encrypted_response_enc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A128CBC-HS256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A192CBC-HS384&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A256CBC-HS512&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A128GCM&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A192GCM&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A256GCM&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-
-<span class="w">            </span><span class="c1">// SIOPv2 related</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;subject_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pairwise&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;require_auth_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;id_token_signed_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;P-256&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;id_token_encrypted_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;RSA-OAEP&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;RSA-OAEP-256&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;id_token_encrypted_response_enc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A128CBC-HS256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A192CBC-HS384&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A256CBC-HS512&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A128GCM&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A192GCM&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;A256GCM&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;federation_entity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenID Wallet Verifier example&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://verifier.example.org/home&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://verifier.example.org/policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://verifier.example.org/static/logo.svg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">               </span><span class="s2">&quot;tech@verifier.example.org&quot;</span><span class="w"></span>
-<span class="w">             </span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;authority_hints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;https://registry.eudi-wallet.example.it/&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-</section>
-</section>
 <section id="same-device-flow">
 <h2>Same Device Flow<a class="headerlink" href="#same-device-flow" title="Permalink to this heading">¶</a></h2>
 <p>In a Same Device Authorization Flow, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
@@ -1449,8 +1176,8 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <section id="request-uri-response">
 <h2>Request URI response<a class="headerlink" href="#request-uri-response" title="Permalink to this heading">¶</a></h2>
 <p>The Relying Party issues a signed request object, where a non-normative example is shown below:</p>
-<section id="id2">
-<h3>Header<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<section id="header">
+<h3>Header<a class="headerlink" href="#header" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JWT&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1493,8 +1220,8 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h3>Payload<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<section id="payload">
+<h3>Payload<a class="headerlink" href="#payload" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:uniqueid+given_name+family_name&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;client_id_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;entity_id&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1679,6 +1406,297 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 }
 </pre></div>
 </div>
+</section>
+<section id="relying-party-entity-configuration">
+<h2>Relying Party Entity Configuration<a class="headerlink" href="#relying-party-entity-configuration" title="Permalink to this heading">¶</a></h2>
+<p>According to the <a class="reference external" href="trust.html">Trust Model</a> section, the Verifier as a Federation participant needs to expose a well-known endpoint containing its Entity Configuration.</p>
+<p>Below a non-normative example of the request made by the Wallet Instance to the <em>openid-federation</em> well-known endpoint to obtain the Relying Party Entity Configuration:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/openid-federation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">HOST</span><span class="o">:</span> <span class="l">verifier.example.org</span>
+</pre></div>
+</div>
+<p>Below is a non-normative response example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;alg&quot;: &quot;RS256&quot;,
+    &quot;kid&quot;: &quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
+    &quot;typ&quot;: &quot;entity-statement+jwt&quot;
+}
+.
+{
+    &quot;exp&quot;: 1649590602,
+    &quot;iat&quot;: 1649417862,
+    &quot;iss&quot;: &quot;https://rp.example.it&quot;,
+    &quot;sub&quot;: &quot;https://rp.example.it&quot;,
+    &quot;jwks&quot;: {
+        &quot;keys&quot;: [
+            {
+                &quot;kty&quot;: &quot;RSA&quot;,
+                &quot;n&quot;: &quot;5s4qi …&quot;,
+                &quot;e&quot;: &quot;AQAB&quot;,
+                &quot;kid&quot;: &quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;
+            }
+        ]
+    },
+    &quot;metadata&quot;: {
+        &quot;wallet_verifier&quot;: {
+            &quot;application_type&quot;: &quot;web&quot;,
+            &quot;client_id&quot;: &quot;https://verifier.example.org&quot;,
+            &quot;client_name&quot;: &quot;Name of an example organization&quot;,
+            &quot;jwks&quot;: {
+                &quot;keys&quot;: [
+                    {
+                        &quot;kty&quot;: &quot;RSA&quot;,
+                        &quot;use&quot;: &quot;sig&quot;,
+                        &quot;n&quot;: &quot;1Ta-sE …&quot;,
+                        &quot;e&quot;: &quot;AQAB&quot;,
+                        &quot;kid&quot;: &quot;YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
+                        &quot;x5c&quot;: [ &quot;...&quot; ]
+                    }
+                ]
+            },
+
+            &quot;contacts&quot;: [
+                &quot;ops@verifier.example.org&quot;
+            ],
+
+            &quot;request_uris&quot;: [
+                &quot;https://verifier.example.org/request_uri&quot;
+            ],
+            &quot;redirect_uris&quot;: [
+                &quot;https://verifier.example.org/callback&quot;
+            ],
+
+            &quot;default_acr_values&quot;: [
+                &quot;https://www.spid.gov.it/SpidL2&quot;,
+                &quot;https://www.spid.gov.it/SpidL3&quot;
+            ],
+
+              &quot;vp_formats&quot;: {
+                 &quot;jwt_vp_json&quot;: {
+                    &quot;alg&quot;: [
+                       &quot;EdDSA&quot;,
+                       &quot;ES256K&quot;
+                    ]
+                 }
+              },
+              &quot;presentation_definitions&quot;: [
+                  {
+                    &quot;id&quot;: &quot;pid-sd-jwt:uniqueid+given_name+family_name&quot;,
+                    &quot;input_descriptors&quot;: [
+                        {
+                            &quot;id&quot;: &quot;sd-jwt&quot;,
+                            &quot;format&quot;: {
+                                &quot;jwt&quot;: {
+                                    &quot;alg&quot;: [
+                                        &quot;EdDSA&quot;,
+                                        &quot;ES256&quot;
+                                    ]
+                                },
+                                &quot;constraints&quot;: {
+                                    &quot;limit_disclosure&quot;: &quot;required&quot;,
+                                    &quot;fields&quot;: [
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.sd-jwt.type&quot;
+                                            ],
+                                            &quot;filter&quot;: {
+                                                &quot;type&quot;: &quot;string&quot;,
+                                                &quot;const&quot;: &quot;PersonIdentificationData&quot;
+                                            }
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.sd-jwt.cnf&quot;
+                                            ],
+                                            &quot;filter&quot;: {
+                                                &quot;type&quot;: &quot;object&quot;,
+                                            }
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.sd-jwt.family_name&quot;
+                                            ],
+                                            &quot;intent_to_retain&quot;: &quot;true&quot;
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.sd-jwt.given_name&quot;
+                                            ],
+                                            &quot;intent_to_retain&quot;: &quot;true&quot;
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.sd-jwt.unique_id&quot;
+                                            ],
+                                            &quot;intent_to_retain&quot;: &quot;true&quot;
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                  },
+                  {
+                    &quot;id&quot;: &quot;mDL-sample-req&quot;,
+                    &quot;input_descriptors&quot;: [
+                        {
+                            &quot;id&quot;: &quot;mDL&quot;,
+                            &quot;format&quot;: {
+                                &quot;mso_mdoc&quot;: {
+                                    &quot;alg&quot;: [
+                                        &quot;EdDSA&quot;,
+                                        &quot;ES256&quot;
+                                    ]
+                                },
+                                &quot;constraints&quot;: {
+                                    &quot;limit_disclosure&quot;: &quot;required&quot;,
+                                    &quot;fields&quot;: [
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.doctype&quot;
+                                            ],
+                                            &quot;filter&quot;: {
+                                                &quot;type&quot;: &quot;string&quot;,
+                                                &quot;const&quot;: &quot;org.iso.18013.5.1.mDL&quot;
+                                            }
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.namespace&quot;
+                                            ],
+                                            &quot;filter&quot;: {
+                                                &quot;type&quot;: &quot;string&quot;,
+                                                &quot;const&quot;: &quot;org.iso.18013.5.1&quot;
+                                            }
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.family_name&quot;
+                                            ],
+                                            &quot;intent_to_retain&quot;: &quot;false&quot;
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.portrait&quot;
+                                            ],
+                                            &quot;intent_to_retain&quot;: &quot;false&quot;
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.driving_privileges&quot;
+                                            ],
+                                            &quot;intent_to_retain&quot;: &quot;false&quot;
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+
+            &quot;default_max_age&quot;: 1111,
+
+            // JARM related
+            &quot;authorization_signed_response_alg&quot;: [[
+                &quot;RS256&quot;,
+                &quot;ES256&quot;,
+                &quot;P-256&quot;
+            ],
+            &quot;authorization_encrypted_response_alg&quot;: [
+                &quot;RSA-OAEP&quot;,
+                &quot;RSA-OAEP-256&quot;
+            ],
+            &quot;authorization_encrypted_response_enc&quot;: [
+                &quot;A128CBC-HS256&quot;,
+                &quot;A192CBC-HS384&quot;,
+                &quot;A256CBC-HS512&quot;,
+                &quot;A128GCM&quot;,
+                &quot;A192GCM&quot;,
+                &quot;A256GCM&quot;
+            ],
+
+            // SIOPv2 related
+            &quot;subject_type&quot;: &quot;pairwise&quot;,
+            &quot;require_auth_time&quot;: true,
+            &quot;id_token_signed_response_alg&quot;: [
+                &quot;RS256&quot;,
+                &quot;ES256&quot;,
+                &quot;P-256&quot;
+            ],
+            &quot;id_token_encrypted_response_alg&quot;: [
+                &quot;RSA-OAEP&quot;,
+                &quot;RSA-OAEP-256&quot;
+            ],
+            &quot;id_token_encrypted_response_enc&quot;: [
+                &quot;A128CBC-HS256&quot;,
+                &quot;A192CBC-HS384&quot;,
+                &quot;A256CBC-HS512&quot;,
+                &quot;A128GCM&quot;,
+                &quot;A192GCM&quot;,
+                &quot;A256GCM&quot;
+            ],
+        },
+        &quot;federation_entity&quot;: {
+            &quot;organization_name&quot;: &quot;OpenID Wallet Verifier example&quot;,
+            &quot;homepage_uri&quot;: &quot;https://verifier.example.org/home&quot;,
+            &quot;policy_uri&quot;: &quot;https://verifier.example.org/policy&quot;,
+            &quot;logo_uri&quot;: &quot;https://verifier.example.org/static/logo.svg&quot;,
+            &quot;contacts&quot;: [
+               &quot;tech@verifier.example.org&quot;
+             ]
+        }
+    },
+    &quot;authority_hints&quot;: [
+        &quot;https://registry.eudi-wallet.example.it/&quot;
+    ]
+  }
+}
+</pre></div>
+</div>
+<p>The Entity Configuration is a JWS, where its header parameters are defined below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>Algorithm used to sign the JWT</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>typ</strong></p></td>
+<td><p>Media Type of the JWT</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>kid</strong></p></td>
+<td><p>Key ID used identifying the key used to sign the JWS</p></td>
+</tr>
+</tbody>
+</table>
+<p>While each metadata specific parameter is defined below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Specs</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TBD</p></td>
+<td><p>TBD</p></td>
+<td><p>TBD</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

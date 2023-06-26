@@ -1,301 +1,25 @@
 .. include:: ../common/common_definitions.rst
 
+.. _Wallet Instance Attestation: wallet-instance-attestation.html
+.. _Trust Model: trust.html
+
 .. _relying-party-solution:
 
 Relying Party Solution
 +++++++++++++++++++++++
 
-This section defines the implementation of the online presentation and verification flow of a credential (PID or EAA), in accordance with the "OpenID for Verifiable Presentations - draft 19" specifications [OID4VP].
+This section defines the implementation of the online presentation of PID or (Q)EAAs, according the following specifications: 
+
+- `OpenID for Verifiable Presentations - draft 19 <OID4VP>`_.
+- `Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP) <DPOP>`_.
 
 
-The specification defines the following flows:
+In this section the following flows are descripted:
 
 - Same Device Flow: the Verifier and the Wallet Instance acts in the same device.
 - Cross Device Flow: the Verifier and the Wallet Instance acts in different devices.
 
-
 Both of the scenarios will be discussed and analyzed in this chapter, taking into account differences between.
-
-Entity Configuration Details
-----------------------------
-According to `Trust Model`_ section, the Verifier as a Federation participant needs to expose a well-known endpoint containing its Entity Configuration. 
-
-The following is a non-normative example of this endpoint:
-
-.. code-block:: http
-
-  GET /.well-known/openid-federation HTTP/1.1
-  HOST: verifier.example.org
-
-
-Below is a non-normative response example:
-
-Header
-^^^^^^
-
-.. code-block:: JSON
-
-    {
-        "alg": "RS256",
-        "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
-        "typ": "entity-statement+jwt"
-    }
-
-.. list-table::
-  :widths: 25 50
-  :header-rows: 1
-
-  * - **Name**
-    - **Description**
-  * - **alg**
-    - Algorithm used to sign the JWT
-  * - **typ**
-    - Media Type of the JWT
-  * - **kid**
-    - Key ID used identifying the key used to sign the JWT
-
-
-Payload
-^^^^^^^
-
-.. code-block:: JSON
-
-    {
-        "exp": 1649590602,
-        "iat": 1649417862,
-        "iss": "https://rp.example.it",
-        "sub": "https://rp.example.it",
-        "jwks": {
-            "keys": [
-                {
-                    "kty": "RSA",
-                    "n": "5s4qi …",
-                    "e": "AQAB",
-                    "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-                }
-            ]
-        },
-        "metadata": {
-            "wallet_verifier": {
-                "application_type": "web",
-                "client_id": "https://verifier.example.org",
-                "client_name": "Name of an example organization",
-                "jwks": {
-                    "keys": [
-                        {
-                            "kty": "RSA",
-                            "use": "sig",
-                            "n": "1Ta-sE …",
-                            "e": "AQAB",
-                            "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
-                            "x5c": [ "..." ]
-                        }
-                    ]
-                },
-                
-                "contacts": [
-                    "ops@verifier.example.org"
-                ],
-                
-                "request_uris": [
-                    "https://verifier.example.org/request_uri"
-                ],
-                "redirect_uris": [
-                    "https://verifier.example.org/callback"
-                ],
-                
-                "default_acr_values": [
-                    "https://www.spid.gov.it/SpidL2",
-                    "https://www.spid.gov.it/SpidL3"
-                ],
-    
-                  "vp_formats": {
-                     "jwt_vp_json": {
-                        "alg": [
-                           "EdDSA",
-                           "ES256K"
-                        ]
-                     }
-                  },
-                  "presentation_definitions": [
-                      {
-                        "id": "pid-sd-jwt:uniqueid+given_name+family_name",
-                        "input_descriptors": [
-                            {
-                                "id": "sd-jwt",
-                                "format": {
-                                    "jwt": {
-                                        "alg": [
-                                            "EdDSA",
-                                            "ES256"
-                                        ]
-                                    },
-                                    "constraints": {
-                                        "limit_disclosure": "required",
-                                        "fields": [
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.type"
-                                                ],
-                                                "filter": {
-                                                    "type": "string",
-                                                    "const": "PersonIdentificationData"
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.cnf"
-                                                ],
-                                                "filter": {
-                                                    "type": "object",
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.family_name"
-                                                ],
-                                                "intent_to_retain": "true"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.given_name"
-                                                ],
-                                                "intent_to_retain": "true"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.unique_id"
-                                                ],
-                                                "intent_to_retain": "true"
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
-                      },
-                      {
-                        "id": "mDL-sample-req",
-                        "input_descriptors": [
-                            {
-                                "id": "mDL",
-                                "format": {
-                                    "mso_mdoc": {
-                                        "alg": [
-                                            "EdDSA",
-                                            "ES256"
-                                        ]
-                                    },
-                                    "constraints": {
-                                        "limit_disclosure": "required",
-                                        "fields": [
-                                            {
-                                                "path": [
-                                                    "$.mdoc.doctype"
-                                                ],
-                                                "filter": {
-                                                    "type": "string",
-                                                    "const": "org.iso.18013.5.1.mDL"
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.namespace"
-                                                ],
-                                                "filter": {
-                                                    "type": "string",
-                                                    "const": "org.iso.18013.5.1"
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.family_name"
-                                                ],
-                                                "intent_to_retain": "false"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.portrait"
-                                                ],
-                                                "intent_to_retain": "false"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.driving_privileges"
-                                                ],
-                                                "intent_to_retain": "false"
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
-                    }
-                ],
-
-                "default_max_age": 1111,
-                
-                // JARM related
-                "authorization_signed_response_alg": [[
-                    "RS256",
-                    "ES256",
-                    "P-256"
-                ],
-                "authorization_encrypted_response_alg": [
-                    "RSA-OAEP",
-                    "RSA-OAEP-256"
-                ],
-                "authorization_encrypted_response_enc": [
-                    "A128CBC-HS256",
-                    "A192CBC-HS384",
-                    "A256CBC-HS512",
-                    "A128GCM",
-                    "A192GCM",
-                    "A256GCM"
-                ],
-
-                // SIOPv2 related
-                "subject_type": "pairwise",
-                "require_auth_time": true,
-                "id_token_signed_response_alg": [
-                    "RS256",
-                    "ES256",
-                    "P-256"
-                ],
-                "id_token_encrypted_response_alg": [
-                    "RSA-OAEP",
-                    "RSA-OAEP-256"
-                ],
-                "id_token_encrypted_response_enc": [
-                    "A128CBC-HS256",
-                    "A192CBC-HS384",
-                    "A256CBC-HS512",
-                    "A128GCM",
-                    "A192GCM",
-                    "A256GCM"
-                ],
-            },
-            "federation_entity": {
-                "organization_name": "OpenID Wallet Verifier example",
-                "homepage_uri": "https://verifier.example.org/home",
-                "policy_uri": "https://verifier.example.org/policy",
-                "logo_uri": "https://verifier.example.org/static/logo.svg",
-                "contacts": [
-                   "tech@verifier.example.org"
-                 ]
-            }
-        },
-        "authority_hints": [
-            "https://registry.eudi-wallet.example.it/"
-        ]
-      }
-    }
-    
-
-
-.. _Wallet Instance Attestation: wallet-instance-attestation.html
-.. _Trust Model: trust.html
-
 
 Same Device Flow
 ----------------
@@ -727,3 +451,284 @@ Below is a non-normative example of the ``vp_token`` JWS content:
     "vp": "<SD-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>"
    }
 
+Relying Party Entity Configuration
+---------------------------------------------
+According to the `Trust Model`_ section, the Verifier as a Federation participant needs to expose a well-known endpoint containing its Entity Configuration. 
+
+Below a non-normative example of the request made by the Wallet Instance to the *openid-federation* well-known endpoint to obtain the Relying Party Entity Configuration:
+
+.. code-block:: http
+
+  GET /.well-known/openid-federation HTTP/1.1
+  HOST: verifier.example.org
+
+
+Below is a non-normative response example:
+
+.. code-block:: text
+
+    {
+        "alg": "RS256",
+        "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
+        "typ": "entity-statement+jwt"
+    }
+    .
+    {
+        "exp": 1649590602,
+        "iat": 1649417862,
+        "iss": "https://rp.example.it",
+        "sub": "https://rp.example.it",
+        "jwks": {
+            "keys": [
+                {
+                    "kty": "RSA",
+                    "n": "5s4qi …",
+                    "e": "AQAB",
+                    "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
+                }
+            ]
+        },
+        "metadata": {
+            "wallet_verifier": {
+                "application_type": "web",
+                "client_id": "https://verifier.example.org",
+                "client_name": "Name of an example organization",
+                "jwks": {
+                    "keys": [
+                        {
+                            "kty": "RSA",
+                            "use": "sig",
+                            "n": "1Ta-sE …",
+                            "e": "AQAB",
+                            "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
+                            "x5c": [ "..." ]
+                        }
+                    ]
+                },
+                
+                "contacts": [
+                    "ops@verifier.example.org"
+                ],
+                
+                "request_uris": [
+                    "https://verifier.example.org/request_uri"
+                ],
+                "redirect_uris": [
+                    "https://verifier.example.org/callback"
+                ],
+                
+                "default_acr_values": [
+                    "https://www.spid.gov.it/SpidL2",
+                    "https://www.spid.gov.it/SpidL3"
+                ],
+    
+                  "vp_formats": {
+                     "jwt_vp_json": {
+                        "alg": [
+                           "EdDSA",
+                           "ES256K"
+                        ]
+                     }
+                  },
+                  "presentation_definitions": [
+                      {
+                        "id": "pid-sd-jwt:uniqueid+given_name+family_name",
+                        "input_descriptors": [
+                            {
+                                "id": "sd-jwt",
+                                "format": {
+                                    "jwt": {
+                                        "alg": [
+                                            "EdDSA",
+                                            "ES256"
+                                        ]
+                                    },
+                                    "constraints": {
+                                        "limit_disclosure": "required",
+                                        "fields": [
+                                            {
+                                                "path": [
+                                                    "$.sd-jwt.type"
+                                                ],
+                                                "filter": {
+                                                    "type": "string",
+                                                    "const": "PersonIdentificationData"
+                                                }
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.sd-jwt.cnf"
+                                                ],
+                                                "filter": {
+                                                    "type": "object",
+                                                }
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.sd-jwt.family_name"
+                                                ],
+                                                "intent_to_retain": "true"
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.sd-jwt.given_name"
+                                                ],
+                                                "intent_to_retain": "true"
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.sd-jwt.unique_id"
+                                                ],
+                                                "intent_to_retain": "true"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                      },
+                      {
+                        "id": "mDL-sample-req",
+                        "input_descriptors": [
+                            {
+                                "id": "mDL",
+                                "format": {
+                                    "mso_mdoc": {
+                                        "alg": [
+                                            "EdDSA",
+                                            "ES256"
+                                        ]
+                                    },
+                                    "constraints": {
+                                        "limit_disclosure": "required",
+                                        "fields": [
+                                            {
+                                                "path": [
+                                                    "$.mdoc.doctype"
+                                                ],
+                                                "filter": {
+                                                    "type": "string",
+                                                    "const": "org.iso.18013.5.1.mDL"
+                                                }
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.mdoc.namespace"
+                                                ],
+                                                "filter": {
+                                                    "type": "string",
+                                                    "const": "org.iso.18013.5.1"
+                                                }
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.mdoc.family_name"
+                                                ],
+                                                "intent_to_retain": "false"
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.mdoc.portrait"
+                                                ],
+                                                "intent_to_retain": "false"
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.mdoc.driving_privileges"
+                                                ],
+                                                "intent_to_retain": "false"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ],
+
+                "default_max_age": 1111,
+                
+                // JARM related
+                "authorization_signed_response_alg": [[
+                    "RS256",
+                    "ES256",
+                    "P-256"
+                ],
+                "authorization_encrypted_response_alg": [
+                    "RSA-OAEP",
+                    "RSA-OAEP-256"
+                ],
+                "authorization_encrypted_response_enc": [
+                    "A128CBC-HS256",
+                    "A192CBC-HS384",
+                    "A256CBC-HS512",
+                    "A128GCM",
+                    "A192GCM",
+                    "A256GCM"
+                ],
+
+                // SIOPv2 related
+                "subject_type": "pairwise",
+                "require_auth_time": true,
+                "id_token_signed_response_alg": [
+                    "RS256",
+                    "ES256",
+                    "P-256"
+                ],
+                "id_token_encrypted_response_alg": [
+                    "RSA-OAEP",
+                    "RSA-OAEP-256"
+                ],
+                "id_token_encrypted_response_enc": [
+                    "A128CBC-HS256",
+                    "A192CBC-HS384",
+                    "A256CBC-HS512",
+                    "A128GCM",
+                    "A192GCM",
+                    "A256GCM"
+                ],
+            },
+            "federation_entity": {
+                "organization_name": "OpenID Wallet Verifier example",
+                "homepage_uri": "https://verifier.example.org/home",
+                "policy_uri": "https://verifier.example.org/policy",
+                "logo_uri": "https://verifier.example.org/static/logo.svg",
+                "contacts": [
+                   "tech@verifier.example.org"
+                 ]
+            }
+        },
+        "authority_hints": [
+            "https://registry.eudi-wallet.example.it/"
+        ]
+      }
+    }
+    
+
+The Entity Configuration is a JWS, where its header parameters are defined below: 
+
+.. list-table::
+  :widths: 25 50
+  :header-rows: 1
+
+  * - **Name**
+    - **Description**
+  * - **alg**
+    - Algorithm used to sign the JWT
+  * - **typ**
+    - Media Type of the JWT
+  * - **kid**
+    - Key ID used identifying the key used to sign the JWS
+
+While each metadata specific parameter is defined below:
+
+.. list-table::
+  :widths: 25 50 25
+  :header-rows: 1
+
+  * - **Name**
+    - **Description**
+    - **Specs**
+  * - TBD
+    - TBD
+    - TBD
