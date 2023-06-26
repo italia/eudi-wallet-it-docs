@@ -972,31 +972,32 @@ response_type=code
 </pre></div>
 </div>
 <p>The JWS header of request object is represented below:</p>
-<p>The JWS payload of the request object is represented below:
-.. code-block:: JSON</p>
-<blockquote>
-<div><p>{
-&quot;response_type&quot;:&quot;code&quot;,
-&quot;client_id&quot;:&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;,
-&quot;state&quot;:&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;,
-&quot;code_challenge&quot;:&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;,
-&quot;code_challenge_method&quot;:&quot;S256&quot;,
-&quot;authorization_details&quot;:[
-{</p>
-<blockquote>
-<div><p>&quot;type&quot;:&quot;openid_credential&quot;,
-&quot;format&quot;: &quot;vc+sd-jwt&quot;,
-&quot;credential_definition&quot;: {</p>
-<blockquote>
-<div><p>&quot;type&quot;: [&quot;eu.eudiw.pid.it&quot;]</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}
-],
-&quot;redirect_uri&quot;:&quot;eudiw://start.wallet.example.org&quot;,
-&quot;client_assertion_type&quot;:&quot;urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation&quot;,</p>
-</div></blockquote>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The JWS payload of the request object is represented below:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="nt">&quot;response_type&quot;</span><span class="p">:</span><span class="s2">&quot;code&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="s2">&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;code_challenge&quot;</span><span class="p">:</span><span class="s2">&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;code_challenge_method&quot;</span><span class="p">:</span><span class="s2">&quot;S256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;authorization_details&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;credential_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;eu.eudiw.pid.it&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">],</span><span class="w"></span>
+<span class="nt">&quot;redirect_uri&quot;</span><span class="p">:</span><span class="s2">&quot;eudiw://start.wallet.example.org&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;client_assertion_type&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation&quot;</span><span class="p">,</span><span class="w"></span>
+</pre></div>
+</div>
 <dl class="simple">
 <dt><strong>Step 7:</strong> The PID Provider creates a new request URI representing this new authorization request to be returned to the Wallet Instance.</dt><dd><p>}</p>
 </dd>

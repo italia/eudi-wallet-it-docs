@@ -74,12 +74,15 @@ The following is a non-normative example of the PAR.
 The JWS header of request object is represented below:
 
 .. code-block:: JSON
+
   {
     "alg": "ES256",
     "kid": "FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc",
   }
 
+
 The JWS payload of the request object is represented below:
+
 .. code-block:: JSON
 
     {
@@ -99,6 +102,7 @@ The JWS payload of the request object is represented below:
     ],
     "redirect_uri":"eudiw://start.wallet.example.org",
     "client_assertion_type":"urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation",
+
 **Step 7:** The PID Provider creates a new request URI representing this new authorization request to be returned to the Wallet Instance. 
     }
 
@@ -119,6 +123,8 @@ The JWS payload of the request object is represented below:
         "expires_in": 60
     }
     Host: pid-provider.example.org
+
+
 **Steps 8-9:** The Wallet Instance sends an authorization request to the PID Provider authorization endpoint.
 
 .. code-block:: 
