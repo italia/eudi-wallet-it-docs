@@ -1327,7 +1327,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </pre></div>
 </div>
 <p>ℹ️ Note:</p>
-<p>The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional to the presence of other ones.</p>
+<p>The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional and may change in future release of this documentation.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>: JSON object according to <a class="reference external" href="PresentationExch">Presentation Exchange</a>. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code> or <code class="docutils literal notranslate"><span class="pre">scope</span></code> are present.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code>: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition</span> <span class="pre">parameter</span></code> or a <code class="docutils literal notranslate"><span class="pre">scope</span></code> value representing a Presentation Definition is not present.</p></li>
@@ -1338,12 +1338,12 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </section>
 <section id="authorization-response-details">
 <h2>Authorization Response Details<a class="headerlink" href="#authorization-response-details" title="Permalink to this heading">¶</a></h2>
-<p>After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Verifier <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3, using the Relying Party public key.</p>
+<p>After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3, using the Relying Party public key.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong>
 The response sent from the Wallet Instance to the Relying Party is encrypted
-to prevent a technique called <a class="reference external" href="https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/">SSL split attack</a>, that could be enabled by malicious app installed locally by Users and that intecepts the traffic or by network environments where a next-generation firewalls or any other security device may reduce the privacy of the Users.</p>
+to prevent a technique called <a class="reference external" href="https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/">SSL split attack</a>, that could be enabled by malicious app installed locally by Users,that intecepts the network traffic, or be present by-design in network environments where a next-generation firewalls or other security devices may reduce the privacy of the Users.</p>
 </div>
 <p>Below a non-normative example of the request:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/callback</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
