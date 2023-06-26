@@ -62,6 +62,45 @@ The Wallet Instance, as a personal device, is certified as trusted through a ver
 
 This is called *Wallet Instance Attestation* and is documented in the section dedicated to the Wallet Solution.
 
+Federation API endpoints
+------------------------
+
+OIDC Federation is also a PKI that uses RESTful Web Services secured over HTTPs. The technical specification defines which are the web endpoints that the participants made publicly available. In the table below the summary of these and their scopes.
+
+All the endpoints listed below are defined in the `OIDC-FED`_ specs.
+
++---------------------------+----------------------------------------------+--------------------------------+-----------------+
+| endpoint name             | http request                                 |          scope                 |  required by    |
++===========================+==============================================+================================+=================+
+|                           |                                              |                                |  Trust Anchor   |
+| federation metadata       | **GET** .well-known/openid-federation        |Metadata that an Entity         |  Intermediate   |
+|                           |                                              |publishes about itself,         |  Wallet Provider|
+|                           |                                              |verifiable with a trusted third |  Relying Party  |
+|                           |                                              |party (Superior Entity). It’s   |                 |
+|                           |                                              |called Entity Configuration.    |                 |
++---------------------------+----------------------------------------------+--------------------------------+-----------------+
+| subordinate list endpoint | **GET** /list                                |Lists the Subordinates.         |  Trust Anchor   |
+|                           |                                              |                                |  Intermediate   |
++---------------------------+----------------------------------------------+--------------------------------+-----------------+
+| fetch endpoint            | **GET** /fetch?sub=https://rp.example.org    |Returns a document (JWS)        |  Trust Anchor   |
+|                           |                                              |about a specific subject, its   |  Intermediate   |
+|                           |                                              |Subordinate. It’s called Entity |                 |
+|                           |                                              |Statement.                      |                 |
++---------------------------+----------------------------------------------+--------------------------------+-----------------+
+| trust mark status         | **POST** /status?sub=...&trust_mark_id=...   |Returns the status of the       |  Trust Anchor   |
+|                           |                                              |issuance (validity) of a Trust  |  Intermediate   |
+|                           |                                              |Mark related to a specific      |                 |
+|                           |                                              |subject.                        |                 |
++---------------------------+----------------------------------------------+--------------------------------+-----------------+
+| historical keys           | **GET**                                      |Lists its expired and revoked   |  Trust Anchor   |
+|                           |                                              |keys, with the motivation of the|  Intermediate   |
+|                           | .well-known/openid-federation-historical-jwks|revocation.                     |                 |
+|                           |                                              |                                |                 |
++---------------------------+----------------------------------------------+--------------------------------+-----------------+
+
+All the responses of the Federation endpoints are JWS, with the exceptions for Listing endpoint and Trust Mark Status endpoints that are served as plain JSON by default, however it may be signed if required.
+
+
 Configuration of the Federation
 -------------------------------
 
