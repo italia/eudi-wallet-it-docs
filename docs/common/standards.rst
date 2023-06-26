@@ -45,7 +45,7 @@ Technical References
       - Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", RFC 8174, DOI 10.17487/RFC8174, May 2017.
     * - :rfc:`8725`
       - Jones, M., D. Hardt, Sheffer, Y., "JSON Web Token Best Current Practices", February 2020.
-    * - `_JARM`_
+    * - `JARM`_
       - Lodderstedt, T., Campbell, B., "JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)", November 2022.
     * - `DPOP`
       - TBD
