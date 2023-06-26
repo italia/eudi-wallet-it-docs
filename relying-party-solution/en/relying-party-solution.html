@@ -1088,10 +1088,12 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <p>The <em>error correction level</em> chosen for the QR Code must be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.</p>
 </div>
 <p>Below is a non-normative example of a QR Code issued by the Relying Party:</p>
-<img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the payload and its Base64 decoded content:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">ZXVkaXc6Ly9hdXRob3JpemU</span><span class="o">/</span><span class="nx">Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9hMTI1MmY5MC1hNjUyLTRjNDctODAzOS1mNjAwOTZjYXZ6cXc</span><span class="o">=</span><span class="w"></span>
-
-<span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=https://verifier.example.org&amp;request_uri=https://verifier.example.org/a1252f90-a652-4c47-8039-f60096cavzqw</span><span class="w"></span>
+<img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the QR Code raw payload:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9hMTI1MmY5MC1hNjUyLTRjNDctODAzOS1mNjAwOTZjYXZ6cXc=
+</pre></div>
+</div>
+<p>Below follows its Base64 decoded content:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https://verifier.example.org/a1252f90-a652-4c47-8039-f60096cavzqw
 </pre></div>
 </div>
 </section>

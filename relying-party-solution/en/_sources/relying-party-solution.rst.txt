@@ -157,13 +157,18 @@ Below is a non-normative example of a QR Code issued by the Relying Party:
   :align: center
 
 
-Below is a non-normative example of the payload and its Base64 decoded content:
+Below is a non-normative example of the QR Code raw payload:
 
-.. code-block:: javascript
+.. code-block:: text
 
   ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9hMTI1MmY5MC1hNjUyLTRjNDctODAzOS1mNjAwOTZjYXZ6cXc=
 
-  eudiw://authorize?client_id=https://verifier.example.org&request_uri=https://verifier.example.org/a1252f90-a652-4c47-8039-f60096cavzqw
+
+Below follows its Base64 decoded content:
+
+.. code-block:: text
+
+    eudiw://authorize?client_id=https://verifier.example.org&request_uri=https://verifier.example.org/a1252f90-a652-4c47-8039-f60096cavzqw
 
 
 
