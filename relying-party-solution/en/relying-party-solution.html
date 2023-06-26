@@ -940,7 +940,6 @@
 <h2>Same Device Flow<a class="headerlink" href="#same-device-flow" title="Permalink to this heading">¶</a></h2>
 <p>In the Same Device Authorization Flow, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
 This scenario utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).</p>
-<p>Once authentication is performed, the User requests the display of attributes provided by the Wallet Instance.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This flow will be described more in detail in future releases of this documentation.</p>
@@ -950,7 +949,7 @@ This scenario utilizes HTTP redirects to finalize the authorization phase and ob
 <h2>Remote Cross Device Flow<a class="headerlink" href="#remote-cross-device-flow" title="Permalink to this heading">¶</a></h2>
 <p>In a Cross Device Authorization Flow, the User interacts with a remote Relying Party.
 This scenario requests the Verifier to show a QR Code which the User frames with their Wallet Instance.</p>
-<p>Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a verifiable presentation.</p>
+<p>Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.</p>
 <a class="reference external image-reference" href="//www.plantuml.com/plantuml/png/ZPF1Rjf048Rl-nIZd5gfUG4agaGqgcXLuG99Bf6gnJlWRSmidPsrIv--QpjhOn1IRlZtDpyp_upll6YMi2-L3k8ex3V8IXsYPdDxq2Hmy-YHRq1x26FzMPSb2imfMb2EBLAFaIMMHqixoA9uR84AbPfEuJv8WHH1BTOHm7Ig0jn-ZgydiCG_0Rr0naum5pHHyIvmZahdOYijsDXKc0fcZ55hFHtRVwrbShd4VYvXvaoghoUmAbmTrLOqUFeN_UzQgJhHkQRaqOiFVuKZtBV-k9o_q9RTVY1J5ryVrZsssFp6MFL2c-DfQHHgAmMS1Gpt8f5enuk8zl0bSnc8UqMwaanNSM6qvl2MJDV-k9zn26d6v3LQQUVK8q_8TdiyGtwWQAD53vGkRHGGlZslOMLtf2KmNhnENQ61f-o3_zW1OUXswnXoHnv9Xl632ccgcQEjvJsQqu72i8biiLfV78q_D8unNcXNK1r-lIFV6QD14gjBc7iVa5F22Rmsym1ax7Bq7gH0o7kxI-1AmugS8BWAUGGV2kqHE0Pc6QEvcyJ9Rg5AtLWItB6LuoVGwOlidiX0uKg331jBfjccstPxQ0oGV624U5QT1Ze-bPPUqRIvTPTWaTy5vu4PIS2ZzyrGv2Z7yyfPKydzITWu7AD7EhtZnNTbyFIZFJlbEoGJzkL_"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
 <table class="docutils align-default">
 <colgroup>
@@ -985,17 +984,17 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <tr class="row-odd"><td><p><strong>4</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
-<td><p>QR Code is shown to the User that frames it.</p></td>
+<td><p>The QR Code is shown to the User that frames it.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>5</strong> and <strong>6</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
 <td><p><strong>-</strong></p></td>
-<td><p>The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code</p></td>
+<td><p>The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>7</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
-<td><p>Requests the content of the Authorization Request by invoking the Request URI, passing as DPoP HTTP Header the Wallet Instance Attestation aside a DPoP proof HTTP Header.</p></td>
+<td><p>The Relying Party requests the content of the Authorization Request by invoking the Request URI, passing as DPoP HTTP Header the Wallet Instance Attestation aside a DPoP proof HTTP Header.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>8</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
@@ -1010,27 +1009,27 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <tr class="row-even"><td><p><strong>10</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
 <td><p><strong>-</strong></p></td>
-<td><p>Verifies Request Object JWS.</p></td>
+<td><p>The Wallet Instance verifies Request Object JWS.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>11</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
 <td><p><strong>-</strong></p></td>
-<td><p>The Wallet Instance attests the trust to the Relying Party by verifying the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code></p></td>
+<td><p>The Wallet Instance attests the trust to the Relying Party by verifying the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>12</strong> and <strong>13</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
 <td><p><strong>-</strong></p></td>
-<td><p>Process the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.</p></td>
+<td><p>The Wallet Instance processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>14</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
 <td><p><strong>User</strong></p></td>
-<td><p>The Wallet Instance requests the User's consent to the release of the credentials.</p></td>
+<td><p>The Wallet Instance requests the User's consent for the release of the credentials.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>15</strong></p></td>
 <td><p><strong>User</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
-<td><p>User consents the release, by selecting/deselecting the personal data to release.</p></td>
+<td><p>The User consents the release, by selecting/deselecting the personal data to release.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>16</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
@@ -1045,12 +1044,12 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <tr class="row-odd"><td><p><strong>18</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
 <td><p><strong>-</strong></p></td>
-<td><p>Process the content of Authorization Response, performs checks for integrity and proof of possession of the presented credentials, thensaves the response to the persistence layer.</p></td>
+<td><p>Received and verifies the Authorization Response, performs checks for integrity and proof of possession of the presented credentials.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>19</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
-<td><p>Relying Party notifies the Wallet Instance that the operation ends successfully.</p></td>
+<td><p>The Relying Party notifies the Wallet Instance that the operation ends successfully.</p></td>
 </tr>
 </tbody>
 </table>

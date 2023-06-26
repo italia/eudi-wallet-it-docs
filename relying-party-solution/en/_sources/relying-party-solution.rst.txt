@@ -26,8 +26,6 @@ Same Device Flow
 In the Same Device Authorization Flow, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
 This scenario utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).
 
-Once authentication is performed, the User requests the display of attributes provided by the Wallet Instance.
-
 .. note::
 
     This flow will be described more in detail in future releases of this documentation.
@@ -38,7 +36,7 @@ Remote Cross Device Flow
 In a Cross Device Authorization Flow, the User interacts with a remote Relying Party.
 This scenario requests the Verifier to show a QR Code which the User frames with their Wallet Instance.
 
-Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a verifiable presentation.
+Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.
 
 
 .. image:: ../../images/cross_device_auth_seq_diagram.svg
@@ -68,15 +66,15 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **4**
     - **Relying Party**
     - **Wallet Instance**
-    - QR Code is shown to the User that frames it.
+    - The QR Code is shown to the User that frames it.
   * - **5** and **6**
     - **Wallet Instance**
     - **-**
-    - The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code
+    - The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code.
   * - **7**
     - **Wallet Instance**
     - **Relying Party**
-    - Requests the content of the Authorization Request by invoking the Request URI, passing as DPoP HTTP Header the Wallet Instance Attestation aside a DPoP proof HTTP Header.
+    - The Relying Party requests the content of the Authorization Request by invoking the Request URI, passing as DPoP HTTP Header the Wallet Instance Attestation aside a DPoP proof HTTP Header.
   * - **8**
     - **Relying Party**
     - **-**
@@ -88,23 +86,23 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **10**
     - **Wallet Instance**
     - **-**
-    - Verifies Request Object JWS.
+    - The Wallet Instance verifies Request Object JWS.
   * - **11**
     - **Wallet Instance**
     - **-**
-    - The Wallet Instance attests the trust to the Relying Party by verifying the ``trust_chain``
+    - The Wallet Instance attests the trust to the Relying Party by verifying the ``trust_chain``.
   * - **12** and **13**
     - **Wallet Instance**
     - **-**
-    - Process the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.
+    - The Wallet Instance processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.
   * - **14**
     - **Wallet Instance**
     - **User**
-    - The Wallet Instance requests the User's consent to the release of the credentials.
+    - The Wallet Instance requests the User's consent for the release of the credentials.
   * - **15**
     - **User**
     - **Wallet Instance**
-    - User consents the release, by selecting/deselecting the personal data to release.
+    - The User consents the release, by selecting/deselecting the personal data to release.
   * - **16**
     - **Wallet Instance**
     - **Relying Party**
@@ -116,11 +114,11 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **18**
     - **Relying Party**
     - **-**
-    - Process the content of Authorization Response, performs checks for integrity and proof of possession of the presented credentials, thensaves the response to the persistence layer.
+    - Received and verifies the Authorization Response, performs checks for integrity and proof of possession of the presented credentials.
   * - **19**
     - **Relying Party**
     - **Wallet Instance**
-    - Relying Party notifies the Wallet Instance that the operation ends successfully.
+    - The Relying Party notifies the Wallet Instance that the operation ends successfully.
 
 Authorization Request Details
 -----------------------------
