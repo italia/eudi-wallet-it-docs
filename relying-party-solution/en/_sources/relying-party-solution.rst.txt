@@ -98,7 +98,7 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **12** and **13**
     - **Wallet Instance**
     - **-**
-    - The Wallet Instance processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.
+    - The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.
   * - **14**
     - **Wallet Instance**
     - **User**
