@@ -106,7 +106,7 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **15**
     - **User**
     - **Wallet Instance**
-    - The User consents the release, by selecting/deselecting the personal data to release.
+    - The User consents the presentation of their credentials, by selecting/deselecting the personal data to release.
   * - **16**
     - **Wallet Instance**
     - **Relying Party**
