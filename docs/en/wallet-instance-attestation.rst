@@ -106,17 +106,17 @@ Static view of the components
 
 .. figure:: ../../images/static_view_wallet_instance_attestation.svg
    :name: Wallet Solution schema
-   :alt: the image shows how the Wallet Provider's backend and the
+   :alt: the image shows how the Wallet Provider and the
          Wallet Instances are contained within the wallet
          solution which is managed by the Wallet Provider
    :target: https://www.plantuml.com/plantuml/uml/XP4nJuSm44VtVehBdxbnPp2iRYx6qTHIjR7SaVQ0-EqzaICDgN4ZBxpqzTUXiCkyJCaupvJXzbH2le4hiCW7A7rsAGM6ETCQn-E7RMSloi0OJzDC691FeL1QE1BMWZBeraW2Mbv4wK8VQayPT5yX9TgCQPclpdy676lnGF0ZN93DyVs3xVsrhOU70hCi0_JshwHXFJp-Rg4dIuECo96moD7xeBQbUKBEbE0EPEwuEWx6N2zj_uXqU8wbhVMhD3tjbAX1BYIl_mq0
 
 Dynamic view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We do not go into the details of the Wallet Provider's backend as
+We do not go into the details of the Wallet Provider as
 it will be the subject of a subsequent design review. For now, we
 will just analyze the format of the Wallet Instance Attestation and
-how it is issued by the Wallet Provider's backend.
+how it is issued by the Wallet Provider.
 
 .. figure:: ../../images/dynamic_view_sequence_wallet_instance_attestation.svg
    :name: sequence diagram for Wallet Instance Attestation request
@@ -135,14 +135,14 @@ how it is issued by the Wallet Provider's backend.
   trustworthy by resolving the provider's trust chain up to the anchor (⚠️
   this step is skipped in this version).
 - **Message 5-7**: The Wallet Instance instantiates a new key pair on its TEE
-  and requests a ``nonce`` from the Wallet Provider's backend (as a measure
+  and requests a ``nonce`` from the Wallet Provider (as a measure
   against replay attacks).
 - **Message 8**: The Wallet Instance generates a Wallet Instance Attestation
   Request (JWT) signed with the private key associated with the public key
   for which it wants to obtain the attestation containing the ``nonce`` and
   other useful parameters.
 - **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation
-  Request to the Wallet Provider's backend which verifies its validity and
+  Request to the Wallet Provider which verifies its validity and
   issues the signed attestation.
 - **Message 13-14**:The Wallet Instance receives the Wallet Instance
   attestation signed by the Wallet Provider and proceeds with a formal
@@ -156,7 +156,7 @@ Detail design
 Format of the Wallet Instance Attestation Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To obtain a Wallet Instance Attestation from the wallet
-provider (backend) it is necessary to send a Wallet Instance Attestation
+provider it is necessary to send a Wallet Instance Attestation
 Request from the Wallet Instance containing the associated public key
 and a ``nonce`` previously requested to avoid replay attacks.
 
@@ -204,7 +204,7 @@ Payload
 ||        || Wallet Instance. It will also             |
 ||        || contain all the information               |
 ||        || useful for the Wallet Provider            |
-||        || backend to verify that the app is genuine.|
+||        || to verify that the app is genuine.        |
 +---------+--------------------------------------------+
 
 Non-normative example
@@ -356,8 +356,8 @@ Signature
 ^^^^^^^^^
 
 The JWT (Wallet Instance Attestation) thus composed is signed using the
-private key of the Wallet Provider present to which the Wallet Provider's
-backend has access.
+private key of the Wallet Provider present to which the Wallet Provider
+has access.
 
 Non-normative example
 ^^^^^^^^^^^^^^^^^^^^^
@@ -622,7 +622,7 @@ Verifiable through the public key of the Wallet Provider itself.
 
 Endpoints
 ~~~~~~~~~
-The Wallet Provider's backend that issues the Wallet Instance Attestations must
+The Wallet Provider that issues the Wallet Instance Attestations must
 make available a series of APIs in REST format that follow the OpenId
 Federation standard.
 
