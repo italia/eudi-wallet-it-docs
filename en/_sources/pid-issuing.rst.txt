@@ -12,7 +12,7 @@ The relevant entities and interfaces involved in the issuing flows are:
     - *Wallet Instance*: instance of a Wallet Solution, installed on User's device. It provides interfaces for User interaction with the Wallet Provider, Relying Parties, PID and (Q)EAA Providers.
     - *PID Provider*: It represents the issuer of eIDAS Person Identification Data (PID). It is composed of:
 
-        - OpenID VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
+        - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
         - National eID Relying Party (OpenID Connect or SAML2): It represents the component to authenticate the End-User with the national Digital Identity Providers.
     - National IdP: It represents preexisting identity systems based on SAML2 or OpenID Connect, already in production in each Member State (for Italy SPID and CIE id authentication schemed notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
     
@@ -53,7 +53,7 @@ The PID Issuing phase is based on the **Authorization Code Flow** with **Pushed 
 
     **Federation Check:** The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata. In the following a non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID Provider
 
-    .. code-block::
+    .. code-block:: http
     
       HTTP/1.1 200 OK
       Content-Type: application/entity-statement+jwt
@@ -65,7 +65,8 @@ The PID Issuing phase is based on the **Authorization Code Flow** with **Pushed 
         "typ": "entity-statement+jwt"
 
       }
-      .{
+      .
+      {
         "exp": "1649610249",
         "iat": "1649437449",
         "iss": "https://pid-provider.example.org",
@@ -85,13 +86,13 @@ The PID Issuing phase is based on the **Authorization Code Flow** with **Pushed 
             "authorization_endpoint": "https://pid-provider.example.org/connect/authorize",
             "token_endpoint": "https://pid-provider.example.org/connect/token",
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
-            "dpop_signing_alg_values_supported": ["RS256", "RS512", "RSA-OAEP", "...", "ES256", "ES512"],
+            "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
             "credential_endpoint": "https://pid-provider.example.org/credential",
             "credentials_supported": {
               "eu.eudiw.pid.it": {
                 "format": "vc+sd-jwt",
                 "cryptographic_binding_methods_supported": ["jwk"],
-                "cryptographic_suites_supported": ["RS256", "RS512", "RSA-OAEP", "...", "ES256", "ES512"],
+                "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
                 "display": [{
                     "name": "PID Provider Italiano di esempio",
                     "locale": "it-IT",
@@ -107,7 +108,7 @@ The PID Issuing phase is based on the **Authorization Code Flow** with **Pushed 
                     "locale": "en-US",
                     "logo": {
                       "url": "https://pid-provider.example.org/public/logo.svg",
-                      "alt_text": "a logo of this PID Provider"
+                      "alt_text": "The logo of this PID Provider"
                     },
                     "background_color": "#12107c",
                     "text_color": "#FFFFFF"
@@ -203,20 +204,20 @@ The PID Issuing phase is based on the **Authorization Code Flow** with **Pushed 
           },
 
           "openid_relying_party": {
-            <This is the metadata of the PID Provider acting as a Relying Party in the national digital identity framework (CIE/SPID)>
+            <This is the metadata of the PID Provider acting as a Relying Party in the national digital identity framework (CIE/SPID). See spid-cie-oidc-docs for details.>
           }
         }
       }         
 
 
-**Steps 5-6:** The Wallet Instance creates a fresh PKCE code verifier and sends this along in a *pushed authorization request* using the request parameter (see :rfc:`9126` Section 3) to the authorization endpoint of the PID Provider. The Wallet Instance signs this request using its attested private key. A standard OAuth2 client authentication method must be involved, because the pushed authorization endpoint is a protected endpoint, in this flow. The client authentication can be based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the **client_assertion** parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify types of the credentials when requesting authorization for the PID issuance.
+**Steps 5-6:** The Wallet Instance creates a fresh PKCE code verifier that sends in a *pushed authorization request*, using the request parameter (see :rfc:`9126` Section 3) to the PID Provider authorization endpoint. The Wallet Instance signs its request using its attested private key. A standard OAuth2 client authentication method must be involved, since in this flow the pushed authorization endpoint is a protected endpoint. The client authentication can be based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the **client_assertion** parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify types of the credentials when requesting authorization for the PID issuance.
 
-The following is a non-normative example of the PAR.
+Below a non-normative example of the PAR.
 
-.. code-block::
+.. code-block:: http
 
     POST /as/par HTTP/1.1
-    Host: pid.it
+    Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     
     response_type=code
@@ -264,11 +265,11 @@ The JWS payload of the request object is represented below:
 
 
 .. note::
-    **Federation Check:** PID Provider needs to check that the Wallet Provider is part of the federation and in addition it MUST verify Wallet Instance Attestation validity by checking its signature and the validity of the claims inside it. 
+    **Federation Check:** PID Provider MUST check that the Wallet Provider is part of the federation and in addition it MUST verify Wallet Instance Attestation validity by checking its signature and the claims inside it. 
 
-**Step 7:** The PID Provider creates a new request URI representing this new authorization request and returns it to the Wallet Instance. 
+**Step 7:** The PID Provider creates a new request URI representing a new authorization request and returns it to the Wallet Instance. A non-normative example of the authorization request is represented below:
 
-.. code-block:: 
+.. code-block:: http
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache, no-store
@@ -283,7 +284,7 @@ The JWS payload of the request object is represented below:
 
 **Steps 8-9:** The Wallet Instance sends an authorization request to the PID Provider authorization endpoint.
 
-.. code-block:: 
+.. code-block:: http
 
     GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
         &request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
@@ -300,16 +301,15 @@ The JWS payload of the request object is represented below:
 
     The Wallet Instance redirect URI is a universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.
  
-.. code-block:: 
+.. code-block:: http
 
     HTTP/1.1 302 Found
     Location: eudiw://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Fpid-provider.example.org
- 
-    Host: pid-provider.example.org
+
 
 **Step 14:** The Wallet Instance sends a token request to the PID Provider's token endpoint using the authorization *code*, *code_verifier* and *DPoP proof*, and *private_key_jwt*.
 
-.. code-block::
+.. code-block:: http
 
     POST /token HTTP/1.1
     Host: pid-provider.example.org
@@ -333,7 +333,7 @@ The JWS payload of the request object is represented below:
 
 **Step 15:** The PID Provider validates the request and if it is successful, it issues an *access token* (bound to the DPoP key) and a fresh *c_nonce*.  
 
-.. code-block::
+.. code-block:: http
 
     HTTP/1.1 200 OK
     Content-Type: application/json
@@ -356,7 +356,7 @@ The JWS payload of the request object is represented below:
 
     **PID Credential Schema and Status registration:** The PID Provider MUST register all the issued PIDs for their later revocation, if needed. 
 
-.. code-block::
+.. code-block:: http
 
     POST /credential HTTP/1.1
     Host: pid-provider.example.org
@@ -410,7 +410,7 @@ Where the JWT looks like this:
 
 **Steps 20-22:** The PID Provider checks the *DPoP proof* and whether the *access token* is valid and suitable for the requested PID. It also checks the proof of possession for the key material the new credential shall be bound to. If all checks succeed, the PID Provider creates a new credential bound to the key material and sends it to the Wallet Instance. The Wallet Instance MUST perform the PID integrity and authenticity checks and if it is successful can proceed with secure storage of the PID credential. 
 
-.. code-block::
+.. code-block:: http
 
     HTTP/1.1 200 OK
     Content-Type: application/json

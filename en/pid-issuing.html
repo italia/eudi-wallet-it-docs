@@ -917,7 +917,7 @@
 <li><p><em>PID Provider</em>: It represents the issuer of eIDAS Person Identification Data (PID). It is composed of:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>OpenID VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  <a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a> to release PID credentials.</p></li>
+<li><p>OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  <a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a> to release PID credentials.</p></li>
 <li><p>National eID Relying Party (OpenID Connect or SAML2): It represents the component to authenticate the End-User with the national Digital Identity Providers.</p></li>
 </ul>
 </div></blockquote>
@@ -955,166 +955,167 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Federation Check:</strong> The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata. In the following a non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the PID Provider</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">entity</span><span class="o">-</span><span class="n">statement</span><span class="o">+</span><span class="n">jwt</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/entity-statement+jwt</span>
 
-<span class="p">{</span>
+{
 
-  <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;RS256&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;entity-statement+jwt&quot;</span>
+  &quot;alg&quot;: &quot;RS256&quot;,
+  &quot;kid&quot;: &quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
+  &quot;typ&quot;: &quot;entity-statement+jwt&quot;
 
-<span class="p">}</span>
-<span class="o">.</span><span class="p">{</span>
-  <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="s2">&quot;1649610249&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="s2">&quot;1649437449&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;jwks&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[{</span>
-      <span class="s2">&quot;kty&quot;</span><span class="p">:</span> <span class="s2">&quot;RSA&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;use&quot;</span><span class="p">:</span> <span class="s2">&quot;sig&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="s2">&quot;1Ta-sE …&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="s2">&quot;AQAB&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span>
-    <span class="p">}]</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;openid_credential_issuer&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;credential_issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;authorization_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/connect/authorize&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;token_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/connect/token&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;pushed_authorization_request_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/connect/par&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;dpop_signing_alg_values_supported&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span> <span class="s2">&quot;RS512&quot;</span><span class="p">,</span> <span class="s2">&quot;RSA-OAEP&quot;</span><span class="p">,</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span> <span class="s2">&quot;ES512&quot;</span><span class="p">],</span>
-      <span class="s2">&quot;credential_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/credential&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;credentials_supported&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;eu.eudiw.pid.it&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;jwk&quot;</span><span class="p">],</span>
-          <span class="s2">&quot;cryptographic_suites_supported&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span> <span class="s2">&quot;RS512&quot;</span><span class="p">,</span> <span class="s2">&quot;RSA-OAEP&quot;</span><span class="p">,</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span> <span class="s2">&quot;ES512&quot;</span><span class="p">],</span>
-          <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="p">[{</span>
-              <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PID Provider Italiano di esempio&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;logo&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider example.org/public/logo.svg&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;alt_text&quot;</span><span class="p">:</span> <span class="s2">&quot;logo di questo PID Provider&quot;</span>
-              <span class="p">},</span>
-              <span class="s2">&quot;background_color&quot;</span><span class="p">:</span> <span class="s2">&quot;#12107c&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;text_color&quot;</span><span class="p">:</span> <span class="s2">&quot;#FFFFFF&quot;</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-              <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Italian PID Provider&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;logo&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/public/logo.svg&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;alt_text&quot;</span><span class="p">:</span> <span class="s2">&quot;a logo of this PID Provider&quot;</span>
-              <span class="p">},</span>
-              <span class="s2">&quot;background_color&quot;</span><span class="p">:</span> <span class="s2">&quot;#12107c&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;text_color&quot;</span><span class="p">:</span> <span class="s2">&quot;#FFFFFF&quot;</span>
-            <span class="p">}</span>
-          <span class="p">],</span>
-          <span class="s2">&quot;credential_definition&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PIDCredential&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;credentialSubject&quot;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="s2">&quot;given_name&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Current First Name&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;it-IT&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="s2">&quot;family_name&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Current Family Name&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cognome&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;it-IT&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="s2">&quot;birthdate&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Date of Birth&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Data di Nascita&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;it-IT&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="s2">&quot;place_of_birth&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Place of Birth&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Luogo di Nascita&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;it-IT&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="s2">&quot;unique_id&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Unique Identifier&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Identificativo univoco&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;it-IT&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="s2">&quot;tax_id_number&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tax Id Number&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Codice Fiscale&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;it-IT&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">}</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
+}
+.
+{
+  &quot;exp&quot;: &quot;1649610249&quot;,
+  &quot;iat&quot;: &quot;1649437449&quot;,
+  &quot;iss&quot;: &quot;https://pid-provider.example.org&quot;,
+  &quot;sub&quot;: &quot;https://pid-provider.example.org&quot;,
+  &quot;jwks&quot;: {
+    &quot;keys&quot;: [{
+      &quot;kty&quot;: &quot;RSA&quot;,
+      &quot;use&quot;: &quot;sig&quot;,
+      &quot;n&quot;: &quot;1Ta-sE …&quot;,
+      &quot;e&quot;: &quot;AQAB&quot;,
+      &quot;kid&quot;: &quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;
+    }]
+  },
+  &quot;metadata&quot;: {
+    &quot;openid_credential_issuer&quot;: {
+      &quot;credential_issuer&quot;: &quot;https://pid-provider.example.org&quot;,
+      &quot;authorization_endpoint&quot;: &quot;https://pid-provider.example.org/connect/authorize&quot;,
+      &quot;token_endpoint&quot;: &quot;https://pid-provider.example.org/connect/token&quot;,
+      &quot;pushed_authorization_request_endpoint&quot;: &quot;https://pid-provider.example.org/connect/par&quot;,
+      &quot;dpop_signing_alg_values_supported&quot;: [&quot;RS256&quot;, &quot;RS512&quot;, &quot;ES256&quot;, &quot;ES512&quot;],
+      &quot;credential_endpoint&quot;: &quot;https://pid-provider.example.org/credential&quot;,
+      &quot;credentials_supported&quot;: {
+        &quot;eu.eudiw.pid.it&quot;: {
+          &quot;format&quot;: &quot;vc+sd-jwt&quot;,
+          &quot;cryptographic_binding_methods_supported&quot;: [&quot;jwk&quot;],
+          &quot;cryptographic_suites_supported&quot;: [&quot;RS256&quot;, &quot;RS512&quot;, &quot;ES256&quot;, &quot;ES512&quot;],
+          &quot;display&quot;: [{
+              &quot;name&quot;: &quot;PID Provider Italiano di esempio&quot;,
+              &quot;locale&quot;: &quot;it-IT&quot;,
+              &quot;logo&quot;: {
+                &quot;url&quot;: &quot;https://pid-provider example.org/public/logo.svg&quot;,
+                &quot;alt_text&quot;: &quot;logo di questo PID Provider&quot;
+              },
+              &quot;background_color&quot;: &quot;#12107c&quot;,
+              &quot;text_color&quot;: &quot;#FFFFFF&quot;
+            },
+            {
+              &quot;name&quot;: &quot;Example Italian PID Provider&quot;,
+              &quot;locale&quot;: &quot;en-US&quot;,
+              &quot;logo&quot;: {
+                &quot;url&quot;: &quot;https://pid-provider.example.org/public/logo.svg&quot;,
+                &quot;alt_text&quot;: &quot;The logo of this PID Provider&quot;
+              },
+              &quot;background_color&quot;: &quot;#12107c&quot;,
+              &quot;text_color&quot;: &quot;#FFFFFF&quot;
+            }
+          ],
+          &quot;credential_definition&quot;: {
+            &quot;type&quot;: [&quot;PIDCredential&quot;],
+            &quot;credentialSubject&quot;: {
+              &quot;given_name&quot;: {
+                &quot;mandatory&quot;: true,
+                &quot;display&quot;: [{
+                    &quot;name&quot;: &quot;Current First Name&quot;,
+                    &quot;locale&quot;: &quot;en-US&quot;
+                  },
+                  {
+                    &quot;name&quot;: &quot;Nome&quot;,
+                    &quot;locale&quot;: &quot;it-IT&quot;
+                  }
+                ]
+              },
+              &quot;family_name&quot;: {
+                &quot;mandatory&quot;: true,
+                &quot;display&quot;: [{
+                    &quot;name&quot;: &quot;Current Family Name&quot;,
+                    &quot;locale&quot;: &quot;en-US&quot;
+                  },
+                  {
+                    &quot;name&quot;: &quot;Cognome&quot;,
+                    &quot;locale&quot;: &quot;it-IT&quot;
+                  }
+                ]
+              },
+              &quot;birthdate&quot;: {
+                &quot;mandatory&quot;: true,
+                &quot;display&quot;: [{
+                    &quot;name&quot;: &quot;Date of Birth&quot;,
+                    &quot;locale&quot;: &quot;en-US&quot;
+                  },
+                  {
+                    &quot;name&quot;: &quot;Data di Nascita&quot;,
+                    &quot;locale&quot;: &quot;it-IT&quot;
+                  }
+                ]
+              },
+              &quot;place_of_birth&quot;: {
+                &quot;mandatory&quot;: true,
+                &quot;display&quot;: [{
+                    &quot;name&quot;: &quot;Place of Birth&quot;,
+                    &quot;locale&quot;: &quot;en-US&quot;
+                  },
+                  {
+                    &quot;name&quot;: &quot;Luogo di Nascita&quot;,
+                    &quot;locale&quot;: &quot;it-IT&quot;
+                  }
+                ]
+              },
+              &quot;unique_id&quot;: {
+                &quot;mandatory&quot;: true,
+                &quot;display&quot;: [{
+                    &quot;name&quot;: &quot;Unique Identifier&quot;,
+                    &quot;locale&quot;: &quot;en-US&quot;
+                  },
+                  {
+                    &quot;name&quot;: &quot;Identificativo univoco&quot;,
+                    &quot;locale&quot;: &quot;it-IT&quot;
+                  }
+                ]
+              },
+              &quot;tax_id_number&quot;: {
+                &quot;mandatory&quot;: true,
+                &quot;display&quot;: [{
+                    &quot;name&quot;: &quot;Tax Id Number&quot;,
+                    &quot;locale&quot;: &quot;en-US&quot;
+                  },
+                  {
+                    &quot;name&quot;: &quot;Codice Fiscale&quot;,
+                    &quot;locale&quot;: &quot;it-IT&quot;
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
 
-    <span class="s2">&quot;federation_entity&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;organization_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pid Provider Organization Example&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;homepage_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;policy_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/privacy_policy&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;tos_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/info_policy&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;logo_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/logo.svg&quot;</span>
-    <span class="p">},</span>
+    &quot;federation_entity&quot;: {
+      &quot;organization_name&quot;: &quot;Pid Provider Organization Example&quot;,
+      &quot;homepage_uri&quot;: &quot;https://pid-provider.example.org&quot;,
+      &quot;policy_uri&quot;: &quot;https://pid-provider.example.org/privacy_policy&quot;,
+      &quot;tos_uri&quot;: &quot;https://pid-provider.example.org/info_policy&quot;,
+      &quot;logo_uri&quot;: &quot;https://pid-provider.example.org/logo.svg&quot;
+    },
 
-    <span class="s2">&quot;openid_relying_party&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="o">&lt;</span><span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">metadata</span> <span class="n">of</span> <span class="n">the</span> <span class="n">PID</span> <span class="n">Provider</span> <span class="n">acting</span> <span class="k">as</span> <span class="n">a</span> <span class="n">Relying</span> <span class="n">Party</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">national</span> <span class="n">digital</span> <span class="n">identity</span> <span class="n">framework</span> <span class="p">(</span><span class="n">CIE</span><span class="o">/</span><span class="n">SPID</span><span class="p">)</span><span class="o">&gt;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+    &quot;openid_relying_party&quot;: {
+      &lt;This is the metadata of the PID Provider acting as a Relying Party in the national digital identity framework (CIE/SPID). See spid-cie-oidc-docs for details.&gt;
+    }
+  }
+}
 </pre></div>
 </div>
 </div>
-<p><strong>Steps 5-6:</strong> The Wallet Instance creates a fresh PKCE code verifier and sends this along in a <em>pushed authorization request</em> using the request parameter (see <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> Section 3) to the authorization endpoint of the PID Provider. The Wallet Instance signs this request using its attested private key. A standard OAuth2 client authentication method must be involved, because the pushed authorization endpoint is a protected endpoint, in this flow. The client authentication can be based on the model defined in [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>] using the Wallet Instance Attestation JWS inside the <strong>client_assertion</strong> parameter. The authorization_details [RAR <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] parameter is extended to allow Wallet Instance to specify types of the credentials when requesting authorization for the PID issuance.</p>
-<p>The following is a non-normative example of the PAR.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /as/par HTTP/1.1
-Host: pid.it
-Content-Type: application/x-www-form-urlencoded
+<p><strong>Steps 5-6:</strong> The Wallet Instance creates a fresh PKCE code verifier that sends in a <em>pushed authorization request</em>, using the request parameter (see <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> Section 3) to the PID Provider authorization endpoint. The Wallet Instance signs its request using its attested private key. A standard OAuth2 client authentication method must be involved, since in this flow the pushed authorization endpoint is a protected endpoint. The client authentication can be based on the model defined in [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>] using the Wallet Instance Attestation JWS inside the <strong>client_assertion</strong> parameter. The authorization_details [RAR <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] parameter is extended to allow Wallet Instance to specify types of the credentials when requesting authorization for the PID issuance.</p>
+<p>Below a non-normative example of the PAR.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/as/par</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">pid-provider.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 
 response_type=code
 &amp;client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
@@ -1158,21 +1159,21 @@ response_type=code
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Federation Check:</strong> PID Provider needs to check that the Wallet Provider is part of the federation and in addition it MUST verify Wallet Instance Attestation validity by checking its signature and the validity of the claims inside it.</p>
+<p><strong>Federation Check:</strong> PID Provider MUST check that the Wallet Provider is part of the federation and in addition it MUST verify Wallet Instance Attestation validity by checking its signature and the claims inside it.</p>
 </div>
-<p><strong>Step 7:</strong> The PID Provider creates a new request URI representing this new authorization request and returns it to the Wallet Instance.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
-<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="p">,</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<p><strong>Step 7:</strong> The PID Provider creates a new request URI representing a new authorization request and returns it to the Wallet Instance. A non-normative example of the authorization request is represented below:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-cache, no-store</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-<span class="p">{</span>
-    <span class="s2">&quot;request_uri&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:request_uri:bwc4JK-ESC0w8acc191e-Y1LTC2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">60</span>
-<span class="p">}</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;request_uri&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:request_uri:bwc4JK-ESC0w8acc191e-Y1LTC2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p><strong>Steps 8-9:</strong> The Wallet Instance sends an authorization request to the PID Provider authorization endpoint.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
     &amp;request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
 Host: pid-provider.example.org
 </pre></div>
@@ -1186,23 +1187,21 @@ Host: pid-provider.example.org
 <p class="admonition-title">Note</p>
 <p>The Wallet Instance redirect URI is a universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>HTTP/1.1 302 Found
-Location: eudiw://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&amp;iss=https%3A%2F%2Fpid-provider.example.org
-
-Host: pid-provider.example.org
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
+<span class="na">Location</span><span class="o">:</span> <span class="l">eudiw://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&amp;iss=https%3A%2F%2Fpid-provider.example.org</span>
 </pre></div>
 </div>
 <p><strong>Step 14:</strong> The Wallet Instance sends a token request to the PID Provider's token endpoint using the authorization <em>code</em>, <em>code_verifier</em> and <em>DPoP proof</em>, and <em>private_key_jwt</em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /token HTTP/1.1
-Host: pid-provider.example.org
-Content-Type: application/x-www-form-urlencoded
-DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
-    VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
-    nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R1JE
-    QSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIj
-    oiUE9TVCIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwia
-    WF0IjoxNTYyMjYyNjE2fQ.2-GxA6T8lP4vfrg8v-FdWP0A0zdrj8igiMLvqRMUvwnQg
-    4PtFLbdLXiOSsX0x7NVY-FNyJK70nfbV37xRZT3Lg
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">pid-provider.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>
+    <span class="l">VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR</span>
+    <span class="l">nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R1JE</span>
+    <span class="l">QSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIj</span>
+    <span class="l">oiUE9TVCIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwia</span>
+    <span class="l">WF0IjoxNTYyMjYyNjE2fQ.2-GxA6T8lP4vfrg8v-FdWP0A0zdrj8igiMLvqRMUvwnQg</span>
+    <span class="l">4PtFLbdLXiOSsX0x7NVY-FNyJK70nfbV37xRZT3Lg</span>
 
 client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 &amp;grant_type=authorization_code
@@ -1214,17 +1213,17 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 </pre></div>
 </div>
 <p><strong>Step 15:</strong> The PID Provider validates the request and if it is successful, it issues an <em>access token</em> (bound to the DPoP key) and a fresh <em>c_nonce</em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
 
-<span class="p">{</span>
-<span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU&quot;</span><span class="p">,</span>
-<span class="s2">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;DPoP&quot;</span><span class="p">,</span>
-<span class="s2">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">2677</span><span class="p">,</span>
-<span class="s2">&quot;c_nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;tZign[...]snFbp&quot;</span><span class="p">,</span>
-<span class="s2">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span> <span class="mi">86400</span>
-<span class="p">}</span>
+<span class="p">{</span><span class="w"></span>
+<span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DPoP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2677</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tZign[...]snFbp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p><strong>Steps 16-18:</strong> The Wallet Instance creates a new key pair to which the new credential shall be bound. Then, it creates a proof of possession with the new key and the <em>c_nonce</em> obtained in <strong>Step 15</strong> and it creates a DPoP proof for the request to the PID credential issuance endpoint.</p>
@@ -1233,22 +1232,22 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <p class="admonition-title">Note</p>
 <p><strong>PID Credential Schema and Status registration:</strong> The PID Provider MUST register all the issued PIDs for their later revocation, if needed.</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">credential</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="n">Host</span><span class="p">:</span> <span class="n">pid</span><span class="o">-</span><span class="n">provider</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">urlencoded</span>
-<span class="n">Authorization</span><span class="p">:</span> <span class="n">DPoP</span> <span class="n">Kz</span><span class="o">~</span><span class="mi">8</span><span class="n">mXK1EalYznwH</span><span class="o">-</span><span class="n">LC</span><span class="o">-</span><span class="mi">1</span><span class="n">fBAo</span><span class="mf">.4</span><span class="n">Ljp</span><span class="o">~</span><span class="n">zsPE_NeO</span><span class="o">.</span><span class="n">gxU</span>
-<span class="n">DPoP</span><span class="p">:</span> <span class="n">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>
-    <span class="n">VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR</span>
-    <span class="n">nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R</span>
-    <span class="mi">1</span><span class="n">JEQSIsImNydiI6IlAtMjU2In19</span><span class="o">.</span><span class="n">eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj</span>
-    <span class="n">oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z</span>
-    <span class="n">WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF</span>
-    <span class="n">c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9</span><span class="mf">.2</span><span class="n">oW9RP35yRqzhrtNP86L</span><span class="o">-</span><span class="n">Ey71E</span>
-    <span class="n">OptxRimPPToA1plemAgR6pxHF8y6</span><span class="o">-</span><span class="n">yqyVnmcw6Fy1dqd</span><span class="o">-</span><span class="n">jfxSYoMxhAJpLjA</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/credential</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">pid-provider.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU</span>
+<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>
+    <span class="l">VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR</span>
+    <span class="l">nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R</span>
+    <span class="l">1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj</span>
+    <span class="l">oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z</span>
+    <span class="l">WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF</span>
+    <span class="l">c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E</span>
+    <span class="l">OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA</span>
 
-<span class="n">credential_definition</span><span class="o">=%</span><span class="mi">7</span><span class="n">B</span><span class="o">%</span><span class="mi">22</span><span class="nb">type</span><span class="o">%</span><span class="mi">22</span><span class="p">:</span><span class="o">%</span><span class="mi">5</span><span class="n">B</span><span class="o">%</span><span class="mi">22</span><span class="n">eu</span><span class="o">.</span><span class="n">eudiw</span><span class="o">.</span><span class="n">pid</span><span class="o">.</span><span class="n">it</span><span class="o">%</span><span class="mi">22</span><span class="o">%</span><span class="mi">5</span><span class="n">D</span><span class="o">%</span><span class="mi">7</span><span class="n">D</span>
-<span class="o">&amp;</span><span class="nb">format</span><span class="o">=</span><span class="n">vc</span><span class="o">+</span><span class="n">sd</span><span class="o">-</span><span class="n">jwt</span>
-<span class="o">&amp;</span><span class="n">proof</span><span class="o">=%</span><span class="mi">7</span><span class="n">B</span><span class="o">%</span><span class="mi">22</span><span class="n">proof_type</span><span class="o">%</span><span class="mi">22</span><span class="p">:</span><span class="o">%</span><span class="mf">22.</span><span class="o">..-</span><span class="n">ace0</span><span class="o">-</span><span class="mi">9</span><span class="n">c5210e16c32</span><span class="o">%</span><span class="mi">22</span><span class="o">%</span><span class="mi">7</span><span class="n">D</span>
+credential_definition=%7B%22type%22:%5B%22eu.eudiw.pid.it%22%5D%7D
+&amp;format=vc+sd-jwt
+&amp;proof=%7B%22proof_type%22:%22...-ace0-9c5210e16c32%22%7D
 </pre></div>
 </div>
 <p>A non-normative example of proof parameter is given below:</p>
@@ -1275,17 +1274,17 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 </pre></div>
 </div>
 <p><strong>Steps 20-22:</strong> The PID Provider checks the <em>DPoP proof</em> and whether the <em>access token</em> is valid and suitable for the requested PID. It also checks the proof of possession for the key material the new credential shall be bound to. If all checks succeed, the PID Provider creates a new credential bound to the key material and sends it to the Wallet Instance. The Wallet Instance MUST perform the PID integrity and authenticity checks and if it is successful can proceed with secure storage of the PID credential.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
-<span class="n">Pragma</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">cache</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+<span class="na">Pragma</span><span class="o">:</span> <span class="l">no-cache</span>
 
-<span class="p">{</span>
-<span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;vc+sd-jwt&quot;</span>
-<span class="s2">&quot;credential&quot;</span> <span class="p">:</span> <span class="s2">&quot;LUpixVCWJk0eOt4CXQe1NXK[...]WZwmhmn9OQp6YxX0a2L&quot;</span><span class="p">,</span>
-<span class="s2">&quot;c_nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;fGFF7[...]UkhLa&quot;</span><span class="p">,</span>
-<span class="s2">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span> <span class="mi">86400</span>
-<span class="p">}</span>
+<span class="p">{</span><span class="w"></span>
+<span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;vc+sd-jwt&quot;</span><span class="w"></span>
+<span class="nt">&quot;credential&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LUpixVCWJk0eOt4CXQe1NXK[...]WZwmhmn9OQp6YxX0a2L&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fGFF7[...]UkhLa&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
