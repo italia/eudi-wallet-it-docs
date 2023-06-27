@@ -514,8 +514,8 @@ Payload `eudi_wallet_provider`
 ||                                   || with low, medium and high         |
 ||                                   || security. An attested security    |
 ||                                   || context is defined according to   |
-||                                   || the proof that the wallet         |
-||                                   || instance is able to send to the   |
+||                                   || the proof that the Wallet         |
+||                                   || Instance is able to send to the   |
 ||                                   || Wallet Provider.                  |
 ||                                   || ⚠️ This parameter is not standard |
 ||                                   || and is still under discussion.    |
