@@ -109,7 +109,7 @@ Static view of the components
    :alt: the image shows how the Wallet Provider's backend and the
          Wallet Instances are contained within the wallet
          solution which is managed by the Wallet Provider
-   :target: https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000
+   :target: https://www.plantuml.com/plantuml/uml/XP4nJuSm44VtVehBdxbnPp2iRYx6qTHIjR7SaVQ0-EqzaICDgN4ZBxpqzTUXiCkyJCaupvJXzbH2le4hiCW7A7rsAGM6ETCQn-E7RMSloi0OJzDC691FeL1QE1BMWZBeraW2Mbv4wK8VQayPT5yX9TgCQPclpdy676lnGF0ZN93DyVs3xVsrhOU70hCi0_JshwHXFJp-Rg4dIuECo96moD7xeBQbUKBEbE0EPEwuEWx6N2zj_uXqU8wbhVMhD3tjbAX1BYIl_mq0
 
 Dynamic view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,7 +122,7 @@ how it is issued by the Wallet Provider's backend.
    :name: sequence diagram for Wallet Instance Attestation request
    :alt: The figure shows the sequence diagram for issuing a Wallet Instance Attestation.
          The steps will be described below.
-   :target: https://www.plantuml.com/plantuml/uml/XPB1RjH038RlynIc9v1OSU-XAk9GWSG50RtqucH-HLOJJ_1u6csVdcbsTqG85LVxy-VypjncP_CoZU7DR3nCJ8xqJ6u5WOidBLC72s6kbFGoipfT_SYmA-9CPLk_vt64qsUjKksn8elya-cuVuJ64zA5KEXmKzdhEYmkFCepQ3cXSjOzQ38o_2h8_c4sP5HVRuZGbuaS5ZdSBDqrtS4lixEb9uamck0SsJaitQ5ITT7NSuNwfCwYeiCVDlBZZFoU7d5STufXWdgjGEESHFsyhvf-yYZLXDrIjvATHibUsKl0EoYiqgjwPh4SGbDzChoq_ZeaVSmPvfAKlftoqvVxxu5xbwTrRxV9per--r_HktgGTNANGYup0xI8Gf7p7iuoA7injDPmoSSQr_PEsBwl_OpN0--F_BejOdkHwYvDtNXf3om-g87ZaJnHwfn5IR5idjGjD9Pf_0q0
+   :target: https://www.plantuml.com/plantuml/uml/XPB1RjH038RlynIc9v1OSU-XAk9GWOI44D1BBqxcLsIHU8B7qsZxz4pJx8WbhBZQdp_dT-OsEvkNQGolPkDXOdAa9t8h25myQPawM0XpfQINcTNfwdk6NH5dAkVrUnv7E7tKAjKUAxB8FvalbXubRfgb2w7GuQR2rtLQN7YK9z3omihcUz1aPFXLaFtTRCYemjuGeSyJEInok5cwQxg3dsRdRGzDS8xi79RkKAcwwFDMeJwfiwZey8UD_3WZlwMVEAuxnJ3LJgr0uvn4VTjNJJzub6h2RgbRoKwZPA_iAU0T55RfLJspM0wXgJuOdbj_NPBUvmnpIKfVN_BJf_jlWNkNntLlTvQT6_twlw8tzI3hv2w5d6O6Q1658kSzd6LGzc9ehU6KZpMkxPsmVL_x6PS3xuzysHPnVf7gBatTU6aFB3weWUEHF57gd4L9iPmzgLjeBDFu6m00
 
 - **Message 1**: The end User initializes the Wallet Instance.
   In particular, this process happens when the mobile application
