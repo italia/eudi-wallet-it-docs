@@ -66,7 +66,7 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **3**
     - **Relying Party**
     - **-**
-    - Inserts the reference URI of the *request_uri* into a QR Code.
+    - The Relying Party inserts the reference URI of the *request_uri* into a QR Code.
   * - **4**
     - **Relying Party**
     - **Wallet Instance**
@@ -78,7 +78,7 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **7**
     - **Wallet Instance**
     - **Relying Party**
-    - The Relying Party requests the content of the Authorization Request by invoking the Request URI, passing as DPoP HTTP Header the Wallet Instance Attestation aside a DPoP proof HTTP Header.
+    - The Wallet Instance requests the content of the Authorization Request by invoking the Request URI, passing as DPoP HTTP Header the Wallet Instance Attestation aside a DPoP proof HTTP Header.
   * - **8**
     - **Relying Party**
     - **-**
