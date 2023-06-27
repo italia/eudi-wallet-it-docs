@@ -342,7 +342,7 @@ Payload
 +---------------------------+-------------------------------------------+
 || vp_formats_supported     || JSON object containing                   |
 ||                          || ``jwt_vp_json`` and ``jwt_vc_json``      |
-||                          || supported algoithms array.               |
+||                          || supported algorithms array.              |
 +---------------------------+-------------------------------------------+
 || request_object_signing   || JSON array containing a list of the      |
 || _alg_values_supported    || JWS signing algorithms (alg values)      |
