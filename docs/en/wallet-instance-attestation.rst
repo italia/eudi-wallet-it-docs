@@ -372,7 +372,7 @@ Below is an example of Wallet Instance Attestation:
       "eyJhbGciOiJFUz...H9gw",
     ],
     "typ": "va+jwt",
-    "x5c": ["MIIBjDCCATGgAwIBAgIUZiFoj7bvmhTQvDQtCOY19fMVq/gwCgYIKoZIzj0EAwIwGzEZMBcGA1UEAwwQd2FsbGV0Lml0YWxpYS5pdDAeFw0yMzA2MTMxNDI1NDRaFw0yNjAzMDkxNDI1NDRaMBsxGTAXBgNVBAMMEHdhbGxldC5pdGFsaWEuaXQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASqsmuPcB/8Hnuxs4hGtwEztuvvA5zzKePuUcU9N599SdR9HFg8hoL1PMPpDylP8cnDglDU9qNG8LJSELZz1Oojo1MwUTAdBgNVHQ4EFgQUj5fkXeflngzbABlwT6ra1bOQ11cwHwYDVR0jBBgwFoAUj5fkXeflngzbABlwT6ra1bOQ11cwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA+avjz/CVnxq+50iAxKLjyRvK/W9XgCp6cKDXs7Y4tugCIQDMWGYL0adwYKhKitYsk8HRIKFDGOZmqZFI35XFehgKQA=="]
+    "x5c": ["MIIBjDCC ... XFehgKQA=="]
   }
   .
   {
