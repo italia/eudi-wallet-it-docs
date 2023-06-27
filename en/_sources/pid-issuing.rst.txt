@@ -8,8 +8,8 @@ PID Issuing
 The relevant entities and interfaces involved in the issuing flows are:
 
     - *Wallet Provider*: It represents an organization (public or private) that is responsible for the release of an eIDAS-compliant EUDI Wallet Solution. It also issues thes Wallet Instance Attestation to its Wallet Instances by means of an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a Trust Framework in compliance to the security and privacy requirements.
-    - *Wallet Solution*: It represents the entire product and service owned by a Wallet Provider, offered to all Users of that solution. A Wallet Solution can be certified as being EUDI-compliant by a Conformity Assessment Body (CAB).
-    - *Wallet Instance*: instance of a Wallet Solution, installed on User's device. It provides interfaces for User interaction with the Wallet Provider, PID and (Q)EAA Providers and Relying Parties.
+    - *Wallet Solution*: It represents the entire product and service owned by a Wallet Provider, offered to all Users of that solution. A Wallet Solution must be certified as being EUDI-compliant by a Conformity Assessment Body (CAB).
+    - *Wallet Instance*: instance of a Wallet Solution, installed on User's device. It provides interfaces for User interaction with the Wallet Provider, Relying Parties, PID and (Q)EAA Providers.
     - *PID Provider*: It represents the issuer of eIDAS Person Identification Data (PID). It is composed of:
 
         - OpenID VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
