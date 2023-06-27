@@ -1189,9 +1189,24 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </tbody>
 </table>
 <p>Therein a non-normative example of the DPoP decoded content:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>TBD.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  &quot;typ&quot;: &quot;dpop+jwt&quot;,
+  &quot;alg&quot;: &quot;ES256&quot;,
+  &quot;jwk&quot;: {
+    &quot;kty&quot;: &quot;EC&quot;,
+    &quot;x&quot;: &quot;l8tFrhx-34tV3hRICRDY9zCkDlpBhF42UQUfWVAWBFs&quot;,
+    &quot;y&quot;: &quot;9VE4jf_Ok_o64zbTTlcuNJajHmt6v9TDVrU0CdvGRDA&quot;,
+    &quot;crv&quot;: &quot;P-256&quot;
+  }
+}
+.
+{
+  &quot;jti&quot;: &quot;f47c96a1-f928-4768-aa30-ef32dc78aa69&quot;,
+  &quot;htm&quot;: &quot;GET&quot;,
+  &quot;htu&quot;: &quot;https://verifier.example.org/callback&quot;,
+  &quot;iat&quot;: 1562262616
+}
+</pre></div>
 </div>
 </section>
 </section>
@@ -1200,6 +1215,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <p>The Relying Party issues a signed request object, where a non-normative example is shown below:</p>
 <section id="header">
 <h3>Header<a class="headerlink" href="#header" title="Permalink to this heading">¶</a></h3>
+<p>The Request URI decoded header is described herein:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JWT&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1213,6 +1229,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+<p>JWS header parameters are described herein:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1244,6 +1261,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </section>
 <section id="payload">
 <h3>Payload<a class="headerlink" href="#payload" title="Permalink to this heading">¶</a></h3>
+<p>The Request URI decoded payload is described herein:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:uniqueid+given_name+family_name&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;client_id_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;entity_id&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1259,6 +1277,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+<p>JWS header parameters are described herein:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1337,7 +1356,8 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>ℹ️ Note:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional and may change in future release of this documentation.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>: JSON object according to <a class="reference external" href="PresentationExch">Presentation Exchange</a>. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code> or <code class="docutils literal notranslate"><span class="pre">scope</span></code> are present.</p></li>
@@ -1345,6 +1365,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <li><p><code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code>: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. This parameter MUST not be present since the <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is taken from the <em>trust chain</em>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>: the redirect URI to which the Wallet Instance must redirect the Authorization Response. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is present.</p></li>
 </ul>
+</div>
 </section>
 </section>
 <section id="authorization-response-details">
@@ -1352,8 +1373,8 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <p>After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3, using the Relying Party public key.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Why the response is encrypted?</strong>
-The response sent from the Wallet Instance to the Relying Party is encrypted
+<p><strong>Why the response is encrypted?</strong></p>
+<p>The response sent from the Wallet Instance to the Relying Party is encrypted
 to prevent a technique called <a class="reference external" href="https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/">SSL split attack</a>, that could be enabled by malicious app installed locally by Users,that intecepts the network traffic, or be present by-design in network environments where a next-generation firewalls or other security devices may reduce the privacy of the Users.</p>
 </div>
 <p>Below a non-normative example of the request:</p>
@@ -1622,8 +1643,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
             // JARM related
             &quot;authorization_signed_response_alg&quot;: [[
                 &quot;RS256&quot;,
-                &quot;ES256&quot;,
-                &quot;P-256&quot;
+                &quot;ES256&quot;
             ],
             &quot;authorization_encrypted_response_alg&quot;: [
                 &quot;RSA-OAEP&quot;,
@@ -1643,8 +1663,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
             &quot;require_auth_time&quot;: true,
             &quot;id_token_signed_response_alg&quot;: [
                 &quot;RS256&quot;,
-                &quot;ES256&quot;,
-                &quot;P-256&quot;
+                &quot;ES256&quot;
             ],
             &quot;id_token_encrypted_response_alg&quot;: [
                 &quot;RSA-OAEP&quot;,

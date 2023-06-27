@@ -257,9 +257,25 @@ The payload of a **DPoP proof** MUST contain at least the following claims:
 
 Therein a non-normative example of the DPoP decoded content:
 
-.. note::
+.. code-block:: text
 
-    TBD.
+    {
+      "typ": "dpop+jwt",
+      "alg": "ES256",
+      "jwk": {
+        "kty": "EC",
+        "x": "l8tFrhx-34tV3hRICRDY9zCkDlpBhF42UQUfWVAWBFs",
+        "y": "9VE4jf_Ok_o64zbTTlcuNJajHmt6v9TDVrU0CdvGRDA",
+        "crv": "P-256"
+      }
+    }
+    .
+    {
+      "jti": "f47c96a1-f928-4768-aa30-ef32dc78aa69",
+      "htm": "GET",
+      "htu": "https://verifier.example.org/callback",
+      "iat": 1562262616
+    }
 
 
 Request URI response
@@ -269,6 +285,8 @@ The Relying Party issues a signed request object, where a non-normative example 
 
 Header
 ^^^^^^
+
+The Request URI decoded header is described herein:
 
 .. code-block:: JSON
 
@@ -283,6 +301,8 @@ Header
       "MIICajCCAdOgAwIBAgIC...sf2"
     ]
   }
+
+JWS header parameters are described herein:
 
 .. list-table::
   :widths: 25 50
@@ -305,6 +325,8 @@ Header
 Payload
 ^^^^^^^
 
+The Request URI decoded payload is described herein:
+
 .. code-block:: JSON
 
   {
@@ -321,6 +343,7 @@ Payload
     "exp": 1672422065
   }
 
+JWS header parameters are described herein:
 
 .. list-table::
   :widths: 25 50
@@ -389,14 +412,14 @@ Here a non-normative example of ``presentation_definition``:
 
   
 
-ℹ️ Note:
+.. note::
 
-The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional and may change in future release of this documentation.
+  The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional and may change in future release of this documentation.
 
-- ``presentation_definition``: JSON object according to `Presentation Exchange <PresentationExch>`_. This parameter MUST not be present when ``presentation_definition_uri`` or ``scope`` are present.
-- ``presentation_definition_uri``: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when ``presentation_definition parameter`` or a ``scope`` value representing a Presentation Definition is not present.
-- ``client_metadata_uri``: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. This parameter MUST not be present since the ``client_metadata`` is taken from the *trust chain*.
-- ``redirect_uri``: the redirect URI to which the Wallet Instance must redirect the Authorization Response. This parameter MUST not be present when ``response_uri`` is present.
+  - ``presentation_definition``: JSON object according to `Presentation Exchange <PresentationExch>`_. This parameter MUST not be present when ``presentation_definition_uri`` or ``scope`` are present.
+  - ``presentation_definition_uri``: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when ``presentation_definition parameter`` or a ``scope`` value representing a Presentation Definition is not present.
+  - ``client_metadata_uri``: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. This parameter MUST not be present since the ``client_metadata`` is taken from the *trust chain*.
+  - ``redirect_uri``: the redirect URI to which the Wallet Instance must redirect the Authorization Response. This parameter MUST not be present when ``response_uri`` is present.
 
 
 Authorization Response Details
@@ -405,6 +428,7 @@ After authenticating the User and getting their consent for the presentation of 
 
 .. note::
     **Why the response is encrypted?**
+
     The response sent from the Wallet Instance to the Relying Party is encrypted
     to prevent a technique called `SSL split attack <https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/>`_, that could be enabled by malicious app installed locally by Users,that intecepts the network traffic, or be present by-design in network environments where a next-generation firewalls or other security devices may reduce the privacy of the Users.
 
@@ -680,8 +704,7 @@ Below is a non-normative response example:
                 // JARM related
                 "authorization_signed_response_alg": [[
                     "RS256",
-                    "ES256",
-                    "P-256"
+                    "ES256"
                 ],
                 "authorization_encrypted_response_alg": [
                     "RSA-OAEP",
@@ -701,8 +724,7 @@ Below is a non-normative response example:
                 "require_auth_time": true,
                 "id_token_signed_response_alg": [
                     "RS256",
-                    "ES256",
-                    "P-256"
+                    "ES256"
                 ],
                 "id_token_encrypted_response_alg": [
                     "RSA-OAEP",
