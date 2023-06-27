@@ -738,7 +738,7 @@ Below is a non-normative response example:
             }
         },
         "authority_hints": [
-            "https://registry.eudi-wallet.example.it/"
+            "https://registry.eudi-wallet.example.it"
         ]
       }
     }
