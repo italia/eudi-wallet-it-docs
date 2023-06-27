@@ -149,7 +149,7 @@ how it is issued by the Wallet Provider.
 
 Detail design
 ---------------
-We will go into the detail design below:
+We will go into the detail design below.
 
 Format of the Wallet Instance Attestation Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
