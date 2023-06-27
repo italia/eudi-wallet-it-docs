@@ -14,7 +14,7 @@ This section describes how a Relying Party may ask to a Wallet Instance the pres
 - `Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP) <DPOP>`_.
 
 
-In this section the following flows are descripted:
+In this section the following flows are described:
 
 - **Same Device Flow**, where the Verifier and the Wallet Instance acts in the same device.
 - **Remote Cross Device Flow**, where the Verifier and the Wallet Instance acts in different devices and the Verifier is a remote Relying Party.
