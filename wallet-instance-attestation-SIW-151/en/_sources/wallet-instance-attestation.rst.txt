@@ -236,7 +236,7 @@ request where the decoded JWS headers and payload are separated by a comma:
   }
 
 Whose corresponding JWS is verifiable through the public key
-of the Wallet Instance present..
+of the Wallet Instance present.
 
 Herein a JWS representation of the Wallet Instance Attestation request object:
 
@@ -294,7 +294,7 @@ Payload
 +---------------------------+-------------------------------------------+
 || iss                      || The public url of the Wallet             |
 ||                          || Instance attestation issuer. See         |
-||                          || the example below in this section        |
+||                          || the example below in this section.       |
 +---------------------------+-------------------------------------------+
 || sub                      || The public url of the issuer             |
 ||                          || concatenated with the thumbprint         |
@@ -331,7 +331,7 @@ Payload
 || cnf                      || This parameter contains the ``jwk``      |
 ||                          || parameter                                |
 ||                          || with the public key of the Wallet        |
-||                          || ecessary for the holder binding.         |
+||                          || necessary for the holder binding.        |
 +---------------------------+-------------------------------------------+
 || authorization_endpoint   || URL of the OP's OAuth 2.0                |
 ||                          || Authorization Endpoint.                  |
@@ -342,11 +342,11 @@ Payload
 +---------------------------+-------------------------------------------+
 || vp_formats_supported     || JSON object containing                   |
 ||                          || ``jwt_vp_json`` and ``jwt_vc_json``      |
-||                          || supported algoithms array                |
+||                          || supported algoithms array.               |
 +---------------------------+-------------------------------------------+
 || request_object_signing   || JSON array containing a list of the      |
 || _alg_values_supported    || JWS signing algorithms (alg values)      |
-||                          || supported by the OP for Request Objects  |
+||                          || supported by the OP for Request Objects. |
 +---------------------------+-------------------------------------------+
 || presentation_definition  || Boolean value specifying whether the OP  |
 || _uri_supported           || supports the transfer of                 |
@@ -523,15 +523,15 @@ Payload `eudi_wallet_provider`
 || grant_types_supported             || The type of grants supported by   |
 ||                                   || the endpoint token. Therefore,    |
 ||                                   || for the Wallet Provider the token |
-||                                   || is equivalent only to the wallet  |
-||                                   || instance attestation, therefore   |
+||                                   || is equivalent only to the Wallet  |
+||                                   || Instance attestation, therefore   |
 ||                                   || this attribute will contain an    |
 ||                                   || array with only one element:      |
 ||                                   || client-assertion-type:            |
 ||                                   || ``jwt-key-attestation``.          |
 +------------------------------------+------------------------------------+
 || token_endpoint_auth_methods_suppo || Supported authentication method   |
-|| rted                              || for the endpoint token. In our    |
+|| rted                              || for the endpoint token.           |
 ||                                   ||                                   |
 +------------------------------------+------------------------------------+
 || token_endpoint_auth_signing_alg_v || List of supported signature       |
@@ -636,7 +636,7 @@ Federation standard.
 Metadata
 ^^^^^^^^
 A **GET /.well-known/openid-federation endpoint** for retrieving the Wallet
-Provider Entity Configuration
+Provider Entity Configuration.
 
 Wallet Instance Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -647,6 +647,6 @@ A second **POST /token** endpoint that takes two parameters as input:
 ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation``
 
 ``assertion``` which contains the signed JWT of the Wallet Instance Attestation
-Request
+Request.
 
-The response will then contain the Wallet Instance Attestation
+The response will then contain the Wallet Instance Attestation.

@@ -1191,7 +1191,7 @@ request where the decoded JWS headers and payload are separated by a comma:</p>
 </pre></div>
 </div>
 <p>Whose corresponding JWS is verifiable through the public key
-of the Wallet Instance present..</p>
+of the Wallet Instance present.</p>
 <p>Herein a JWS representation of the Wallet Instance Attestation request object:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0</span><span class="p">.</span><span class="nx">eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbnN0YW5jZS92YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIiwic3ViIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvIiwianRpIjoiMzhjZTczMDUtMWEyYi00MTc1LWJkOGUtZmRjNTY0ZDZkYzVlIiwidHlwZSI6IldhbGxldEluc3RhbmNlQXR0ZXN0YXRpb25SZXF1ZXN0IiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImlhdCI6MTY4Nzc5MjE3NywiZXhwIjoxNjg3Nzk5Mzc3fQ</span><span class="p">.</span><span class="nx">t3HL_nrqe_3L8C1XrtgEFdb8M2q1_Nmwa</span><span class="o">-</span><span class="nx">Ij6vL2digbu34JF2N5GB3dc_XIRPjZbG7BeQJOW6OZ1sSiWJWgjA</span><span class="w"></span>
 </pre></div>
@@ -1257,7 +1257,7 @@ issuer (Wallet Provider).</p></td>
 <td><div class="line-block">
 <div class="line">The public url of the Wallet</div>
 <div class="line">Instance attestation issuer. See</div>
-<div class="line">the example below in this section</div>
+<div class="line">the example below in this section.</div>
 </div>
 </td>
 </tr>
@@ -1370,7 +1370,7 @@ issuer (Wallet Provider).</p></td>
 <div class="line">This parameter contains the <code class="docutils literal notranslate"><span class="pre">jwk</span></code></div>
 <div class="line">parameter</div>
 <div class="line">with the public key of the Wallet</div>
-<div class="line">ecessary for the holder binding.</div>
+<div class="line">necessary for the holder binding.</div>
 </div>
 </td>
 </tr>
@@ -1407,7 +1407,7 @@ issuer (Wallet Provider).</p></td>
 <td><div class="line-block">
 <div class="line">JSON object containing</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">jwt_vp_json</span></code> and <code class="docutils literal notranslate"><span class="pre">jwt_vc_json</span></code></div>
-<div class="line">supported algoithms array</div>
+<div class="line">supported algoithms array.</div>
 </div>
 </td>
 </tr>
@@ -1420,7 +1420,7 @@ issuer (Wallet Provider).</p></td>
 <td><div class="line-block">
 <div class="line">JSON array containing a list of the</div>
 <div class="line">JWS signing algorithms (alg values)</div>
-<div class="line">supported by the OP for Request Objects</div>
+<div class="line">supported by the OP for Request Objects.</div>
 </div>
 </td>
 </tr>
@@ -1670,8 +1670,8 @@ entity <code class="docutils literal notranslate"><span class="pre">federation_e
 <div class="line">The type of grants supported by</div>
 <div class="line">the endpoint token. Therefore,</div>
 <div class="line">for the Wallet Provider the token</div>
-<div class="line">is equivalent only to the wallet</div>
-<div class="line">instance attestation, therefore</div>
+<div class="line">is equivalent only to the Wallet</div>
+<div class="line">Instance attestation, therefore</div>
 <div class="line">this attribute will contain an</div>
 <div class="line">array with only one element:</div>
 <div class="line">client-assertion-type:</div>
@@ -1687,7 +1687,7 @@ entity <code class="docutils literal notranslate"><span class="pre">federation_e
 </td>
 <td><div class="line-block">
 <div class="line">Supported authentication method</div>
-<div class="line">for the endpoint token. In our</div>
+<div class="line">for the endpoint token.</div>
 <div class="line"><br /></div>
 </div>
 </td>
@@ -1810,7 +1810,7 @@ Federation standard.</p>
 <section id="metadata">
 <h4>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h4>
 <p>A <strong>GET /.well-known/openid-federation endpoint</strong> for retrieving the Wallet
-Provider Entity Configuration</p>
+Provider Entity Configuration.</p>
 </section>
 <section id="id5">
 <h4>Wallet Instance Attestation<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
@@ -1818,8 +1818,8 @@ Provider Entity Configuration</p>
 <p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> which in our case is a string:
 <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">assertion`</span></code> which contains the signed JWT of the Wallet Instance Attestation
-Request</p>
-<p>The response will then contain the Wallet Instance Attestation</p>
+Request.</p>
+<p>The response will then contain the Wallet Instance Attestation.</p>
 </section>
 </section>
 </section>
