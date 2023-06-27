@@ -177,7 +177,7 @@ Below follows its Base64 decoded content:
 
 Request Object Details
 ----------------------
-The following actions are made by The Wallet Instance:
+The following actions are made by the Wallet Instance:
 
 - scan the QR Code;
 - extract from the payload the ``request_uri`` parameter;
@@ -281,14 +281,9 @@ Therein a non-normative example of the DPoP decoded content:
 Request URI response
 --------------------
 
-The Relying Party issues a signed request object, where a non-normative example is shown below:
+The Relying Party issues a signed request object, where a non-normative example in the form of decoded header and payload is shown below:
 
-Header
-^^^^^^
-
-The Request URI decoded header is described herein:
-
-.. code-block:: JSON
+.. code-block:: text
 
   {
     "alg": "ES256",
@@ -301,8 +296,22 @@ The Request URI decoded header is described herein:
       "MIICajCCAdOgAwIBAgIC...sf2"
     ]
   }
+  .
+  {
+    "scope": "eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:uniqueid+given_name+family_name",
+    "client_id_scheme": "entity_id",
+    "client_id": "https://verifier.example.org",
+    "response_mode": "direct_post.jwt",
+    "response_type": "vp_token",
+    "response_uri": "https://verifier.example.org/callback",
+    "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb",
+    "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
+    "iss": "https://verifier.example.org",
+    "iat": 1672418465,
+    "exp": 1672422065
+  }
 
-JWS header parameters are described herein:
+The JWS header parameters are described herein:
 
 .. list-table::
   :widths: 25 50
@@ -322,28 +331,7 @@ JWS header parameters are described herein:
     - Sequence of Entity Statements that composes a Trust Chain related to the Relying Party, as defined in `OIDC-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
 
 
-Payload
-^^^^^^^
-
-The Request URI decoded payload is described herein:
-
-.. code-block:: JSON
-
-  {
-    "scope": "eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:uniqueid+given_name+family_name",
-    "client_id_scheme": "entity_id",
-    "client_id": "https://verifier.example.org",
-    "response_mode": "direct_post.jwt",
-    "response_type": "vp_token",
-    "response_uri": "https://verifier.example.org/callback",
-    "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb",
-    "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
-    "iss": "https://verifier.example.org",
-    "iat": 1672418465,
-    "exp": 1672422065
-  }
-
-JWS header parameters are described herein:
+The JWS payload parameters are described herein:
 
 .. list-table::
   :widths: 25 50
