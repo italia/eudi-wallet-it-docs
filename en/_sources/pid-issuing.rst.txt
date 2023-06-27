@@ -271,14 +271,14 @@ The JWS payload of the request object is represented below:
 .. code-block:: 
 
     HTTP/1.1 201 Created
-    Content-Type: application/json
     Cache-Control: no-cache, no-store
+    Content-Type: application/json
     
     {
         "request_uri":"urn:ietf:params:oauth:request_uri:bwc4JK-ESC0w8acc191e-Y1LTC2",
         "expires_in": 60
     }
-    Host: pid-provider.example.org
+    
 
 
 **Steps 8-9:** The Wallet Instance sends an authorization request to the PID Provider authorization endpoint.
@@ -352,9 +352,9 @@ The JWS payload of the request object is represented below:
 
 **Step 19:** The Wallet Instance sends a PID issuance request to the PID Provider credential endpoint. It contains the *access token*, the *DPoP proof*, the *credential type*, the *proof* (proof of possession of the key) and the *format*.
 
-    Host: pid-provider.example.org
+.. note::
 
-    **PID Credential Schema and Status registration:**  The PID Provider MUST register all the PID credential related information for the later status verification and revocation. 
+    **PID Credential Schema and Status registration:** The PID Provider MUST register all the issued PIDs for their later revocation, if needed. 
 
 .. code-block::
 
@@ -402,7 +402,7 @@ Where the JWT looks like this:
     {
     "iss": "0b434530-e151-4c40-98b7-74c75a5ef760",
     "aud": "https://pid-provider.example.org",
-    "iat": "1504699136",
+    "iat": 1504699136,
     "nonce": "tZign...snFbp"
     }
 
@@ -430,7 +430,7 @@ PAR endpoint
 Request
 ^^^^^^^
 
-The requests to the authorization endpoint of the PID Provider MUST be HTTP with method POST, with the following mandatory parameters in the HTTP request message body encoded in ``application/x-www-form-urlencoded`` format.
+The requests to the PID Provider authorization endpoint MUST be HTTP with method POST, with the following mandatory parameters in the HTTP request message body, encoded in ``application/x-www-form-urlencoded`` format.
 
 .. _table_http_request_claim: 
 .. list-table:: PAR http request parameters
@@ -441,16 +441,16 @@ The requests to the authorization endpoint of the PID Provider MUST be HTTP with
       - **Description**
       - **Reference**
     * - **response_type**
-      - MUST be set to ``code``
+      - MUST be set to ``code``.
       - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_
     * - **client_id**
-      - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Instance Attestation
+      - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Instance Attestation.
       - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_
     * - **code_challenge**
       - A challenge derived from the **code verifier** that is sent in the authorization request
       - :rfc:`7636#section-4.2`.
     * - **code_challenge_method**
-      - A method that was used to derive **code challenge**. It MUST be set to ``S256`` 
+      - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **request**
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the request object.
@@ -475,7 +475,7 @@ The JWT Request Object has the following JOSE header parameters:
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be none or an identifier for a symmetric algorithm (MAC).
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      - Unique identifier of the JWK as base64url-encoded JWK Thumbprint value
+      - Unique identifier of the JWK as base64url-encoded JWK Thumbprint value.
       - :rfc:`7638#section_3`. 
 
 .. note::
@@ -493,36 +493,36 @@ The JWT payload is given by the following parameters:
       - **Description**
       - **Reference**
     * - **response_type**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **client_id**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **state**
       - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string with at least 32 alphanumeric characters.
       - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
     * - **code_challenge**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **code_challenge_method**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **authorization_details**
       - JSON Object. It MUST include the following claims:
             
-            - **type**: it MUST be set to ``openid_credential``
+            - **type**: it MUST be set to ``openid_credential``,
             - **format**: it MUST be set to ``vc+sd-jwt``,
             - **credential_definition**: JSON Object. It MUST have the **type** claim which MUST be set to ``eu.eudiw.pid.it``
-      - See [RAR :rfc:`9396`] and `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+      - See [RAR :rfc:`9396`] and `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
     * - **redirect_uri**
       -  Redirection URI to which the response will be sent. It MUST be an universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.
-      - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_
+      - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
     * - **client_assertion_type**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **client_assertion**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
 
 
 Response
@@ -540,10 +540,10 @@ If the verification is successful, the PID Provider MUST provide the response wi
       - **Reference**
     * - **request_uri**
       - The request URI corresponding to the authorization request posted. This URI MUST be a single-use reference to the respective authorization request. It MUST contain some part generated using a cryptographically strong pseudorandom algorithm. The value format MUST be ``urn:ietf:params:oauth:request_uri:<reference-value>`` with ``<reference-value>`` as the random part of the URI that references the respective authorization request data.
-      - [:rfc:`9126`]
+      - [:rfc:`9126`].
     * - **expires_in**
       - A JSON number that represents the lifetime of the request URI in seconds as a positive integer.
-      - [:rfc:`9126`]
+      - [:rfc:`9126`].
 
 
 Authorization endpoint
@@ -564,18 +564,19 @@ The mandatory parameters in the HTTP authentication request are specified in the
       - **Description**
       - **Reference**
     * - **client_id**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **request_uri**
-      - It MUST be set to the same value as obtained by PAR Response. See :ref:`Table of the HTTP PAR Response parameters <table_http_response_claim>`
-      - [:rfc:`9126`]
+      - It MUST be set to the same value as obtained by PAR Response. See :ref:`Table of the HTTP PAR Response parameters <table_http_response_claim>`.
+      - [:rfc:`9126`].
 
 
 Response
 ^^^^^^^^
-An Authentication response is returned by the authorization endpoint of the PID Provider at the end of the authentication flow. 
 
-If the authentication is successful the PID Provider redirects the User by adding the following parameters required as query parameters to the *redirect_uri* which MUST be an universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.
+The authentication response is returned by the PID Provider authorization endpoint at the end of the authentication flow.
+
+If the authentication is successful the PID Provider redirects the User by adding the following query parameters as required to the *redirect_uri*. The redirect URI MUST be an universal or app link registered with the local operating system, so this latter is able to resolve its value and delegates the Wallet Instance for the processing.
 
 .. list-table:: 
     :widths: 20 60 20
@@ -585,14 +586,14 @@ If the authentication is successful the PID Provider redirects the User by addin
       - **Description**
       - **Reference**
     * - **code**
-      - Unique *Authorization Code* that the client submits to the Token Endpoint
+      - Unique *Authorization Code* that the client submits to the Token Endpoint.
       - [:rfc:`6749#section-4.1.2`], `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
     * - **state**
-      - The client MUST check the correspondence with the state value in the request object. It is defined as in the :ref:`Table of the JWT Request parameters <table_jwt_request>`
-      - [:rfc:`6749#section-4.1.2`],
+      - The client MUST check the correspondence with the state value in the request object. It is defined as in the :ref:`Table of the JWT Request parameters <table_jwt_request>`.
+      - [:rfc:`6749#section-4.1.2`].
     * - **iss**
       - Unique identifier of the PID PRovider who created the Authentication Response. The Wallet Instance MUST validate this parameter.
-      - `OAuth 2.0 Authorization Server Issuer Identifier in Authorization Response <https://www.ietf.org/archive/id/draft-meyerzuselhausen-oauth-iss-auth-resp-02.html>`_, `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_
+      - `OAuth 2.0 Authorization Server Issuer Identifier in Authorization Response <https://www.ietf.org/archive/id/draft-meyerzuselhausen-oauth-iss-auth-resp-02.html>`_, `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
 
 
 
@@ -602,9 +603,9 @@ Token endpoint
 Request
 ^^^^^^^
 
-The request to the Token endpoint of the PID Provider MUST be an HTTP request with method  POST, having a message in its body encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with *private_key_jwt* authentication and a *DPoP proof* containing the mandatory parameters in the table below.
+The request to the PID Provider Token endpoint  MUST be an HTTP request with method POST, where its body message is encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with *private_key_jwt* authentication and a *DPoP proof* containing the mandatory parameters, defined in the table below.
 
-The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP header. The Token endpoint MUST validate the DPoP proof based on the steps defined in Section 4.3 of the DPoP specifications `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Thus, it mitigates the misuse of leaked or stolen access tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter. 
+The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP header. The Token endpoint MUST validate the DPoP proof based on the steps defined in Section 4.3 of the DPoP specifications `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Thus, this mitigates the misuse of leaked or stolen access tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter. 
 
 
 .. list-table:: 
@@ -615,23 +616,23 @@ The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP
       - **Description**
       - **Reference**
     * - **client_id**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **grant_type**
-      - It MUST be set to “authorization_code”
-      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
+      - It MUST be set to ``authorization_code``.
+      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_.
     * - **code**
       - Authorization code returned in the Authentication Response.
-      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
+      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_.
     * - **redirect_uri**
-      - It MUST be set as in the request object :ref:`Table of the JWT Request parameters <table_jwt_request>`
-      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
+      - It MUST be set as in the request object :ref:`Table of the JWT Request parameters <table_jwt_request>`.
+      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_.
     * - **code_verifier**
-      - Verification code of the **code_challenge**
-      - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_
+      - Verification code of the **code_challenge**.
+      - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_.
     * - **client_assertion_type**
       - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-bearer``.
-      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
+      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_.
     * - **client_assertion**
       - JWT signed with the Wallet Instance's private key containing the following parameters:
       
@@ -641,9 +642,9 @@ The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP
         - **iat**: UNIX Timestamp with the time of the JWT issuance, coded as NumericDate as indicated in RFC 7519.
         - **exp**: UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in RFC 7519.
         - **jti**: Unique Identifier for this authentication request, generated by the client. E.g., uuid4 format.
-      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
+      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_.
 
-A **DPoP proof** is included in an HTTP request using ``DPoP`` as a request header claim containing a DPoP signed JWT.
+A **DPoP proof** is included in an HTTP request using the ``DPoP`` header parameter containing a DPoP JWS.
 
 The JOSE header of a **DPoP JWT** MUST contain at least the following parameters:
 
@@ -659,10 +660,10 @@ The JOSE header of a **DPoP JWT** MUST contain at least the following parameters
       - [:rfc:`7515`] and [:rfc:`8725`. Section 3.11].
     * - **alg** 
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be none or an identifier for a symmetric algorithm (MAC).
-      - [:rfc:`7515`]
+      - [:rfc:`7515`].
     * - **jwk** 
       - representing the public key chosen by the client, in JSON Web Key (JWK) [RFC7517] format, as defined in Section 4.1.3 of [RFC7515]. It MUST NOT contain a private key.
-      - [:rfc:`7517`] and [:rfc:`7515`]
+      - [:rfc:`7517`] and [:rfc:`7515`].
 
 
 The payload of a **DPoP proof** MUST contain at least the following claims:
@@ -702,24 +703,24 @@ Token endpoint response MUST contain the following mandatory claims.
       - **Reference**
     * - **access_token**
       - The *DPoP-bound Access Token*, in signed JWT format, allows accessing the Credential Endpoint for obtaining the PID.
-      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_
+      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_.
     * - **token_type**
       - Type of *Access Token* returned. It MUST be equal to ``DPoP``.
-      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_
+      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_.
     * - **expires_in**
       - Expiry time of the *Access Token* in seconds.
-      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_
+      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_.
     * - **c_nonce**
       - JSON string containing a nonce to be used to create a *proof of possession* of key material when requesting a Credential. 
-      - [OpenID4VCI]
+      - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
     * - **c_nonce_expires_in**
       - JSON integer denoting the lifetime in seconds of the **c_nonce**.
-      - [OpenID4VCI]
+      - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
 
 Access Token
 ^^^^^^^^^^^^
 
-A DPoP-bound Access Token is provided by the PID Provider token endpoint as a result of a successful token request. The Access Token is represented as JWT according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_.
+A DPoP-bound Access Token is provided by the PID Provider Token endpoint as a result of a successful token request. The Access Token is represented as JWT according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_.
 
 .. list-table:: 
   :widths: 20 60 20
@@ -729,32 +730,32 @@ A DPoP-bound Access Token is provided by the PID Provider token endpoint as a re
     - **Description**
     - **Reference**
   * - **iss** 
-    - It MUST be an HTTPS URL that uniquely identifies the PID Provider. The client MUST verify that this value matches the called PID Provider.
+    - It MUST be an HTTPS URL that uniquely identifies the PID Provider. The client MUST verify that this value matches the PID Provider where it has requested the credential.
     - [:rfc:`9068`], `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
   * - **sub** 
-    - It identifies the principal that is the subject of the JWT. It MUST be of type *pairwise*. 
-    - [:rfc:`9068`], [:rfc:`7519`] and [`OpenID.Core#SubjectIDTypes <https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes>`_]
+    - It identifies the subject of the JWT. It MUST be of type *pairwise*. 
+    - [:rfc:`9068`], [:rfc:`7519`] and [`OpenID.Core#SubjectIDTypes <https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes>`_].
   * - **client_id** 
     - It MUST contain a HTTPS URL that uniquely identifies the RP. 
-    - [:rfc:`9068`]
+    - [:rfc:`9068`].
   * - **aud** 
     - It MUST match the value *client_id*. The RP MUST verify that this value matches its client ID.
-    - [:rfc:`9068`]
+    - [:rfc:`9068`].
   * - **iat** 
     - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
     - [:rfc:`9068`], [:rfc:`7519`. Section 4.1.6].
   * - **exp**
     - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
-    - [:rfc:`9068`], [:rfc:`7519`]
+    - [:rfc:`9068`], [:rfc:`7519`].
   * - **jti** 
     - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP MAY use to prevent reuse by rejecting the Token ID if already processed.
-    - [:rfc:`9068`], [:rfc:`7519`]
+    - [:rfc:`9068`], [:rfc:`7519`].
   * - **nonce** 
     - It MUST be a random string of at least 32 alphanumeric characters. The value type of this claim MUST be a string, where the value is a **c_nonce** provided by the PID Provider.
-    - [`OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_]
-  * - jkt
+    - [`OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_].
+  * - **jkt**
     - JWK SHA-256 Thumbprint Confirmation Method. The value of the jkt member MUST be the base64url encoding (as defined in [RFC7515]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the access token is bound.
-    - [`DPoP-draft16 <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Section 6.1] and [:rfc:`7638`]
+    - [`DPoP-draft16 <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Section 6.1] and [:rfc:`7638`].
 
 
 
@@ -780,17 +781,17 @@ The Credential endpoint MUST accept and validate the DPoP proof sent in the DPoP
     - **Description**
     - **Reference**
   * - **credential_definition**
-    - JSON object containing the detailed description of the credential type. It MUST have at least the **type** sub claims which is a JSON array containing the type values the Wallet shall request in the subsequent Credential Request. It MUST be `eu.eudiw.pid.it`
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    - JSON object containing the detailed description of the credential type. It MUST have at least the **type** sub claims which is a JSON array containing the type values the Wallet shall request in the subsequent Credential Request. It MUST be `eu.eudiw.pid.it`.
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **format** 
     - Format of the Credential to be issued. This MUST be `vc+sd-jwt`.
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **proof**
     - JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain the following mandatory claims:
 
       - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
       - **jwt**: the JWT used as proof of possession. 
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
 
 .. note::
 
@@ -808,13 +809,13 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - **Reference**
   * - **alg**
     - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be ``none`` or an identifier for a symmetric algorithm (MAC).
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`],
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
     - MUST be `openid4vci-proof+jwt`.
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`],
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * - **kid** 
     - It MUST contain the identifier of the key material the PID shall be bound to.
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`],
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
 
 .. list-table:: 
   :widths: 20 60 20
@@ -828,13 +829,13 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
   * - **aud**
     - The value of this claim MUST be the identifier URL of the PID Provider.
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **iat**
     - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7519`. Section 4.1.6].
   * - **nonce**
     - The value type of this claim MUST be a string, where the value is a **c_nonce** provided by the PID Provider in the Token response.
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
 
 
 
@@ -852,16 +853,16 @@ Credential Response to the Wallet Instance MUST be sent using `application/json`
     - **Reference**
   * - **format**
     - Format of the Credential to be issued. This MUST be `vc+sd-jwt`.
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **credential**
-    - Contains the issued PID. It MUST be an SD-JWT JSON Object (see Section :ref:`PID Data Model <pid_data_model.rst>`)    
-    - Appendix E in `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    - Contains the issued PID. It MUST be an SD-JWT JSON Object (see Section :ref:`PID Data Model <pid_data_model.rst>`).    
+    - Appendix E in `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **c_nonce**
     - JSON string containing a nonce to be used to create a *proof of possession* of key material when requesting a further credential or for renewal credential. 
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **c_nonce_expires_in**
     - JSON integer corresponding to the **c_nonce** lifetime in seconds.
-    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
 
 .. note::
 
