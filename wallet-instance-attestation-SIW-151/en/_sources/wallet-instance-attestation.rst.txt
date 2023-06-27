@@ -124,7 +124,7 @@ how it is issued by the Wallet Provider.
 
 - **Message 1**: The User initializes the Wallet Instance.
   In particular, this process happens when the mobile application
-  is launched and every time the end User wants to request or present
+  is launched and every time the User wants to request or present
   (disclose) a credential.
 - **Message 2-3**: The Wallet Instance obtains metadata about its wallet
   provider. Among these, we also find the list of supported algorithms,
