@@ -107,8 +107,8 @@ Static view of the components
 .. figure:: ../../images/static_view_wallet_instance_attestation.svg
    :name: Wallet Solution schema
    :alt: the image shows how the Wallet Provider and the
-         Wallet Instances are contained within the wallet
-         solution which is managed by the Wallet Provider
+         Wallet Instances are contained within the Wallet
+         Solution which is managed by the Wallet Provider
    :target: https://www.plantuml.com/plantuml/uml/XP4nJuSm44VtVehBdxbnPp2iRYx6qTHIjR7SaVQ0-EqzaICDgN4ZBxpqzTUXiCkyJCaupvJXzbH2le4hiCW7A7rsAGM6ETCQn-E7RMSloi0OJzDC691FeL1QE1BMWZBeraW2Mbv4wK8VQayPT5yX9TgCQPclpdy676lnGF0ZN93DyVs3xVsrhOU70hCi0_JshwHXFJp-Rg4dIuECo96moD7xeBQbUKBEbE0EPEwuEWx6N2zj_uXqU8wbhVMhD3tjbAX1BYIl_mq0
 
 Dynamic view of the components
