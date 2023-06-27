@@ -113,9 +113,7 @@ Static view of the components
 
 Dynamic view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We do not go into the details of the Wallet Provider as
-it will be the subject of a subsequent design review. For now, we
-will just analyze the format of the Wallet Instance Attestation and
+In this section is described the format of the Wallet Instance Attestation and
 how it is issued by the Wallet Provider.
 
 .. figure:: ../../images/dynamic_view_sequence_wallet_instance_attestation.svg
