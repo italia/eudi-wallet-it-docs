@@ -252,13 +252,13 @@ The corresponding SD-JWT verson for PID is given by
   }
 
 .. code-block:: JSON
-  
+
   {
     "iss": "https://pidprovider.example.org",
     "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...",
     "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
-    "iat": "1541493724",
-    "exp": "1541493724",
+    "iat": 1541493724,
+    "exp": 1541493724,
     "status": "https://pidprovider.example.org/status",
     "cnf": {
       "jwk": {
