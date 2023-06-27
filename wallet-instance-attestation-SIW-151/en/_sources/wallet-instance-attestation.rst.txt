@@ -122,7 +122,7 @@ how it is issued by the Wallet Provider.
          The steps will be described below.
    :target: https://www.plantuml.com/plantuml/uml/XPB1RjH038RlynIc9v1OSU-XAk9GWOI44D1BBqxcLsIHU8B7qsZxz4pJx8WbhBZQdp_dT-OsEvkNQGolPkDXOdAa9t8h25myQPawM0XpfQINcTNfwdk6NH5dAkVrUnv7E7tKAjKUAxB8FvalbXubRfgb2w7GuQR2rtLQN7YK9z3omihcUz1aPFXLaFtTRCYemjuGeSyJEInok5cwQxg3dsRdRGzDS8xi79RkKAcwwFDMeJwfiwZey8UD_3WZlwMVEAuxnJ3LJgr0uvn4VTjNJJzub6h2RgbRoKwZPA_iAU0T55RfLJspM0wXgJuOdbj_NPBUvmnpIKfVN_BJf_jlWNkNntLlTvQT6_twlw8tzI3hv2w5d6O6Q1658kSzd6LGzc9ehU6KZpMkxPsmVL_x6PS3xuzysHPnVf7gBatTU6aFB3weWUEHF57gd4L9iPmzgLjeBDFu6m00
 
-- **Message 1**: The end User initializes the Wallet Instance.
+- **Message 1**: The User initializes the Wallet Instance.
   In particular, this process happens when the mobile application
   is launched and every time the end User wants to request or present
   (disclose) a credential.
