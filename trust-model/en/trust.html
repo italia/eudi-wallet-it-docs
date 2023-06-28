@@ -918,11 +918,11 @@
 </figure>
 <section id="federation-roles">
 <h2>Federation Roles<a class="headerlink" href="#federation-roles" title="Permalink to this heading">¶</a></h2>
-<p>All the participants are Federation Entities that must be accredited by an Accreditation Body, except the Wallet Instances that are personal devices and are certified by their Wallet Provider (see <a class="reference internal" href="#wallet-instance-attestation">Wallet Instance Attestation</a>).</p>
+<p>All the participants are Federation Entities that must be accredited by an Accreditation Body, except the Wallet Instances that are personal devices and are certified by their Wallet Provider.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.</p>
-<p>This is called <em>Wallet Instance Attestation</em> and is documented in the section dedicated to the Wallet Solution.</p>
+<p>This is called <em>Wallet Instance Attestation</em> and is documented in <a class="reference external" href="WalletInstanceAttestation">the dedicated section</a>.</p>
 </div>
 <p>Therein a table with the summary of the Federation Entity roles mapped on the corresponding EUDI roles, as defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <table class="docutils align-default">
@@ -934,7 +934,8 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Public Key Infrastructure (PKI)</p></td>
-<td><p>Trust Anchor</p></td>
+<td><p>Trust Anchor
+Intermediates</p></td>
 <td><p>The Federation has PKI
 capabilities and the
 Entity that configures
@@ -954,18 +955,22 @@ of Attributes Provider</p></td>
 <td><p>Leaf</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Relying Party</p></td>
+<tr class="row-even"><td><p>Electronic Attestations of
+Attributes Provider</p></td>
 <td><p>Leaf</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Trust Service Provider (TSP)</p></td>
+<tr class="row-odd"><td><p>Relying Party</p></td>
 <td><p>Leaf</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Trusted List</p></td>
-<td><p>Trust Anchor</p>
-<p>Intermediates</p>
-</td>
+<tr class="row-even"><td><p>Trust Service Provider (TSP)</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Trusted List</p></td>
+<td><p>Trust Anchor
+Intermediates</p></td>
 <td><p>The listing endpoint, the
 trust mark status endpoint
 and the fetch endpoint must
@@ -976,7 +981,7 @@ over multiple Federation Entities,
 where each of these is responsible
 of their accredited subordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p>EUDI Wallet Provider</p></td>
+<tr class="row-even"><td><p>EUDI Wallet Provider</p></td>
 <td><p>Leaf</p></td>
 <td></td>
 </tr>
@@ -1179,12 +1184,13 @@ public keys for signature operations and the maximum number of Intermediates all
 </div>
 <section id="entity-configuration">
 <h3>Entity Configuration<a class="headerlink" href="#entity-configuration" title="Permalink to this heading">¶</a></h3>
-<p>The Entity Configuration is the federation metadata that a Federation Entity publishes about itself, which is verifiable thanks to a trusted third party. The Entity Configuration is signed, and it can be verified with one of the public keys contained within it, as well as within the Entity Statement issued by the Trust Anchor or its Intermediate. This is defined in a parameter called <strong>authority_hints</strong>. The Entity Configuration may also contain one or more Trust Marks regarding its issuer.</p>
-<p>Trust Anchors and Intermediates publish their Entity Configuration containing public keys.</p>
+<p>The Entity Configuration is the federation metadata that each Federation Entity must publish on its own behalf, which is verifiable with the public keys published by its Accreditation Body, if the Trust Anchor or its Intermediate.</p>
+<p>The Entity Configuration is signed, and it must be verified with one of the public keys contained within it, as well as one of the public keys within the Entity Statement issued by the Trust Anchor or its Intermediate.</p>
+<p>The Entity Configuration may also contain one or more Trust Marks regarding itself.</p>
 </section>
 <section id="entity-statement">
 <h3>Entity Statement<a class="headerlink" href="#entity-statement" title="Permalink to this heading">¶</a></h3>
-<p>Trust Anchors and Intermediate must publish the Federation Fetch endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures.</p>
+<p>Trust Anchors and Intermediate must expose the Federation Fetch endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Federation Fetch endpoint may also issue X.509 certificates for each of the public keys of the subordinate. Making the issuance of the X.509 certificates completely automatic.</p>

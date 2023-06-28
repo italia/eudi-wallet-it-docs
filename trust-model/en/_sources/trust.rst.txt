@@ -14,58 +14,60 @@ The infrastructure of Trust enables the trust assessment mechanism to be applied
 ..  figure:: ../../images/trust-roles.svg
     :alt: federation portrain
     :width: 100%
-    
+   
     The roles of the Federation infrastructure, where a Trust Anchor has one or more Intermediates and Leafs and the Intermediates have their Leafs. In this representation both Trust Anchor and Intermediates play the role of Accreditation Body.
 
 
 Federation Roles
 ------------------
 
-All the participants are Federation Entities that must be accredited by an Accreditation Body, except the Wallet Instances that are personal devices and are certified by their Wallet Provider (see `Wallet Instance Attestation`_).
+All the participants are Federation Entities that must be accredited by an Accreditation Body, except the Wallet Instances that are personal devices and are certified by their Wallet Provider.
 
 .. note::
     The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.
 
-    This is called *Wallet Instance Attestation* and is documented in the section dedicated to the Wallet Solution.
+    This is called *Wallet Instance Attestation* and is documented in `the dedicated section  <Wallet Instance Attestation>`_.
 
 
 Therein a table with the summary of the Federation Entity roles mapped on the corresponding EUDI roles, as defined in the `EIDAS-ARF`_.
 
-+-------------------------------------------+----------------+-----------------------------------+
-|  EUDI Role                                | Federation Role| Notes                             |
-+===========================================+================+===================================+
-|  Public Key Infrastructure (PKI)          | Trust Anchor   | The Federation has PKI            |
-|                                           |                | capabilities and the              |
-|                                           |                | Entity that configures            |
-|                                           |                | the entire infrastructure         |
-|                                           |                | is the Trust Anchor.              |
-|                                           |                |                                   |
-+-------------------------------------------+----------------+-----------------------------------+
-|  Qualified Trust Service Provider (QTSP)  | Leaf           |                                   |
-+-------------------------------------------+----------------+-----------------------------------+
-|  Person Identification Data Provider      | Leaf           |                                   |
-+-------------------------------------------+----------------+-----------------------------------+
-|  Qualified Electronic Attestations        | Leaf           |                                   |
-|  of Attributes Provider                   |                |                                   |
-|                                           |                |                                   |
-+-------------------------------------------+----------------+-----------------------------------+
-|  Relying Party                            | Leaf           |                                   |
-+-------------------------------------------+----------------+-----------------------------------+
-|  Trust Service Provider (TSP)             | Leaf           |                                   |
-+-------------------------------------------+----------------+-----------------------------------+
-|  Trusted List                             | Trust Anchor   | The listing endpoint, the         |
-|                                           |                | trust mark status endpoint        |
-|                                           |                | and the fetch endpoint must       |
-|                                           |                | be exposed by both Trust Anchors  |
-|                                           |                | and their Intermediates, making   |
-|                                           |                | the Trusted List distributed      |
-|                                           |                | over multiple Federation Entities,|
-|                                           |                | where each of these is responsible|
-|                                           |                | of their accredited subordinates. |
-|                                           | Intermediates  |                                   |
-+-------------------------------------------+----------------+-----------------------------------+
-|  EUDI Wallet Provider                     | Leaf           |                                   |
-+-------------------------------------------+----------------+-----------------------------------+
++-----------------------------------------+----------------+-----------------------------------+
+|  EUDI Role                              | Federation Role| Notes                             |
++=========================================+================+===================================+
+|  Public Key Infrastructure (PKI)        | Trust Anchor   | The Federation has PKI            |
+|                                         | Intermediates  | capabilities and the              |
+|                                         |                | Entity that configures            |
+|                                         |                | the entire infrastructure         |
+|                                         |                | is the Trust Anchor.              |
+|                                         |                |                                   |
++-----------------------------------------+----------------+-----------------------------------+
+|  Qualified Trust Service Provider (QTSP)| Leaf           |                                   |
++-----------------------------------------+----------------+-----------------------------------+
+|  Person Identification Data Provider    | Leaf           |                                   |
++-----------------------------------------+----------------+-----------------------------------+
+|  Qualified Electronic Attestations      | Leaf           |                                   |
+|  of Attributes Provider                 |                |                                   |
++-----------------------------------------+----------------+-----------------------------------+
+|  Electronic Attestations of             | Leaf           |                                   |
+|  Attributes Provider                    |                |                                   |
++-----------------------------------------+----------------+-----------------------------------+
+|  Relying Party                          | Leaf           |                                   |
++-----------------------------------------+----------------+-----------------------------------+
+|  Trust Service Provider (TSP)           | Leaf           |                                   |
++-----------------------------------------+----------------+-----------------------------------+
+|  Trusted List                           | Trust Anchor   | The listing endpoint, the         |
+|                                         | Intermediates  | trust mark status endpoint        |
+|                                         |                | and the fetch endpoint must       |
+|                                         |                | be exposed by both Trust Anchors  |
+|                                         |                | and their Intermediates, making   |
+|                                         |                | the Trusted List distributed      |
+|                                         |                | over multiple Federation Entities,|
+|                                         |                | where each of these is responsible|
+|                                         |                | of their accredited subordinates. |
+|                                         |                |                                   |
++-----------------------------------------+----------------+-----------------------------------+
+|  EUDI Wallet Provider                   | Leaf           |                                   |
++-----------------------------------------+----------------+-----------------------------------+
 
 
 General Properties
@@ -240,14 +242,17 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
 Entity Configuration
 ````````````````````
 
-The Entity Configuration is the federation metadata that a Federation Entity publishes about itself, which is verifiable thanks to a trusted third party. The Entity Configuration is signed, and it can be verified with one of the public keys contained within it, as well as within the Entity Statement issued by the Trust Anchor or its Intermediate. This is defined in a parameter called **authority_hints**. The Entity Configuration may also contain one or more Trust Marks regarding its issuer.
+The Entity Configuration is the federation metadata that each Federation Entity must publish on its own behalf, which is verifiable with the public keys published by its Accreditation Body, if the Trust Anchor or its Intermediate. 
 
-Trust Anchors and Intermediates publish their Entity Configuration containing public keys. 
+The Entity Configuration is signed, and it must be verified with one of the public keys contained within it, as well as one of the public keys within the Entity Statement issued by the Trust Anchor or its Intermediate. 
+
+The Entity Configuration may also contain one or more Trust Marks regarding itself.
+
 
 Entity Statement
 ```````````````````
 
-Trust Anchors and Intermediate must publish the Federation Fetch endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures. 
+Trust Anchors and Intermediate must expose the Federation Fetch endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures. 
 
 .. note:: 
     The Federation Fetch endpoint may also issue X.509 certificates for each of the public keys of the subordinate. Making the issuance of the X.509 certificates completely automatic. 
@@ -356,10 +361,11 @@ giving the references of the metadata protocol for each of these.
 
     `Wallet Solution section <wallet-solution.html>`_. 
 
+
 Trust Evaluation Mechanism
 --------------------------
 
-The Trust Anchor publishes the list of its Intermediates (Federation Subordinate Listing endpoint) and the attestations of their metadata and public keys (Entity Statements). 
+The Trust Anchor publishes the list of its Intermediates (Federation Subordinate Listing endpoint) and the attestations of their metadata and public keys (Entity Statements).
 
 Each participant, including Trust Anchor, Intermediate, Credential Issuer, Wallet Provider, and Relying Party, publishes its own metadata and public keys (Entity Configuration endpoint) on the well-known web resource **.well-known/openid-federation**.
 
