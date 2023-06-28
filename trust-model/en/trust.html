@@ -581,12 +581,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Defined Terms</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The Infrastructure of Trust</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-model-requirements">Trust Model Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#this-implementation-profile">This implementation profile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#roles-of-the-ecosystem">Roles of the ecosystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#privacy-considerations">Privacy Considerations</a></li>
@@ -767,12 +767,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Defined Terms</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The Infrastructure of Trust</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-model-requirements">Trust Model Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#this-implementation-profile">This implementation profile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#roles-of-the-ecosystem">Roles of the ecosystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#privacy-considerations">Privacy Considerations</a></li>
@@ -909,25 +909,89 @@
 <span id="trust-rst"></span><h1>The Infrastructure of Trust<a class="headerlink" href="#the-infrastructure-of-trust" title="Permalink to this heading">¶</a></h1>
 <p>The EUDI Wallet Architecture Reference Framework (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>) defines the Trust Model as a <em>&quot;collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem.&quot;</em>.</p>
 <p>This section defines how the Trust Model is implemented in an infrastructure of Trust based on
-OpenID Connect Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>, where its Federation API is used for the distribution of metadata, raw public keys, metadata policies, X.509 certificates, and their revocation statuses.</p>
+OpenID Connect Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>, where its Federation API is used for the distribution of metadata, raw public keys, metadata policies, X.509 certificates, and their revocation status.</p>
+<p>This document is fully compliant to OpenID Connect Federation.</p>
+<p>The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.</p>
+<p>This is called <em>Wallet Instance Attestation</em> and is documented in the section dedicated to the Wallet Solution.</p>
 <p>The infrastructure of Trust enables the trust assessment mechanism to be applied between the parties defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/trust-roles.svg"><img alt="federation portrain" src="_images/trust-roles.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The roles of the Federation infrastructure, where a Trust Anchor has one or more Intermediates and Leafs.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The roles of the Federation infrastructure, where a Trust Anchor has one or more Intermediates and Leafs and the Intermediates have their Leafs. In this representation both Trust Anchor and Intermediates play the role of Accreditation Body.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
+<section id="federation-roles">
+<h2>Federation Roles<a class="headerlink" href="#federation-roles" title="Permalink to this heading">¶</a></h2>
+<p>All the participants are Federation Entities that must be accredited by an Accreditation Body, except the Wallet Instances that are personal devices and are certified by their Wallet Provider (see <a class="reference internal" href="#wallet-instance-attestation">Wallet Instance Attestation</a>).</p>
+<p>Therein a table with the summary of the Federation Entity roles mapped on the corresponding EUDI roles, as defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>EUDI Role</p></th>
+<th class="head"><p>Federation Role</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Public Key Infrastructure (PKI)</p></td>
+<td><p>Trust Anchor</p></td>
+<td><p>The Federation has PKI
+capabilities and the
+Entity that configures
+the entire infrastructure
+is the Trust Anchor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qualified Trust Service Provider (QTSP)</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Person Identification Data Provider</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Qualified Electronic Attestations
+of Attributes Provider</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Relying Party</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Trust Service Provider (TSP)</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Trusted List</p></td>
+<td><p>Trust Anchor</p>
+<p>Intermediates</p>
+</td>
+<td><p>The listing endpoint, the
+trust mark status endpoint
+and the fetch endpoint must
+be exposed by both Trust Anchors
+and their Intermediates, making
+the Trusted List distributed
+over multiple Federation Entities,
+where each of these is responsible
+of their accredited subordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EUDI Wallet Provider</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="general-properties">
 <h2>General Properties<a class="headerlink" href="#general-properties" title="Permalink to this heading">¶</a></h2>
 <p>OpenID Federation facilitates the building of an infrastructure that is:</p>
 <ul class="simple">
-<li><p><strong>Secure and Tamper-proof</strong>, ensuring that entities' attestations of metadata and keys are cryptographically signed in the chain of trust, comprised of attestations issued by multiple parties that cannot be forged or tampered with by an adversary;</p></li>
-<li><p><strong>Privacy-preserving</strong>, as the infrastructure is public and only exposes public data such as public keys and metadata of the participants for interoperability needs. It does not require authentication of the requesters and therefore does not track who is assessing trust against whom;</p></li>
+<li><p><strong>Secure and Tamper-proof</strong>, entities' attestations of metadata and keys are cryptographically signed in the chain of trust, comprised of attestations issued by multiple parties that cannot be forged or tampered with by an adversary;</p></li>
+<li><p><strong>Privacy-preserving</strong>, the infrastructure is public and exposes public data such as public keys and metadata of the participants. It does not require authentication of the requesters and therefore does not track who is assessing trust against whom;</p></li>
 <li><p><strong>Guarantor of the non-repudiation of long-lived attestations</strong>, historical keys endpoints and historical Trust Chains are saved for years according to data retention policies. This enables the certification of the validity of historical compliance, even in cases of revocation, expiration, or rotation of the keys used for signature verification;</p></li>
 <li><p><strong>Dynamic and flexible</strong>, allowing any participant to modify parts of their metadata autonomously, as these are published within their domains and verified through the Trust Chain. Simultaneously, the Trust Anchor or its Intermediate may publish a metadata policy to dynamically modify the metadata of all participants—such as disabling a vulnerable signature algorithm—and obtain certainty of propagation within a configured period of time to all participants;</p></li>
 <li><p><strong>Efficient</strong>, as JWT and JSON formats have been adopted on the web for years. They are cost-effective in terms of storage and processing and have a wide range of solutions available, such as libraries and software development kits, which enable rapid implementation of the solution;</p></li>
-<li><p><strong>Scalable</strong>, the Trust Model can accommodate more than a single organization by using Intermediates;</p></li>
-<li><p><strong>Simple</strong>, as it is based on widely used REST technology and formats that have become popular over the years.</p></li>
+<li><p><strong>Scalable</strong>, the Trust Model can accommodate more than a single organization by using Intermediates.</p></li>
 </ul>
 </section>
 <section id="trust-model-requirements">
@@ -947,17 +1011,16 @@ OpenID Connect Federation 1.0 <a class="reference external" href="https://openid
 </tr>
 <tr class="row-odd"><td><p>Issuers registration</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
-<td><p>Trust Anchor
-or
-Intermediate
+<td><p>Trust Anchor</p>
+<p>Intermediate
 OnBoarding
-systems</p></td>
+systems</p>
+</td>
 </tr>
 <tr class="row-even"><td><p>Recognised data models and schemas</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 <td><p>Entity
 Configuration</p>
-<p>and</p>
 <p>Entity
 Statements</p>
 </td>
@@ -966,7 +1029,6 @@ Statements</p>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 <td><p>static
 Trust Chains</p>
-<p>and</p>
 <p>Federation
 Entity
 Discovery</p>
@@ -976,7 +1038,6 @@ Discovery</p>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 <td><p>static
 Trust Chains</p>
-<p>and</p>
 <p>Federation
 Entity
 Discovery</p>
@@ -985,16 +1046,9 @@ Discovery</p>
 </tbody>
 </table>
 </section>
-<section id="this-implementation-profile">
-<h2>This implementation profile<a class="headerlink" href="#this-implementation-profile" title="Permalink to this heading">¶</a></h2>
-<p>This document applies the OpenID Connect Federation in its original state, without any substantive changes.</p>
-<p>This document distinguishes between Federation Entities, which include all participants except for Wallet Instances.</p>
-<p>The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.</p>
-<p>This is called <em>Wallet Instance Attestation</em> and is documented in the section dedicated to the Wallet Solution.</p>
-</section>
 <section id="federation-api-endpoints">
 <h2>Federation API endpoints<a class="headerlink" href="#federation-api-endpoints" title="Permalink to this heading">¶</a></h2>
-<p>OIDC Federation is also a PKI that uses RESTful Web Services secured over HTTPs. The technical specification defines which are the web endpoints that the participants made publicly available. In the table below the summary of these and their scopes.</p>
+<p>OpenID Federation is similar to a PKI that uses RESTful Web Services secured over HTTPs. The technical specification defines which are the web endpoints that the participants made publicly available. In the table below the summary of these and their scopes.</p>
 <p>All the endpoints listed below are defined in the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> specs.</p>
 <table class="docutils align-default">
 <thead>
@@ -1062,137 +1116,145 @@ Intermediate</p></td>
 MUST keep it up-to-date. The Federation configuration contains the Trust Anchor
 public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (<strong>max_path length</strong>).</p>
 <p>Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> specifications:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;entity-statement+jwt&quot;</span>
-<span class="p">}</span>
-<span class="o">.</span>
-<span class="p">{</span>
-    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1649375259</span><span class="p">,</span>
-    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1649373279</span><span class="p">,</span>
-    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;jwks&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;kty&quot;</span><span class="p">:</span> <span class="s2">&quot;RSA&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="s2">&quot;3i5vV-_ …&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="s2">&quot;AQAB&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;x5c&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">X</span><span class="mf">.509</span> <span class="n">Root</span> <span class="n">CA</span> <span class="n">certificate</span><span class="o">&gt;</span> <span class="p">]</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;kty&quot;</span><span class="p">:</span> <span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;X2ZOMHNGSDc4ZlBrcXhMT3MzRmRZOG9Jd3o2QjZDam51cUhhUFRuOWd0WQ&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;crv&quot;</span><span class="p">:</span> <span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;x5c&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">X</span><span class="mf">.509</span> <span class="n">Root</span> <span class="n">CA</span> <span class="n">certificate</span><span class="o">&gt;</span> <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;federation_entity&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;organization_name&quot;</span><span class="p">:</span> <span class="s2">&quot;example TA&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;contacts&quot;</span><span class="p">:[</span>
-                <span class="s2">&quot;tech@eidas.trust-anchor.example.eu&quot;</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;homepage_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;logo_uri&quot;</span><span class="p">:</span><span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/static/svg/logo.svg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;federation_fetch_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/fetch/&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;federation_resolve_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/resolve/&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;federation_list_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/list/&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;federation_trust_mark_status_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/trust_mark_status/&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;trust_marks_issuers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/openid_relying_party/public/&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;https://registry.spid.eidas.trust-anchor.example.eu/&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;https://public.intermediary.spid.org/&quot;</span>
-        <span class="p">],</span>
-<span class="s2">&quot;https://registry.eidas.trust-anchor.example.eu/openid_relying_party/private/&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;https://registry.spid.eidas.trust-anchor.example.eu/&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;https://private.other.intermediary.org/&quot;</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;max_path_length&quot;</span><span class="p">:</span> <span class="mi">1</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;alg&quot;: &quot;ES256&quot;,
+    &quot;kid&quot;: &quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;,
+    &quot;typ&quot;: &quot;entity-statement+jwt&quot;
+}
+.
+{
+    &quot;exp&quot;: 1649375259,
+    &quot;iat&quot;: 1649373279,
+    &quot;iss&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/&quot;,
+    &quot;sub&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/&quot;,
+    &quot;jwks&quot;: {
+        &quot;keys&quot;: [
+            {
+                &quot;kty&quot;: &quot;RSA&quot;,
+                &quot;n&quot;: &quot;3i5vV-_ …&quot;,
+                &quot;e&quot;: &quot;AQAB&quot;,
+                &quot;kid&quot;: &quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;,
+                &quot;x5c&quot;: [ &lt;X.509 Root CA certificate&gt; ]
+            },
+            {
+                &quot;kty&quot;: &quot;EC&quot;,
+                &quot;kid&quot;: &quot;X2ZOMHNGSDc4ZlBrcXhMT3MzRmRZOG9Jd3o2QjZDam51cUhhUFRuOWd0WQ&quot;,
+                &quot;crv&quot;: &quot;P-256&quot;,
+                &quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
+                &quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;,
+                &quot;x5c&quot;: [ &lt;X.509 Root CA certificate&gt; ]
+            }
+        ]
+    },
+    &quot;metadata&quot;: {
+        &quot;federation_entity&quot;: {
+            &quot;organization_name&quot;: &quot;example TA&quot;,
+            &quot;contacts&quot;:[
+                &quot;tech@eidas.trust-anchor.example.eu&quot;
+            ],
+            &quot;homepage_uri&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/&quot;,
+            &quot;logo_uri&quot;:&quot;https://registry.eidas.trust-anchor.example.eu/static/svg/logo.svg&quot;,
+            &quot;federation_fetch_endpoint&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/fetch/&quot;,
+            &quot;federation_resolve_endpoint&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/resolve/&quot;,
+            &quot;federation_list_endpoint&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/list/&quot;,
+            &quot;federation_trust_mark_status_endpoint&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/trust_mark_status/&quot;
+        }
+    },
+    &quot;trust_marks_issuers&quot;: {
+        &quot;https://registry.eidas.trust-anchor.example.eu/openid_relying_party/public/&quot;: [
+            &quot;https://registry.spid.eidas.trust-anchor.example.eu/&quot;,
+            &quot;https://public.intermediary.spid.org/&quot;
+        ],
+&quot;https://registry.eidas.trust-anchor.example.eu/openid_relying_party/private/&quot;: [
+            &quot;https://registry.spid.eidas.trust-anchor.example.eu/&quot;,
+            &quot;https://private.other.intermediary.org/&quot;
+        ]
+    },
+    &quot;constraints&quot;: {
+        &quot;max_path_length&quot;: 1
+    }
+}
 </pre></div>
 </div>
-<section id="entity-configuration-and-entity-statement">
-<h3>Entity Configuration and Entity Statement<a class="headerlink" href="#entity-configuration-and-entity-statement" title="Permalink to this heading">¶</a></h3>
-<p>The Entity Configuration is the federation metadata that an Entity publishes about itself, which is verifiable thanks to a trusted third party. The Entity Configuration is signed, and it can be verified with one of the public keys contained within it, as well as within the Entity Statement issued by the Trust Anchor or its Intermediate. This is defined in a parameter called authority_hints. The Entity Configuration may also contain one or more Trust Marks regarding its issuer.</p>
-<p>Trust Anchors and Intermediates publish their Entity Configuration containing public keys and X.509 certificates. They also publish the Federation Entity endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures.</p>
+<section id="entity-configuration">
+<h3>Entity Configuration<a class="headerlink" href="#entity-configuration" title="Permalink to this heading">¶</a></h3>
+<p>The Entity Configuration is the federation metadata that a Federation Entity publishes about itself, which is verifiable thanks to a trusted third party. The Entity Configuration is signed, and it can be verified with one of the public keys contained within it, as well as within the Entity Statement issued by the Trust Anchor or its Intermediate. This is defined in a parameter called <strong>authority_hints</strong>. The Entity Configuration may also contain one or more Trust Marks regarding its issuer.</p>
+<p>Trust Anchors and Intermediates publish their Entity Configuration containing public keys.</p>
+</section>
+<section id="entity-statement">
+<h3>Entity Statement<a class="headerlink" href="#entity-statement" title="Permalink to this heading">¶</a></h3>
+<p>Trust Anchors and Intermediate must publish the Federation Fetch endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Federation Fetch endpoint may also issue X.509 certificates for each of the public keys of the subordinate. Making the issuance of the X.509 certificates completely automatic.</p>
+</div>
 <p>The Entity Statement may also publish metadata policies, enforcing one or more changes to be applied to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that comprises all statements, starting from the Entity Configuration up to the Trust Anchor.</p>
-<p>Below is a non-normative example of an Entity Statement issued by an authority (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;RS256&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;entity-statement+jwt&quot;</span>
-<span class="p">}</span>
-<span class="o">.</span>
-<span class="p">{</span>
-    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1649623546</span><span class="p">,</span>
-    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1649450746</span><span class="p">,</span>
-    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://intermediate.eidas.example.org&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;https://rp.example.it&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;jwks&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;kty&quot;</span><span class="p">:</span> <span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;crv&quot;</span><span class="p">:</span> <span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;x5c&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">X</span><span class="mf">.509</span> <span class="n">certificate</span><span class="o">&gt;</span> <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;metadata_policy&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;openid_relying_party&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;subset_of&quot;</span><span class="p">:</span> <span class="p">[</span>
-                     <span class="s2">&quot;eu.europa.ec.eudiw.pid.1&quot;</span><span class="p">,</span>
-                     <span class="s2">&quot;eu.europa.ec.eudiw.pid.1:given_name&quot;</span><span class="p">,</span>
-                     <span class="s2">&quot;email&quot;</span>
-                  <span class="p">]</span>
-            <span class="p">},</span>
-           <span class="s2">&quot;request_authentication_methods_supported&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;one_of&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;request_object&quot;</span><span class="p">]</span>
-            <span class="p">},</span>
-           <span class="s2">&quot;request_authentication_signing_alg_values_supported&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;subset_of&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span> <span class="s2">&quot;RS512&quot;</span><span class="p">,</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span> <span class="s2">&quot;ES512&quot;</span><span class="p">,</span> <span class="s2">&quot;PS256&quot;</span><span class="p">,</span> <span class="s2">&quot;PS512&quot;</span><span class="p">]</span>
-           <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;client&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;vp_formats&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;jwt_vp&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;alg&quot;</span><span class="p">:</span>
-                        <span class="s2">&quot;subset_of&quot;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="s2">&quot;EdDSA&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;ES256K&quot;</span>
-                        <span class="p">]</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<p>Below is a non-normative example of an Entity Statement issued by an authority (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;alg&quot;: &quot;RS256&quot;,
+    &quot;kid&quot;: &quot;em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg&quot;,
+    &quot;typ&quot;: &quot;entity-statement+jwt&quot;
+}
+.
+{
+    &quot;exp&quot;: 1649623546,
+    &quot;iat&quot;: 1649450746,
+    &quot;iss&quot;: &quot;https://intermediate.eidas.example.org&quot;,
+    &quot;sub&quot;: &quot;https://rp.example.it&quot;,
+    &quot;jwks&quot;: {
+        &quot;keys&quot;: [
+            {
+                &quot;kty&quot;: &quot;EC&quot;,
+                &quot;kid&quot;: &quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
+                &quot;crv&quot;: &quot;P-256&quot;,
+                &quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
+                &quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;,
+                &quot;x5c&quot;: [ &lt;X.509 certificate&gt; ]
+            }
+        ]
+    },
+    &quot;metadata_policy&quot;: {
+        &quot;openid_relying_party&quot;: {
+            &quot;scope&quot;: {
+                &quot;subset_of&quot;: [
+                     &quot;eu.europa.ec.eudiw.pid.1&quot;,
+                     &quot;eu.europa.ec.eudiw.pid.1:given_name&quot;,
+                     &quot;email&quot;
+                  ]
+            },
+           &quot;request_authentication_methods_supported&quot;: {
+            &quot;one_of&quot;: [&quot;request_object&quot;]
+            },
+           &quot;request_authentication_signing_alg_values_supported&quot;: {
+                &quot;subset_of&quot;: [&quot;RS256&quot;, &quot;RS512&quot;, &quot;ES256&quot;, &quot;ES512&quot;, &quot;PS256&quot;, &quot;PS512&quot;]
+           }
+        },
+        &quot;client&quot;: {
+            &quot;vp_formats&quot;: {
+                &quot;jwt_vp&quot;: {
+                    &quot;alg&quot;:
+                        &quot;subset_of&quot;: [
+                            &quot;EdDSA&quot;,
+                            &quot;ES256K&quot;
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
 </pre></div>
 </div>
 </section>
 </section>
-<section id="roles-of-the-ecosystem">
-<h2>Roles of the ecosystem<a class="headerlink" href="#roles-of-the-ecosystem" title="Permalink to this heading">¶</a></h2>
-<p>In this section are defined the main roles of the ecosystems, assuming
-the Trust Anchor and Intermediates as Accreditation Bodies.</p>
-<p>The table below maps the metadata types with the roles of the ecosystem,
-and also gives the references of the metadata protocol.</p>
-<p>The entities that doesn't have any references to a known draft or standard
-are intended to be defined in this technical reference.</p>
+<section id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h2>
+<p>In this section are defined the main metadata types mapped to the roles of the ecosystem,
+giving the references of the metadata protocol for each of these.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The entities that doesn't have any references to a known draft or standard are intended to be defined in this technical reference.</p>
+</div>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Entity</p></th>
