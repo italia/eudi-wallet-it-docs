@@ -164,14 +164,13 @@ Below is a non-normative example of the QR Code raw payload:
 
 .. code-block:: text
 
-  ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9hMTI1MmY5MC1hNjUyLTRjNDctODAzOS1mNjAwOTZjYXZ6cXc=
-
+  ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaQ==
 
 Below follows its Base64 decoded content:
 
 .. code-block:: text
 
-    eudiw://authorize?client_id=https://verifier.example.org&request_uri=https://verifier.example.org/a1252f90-a652-4c47-8039-f60096cavzqw
+  eudiw://authorize?client_id=https://verifier.example.org&request_uri=https://verifier.example.org/request_uri
 
 
 
@@ -273,7 +272,7 @@ Therein a non-normative example of the DPoP decoded content:
     {
       "jti": "f47c96a1-f928-4768-aa30-ef32dc78aa69",
       "htm": "GET",
-      "htu": "https://verifier.example.org/callback",
+      "htu": "https://verifier.example.org/request_uri",
       "iat": 1562262616
     }
 
