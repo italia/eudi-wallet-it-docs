@@ -908,11 +908,7 @@
   <section id="the-infrastructure-of-trust">
 <span id="trust-rst"></span><h1>The Infrastructure of Trust<a class="headerlink" href="#the-infrastructure-of-trust" title="Permalink to this heading">¶</a></h1>
 <p>The EUDI Wallet Architecture Reference Framework (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>) defines the Trust Model as a <em>&quot;collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem.&quot;</em>.</p>
-<p>This section defines how the Trust Model is implemented in an infrastructure of Trust based on
-OpenID Connect Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>, where its Federation API is used for the distribution of metadata, raw public keys, metadata policies, X.509 certificates, and their revocation status.</p>
-<p>This document is fully compliant to OpenID Connect Federation.</p>
-<p>The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.</p>
-<p>This is called <em>Wallet Instance Attestation</em> and is documented in the section dedicated to the Wallet Solution.</p>
+<p>This section defines how the Trust Model is implemented in an infrastructure of Trust in fully compliace with OpenID Connect Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>, where its Federation API is used for the distribution of metadata, metadata policies, trust marks, public keys,  X.509 certificates, and the revocation status of the participants (Federation Entities).</p>
 <p>The infrastructure of Trust enables the trust assessment mechanism to be applied between the parties defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/trust-roles.svg"><img alt="federation portrain" src="_images/trust-roles.svg" width="100%" /></a>
@@ -923,6 +919,11 @@ OpenID Connect Federation 1.0 <a class="reference external" href="https://openid
 <section id="federation-roles">
 <h2>Federation Roles<a class="headerlink" href="#federation-roles" title="Permalink to this heading">¶</a></h2>
 <p>All the participants are Federation Entities that must be accredited by an Accreditation Body, except the Wallet Instances that are personal devices and are certified by their Wallet Provider (see <a class="reference internal" href="#wallet-instance-attestation">Wallet Instance Attestation</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.</p>
+<p>This is called <em>Wallet Instance Attestation</em> and is documented in the section dedicated to the Wallet Solution.</p>
+</div>
 <p>Therein a table with the summary of the Federation Entity roles mapped on the corresponding EUDI roles, as defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <table class="docutils align-default">
 <thead>
@@ -1115,7 +1116,7 @@ Intermediate</p></td>
 <p>All entities MUST obtain the Federation configuration before entering the operational phase, and they
 MUST keep it up-to-date. The Federation configuration contains the Trust Anchor
 public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (<strong>max_path length</strong>).</p>
-<p>Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> specifications:</p>
+<p>Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the <a class="reference external" href="OIDC-FED">OpenID Connect Federation</a> specifications, Section 3.1 for the Federation statements and Section 4 for the Metadata identifiers:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
     &quot;alg&quot;: &quot;ES256&quot;,
     &quot;kid&quot;: &quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;,
