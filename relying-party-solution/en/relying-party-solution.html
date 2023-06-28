@@ -957,107 +957,67 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <a class="reference external image-reference" href="//www.plantuml.com/plantuml/png/ZPF1Rjf048Rl-nIZd5gfUG4agaGqgcXLuG99Bf6gnJlWRSmidPsrIv--QpjhOn1IRlZtDpyp_upll6YMi2-L3k8ex3V8IXsYPdDxq2Hmy-YHRq1x26FzMPSb2imfMb2EBLAFaIMMHqixoA9uR84AbPfEuJv8WHH1BTOHm7Ig0jn-ZgydiCG_0Rr0naum5pHHyIvmZahdOYijsDXKc0fcZ55hFHtRVwrbShd4VYvXvaoghoUmAbmTrLOqUFeN_UzQgJhHkQRaqOiFVuKZtBV-k9o_q9RTVY1J5ryVrZsssFp6MFL2c-DfQHHgAmMS1Gpt8f5enuk8zl0bSnc8UqMwaanNSM6qvl2MJDV-k9zn26d6v3LQQUVK8q_8TdiyGtwWQAD53vGkRHGGlZslOMLtf2KmNhnENQ61f-o3_zW1OUXswnXoHnv9Xl632ccgcQEjvJsQqu72i8biiLfV78q_D8unNcXNK1r-lIFV6QD14gjBc7iVa5F22Rmsym1ax7Bq7gH0o7kxI-1AmugS8BWAUGGV2kqHE0Pc6QEvcyJ9Rg5AtLWItB6LuoVGwOlidiX0uKg331jBfjccstPxQ0oGV624U5QT1Ze-bPPUqRIvTPTWaTy5vu4PIS2ZzyrGv2Z7yyfPKydzITWu7AD7EhtZnNTbyFIZFJlbEoGJzkL_"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Id</strong></p></th>
-<th class="head"><p><strong>Source</strong></p></th>
-<th class="head"><p><strong>Destination</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>1</strong></p></td>
-<td><p><strong>User</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
 <td><p>The User asks for access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the <em>Login with the Wallet</em> button. The Authorization flow starts.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>2</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Relying Party creates an Authorization Request which contains the scopes of the request.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>3</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Relying Party inserts the reference URI of the <em>request_uri</em> into a QR Code.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>4</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
 <td><p>The QR Code is shown to the User that frames it.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>5</strong> and <strong>6</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>7</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
 <td><p>The Wallet Instance requests the content of the Authorization Request by invoking the Request URI, passing an Authorization DPoP HTTP Header containing the Wallet Instance Attestation and the DPoP proof HTTP Header.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>8</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Relying Party attests the trust to the Wallet Instance using the Wallet Instance Attestation and verifies its capabilities.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>9</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
 <td><p>The Relying Party issues a signed Request Object, returning it as response.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>10</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Wallet Instance verifies Request Object JWS.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>11</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Wallet Instance attests the trust to the Relying Party by verifying the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>12</strong> and <strong>13</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>14</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
-<td><p><strong>User</strong></p></td>
 <td><p>The Wallet Instance requests the User's consent for the release of the credentials.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>15</strong></p></td>
-<td><p><strong>User</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
 <td><p>The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>16</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
 <td><p>The Wallet Instance provides the Authorization Response to the Relying Party.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>17</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Relying Party attests the Credential Issuer trust.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>18</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Relying Party verifies the signature of the Authorization Response JWS.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>19</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
-<td><p><strong>-</strong></p></td>
 <td><p>The Relying Party verifies the Authorization Response, performs checks for integrity, revocation and proof of possession of the presented credentials.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>20</strong></p></td>
-<td><p><strong>Relying Party</strong></p></td>
-<td><p><strong>Wallet Instance</strong></p></td>
 <td><p>The Relying Party notifies the Wallet Instance that the operation ends successfully.</p></td>
 </tr>
 </tbody>
@@ -1226,7 +1186,6 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
   &quot;alg&quot;: &quot;ES256&quot;,
   &quot;typ&quot;: &quot;JWT&quot;,
-  &quot;x5c&quot;: [ &quot;MIICajCCAdOgAwIBAgIC...20a&quot; ],
   &quot;kid&quot;: &quot;e0bbf2f1-8c3a-4eab-a8ac-2e8f34db8a47&quot;,
   &quot;trust_chain&quot;: [
     &quot;MIICajCCAdOgAwIBAgIC...awz&quot;,
@@ -1268,13 +1227,10 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
 <td><p>Media Type of the JWT, as defined in [<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>x5c</strong></p></td>
-<td><p>X.509 Certificate containing the key used to verify the JWS, as defined in [<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
+<tr class="row-even"><td><p><strong>kid</strong></p></td>
+<td><p>Key ID of the public key needed to verify the JWS signature, as defined in [<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. Required if <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> is used.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>Key ID of the public key needed to verify the JWS signature, as defined in [<span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. Required if <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> is used.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>trust_chain</strong></p></td>
+<tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>Sequence of Entity Statements that composes a Trust Chain related to the Relying Party, as defined in <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> Section <em>3.2.1. Trust Chain Header Parameter</em>.</p></td>
 </tr>
 </tbody>
