@@ -420,7 +420,7 @@ Here a non-normative example of ``presentation_definition``:
 
 Authorization Response Details
 ------------------------------
-After getting the User authorization and his consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party ``response_uri`` endpoint, the content should be encrypted according `OPENID4VP`_ Section 6.3, using the Relying Party public key.
+After getting the User authorization and consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party ``response_uri`` endpoint, the content should be encrypted according `OPENID4VP`_ Section 6.3, using the Relying Party public key.
 
 .. note::
     **Why the response is encrypted?**
@@ -540,7 +540,7 @@ Below is a non-normative response example:
         "metadata": {
             "wallet_verifier": {
                 "application_type": "web",
-                "client_id": "https://verifier.example.org",
+                "client_id": "https://rp.example.it",
                 "client_name": "Name of an example organization",
                 "jwks": {
                     "keys": [
