@@ -1372,7 +1372,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </section>
 <section id="authorization-response-details">
 <h2>Authorization Response Details<a class="headerlink" href="#authorization-response-details" title="Permalink to this heading">¶</a></h2>
-<p>After getting the User authorization and his consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3, using the Relying Party public key.</p>
+<p>After getting the User authorization and consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3, using the Relying Party public key.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong></p>
@@ -1485,7 +1485,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
     &quot;metadata&quot;: {
         &quot;wallet_verifier&quot;: {
             &quot;application_type&quot;: &quot;web&quot;,
-            &quot;client_id&quot;: &quot;https://verifier.example.org&quot;,
+            &quot;client_id&quot;: &quot;https://rp.example.it&quot;,
             &quot;client_name&quot;: &quot;Name of an example organization&quot;,
             &quot;jwks&quot;: {
                 &quot;keys&quot;: [
