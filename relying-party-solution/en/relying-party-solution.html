@@ -1092,11 +1092,11 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </div>
 <p>Below is a non-normative example of a QR Code issued by the Relying Party:</p>
 <img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the QR Code raw payload:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9hMTI1MmY5MC1hNjUyLTRjNDctODAzOS1mNjAwOTZjYXZ6cXc=
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaQ==
 </pre></div>
 </div>
 <p>Below follows its Base64 decoded content:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https://verifier.example.org/a1252f90-a652-4c47-8039-f60096cavzqw
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https://verifier.example.org/request_uri
 </pre></div>
 </div>
 </section>
@@ -1203,7 +1203,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 {
   &quot;jti&quot;: &quot;f47c96a1-f928-4768-aa30-ef32dc78aa69&quot;,
   &quot;htm&quot;: &quot;GET&quot;,
-  &quot;htu&quot;: &quot;https://verifier.example.org/callback&quot;,
+  &quot;htu&quot;: &quot;https://verifier.example.org/request_uri&quot;,
   &quot;iat&quot;: 1562262616
 }
 </pre></div>
