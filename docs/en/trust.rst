@@ -8,7 +8,13 @@ The Infrastructure of Trust
 The EUDI Wallet Architecture Reference Framework (`EIDAS-ARF`_) defines the Trust Model as a *"collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem."*.
 
 This section defines how the Trust Model is implemented in an infrastructure of Trust based on
-OpenID Connect Federation 1.0 `OIDC-FED`_, where its Federation API is used for the distribution of metadata, raw public keys, metadata policies, X.509 certificates, and their revocation statuses.
+OpenID Connect Federation 1.0 `OIDC-FED`_, where its Federation API is used for the distribution of metadata, raw public keys, metadata policies, X.509 certificates, and their revocation status.
+
+This document is fully compliant to OpenID Connect Federation.
+
+The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.
+
+This is called *Wallet Instance Attestation* and is documented in the section dedicated to the Wallet Solution.
 
 The infrastructure of Trust enables the trust assessment mechanism to be applied between the parties defined in the `EIDAS-ARF`_.
 
@@ -16,81 +22,115 @@ The infrastructure of Trust enables the trust assessment mechanism to be applied
     :alt: federation portrain
     :width: 100%
     
-    The roles of the Federation infrastructure, where a Trust Anchor has one or more Intermediates and Leafs.
+    The roles of the Federation infrastructure, where a Trust Anchor has one or more Intermediates and Leafs and the Intermediates have their Leafs. In this representation both Trust Anchor and Intermediates play the role of Accreditation Body.
+
+
+Federation Roles
+------------------
+
+All the participants are Federation Entities that must be accredited by an Accreditation Body, except the Wallet Instances that are personal devices and are certified by their Wallet Provider (see `Wallet Instance Attestation`_).
+
+Therein a table with the summary of the Federation Entity roles mapped on the corresponding EUDI roles, as defined in the `EIDAS-ARF`_.
+
++-------------------------------------------+----------------+-----------------------------------+
+|  EUDI Role                                | Federation Role| Notes                             |
++===========================================+================+===================================+
+|  Public Key Infrastructure (PKI)          | Trust Anchor   | The Federation has PKI            |
+|                                           |                | capabilities and the              |
+|                                           |                | Entity that configures            |
+|                                           |                | the entire infrastructure         |
+|                                           |                | is the Trust Anchor.              |
+|                                           |                |                                   |
++-------------------------------------------+----------------+-----------------------------------+
+|  Qualified Trust Service Provider (QTSP)  | Leaf           |                                   |
++-------------------------------------------+----------------+-----------------------------------+
+|  Person Identification Data Provider      | Leaf           |                                   |
++-------------------------------------------+----------------+-----------------------------------+
+|  Qualified Electronic Attestations        | Leaf           |                                   |
+|  of Attributes Provider                   |                |                                   |
+|                                           |                |                                   |
++-------------------------------------------+----------------+-----------------------------------+
+|  Relying Party                            | Leaf           |                                   |
++-------------------------------------------+----------------+-----------------------------------+
+|  Trust Service Provider (TSP)             | Leaf           |                                   |
++-------------------------------------------+----------------+-----------------------------------+
+|  Trusted List                             | Trust Anchor   | The listing endpoint, the         |
+|                                           |                | trust mark status endpoint        |
+|                                           |                | and the fetch endpoint must       |
+|                                           |                | be exposed by both Trust Anchors  |
+|                                           |                | and their Intermediates, making   |
+|                                           |                | the Trusted List distributed      |
+|                                           |                | over multiple Federation Entities,|
+|                                           |                | where each of these is responsible|
+|                                           |                | of their accredited subordinates. |
+|                                           | Intermediates  |                                   |
++-------------------------------------------+----------------+-----------------------------------+
+|  EUDI Wallet Provider                     | Leaf           |                                   |
++-------------------------------------------+----------------+-----------------------------------+
+
+
 
 General Properties
 ------------------
 
 OpenID Federation facilitates the building of an infrastructure that is:
 
-- **Secure and Tamper-proof**, ensuring that entities' attestations of metadata and keys are cryptographically signed in the chain of trust, comprised of attestations issued by multiple parties that cannot be forged or tampered with by an adversary;
-- **Privacy-preserving**, as the infrastructure is public and only exposes public data such as public keys and metadata of the participants for interoperability needs. It does not require authentication of the requesters and therefore does not track who is assessing trust against whom;
+- **Secure and Tamper-proof**, entities' attestations of metadata and keys are cryptographically signed in the chain of trust, comprised of attestations issued by multiple parties that cannot be forged or tampered with by an adversary;
+- **Privacy-preserving**, the infrastructure is public and exposes public data such as public keys and metadata of the participants. It does not require authentication of the requesters and therefore does not track who is assessing trust against whom;
 - **Guarantor of the non-repudiation of long-lived attestations**, historical keys endpoints and historical Trust Chains are saved for years according to data retention policies. This enables the certification of the validity of historical compliance, even in cases of revocation, expiration, or rotation of the keys used for signature verification;
 - **Dynamic and flexible**, allowing any participant to modify parts of their metadata autonomously, as these are published within their domains and verified through the Trust Chain. Simultaneously, the Trust Anchor or its Intermediate may publish a metadata policy to dynamically modify the metadata of all participants—such as disabling a vulnerable signature algorithm—and obtain certainty of propagation within a configured period of time to all participants;
 - **Efficient**, as JWT and JSON formats have been adopted on the web for years. They are cost-effective in terms of storage and processing and have a wide range of solutions available, such as libraries and software development kits, which enable rapid implementation of the solution;
-- **Scalable**, the Trust Model can accommodate more than a single organization by using Intermediates;
-- **Simple**, as it is based on widely used REST technology and formats that have become popular over the years.
+- **Scalable**, the Trust Model can accommodate more than a single organization by using Intermediates.
 
 Trust Model Requirements
 ------------------------
 
 In the table below there’s the map of the components that the ARF defines within the Trust Model and their coverage in `OIDC-FED`_.
 
-+----------------------------------------------------+--------------+--------------+
-|  Component                                         |  Satisfied   | how          |
-+====================================================+==============+==============+
-|  Issuers identification                            | |check-icon| | Trust Chain  |
-+----------------------------------------------------+--------------+--------------+
-|  Issuers registration                              | |check-icon| | Trust Anchor |
-|                                                    |              | or           |
-|                                                    |              | Intermediate |
-|                                                    |              | OnBoarding   |
-|                                                    |              | systems      |
-+----------------------------------------------------+--------------+--------------+
-|  Recognised data models and schemas                | |check-icon| | Entity       |
-|                                                    |              | Configuration|
-|                                                    |              |              |
-|                                                    |              | and          |
-|                                                    |              |              |
-|                                                    |              | Entity       |
-|                                                    |              | Statements   |
-+----------------------------------------------------+--------------+--------------+
-|  Relying Parties’ registration and authentication  | |check-icon| | static       |
-|                                                    |              | Trust Chains |
-|                                                    |              |              |
-|                                                    |              | and          |
-|                                                    |              |              |
-|                                                    |              | Federation   |
-|                                                    |              | Entity       |
-|                                                    |              | Discovery    |
-+----------------------------------------------------+--------------+--------------+
-|  Trust mechanisms in a cross-domain scenario       | |check-icon| | static       |
-|                                                    |              | Trust Chains |
-|                                                    |              |              |
-|                                                    |              | and          |
-|                                                    |              |              |
-|                                                    |              | Federation   |
-|                                                    |              | Entity       |
-|                                                    |              | Discovery    |
-+----------------------------------------------------+--------------+--------------+
++----------------------------------------------------+--------------+----------------+
+|  Component                                         |  Satisfied   | how            |
++====================================================+==============+================+
+|  Issuers identification                            | |check-icon| | Trust Chain    |
++----------------------------------------------------+--------------+----------------+
+|  Issuers registration                              | |check-icon| | Trust Anchor   |
+|                                                    |              |                |
+|                                                    |              | Intermediate   |
+|                                                    |              | OnBoarding     |
+|                                                    |              | systems        |
+|                                                    |              |                |
++----------------------------------------------------+--------------+----------------+
+|  Recognised data models and schemas                | |check-icon| | Entity         |
+|                                                    |              | Configuration  |
+|                                                    |              |                |
+|                                                    |              |                |
+|                                                    |              |                |
+|                                                    |              | Entity         |
+|                                                    |              | Statements     |
++----------------------------------------------------+--------------+----------------+
+|  Relying Parties’ registration and authentication  | |check-icon| | static         |
+|                                                    |              | Trust Chains   |
+|                                                    |              |                |
+|                                                    |              |                |
+|                                                    |              |                |
+|                                                    |              | Federation     |
+|                                                    |              | Entity         |
+|                                                    |              | Discovery      |
++----------------------------------------------------+--------------+----------------+
+|  Trust mechanisms in a cross-domain scenario       | |check-icon| | static         |
+|                                                    |              | Trust Chains   |
+|                                                    |              |                |
+|                                                    |              |                |
+|                                                    |              |                |
+|                                                    |              | Federation     |
+|                                                    |              | Entity         |
+|                                                    |              | Discovery      |
++----------------------------------------------------+--------------+----------------+
 
-
-
-This implementation profile
----------------------------
-
-This document applies the OpenID Connect Federation in its original state, without any substantive changes.
-
-This document distinguishes between Federation Entities, which include all participants except for Wallet Instances.
-
-The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.
-
-This is called *Wallet Instance Attestation* and is documented in the section dedicated to the Wallet Solution.
 
 Federation API endpoints
 ------------------------
 
-OIDC Federation is also a PKI that uses RESTful Web Services secured over HTTPs. The technical specification defines which are the web endpoints that the participants made publicly available. In the table below the summary of these and their scopes.
+OpenID Federation is similar to a PKI that uses RESTful Web Services secured over HTTPs. The technical specification defines which are the web endpoints that the participants made publicly available. In the table below the summary of these and their scopes.
 
 All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 
@@ -137,7 +177,7 @@ public keys for signature operations and the maximum number of Intermediates all
 
 Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OIDC-FED`_ specifications:
 
-.. code-block:: python
+.. code-block:: text
 
     {
         "alg": "ES256",
@@ -199,18 +239,26 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
     }
 
 
-Entity Configuration and Entity Statement
-`````````````````````````````````````````
+Entity Configuration
+````````````````````
 
-The Entity Configuration is the federation metadata that an Entity publishes about itself, which is verifiable thanks to a trusted third party. The Entity Configuration is signed, and it can be verified with one of the public keys contained within it, as well as within the Entity Statement issued by the Trust Anchor or its Intermediate. This is defined in a parameter called authority_hints. The Entity Configuration may also contain one or more Trust Marks regarding its issuer.
+The Entity Configuration is the federation metadata that a Federation Entity publishes about itself, which is verifiable thanks to a trusted third party. The Entity Configuration is signed, and it can be verified with one of the public keys contained within it, as well as within the Entity Statement issued by the Trust Anchor or its Intermediate. This is defined in a parameter called **authority_hints**. The Entity Configuration may also contain one or more Trust Marks regarding its issuer.
 
-Trust Anchors and Intermediates publish their Entity Configuration containing public keys and X.509 certificates. They also publish the Federation Entity endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures.
+Trust Anchors and Intermediates publish their Entity Configuration containing public keys. 
+
+Entity Statement
+```````````````````
+
+Trust Anchors and Intermediate must publish the Federation Fetch endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures. 
+
+.. note:: 
+    The Federation Fetch endpoint may also issue X.509 certificates for each of the public keys of the subordinate. Making the issuance of the X.509 certificates completely automatic. 
 
 The Entity Statement may also publish metadata policies, enforcing one or more changes to be applied to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that comprises all statements, starting from the Entity Configuration up to the Trust Anchor.
 
-Below is a non-normative example of an Entity Statement issued by an authority (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates:
+Below is a non-normative example of an Entity Statement issued by an authority (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
 
-.. code-block:: python
+.. code-block:: text
 
     {
         "alg": "RS256",
@@ -267,17 +315,16 @@ Below is a non-normative example of an Entity Statement issued by an authority (
     }
 
 
-Roles of the ecosystem
-----------------------
+Metadata
+-----------
 
-In this section are defined the main roles of the ecosystems, assuming 
-the Trust Anchor and Intermediates as Accreditation Bodies.
+In this section are defined the main metadata types mapped to the roles of the ecosystem,
+giving the references of the metadata protocol for each of these.
 
-The table below maps the metadata types with the roles of the ecosystem,
-and also gives the references of the metadata protocol.
 
-The entities that doesn't have any references to a known draft or standard
-are intended to be defined in this technical reference.
+.. note::
+    
+    The entities that doesn't have any references to a known draft or standard are intended to be defined in this technical reference.
 
 +------------------+-----------------------------+--------------+
 | Entity           | metadata type               | references   |
