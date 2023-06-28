@@ -4,7 +4,7 @@ name: gh-pages
 
 on:
   push:
-    branches: [ "versione-corrente" ]
+    branches: [ "*" ]
     paths-ignore:
     - README.md
     - CONTRIBUTING.md
@@ -37,11 +37,18 @@ jobs:
           python-version: '3.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
 
-      # Runs a single command using the runners shell
-      - name: Run a script
+      - name: Install deps
         run: |-
-          pip install tox
-          tox -re build
+            python -m pip install -r requirements-dev.txt
+
+      - name: Build branch
+        run: |-
+          sphinx-build -b html docs/it/  html/${GITHUB_HEAD_REF}/it
+          sphinx-build -b html docs/en/  html/${GITHUB_HEAD_REF}/en
+
+      # Runs a single command using the runners shell
+      - name: Create GH page index
+        run: |-
           touch html/.nojekyll
           echo '
           <html>
@@ -59,12 +66,12 @@ jobs:
           </body>
           </html>' > html/index.html
 
-
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
           build_dir: html
+          keep_history: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
