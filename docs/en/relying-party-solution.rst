@@ -106,7 +106,7 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **15**
     - **User**
     - **Wallet Instance**
-    - The User consents the presentation of their credentials, by selecting/deselecting the personal data to release.
+    - The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.
   * - **16**
     - **Wallet Instance**
     - **Relying Party**
@@ -114,12 +114,16 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **17**
     - **Relying Party**
     - **-**
-    - The Relying Party verifies the signature of the Authorization Response JWS.
+    - The Relying Party attests the Credential Issuer trust.
   * - **18**
     - **Relying Party**
     - **-**
-    - The Relying verifies the Authorization Response, performs checks for integrity and proof of possession of the presented credentials.
+    - The Relying Party verifies the signature of the Authorization Response JWS.
   * - **19**
+    - **Relying Party**
+    - **-**
+    - The Relying Party verifies the Authorization Response, performs checks for integrity, revocation and proof of possession of the presented credentials.
+  * - **20**
     - **Relying Party**
     - **Wallet Instance**
     - The Relying Party notifies the Wallet Instance that the operation ends successfully.
@@ -151,7 +155,7 @@ Where:
     - The Verifier request URI used by the Wallet Instance to retrieve the Request Object.
 
 .. note::
-    The *error correction level* chosen for the QR Code must be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.
+    The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.
 
 
 Below is a non-normative example of a QR Code issued by the Relying Party:
@@ -208,7 +212,7 @@ Herein the description of the parameters defined in *OAuth 2.0 Demonstration of 
 DPoP HTTP Header
 ^^^^^^^^^^^^^^^^
 
-A **DPoP proof** is included in the request using the HTTP Header ``DPoP`` and containing a JWS. The JWS must be signed with the public key made available in the Wallet Instance Attestation (``Authorization: DPoP``).
+A **DPoP proof** is included in the request using the HTTP Header ``DPoP`` and containing a JWS. The JWS MUST be signed with the public key made available in the Wallet Instance Attestation (``Authorization: DPoP``).
 
 
 The JOSE header of the **DPoP JWS** MUST contain at least the following parameters:
@@ -252,6 +256,9 @@ The payload of a **DPoP proof** MUST contain at least the following claims:
     * - **iat**
       - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
       - [:rfc:`7519`. Section 4.1.6].
+    * - **ath**
+      - Hash of the Wallet Instance Attestation. 
+      - [`DPOP`_. Section 4.2].
 
 
 Therein a non-normative example of the DPoP decoded content:
@@ -273,7 +280,8 @@ Therein a non-normative example of the DPoP decoded content:
       "jti": "f47c96a1-f928-4768-aa30-ef32dc78aa69",
       "htm": "GET",
       "htu": "https://verifier.example.org/request_uri",
-      "iat": 1562262616
+      "iat": 1562262616,
+      "ath": "fUHyO2r2Z3DZ53EsNrWBb0xWXoaNy59IiKCAqksmQEo"
     }
 
 
@@ -297,7 +305,7 @@ The Relying Party issues a signed request object, where a non-normative example 
   }
   .
   {
-    "scope": "eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:uniqueid+given_name+family_name",
+    "scope": "eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:unique_id+given_name+family_name",
     "client_id_scheme": "entity_id",
     "client_id": "https://verifier.example.org",
     "response_mode": "direct_post.jwt",
@@ -341,17 +349,17 @@ The JWS payload parameters are described herein:
   * - **scope**
     - Aliases for well-defined Presentation Definitions IDs. It will be used to identify which required credentials and User attributes are requested by the Relying Party.
   * - **client_id_scheme**
-    - String identifying the scheme of the value in the ``client_id``. It must be ``entity_id``.
+    - String identifying the scheme of the value in the ``client_id``. It MUST be ``entity_id``.
   * - **client_id**
     - Unique Identifier of the Relying Party.
   * - **response_mode**
-    - Used to ask the Wallet Instance in which way it has to send the response. It must be ``direct_post.jwt``
+    - Used to ask the Wallet Instance in which way it has to send the response. It MUST be ``direct_post.jwt``
   * - **response_type**
-    - The supported response type, must be set to``vp_token``.
+    - The supported response type, MUST be set to``vp_token``.
   * - **response_uri**
-    - The Response URI to which the Wallet Instance must send the Authorization Response using an HTTPs POST.
+    - The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTPs POST.
   * - **nonce**
-    - Fresh cryptographically random number with sufficient entropy used for security reason, which length must be at least 32 digits.
+    - Fresh cryptographically random number with sufficient entropy used for security reason, which length MUST be at least 32 digits.
   * - **state**
     - Unique identifier of the Authorization Request.
   * - **iss**
@@ -373,7 +381,7 @@ Here a non-normative example of ``presentation_definition``:
 
   {
     "presentation_definition": {
-      "id": "pid-sd-jwt:uniqueid+given_name+family_name",
+      "id": "pid-sd-jwt:unique_id+given_name+family_name",
       "input_descriptors": [
         {
           "id": "eu.europa.ec.eudiw.pid.it.1",
@@ -405,13 +413,14 @@ Here a non-normative example of ``presentation_definition``:
 
   - ``presentation_definition``: JSON object according to `Presentation Exchange <PresentationExch>`_. This parameter MUST not be present when ``presentation_definition_uri`` or ``scope`` are present.
   - ``presentation_definition_uri``: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when ``presentation_definition parameter`` or a ``scope`` value representing a Presentation Definition is not present.
-  - ``client_metadata_uri``: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. This parameter MUST not be present since the ``client_metadata`` is taken from the *trust chain*.
-  - ``redirect_uri``: the redirect URI to which the Wallet Instance must redirect the Authorization Response. This parameter MUST not be present when ``response_uri`` is present.
+  - ``client_metadata``: A JSON object containing the Verifier metadata values. The ``client_metadata`` parameter MUST NOT be present when ``client_id_scheme`` is ``entity_id``. The ``client_metadata`` is taken from ``trust_chain``.
+  - ``client_metadata_uri``: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. The ``client_metadata_uri`` parameter MUST NOT be present when ``client_id_scheme`` is ``entity_id``.
+  - ``redirect_uri``: the redirect URI to which the Wallet Instance MUST redirect the Authorization Response. This parameter MUST not be present when ``response_uri`` is present.
 
 
 Authorization Response Details
 ------------------------------
-After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party ``response_uri`` endpoint, the content should be encrypted according `OPENID4VP`_ Section 6.3, using the Relying Party public key.
+After getting the User authorization and his consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party ``response_uri`` endpoint, the content should be encrypted according `OPENID4VP`_ Section 6.3, using the Relying Party public key.
 
 .. note::
     **Why the response is encrypted?**
@@ -493,9 +502,9 @@ Below is a non-normative example of the ``vp_token`` decoded content, represente
 
 Relying Party Entity Configuration
 ---------------------------------------------
-According to the `Trust Model`_ section, the Verifier is a Federation Entity and must expose a well-known endpoint containing its Entity Configuration. 
+According to the `Trust Model`_ section, the Verifier is a Federation Entity and MUST expose a .well-known endpoint containing its Entity Configuration. 
 
-Below a non-normative example of the request made by the Wallet Instance to the *openid-federation* well-known endpoint to obtain the Relying Party Entity Configuration:
+Below a non-normative example of the request made by the Wallet Instance to the *openid-federation* .well-known endpoint to obtain the Relying Party Entity Configuration:
 
 .. code-block:: http
 
@@ -572,7 +581,7 @@ Below is a non-normative response example:
                   },
                   "presentation_definitions": [
                       {
-                        "id": "pid-sd-jwt:uniqueid+given_name+family_name",
+                        "id": "pid-sd-jwt:unique_id+given_name+family_name",
                         "input_descriptors": [
                             {
                                 "id": "sd-jwt",
