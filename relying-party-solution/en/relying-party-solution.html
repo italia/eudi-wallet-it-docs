@@ -1033,7 +1033,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <tr class="row-even"><td><p><strong>15</strong></p></td>
 <td><p><strong>User</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
-<td><p>The User consents the presentation of their credentials, by selecting/deselecting the personal data to release.</p></td>
+<td><p>The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>16</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
@@ -1043,14 +1043,19 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <tr class="row-even"><td><p><strong>17</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
 <td><p><strong>-</strong></p></td>
-<td><p>The Relying Party verifies the signature of the Authorization Response JWS.</p></td>
+<td><p>The Relying Party attests the Credential Issuer trust.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>18</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
 <td><p><strong>-</strong></p></td>
-<td><p>The Relying verifies the Authorization Response, performs checks for integrity and proof of possession of the presented credentials.</p></td>
+<td><p>The Relying Party verifies the signature of the Authorization Response JWS.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>19</strong></p></td>
+<td><p><strong>Relying Party</strong></p></td>
+<td><p><strong>-</strong></p></td>
+<td><p>The Relying Party verifies the Authorization Response, performs checks for integrity, revocation and proof of possession of the presented credentials.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>20</strong></p></td>
 <td><p><strong>Relying Party</strong></p></td>
 <td><p><strong>Wallet Instance</strong></p></td>
 <td><p>The Relying Party notifies the Wallet Instance that the operation ends successfully.</p></td>
@@ -1088,7 +1093,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <em>error correction level</em> chosen for the QR Code must be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.</p>
+<p>The <em>error correction level</em> chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.</p>
 </div>
 <p>Below is a non-normative example of a QR Code issued by the Relying Party:</p>
 <img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the QR Code raw payload:</p>
@@ -1127,7 +1132,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </div>
 <section id="dpop-http-header">
 <h3>DPoP HTTP Header<a class="headerlink" href="#dpop-http-header" title="Permalink to this heading">¶</a></h3>
-<p>A <strong>DPoP proof</strong> is included in the request using the HTTP Header <code class="docutils literal notranslate"><span class="pre">DPoP</span></code> and containing a JWS. The JWS must be signed with the public key made available in the Wallet Instance Attestation (<code class="docutils literal notranslate"><span class="pre">Authorization:</span> <span class="pre">DPoP</span></code>).</p>
+<p>A <strong>DPoP proof</strong> is included in the request using the HTTP Header <code class="docutils literal notranslate"><span class="pre">DPoP</span></code> and containing a JWS. The JWS MUST be signed with the public key made available in the Wallet Instance Attestation (<code class="docutils literal notranslate"><span class="pre">Authorization:</span> <span class="pre">DPoP</span></code>).</p>
 <p>The JOSE header of the <strong>DPoP JWS</strong> MUST contain at least the following parameters:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1186,6 +1191,10 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 <td><p>[<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>ath</strong></p></td>
+<td><p>Hash of the Wallet Instance Attestation.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">DPOP</a>. Section 4.2].</p></td>
+</tr>
 </tbody>
 </table>
 <p>Therein a non-normative example of the DPoP decoded content:</p>
@@ -1204,7 +1213,8 @@ This scenario requests the Verifier to show a QR Code which the User frames with
   &quot;jti&quot;: &quot;f47c96a1-f928-4768-aa30-ef32dc78aa69&quot;,
   &quot;htm&quot;: &quot;GET&quot;,
   &quot;htu&quot;: &quot;https://verifier.example.org/request_uri&quot;,
-  &quot;iat&quot;: 1562262616
+  &quot;iat&quot;: 1562262616,
+  &quot;ath&quot;: &quot;fUHyO2r2Z3DZ53EsNrWBb0xWXoaNy59IiKCAqksmQEo&quot;
 }
 </pre></div>
 </div>
@@ -1226,7 +1236,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 }
 .
 {
-  &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:uniqueid+given_name+family_name&quot;,
+  &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:unique_id+given_name+family_name&quot;,
   &quot;client_id_scheme&quot;: &quot;entity_id&quot;,
   &quot;client_id&quot;: &quot;https://verifier.example.org&quot;,
   &quot;response_mode&quot;: &quot;direct_post.jwt&quot;,
@@ -1285,22 +1295,22 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <td><p>Aliases for well-defined Presentation Definitions IDs. It will be used to identify which required credentials and User attributes are requested by the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_id_scheme</strong></p></td>
-<td><p>String identifying the scheme of the value in the <code class="docutils literal notranslate"><span class="pre">client_id</span></code>. It must be <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></td>
+<td><p>String identifying the scheme of the value in the <code class="docutils literal notranslate"><span class="pre">client_id</span></code>. It MUST be <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
 <td><p>Unique Identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_mode</strong></p></td>
-<td><p>Used to ask the Wallet Instance in which way it has to send the response. It must be <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code></p></td>
+<td><p>Used to ask the Wallet Instance in which way it has to send the response. It MUST be <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_type</strong></p></td>
-<td><p>The supported response type, must be set to``vp_token``.</p></td>
+<td><p>The supported response type, MUST be set to``vp_token``.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_uri</strong></p></td>
-<td><p>The Response URI to which the Wallet Instance must send the Authorization Response using an HTTPs POST.</p></td>
+<td><p>The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTPs POST.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>nonce</strong></p></td>
-<td><p>Fresh cryptographically random number with sufficient entropy used for security reason, which length must be at least 32 digits.</p></td>
+<td><p>Fresh cryptographically random number with sufficient entropy used for security reason, which length MUST be at least 32 digits.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>state</strong></p></td>
 <td><p>Unique identifier of the Authorization Request.</p></td>
@@ -1323,7 +1333,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <p>Here a non-normative example of <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;presentation_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:uniqueid+given_name+family_name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1354,14 +1364,15 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>: JSON object according to <a class="reference external" href="PresentationExch">Presentation Exchange</a>. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code> or <code class="docutils literal notranslate"><span class="pre">scope</span></code> are present.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code>: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition</span> <span class="pre">parameter</span></code> or a <code class="docutils literal notranslate"><span class="pre">scope</span></code> value representing a Presentation Definition is not present.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code>: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. This parameter MUST not be present since the <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is taken from the <em>trust chain</em>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>: the redirect URI to which the Wallet Instance must redirect the Authorization Response. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is present.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>: A JSON object containing the Verifier metadata values. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is taken from <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code>: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. The <code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>: the redirect URI to which the Wallet Instance MUST redirect the Authorization Response. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is present.</p></li>
 </ul>
 </div>
 </section>
 <section id="authorization-response-details">
 <h2>Authorization Response Details<a class="headerlink" href="#authorization-response-details" title="Permalink to this heading">¶</a></h2>
-<p>After authenticating the User and getting their consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3, using the Relying Party public key.</p>
+<p>After getting the User authorization and his consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3, using the Relying Party public key.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong></p>
@@ -1443,8 +1454,8 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 </section>
 <section id="relying-party-entity-configuration">
 <h2>Relying Party Entity Configuration<a class="headerlink" href="#relying-party-entity-configuration" title="Permalink to this heading">¶</a></h2>
-<p>According to the <a class="reference external" href="trust.html">Trust Model</a> section, the Verifier is a Federation Entity and must expose a well-known endpoint containing its Entity Configuration.</p>
-<p>Below a non-normative example of the request made by the Wallet Instance to the <em>openid-federation</em> well-known endpoint to obtain the Relying Party Entity Configuration:</p>
+<p>According to the <a class="reference external" href="trust.html">Trust Model</a> section, the Verifier is a Federation Entity and MUST expose a .well-known endpoint containing its Entity Configuration.</p>
+<p>Below a non-normative example of the request made by the Wallet Instance to the <em>openid-federation</em> .well-known endpoint to obtain the Relying Party Entity Configuration:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/openid-federation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">verifier.example.org</span>
 </pre></div>
@@ -1515,7 +1526,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
               },
               &quot;presentation_definitions&quot;: [
                   {
-                    &quot;id&quot;: &quot;pid-sd-jwt:uniqueid+given_name+family_name&quot;,
+                    &quot;id&quot;: &quot;pid-sd-jwt:unique_id+given_name+family_name&quot;,
                     &quot;input_descriptors&quot;: [
                         {
                             &quot;id&quot;: &quot;sd-jwt&quot;,
