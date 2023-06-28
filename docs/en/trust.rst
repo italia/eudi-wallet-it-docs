@@ -7,14 +7,7 @@ The Infrastructure of Trust
 
 The EUDI Wallet Architecture Reference Framework (`EIDAS-ARF`_) defines the Trust Model as a *"collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem."*.
 
-This section defines how the Trust Model is implemented in an infrastructure of Trust based on
-OpenID Connect Federation 1.0 `OIDC-FED`_, where its Federation API is used for the distribution of metadata, raw public keys, metadata policies, X.509 certificates, and their revocation status.
-
-This document is fully compliant to OpenID Connect Federation.
-
-The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.
-
-This is called *Wallet Instance Attestation* and is documented in the section dedicated to the Wallet Solution.
+This section defines how the Trust Model is implemented in an infrastructure of Trust in fully compliace with OpenID Connect Federation 1.0 `OIDC-FED`_, where its Federation API is used for the distribution of metadata, metadata policies, trust marks, public keys,  X.509 certificates, and the revocation status of the participants (Federation Entities).
 
 The infrastructure of Trust enables the trust assessment mechanism to be applied between the parties defined in the `EIDAS-ARF`_.
 
@@ -29,6 +22,12 @@ Federation Roles
 ------------------
 
 All the participants are Federation Entities that must be accredited by an Accreditation Body, except the Wallet Instances that are personal devices and are certified by their Wallet Provider (see `Wallet Instance Attestation`_).
+
+.. note::
+    The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.
+
+    This is called *Wallet Instance Attestation* and is documented in the section dedicated to the Wallet Solution.
+
 
 Therein a table with the summary of the Federation Entity roles mapped on the corresponding EUDI roles, as defined in the `EIDAS-ARF`_.
 
@@ -67,7 +66,6 @@ Therein a table with the summary of the Federation Entity roles mapped on the co
 +-------------------------------------------+----------------+-----------------------------------+
 |  EUDI Wallet Provider                     | Leaf           |                                   |
 +-------------------------------------------+----------------+-----------------------------------+
-
 
 
 General Properties
@@ -175,7 +173,7 @@ All entities MUST obtain the Federation configuration before entering the operat
 MUST keep it up-to-date. The Federation configuration contains the Trust Anchor
 public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (**max_path length**).
 
-Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OIDC-FED`_ specifications:
+Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OpenID Connect Federation <OIDC-FED>`_ specifications, Section 3.1 for the Federation statements and Section 4 for the Metadata identifiers:
 
 .. code-block:: text
 
