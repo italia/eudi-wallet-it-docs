@@ -15,7 +15,7 @@
   <link rel="index" title="Index" href="index.html">
   <link rel="top" title="Italian eIDAS Wallet Technical Specifications version: latest documentation" href="index.html">
   <link rel="next" title="wallet-instance-attestation.rst" href="wallet-instance-attestation.html">
-  <link rel="prev" title="pid-eaa-sd-jwt.rst" href="pid-eaa-sd-jwt.html">
+  <link rel="prev" title="PID Issuing" href="pid-issuing.html">
 
   
   
@@ -604,31 +604,17 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data.html">pid-eaa-data.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-mdoc-cbor.html">pid-eaa-mdoc-cbor.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#external-references">External references</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-sd-jwt.html">pid-eaa-sd-jwt.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-issuing.html">PID Issuing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#par-endpoint">PAR endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#authorization-endpoint">Authorization endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#token-endpoint">Token endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">wallet-solution.rst</a><ul>
@@ -695,6 +681,7 @@
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
@@ -704,6 +691,18 @@
 
     
 
+    
+    <button data-toggle="collapse" data-target="#table-index" aria-expanded="true" class="sidebar-btn p-3 sidebar-btn--desktop collapsed" type="button" aria-controls="table-index">
+      table index
+      <span class="it-collapse float-right"></span>
+      <span class="it-expand float-right"></span>
+    </button>
+    <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
+      <ul>
+<li><a class="reference internal" href="pid-issuing.html#id47">Tab. 1 - PAR http request parameters</a></li>
+</ul>
+
+    </div>
     
 
     
@@ -799,31 +798,17 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data.html">pid-eaa-data.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-mdoc-cbor.html">pid-eaa-mdoc-cbor.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-mdoc-cbor.html#external-references">External references</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-sd-jwt.html">pid-eaa-sd-jwt.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-sd-jwt.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-issuing.html">PID Issuing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#par-endpoint">PAR endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#authorization-endpoint">Authorization endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#token-endpoint">Token endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">wallet-solution.rst</a><ul>
@@ -890,6 +875,7 @@
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
@@ -902,7 +888,10 @@
       </div>
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
-        None
+        <ul>
+<li><a class="reference internal" href="pid-issuing.html#id47">Tab. 1 - PAR http request parameters</a></li>
+</ul>
+
       </div>
 
       <div id="glossary-index-mobile" class="glossary-mobile--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="glossary-index-mobile-tab">
@@ -919,7 +908,7 @@
           </div>-->
           
             <div class="footer-buttons footer-buttons--prev" role="navigation" aria-label="footer navigation">
-                <a href="pid-eaa-sd-jwt.html" class="" title="pid-eaa-sd-jwt.rst" accesskey="p" rel="prev"> Torna a pid-eaa-sd-jwt.rst</a>
+                <a href="pid-issuing.html" class="" title="PID Issuing" accesskey="p" rel="prev"> Torna a PID Issuing</a>
             </div>
           
           
