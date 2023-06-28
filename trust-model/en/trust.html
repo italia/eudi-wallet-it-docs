@@ -586,9 +586,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#trust-model-requirements">Trust Model Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entity-configuration">Entity Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entity-statements">Entity Statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
@@ -772,9 +772,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#trust-model-requirements">Trust Model Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entity-configuration">Entity Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entity-statements">Entity Statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
@@ -910,10 +910,10 @@
 <p>The EUDI Wallet Architecture Reference Framework (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>) defines the Trust Model as a <em>&quot;collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem.&quot;</em>.</p>
 <p>This section defines how the Trust Model is implemented in an infrastructure of Trust in fully compliace with OpenID Connect Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>, where its Federation API is used for the distribution of metadata, metadata policies, trust marks, public keys,  X.509 certificates, and the revocation status of the participants (Federation Entities).</p>
 <p>The infrastructure of Trust enables the trust assessment mechanism to be applied between the parties defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/trust-roles.svg"><img alt="federation portrain" src="_images/trust-roles.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The roles of the Federation infrastructure, where a Trust Anchor has one or more Intermediates and Leafs and the Intermediates have their Leafs. In this representation both Trust Anchor and Intermediates play the role of Accreditation Body.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The roles of the Federation infrastructure, where a Trust Anchor has one or more Intermediates and Leafs and the Intermediates have their Leafs. In this representation both Trust Anchor and Intermediates play the role of Accreditation Body.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="federation-roles">
@@ -1182,21 +1182,180 @@ public keys for signature operations and the maximum number of Intermediates all
 }
 </pre></div>
 </div>
-<section id="entity-configuration">
-<h3>Entity Configuration<a class="headerlink" href="#entity-configuration" title="Permalink to this heading">¶</a></h3>
-<p>The Entity Configuration is the federation metadata that each Federation Entity must publish on its own behalf, which is verifiable with the public keys published by its Accreditation Body, if the Trust Anchor or its Intermediate.</p>
-<p>The Entity Configuration is signed, and it must be verified with one of the public keys contained within it, as well as one of the public keys within the Entity Statement issued by the Trust Anchor or its Intermediate.</p>
-<p>The Entity Configuration may also contain one or more Trust Marks regarding itself.</p>
 </section>
-<section id="entity-statement">
-<h3>Entity Statement<a class="headerlink" href="#entity-statement" title="Permalink to this heading">¶</a></h3>
-<p>Trust Anchors and Intermediate must expose the Federation Fetch endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures.</p>
+<section id="entity-configuration">
+<h2>Entity Configuration<a class="headerlink" href="#entity-configuration" title="Permalink to this heading">¶</a></h2>
+<p>The Entity Configuration is the verifiable document that each Federation Entity must publish on its own behalf, which its signature is verified with the public keys published by its Accreditation Body, if Trust Anchor or Intermediate.</p>
+<p>The Entity Configuration must be cryptographycally signed, and it must be verified with one of the public keys contained within it and one of the public keys within the Entity Statement issued by the Trust Anchor or its Intermediate.</p>
+<p>The Entity Configuration may also contain one or more Trust Marks.</p>
+<section id="entity-configuration-signature">
+<h3>Entity Configuration Signature<a class="headerlink" href="#entity-configuration-signature" title="Permalink to this heading">¶</a></h3>
+<p>All the signature-check operations regarding the ESs, ECs and TMs,
+are carried out with the Federation public keys. For the supported algorithms refer to Section <cite>Cryptografic Algorithm</cite></p>
+</section>
+<section id="entity-configurations-common-parameters">
+<h3>Entity Configurations Common Parameters<a class="headerlink" href="#entity-configurations-common-parameters" title="Permalink to this heading">¶</a></h3>
+<p>The Entity Configurations of all the participants have in common the parameters listed below.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>String. Identifier of the issuing Entity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>String. Identifier of the Entity to which it is referred.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX Timestamp with the time of generation of the JWT, coded as NumericDate as indicated at <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated at <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>jwks</strong></p></td>
+<td><p>A JSON Web Key Set (JWKS) <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a> that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid) and MAY have a <cite>x5c</cite> parameter, as defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>metadata</strong></p></td>
+<td><p>JSON Object. Each key of the JSON Object represents a metadata type identifier
+containing JSON Object representing the Metadata, according to the Metadata
+schema of that type. An Entity Configuration MAY contain more Metadata statements, but only   one for each type of
+Metadata (&lt;<strong>entity_type</strong>&gt;). the metadata types are defined in the section <a class="reference external" href="MetadataTypes">Metadata Types</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Inside the Entity Configuration the claims <strong>iss</strong> e <strong>sub</strong> contain the same value (URL).</p>
+</div>
+</section>
+<section id="entity-configuration-trust-anchor">
+<h3>Entity Configuration Trust Anchor<a class="headerlink" href="#entity-configuration-trust-anchor" title="Permalink to this heading">¶</a></h3>
+<p>The Trust Anchor Entity Configuration, in addition of the common parameters listed above, also contains the followings:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 60%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>max_path_length</strong></p></td>
+<td><p>JSON Object that describes the Trust Chain bounds and MUST contain the attribute <strong>max_path_length</strong>.
+It represents the maximum number of Intermediate between a Leaf and the Trust Anchor.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>trust_marks_issuers</strong></p></td>
+<td><p>JSON Array that indicates which Federation authorities are considered trustworthy
+for issuing specific Trust Marks, assigned with their unique identifiers.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.svg"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.svg" width="25" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-configuration-leaves-and-intermediates">
+<h3>Entity Configuration Leaves and Intermediates<a class="headerlink" href="#entity-configuration-leaves-and-intermediates" title="Permalink to this heading">¶</a></h3>
+<p>In addition to the previously defined claims, the Entity Configuration of the Leaf and Intermediate Entities, contain also parameters listed below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 60%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>authority_hints</strong></p></td>
+<td><p>Array if URLs. It contains a list of URLs of the superior Entities, such as TA or SA,
+that MAY issue an ES related to this subject.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>trust_marks</strong></p></td>
+<td><p>A JSON Array containing the Trust Marks.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.svg"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.svg" width="25" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id1">
+<h3>Metadata Types<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>In this section are defined the main metadata types mapped to the roles of the ecosystem,
+giving the references of the metadata protocol for each of these.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The entities that doesn't have any references to a known draft or standard are intended to be defined in this technical reference.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Entity</p></th>
+<th class="head"><p>metadata type</p></th>
+<th class="head"><p>references</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Trust Anchor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Intermediate</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Provider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code></p>
+</td>
+<td><p>--</p></td>
+</tr>
+<tr class="row-odd"><td><p>Credential Issuer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code></p>
+</td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OPENID4VCI</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Relying Party</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">wallet_verifier</span></code></p>
+</td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p>
+<p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wallet Provider metadata is defined in the section below.</p>
+<p><a class="reference external" href="wallet-solution.html">Wallet Solution section</a>.</p>
+</div>
+</section>
+</section>
+<section id="entity-statements">
+<h2>Entity Statements<a class="headerlink" href="#entity-statements" title="Permalink to this heading">¶</a></h2>
+<p>Trust Anchors and Intermediates publish an Entity Statement related to a Subordinate.
+The Entity Statement MAY contain a metadata policy and the Trust Marks related to a Subordinate.</p>
+<p>The metadata policy one or more changes to be applied to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that contains all the statements, starting from the Entity Configuration up to the Trust Anchor.</p>
+<p>Trust Anchors and Intermediates must expose the Federation Fetch endpoint, where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Federation Fetch endpoint may also issue X.509 certificates for each of the public keys of the subordinate. Making the issuance of the X.509 certificates completely automatic.</p>
 </div>
-<p>The Entity Statement may also publish metadata policies, enforcing one or more changes to be applied to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that comprises all statements, starting from the Entity Configuration up to the Trust Anchor.</p>
-<p>Below is a non-normative example of an Entity Statement issued by an authority (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.</p>
+<p>Below is a non-normative example of an Entity Statement issued by an Accreditation Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
     &quot;alg&quot;: &quot;RS256&quot;,
     &quot;kid&quot;: &quot;em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg&quot;,
@@ -1252,59 +1411,61 @@ public keys for signature operations and the maximum number of Intermediates all
 }
 </pre></div>
 </div>
+<section id="entity-statement-signature">
+<h3>Entity Statement Signature<a class="headerlink" href="#entity-statement-signature" title="Permalink to this heading">¶</a></h3>
+<p>The same considerations and requirements made for the Entity Configuration must be applied for the Entity Statements.</p>
 </section>
-</section>
-<section id="metadata">
-<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h2>
-<p>In this section are defined the main metadata types mapped to the roles of the ecosystem,
-giving the references of the metadata protocol for each of these.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The entities that doesn't have any references to a known draft or standard are intended to be defined in this technical reference.</p>
-</div>
+<section id="entity-statement">
+<h3>Entity Statement<a class="headerlink" href="#entity-statement" title="Permalink to this heading">¶</a></h3>
+<p>The Entity Statement issued by Trust Anchors and Intermediates contain the following attributes:</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 60%" />
+<col style="width: 20%" />
+</colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Entity</p></th>
-<th class="head"><p>metadata type</p></th>
-<th class="head"><p>references</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Trust Anchor</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p></td>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
-<tr class="row-odd"><td><p>Intermediate</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p></td>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
-<tr class="row-even"><td><p>Wallet Provider</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code></p>
-</td>
-<td><p>--</p></td>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
-<tr class="row-odd"><td><p>Credential Issuer</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code></p>
-</td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OPENID4VCI</a></p></td>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
-<tr class="row-even"><td><p>Relying Party</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">wallet_verifier</span></code></p>
-</td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p>
-<p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p>
-</td>
+<tr class="row-even"><td><p><strong>jwks</strong></p></td>
+<td><p>Federation JWKS of the <em>sub</em> entity. See <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>metadata_policy</strong></p></td>
+<td><p>JSON Object that describes the Metadata policy. Each key of the JSON Object represents an        identifier of the type of Metadata and each value MUST be a JSON Object that represents the Metadata policy according to that Metadata type. Please refer to the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> specifications, Section-5.1, for the implementation details.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.svg"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.svg" width="25" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>trust_marks</strong></p></td>
+<td><p>JSON Array containing the Trust Marks issued by itself for the subordinate subject.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.svg"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.svg" width="25" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>constraints</strong></p></td>
+<td><p>It MAY contain the <strong>allowed_leaf_entity_types</strong>, that restricts what types of metadata a subject is allowed to publish.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Wallet Provider metadata is defined in the section below.</p>
-<p><a class="reference external" href="wallet-solution.html">Wallet Solution section</a>.</p>
-</div>
+</section>
 </section>
 <section id="trust-evaluation-mechanism">
 <h2>Trust Evaluation Mechanism<a class="headerlink" href="#trust-evaluation-mechanism" title="Permalink to this heading">¶</a></h2>
@@ -1312,11 +1473,17 @@ giving the references of the metadata protocol for each of these.</p>
 <p>Each participant, including Trust Anchor, Intermediate, Credential Issuer, Wallet Provider, and Relying Party, publishes its own metadata and public keys (Entity Configuration endpoint) on the well-known web resource <strong>.well-known/openid-federation</strong>.</p>
 <p>Each of these can be verified using the Entity Statement issued by a superior, Trust Anchor, or Intermediate.</p>
 <p>Each Entity Statement is verifiable over time and has an expiration date. The revocation of each statement is verifiable in real time and online (only for remote flows) through the federation endpoints.</p>
-<p>The concatenation of the statements, through the combination of these signing mechanisms and the binding of claims and public keys, creates the Trust Chain. This contains Trust Marks as well as protocol-specific metadata, where Trust Anchor metadata policies are applied.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The revocation of an Entity is made with the unavailability of the Entity Statement related to it. If the Trust Anchor or its Intermediates doesn't publish a valid and unexpired Entity Statement regarding a Subordinate this latters must be intended as revoked.</p>
+</div>
+<p>The concatenation of the statements, through the combination of these signing mechanisms and the binding of claims and public keys, creates the Trust Chain.</p>
+<p>The Trust Chain contains Trust Marks as well as protocol-specific metadata, where Trust Anchor metadata policies are applied.</p>
 <p>The Trust Chains can also be verified offline, using only the Trust Anchor's public keys.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it requires the presentation of the Wallet Instance Attestation during Credential Issuance and presentation phases. The Wallet Instance Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, while fully respecting the user's privacy.</p>
+<p>Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to <strong>it requires the presentation of the Wallet Instance Attestation during Credential Issuance and presentation phases</strong>.</p>
+<p>The Wallet Instance Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, wihtout any user's personal data.</p>
 </div>
 <section id="relying-party-attestation">
 <h3>Relying Party Attestation<a class="headerlink" href="#relying-party-attestation" title="Permalink to this heading">¶</a></h3>
@@ -1351,15 +1518,15 @@ giving the references of the metadata protocol for each of these.</p>
 </pre></div>
 </div>
 </section>
-</section>
 <section id="offline-trust-attestation-mechanisms">
-<h2>Offline Trust Attestation Mechanisms<a class="headerlink" href="#offline-trust-attestation-mechanisms" title="Permalink to this heading">¶</a></h2>
+<h3>Offline Trust Attestation Mechanisms<a class="headerlink" href="#offline-trust-attestation-mechanisms" title="Permalink to this heading">¶</a></h3>
 <p>In this section, we describe the implementation requirements to enable
 offline trust evaluation mechanisms.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The offline flows do not allow for real-time evaluation of an Entity's status, such as its revocation. At the same time, using short-lived Trust Chains enables the attainment of trust attestations compatible with the required revocation administrative protocols (e.g., a revocation must be propagated in less than 24 hours, thus the Trust Chain must not be valid for more than that period).</p>
 </div>
+</section>
 <section id="offline-eudi-wallet-trust-attestation">
 <h3>Offline EUDI Wallet Trust Attestation<a class="headerlink" href="#offline-eudi-wallet-trust-attestation" title="Permalink to this heading">¶</a></h3>
 <p>Given that a mobile device should not publish its metadata online at the <em>.well-known/openid-federation</em> endpoint, or in any other way, it is not mandatory for the EUDI Wallet to publish its metadata if the user does not want this. As a result, the EUDI Wallet does not need to publish its federation metadata online.</p>
@@ -1387,8 +1554,9 @@ offline trust evaluation mechanisms.</p>
 <h2>Considerations about Decentralization<a class="headerlink" href="#considerations-about-decentralization" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>There should be more than one Trust Anchor.</p></li>
-<li><p>In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may represent itself as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction.</p></li>
-<li><p>Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests). The presentation must be signed. By saving the signed presentation requests and the obtained credentials, which include the Trust Chain, the Wallet Instance has a snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the RP it has interacted with. This information must be stored on the Wallet Device and backed up in a remote and secure cloud storage, with the explicit permission of its User.</p></li>
+<li><p>In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may represent itself as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: Italian RP with an Italian Wallet Instance may consider the Italian Accreditation Body as Trust Anchor).</p></li>
+<li><p>Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests).</p></li>
+<li><p>Since the credential presentation must be signed, saving the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance has a snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. This information must be stored on the Wallet Device and backed up in a remote and secure cloud storage, with the explicit permission of its User.</p></li>
 <li><p>Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.</p></li>
 <li><p>Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The Metadata Policy of a Trust Chain must be applied to overload any information related to protocol metadata and allowed grants of the participants.</p></li>
 </ul>

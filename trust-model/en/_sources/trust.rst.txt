@@ -240,26 +240,151 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
 
 
 Entity Configuration
-````````````````````
+--------------------
 
-The Entity Configuration is the federation metadata that each Federation Entity must publish on its own behalf, which is verifiable with the public keys published by its Accreditation Body, if the Trust Anchor or its Intermediate. 
+The Entity Configuration is the verifiable document that each Federation Entity must publish on its own behalf, which its signature is verified with the public keys published by its Accreditation Body, if Trust Anchor or Intermediate. 
 
-The Entity Configuration is signed, and it must be verified with one of the public keys contained within it, as well as one of the public keys within the Entity Statement issued by the Trust Anchor or its Intermediate. 
+The Entity Configuration must be cryptographycally signed, and it must be verified with one of the public keys contained within it and one of the public keys within the Entity Statement issued by the Trust Anchor or its Intermediate.
 
-The Entity Configuration may also contain one or more Trust Marks regarding itself.
+The Entity Configuration may also contain one or more Trust Marks.
+
+Entity Configuration Signature
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All the signature-check operations regarding the ESs, ECs and TMs,
+are carried out with the Federation public keys. For the supported algorithms refer to Section `Cryptografic Algorithm`
+
+Entity Configurations Common Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Entity Configurations of all the participants have in common the parameters listed below.
 
 
-Entity Statement
-```````````````````
+.. list-table::
+   :widths: 20 60
+   :header-rows: 1
 
-Trust Anchors and Intermediate must expose the Federation Fetch endpoint (/fetch), where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures. 
+   * - **Claim**
+     - **Description**
+   * - **iss**
+     - String. Identifier of the issuing Entity.
+   * - **sub**
+     - String. Identifier of the Entity to which it is referred.
+   * - **iat**
+     - UNIX Timestamp with the time of generation of the JWT, coded as NumericDate as indicated at :rfc:`7519`
+   * - **exp**
+     - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated at :rfc:`7519`.
+   * - **jwks**
+     - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid) and MAY have a `x5c` parameter, as defined in :rfc:`7517`.
+   * - **metadata**
+     - JSON Object. Each key of the JSON Object represents a metadata type identifier
+       containing JSON Object representing the Metadata, according to the Metadata 
+       schema of that type. An Entity Configuration MAY contain more Metadata statements, but only   one for each type of
+       Metadata (<**entity_type**>). the metadata types are defined in the section `Metadata Types <Metadata Types>`_.
+
+.. note::
+  Inside the Entity Configuration the claims **iss** e **sub** contain the same value (URL).
+
+Entity Configuration Trust Anchor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Trust Anchor Entity Configuration, in addition of the common parameters listed above, also contains the followings:
+
+.. list-table::
+   :widths: 20 60 20
+   :header-rows: 1
+
+   * - **Claim**
+     - **Description**
+     - **Required**
+   * - **max_path_length**
+     - JSON Object that describes the Trust Chain bounds and MUST contain the attribute **max_path_length**.
+       It represents the maximum number of Intermediate between a Leaf and the Trust Anchor.
+     - |check-icon|
+   * - **trust_marks_issuers**
+     - JSON Array that indicates which Federation authorities are considered trustworthy
+       for issuing specific Trust Marks, assigned with their unique identifiers.
+     - |uncheck-icon|
+
+
+Entity Configuration Leaves and Intermediates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In addition to the previously defined claims, the Entity Configuration of the Leaf and Intermediate Entities, contain also parameters listed below:
+
+
+.. list-table::
+   :widths: 20 60 20
+   :header-rows: 1
+
+   * - **Claim**
+     - **Description**
+     - **Required**
+   * - **authority_hints**
+     - Array if URLs. It contains a list of URLs of the superior Entities, such as TA or SA, 
+       that MAY issue an ES related to this subject.
+     - |check-icon|
+   * - **trust_marks**
+     - A JSON Array containing the Trust Marks.
+     - |uncheck-icon|
+
+Metadata Types
+^^^^^^^^^^^^^^^^
+
+In this section are defined the main metadata types mapped to the roles of the ecosystem,
+giving the references of the metadata protocol for each of these.
+
+
+.. note::
+    
+    The entities that doesn't have any references to a known draft or standard are intended to be defined in this technical reference.
+
++------------------+-----------------------------+--------------+
+| Entity           | metadata type               | references   |
++==================+=============================+==============+
+| Trust Anchor     | ``federation_entity``       | `OIDC-FED`_  |
++------------------+-----------------------------+--------------+
+| Intermediate     | ``federation_entity``       | `OIDC-FED`_  |
++------------------+-----------------------------+--------------+
+|                  |                             |              |
+| Wallet Provider  | ``federation_entity``       | --           |
+|                  |                             |              |
+|                  | ``wallet_provider``         |              |
+|                  |                             |              |
+|                  |                             |              |
++------------------+-----------------------------+--------------+
+|                  |                             |              |
+| Credential Issuer| ``federation_entity``       |              |
+|                  |                             |              |
+|                  | ``openid_credential_issuer``| `OPENID4VCI`_|
++------------------+-----------------------------+--------------+
+|                  |                             |              |
+| Relying Party    | ``federation_entity``       |              |
+|                  |                             |              |
+|                  | ``wallet_verifier``         | `OIDC-FED`_  |
+|                  |                             |              |
+|                  |                             | `OpenID4VP`_ |
++------------------+-----------------------------+--------------+
+
+.. note::
+    Wallet Provider metadata is defined in the section below.
+
+    `Wallet Solution section <wallet-solution.html>`_. 
+
+Entity Statements
+-----------------
+
+Trust Anchors and Intermediates publish an Entity Statement related to a Subordinate.
+The Entity Statement MAY contain a metadata policy and the Trust Marks related to a Subordinate.
+
+The metadata policy one or more changes to be applied to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that contains all the statements, starting from the Entity Configuration up to the Trust Anchor.
+
+Trust Anchors and Intermediates must expose the Federation Fetch endpoint, where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures. 
 
 .. note:: 
     The Federation Fetch endpoint may also issue X.509 certificates for each of the public keys of the subordinate. Making the issuance of the X.509 certificates completely automatic. 
 
-The Entity Statement may also publish metadata policies, enforcing one or more changes to be applied to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that comprises all statements, starting from the Entity Configuration up to the Trust Anchor.
-
-Below is a non-normative example of an Entity Statement issued by an authority (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
+Below is a non-normative example of an Entity Statement issued by an Accreditation Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
 
 .. code-block:: text
 
@@ -305,7 +430,7 @@ Below is a non-normative example of an Entity Statement issued by an authority (
             "client": {
                 "vp_formats": {
                     "jwt_vp": {
-                        "alg": 
+                        "alg":
                             "subset_of": [
                                 "EdDSA",
                                 "ES256K"
@@ -318,48 +443,49 @@ Below is a non-normative example of an Entity Statement issued by an authority (
     }
 
 
-Metadata
------------
+Entity Statement Signature
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this section are defined the main metadata types mapped to the roles of the ecosystem,
-giving the references of the metadata protocol for each of these.
+The same considerations and requirements made for the Entity Configuration must be applied for the Entity Statements.
 
 
-.. note::
-    
-    The entities that doesn't have any references to a known draft or standard are intended to be defined in this technical reference.
+Entity Statement
+^^^^^^^^^^^^^^^^^^
 
-+------------------+-----------------------------+--------------+
-| Entity           | metadata type               | references   |
-+==================+=============================+==============+
-| Trust Anchor     | ``federation_entity``       | `OIDC-FED`_  |
-+------------------+-----------------------------+--------------+
-| Intermediate     | ``federation_entity``       | `OIDC-FED`_  |
-+------------------+-----------------------------+--------------+
-|                  |                             |              |
-| Wallet Provider  | ``federation_entity``       | --           |
-|                  |                             |              |
-|                  | ``wallet_provider``         |              |
-|                  |                             |              |
-|                  |                             |              |
-+------------------+-----------------------------+--------------+
-|                  |                             |              |
-| Credential Issuer| ``federation_entity``       |              |
-|                  |                             |              |
-|                  | ``openid_credential_issuer``| `OPENID4VCI`_|
-+------------------+-----------------------------+--------------+
-|                  |                             |              |
-| Relying Party    | ``federation_entity``       |              |
-|                  |                             |              |
-|                  | ``wallet_verifier``         | `OIDC-FED`_  |
-|                  |                             |              |
-|                  |                             | `OpenID4VP`_ |
-+------------------+-----------------------------+--------------+
+The Entity Statement issued by Trust Anchors and Intermediates contain the following attributes:
 
-.. note::
-    Wallet Provider metadata is defined in the section below.
 
-    `Wallet Solution section <wallet-solution.html>`_. 
+.. list-table::
+   :widths: 20 60 20
+   :header-rows: 1
+
+   * - **Claim**
+     - **Description**
+     - **Required**
+   * - **iss**
+     - See `OIDC-FED`_ Section 3.1 for further details.
+     - |check-icon|
+   * - **sub**
+     - See `OIDC-FED`_ Section 3.1 for further details.
+     - |check-icon|
+   * - **iat**
+     - See `OIDC-FED`_ Section 3.1 for further details.
+     - |check-icon|
+   * - **exp**
+     - See `OIDC-FED`_ Section 3.1 for further details.
+     - |check-icon|
+   * - **jwks**
+     - Federation JWKS of the *sub* entity. See `OIDC-FED`_ Section 3.1 for further details.
+     - |check-icon|
+   * - **metadata_policy**
+     - JSON Object that describes the Metadata policy. Each key of the JSON Object represents an        identifier of the type of Metadata and each value MUST be a JSON Object that represents the Metadata policy according to that Metadata type. Please refer to the `OIDC-FED`_ specifications, Section-5.1, for the implementation details.
+     - |uncheck-icon|
+   * - **trust_marks**
+     - JSON Array containing the Trust Marks issued by itself for the subordinate subject.
+     - |uncheck-icon|
+   * - **constraints**
+     - It MAY contain the **allowed_leaf_entity_types**, that restricts what types of metadata a subject is allowed to publish.
+     - |check-icon|
 
 
 Trust Evaluation Mechanism
@@ -373,16 +499,23 @@ Each of these can be verified using the Entity Statement issued by a superior, T
 
 Each Entity Statement is verifiable over time and has an expiration date. The revocation of each statement is verifiable in real time and online (only for remote flows) through the federation endpoints.
 
-The concatenation of the statements, through the combination of these signing mechanisms and the binding of claims and public keys, creates the Trust Chain. This contains Trust Marks as well as protocol-specific metadata, where Trust Anchor metadata policies are applied.
+.. note::
+    The revocation of an Entity is made with the unavailability of the Entity Statement related to it. If the Trust Anchor or its Intermediates doesn't publish a valid and unexpired Entity Statement regarding a Subordinate this latters must be intended as revoked.
+
+The concatenation of the statements, through the combination of these signing mechanisms and the binding of claims and public keys, creates the Trust Chain.
+
+The Trust Chain contains Trust Marks as well as protocol-specific metadata, where Trust Anchor metadata policies are applied.
 
 The Trust Chains can also be verified offline, using only the Trust Anchor's public keys.
 
 .. note::
-    Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it requires the presentation of the Wallet Instance Attestation during Credential Issuance and presentation phases. The Wallet Instance Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, while fully respecting the user's privacy.
+    Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to **it requires the presentation of the Wallet Instance Attestation during Credential Issuance and presentation phases**.
+
+    The Wallet Instance Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, wihtout any user's personal data.
 
 
 Relying Party Attestation
-`````````````````````````
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration, where it also publishes the interoperability metadata to disclose the requested user attributes. Additionally, it includes signature and encryption algorithms, and any other necessary information in accordance with one or more specific protocols.
 
@@ -394,8 +527,9 @@ The Trust Chain should be contained within the signed request in the form of a J
 
 In offline flows, Trust Chain verification enables the assessment of the reliability of Trust Marks and Attestations contained within.
 
+
 Wallet Instance Attestation
-```````````````````````````
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Wallet Provider issues a Wallet Instance Attestation, certifying the operational status of its Wallet Instances, including one or more of their public keys. 
 
@@ -404,7 +538,7 @@ The Wallet Instance Attestation contains the Trust Chain that attests to the req
 The Wallet Instance presents its Wallet Instance Attestation within the signed request during the PID issuance phase, containing the Trust Chain related to the Wallet Provider. The PID Provider issues a PID for each public key contained in the Wallet Instance Attestation, producing the Holder Binding within the issued PID.
 
 Trust Chain
-```````````
+^^^^^^^^^^^^^^^
 
 The Trust Chain is the sequence of verified statements that validates a participant's compliance with the eIDAS Federation. It has an expiration date, beyond which it should be renewed to obtain updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration date among all the expiration dates contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor.
 
@@ -432,7 +566,7 @@ Below is a non-normative example of a Trust Chain in its original format (JSON A
 
 
 Offline Trust Attestation Mechanisms
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this section, we describe the implementation requirements to enable
 offline trust evaluation mechanisms.
@@ -441,14 +575,14 @@ offline trust evaluation mechanisms.
   The offline flows do not allow for real-time evaluation of an Entity's status, such as its revocation. At the same time, using short-lived Trust Chains enables the attainment of trust attestations compatible with the required revocation administrative protocols (e.g., a revocation must be propagated in less than 24 hours, thus the Trust Chain must not be valid for more than that period).
 
 Offline EUDI Wallet Trust Attestation
-`````````````````````````````````````
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Given that a mobile device should not publish its metadata online at the *.well-known/openid-federation* endpoint, or in any other way, it is not mandatory for the EUDI Wallet to publish its metadata if the user does not want this. As a result, the EUDI Wallet does not need to publish its federation metadata online.
 
 However, the EUDI Wallet can still obtain a Wallet Attestation Instance issued by its Wallet Provider, which should contain a Trust Chain related to its issuer (Wallet Provider).
 
 Offline Relying Party Metadata
-``````````````````````````````
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since the Federation Entity Discovery is only applicable in online scenarios, it is possible to include the Trust Chain in the presentation requests that a Relying Party may issue for an EUDI Wallet.
 
@@ -471,7 +605,8 @@ Considerations about Decentralization
 -------------------------------------
 
 - There should be more than one Trust Anchor.
-- In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may represent itself as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction.
-- Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests). The presentation must be signed. By saving the signed presentation requests and the obtained credentials, which include the Trust Chain, the Wallet Instance has a snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the RP it has interacted with. This information must be stored on the Wallet Device and backed up in a remote and secure cloud storage, with the explicit permission of its User.
+- In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may represent itself as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: Italian RP with an Italian Wallet Instance may consider the Italian Accreditation Body as Trust Anchor).
+- Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests).
+- Since the credential presentation must be signed, saving the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance has a snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. This information must be stored on the Wallet Device and backed up in a remote and secure cloud storage, with the explicit permission of its User.
 - Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.
 - Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The Metadata Policy of a Trust Chain must be applied to overload any information related to protocol metadata and allowed grants of the participants.
