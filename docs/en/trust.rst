@@ -592,6 +592,11 @@ The Wallet Instance that verifies the request issued by the Relying Party can th
 
 Furthermore, the Wallet Instance can apply the metadata policy, if available, to filter out any user attributes not attested in the trusted metadata from the Relying Party's request, which is obtained from the Trust Chain.
 
+Non-repudiability of the Long Lived Attestations
+--------------------------------------------------
+
+TBD
+
 Privacy Considerations
 ----------------------
 
