@@ -269,7 +269,7 @@ The corresponding SD-JWT verson for PID is given by
         "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
       }
     },
-    "type": "eu.eudiw.pid.it",
+    "type": "PersonIdentificationData",
     "verified_claims": {
       "verification": {
         "_sd": [
