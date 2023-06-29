@@ -392,6 +392,10 @@ If the verification is successful, the PID Provider MUST provide the response wi
 Authorization endpoint
 ----------------------
 
+The authorization endpoint is used to interact with the Credential Issuer and obtain an authorization grant.
+The authorization server MUST first verify the identity of the resource owner (the User that own it's credentials) 
+as defined in the `The OAuth 2.0 Authorization Framework <https://datatracker.ietf.org/doc/html/rfc6749>`_.
+
 Authorization Request
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -443,8 +447,12 @@ If the authentication is successful the PID Provider redirects the User by addin
 Token endpoint
 --------------
 
-Request
-^^^^^^^
+The token endpoint is used by the Wallet Instance (client in this case) 
+to obtain an access token by presenting its authorization grant, as 
+defined in `The OAuth 2.0 Authorization Framework <https://datatracker.ietf.org/doc/html/rfc6749>`_.
+
+Token Request
+^^^^^^^^^^^^^^^
 
 The request to the PID Provider Token endpoint  MUST be an HTTP request with method POST, where its body message is encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with *private_key_jwt* authentication and a *DPoP proof* containing the mandatory parameters, defined in the table below.
 
@@ -532,8 +540,8 @@ The payload of a **DPoP proof** MUST contain at least the following claims:
       - [:rfc:`7519`. Section 4.1.6].
 
 
-Response
-^^^^^^^^
+Token Response
+^^^^^^^^^^^^^^^
 
 Token endpoint response MUST contain the following mandatory claims.
 
@@ -604,6 +612,8 @@ A DPoP-bound Access Token is provided by the PID Provider Token endpoint as a re
 
 Credential endpoint
 -------------------
+
+The Credential Endpoint issues a Credential as approved by the End-User upon presentation of a valid Access Token representing this approval, as defined in `OPENID4VCI`_.
 
 Credential Request
 ^^^^^^^^^^^^^^^^^^^
