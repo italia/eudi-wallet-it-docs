@@ -52,3 +52,7 @@
 .. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
 .. _SIOPv2: https://openid.net/specs/openid-connect-self-issued-v2-1_0.html
 .. _SD-JWT-VC: https://www.ietf.org/id/draft-terbu-sd-jwt-vc-02.html
+.. _PresentationExch: https://identity.foundation/presentation-exchange/spec/v2.0.0
+.. _JARM: https://openid.net/specs/oauth-v2-jarm-final.html
+.. _DPOP: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop
+.. _RFC 7519: https://www.rfc-editor.org/rfc/rfc7519

@@ -13,6 +13,12 @@ Technical References
       - T. Lodderstedt, K. Yasuda, T. Looker, "OpenID for Verifiable Credential Issuance", February 2023.
     * - `SD-JWT-VC`_
       - O. Terbu, D.Fett, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
+    * - `EIDAS-ARF`_
+      - EUDI Wallet - Architecture and Reference Framework
+    * - `OpenID4VP`_
+      - OpenID for Verifiable Presentations - draft 19 
+    * - `PresentationExch`_
+      - Presentation Exchange 2.0 for Presentation Definition
     * - :rfc:`2119`
       - Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels," BCP 14, RFC 2119, March 1997.
     * - :rfc:`2616`
@@ -43,3 +49,7 @@ Technical References
       - Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", RFC 8174, DOI 10.17487/RFC8174, May 2017.
     * - :rfc:`8725`
       - Jones, M., D. Hardt, Sheffer, Y., "JSON Web Token Best Current Practices", February 2020.
+    * - `JARM`_
+      - Lodderstedt, T., Campbell, B., "JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)", November 2022.
+    * - `DPOP`
+      - TBD
