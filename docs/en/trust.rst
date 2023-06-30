@@ -130,7 +130,7 @@ In the table below there’s the map of the components that the ARF defines with
 Federation API endpoints
 ------------------------
 
-OpenID Federation is similar to a PKI that uses RESTful Web Services secured over HTTPs. The technical specification defines which are the web endpoints that the participants made publicly available. In the table below the summary of these and their scopes.
+OpenID Connect Federation is similar to a PKI that uses RESTful Web Services secured over HTTPs. OpenID Connect Federation defines which are the web endpoints that the participants made publicly available. In the table below the summary of these and their scopes.
 
 All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 
