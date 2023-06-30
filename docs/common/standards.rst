@@ -47,5 +47,7 @@ Technical References
       - Jones, M., D. Hardt, Sheffer, Y., "JSON Web Token Best Current Practices", February 2020.
     * - `JARM`_
       - Lodderstedt, T., Campbell, B., "JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)", November 2022.
+    * - :rfc:`6749`
+      - The OAuth 2.0 Authorization Framework
     * - `DPOP`
       - TBD

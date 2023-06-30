@@ -285,10 +285,10 @@ The requests to the PID Provider authorization endpoint MUST be HTTP with method
       - **Reference**
     * - **response_type**
       - MUST be set to ``code``.
-      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_
+      - :rfc:`6749`
     * - **client_id**
       - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Instance Attestation.
-      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_
+      - :rfc:`6749`
     * - **code_challenge**
       - A challenge derived from the **code verifier** that is sent in the authorization request
       - :rfc:`7636#section-4.2`.
@@ -394,7 +394,7 @@ Authorization endpoint
 
 The authorization endpoint is used to interact with the Credential Issuer and obtain an authorization grant.
 The authorization server MUST first verify the identity of the resource owner (the User that own it's credentials) 
-as defined in the `The OAuth 2.0 Authorization Framework <https://datatracker.ietf.org/doc/html/rfc6749>`_.
+as defined in the :rfc:`6749`.
 
 Authorization Request
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -449,7 +449,7 @@ Token endpoint
 
 The token endpoint is used by the Wallet Instance (client in this case) 
 to obtain an access token by presenting its authorization grant, as 
-defined in `The OAuth 2.0 Authorization Framework <https://datatracker.ietf.org/doc/html/rfc6749>`_.
+defined in :rfc:`6749`.
 
 Token Request
 ^^^^^^^^^^^^^^^
@@ -554,13 +554,13 @@ Token endpoint response MUST contain the following mandatory claims.
       - **Reference**
     * - **access_token**
       - The *DPoP-bound Access Token*, in signed JWT format, allows accessing the Credential Endpoint for obtaining the PID.
-      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_.
+      - :rfc:`6749`.
     * - **token_type**
       - Type of *Access Token* returned. It MUST be equal to ``DPoP``.
-      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_.
+      - :rfc:`6749`.
     * - **expires_in**
       - Expiry time of the *Access Token* in seconds.
-      - `The OAuth 2.0 Authorization Framework <https://www.rfc-editor.org/rfc/rfc6749>`_.
+      - :rfc:`6749`.
     * - **c_nonce**
       - JSON string containing a nonce to be used to create a *proof of possession* of key material when requesting a Credential. 
       - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
