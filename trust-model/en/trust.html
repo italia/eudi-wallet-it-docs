@@ -1112,7 +1112,7 @@ Intermediate</p></td>
 </tr>
 </tbody>
 </table>
-<p>All the responses of the Federation endpoints are JWS, with the exceptions for the <strong>Subordinate Listing endpoint</strong> and the <strong>Trust Mark Status endpoint</strong> that are served as plain JSON by default, however it may be signed if required.</p>
+<p>All the responses of the Federation endpoints are JWS, with the exception of the <strong>Subordinate Listing endpoint</strong> and the <strong>Trust Mark Status endpoint</strong> that are served as plain JSON by default, however these may be signed if required.</p>
 </section>
 <section id="configuration-of-the-federation">
 <h2>Configuration of the Federation<a class="headerlink" href="#configuration-of-the-federation" title="Permalink to this heading">¶</a></h2>
@@ -1184,13 +1184,14 @@ public keys for signature operations and the maximum number of Intermediates all
 </section>
 <section id="entity-configuration">
 <h2>Entity Configuration<a class="headerlink" href="#entity-configuration" title="Permalink to this heading">¶</a></h2>
-<p>The Entity Configuration is the verifiable document that each Federation Entity must publish on its own behalf, which its signature is verified with the public keys published by its Accreditation Body (Trust Anchor or Intermediate).</p>
-<p>The Entity Configuration must be cryptographycally signed, and it must be verified with one of the public keys contained within it and one of the public keys within the Entity Statement issued by the Trust Anchor or its Intermediate.</p>
+<p>The Entity Configuration is the verifiable document that each Federation Entity must publish on its own behalf.
+The Entity Configuration must be cryptographycally signed, and it must be verified with one of the public keys contained within it and one of the public keys within the Entity Statement issued by the Trust Anchor or its Intermediate.</p>
 <p>The Entity Configuration may also contain one or more Trust Marks.</p>
-<section id="entity-configuration-signature">
-<h3>Entity Configuration Signature<a class="headerlink" href="#entity-configuration-signature" title="Permalink to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Entity Configuration Signature</strong></p>
 <p>All the signature-check operations regarding the Entity Configurations, Entity Statements and Trust Marks, are carried out with the Federation public keys. For the supported algorithms refer to Section <cite>Cryptografic Algorithm</cite>.</p>
-</section>
+</div>
 <section id="entity-configurations-common-parameters">
 <h3>Entity Configurations Common Parameters<a class="headerlink" href="#entity-configurations-common-parameters" title="Permalink to this heading">¶</a></h3>
 <p>The Entity Configurations of all the participants have in common the parameters listed below.</p>
@@ -1346,8 +1347,8 @@ giving the references of the metadata protocol for each of these.</p>
 <h2>Entity Statements<a class="headerlink" href="#entity-statements" title="Permalink to this heading">¶</a></h2>
 <p>Trust Anchors and Intermediates publish an Entity Statement related to a Subordinate.
 The Entity Statement MAY contain a metadata policy and the Trust Marks related to a Subordinate.</p>
-<p>The metadata policy one or more changes to be applied to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that contains all the statements, starting from the Entity Configuration up to the Trust Anchor.</p>
-<p>Trust Anchors and Intermediates must expose the Federation Fetch endpoint, where the Entity Statements are requested to validate the Leaf's Entity Configurations signatures.</p>
+<p>The metadata policy, when applied, makes one or more changes to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that contains all the statements, starting from the Entity Configuration up to the Trust Anchor.</p>
+<p>Trust Anchors and Intermediates must expose the Federation Fetch endpoint, where the Entity Statements are requested to validate the Leaf's Entity Configurations signature.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Federation Fetch endpoint may also issue X.509 certificates for each of the public keys of the Subordinate. Making the issuance of the X.509 certificates completely automatic.</p>
@@ -1408,10 +1409,11 @@ The Entity Statement MAY contain a metadata policy and the Trust Marks related t
 }
 </pre></div>
 </div>
-<section id="entity-statement-signature">
-<h3>Entity Statement Signature<a class="headerlink" href="#entity-statement-signature" title="Permalink to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Entity Statement Signature</strong></p>
 <p>The same considerations and requirements made for the Entity Configuration must be applied for the Entity Statements.</p>
-</section>
+</div>
 <section id="entity-statement">
 <h3>Entity Statement<a class="headerlink" href="#entity-statement" title="Permalink to this heading">¶</a></h3>
 <p>The Entity Statement issued by Trust Anchors and Intermediates contain the following attributes:</p>
@@ -1513,6 +1515,10 @@ The Entity Statement MAY contain a metadata policy and the Trust Marks related t
 <span class="p">]</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The entire Trust Chain is verifiable by possessing only the Trust Anchor’s public key.</p>
+</div>
 </section>
 <section id="offline-trust-attestation-mechanisms">
 <h3>Offline Trust Attestation Mechanisms<a class="headerlink" href="#offline-trust-attestation-mechanisms" title="Permalink to this heading">¶</a></h3>
@@ -1525,15 +1531,15 @@ offline trust evaluation mechanisms.</p>
 </section>
 <section id="offline-eudi-wallet-trust-attestation">
 <h3>Offline EUDI Wallet Trust Attestation<a class="headerlink" href="#offline-eudi-wallet-trust-attestation" title="Permalink to this heading">¶</a></h3>
-<p>Given that a mobile device should not publish its metadata online at the <em>.well-known/openid-federation</em> endpoint, or in any other way, it is not mandatory for the EUDI Wallet to publish its metadata if the User does not want this. As a result, the EUDI Wallet does not need to publish its federation metadata online.</p>
-<p>However, the EUDI Wallet can still obtain a Wallet Attestation Instance issued by its Wallet Provider, which should contain a Trust Chain related to its issuer (Wallet Provider).</p>
+<p>Given that a mobile device should not publish its metadata online at the <em>.well-known/openid-federation</em> endpoint, or in any other way, it is not mandatory for the Wallet Instance to publish its metadata if the User does not want this. As a result, the Wallet Instance does not need to publish its federation metadata online.</p>
+<p>However, the Wallet Instance should obtain a Wallet Attestation Instance issued by its Wallet Provider, which should contain a Trust Chain related to its issuer (Wallet Provider).</p>
 </section>
 <section id="offline-relying-party-metadata">
 <h3>Offline Relying Party Metadata<a class="headerlink" href="#offline-relying-party-metadata" title="Permalink to this heading">¶</a></h3>
-<p>Since the Federation Entity Discovery is only applicable in online scenarios, it is possible to include the Trust Chain in the presentation requests that a Relying Party may issue for an EUDI Wallet.</p>
+<p>Since the Federation Entity Discovery is only applicable in online scenarios, it is possible to include the Trust Chain in the presentation requests that a Relying Party may issue for a Wallet Instance.</p>
 <p>The Relying Party must sign the presentation request, which should include the <cite>trust_chain</cite> claim in its header parameter, containing the Federation Trust Chain related to itself.</p>
 <p>The Wallet Instance that verifies the request issued by the Relying Party can then use the Trust Anchor public keys to validate the entire Trust Chain related to the Relying Party and attest to its reliability.</p>
-<p>Furthermore, the Wallet Instance can apply the metadata policy, if available, to filter out any User attributes not attested in the trusted metadata from the Relying Party's request, which is obtained from the Trust Chain.</p>
+<p>Furthermore, the Wallet Instance applies the metadata policy, if available, to filter out any User attributes not attested in the Relying Party metadata, as derived from the Trust Chain made available in the Relying Party's signed request.</p>
 </section>
 </section>
 <section id="non-repudiability-of-the-long-lived-attestations">
@@ -1546,10 +1552,10 @@ offline trust evaluation mechanisms.</p>
 <section id="privacy-considerations">
 <h2>Privacy Considerations<a class="headerlink" href="#privacy-considerations" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>EUDI Wallet Instances do not publish their metadata through an online service.</p></li>
+<li><p>Wallet Instances do not publish their metadata through an online service.</p></li>
 <li><p>The trust infrastructure is public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.</p></li>
-<li><p>When a Wallet requests the Entity Statements to build the Trust Chain for a specific Relying Party or validates a Trust Mark online, issued for a specific Relying Party, the Trust Anchor or its Intermediate do not know that a particular Wallet is inquiring about a specific Relying Party; instead, they only serve the statements related to that Relying Party as a public resource.</p></li>
-<li><p>The metadata of the EUDI Wallet instance must not contain information that may disclose technical information about the hardware used.</p></li>
+<li><p>When a Wallet Instance requests the Entity Statements to build the Trust Chain for a specific Relying Party or validates a Trust Mark online, issued for a specific Relying Party, the Trust Anchor or its Intermediate do not know that a particular Wallet Instance is inquiring about a specific Relying Party; instead, they only serve the statements related to that Relying Party as a public resource.</p></li>
+<li><p>The Wallet instance metadata must not contain information that may disclose technical information about the hardware used.</p></li>
 <li><p>Leaf entity, Intermediate, and Trust Anchor metadata may include the necessary amount of data as part of administrative, technical, and security contact information. It is generally not recommended to use personal contact details in such cases. From a legal perspective, the publication of such information is needed for operational support concerning technical and security matters and is in line with GDPR.</p></li>
 </ul>
 </section>
