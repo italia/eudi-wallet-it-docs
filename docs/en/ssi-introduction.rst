@@ -30,10 +30,10 @@ In the SSI model, the data source (e.g., an educational institution) provides cr
 A secure Self-Sovereign Identity Wallet is crucial, as it allows people to carry their credentials on their digital devices. The Wallet typically comes in the form of an application on the User's mobile phone. Portability is, therefore, one of the principles of SSI.
 
 Other key elements that characterize an SSI system include:
- - Privacy and control: SSI enables individuals to maintain control over their personal data. They can choose what information to release, to whom, and for what purpose. This reduces the risk of personal data being collected, stored, or misused;
- - Security: SSI leverages advanced cryptographic techniques to ensure the integrity and security of identity information. It avoids the risk of identity theft, fraud, and unauthorized access since the data remains under the individual's control and is not stored in a single vulnerable location;
- - Interoperability: SSI promotes interoperability by enabling different systems and organizations to recognize and verify identities without relying on a central authority. This allows for seamless and trusted interactions between individuals, organizations, and even across borders;
- - Efficiency and cost reduction: individuals can manage their own identities with SSI, eliminating the need for multiple identity credentials and repetitive identity verification processes. This can streamline administrative procedures, reduce costs, and enhance the user experience.
+ - **Privacy and control**: SSI enables individuals to maintain control over their personal data. They can choose what information to release, to whom, and for what purpose. This reduces the risk of personal data being collected, stored, or misused;
+ - **Security**: SSI leverages advanced cryptographic techniques to ensure the integrity and security of identity information. It avoids the risk of identity theft, fraud, and unauthorized access since the data remains under the individual's control and is not stored in a single vulnerable location;
+ - **Interoperability**: SSI promotes interoperability by enabling different systems and organizations to recognize and verify identities without relying on a central authority. This allows for seamless and trusted interactions between individuals, organizations, and even across borders;
+ - **Efficiency and cost reduction**: individuals can manage their own identities with SSI, eliminating the need for multiple identity credentials and repetitive identity verification processes. This can streamline administrative procedures, reduce costs, and enhance the user experience.
 
 **Example**
 
