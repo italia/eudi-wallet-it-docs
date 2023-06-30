@@ -6,7 +6,10 @@ Defined Terms
 +++++++++++++
 
 The terms *User*, *Trust Service*, *Trust Model*, *Trusted List*, *Trust Framework*, *Attribute*, *Electronic Attestations of Attributes Provider* or *Trust Service Provider (TSP)*, *Person Identification Data (PID)*, *Revocation List*, *Qualified Electronic Attestations of Attributes Provider* or *Qualified Trust Service Provider (QTSP)*, *Electronic Attestation of Attributes (EAA)*, are defined in the `EIDAS-ARF`_.
-    
+
+Below are the description of acronyms and definitions which are useful for further insights into topics that complement the it-wallet and the interacting components.
+
+
 .. list-table:: 
    :widths: 20 60
    :header-rows: 1
@@ -35,3 +38,24 @@ The terms *User*, *Trust Service*, *Trust Model*, *Trusted List*, *Trust Framewo
      - Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.
    * - Trust Layer
      - An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.
+
+Acronyms
+--------
+
+.. list-table:: 
+  :widths: 20 80
+  :header-rows: 1
+
+  * - **Acronym**
+    - **Description**
+  * - **OID4VP**
+    - OpenID for Verifiable Presentation 
+  * - **PID** 
+    - Person Identification Data
+  * - **VC**
+    - Verifiable Credential
+  * - **VP**
+    - Verifiable Presentation
+  * - **API**
+    - Application Programming Interface
+
