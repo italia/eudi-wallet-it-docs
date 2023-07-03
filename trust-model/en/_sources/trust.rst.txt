@@ -358,7 +358,7 @@ giving the references of the metadata protocol for each of these.
 |                  |                             |              |
 | Relying Party    | ``federation_entity``       |              |
 |                  |                             |              |
-|                  | ``wallet_verifier``         | `OIDC-FED`_  |
+|                  | ``wallet_relying_party``    | `OIDC-FED`_  |
 |                  |                             |              |
 |                  |                             | `OpenID4VP`_ |
 +------------------+-----------------------------+--------------+
