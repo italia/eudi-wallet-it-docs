@@ -24,9 +24,16 @@ This repository hosts the sphinx project tree of Italian eIDAS Wallet Technical 
 
 ## Preview
 
- - [English](https://italia.github.io/eidas-it-wallet-docs/en)
- - [Italian](https://italia.github.io/eidas-it-wallet-docs/it)
- 
+The stable release in different languages is published at the link below:
+
+ - [English](https://italia.github.io/eidas-it-wallet-docs/versione-corrente/en)
+ - [Italian](https://italia.github.io/eidas-it-wallet-docs/versione-corrente/it)
+
+Preview of other branches can be navigated by adding the branch name in the webpath, as follows:
+
+ - https://italia.github.io/eidas-it-wallet-docs/trust-model/en
+
+
 ## Documentation
 
 This repository is structured to be compliant with 
@@ -59,7 +66,7 @@ pandoc -o eidas-it-wallet-docs.odt index.html
 
 ## Versioning
 
-This project participates in the versioning model  [*Semantic
+This project participates in the versioning model [*Semantic
 Versioning*](https://semver.org/).
 
 Furthermore, this project uses the git *branches* and *tags* in the following way:
