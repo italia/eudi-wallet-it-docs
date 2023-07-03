@@ -169,7 +169,7 @@ Header
 +---------+-----------------------------------------------------------------+
 | kid     | Thumbprint of the public key used for signing.                  |
 +---------+-----------------------------------------------------------------+
-| type    | Media type, in this case, we use the entity-statement+jwt value.|
+| typ     | Media type, in this case, we use the entity-statement+jwt value.|
 +---------+-----------------------------------------------------------------+
 
 Payload
@@ -271,6 +271,12 @@ Below a non-normative example of the Entity Configuration.
 
 .. code-block:: javascript
 
+  {
+    "alg": "ES256",
+    "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
+    "typ": "entity-statement+jwt"
+  }
+  .
   {
   "iss": "https://wallet-provider.example.org",
   "sub": "https://wallet-provider.example.org",
@@ -434,7 +440,7 @@ Header
 | kid                               | Key id used by the Wallet         |
 |                                   | Provider to sign the attestation. |
 +-----------------------------------+-----------------------------------+
-| type                              | Media type, in this case we use   |
+| typ                               | Media type, in this case we use   |
 |                                   | the value va+jwt (Verifiable      |
 |                                   | Assertion JWT).                   |
 |                                   | This parameter is currently       |
