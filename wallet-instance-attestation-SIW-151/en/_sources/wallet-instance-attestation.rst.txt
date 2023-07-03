@@ -20,10 +20,10 @@ The goal is:
 - Ensure that the Wallet Instance maintains a level of **integrity**,
   capable of preventing any attempts of manipulation or forgery
   by unauthorized third parties.
-- Make sure the private keys have been generated and stored securely
-  within a **trusted execution environment** (TEE).
-- Verify that the Wallet Instance is **authentic**, i.e. made available
-  by an accredited body that complies with the Trust Model.
+- The Wallet Provider issues a certificate of conformity,
+  assuring that the above mentioned security and trust
+  goals are fulfilled.
+
 
 To guarantee the above, it is necessary for each
 Wallet Instance to issue a certificate of conformity,
@@ -120,7 +120,7 @@ how it is issued by the Wallet Provider.
    :name: sequence diagram for Wallet Instance Attestation request
    :alt: The figure shows the sequence diagram for issuing a Wallet Instance Attestation.
          The steps will be described below.
-   :target: https://www.plantuml.com/plantuml/uml/XPB1RjH038RlynIc9v1OSU-XAk9GWOI44D1BBqxcLsIHU8B7qsZxz4pJx8WbhBZQdp_dT-OsEvkNQGolPkDXOdAa9t8h25myQPawM0XpfQINcTNfwdk6NH5dAkVrUnv7E7tKAjKUAxB8FvalbXubRfgb2w7GuQR2rtLQN7YK9z3omihcUz1aPFXLaFtTRCYemjuGeSyJEInok5cwQxg3dsRdRGzDS8xi79RkKAcwwFDMeJwfiwZey8UD_3WZlwMVEAuxnJ3LJgr0uvn4VTjNJJzub6h2RgbRoKwZPA_iAU0T55RfLJspM0wXgJuOdbj_NPBUvmnpIKfVN_BJf_jlWNkNntLlTvQT6_twlw8tzI3hv2w5d6O6Q1658kSzd6LGzc9ehU6KZpMkxPsmVL_x6PS3xuzysHPnVf7gBatTU6aFB3weWUEHF57gd4L9iPmzgLjeBDFu6m00
+   :target: https://www.plantuml.com/plantuml/uml/XPB1RzKm3CRl-IlCJY3nn7s7QOZ3118IGi0kkxYDLLcqJd2SLMz_FLvV6r7AnDN-_Fi-ExajXcfr6iEhh3XC24Rf2Kmh1QoMf4uTQGZPLTnpHZ6u-bv8hm0Br7tz7iUH33wAGwMdHJBpFpLVD3roN35p5qA5qusBhtsQZN7a9uBvekMLzo19GUbNfMBlib8X1_PAaUHveeIPJpTpTmrtPDjiNdrW8iE8Xc7kJgvoeyzh1VeaXYmimnyqi7EcyXP-qddnPAN9EruXYJcnsEhdf1yUrqbqC3MjnM3aOgxT5hmZ8NNrWix8MhQcH_zwMGyaIK-U5KwNgRNGB3yeFIF-kZYyBuNKE4a3VRh_5h0tVbpoTRiROLE__Y_eZOTP9W_RyZOpa5GM4YhbA2uy25fLQgrXkmDANDe7OClN7ktbXO-FyJ8jqluYpguDtVJSFc9y42MCPx04gJDa0Q5vz_LkIMATnjy0
 
 - **Message 1**: The User initializes the Wallet Instance.
   In particular, this process happens when the mobile application
@@ -150,6 +150,193 @@ how it is issued by the Wallet Provider.
 Detail design
 ---------------
 We will go into the detail design below.
+
+Format of the Wallet Provider Entity Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Wallet Provider Entity Configuration is a JWS containing
+the public keys and the supported algorithms
+within the Wallet Provider metadata definition.
+It broadly implements ``OIDC-FED`` protocol.
+
+Header
+^^^^^^
++---------+-----------------------------------------------------------------+
+| **key** | **value**                                                       |
++---------+-----------------------------------------------------------------+
+| alg     | Algorithm to verify the token signature (es. ES256).            |
++---------+-----------------------------------------------------------------+
+| kid     | Thumbprint of the public key used for signing.                  |
++---------+-----------------------------------------------------------------+
+| type    | Media type, in this case, we use the entity-statement+jwt value.|
++---------+-----------------------------------------------------------------+
+
+Payload
+^^^^^^^
++-----------------------------------+-----------------------------------+
+| **key**                           | **value**                         |
++-----------------------------------+-----------------------------------+
+| iss                               | The public url of the Wallet      |
+|                                   | Provider.                         |
++-----------------------------------+-----------------------------------+
+| sub                               | The public url of the Wallet      |
+|                                   | Provider.                         |
++-----------------------------------+-----------------------------------+
+| iat                               | Configuration release timestamp.  |
++-----------------------------------+-----------------------------------+
+| exp                               | Configuration expiration          |
+|                                   | timestamp.                        |
++-----------------------------------+-----------------------------------+
+| jwks                              | Containing the keys attribute     |
+|                                   | which is an array of all the      |
+|                                   | public keys associated with the   |
+|                                   | domain (they could also match     |
+|                                   | those of the Wallet Provider).    |
++-----------------------------------+-----------------------------------+
+| metadata                          | This attribute will contain for   |
+|                                   | each entity its own               |
+|                                   | configuration. In our case we     |
+|                                   | will have for now the wallet      |
+|                                   | provider entity contained within  |
+|                                   | the ``eudi_wallet_provider``      |
+|                                   | attribute and the more generic    |
+|                                   | entity ``federation_entity``.     |
++-----------------------------------+-----------------------------------+
+
+Payload `eudi_wallet_provider`
+''''''''''''''''''''''''''''''
++------------------------------------+------------------------------------+
+| **key**                            | **value**                          |
++------------------------------------+------------------------------------+
+|| jwks                              || Containing the keys attribute     |
+||                                   || which is an array of all the      |
+||                                   || Wallet Provider's public keys.    |
++------------------------------------+------------------------------------+
+|| token_endpoint                    || Endpoint for obtaining the Wallet |
+||                                   || Instance Attestation.             |
++------------------------------------+------------------------------------+
+|| asc_values_supported              || List of supported values for      |
+||                                   || the certified security context.   |
+||                                   || These values define a level of    |
+||                                   || assurance about the security of   |
+||                                   || the app. In particular we will    |
+||                                   || mainly have 3 values associated   |
+||                                   || with low, medium and high         |
+||                                   || security. An attested security    |
+||                                   || context is defined according to   |
+||                                   || the proof that the Wallet         |
+||                                   || Instance is able to send to the   |
+||                                   || Wallet Provider.                  |
+||                                   || ⚠️ This parameter is not standard |
+||                                   || and is still under discussion.    |
++------------------------------------+------------------------------------+
+|| grant_types_supported             || The type of grants supported by   |
+||                                   || the endpoint token. Therefore,    |
+||                                   || for the Wallet Provider the token |
+||                                   || is equivalent only to the Wallet  |
+||                                   || Instance attestation, therefore   |
+||                                   || this attribute will contain an    |
+||                                   || array with only one element:      |
+||                                   || client-assertion-type:            |
+||                                   || ``jwt-key-attestation``.          |
++------------------------------------+------------------------------------+
+|| token_endpoint_auth_methods_suppo || Supported authentication method   |
+|| rted                              || for the endpoint token.           |
+||                                   ||                                   |
++------------------------------------+------------------------------------+
+|| token_endpoint_auth_signing_alg_v || List of supported signature       |
+|| alues_supported                   || algorithms.                       |
++------------------------------------+------------------------------------+
+
+.. note::
+   The parameter `asc_values_supported` is experimental and still
+   under discussion.
+
+Payload `federation_entity`
+'''''''''''''''''''''''''''
++-------------------+----------------------------------------+
+| **key**           | **value**                              |
++-------------------+----------------------------------------+
+| organization_name | Organization name.                     |
++-------------------+----------------------------------------+
+| homepage_uri      | Organization website.                  |
++-------------------+----------------------------------------+
+| tos_uri           | Url to the terms of use.               |
++-------------------+----------------------------------------+
+| policy_uri        | Url to the privacy policy.             |
++-------------------+----------------------------------------+
+| logo_uri          | URL of the organization logo.          |
++-------------------+----------------------------------------+
+
+Below a non-normative example of the Entity Configuration.
+
+.. code-block:: javascript
+
+  {
+  "iss": "https://wallet-provider.example.org",
+  "sub": "https://wallet-provider.example.org",
+  "jwks": {
+    "keys": [
+      {
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
+        "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
+        "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
+      }
+    ]
+  },
+  "metadata": {
+    "eudi_wallet_provider": {
+      "jwks": {
+        "keys": [
+          {
+            "crv": "P-256",
+            "kty": "EC",
+            "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
+            "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
+            "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
+          }
+        ]
+      },
+      "token_endpoint": "https://wallet-provider.example.org/token",
+      "asc_values_supported": [
+        "https://wallet-provider.example.org/LoA/basic",
+        "https://wallet-provider.example.org/LoA/medium",
+        "https://wallet-provider.example.org/LoA/high"
+      ],
+      "grant_types_supported": [
+        "urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation"
+      ],
+      "token_endpoint_auth_methods_supported": [
+        "private_key_jwt"
+      ],
+      "token_endpoint_auth_signing_alg_values_supported": [
+        "ES256",
+        "ES384",
+        "ES512"
+      ]
+    },
+    "federation_entity": {
+      "organization_name": "PagoPa S.p.A.",
+      "homepage_uri": "https://wallet-provider.example.org",
+      "policy_uri": "https://wallet-provider.example.org/privacy_policy",
+      "tos_uri": "https://wallet-provider.example.org/info_policy",
+      "logo_uri": "https://wallet-provider.example.org/logo.svg"
+    }
+  },
+  "iat": 1687171759,
+  "exp": 1709290159
+  }
+
+Whose corresponding JWS is as follows:
+
+.. code-block:: javascript
+
+  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6InFySnJqM0FmX0I1N3NiT0lScmNCTTdicjd3T2M4eW5qN2xIRlBUZWZmVWsiLCJ5IjoiMUgwY1dEeUdndlU4dy1rUEtVX3h5Y09DVU5UMm8wYndzbElRdG5QVTZpTSIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkifV19LCJtZXRhZGF0YSI6eyJldWRpX3dhbGxldF9wcm92aWRlciI6eyJqd2tzIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoicXJKcmozQWZfQjU3c2JPSVJyY0JNN2JyN3dPYzh5bmo3bEhGUFRlZmZVayIsInkiOiIxSDBjV0R5R2d2VTh3LWtQS1VfeHljT0NVTlQybzBid3NsSVF0blBVNmlNIiwia2lkIjoiNXQ1WVlwQmhOLUVnSUVFSTVpVXpyNnIwTVIwMkxuVlEwT21la21OS2NqWSJ9XX0sInRva2VuX2VuZHBvaW50IjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvdG9rZW4iLCJhc2NfdmFsdWVzX3N1cHBvcnRlZCI6WyJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9Mb0EvYmFzaWMiLCJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9Mb0EvbWVkaXVtIiwiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvTG9BL2hpZ2giXSwiZ3JhbnRfdHlwZXNfc3VwcG9ydGVkIjpbInVybjppZXRmOnBhcmFtczpvYXV0aDpjbGllbnQtYXNzZXJ0aW9uLXR5cGU6and0LWtleS1hdHRlc3RhdGlvbiJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX21ldGhvZHNfc3VwcG9ydGVkIjpbInByaXZhdGVfa2V5X2p3dCJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX3NpZ25pbmdfYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiLCJFUzM4NCIsIkVTNTEyIl19LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJvcmdhbml6YXRpb25fbmFtZSI6IlBhZ29QYSBTLnAuQS4iLCJob21lcGFnZV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmcifX0sImlhdCI6MTY4Nzc5MjE3NywiZXhwIjoxNzA5OTEwNTc3fQ.hGG7WvGdP1jXO39WZ5WxnN62MLI4XsW2Wr4a809MoRqNTlW6DjzKJotk2SpT2Xq6qcxcctTFnmEMYUuRrJRnXA
+
+Verifiable through the public key of the Wallet Provider itself.
+
 
 Format of the Wallet Instance Attestation Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -440,192 +627,6 @@ attested in the related trust chain.
   "crv": "P-256"
   }
 
-
-Format of the Wallet Provider Entity Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The Wallet Provider Entity Configuration is a JWS containing
-the public keys and the supported algorithms
-within the Wallet Provider metadata definition.
-It broadly implements ``OIDC-FED`` protocol.
-
-Header
-^^^^^^
-+---------+-----------------------------------------------------------------+
-| **key** | **value**                                                       |
-+---------+-----------------------------------------------------------------+
-| alg     | Algorithm to verify the token signature (es. ES256).            |
-+---------+-----------------------------------------------------------------+
-| kid     | Thumbprint of the public key used for signing.                  |
-+---------+-----------------------------------------------------------------+
-| type    | Media type, in this case, we use the entity-statement+jwt value.|
-+---------+-----------------------------------------------------------------+
-
-Payload
-^^^^^^^
-+-----------------------------------+-----------------------------------+
-| **key**                           | **value**                         |
-+-----------------------------------+-----------------------------------+
-| iss                               | The public url of the Wallet      |
-|                                   | Provider.                         |
-+-----------------------------------+-----------------------------------+
-| sub                               | The public url of the Wallet      |
-|                                   | Provider.                         |
-+-----------------------------------+-----------------------------------+
-| iat                               | Configuration release timestamp.  |
-+-----------------------------------+-----------------------------------+
-| exp                               | Configuration expiration          |
-|                                   | timestamp.                        |
-+-----------------------------------+-----------------------------------+
-| jwks                              | Containing the keys attribute     |
-|                                   | which is an array of all the      |
-|                                   | public keys associated with the   |
-|                                   | domain (they could also match     |
-|                                   | those of the Wallet Provider).    |
-+-----------------------------------+-----------------------------------+
-| metadata                          | This attribute will contain for   |
-|                                   | each entity its own               |
-|                                   | configuration. In our case we     |
-|                                   | will have for now the wallet      |
-|                                   | provider entity contained within  |
-|                                   | the ``eudi_wallet_provider``      |
-|                                   | attribute and the more generic    |
-|                                   | entity ``federation_entity``.     |
-+-----------------------------------+-----------------------------------+
-
-Payload `eudi_wallet_provider`
-''''''''''''''''''''''''''''''
-+------------------------------------+------------------------------------+
-| **key**                            | **value**                          |
-+------------------------------------+------------------------------------+
-|| jwks                              || Containing the keys attribute     |
-||                                   || which is an array of all the      |
-||                                   || Wallet Provider's public keys.    |
-+------------------------------------+------------------------------------+
-|| token_endpoint                    || Endpoint for obtaining the Wallet |
-||                                   || Instance Attestation.             |
-+------------------------------------+------------------------------------+
-|| asc_values_supported              || List of supported values for      |
-||                                   || the certified security context.   |
-||                                   || These values define a level of    |
-||                                   || assurance about the security of   |
-||                                   || the app. In particular we will    |
-||                                   || mainly have 3 values associated   |
-||                                   || with low, medium and high         |
-||                                   || security. An attested security    |
-||                                   || context is defined according to   |
-||                                   || the proof that the Wallet         |
-||                                   || Instance is able to send to the   |
-||                                   || Wallet Provider.                  |
-||                                   || ⚠️ This parameter is not standard |
-||                                   || and is still under discussion.    |
-+------------------------------------+------------------------------------+
-|| grant_types_supported             || The type of grants supported by   |
-||                                   || the endpoint token. Therefore,    |
-||                                   || for the Wallet Provider the token |
-||                                   || is equivalent only to the Wallet  |
-||                                   || Instance attestation, therefore   |
-||                                   || this attribute will contain an    |
-||                                   || array with only one element:      |
-||                                   || client-assertion-type:            |
-||                                   || ``jwt-key-attestation``.          |
-+------------------------------------+------------------------------------+
-|| token_endpoint_auth_methods_suppo || Supported authentication method   |
-|| rted                              || for the endpoint token.           |
-||                                   ||                                   |
-+------------------------------------+------------------------------------+
-|| token_endpoint_auth_signing_alg_v || List of supported signature       |
-|| alues_supported                   || algorithms.                       |
-+------------------------------------+------------------------------------+
-
-.. note::
-   The parameter `asc_values_supported` is experimental and still
-   under discussion.
-
-Payload `federation_entity`
-'''''''''''''''''''''''''''
-+-------------------+----------------------------------------+
-| **key**           | **value**                              |
-+-------------------+----------------------------------------+
-| organization_name | Organization name.                     |
-+-------------------+----------------------------------------+
-| homepage_uri      | Organization website.                  |
-+-------------------+----------------------------------------+
-| tos_uri           | Url to the terms of use.               |
-+-------------------+----------------------------------------+
-| policy_uri        | Url to the privacy policy.             |
-+-------------------+----------------------------------------+
-| logo_uri          | URL of the organization logo.          |
-+-------------------+----------------------------------------+
-
-Below a non-normative example of the Entity Configuration.
-
-.. code-block:: javascript
-
-  {
-  "iss": "https://wallet-provider.example.org",
-  "sub": "https://wallet-provider.example.org",
-  "jwks": {
-    "keys": [
-      {
-        "crv": "P-256",
-        "kty": "EC",
-        "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
-        "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
-        "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
-      }
-    ]
-  },
-  "metadata": {
-    "eudi_wallet_provider": {
-      "jwks": {
-        "keys": [
-          {
-            "crv": "P-256",
-            "kty": "EC",
-            "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
-            "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
-            "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
-          }
-        ]
-      },
-      "token_endpoint": "https://wallet-provider.example.org/token",
-      "asc_values_supported": [
-        "https://wallet-provider.example.org/LoA/basic",
-        "https://wallet-provider.example.org/LoA/medium",
-        "https://wallet-provider.example.org/LoA/high"
-      ],
-      "grant_types_supported": [
-        "urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation"
-      ],
-      "token_endpoint_auth_methods_supported": [
-        "private_key_jwt"
-      ],
-      "token_endpoint_auth_signing_alg_values_supported": [
-        "ES256",
-        "ES384",
-        "ES512"
-      ]
-    },
-    "federation_entity": {
-      "organization_name": "PagoPa S.p.A.",
-      "homepage_uri": "https://wallet-provider.example.org",
-      "policy_uri": "https://wallet-provider.example.org/privacy_policy",
-      "tos_uri": "https://wallet-provider.example.org/info_policy",
-      "logo_uri": "https://wallet-provider.example.org/logo.svg"
-    }
-  },
-  "iat": 1687171759,
-  "exp": 1709290159
-  }
-
-Whose corresponding JWS is as follows:
-
-.. code-block:: javascript
-
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6InFySnJqM0FmX0I1N3NiT0lScmNCTTdicjd3T2M4eW5qN2xIRlBUZWZmVWsiLCJ5IjoiMUgwY1dEeUdndlU4dy1rUEtVX3h5Y09DVU5UMm8wYndzbElRdG5QVTZpTSIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkifV19LCJtZXRhZGF0YSI6eyJldWRpX3dhbGxldF9wcm92aWRlciI6eyJqd2tzIjp7ImtleXMiOlt7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoicXJKcmozQWZfQjU3c2JPSVJyY0JNN2JyN3dPYzh5bmo3bEhGUFRlZmZVayIsInkiOiIxSDBjV0R5R2d2VTh3LWtQS1VfeHljT0NVTlQybzBid3NsSVF0blBVNmlNIiwia2lkIjoiNXQ1WVlwQmhOLUVnSUVFSTVpVXpyNnIwTVIwMkxuVlEwT21la21OS2NqWSJ9XX0sInRva2VuX2VuZHBvaW50IjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvdG9rZW4iLCJhc2NfdmFsdWVzX3N1cHBvcnRlZCI6WyJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9Mb0EvYmFzaWMiLCJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9Mb0EvbWVkaXVtIiwiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvTG9BL2hpZ2giXSwiZ3JhbnRfdHlwZXNfc3VwcG9ydGVkIjpbInVybjppZXRmOnBhcmFtczpvYXV0aDpjbGllbnQtYXNzZXJ0aW9uLXR5cGU6and0LWtleS1hdHRlc3RhdGlvbiJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX21ldGhvZHNfc3VwcG9ydGVkIjpbInByaXZhdGVfa2V5X2p3dCJdLCJ0b2tlbl9lbmRwb2ludF9hdXRoX3NpZ25pbmdfYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiLCJFUzM4NCIsIkVTNTEyIl19LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJvcmdhbml6YXRpb25fbmFtZSI6IlBhZ29QYSBTLnAuQS4iLCJob21lcGFnZV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmcifX0sImlhdCI6MTY4Nzc5MjE3NywiZXhwIjoxNzA5OTEwNTc3fQ.hGG7WvGdP1jXO39WZ5WxnN62MLI4XsW2Wr4a809MoRqNTlW6DjzKJotk2SpT2Xq6qcxcctTFnmEMYUuRrJRnXA
-
-Verifiable through the public key of the Wallet Provider itself.
 
 Endpoints
 ~~~~~~~~~
