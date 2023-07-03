@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | Defined Terms</title>
+  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | defined-terms.rst</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -14,8 +14,8 @@
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
   <link rel="top" title="Italian eIDAS Wallet Technical Specifications version: latest documentation" href="index.html">
-  <link rel="next" title="The Infrastructure of Trust" href="trust.html">
-  <link rel="prev" title="Self Sovereign Identity" href="ssi-introduction.html">
+  <link rel="next" title="trust.rst" href="trust.html">
+  <link rel="prev" title="ssi-introduction.rst" href="ssi-introduction.html">
 
   
   
@@ -575,26 +575,33 @@
       </ul>
       
       <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">Self Sovereign Identity</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">ssi-introduction.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Defined Terms</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">defined-terms.rst</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#acronyms">Acronyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">trust.rst</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
@@ -610,23 +617,22 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#id1">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">wallet-solution.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">wallet-instance-attestation.rst</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="issuance.html">issuance.rst</a><ul>
@@ -693,7 +699,7 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-issuing.html#id47">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-issuing.html#id49">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
     </div>
@@ -706,7 +712,7 @@
 <div class="navbar-toggler--wrap navbar-toggler--wrap--bottom p-3">
   <div class="navbar-toggler navbar-toggler--open p-0 border-0 ml-auto">
     <div class="navbar-toggler-bottom__chapter align-middle text-truncate">
-      <span class="it-list mr-2"></span>Defined Terms
+      <span class="it-list mr-2"></span>defined-terms.rst
     </div>
   </div>
 </div>
@@ -763,26 +769,33 @@
         </ul>
         
         <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">Self Sovereign Identity</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">ssi-introduction.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Defined Terms</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">defined-terms.rst</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#acronyms">Acronyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">trust.rst</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
@@ -798,23 +811,22 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-issuing.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#id1">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">wallet-solution.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">wallet-instance-attestation.rst</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="issuance.html">issuance.rst</a><ul>
@@ -877,7 +889,7 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-issuing.html#id47">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-issuing.html#id49">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
       </div>
@@ -896,60 +908,13 @@
           </div>-->
           
             <div class="footer-buttons footer-buttons--prev" role="navigation" aria-label="footer navigation">
-                <a href="ssi-introduction.html" class="" title="Self Sovereign Identity" accesskey="p" rel="prev"> Torna a Self Sovereign Identity</a>
+                <a href="ssi-introduction.html" class="" title="ssi-introduction.rst" accesskey="p" rel="prev"> Torna a ssi-introduction.rst</a>
             </div>
           
           
-  <section id="defined-terms">
-<span id="defined-terms-rst"></span><h1>Defined Terms<a class="headerlink" href="#defined-terms" title="Permalink to this heading">¶</a></h1>
-<p>The terms <em>User</em>, <em>Trust Service</em>, <em>Trust Model</em>, <em>Trusted List</em>, <em>Trust Framework</em>, <em>Attribute</em>, <em>Electronic Attestations of Attributes Provider</em> or <em>Trust Service Provider (TSP)</em>, <em>Person Identification Data (PID)</em>, <em>Revocation List</em>, <em>Qualified Electronic Attestations of Attributes Provider</em> or <em>Qualified Trust Service Provider (QTSP)</em>, <em>Electronic Attestation of Attributes (EAA)</em>, are defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
+  <section id="defined-terms-rst">
+<span id="id1"></span><h1>defined-terms.rst<a class="headerlink" href="#defined-terms-rst" title="Permalink to this heading">¶</a></h1>
 <p>Below are the description of acronyms and definitions which are useful for further insights into topics that complement the it-wallet and the interacting components.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 75%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Accreditation Body</p></td>
-<td><p>An entity accredited by the Federation Authority, responsible for managing the process of verification and certification of accreditation requirements for ecosystem roles.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Digital Identity Provider</p></td>
-<td><p>An entity, recognized and accredited by the State, responsible for identifying citizens for the issuance of an Electronic Identity Certificate.</p></td>
-</tr>
-<tr class="row-even"><td><p>Electronic Attestation of Identity</p></td>
-<td><p>Electronic attestation of attributes referring to master data already present in Italian digital identity systems.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Federation Authority</p></td>
-<td><p>A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.</p></td>
-</tr>
-<tr class="row-even"><td><p>Wallet Instance</p></td>
-<td><p>An instance of the Wallet Solution, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Wallet Provider</p></td>
-<td><p>All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.</p></td>
-</tr>
-<tr class="row-even"><td><p>Qualified Electronic Attestation of Attributes (QEAA)</p></td>
-<td><p>A digitally verifiable attestation in electronic form, issued by a QTSP, that substantiates a person's possession of attributes.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Qualified Electronic Signature Provider</p></td>
-<td><p>The Electronic Trust Service Provider responsible for the issuing of Qualified Electronic Signature certificates to the User.</p></td>
-</tr>
-<tr class="row-even"><td><p>Relying Party</p></td>
-<td><p>A natural or legal person that implements an authentication system requiring electronic attribute attestation submissions as an authentication mechanism.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Trust Attestation</p></td>
-<td><p>Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.</p></td>
-</tr>
-<tr class="row-even"><td><p>Trust Layer</p></td>
-<td><p>An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.</p></td>
-</tr>
-</tbody>
-</table>
 <section id="acronyms">
 <h2>Acronyms<a class="headerlink" href="#acronyms" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
@@ -981,12 +946,79 @@
 </tbody>
 </table>
 </section>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Definition</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Wallet Instance</strong></p></td>
+<td><p>Mobile app that manages, stores, and protects the Verifiable Credentials of a holder and allows the presentation to a Relying Party</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Relying Party</strong></p></td>
+<td><p>Entity that receives one or more VP from a Wallet Instance and processes them</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="general-properties">
+<h2>General Properties<a class="headerlink" href="#general-properties" title="Permalink to this heading">¶</a></h2>
+<p>[TODO]</p>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>req 1</p></li>
+<li><p>req 2</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">¶</a></h2>
+<p>[Table with parameters/attributes]</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>key</p></td>
+<td><p>value</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="implementation-considerations">
+<h2>Implementation considerations<a class="headerlink" href="#implementation-considerations" title="Permalink to this heading">¶</a></h2>
+<p>TODO</p>
+</section>
+<section id="libraries-and-code-snippets">
+<h2>Libraries and code snippets<a class="headerlink" href="#libraries-and-code-snippets" title="Permalink to this heading">¶</a></h2>
+<p>TODO</p>
+</section>
+<section id="external-references">
+<h2>External references<a class="headerlink" href="#external-references" title="Permalink to this heading">¶</a></h2>
+<p>TODO</p>
+</section>
 </section>
 
 
           
             <div class="footer-buttons footer-buttons--next" role="navigation" aria-label="footer navigation">
-                  <a href="trust.html" class="" title="The Infrastructure of Trust" accesskey="n" rel="next">The Infrastructure of Trust</a>
+                  <a href="trust.html" class="" title="trust.rst" accesskey="n" rel="next">trust.rst</a>
               </div>
             
           </div>

@@ -51,163 +51,7 @@ The PID Issuing phase is based on the **Authorization Code Flow** with **Pushed 
 
 .. note::
 
-    **Federation Check:** The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata. In the following a non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID Provider
-
-    .. code-block:: http
-    
-      HTTP/1.1 200 OK
-      Content-Type: application/entity-statement+jwt
-
-      {
-
-        "alg": "RS256",
-        "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
-        "typ": "entity-statement+jwt"
-
-      }
-      .
-      {
-        "exp": "1649610249",
-        "iat": "1649437449",
-        "iss": "https://pid-provider.example.org",
-        "sub": "https://pid-provider.example.org",
-        "jwks": {
-          "keys": [{
-            "kty": "RSA",
-            "use": "sig",
-            "n": "1Ta-sE …",
-            "e": "AQAB",
-            "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-          }]
-        },
-        "metadata": {
-          "openid_credential_issuer": {
-            "credential_issuer": "https://pid-provider.example.org",
-            "authorization_endpoint": "https://pid-provider.example.org/connect/authorize",
-            "token_endpoint": "https://pid-provider.example.org/connect/token",
-            "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
-            "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
-            "credential_endpoint": "https://pid-provider.example.org/credential",
-            "credentials_supported": {
-              "eu.eudiw.pid.it": {
-                "format": "vc+sd-jwt",
-                "cryptographic_binding_methods_supported": ["jwk"],
-                "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
-                "display": [{
-                    "name": "PID Provider Italiano di esempio",
-                    "locale": "it-IT",
-                    "logo": {
-                      "url": "https://pid-provider example.org/public/logo.svg",
-                      "alt_text": "logo di questo PID Provider"
-                    },
-                    "background_color": "#12107c",
-                    "text_color": "#FFFFFF"
-                  },
-                  {
-                    "name": "Example Italian PID Provider",
-                    "locale": "en-US",
-                    "logo": {
-                      "url": "https://pid-provider.example.org/public/logo.svg",
-                      "alt_text": "The logo of this PID Provider"
-                    },
-                    "background_color": "#12107c",
-                    "text_color": "#FFFFFF"
-                  }
-                ],
-                "credential_definition": {
-                  "type": ["PIDCredential"],
-                  "credentialSubject": {
-                    "given_name": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Current First Name",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Nome",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "family_name": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Current Family Name",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Cognome",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "birthdate": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Date of Birth",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Data di Nascita",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "place_of_birth": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Place of Birth",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Luogo di Nascita",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "unique_id": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Unique Identifier",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Identificativo univoco",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "tax_id_number": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Tax Id Number",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Codice Fiscale",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-
-          "federation_entity": {
-            "organization_name": "Pid Provider Organization Example",
-            "homepage_uri": "https://pid-provider.example.org",
-            "policy_uri": "https://pid-provider.example.org/privacy_policy",
-            "tos_uri": "https://pid-provider.example.org/info_policy",
-            "logo_uri": "https://pid-provider.example.org/logo.svg"
-          },
-
-          "openid_relying_party": {
-            <This is the metadata of the PID Provider acting as a Relying Party in the national digital identity framework (CIE/SPID). See spid-cie-oidc-docs for details.>
-          }
-        }
-      }         
+    **Federation Check:** The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID Provider is represented withing the section `Entity Configuration Credential Issuer <Entity Configuration Credential Issuer>`_.
 
 
 **Steps 5-6:** The Wallet Instance creates a fresh PKCE code verifier that sends in a *pushed authorization request*, using the request parameter (see :rfc:`9126` Section 3) to the PID Provider authorization endpoint. The Wallet Instance signs its request using its attested private key. A standard OAuth2 client authentication method must be involved, since in this flow the pushed authorization endpoint is a protected endpoint. The client authentication can be based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the **client_assertion** parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify types of the credentials when requesting authorization for the PID issuance.
@@ -286,8 +130,7 @@ The JWS payload of the request object is represented below:
 
 .. code-block:: http
 
-    GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
-        &request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
+    GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
     Host: pid-provider.example.org
  
 
@@ -472,7 +315,7 @@ The JWT Request Object has the following JOSE header parameters:
       - **Description**
       - **Reference**
     * - **alg**
-      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be none or an identifier for a symmetric algorithm (MAC).
+      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be none or an identifier for a symmetric algorithm (MAC).
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
       - Unique identifier of the JWK as base64url-encoded JWK Thumbprint value.
@@ -869,5 +712,166 @@ Credential Response to the Wallet Instance MUST be sent using `application/json`
   If the **format** value is `mso_mdoc`, the **credential** value MUST be a base64url-encoded JSON string according to Appendix E of `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
 
 
+.. _Entity Configuration Credential Issuer:
 
+Entity Configuration Credential Issuer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Below a non-normative example of an Entity Configuration containing an `openid_credential_issuer` metadata.
+
+.. code-block:: http
+    
+      HTTP/1.1 200 OK
+      Content-Type: application/entity-statement+jwt
+
+      {
+
+        "alg": "RS256",
+        "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
+        "typ": "entity-statement+jwt"
+
+      }
+      .
+      {
+        "exp": "1649610249",
+        "iat": "1649437449",
+        "iss": "https://pid-provider.example.org",
+        "sub": "https://pid-provider.example.org",
+        "jwks": {
+          "keys": [{
+            "kty": "RSA",
+            "use": "sig",
+            "n": "1Ta-sE …",
+            "e": "AQAB",
+            "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
+          }]
+        },
+        "metadata": {
+          "openid_credential_issuer": {
+            "credential_issuer": "https://pid-provider.example.org",
+            "authorization_endpoint": "https://pid-provider.example.org/connect/authorize",
+            "token_endpoint": "https://pid-provider.example.org/connect/token",
+            "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
+            "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
+            "credential_endpoint": "https://pid-provider.example.org/credential",
+            "credentials_supported": {
+              "eu.eudiw.pid.it": {
+                "format": "vc+sd-jwt",
+                "cryptographic_binding_methods_supported": ["jwk"],
+                "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
+                "display": [{
+                    "name": "PID Provider Italiano di esempio",
+                    "locale": "it-IT",
+                    "logo": {
+                      "url": "https://pid-provider example.org/public/logo.svg",
+                      "alt_text": "logo di questo PID Provider"
+                    },
+                    "background_color": "#12107c",
+                    "text_color": "#FFFFFF"
+                  },
+                  {
+                    "name": "Example Italian PID Provider",
+                    "locale": "en-US",
+                    "logo": {
+                      "url": "https://pid-provider.example.org/public/logo.svg",
+                      "alt_text": "The logo of this PID Provider"
+                    },
+                    "background_color": "#12107c",
+                    "text_color": "#FFFFFF"
+                  }
+                ],
+                "credential_definition": {
+                  "type": ["PIDCredential"],
+                  "credentialSubject": {
+                    "given_name": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Current First Name",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Nome",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "family_name": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Current Family Name",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Cognome",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "birthdate": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Date of Birth",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Data di Nascita",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "place_of_birth": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Place of Birth",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Luogo di Nascita",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "unique_id": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Unique Identifier",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Identificativo univoco",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    },
+                    "tax_id_number": {
+                      "mandatory": true,
+                      "display": [{
+                          "name": "Tax Id Number",
+                          "locale": "en-US"
+                        },
+                        {
+                          "name": "Codice Fiscale",
+                          "locale": "it-IT"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+
+          "federation_entity": {
+            "organization_name": "Pid Provider Organization Example",
+            "homepage_uri": "https://pid-provider.example.org",
+            "policy_uri": "https://pid-provider.example.org/privacy_policy",
+            "tos_uri": "https://pid-provider.example.org/info_policy",
+            "logo_uri": "https://pid-provider.example.org/logo.svg"
+          },
+
+          "openid_relying_party": {
+            <This is the metadata of the PID Provider acting as a Relying Party in the national digital identity framework (CIE/SPID). See spid-cie-oidc-docs for details.>
+          }
+        }
+      }         
 
