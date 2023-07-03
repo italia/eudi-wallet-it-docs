@@ -712,6 +712,8 @@ Credential Response to the Wallet Instance MUST be sent using `application/json`
   If the **format** value is `mso_mdoc`, the **credential** value MUST be a base64url-encoded JSON string according to Appendix E of `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
 
 
+.. _Entity Configuration Credential Issuer:
+
 Entity Configuration Credential Issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
