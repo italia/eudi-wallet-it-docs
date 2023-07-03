@@ -157,7 +157,8 @@ Format of the Wallet Provider Entity Configuration
 The Wallet Provider Entity Configuration is a JWS containing
 the public keys and the supported algorithms
 within the Wallet Provider metadata definition.
-It broadly implements ``OIDC-FED`` protocol.
+It is defined according to [OIDC-FED] <https://openid.net/specs/openid-connect-federation-1_0.html>_
+and Section Trust Model of this specification.
 
 Header
 ^^^^^^
