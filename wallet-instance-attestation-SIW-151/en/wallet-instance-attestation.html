@@ -1061,7 +1061,7 @@ and Section Trust Model of this specification.</p>
 <tr class="row-odd"><td><p>kid</p></td>
 <td><p>Thumbprint of the public key used for signing.</p></td>
 </tr>
-<tr class="row-even"><td><p>type</p></td>
+<tr class="row-even"><td><p>typ</p></td>
 <td><p>Media type, in this case, we use the entity-statement+jwt value.</p></td>
 </tr>
 </tbody>
@@ -1253,6 +1253,12 @@ under discussion.</p>
 </table>
 <p>Below a non-normative example of the Entity Configuration.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;entity-statement+jwt&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 <span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="s2">&quot;jwks&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1477,7 +1483,7 @@ signature (es. ES256).</p></td>
 <td><p>Key id used by the Wallet
 Provider to sign the attestation.</p></td>
 </tr>
-<tr class="row-even"><td><p>type</p></td>
+<tr class="row-even"><td><p>typ</p></td>
 <td><p>Media type, in this case we use
 the value va+jwt (Verifiable
 Assertion JWT).
