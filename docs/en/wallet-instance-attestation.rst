@@ -37,7 +37,7 @@ and must be electronically signed by its issuer.
   entity and does not belong to an organization,
   but resides on the User's device, the Trust Model,
   based on sustainability and scalability criteria,
-  must delegate to the **Wallet provider** the task of
+  must delegate to the **Wallet Provider** the task of
   issuing the **Wallet Instance Attestation**.
 
 
@@ -197,7 +197,7 @@ Payload
 |                                   | each entity its own               |
 |                                   | configuration. In our case we     |
 |                                   | will have for now the wallet      |
-|                                   | provider entity contained within  |
+|                                   | Provider entity contained within  |
 |                                   | the ``eudi_wallet_provider``      |
 |                                   | attribute and the more generic    |
 |                                   | entity ``federation_entity``.     |
@@ -437,9 +437,8 @@ Herein a JWS representation of the Wallet Instance Attestation request object:
 Format of the Wallet Instance Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To ensure the above requirements, a JWT was chosen as the format for the
-Wallet Instance Attestation. Let's see below the various fields that
-compose it.
+A JWT was chosen as the format for the Wallet Instance Attestation.
+Let's see below the various fields that compose it.
 
 Header
 ^^^^^^
@@ -450,8 +449,8 @@ Header
 | alg                               | Algorithm to verify the token     |
 |                                   | signature (es. ES256).            |
 +-----------------------------------+-----------------------------------+
-| kid                               | Key id used by the wallet         |
-|                                   | provider to sign the attestation. |
+| kid                               | Key id used by the Wallet         |
+|                                   | Provider to sign the attestation. |
 +-----------------------------------+-----------------------------------+
 | type                              | Media type, in this case we use   |
 |                                   | the value va+jwt (Verifiable      |
