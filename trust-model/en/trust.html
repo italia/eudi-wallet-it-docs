@@ -1447,7 +1447,7 @@ The Entity Statement MAY contain a metadata policy and the Trust Marks related t
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>metadata_policy</strong></p></td>
-<td><p>JSON Object that describes the Metadata policy. Each key of the JSON Object represents an        identifier of the type of Metadata and each value MUST be a JSON Object that represents the Metadata policy according to that Metadata type. Please refer to the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> specifications, Section-5.1, for the implementation details.</p></td>
+<td><p>JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the type of Metadata and each value MUST be a JSON Object that represents the Metadata policy according to that Metadata type. Please refer to the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> specifications, Section-5.1, for the implementation details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.svg"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.svg" width="25" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>trust_marks</strong></p></td>
@@ -1524,18 +1524,18 @@ offline trust evaluation mechanisms.</p>
 <p class="admonition-title">Note</p>
 <p>The offline flows do not allow for real-time evaluation of an Entity's status, such as its revocation. At the same time, using short-lived Trust Chains enables the attainment of trust attestations compatible with the required revocation administrative protocols (e.g., a revocation must be propagated in less than 24 hours, thus the Trust Chain must not be valid for more than that period).</p>
 </div>
-</section>
 <section id="offline-eudi-wallet-trust-attestation">
-<h3>Offline EUDI Wallet Trust Attestation<a class="headerlink" href="#offline-eudi-wallet-trust-attestation" title="Permalink to this heading">¶</a></h3>
+<h4>Offline EUDI Wallet Trust Attestation<a class="headerlink" href="#offline-eudi-wallet-trust-attestation" title="Permalink to this heading">¶</a></h4>
 <p>Given that a mobile device should not publish its metadata online at the <em>.well-known/openid-federation</em> endpoint, or in any other way, it is not mandatory for the Wallet Instance to publish its metadata if the User does not want this. As a result, the Wallet Instance does not need to publish its federation metadata online.</p>
 <p>However, the Wallet Instance should obtain a Wallet Attestation Instance issued by its Wallet Provider, which should contain a Trust Chain related to its issuer (Wallet Provider).</p>
 </section>
 <section id="offline-relying-party-metadata">
-<h3>Offline Relying Party Metadata<a class="headerlink" href="#offline-relying-party-metadata" title="Permalink to this heading">¶</a></h3>
+<h4>Offline Relying Party Metadata<a class="headerlink" href="#offline-relying-party-metadata" title="Permalink to this heading">¶</a></h4>
 <p>Since the Federation Entity Discovery is only applicable in online scenarios, it is possible to include the Trust Chain in the presentation requests that a Relying Party may issue for a Wallet Instance.</p>
 <p>The Relying Party must sign the presentation request, which should include the <cite>trust_chain</cite> claim in its header parameter, containing the Federation Trust Chain related to itself.</p>
 <p>The Wallet Instance that verifies the request issued by the Relying Party can then use the Trust Anchor public keys to validate the entire Trust Chain related to the Relying Party and attest to its reliability.</p>
 <p>Furthermore, the Wallet Instance applies the metadata policy, if available, to filter out any User attributes not attested in the Relying Party metadata, as derived from the Trust Chain made available in the Relying Party's signed request.</p>
+</section>
 </section>
 </section>
 <section id="non-repudiability-of-the-long-lived-attestations">
