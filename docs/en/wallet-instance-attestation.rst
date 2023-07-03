@@ -25,7 +25,7 @@ The goal is:
   goals are fulfilled.
 
 
-To guarantee the above, it is necessary for each
+In compliance of the above mentioned requirements, it is necessary for each
 Wallet Instance to issue a certificate of conformity,
 guaranteeing its security and compliance with the Trust Model.
 
@@ -157,7 +157,7 @@ Format of the Wallet Provider Entity Configuration
 The Wallet Provider Entity Configuration is a JWS containing
 the public keys and the supported algorithms
 within the Wallet Provider metadata definition.
-It is defined according to [OIDC-FED] <https://openid.net/specs/openid-connect-federation-1_0.html>_
+It is defined according to `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_
 and Section Trust Model of this specification.
 
 Header
@@ -196,9 +196,9 @@ Payload
 +-----------------------------------+-----------------------------------+
 | metadata                          | This attribute will contain for   |
 |                                   | each entity its own               |
-|                                   | configuration. In our case we     |
-|                                   | will have for now the wallet      |
-|                                   | Provider entity contained within  |
+|                                   | metadata. In this case we         |
+|                                   | will have the Wallet              |
+|                                   | Provider metadata contained within|
 |                                   | the ``eudi_wallet_provider``      |
 |                                   | attribute and the more generic    |
 |                                   | entity ``federation_entity``.     |
@@ -237,9 +237,7 @@ Payload `eudi_wallet_provider`
 ||                                   || is equivalent only to the Wallet  |
 ||                                   || Instance attestation, therefore   |
 ||                                   || this attribute will contain an    |
-||                                   || array with only one element:      |
-||                                   || client-assertion-type:            |
-||                                   || ``jwt-key-attestation``.          |
+||                                   || array with only one element.      |
 +------------------------------------+------------------------------------+
 || token_endpoint_auth_methods_suppo || Supported authentication method   |
 || rted                              || for the endpoint token.           |
@@ -364,7 +362,7 @@ Payload
 ||        || being requested.                     |
 +---------+---------------------------------------+
 || sub    || The public url of the Wallet         |
-||        || Instance Attestation issuer.         |
+||        || Provider                             |
 +---------+---------------------------------------+
 || jti    || Unique identifier of the request.    |
 ||        || This parameter will be used to       |
