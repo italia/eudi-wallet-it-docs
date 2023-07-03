@@ -476,7 +476,7 @@ The Entity Statement issued by Trust Anchors and Intermediates contain the follo
      - Federation JWKS of the *sub* entity. See `OIDC-FED`_ Section 3.1 for further details.
      - |check-icon|
    * - **metadata_policy**
-     - JSON Object that describes the Metadata policy. Each key of the JSON Object represents an        identifier of the type of Metadata and each value MUST be a JSON Object that represents the Metadata policy according to that Metadata type. Please refer to the `OIDC-FED`_ specifications, Section-5.1, for the implementation details.
+     - JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the type of Metadata and each value MUST be a JSON Object that represents the Metadata policy according to that Metadata type. Please refer to the `OIDC-FED`_ specifications, Section-5.1, for the implementation details.
      - |uncheck-icon|
    * - **trust_marks**
      - JSON Array containing the Trust Marks issued by itself for the subordinate subject.
@@ -573,14 +573,14 @@ offline trust evaluation mechanisms.
 
 
 Offline EUDI Wallet Trust Attestation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Given that a mobile device should not publish its metadata online at the *.well-known/openid-federation* endpoint, or in any other way, it is not mandatory for the Wallet Instance to publish its metadata if the User does not want this. As a result, the Wallet Instance does not need to publish its federation metadata online.
 
 However, the Wallet Instance should obtain a Wallet Attestation Instance issued by its Wallet Provider, which should contain a Trust Chain related to its issuer (Wallet Provider).
 
 Offline Relying Party Metadata
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since the Federation Entity Discovery is only applicable in online scenarios, it is possible to include the Trust Chain in the presentation requests that a Relying Party may issue for a Wallet Instance.
 
