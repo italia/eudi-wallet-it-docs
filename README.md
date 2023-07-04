@@ -26,8 +26,8 @@ This repository hosts the sphinx project tree of Italian eIDAS Wallet Technical 
 
 The stable release in different languages is published at the link below:
 
- - [English](https://italia.github.io/eidas-it-wallet-docs/versione-corrente/en)
- - [Italian](https://italia.github.io/eidas-it-wallet-docs/versione-corrente/it)
+ - [English](https://italia.github.io/eidas-it-wallet-docs/en)
+ - [Italian](https://italia.github.io/eidas-it-wallet-docs/it)
 
 Preview of other branches can be navigated by adding the branch name in the webpath, as follows:
 
