@@ -66,7 +66,7 @@ Therein a table with the summary of the Federation Entity roles mapped on the co
 |                                         |                | the Trusted List distributed      |
 |                                         |                | over multiple Federation Entities,|
 |                                         |                | where each of these is responsible|
-|                                         |                | for their accredited subordinates. |
+|                                         |                | for their accredited subordinates.|
 |                                         |                |                                   |
 +-----------------------------------------+----------------+-----------------------------------+
 |  EUDI Wallet Provider                   | Leaf           |                                   |
@@ -140,7 +140,7 @@ publicly available. The table below summarises the endpoints and their scopes.
 All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| endpoint name             | http request                                 |          scope                 |  required for    |
+| endpoint name             | http request                                 |          scope                 |  required for   |
 +===========================+==============================================+================================+=================+
 |                           |                                              |                                |  Trust Anchor   |
 |                           |                                              |                                |                 |
