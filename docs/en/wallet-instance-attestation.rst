@@ -359,35 +359,38 @@ Header
 
 Payload
 ^^^^^^^
-+---------+------------------------------------------+
-| **key** | **value**                                |
-+---------+------------------------------------------+
-|| iss    || The thumbprint                          |
-||        || of the JWK of the Wallet Instance       |
-||        || for which the attestation is            |
-||        || being requested.                        |
-+---------+------------------------------------------+
-|| sub    || The public url of the Wallet            |
-||        || Provider                                |
-+---------+------------------------------------------+
-|| jti    || Unique identifier of the request.       |
-||        || This parameter will be used to          |
-||        || avoid replay attacks.                   |
-+---------+------------------------------------------+
-|| type   || String. It must be set to               |
-||        || ``WalletInstanceAttestationRequest``    |
-+---------+------------------------------------------+
-|| cnf    || This parameter will contain the         |
-||        || configuration of the Wallet             |
-||        || Instance in JSON format. Among          |
-||        || the mandatory attributes there          |
-||        || will be the jwk parameter               |
-||        || containing the public key of the        |
-||        || Wallet Instance and nonce. It will also |
-||        || contain all the information             |
-||        || useful for the Wallet Provider          |
-||        || to verify that the app is genuine.      |
-+---------+------------------------------------------+
++---------+---------------------------------------+
+| **key** | **value**                             |
++---------+---------------------------------------+
+|| iss    || The thumbprint                       |
+||        || of the JWK of the Wallet Instance    |
+||        || for which the attestation is         |
+||        || being requested.                     |
++---------+---------------------------------------+
+|| sub    || The public url of the Wallet         |
+||        || Provider                             |
++---------+---------------------------------------+
+|| jti    || Unique identifier of the request.    |
+||        || This parameter will be used to       |
+||        || avoid replay attacks.                |
++---------+---------------------------------------+
+|| type   || String. It must be set to            |
+||        || ``WalletInstanceAttestationRequest`` |
++---------+---------------------------------------+
+|| nonce  || The nonce obtained from the          |
+||        || Wallet Porvider.                     |
++---------+---------------------------------------+
+|| cnf    || This parameter will contain the      |
+||        || configuration of the Wallet          |
+||        || Instance in JSON format. Among       |
+||        || the mandatory attributes there       |
+||        || will be the jwk parameter            |
+||        || containing the public key of the     |
+||        || Wallet Instance. It will also        |
+||        || contain all the information          |
+||        || useful for the Wallet Provider       |
+||        || to verify that the app is genuine.   |
++---------+---------------------------------------+
 
 Below a non-normative example of the Wallet Instance Attestation
 request where the decoded JWS headers and payload are separated by a comma:
@@ -405,6 +408,7 @@ request where the decoded JWS headers and payload are separated by a comma:
     "sub": "https://wallet-provider.example.org",
     "jti": "6ec69324-60a8-4e5b-a697-a766d85790ea",
     "type": "WalletInstanceAttestationRequest",
+    "nonce" : "....."
     "cnf": {
       "jwk": {
         "crv": "P-256",
@@ -412,8 +416,7 @@ request where the decoded JWS headers and payload are separated by a comma:
         "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
         "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg",
         "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-      },
-      "nonce": "....."
+      }
     },
     "iat": 1686645115,
     "exp": 1686652315
