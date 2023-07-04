@@ -12,16 +12,19 @@ This section defines how the Trust Model is implemented in an infrastructure of 
 The infrastructure of Trust enables the trust assessment mechanism to be applied between the parties defined in the `EIDAS-ARF`_.
 
 ..  figure:: ../../images/trust-roles.svg
-    :alt: federation portrain
+    :alt: federation portrait
     :width: 100%
    
-    The roles of the Federation infrastructure, where a Trust Anchor has one or more Intermediates and Leafs and the Intermediates have their Leafs. In this representation both Trust Anchor and Intermediates play the role of Accreditation Body.
+    The roles of the Federation infrastructure, where a Trust Anchor has as subordinates
+    one or more Intermediates and Leafs and where Intermediates has Leafs as subordinates. In this
+    representation both Trust Anchor and Intermediates play the role of an Accreditation Body.
 
 
 Federation Roles
 ------------------
 
-All the participants are Federation Entities that must be accredited by an Accreditation Body, except the Wallet Instances that are personal devices and are certified by their Wallet Provider.
+All the participants are Federation Entities that must be accredited by an Accreditation Body,
+except the Wallet Instances which are personal devices and are certified by their Wallet Provider.
 
 .. note::
     The Wallet Instance, as a personal device, is certified as trusted through a verifiable attestation issued and signed by its Wallet Provider.
@@ -63,7 +66,7 @@ Therein a table with the summary of the Federation Entity roles mapped on the co
 |                                         |                | the Trusted List distributed      |
 |                                         |                | over multiple Federation Entities,|
 |                                         |                | where each of these is responsible|
-|                                         |                | of their accredited subordinates. |
+|                                         |                | for their accredited subordinates.|
 |                                         |                |                                   |
 +-----------------------------------------+----------------+-----------------------------------+
 |  EUDI Wallet Provider                   | Leaf           |                                   |
@@ -130,40 +133,49 @@ In the table below there’s the map of the components that the ARF defines with
 Federation API endpoints
 ------------------------
 
-OpenID Connect Federation is similar to a PKI that uses RESTful Web Services secured over HTTPs. OpenID Connect Federation defines which are the web endpoints that the participants made publicly available. In the table below the summary of these and their scopes.
+OpenID Connect Federation is similar to a PKI in that it uses RESTful Web Services secured over
+HTTPs. OpenID Connect Federation defines which are the web endpoints that the participants make
+publicly available. The table below summarises the endpoints and their scopes.
 
 All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| endpoint name             | http request                                 |          scope                 |  required by    |
+| endpoint name             | http request                                 |          scope                 |  required for   |
 +===========================+==============================================+================================+=================+
 |                           |                                              |                                |  Trust Anchor   |
+|                           |                                              |                                |                 |
 | federation metadata       | **GET** .well-known/openid-federation        |Metadata that an Entity         |  Intermediate   |
-|                           |                                              |publishes about itself,         |  Wallet Provider|
-|                           |                                              |verifiable with a trusted third |  Relying Party  |
+|                           |                                              |publishes about itself,         |                 |
+|                           |                                              |verifiable with a trusted third |  Wallet Provider|
 |                           |                                              |party (Superior Entity). It’s   |                 |
-|                           |                                              |called Entity Configuration.    |                 |
+|                           |                                              |called Entity Configuration.    |  Relying Party  |
+|                           |                                              |                                |                 |
+|                           |                                              |                                |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
 | subordinate list endpoint | **GET** /list                                |Lists the Subordinates.         |  Trust Anchor   |
+|                           |                                              |                                |                 |
 |                           |                                              |                                |  Intermediate   |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| fetch endpoint            | **GET** /fetch?sub=https://rp.example.org    |Returns a document (JWS)        |  Trust Anchor   |
+| fetch endpoint            | **GET** /fetch?sub=https://rp.example.org    |                                |  Trust Anchor   |
+|                           |                                              |Returns a document (JWS)        |                 |
 |                           |                                              |about a specific subject, its   |  Intermediate   |
 |                           |                                              |Subordinate. It’s called Entity |                 |
 |                           |                                              |Statement.                      |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| trust mark status         | **POST** /status?sub=...&trust_mark_id=...   |Returns the status of the       |  Trust Anchor   |
+| trust mark status         | **POST** /status?sub=...&trust_mark_id=...   |                                |  Trust Anchor   |
+|                           |                                              |Returns the status of the       |                 |
 |                           |                                              |issuance (validity) of a Trust  |  Intermediate   |
 |                           |                                              |Mark related to a specific      |                 |
 |                           |                                              |subject.                        |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| historical keys           | **GET**                                      |Lists its expired and revoked   |  Trust Anchor   |
+| historical keys           | **GET**                                      |                                |  Trust Anchor   |
+|                           |                                              |Lists its expired and revoked   |                 |
 |                           |                                              |keys, with the motivation of the|  Intermediate   |
 |                           | .well-known/openid-federation-historical-jwks|revocation.                     |                 |
 |                           |                                              |                                |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
 
-All the responses of the Federation endpoints are JWS, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default, however these may be signed if required.
+All the responses of the Federation endpoints are in the form of a JWS, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default, however these may be signed if required.
 
 
 Configuration of the Federation
@@ -173,7 +185,7 @@ The configuration of the Federation is published by the Trust Anchor within its 
 
 All entities MUST obtain the Federation configuration before entering the operational phase, and they
 MUST keep it up-to-date. The Federation configuration contains the Trust Anchor
-public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (**max_path length**).
+public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (**max_path_length**).
 
 Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OpenID Connect Federation <OIDC-FED>`_ specifications, Section 3.1 for the Federation statements and Section 4 for the Metadata identifiers:
 
@@ -243,7 +255,8 @@ Entity Configuration
 --------------------
 
 The Entity Configuration is the verifiable document that each Federation Entity must publish on its own behalf.
-The Entity Configuration must be cryptographycally signed, and it must be verified with one of the public keys contained within it and one of the public keys within the Entity Statement issued by the Trust Anchor or its Intermediate.
+The Entity Configuration must be cryptographically signed. The public part of this key must be present in the
+Entity Configuration and within the Entity Statement issued by a immediate superior concerning the Federation Entity.
 
 The Entity Configuration may also contain one or more Trust Marks.
 
@@ -299,9 +312,13 @@ The Trust Anchor Entity Configuration, in addition of the common parameters list
      - JSON Object that describes the Trust Chain bounds and MUST contain the attribute **max_path_length**.
        It represents the maximum number of Intermediate between a Leaf and the Trust Anchor.
      - |check-icon|
-   * - **trust_marks_issuers**
+   * - **trust_mark_issuers**
      - JSON Array that indicates which Federation authorities are considered trustworthy
        for issuing specific Trust Marks, assigned with their unique identifiers.
+     - |uncheck-icon|
+   * - **trust_mark_owners**
+     - JSON Array that lists which entities are considered to be the owners of
+       specific Trust Marks.
      - |uncheck-icon|
 
 
@@ -319,7 +336,8 @@ In addition to the previously defined claims, the Entity Configuration of the Le
      - **Description**
      - **Required**
    * - **authority_hints**
-     - Array of URLs (String). It contains a list of URLs of the superior Entities, such as the Trust Anchor or an Intermediate, that MAY issue an Entity Statement related to this subject.
+     - Array of URLs (String). It contains a list of URLs of the immediate superior Entities, such as the Trust Anchor or
+       an Intermediate, that MAY issue an Entity Statement related to this subject.
      - |check-icon|
    * - **trust_marks**
      - A JSON Array containing the Trust Marks.
@@ -498,7 +516,7 @@ Each of these can be verified using the Entity Statement issued by a superior, T
 Each Entity Statement is verifiable over time and has an expiration date. The revocation of each statement is verifiable in real time and online (only for remote flows) through the federation endpoints.
 
 .. note::
-    The revocation of an Entity is made with the unavailability of the Entity Statement related to it. If the Trust Anchor or its Intermediates doesn't publish a valid Entity Statement, or if they publish an expired/invalid Entity Configuration, the subject of the Entity Statement must be intended as not valid or revoked.
+    The revocation of an Entity is made with the unavailability of the Entity Statement related to it. If the Trust Anchor or its Intermediates doesn't publish a valid Entity Statement, or if they publish an expired/invalid Entity Statement, the subject of the Entity Statement must be intended as not valid or revoked.
 
 The concatenation of the statements, through the combination of these signing mechanisms and the binding of claims and public keys, creates the Trust Chain.
 
@@ -513,11 +531,11 @@ The Trust Chains can also be verified offline, using only the Trust Anchor's pub
 Relying Party Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration, where it also publishes the interoperability metadata to disclose the requested user attributes. Additionally, it includes signature and encryption algorithms, and any other necessary information in accordance with one or more specific protocols.
+The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including signature and encryption algorithms and any other necessary information for the interoperability requirements.
 
 Any requests for user attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and contain the verifiable Trust Chain regarding the Relying Party.
 
-The Wallet Instance verifies the Trust Chain related to the Relying Party and its revocation. It does this by using an HTTP request to the Relying Party's federation Entity Statement.
+The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active, proving that the Relying Party is still part of the Federation and not revoked.
 
 The Trust Chain should be contained within the signed request in the form of a JWS header parameter.
 
@@ -536,7 +554,7 @@ The Wallet Instance presents its Wallet Instance Attestation within the signed r
 Trust Chain
 ^^^^^^^^^^^^^^^
 
-The Trust Chain is the sequence of verified statements that validates a participant's compliance with the eIDAS Federation. It has an expiration date, beyond which it should be renewed to obtain updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration date among all the expiration dates contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor.
+The Trust Chain is a sequence of verified statements that validates a participant's compliance with the eIDAS Federation. It has an expiration date, beyond which it should be renewed to obtain updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration date among all the expiration dates contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor.
 
 Below is an abstract representation of a Trust Chain.
 
