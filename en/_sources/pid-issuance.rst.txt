@@ -368,8 +368,8 @@ The JWT payload is given by the following parameters:
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
 
 
-PAR Response
-^^^^^^^^^^^^^^
+Pushed Authorization Request (PAR) Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the verification is successful, the PID Provider MUST provide the response with a *201 HTTP status code*. The following parameters are included as top-level members in the HTTP response message body, using the ``application/json`` media type as defined in [:rfc:`8259`].
 
