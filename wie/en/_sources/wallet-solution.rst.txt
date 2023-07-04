@@ -31,7 +31,7 @@ The Wallet Instance establishes the trust within the Wallet ecosystem by consist
 To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)³. This ensures that only the User can access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Instance Attestation section`_ and the `Trust Model section`_ of this document.
 
 Wallet Instance Lifecycle
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Wallet Instance can exist in three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed².
 
 Initialization Process

@@ -51,7 +51,7 @@ The PID Issuance phase is based on the **Authorization Code Flow** with **Pushed
 
 .. note::
 
-    **Federation Check:** The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID Provider is represented within the section `Entity Configuration Credential Issuer <Entity Configuration Credential Issuer>`_.
+    **Federation Check:** The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID Provider is represented withing the section `Entity Configuration Credential Issuer`_.
 
 
 **Steps 5-6:** The Wallet Instance creates a PKCE code verifier that sends in a *pushed authorization request*, using the request parameter (see :rfc:`9126` Section 3) to the PID Provider authorization endpoint. The Wallet Instance signs the request using its private key. A OAuth2 client authentication method must be involved, since in this flow the pushed authorization endpoint is a protected endpoint. The client authentication should be based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the **client_assertion** parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify the types of the credentials when requesting authorization for the PID issuance.
@@ -722,6 +722,8 @@ Credential Response to the Wallet Instance MUST be sent using `application/json`
 
   If the **format** value is `mso_mdoc`, the **credential** value MUST be a base64url-encoded JSON string according to Appendix E of `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
 
+
+.. _Entity Configuration Credential Issuer:
 
 Entity Configuration Credential Issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
