@@ -138,26 +138,33 @@ All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 | endpoint name             | http request                                 |          scope                 |  required by    |
 +===========================+==============================================+================================+=================+
 |                           |                                              |                                |  Trust Anchor   |
+|                           |                                              |                                |                 |
 | federation metadata       | **GET** .well-known/openid-federation        |Metadata that an Entity         |  Intermediate   |
-|                           |                                              |publishes about itself,         |  Wallet Provider|
-|                           |                                              |verifiable with a trusted third |  Relying Party  |
+|                           |                                              |publishes about itself,         |                 |
+|                           |                                              |verifiable with a trusted third |  Wallet Provider|
 |                           |                                              |party (Superior Entity). It’s   |                 |
-|                           |                                              |called Entity Configuration.    |                 |
+|                           |                                              |called Entity Configuration.    |  Relying Party  |
+|                           |                                              |                                |                 |
+|                           |                                              |                                |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
 | subordinate list endpoint | **GET** /list                                |Lists the Subordinates.         |  Trust Anchor   |
+|                           |                                              |                                |                 |
 |                           |                                              |                                |  Intermediate   |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| fetch endpoint            | **GET** /fetch?sub=https://rp.example.org    |Returns a document (JWS)        |  Trust Anchor   |
+| fetch endpoint            | **GET** /fetch?sub=https://rp.example.org    |                                |  Trust Anchor   |
+|                           |                                              |Returns a document (JWS)        |                 |
 |                           |                                              |about a specific subject, its   |  Intermediate   |
 |                           |                                              |Subordinate. It’s called Entity |                 |
 |                           |                                              |Statement.                      |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| trust mark status         | **POST** /status?sub=...&trust_mark_id=...   |Returns the status of the       |  Trust Anchor   |
+| trust mark status         | **POST** /status?sub=...&trust_mark_id=...   |                                |  Trust Anchor   |
+|                           |                                              |Returns the status of the       |                 |
 |                           |                                              |issuance (validity) of a Trust  |  Intermediate   |
 |                           |                                              |Mark related to a specific      |                 |
 |                           |                                              |subject.                        |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| historical keys           | **GET**                                      |Lists its expired and revoked   |  Trust Anchor   |
+| historical keys           | **GET**                                      |                                |  Trust Anchor   |
+|                           |                                              |Lists its expired and revoked   |                 |
 |                           |                                              |keys, with the motivation of the|  Intermediate   |
 |                           | .well-known/openid-federation-historical-jwks|revocation.                     |                 |
 |                           |                                              |                                |                 |
