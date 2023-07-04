@@ -616,7 +616,7 @@ A second **POST /token** endpoint that takes two parameters as input:
 ``grant_type`` which in our case is a string:
 ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation``
 
-``assertion``` which contains the signed JWT of the Wallet Instance Attestation
+``assertion`` which contains the signed JWT of the Wallet Instance Attestation
 Request.
 
 The response will then contain the Wallet Instance Attestation.
