@@ -6,7 +6,7 @@ Wallet Instance Attestation
 +++++++++++++++++++++++++++
 
 The Wallet Instance Attestation contains data about the Wallet Provider, 
-the Wallet Solution, the Wallet  Instance and the security level of the device 
+the Wallet Solution, the Wallet Instance and the security level of the device 
 where the Wallet Instance is installed on, in general speaking it attests the
 **authenticity,
 integrity, security, privacy and trust** regarding a specific Wallet Instance.
