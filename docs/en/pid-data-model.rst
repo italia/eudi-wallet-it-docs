@@ -17,11 +17,8 @@ The User attributes carried in the Italian PID are:
     - Unique Identifier
     - Taxpayer identification number
 
-The italian PID is extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.
-
-The PID data format and the mechanism through which it is issued into the Wallet Instance and presented to a RP will be detailed in the next sections. 
-
-        
+This section contains all about the data model elements and the encoding formats as specified 
+in the *SD-JWT* and the *ISO/IEC 18013-5* standards and extended by `EIDAS-ARF`_ .
 
 SD-JWT
 ======
@@ -48,7 +45,8 @@ The Disclosures are sent to the Holder together with the SD-JWT in the *Combined
 
 See `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
 
-
+SD-JWT Data Elements
+====================
 
 The JOSE header contains the following mandatory parameters:
 
@@ -114,7 +112,11 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
             -   **claims**.
       - `[OIDC.IDA. Section 5] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5>`_.
 
-The ``verification`` claim contain the information as sub claims regarding the identity proofing evidence during the issuing phase of the PID. The ``claims`` parameter contains the user attributes claims. Some of these additional claims MAY be included in the Disclosures and MAY be selectively disclosed and they are given in the following tables that also specify whether a claim is selectively disclosable (SD) or not (NSD).
+Since the Italian PID is extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, 
+that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures,
+the ``verification`` claim contain the information as sub claims regarding the identity proofing evidence during the issuing phase of the PID. 
+The ``claims`` parameter contains the user attributes claims. Some of these additional claims MAY be included in the Disclosures and MAY be 
+selectively disclosed and they are given in the following tables that also specify whether a claim is selectively disclosable (SD) or not (NSD).
 
 The ``verification`` claim is a JSON structure with all the following mandatory sub-claims.
 
@@ -395,6 +397,293 @@ The combined format for the PID issuance is given by
 MDOC-CBOR
 =========
 
-[TODO]
+The PID MDOC-CBOR data model is defined in 
+ISO/IEC 18013-5, the standard born for the the mobile driving license (mDL) use case. 
+
+The MDOC data elements for the EUDI Wallet PID 
+are those defined in the `EIDAS-ARF`_, these must be encoded as defined in `RFC 8949 - Concise Binary Object Representation (CBOR) <RFC 8949 - Concise Binary Object Representation (CBOR)>`_.
+
+The PID MDOC-CBOR document type uses the namespace `eu.europa.ec.eudiw.pid.1`, 
+according to the reverse domain approach defined in the 
+`EIDAS-ARF`_ and in fully harmonization with the ISO/IEC 18013-5 standard.
+
+The the data elements contained in the document, uses the same namespace 
+for the required PID attributes, while the national PID attributes use the domestic
+namespace `eu.europa.ec.eudiw.pid.it.1`, defined in this implementation profile.
+
+.. note::
+
+    This specification publishes the Italian PID MDOC-CBOR namespace, 
+    including all  data element identifiers, their definition 
+    and encoding format. 
 
 
+MDOC-CBOR Data Schema
++++++++++++++++++++++
+
+A PID issued in the MDOC-CBOR format must have the following data element:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Element**
+      - **Encoding**
+      - **Description**
+    * - **docType**
+      - tstr (text string)
+      - The document type. 
+    * - **issuerSigned**
+      - bstr (byte string)
+      - The issuerSigned object containing the `nameSpaces` and the 
+        `issuerAuth` objects.
+
+.. note::
+    The `issuerSigned` contains the `nameSpaces` object and the 
+    `Mobile Security Object`, however sole signed object is
+    the `Mobile Security Object`, while the `nameSpaces` object is not
+    signed.
+
+
+A non-normative example of the PID document is represented below.
+
+..code-block::
+
+  {
+    "docType": "eu.europa.ec.eudiw.pid.1",
+    "issuerSigned": {
+        "nameSpaces": {
+            "eu.europa.ec.eudiw.pid.1": [
+                {
+                    "digestID": 0,
+                    "random": $binary-random-value,
+                    "elementIdentifier": "family_name",
+                    "elementValue": "Rossi"
+                },
+                {
+                    "digestID": 1,
+                    "random": $binary-random-value,
+                    "elementIdentifier": "given_name",
+                    "elementValue": "Mario"
+                },
+                {
+                    "digestID": 2,
+                    "random": $binary-random-value,
+                    "elementIdentifier": "birth_date",
+                    "elementValue": {
+                        "CBORTag:1004": "2007-10-20"
+                    }
+                },
+                {
+                    "digestID": 3,
+                    "random": $binary-random-value,
+                    "elementIdentifier": "birth_place",
+                    "elementValue": "Rome"
+                },
+                {
+                    "digestID": 4,
+                    "random": $binary-random-value,
+                    "elementIdentifier": "birth_country",
+                    "elementValue": "IT"
+                }
+            ],
+            "eu.europa.ec.eudiw.pid.it.1": [
+                {
+                    "digestID": 0,
+                    "random": $binary-random-value,
+                    "elementIdentifier": "tax_id_code",
+                    "elementValue": "TINIT-XXXXXXXXXXXXXXXX"
+                },
+            ],
+            ]
+        },
+        "issuerAuth": $MobileSecurityObject,
+    },
+  }
+
+nameSpaces
++++++++++++++
+
+The `nameSpaces` object contains the key value representing the namespaces 
+where each value is an array of `IssuerSignedItems` encoded in CBORTag(24), representing the disclosure information for each digest within the `Mobile Security Object`.
+
+Each digest disclosure object contains the following parameters:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Name**
+      - **Encoding**
+      - **Description**
+    * - **digestID**
+      - integer
+      - Digest unique identifier within its namespace.
+    * - **random**
+      - bstr (byte string)
+      - Random byte value used as salt for the hash function. This value shall be different for each IssuerSignedItem and shall have a minimum length of 16 bytes.
+    * - **elementIdentifier**
+      - tstr (text string)
+      - User attribute name.
+    * - **elementValue**
+      - depends by the value, see the next table.
+      - User attribute value.
+
+The supported `elementValue` in this specification are the followings:
+
+.. list-table:: 
+    :widths: 20 60
+    :header-rows: 1
+
+    * - **Element**
+      - **Encoding**
+    * - **given_name**
+      - tstr (text string)
+    * - **family_name**
+      - tstr (text string)
+    * - **birth_date**
+      - full-date (CBORTag 1004)
+    * - **birth_place**
+      - tstr (text string)
+    * - **birth_country**
+      - tstr (text string)
+    * - **unique_id**
+      - tstr (text string)
+    * - **tax_id_code**
+      - tstr (text string)
+
+Mobile Security Object
+++++++++++++++++++++++
+
+The `Mobile Security Object` is an untagged value containing a `COSE Sign1 Document`, as defined in `RFC 9052 - CBOR Object Signing and Encryption (COSE): Structures and Process <https://www.rfc-editor.org/rfc/rfc9052.html>`_. It is composed by:
+
+* protected header
+* unprotected header
+* payload
+* signature.
+
+The protected header must contain the following parameter encoded in CBOR format:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Element**
+      - **Description**
+      - **Reference**
+    * - **Signature algorithm**
+      - `-7` means ES256, SHA-256. 
+      - RFC8152
+
+.. note::
+    Only the Signature Algorithm must be present in the protected headers, other elements should not be present in the protected header.
+
+
+The unprotected header must contain the following parameter:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Element**
+      - **Description**
+      - **Reference**
+    * - **x5chain**
+      - Identified with the label 33
+      - `RFC 9360 CBOR Object Signing and Encryption (COSE) - Header Parameters for Carrying and Referencing X.509 Certificates <RFC 9360 CBOR Object Signing and Encryption (COSE) - Header Parameters for Carrying and Referencing X.509 Certificates>`_.
+
+.. note::
+    The `x5chain` is included in the unprotected header with the aim to make the Holder able to updated the X.509 certificate chain in a Mobile Security Object without breaking its signature.
+
+The payload must contain the following parameter:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Element**
+      - **Encoding**
+      - **Description**
+    * - **MobileSecurityObjectBytes**
+      - CBORTag(24) without any `content-type` value
+      - object containing the following attributes:
+
+        * version
+        * digestAlgorithm
+        * valueDigests
+        * deviceKeyInfo
+
+Therein a non-normative example of a decoded `MobileSecurityObjectBytes`, represented below in JSON format:
+
+..code-block::
+    
+    {
+     'version': '1.0',
+     'digestAlgorithm': 'SHA-256',
+     'valueDigests': {
+        'eu.europa.ec.eudiw.pid.1': {
+            0: $digestbinaryvalue,
+            1: $digestbinaryvalue,
+            2: $digestbinaryvalue,
+            3: $digestbinaryvalue,
+            4: $digestbinaryvalue,
+        },
+        'eu.europa.ec.eudiw.pid.it.1': {
+            0: $digestbinaryvalue
+        }
+       },
+     'deviceKeyInfo': {
+        'deviceKey': {
+            1: 2,
+            -1: 1,
+            -2: b'\x961=lc\xe2N3rt+\xfd\xb1\xa3;\xa2\xc8\x97\xdc\xd6\x8a\xb8\xc7S\xe4\xfb\xd4\x8d\xcak\x7f\x9a',
+            -3: b'\x1f\xb3&\x9e\xddA\x88W\xde\x1b9\xa4\xe4\xa4K\x92\xfaHL\xaar,"\x82\x88\xf0\x1d\x0c\x03\xa2\xc3\xd6'}
+        },
+        'docType': 'eu.europa.ec.eudiw.pid.1',
+        'validityInfo': {
+            'signed': Tag(0, '2020-10-01T13:30:02Z'),
+            'validFrom': Tag(0, '2020-10-01T13:30:02Z'),
+            'validUntil': Tag(0, '2021-10-01T13:30:02Z')
+        }
+    }
+
+The `MobileSecurityObjectBytes` attributes are described below:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Element**
+      - **Encoding**
+      - **Description**
+    * - **version**
+      - tstr
+      - 
+    * - **digestAlgorithm**
+      - tstr
+      - According to the algorithm defined in the protected header.
+    * - **valueDigests**
+      - bstr
+      - Mapped digest by unique id, grouped by namespace.
+    * - **deviceKeyInfo**
+      - Information related to the Wallet Instance's cryptographic keys.
+      - Containing:
+        
+        * **deviceKey**, public key (Holder Key Binding) of the Wallet Instace where this MSO was issued for.
+        * **docType**, public key pair used for authentication. The ‘deviceKey’ element is encoded as an untagged COSE_Key element as specified in RFC 8152.
+        * **validityInfo**, object containing issuance and expiration datetimes.
+
+.. note::
+    The private key which belongs to the public key stored in the `deviceKey` object, is used to authenticate the PID during the presentation phase where the `DeviceSignedItems` structure is involved (see the presentation phase with MDOC-CBOR).
+
+
+MDOC-CBOR Examples
+++++++++++++++++++
+
+.. code-block:: text
+    
+    TBD: example PID encoded as AF Binary
+
+.. code-block:: text
+    
+    TBD: the previous example PID in diagnostic representation
