@@ -1102,7 +1102,7 @@ revocation.</p></td>
 <p>The configuration of the Federation is published by the Trust Anchor within its Entity Configuration, available at a well-known web path corresponding to <strong>.well-known/openid-federation</strong>.</p>
 <p>All entities MUST obtain the Federation configuration before entering the operational phase, and they
 MUST keep it up-to-date. The Federation configuration contains the Trust Anchor
-public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (<strong>max_path length</strong>).</p>
+public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (<strong>max_path_length</strong>).</p>
 <p>Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the <a class="reference external" href="OIDC-FED">OpenID Connect Federation</a> specifications, Section 3.1 for the Federation statements and Section 4 for the Metadata identifiers:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
     &quot;alg&quot;: &quot;ES256&quot;,
