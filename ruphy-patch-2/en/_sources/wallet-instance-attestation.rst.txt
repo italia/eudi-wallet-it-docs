@@ -15,9 +15,9 @@ The objectives include:
 - Ensuring that the Wallet Instance maintains a level of **integrity** that is capable of preventing any manipulation or forgery attempts by unauthorized third parties.
 - Having the Wallet Provider issue a certificate of conformity to assure that the previously mentioned security and trust objectives are fulfilled.
 
-To meet these requirements, it is necessary for each Wallet Instance to issue a certificate of conformity, guaranteeing its security and compliance with the Trust Model.
+To meet these requirements, it is necessary for each Wallet Instance to issue an attestation of conformity, guaranteeing its security and compliance with the Trust Model.
 
-This certificate, called the **Wallet Instance Attestation**, must be electronically signed by its issuer.
+This verifiable attestation, called **Wallet Instance Attestation**, must be electronically signed by its issuer.
 
 .. hint::
   Given that the Wallet Instance does not represent an accredited entity and does not belong to an organization but resides on the User's device, the Trust Model, based on sustainability and scalability criteria, must delegate the task of issuing the **Wallet Instance Attestation** to the **Wallet Provider**.
@@ -66,11 +66,11 @@ This section describes the format of the Wallet Instance Attestation and how it 
 
 -
 
- **Message 1**: The User initializes the Wallet Instance. In particular, this process happens after the Wallet Instance installation and after the expiration of the Wallet Instance Attestation is launched and every time the User wants to request or present (disclose) a credential.
+ **Message 1**: The User initializes the Wallet Instance. In particular, this process happens after the Wallet Instance installation and after the expiration of the Wallet Instance Attestation is launched and every time the User wants to request or present a credential.
 - **Message 2-3**: The Wallet Instance obtains metadata about its Wallet Provider. Among these, we also find the list of supported algorithms, public keys, endpoints.
-- **Message 4**: The Wallet Instance verifies that the Wallet Provider is trustworthy by resolving the provider's trust chain up to the anchor
-- **Message 5-7**: The Wallet Instance instantiates a new key pair on its TEE and requests a ``nonce`` from the Wallet Provider (as a measure against replay attacks).
-- **Message 8**: The Wallet Instance generates a Wallet Instance Attestation Request, in JWS format, signed with the private key associated with the public key for which it wants to obtain the attestation containing the ``nonce`` and all the required parameters.
+- **Message 4**: The Wallet Instance verifies that the Wallet Provider is trustworthy by resolving the provider's trust chain up to the Trust Anchor.
+- **Message 5-7**: The Wallet Instance creates a new key pair and requests a ``nonce`` from the Wallet Provider (as a measure against replay attacks).
+- **Message 8**: The Wallet Instance generates a Wallet Instance Attestation Request, in JWS format, signed with the private key associated with the public key for which it wants to obtain the attestation.
 - **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation Request to the Wallet Provider which verifies its validity and issues the signed attestation.
 - **Message 13-14**:The Wallet Instance receives the Wallet Instance Attestation signed by the Wallet Provider and proceeds with a formal verification.
 - **Message 15**:The Wallet Instance Attestation is ready to be consumed.
