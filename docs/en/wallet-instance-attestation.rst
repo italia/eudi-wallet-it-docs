@@ -5,11 +5,14 @@
 Wallet Instance Attestation
 +++++++++++++++++++++++++++
 
-Inside a **Wallet Solution** and, especially with regards
-to the **Wallet Instance**, it is essential to ensure the **authenticity,
-integrity, security, privacy and trust** in the use of the latter both
-by the User and the services connected to it, such as the
-**PID Provider** or one **Relying Party**.
+The Wallet Instance Attestation contains data about the Wallet Provider, 
+the Wallet Solution, the Wallet  Instance and the security level of the device 
+where the Wallet Instance is installed on. The Wallet Instance Attestation has 
+the same  technical format and content as other attestations and 
+MUST contain at the Wallet Instance public key.
+
+The Wallet Instance Attestation attests the **authenticity,
+integrity, security, privacy and trust** regarding a specific Wallet Instance.
 
 
 General Properties
