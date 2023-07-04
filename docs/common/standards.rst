@@ -9,6 +9,10 @@ Technical References
 
     * - `OIDC-FED`_
       - OpenID Connect Federation 1.0
+    * - `OPENID4VCI`_
+      - T. Lodderstedt, K. Yasuda, T. Looker, "OpenID for Verifiable Credential Issuance", February 2023.
+    * - `SD-JWT-VC`_
+      - O. Terbu, D.Fett, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
     * - `EIDAS-ARF`_
       - EUDI Wallet - Architecture and Reference Framework
     * - `OpenID4VP`_

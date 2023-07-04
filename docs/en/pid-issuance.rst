@@ -51,10 +51,10 @@ The PID Issuance phase is based on the **Authorization Code Flow** with **Pushed
 
 .. note::
 
-    **Federation Check:** The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID Provider is represented within the section `Entity Configuration Credential Issuer <Entity Configuration Credential Issuer>`_.
+**Federation Check:** The Wallet Instance needs to check if the PID Provider is part of Federation and then it can consume its Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID Provider is represented within the section `Entity Configuration Credential Issuer <Entity Configuration Credential Issuer>`_.
 
 
-**Steps 5-6:** The Wallet Instance creates a fresh PKCE code verifier that sends in a *pushed authorization request*, using the request parameter (see :rfc:`9126` Section 3) to the PID Provider authorization endpoint. The Wallet Instance signs the request using its private key. A OAuth2 client authentication method must be involved, since in this flow the pushed authorization endpoint is a protected endpoint. The client authentication should be based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the **client_assertion** parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify the types of the credentials when requesting authorization for the PID issuance.
+**Steps 5-6:** The Wallet Instance creates a PKCE code verifier that sends in a *pushed authorization request*, using the request parameter (see :rfc:`9126` Section 3) to the PID Provider authorization endpoint. The Wallet Instance signs the request using its private key. A OAuth2 client authentication method must be involved, since in this flow the pushed authorization endpoint is a protected endpoint. The client authentication should be based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the **client_assertion** parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify the types of the credentials when requesting authorization for the PID issuance.
 
 Below a non-normative example of the PAR.
 
@@ -109,6 +109,7 @@ The JWS payload of the request object is represented below:
 
 
 .. note::
+
     **Federation Check:** PID Provider MUST check that the Wallet Provider is part of the federation and in addition it MUST verify the Wallet Instance Attestation validity by checking its signature and data. 
 
 **Step 7:** The PID Provider creates a new request URI representing a new authorization request and returns it to the Wallet Instance. A non-normative example of the authorization request is represented below:
@@ -271,7 +272,7 @@ Pushed Authorization Request Endpoint
 -------------------------------------
 
 Pushed Authorization Request (PAR) Request
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The requests to the PID Provider authorization endpoint MUST be HTTP with method POST, with the following mandatory parameters in the HTTP request message body, encoded in ``application/x-www-form-urlencoded`` format.
 
@@ -881,5 +882,4 @@ Below a non-normative example of an Entity Configuration containing an `openid_c
             <This is the metadata of the PID Provider acting as a Relying Party in the national digital identity framework (CIE/SPID). See spid-cie-oidc-docs for details.>
           }
         }
-      }         
-
+      }
