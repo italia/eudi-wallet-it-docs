@@ -56,3 +56,6 @@
 .. _JARM: https://openid.net/specs/oauth-v2-jarm-final.html
 .. _DPOP: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop
 .. _RFC 7519: https://www.rfc-editor.org/rfc/rfc7519
+.. _OAUTH2: https://www.rfc-editor.org/rfc/rfc6749
+
+
