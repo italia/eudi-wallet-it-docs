@@ -535,7 +535,7 @@ The Relying Party is accredited by a Trust Anchor or its Intermediate and obtain
 
 Any requests for user attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and contain the verifiable Trust Chain regarding the Relying Party.
 
-The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active, having the proof that the Relying Party is still part of the Federation and not revoked.
+The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active, proving that the Relying Party is still part of the Federation and not revoked.
 
 The Trust Chain should be contained within the signed request in the form of a JWS header parameter.
 
