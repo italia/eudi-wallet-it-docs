@@ -270,7 +270,7 @@ Where the decoded content of the JWT is represented below:
 Pushed Authorization Request Endpoint
 -------------------------------------
 
-PAR Request
+Pushed Authorization Request (PAR) Request
 ^^^^^^^^^^^^^^
 
 The requests to the PID Provider authorization endpoint MUST be HTTP with method POST, with the following mandatory parameters in the HTTP request message body, encoded in ``application/x-www-form-urlencoded`` format.
