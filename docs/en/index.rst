@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 
 =============================================
-Italian eIDAS Wallet Technical Specifications
+Italian EUDI Wallet Technical Specifications
 =============================================
 
 Introduction
