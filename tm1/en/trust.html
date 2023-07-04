@@ -1463,7 +1463,7 @@ The Entity Statement MAY contain a metadata policy and the Trust Marks related t
 </div>
 <section id="relying-party-attestation">
 <h3>Relying Party Attestation<a class="headerlink" href="#relying-party-attestation" title="Permalink to this heading">¶</a></h3>
-<p>The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including signature and encryption algorithms and any other necessary information in accordance with one or more specific protocols and for interoperability requirements.</p>
+<p>The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including signature and encryption algorithms and any other necessary information for the interoperability requirements.</p>
 <p>Any requests for user attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and contain the verifiable Trust Chain regarding the Relying Party.</p>
 <p>The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active, having the proof that the Relying Party is still part of the Federation and not revoked.</p>
 <p>The Trust Chain should be contained within the signed request in the form of a JWS header parameter.</p>

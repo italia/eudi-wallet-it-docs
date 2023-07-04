@@ -513,7 +513,7 @@ The Trust Chains can also be verified offline, using only the Trust Anchor's pub
 Relying Party Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including signature and encryption algorithms and any other necessary information in accordance with one or more specific protocols and for interoperability requirements.
+The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including signature and encryption algorithms and any other necessary information for the interoperability requirements.
 
 Any requests for user attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and contain the verifiable Trust Chain regarding the Relying Party.
 
