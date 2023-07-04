@@ -610,18 +610,13 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#id1">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance Attestation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
@@ -789,18 +784,13 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#id1">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance Attestation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
@@ -884,11 +874,12 @@
           
   <section id="wallet-instance-attestation">
 <span id="wallet-instance-attestation-rst"></span><h1>Wallet Instance Attestation<a class="headerlink" href="#wallet-instance-attestation" title="Permalink to this heading">¶</a></h1>
-<p>Inside a <strong>Wallet Solution</strong> and, especially with regards
-to the <strong>Wallet Instance</strong>, it is essential to ensure the <strong>authenticity,
-integrity, security, privacy and trust</strong> in the use of the latter both
-by the User and the services connected to it, such as the
-<strong>PID Provider</strong> or one <strong>Relying Party</strong>.</p>
+<p>The Wallet Instance Attestation contains data about the Wallet Provider,
+the Wallet Solution, the Wallet Instance and the security level of the device
+where the Wallet Instance is installed on, in general speaking it attests the
+<strong>authenticity,
+integrity, security, privacy and trust</strong> regarding a specific Wallet Instance.
+The Wallet Instance Attestation MUST contain the Wallet Instance public key.</p>
 <section id="general-properties">
 <h2>General Properties<a class="headerlink" href="#general-properties" title="Permalink to this heading">¶</a></h2>
 <p>The goal is:</p>
@@ -1766,7 +1757,7 @@ Provider Entity Configuration.</p>
 <p>A second <strong>POST /token</strong> endpoint that takes two parameters as input:</p>
 <p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> which in our case is a string:
 <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">assertion`</span></code> which contains the signed JWT of the Wallet Instance Attestation
+<p><code class="docutils literal notranslate"><span class="pre">assertion</span></code> which contains the signed JWT of the Wallet Instance Attestation
 Request.</p>
 <p>The response will then contain the Wallet Instance Attestation.</p>
 </section>

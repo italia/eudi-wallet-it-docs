@@ -497,7 +497,7 @@ Below is a non-normative response example:
             ]
         },
         "metadata": {
-            "wallet_verifier": {
+            "wallet_relying_party": {
                 "application_type": "web",
                 "client_id": "https://rp.example.it",
                 "client_name": "Name of an example organization",
