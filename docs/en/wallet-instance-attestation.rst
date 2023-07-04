@@ -5,163 +5,85 @@
 Wallet Instance Attestation
 +++++++++++++++++++++++++++
 
-The Wallet Instance Attestation contains data about the Wallet Provider, 
-the Wallet Solution, the Wallet Instance and the security level of the device 
-where the Wallet Instance is installed on, in general speaking it attests the
-**authenticity,
-integrity, security, privacy and trust** regarding a specific Wallet Instance.
-The Wallet Instance Attestation MUST contain the Wallet Instance public key.
-
-
-
+The Wallet Instance Attestation is data containing details about the Wallet Provider, the Wallet Solution, the Wallet Instance, and the device's security level where the Wallet Instance is installed. It generally attests the **authenticity, integrity, security, privacy, and trust** of a specific Wallet Instance. The Wallet Instance Attestation MUST contain the Wallet Instance public key.
 
 General Properties
 ------------------
 
-The goal is:
+The objectives include:
 
-- Ensure that the Wallet Instance maintains a level of **integrity**,
-  capable of preventing any attempts of manipulation or forgery
-  by unauthorized third parties.
-- The Wallet Provider issues a certificate of conformity,
-  assuring that the above mentioned security and trust
-  goals are fulfilled.
+- Ensuring that the Wallet Instance maintains a level of **integrity** that is capable of preventing any manipulation or forgery attempts by unauthorized third parties.
+- Having the Wallet Provider issue a certificate of conformity to assure that the previously mentioned security and trust objectives are fulfilled.
 
+To meet these requirements, it is necessary for each Wallet Instance to issue a certificate of conformity, guaranteeing its security and compliance with the Trust Model.
 
-In compliance of the above mentioned requirements, it is necessary for each
-Wallet Instance to issue a certificate of conformity,
-guaranteeing its security and compliance with the Trust Model.
-
-This attestation is called **Wallet Instance Attestation**
-and must be electronically signed by its issuer.
+This certificate, called the **Wallet Instance Attestation**, must be electronically signed by its issuer.
 
 .. hint::
-  Considering that the Wallet Instance does not represent an accredited
-  entity and does not belong to an organization,
-  but resides on the User's device, the Trust Model,
-  based on sustainability and scalability criteria,
-  must delegate to the **Wallet Provider** the task of
-  issuing the **Wallet Instance Attestation**.
-
+  Given that the Wallet Instance does not represent an accredited entity and does not belong to an organization but resides on the User's device, the Trust Model, based on sustainability and scalability criteria, must delegate the task of issuing the **Wallet Instance Attestation** to the **Wallet Provider**.
 
 Requirements
 ------------
 
-We assume the following requirements for the Wallet Instance Attestation:
+The following requirements are assumed for the Wallet Instance Attestation:
 
-1. **Efficiency**: The Wallet Instance Attestation should use an efficient
-   format such as JSON Web Token (JWT) to ensure light and fast data management
-   and be compliant with the various formats used for eudiw solutions.
-2. **Simplicity**: The Wallet Provider should be based on a REST architecture
-   for issuing Wallet Instance Attestations.
-3. **Public key holder binding**: The Wallet Instance Attestation must be
-   securely linked to the Wallet Instance public key.
-4. **Issued and signed by an accredited Wallet Provider**:
-   The Wallet Instance Attestation must be issued and signed by an accredited
-   and reliable Wallet Provider, thus conferring integrity and authenticity
-   to the attestation itself.
-5. **Authenticity/Genuineness of the Wallet Instance**:
-   The Wallet Instance Attestation must guarantee the integrity
-   and authenticity of the Wallet Instance, confirming that it was
-   created and provided correctly by the Wallet Provider. ⚠️
-6. **Ability to request multiple claims for several public keys**:
-   Each single Wallet Instance should be able to request multiple attestations
-   for different public keys associated with it. This requirement constitutes
-   a privacy-preserving measure since the public key may be exploited as a
-   tracking tool in the credentials’ disclosure phase
-   (see also point 10 below).
-7. **Can be used multiple times**:
-   The Wallet Instance Attestation should be used multiple times
-   during the validity period of the attestation, allowing for repeated
-   authentication and authorization without the need to request
-   new attestations with each interaction.
-8. **Expiration**:
-   The Wallet Instance Attestation should have a well-defined expiration date,
-   after which it will no longer be considered valid, thus ensuring
-   the security and updating of the attestations over time.
-9.  **Revocation in case of loss/deletion of the private key**:
-    If the private key associated with the Wallet Instance is lost or deleted,
-    the attestation automatically becomes invalid to prevent unauthorized
-    use of the Wallet Instance. ⚠️
-10. **Pseudonymisation**:
-    The attestations are designed to be pseudonymised
-    (i.e. they do not contain direct references to the person, so that it
-    is not possible to identify them in the absence of additional information
-    \- see art. 4(5) GDPR for a comprehensive definition).
-    In the absence of such a measure, the use of the attestation on multiple
-    RPs would constitute an appreciable risk, as it would theoretically
-    allow the RPs to merge databases and track Users.
-    This requirement enriches the measures adopted in accordance
-    with art. 32 GDPR.
+1. **Efficiency**: The Wallet Instance Attestation should use an efficient format like JSON Web Token (JWT) for light and fast data management, and compliance with various formats used for eudiw solutions.
+2. **Simplicity**: The Wallet Provider should be based on a REST architecture for issuing Wallet Instance Attestations.
+3. **Public key holder binding**: The Wallet Instance Attestation must be securely linked to the Wallet Instance public key.
+4. **Issued and signed by an accredited Wallet Provider**: The Wallet Instance Attestation must be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
+5. **Authenticity/Genuineness of the Wallet Instance**: The Wallet Instance Attestation must ensure the integrity and authenticity of the Wallet Instance, verifying that it was accurately created and provided by the Wallet Provider. ⚠️
+6. **Ability to request multiple claims for several public keys**: Each Wallet Instance should be able to request multiple attestations for different public keys associated with it. This requirement provides a privacy-preserving measure, as the public key could be used as a tracking tool in the credentials’ disclosure phase (also see point 10 below).
+7. **Reusability**: The Wallet Instance Attestation should be usable multiple times during the validity period of the attestation, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
+8. **Expiration**: The Wallet Instance Attestation should have a well-defined expiration date, after which it will no longer be considered valid, thereby ensuring the security and updating of attestations over time.
+9. **Revocation in case of loss/deletion of the private key**: If the private key associated with the Wallet Instance is lost or deleted, the attestation automatically becomes invalid to prevent unauthorized use of the Wallet Instance. ⚠️
+10. **Pseudonymisation**: The attestations are designed to be pseudonymised (i.e., they do not contain direct references to the person, making it impossible to identify them in the absence of additional information - see art. 4(5) GDPR for a comprehensive definition). Without such a measure, the use of the attestation on multiple RPs would pose a significant risk, as it would theoretically allow the RPs to merge databases and track Users. This requirement enhances the measures adopted according to
+
+ art. 32 GDPR.
 
 .. attention::
-  ⚠️ Implementation of points no. 5 and 9 is still under discussion.
-  This version assumes the authenticity and non-revocability of the Wallet Instance.
-
-
+  ⚠️ Implementation of points no. 5 and 9 is still under discussion. This version assumes the authenticity and non-revocability of the Wallet Instance.
 
 High-end design
 ---------------
-
 
 Static view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ../../images/static_view_wallet_instance_attestation.svg
    :name: Wallet Solution schema
-   :alt: the image shows how the Wallet Provider and the
-         Wallet Instances are contained within the Wallet
-         Solution which is managed by the Wallet Provider
+   :alt: The image shows how the Wallet Provider and the Wallet Instances are contained within the Wallet Solution, which is managed by the Wallet Provider.
    :target: https://www.plantuml.com/plantuml/uml/XP4nJuSm44VtVehBdxbnPp2iRYx6qTHIjR7SaVQ0-EqzaICDgN4ZBxpqzTUXiCkyJCaupvJXzbH2le4hiCW7A7rsAGM6ETCQn-E7RMSloi0OJzDC691FeL1QE1BMWZBeraW2Mbv4wK8VQayPT5yX9TgCQPclpdy676lnGF0ZN93DyVs3xVsrhOU70hCi0_JshwHXFJp-Rg4dIuECo96moD7xeBQbUKBEbE0EPEwuEWx6N2zj_uXqU8wbhVMhD3tjbAX1BYIl_mq0
 
 Dynamic view of the components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In this section is described the format of the Wallet Instance Attestation and
-how it is issued by the Wallet Provider.
+
+This section describes the format of the Wallet Instance Attestation and how it is issued by the Wallet Provider.
 
 .. figure:: ../../images/dynamic_view_sequence_wallet_instance_attestation.svg
    :name: sequence diagram for Wallet Instance Attestation request
-   :alt: The figure shows the sequence diagram for issuing a Wallet Instance Attestation.
-         The steps will be described below.
+   :alt: The figure shows the sequence diagram for issuing a Wallet Instance Attestation. The steps will be described below.
    :target: https://www.plantuml.com/plantuml/uml/XPB1RzKm3CRl-IlCJY3nn7s7QOZ3118IGi0kkxYDLLcqJd2SLMz_FLvV6r7AnDN-_Fi-ExajXcfr6iEhh3XC24Rf2Kmh1QoMf4uTQGZPLTnpHZ6u-bv8hm0Br7tz7iUH33wAGwMdHJBpFpLVD3roN35p5qA5qusBhtsQZN7a9uBvekMLzo19GUbNfMBlib8X1_PAaUHveeIPJpTpTmrtPDjiNdrW8iE8Xc7kJgvoeyzh1VeaXYmimnyqi7EcyXP-qddnPAN9EruXYJcnsEhdf1yUrqbqC3MjnM3aOgxT5hmZ8NNrWix8MhQcH_zwMGyaIK-U5KwNgRNGB3yeFIF-kZYyBuNKE4a3VRh_5h0tVbpoTRiROLE__Y_eZOTP9W_RyZOpa5GM4YhbA2uy25fLQgrXkmDANDe7OClN7ktbXO-FyJ8jqluYpguDtVJSFc9y42MCPx04gJDa0Q5vz_LkIMATnjy0
 
-- **Message 1**: The User initializes the Wallet Instance.
-  In particular, this process happens after the Wallet Instance installation and after the expiration of the Wallet Instance Attestation
-  is launched and every time the User wants to request or present
-  (disclose) a credential.
-- **Message 2-3**: The Wallet Instance obtains metadata about its Wallet
-  Provider. Among these, we also find the list of supported algorithms,
-  public keys, endpoints.
-- **Message 4**: The Wallet Instance verifies that the Wallet Provider is
-  trustworthy by resolving the provider's trust chain up to the anchor
-- **Message 5-7**: The Wallet Instance instantiates a new key pair on its TEE
-  and requests a ``nonce`` from the Wallet Provider (as a measure
-  against replay attacks).
-- **Message 8**: The Wallet Instance generates a Wallet Instance Attestation
-  Request, in JWS format, signed with the private key associated with the
-  public key for which it wants to obtain the attestation containing
-  the ``nonce`` and all the required parameters.
-- **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation
-  Request to the Wallet Provider which verifies its validity and
-  issues the signed attestation.
-- **Message 13-14**:The Wallet Instance receives the Wallet Instance
-  Attestation signed by the Wallet Provider and proceeds with a formal
-  verification.
-- **Message 15**:The Wallet Instance Attestation is ready to be consumed.
+-
 
+ **Message 1**: The User initializes the Wallet Instance. In particular, this process happens after the Wallet Instance installation and after the expiration of the Wallet Instance Attestation is launched and every time the User wants to request or present (disclose) a credential.
+- **Message 2-3**: The Wallet Instance obtains metadata about its Wallet Provider. Among these, we also find the list of supported algorithms, public keys, endpoints.
+- **Message 4**: The Wallet Instance verifies that the Wallet Provider is trustworthy by resolving the provider's trust chain up to the anchor
+- **Message 5-7**: The Wallet Instance instantiates a new key pair on its TEE and requests a ``nonce`` from the Wallet Provider (as a measure against replay attacks).
+- **Message 8**: The Wallet Instance generates a Wallet Instance Attestation Request, in JWS format, signed with the private key associated with the public key for which it wants to obtain the attestation containing the ``nonce`` and all the required parameters.
+- **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation Request to the Wallet Provider which verifies its validity and issues the signed attestation.
+- **Message 13-14**:The Wallet Instance receives the Wallet Instance Attestation signed by the Wallet Provider and proceeds with a formal verification.
+- **Message 15**:The Wallet Instance Attestation is ready to be consumed.
 
 Detail design
 ---------------
+
 We will go into the detail design below.
 
 Format of the Wallet Provider Entity Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Wallet Provider Entity Configuration is a JWS containing
-the public keys and the supported algorithms
-within the Wallet Provider metadata definition.
-It is defined according to `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_
-and Section Trust Model of this specification.
+The Wallet Provider Entity Configuration is a JWS containing the public keys and the supported algorithms within the Wallet Provider metadata definition. It is defined according to `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_ and Section Trust Model of this specification.
 
 Header
 ^^^^^^
