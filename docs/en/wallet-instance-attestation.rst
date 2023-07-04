@@ -5,11 +5,14 @@
 Wallet Instance Attestation
 +++++++++++++++++++++++++++
 
-Inside a **Wallet Solution** and, especially with regards
-to the **Wallet Instance**, it is essential to ensure the **authenticity,
-integrity, security, privacy and trust** in the use of the latter both
-by the User and the services connected to it, such as the
-**PID Provider** or one **Relying Party**.
+The Wallet Instance Attestation contains data about the Wallet Provider, 
+the Wallet Solution, the Wallet Instance and the security level of the device 
+where the Wallet Instance is installed on, in general speaking it attests the
+**authenticity,
+integrity, security, privacy and trust** regarding a specific Wallet Instance.
+The Wallet Instance Attestation MUST contain the Wallet Instance public key.
+
+
 
 
 General Properties
@@ -613,7 +616,7 @@ A second **POST /token** endpoint that takes two parameters as input:
 ``grant_type`` which in our case is a string:
 ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation``
 
-``assertion``` which contains the signed JWT of the Wallet Instance Attestation
+``assertion`` which contains the signed JWT of the Wallet Instance Attestation
 Request.
 
 The response will then contain the Wallet Instance Attestation.
