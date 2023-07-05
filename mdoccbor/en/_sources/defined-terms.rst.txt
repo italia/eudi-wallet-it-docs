@@ -28,6 +28,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - An instance of the Wallet Solution, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.
    * - Wallet Provider
      - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
+   * - Wallet Instance Attestation
+     - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
    * - Qualified Electronic Attestation of Attributes (QEAA)
      - A digitally verifiable attestation in electronic form, issued by a QTSP, that substantiates a person's possession of attributes.
    * - Qualified Electronic Signature Provider
