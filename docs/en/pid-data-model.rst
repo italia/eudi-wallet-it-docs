@@ -21,7 +21,7 @@ This section contains all about the data model elements and the encoding formats
 in the *SD-JWT* and the *ISO/IEC 18013-5* standards and extended by `EIDAS-ARF`_ .
 
 SD-JWT
-======
+------
 
 The PID is given as a digital credential with JSON payload based on the `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`__.
 
@@ -46,7 +46,7 @@ The Disclosures are sent to the Holder together with the SD-JWT in the *Combined
 See `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
 
 SD-JWT Data Elements
-====================
+^^^^^^^^^^^^^^^^^^^^
 
 The JOSE header contains the following mandatory parameters:
 
@@ -197,8 +197,8 @@ Finally, the ``claims`` parameter contains the following mandatory claims:
 
 
 
-Non-normative examples
-----------------------
+SD-JWT Examples
+^^^^^^^^^^^^^^^^^^^^^^
 
 In the following, we provide a non-normative example of PID VC in JSON.
 
@@ -395,7 +395,7 @@ The combined format for the PID issuance is given by
 
 
 MDOC-CBOR
-=========
+---------
 
 The PID MDOC-CBOR data model is defined in 
 ISO/IEC 18013-5, the standard born for the the mobile driving license (mDL) use case. 
@@ -419,7 +419,7 @@ namespace `eu.europa.ec.eudiw.pid.it.1`, defined in this implementation profile.
 
 
 MDOC-CBOR Data Schema
-+++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 A PID issued in the MDOC-CBOR format must have the following data element:
 
@@ -502,7 +502,7 @@ A non-normative example of the PID document is represented below.
   }
 
 nameSpaces
-+++++++++++++
+^^^^^^^^^^^^^
 
 The `nameSpaces` object contains the key value representing the namespaces 
 where each value is an array of `IssuerSignedItems` encoded in CBORTag(24), representing the disclosure information for each digest within the `Mobile Security Object`.
@@ -553,7 +553,7 @@ The supported `elementValue` in this specification are the followings:
       - tstr (text string)
 
 Mobile Security Object
-++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The `Mobile Security Object` is an untagged value containing a `COSE Sign1 Document`, as defined in `RFC 9052 - CBOR Object Signing and Encryption (COSE): Structures and Process <https://www.rfc-editor.org/rfc/rfc9052.html>`_. It is composed by:
 
@@ -678,7 +678,7 @@ The `MobileSecurityObjectBytes` attributes are described below:
 
 
 MDOC-CBOR Examples
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: text
     
