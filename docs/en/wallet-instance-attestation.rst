@@ -395,8 +395,7 @@ Payload
 ||                          || Instance attestation issuer. See         |
 ||                          || the example below in this section.       |
 +---------------------------+-------------------------------------------+
-|| sub                      || The public url of the issuer             |
-||                          || concatenated with the thumbprint         |
+|| sub                      || Thumbprint value                         |
 ||                          || of the JWK of the Wallet Instance        |
 ||                          || for which the attestation is             |
 ||                          || being issued.                            |
