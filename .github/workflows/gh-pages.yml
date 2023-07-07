@@ -46,8 +46,9 @@ jobs:
       - name: Build branch
         run: |-
           [[ "$GITHUB_REF" != "versione_corrente" ]] && P="${GITHUB_REF}/" || P="" # note the trailing slash
-          sphinx-build -b html docs/it/  html/$P/it
-          sphinx-build -b html docs/en/  html/$P/en
+          echo "Publish on $P sub path"
+          sphinx-build -b html docs/it/  html/$Pit
+          sphinx-build -b html docs/en/  html/$Pen
 
       # Runs a single command using the runners shell
       - name: Create GH page index
