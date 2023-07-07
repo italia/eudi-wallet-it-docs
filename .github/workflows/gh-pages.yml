@@ -46,7 +46,7 @@ jobs:
       - name: Build branch
         run: |-
           PATH=""
-          [[ "${{ GITHUB_HEAD_REF }}" != "versione_corrente" ]] && PATH="${GITHUB_HEAD_REF}/" # note the trailing slash
+          [[ "${{ GITHUB_REF }}" != "versione_corrente" ]] && PATH="${GITHUB_REF}/" # note the trailing slash
           sphinx-build -b html docs/it/  html/$PATH/it
           sphinx-build -b html docs/en/  html/$PATH/en
 
