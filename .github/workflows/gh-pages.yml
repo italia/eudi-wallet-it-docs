@@ -4,6 +4,7 @@ name: gh-pages
 
 on:
   push:
+    tags: [ "*" ]
     branches: ["versione-corrente"]
     paths-ignore:
       - README.md
@@ -44,8 +45,10 @@ jobs:
 
       - name: Build branch
         run: |-
-          sphinx-build -b html docs/it/  html/${GITHUB_HEAD_REF}/it
-          sphinx-build -b html docs/en/  html/${GITHUB_HEAD_REF}/en
+          PATH=""
+          [[ "${{ GITHUB_HEAD_REF }}" != "versione_corrente" ]] && PATH="${GITHUB_HEAD_REF}/" # note the trailing slash
+          sphinx-build -b html docs/it/  html/$PATH/it
+          sphinx-build -b html docs/en/  html/$PATH/en
 
       # Runs a single command using the runners shell
       - name: Create GH page index
