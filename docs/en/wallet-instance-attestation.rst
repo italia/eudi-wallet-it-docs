@@ -80,114 +80,102 @@ The detailed design is explained below.
 
 Wallet Provider Entity Configuration Format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The Wallet Provider Entity Configuration is a JWS containing the public keys and supported algorithms within the Wallet Provider metadata definition. It is structured according to `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_ and the Trust Model section of this specification.
+The Wallet Provider Entity Configuration is a JWS containing the public keys and supported algorithms of the Wallet Provider metadata definition. It is structured in accordance with the `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_ and the Trust Model section outlined in this specification.
 
 Header
 ^^^^^^
 +---------+-----------------------------------------------------------------+
-| **key** | **value**                                                       |
+| **Key** | **Value**                                                       |
 +---------+-----------------------------------------------------------------+
-| alg     | Algorithm to verify the token signature (es. ES256).            |
+| alg     | Algorithm employed to verify the token signature (e.g., ES256). |
 +---------+-----------------------------------------------------------------+
 | kid     | Thumbprint of the public key used for signing.                  |
 +---------+-----------------------------------------------------------------+
-| typ     | Media type, in this case, we use the entity-statement+jwt value.|
+| typ     | Media type, here we use the entity-statement+jwt value.         |
 +---------+-----------------------------------------------------------------+
 
 Payload
 ^^^^^^^
 +-----------------------------------+-----------------------------------+
-| **key**                           | **value**                         |
+| **Key**                           | **Value**                         |
 +-----------------------------------+-----------------------------------+
-| iss                               | The public url of the Wallet      |
+| iss                               | Public URL of the Wallet          |
 |                                   | Provider.                         |
 +-----------------------------------+-----------------------------------+
-| sub                               | The public url of the Wallet      |
+| sub                               | Public URL of the Wallet          |
 |                                   | Provider.                         |
 +-----------------------------------+-----------------------------------+
-| iat                               | Configuration release timestamp.  |
+| iat                               | Timestamp of configuration release.|
 +-----------------------------------+-----------------------------------+
-| exp                               | Configuration expiration          |
-|                                   | timestamp.                        |
+| exp                               | Timestamp of configuration expiry. |
 +-----------------------------------+-----------------------------------+
-| jwks                              | Containing the keys attribute     |
-|                                   | which is an array of all the      |
-|                                   | public keys associated with the   |
-|                                   | domain (they could also match     |
-|                                   | those of the Wallet Provider).    |
+| jwks                              | Contains an array of all public   |
+|                                   | keys associated with the domain.  |
+|                                   | These could match the Wallet      |
+|                                   | Provider's keys.                  |
 +-----------------------------------+-----------------------------------+
-| metadata                          | This attribute will contain for   |
-|                                   | each entity its own               |
-|                                   | metadata. In this case we         |
-|                                   | will have the Wallet              |
-|                                   | Provider metadata contained within|
-|                                   | the ``eudi_wallet_provider``      |
-|                                   | attribute and the more generic    |
-|                                   | entity ``federation_entity``.     |
+| metadata                          | For each entity, this attribute   |
+|                                   | houses its metadata. In this case,|
+|                                   | it contains the Wallet Provider's |
+|                                   | metadata within the               |
+|                                   | ``eudi_wallet_provider`` attribute|
+|                                   | and the generic entity            |
+|                                   | ``federation_entity``.            |
 +-----------------------------------+-----------------------------------+
 
 Payload `eudi_wallet_provider`
 ''''''''''''''''''''''''''''''
 +------------------------------------+------------------------------------+
-| **key**                            | **value**                          |
+| **Key**                            | **Value**                          |
 +------------------------------------+------------------------------------+
-|| jwks                              || Containing the keys attribute     |
-||                                   || which is an array of all the      |
-||                                   || Wallet Provider's public keys.    |
+| jwks                               | Contains an array of all the Wallet|
+|                                    | Provider's public keys.            |
 +------------------------------------+------------------------------------+
-|| token_endpoint                    || Endpoint for obtaining the Wallet |
-||                                   || Instance Attestation.             |
+| token_endpoint                     | Endpoint for obtaining the Wallet  |
+|                                    | Instance Attestation.              |
 +------------------------------------+------------------------------------+
-|| asc_values_supported              || List of supported values for      |
-||                                   || the certified security context.   |
-||                                   || These values define a level of    |
-||                                   || assurance about the security of   |
-||                                   || the app. In particular we will    |
-||                                   || mainly have 3 values associated   |
-||                                   || with low, medium and high         |
-||                                   || security. An attested security    |
-||                                   || context is defined according to   |
-||                                   || the proof that the Wallet         |
-||                                   || Instance is able to send to the   |
-||                                   || Wallet Provider.                  |
-||                                   || ⚠️ This parameter is not standard |
-||                                   || and is still under discussion.    |
+| asc_values_supported               | List of supported values for the   |
+|                                    | certified security context. These  |
+|                                    | values specify the security level  |
+|                                    | of the app—low, medium, or high.   |
+|                                    | An attested security context is    |
+|                                    | defined by the proof that the      |
+|                                    | Wallet Instance can send to the    |
+|                                    | Wallet Provider. Note: this        |
+|                                    | parameter is non-standard and      |
+|                                    | under discussion.                  |
 +------------------------------------+------------------------------------+
-|| grant_types_supported             || The type of grants supported by   |
-||                                   || the endpoint token. Therefore,    |
-||                                   || for the Wallet Provider the token |
-||                                   || is equivalent only to the Wallet  |
-||                                   || Instance attestation, therefore   |
-||                                   || this attribute will contain an    |
-||                                   || array with only one element.      |
+| grant_types_supported              | The types of grants supported by   |
+|                                    | the endpoint token. For the Wallet |
+|                                    | Provider, the token corresponds to |
+|                                    | the Wallet Instance attestation.   |
+|                                    | Thus, this attribute contains an   |
+|                                    | array with only one element.       |
 +------------------------------------+------------------------------------+
-|| token_endpoint_auth_methods_suppo || Supported authentication method   |
-|| rted                              || for the endpoint token.           |
-||                                   ||                                   |
+| token_endpoint_auth_methods_suppor | Supported authentication method for|
+| ted                                | the endpoint token.                |
 +------------------------------------+------------------------------------+
-|| token_endpoint_auth_signing_alg_v || List of supported signature       |
-|| alues_supported                   || algorithms.                       |
+| token_endpoint_auth_signing_alg_va | List of supported signature        |
+| lues_supported                     | algorithms.                        |
 +------------------------------------+------------------------------------+
 
 .. note::
-   The parameter `asc_values_supported` is experimental and still
-   under discussion.
+   The `asc_values_supported` parameter is experimental and under review.
 
 Payload `federation_entity`
 '''''''''''''''''''''''''''
 +-------------------+----------------------------------------+
-| **key**           | **value**                              |
+| **Key**           | **Value**                              |
 +-------------------+----------------------------------------+
 | organization_name | Organization name.                     |
 +-------------------+----------------------------------------+
-| homepage_uri      | Organization website.                  |
+| homepage_uri      | Organization's website URL.            |
 +-------------------+----------------------------------------+
-| tos_uri           | Url to the terms of use.               |
+| tos_uri           | URL to the terms of service.           |
 +-------------------+----------------------------------------+
-| policy_uri        | Url to the privacy policy.             |
+| policy_uri        | URL to the privacy policy.             |
 +-------------------+----------------------------------------+
-| logo_uri          | URL of the organization logo.          |
+| logo_uri          | URL of the organization's logo.        |
 +-------------------+----------------------------------------+
 
 Below a non-normative example of the Entity Configuration.
