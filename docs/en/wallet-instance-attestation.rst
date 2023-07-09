@@ -43,47 +43,45 @@ The following requirements are assumed for the Wallet Instance Attestation:
 .. attention::
   ⚠️ Implementation of points no. 5 and 9 is still under discussion. This version assumes the authenticity and non-revocability of the Wallet Instance.
 
-High-end design
----------------
+High-level Design
+-----------------
 
-Static view of the components
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Static Component View
+~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ../../images/static_view_wallet_instance_attestation.svg
-   :name: Wallet Solution schema
-   :alt: The image shows how the Wallet Provider and the Wallet Instances are contained within the Wallet Solution, which is managed by the Wallet Provider.
+   :name: Wallet Solution Schema
+   :alt: The image illustrates the containment of Wallet Provider and Wallet Instances within the Wallet Solution, managed by the Wallet Provider.
    :target: https://www.plantuml.com/plantuml/uml/XP4nJuSm44VtVehBdxbnPp2iRYx6qTHIjR7SaVQ0-EqzaICDgN4ZBxpqzTUXiCkyJCaupvJXzbH2le4hiCW7A7rsAGM6ETCQn-E7RMSloi0OJzDC691FeL1QE1BMWZBeraW2Mbv4wK8VQayPT5yX9TgCQPclpdy676lnGF0ZN93DyVs3xVsrhOU70hCi0_JshwHXFJp-Rg4dIuECo96moD7xeBQbUKBEbE0EPEwuEWx6N2zj_uXqU8wbhVMhD3tjbAX1BYIl_mq0
 
-Dynamic view of the components
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dynamic Component View
+~~~~~~~~~~~~~~~~~~~~~~
 
-This section describes the format of the Wallet Instance Attestation and how it is issued by the Wallet Provider.
+This section describes the Wallet Instance Attestation format and how the Wallet Provider issues it.
 
 .. figure:: ../../images/dynamic_view_sequence_wallet_instance_attestation.svg
-   :name: sequence diagram for Wallet Instance Attestation request
-   :alt: The figure shows the sequence diagram for issuing a Wallet Instance Attestation. The steps will be described below.
+   :name: Sequence Diagram for Wallet Instance Attestation Request
+   :alt: The figure illustrates the sequence diagram for issuing a Wallet Instance Attestation, with the steps explained below.
    :target: https://www.plantuml.com/plantuml/uml/XPB1RzKm3CRl-IlCJY3nn7s7QOZ3118IGi0kkxYDLLcqJd2SLMz_FLvV6r7AnDN-_Fi-ExajXcfr6iEhh3XC24Rf2Kmh1QoMf4uTQGZPLTnpHZ6u-bv8hm0Br7tz7iUH33wAGwMdHJBpFpLVD3roN35p5qA5qusBhtsQZN7a9uBvekMLzo19GUbNfMBlib8X1_PAaUHveeIPJpTpTmrtPDjiNdrW8iE8Xc7kJgvoeyzh1VeaXYmimnyqi7EcyXP-qddnPAN9EruXYJcnsEhdf1yUrqbqC3MjnM3aOgxT5hmZ8NNrWix8MhQcH_zwMGyaIK-U5KwNgRNGB3yeFIF-kZYyBuNKE4a3VRh_5h0tVbpoTRiROLE__Y_eZOTP9W_RyZOpa5GM4YhbA2uy25fLQgrXkmDANDe7OClN7ktbXO-FyJ8jqluYpguDtVJSFc9y42MCPx04gJDa0Q5vz_LkIMATnjy0
 
--
+- **Message 1**: The User initializes the Wallet Instance. This happens after its installation and each time the Wallet Instance Attestation expires or the User wishes to request or present a credential.
+- **Message 2-3**: The Wallet Instance retrieves metadata about its Wallet Provider, including the list of supported algorithms, public keys, and endpoints.
+- **Message 4**: The Wallet Instance verifies the Wallet Provider's trustworthiness by resolving the provider's trust chain to the Trust Anchor.
+- **Message 5-7**: The Wallet Instance generates a new key pair and requests a ``nonce`` from the Wallet Provider to guard against replay attacks.
+- **Message 8**: The Wallet Instance creates a Wallet Instance Attestation Request in JWS format, signed with the private key associated with the public key for which it seeks attestation.
+- **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation Request to the Wallet Provider, which validates it and issues a signed attestation in return.
+- **Message 13-14**: The Wallet Instance receives the Wallet Instance Attestation signed by the Wallet Provider and performs formal verification.
+- **Message 15**: The Wallet Instance Attestation is now ready for use.
 
- **Message 1**: The User initializes the Wallet Instance. In particular, this process happens after the Wallet Instance installation and after the expiration of the Wallet Instance Attestation is launched and every time the User wants to request or present a credential.
-- **Message 2-3**: The Wallet Instance obtains metadata about its Wallet Provider. Among these, we also find the list of supported algorithms, public keys, endpoints.
-- **Message 4**: The Wallet Instance verifies that the Wallet Provider is trustworthy by resolving the provider's trust chain up to the Trust Anchor.
-- **Message 5-7**: The Wallet Instance creates a new key pair and requests a ``nonce`` from the Wallet Provider (as a measure against replay attacks).
-- **Message 8**: The Wallet Instance generates a Wallet Instance Attestation Request, in JWS format, signed with the private key associated with the public key for which it wants to obtain the attestation.
-- **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation Request to the Wallet Provider which verifies its validity and issues the signed attestation.
-- **Message 13-14**:The Wallet Instance receives the Wallet Instance Attestation signed by the Wallet Provider and proceeds with a formal verification.
-- **Message 15**:The Wallet Instance Attestation is ready to be consumed.
-
-Detail design
+Detailed Design
 ---------------
 
-We will go into the detail design below.
+The detailed design is explained below.
 
-Format of the Wallet Provider Entity Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Wallet Provider Entity Configuration Format
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Wallet Provider Entity Configuration is a JWS containing the public keys and the supported algorithms within the Wallet Provider metadata definition. It is defined according to `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_ and Section Trust Model of this specification.
+The Wallet Provider Entity Configuration is a JWS containing the public keys and supported algorithms within the Wallet Provider metadata definition. It is structured according to `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_ and the Trust Model section of this specification.
 
 Header
 ^^^^^^
