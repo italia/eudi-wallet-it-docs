@@ -244,7 +244,7 @@ Payload
 +---------------------------+-------------------------------------------+
 || logo_uri                 || Logo url of the Wallet Provider.         |
 +---------------------------+-------------------------------------------+
-|| asc                      || Attested security context:               |
+|| attested_security_context|| Attested security context:               |
 ||                          || Represents a level of "trust" of         |
 ||                          || the service containing a Level Of        |
 ||                          || Agreement defined in the metadata        |
@@ -277,7 +277,7 @@ Payload
 +---------------------------+-------------------------------------------+
 
 .. note::
-   The claim ``asc`` (Attested Security Context) is under discussion
+   The claim ``attested_security_context`` (Attested Security Context) is under discussion
    and must be intended as experimental.
 
 .. note::
@@ -307,7 +307,7 @@ Below is an example of Wallet Instance Attestation:
     "policy_uri": "https://wallet-provider.example.org/privacy_policy",
     "tos_uri": "https://wallet-provider.example.org/info_policy",
     "logo_uri": "https://wallet-provider.example.org/logo.svg",
-    "asc": "https://wallet-provider.example.org/LoA/basic",
+    "attested_security_context": "https://wallet-provider.example.org/LoA/basic",
     "cnf":
     {
       "jwk":
