@@ -189,7 +189,7 @@ Finally, the ``claims`` parameter contains the following mandatory claims:
     * - **unique_id**
       - [SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to `ANPR rules <https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/>`_
       - This specification
-    * - **tax_id_number**
+    * - **tax_id_code**
       - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
       - This specification
 
@@ -231,7 +231,7 @@ In the following, we provide a non-normative example of PID VC in JSON.
           "country": "IT",
           "locality": "Rome"
         },
-        "tax_id_number": "TINIT-XXXXXXXXXXXXXXXX"
+        "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"
       }
     }
   }

@@ -854,7 +854,7 @@ Below a non-normative example of an Entity Configuration containing an `openid_c
                         }
                       ]
                     },
-                    "tax_id_number": {
+                    "tax_id_code": {
                       "mandatory": true,
                       "display": [{
                           "name": "Tax Id Number",
