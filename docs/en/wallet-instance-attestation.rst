@@ -105,7 +105,8 @@ Payload
 | sub                               | Public URL of the Wallet          |
 |                                   | Provider.                         |
 +-----------------------------------+-----------------------------------+
-| iat                               | Timestamp of configuration release.|
+| iat                               | Issuance datetime in               |
+|                                   |  Unix Timestamp format.            |
 +-----------------------------------+-----------------------------------+
 | exp                               | Timestamp of configuration expiry. |
 +-----------------------------------+-----------------------------------+
