@@ -108,7 +108,8 @@ Payload
 | iat                               | Issuance datetime in               |
 |                                   |  Unix Timestamp format.            |
 +-----------------------------------+-----------------------------------+
-| exp                               | Timestamp of configuration expiry. |
+| exp                               | Expiration datetime                |
+|                                   | in Unix Timestamp format.          |
 +-----------------------------------+-----------------------------------+
 | jwks                              | Contains an array of all public   |
 |                                   | keys associated with the domain.  |
