@@ -302,9 +302,6 @@ Payload
 || type   || String. It must be set to            |
 ||        || ``WalletInstanceAttestationRequest`` |
 +---------+---------------------------------------+
-|| nonce  || The nonce obtained from the          |
-||        || Wallet Porvider.                     |
-+---------+---------------------------------------+
 || cnf    || This parameter will contain the      |
 ||        || configuration of the Wallet          |
 ||        || Instance in JSON format. Among       |
@@ -333,7 +330,6 @@ request where the decoded JWS headers and payload are separated by a comma:
     "sub": "https://wallet-provider.example.org",
     "jti": "6ec69324-60a8-4e5b-a697-a766d85790ea",
     "type": "WalletInstanceAttestationRequest",
-    "nonce" : "....."
     "cnf": {
       "jwk": {
         "crv": "P-256",
@@ -399,7 +395,8 @@ Payload
 ||                          || Instance attestation issuer. See         |
 ||                          || the example below in this section.       |
 +---------------------------+-------------------------------------------+
-|| sub                      || Thumbprint value                         |
+|| sub                      || The public url of the issuer             |
+||                          || concatenated with the thumbprint         |
 ||                          || of the JWK of the Wallet Instance        |
 ||                          || for which the attestation is             |
 ||                          || being issued.                            |
