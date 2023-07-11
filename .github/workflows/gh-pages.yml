@@ -4,7 +4,6 @@ name: gh-pages
 
 on:
   push:
-    tags: [ "*" ]
     branches: ["versione-corrente"]
     paths-ignore:
       - README.md
@@ -12,12 +11,16 @@ on:
       - LICENSE.md
       - .gitignore
   pull_request:
-    branches: [ "*" ]
+    branches: ["*"]
     paths-ignore:
       - README.md
       - CONTRIBUTING.md
       - LICENSE.md
       - .gitignore
+  release:
+    types:
+      - created
+      - edited
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -45,10 +48,17 @@ jobs:
 
       - name: Build branch
         run: |-
-          [[ "$GITHUB_REF" != "versione_corrente" ]] && P="${GITHUB_REF}/" || P="" # note the trailing slash
-          echo "Publish on $P sub path"
-          sphinx-build -b html docs/it/  html/$Pit
-          sphinx-build -b html docs/en/  html/$Pen
+          if [[ "$GITHUB_REF" = /refs/tags/* ]]; then
+            replace=/refs/tags/
+
+            TAG=$(echo "$GITHUB_REF" | sed "s/\/refs\/tags\///")
+            SUBPATH="v$TAG/" # note the trailing slash
+          else
+            SUBPATH="${GITHUB_HEAD_REF}/" # note the trailing slash
+          fi
+          echo "Publish on $SUBPATH sub path"
+          sphinx-build -b html docs/it/  html/$SUBPATHit
+          sphinx-build -b html docs/en/  html/$SUBPATHen
 
       # Runs a single command using the runners shell
       - name: Create GH page index
