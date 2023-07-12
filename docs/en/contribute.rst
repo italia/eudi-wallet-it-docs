@@ -5,12 +5,12 @@
 How to contribute
 +++++++++++++++++++++++++++
 
-The IT Wallet project and, therefore, the present document are inspired by an **“open” spirit**. This means that the development is meant to be accessible by anyone and all interested parties are invited to join the process.
+The IT Wallet project, including this document, follows an **open development process**. This approach ensures the development process is accessible to all, inviting all interested parties to participate.
 
-Hence, stakeholders and members of the national and international community are encouraged, and more than welcome, to contribute to the content of these technical rules.
+Consequently, stakeholders, national and international community members are not only encouraged but also heartily welcomed to contribute to the refinement of these technical rules.
 
-Below are listed the ways that can be used to give contributions to this project:
+Below are several methods available for contributing to this project:
 
-- **GitHub issues**. By opening an issue it is possible to ask clarifications, propose enhancements or notify editorial typos. To indicate that work is in progress is possible to link an issue to a pull request;
-- **Pull requests**. These represents active contributions to the project, where a discussion in the form of issues has already taken place. Once a pull request is opened, some discussions and reviews of the proposed changes take place, before the changes are merged into the main branch (`versione-corrente`);
-- **Developers Italia Slack channel**. Slack is a messaging app for business that connects people to the information they need. *Developers Italia* is an open community based on the participation and contribution of public administrations, developers, technicians, students and citizens. *Developers Italia* started a Slack channel that [everyone can join for free](https://slack.developers.italia.it/), where you can discover all their activities and participate in the discussion.
+- **GitHub issues**. By opening an issue, you can seek clarification, propose enhancements, or report editorial typos. If you are working on an issue, we encourage you to open a draft pull request and link it.
+- **Pull requests**. Pull requests represent active contributions to the project, typically, but not always following issue-based discussions. Once a pull request is initiated, it facilitates discussion and review of the proposed changes before they are merged into the main branch (`versione-corrente`).
+- **Developers Italia Slack channel**. Slack is a messaging application designed for businesses, connecting people to the information they need. *Developers Italia* is an open community based on contributions and participation from public administrations, developers, technicians, students, and citizens. *Developers Italia* has initiated a Slack channel that [everyone can join for free](https://slack.developers.italia.it/), where you can learn about all their activities and partake in discussions.
