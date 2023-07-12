@@ -26,20 +26,20 @@ This repository hosts the sphinx project tree of Italian eIDAS Wallet Technical 
 
 The stable release in different languages is published at the link below:
 
- - [English](https://italia.github.io/eidas-it-wallet-docs/en)
- - [Italian](https://italia.github.io/eidas-it-wallet-docs/it)
+ - [English](https://italia.github.io/eudi-wallet-it-docs/en/)
+ - [Italian](https://italia.github.io/eudi-wallet-it-docs/it/)
 
 ### Preview of a branch
 
 Preview of other branches can be navigated by adding the branch name in the webpath, as follows:
 
- - https://italia.github.io/eidas-it-wallet-docs/trust-model/en
+ - https://italia.github.io/eudi-wallet-it-docs/$branch-name/en
 
 ### Preview of released versions
 
 Released versions can be navigated by adding the tag in the webpath leaded by a _v_, as follows:
 
- - https://italia.github.io/eidas-it-wallet-docs/v0.4.0/en
+ - https://italia.github.io/eudi-wallet-it-docs/v0.4.2/en
 
 
 ## Documentation
