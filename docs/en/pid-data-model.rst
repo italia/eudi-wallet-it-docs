@@ -48,7 +48,8 @@ The Disclosures are sent to the Holder together with the SD-JWT in the *Combined
 
 See `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
 
-
+SD-JWT parameters
+-----------------
 
 The JOSE header contains the following mandatory parameters:
 
@@ -114,7 +115,11 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
             -   **claims**.
       - `[OIDC.IDA. Section 5] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5>`_.
 
-The ``verification`` claim contain the information as sub claims regarding the identity proofing evidence during the issuing phase of the PID. The ``claims`` parameter contains the user attributes claims. Some of these additional claims MAY be included in the Disclosures and MAY be selectively disclosed and they are given in the following tables that also specify whether a claim is selectively disclosable (SD) or not (NSD).
+
+Verification field 
+------------------
+
+The ``verification`` claim contain the information as sub claims regarding the identity proofing evidence during the issuing phase of the PID.  Some of these additional claims MAY be included in the Disclosures and MAY be selectively disclosed and they are given in the following tables that also specify whether a claim is selectively disclosable (SD) or not (NSD).
 
 The ``verification`` claim is a JSON structure with all the following mandatory sub-claims.
 
@@ -162,7 +167,11 @@ The ``record`` MUST have at least the following sub parameters:
 .. warning::
   Note that the sub-claims of the **evidence** parameter are not selectively disclosable separately, thus, for example, the User cannot give only the *record type* without disclosure the *record source* (organization name, identifier and country that hendles the User identity proofing). 
 
-Finally, the ``claims`` parameter contains the following mandatory claims:
+Claims field 
+------------
+
+The ``claims`` parameter contains the user attributes claims with the following mandatory fields:
+
 
 .. list-table:: 
     :widths: 20 60 20
