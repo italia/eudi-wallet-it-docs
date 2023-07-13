@@ -765,7 +765,7 @@ Below a non-normative example of an Entity Configuration containing an `openid_c
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
             "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
             "credential_endpoint": "https://pid-provider.example.org/credential",
-            "credentials_supported": {
+            "credentials_supported": [{
               "eu.eudiw.pid.it": {
                 "format": "vc+sd-jwt",
                 "cryptographic_binding_methods_supported": ["jwk"],
@@ -869,7 +869,7 @@ Below a non-normative example of an Entity Configuration containing an `openid_c
                   }
                 }
               }
-            }
+            }]
           },
 
           "federation_entity": {
