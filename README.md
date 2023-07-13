@@ -1,4 +1,4 @@
-# Italian eIDAS Wallet Technical Specifications
+# EUDI Wallet Technical Specifications
 
 [![GitHub release](https://img.shields.io/github/release/italia/eidas-it-wallet-docs.svg?style=plastic)](https://github.com/italia/eidas-it-wallet-docs/releases)
 [![Get invited](https://slack.developers.italia.it/badge.svg)](https://slack.developers.italia.it/)
@@ -18,7 +18,7 @@
 
 ## Intro
 
-This repository hosts the sphinx project tree of Italian eIDAS Wallet Technical Specifications.
+This repository hosts the sphinx project tree of EUDI Wallet Technical Specifications.
 
 > This repository may contain contents to be considered experimental until the publication of the first release.
 
