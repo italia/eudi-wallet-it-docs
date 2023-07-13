@@ -124,12 +124,12 @@ Payload
 |                                   | metadata. In this case we         |
 |                                   | will have the Wallet              |
 |                                   | Provider metadata contained within|
-|                                   | the ``eudi_wallet_provider``      |
+|                                   | the ``wallet_provider``           |
 |                                   | attribute and the more generic    |
 |                                   | entity ``federation_entity``.     |
 +-----------------------------------+-----------------------------------+
 
-Payload `eudi_wallet_provider`
+Payload of `wallet_provider`
 ''''''''''''''''''''''''''''''
 +------------------------------------+------------------------------------+
 | **key**                            | **value**                          |
@@ -217,7 +217,7 @@ Below a non-normative example of the Entity Configuration.
     ]
   },
   "metadata": {
-    "eudi_wallet_provider": {
+    "wallet_provider": {
       "jwks": {
         "keys": [
           {
