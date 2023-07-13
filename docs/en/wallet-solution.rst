@@ -132,7 +132,7 @@ Payload `wallet_provider`
 | token_endpoint                     | Endpoint for obtaining the Wallet  |
 |                                    | Instance Attestation.              |
 +------------------------------------+------------------------------------+
-| attested_security_context          | List of supported values for the   |
+| attested_security_context_values_supported          | List of supported values for the   |
 |                                    | certified security context. These  |
 |                                    | values specify the security level  |
 |                                    | of the app—low, medium, or high.   |
