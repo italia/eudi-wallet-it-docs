@@ -137,7 +137,7 @@ The JWS payload of the request object is represented below:
         "type":"openid_credential",
         "format": "vc+sd-jwt",
         "credential_definition": {
-            "type": ["eu.eudiw.pid.it"]
+            "type": ["PersonIdentificationData"]
         }
     }
     ],
@@ -255,7 +255,7 @@ The JWS payload of the request object is represented below:
         c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
         OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
     
-    credential_definition=%7B%22type%22:%5B%22eu.eudiw.pid.it%22%5D%7D
+    credential_definition=%7B%22type%22:%5B%22PersonIdentificationData%22%5D%7D
     &format=vc+sd-jwt
     &proof=%7B%22proof_type%22:%22...-ace0-9c5210e16c32%22%7D
 
@@ -411,7 +411,7 @@ The JWT payload is given by the following parameters:
             
             - **type**: it MUST be set to ``openid_credential``,
             - **format**: it MUST be set to ``vc+sd-jwt``,
-            - **credential_definition**: JSON Object. It MUST have the **type** claim which MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``eu.eudiw.pid.it``
+            - **credential_definition**: JSON Object. It MUST have the **type** claim which MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``
       - See [RAR :rfc:`9396`] and `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
     * - **redirect_uri**
       -  Redirection URI to which the response will be sent. It MUST be an universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.
@@ -657,9 +657,6 @@ A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a resu
   * - **jti** 
     - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP MAY use to prevent reuse by rejecting the Token ID if already processed.
     - [:rfc:`9068`], [:rfc:`7519`].
-  * - **nonce** [FIXME]
-    - It MUST be a random string of at least 32 alphanumeric characters. The value type of this claim MUST be a string, where the value is a **c_nonce** provided by the PID/(Q)EAA Issuer.
-    - [`OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_].
   * - **jkt**
     - JWK SHA-256 Thumbprint Confirmation Method. The value of the jkt member MUST be the base64url encoding (as defined in [RFC7515]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the access token is bound.
     - [`DPoP-draft16 <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Section 6.1] and [:rfc:`7638`].
@@ -693,7 +690,7 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
     - **Description**
     - **Reference**
   * - **credential_definition**
-    - JSON object containing the detailed description of the credential type. It MUST have at least the **type** sub claims which is a JSON array containing the type values the Wallet shall request in the subsequent Credential Request. It MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to `eu.eudiw.pid.it`.
+    - JSON object containing the detailed description of the credential type. It MUST have at least the **type** sub claims which is a JSON array containing the type values the Wallet shall request in the subsequent Credential Request. It MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **format** 
     - Format of the Credential to be issued. This MUST be `vc+sd-jwt`.
@@ -767,7 +764,7 @@ Credential Response to the Wallet Instance MUST be sent using `application/json`
     - Format of the Credential to be issued. This MUST be `vc+sd-jwt`.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **credential**
-    - Contains the issued PID. It MUST be an SD-JWT JSON Object (see Section :ref:`PID Data Model <pid_data_model.rst>`).
+    - Contains the issued PID/(Q)EAA. It MUST be an SD-JWT JSON Object (see Section :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`).
     - Appendix E in `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **c_nonce**
     - JSON string containing a nonce to be used to create a *proof of possession* of key material when requesting a further credential or for renewal credential. 
@@ -850,7 +847,7 @@ Below a non-normative example of an Entity Configuration containing an `openid_c
                   }
                 ],
                 "credential_definition": {
-                  "type": ["PIDCredential"],
+                  "type": ["PersonIdentificationData"],
                   "credentialSubject": {
                     "given_name": {
                       "mandatory": true,
