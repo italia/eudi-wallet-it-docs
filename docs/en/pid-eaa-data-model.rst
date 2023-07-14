@@ -453,18 +453,18 @@ The corresponding SD-JWT verson for PID is given by
     "verified_claims": {
       "verification": {
         "_sd": [
-          "OGm7ryXgt5Xzlevp-Hu-UTk0a-TxAaPAobqv1pIWMfw"
+          "2jIR18gfeASHYGB27s7sS3S_iQ4xxFIxCRyiohrBfns"
         ],
         "trust_framework": "eidas2",
         "assurance_level": "high"
       },
       "claims": {
         "_sd": [
-          "BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig",
-          "CFLGzentGNRFngnLVVQVcoAFi05r6RJUX-rdbLdEfew",
-          "JU_sTaHCngS32X-0ajHrd1-HCLCkpT5YqgcfQme168w",
-          "VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA",
-          "zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o"
+          "1iztq7bov64xTYbDkWFc44_VjWe029hZqXeUIloqUN4",
+          "ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E",
+          "FV2CDNWuTqTgOHaftvVaumBF0OlmnyxMswyf4uIxrhY",
+          "dZWjq7mJSSX-XTI_HWuE8B2x6IdM5lE-doD_yBpKJao",
+          "gHYi19frbD_i4BoaWENOjc3lCnMj4pbGNQcsBj_QM4Q"
         ]
       }
     },
@@ -475,66 +475,64 @@ In the following the disclosure list is given
 
 Claim **evidence**:
 
--  SHA-256 Hash: ``OGm7ryXgt5Xzlevp-Hu-UTk0a-TxAaPAobqv1pIWMfw``
+-  SHA-256 Hash: ``2jIR18gfeASHYGB27s7sS3S_iQ4xxFIxCRyiohrBfns``
 -  Disclosure:
    ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImV2aWRlbmNlIiwgW3sidHlw``
    ``ZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQiOiB7InR5cGUiOiAi``
-   ``ZWlkYXMuaXQuY2llIiwgInNvdXJjZSI6IHsib3JnYW5pemF0aW9uX25hbWUi``
-   ``OiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdhbml6YXRpb25faWQi``
-   ``OiAibV9pdCIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19XV0``
+   ``ZWlkYXMuaXQucGRuZCIsICJzb3VyY2UiOiB7Im9yZ2FuaXphdGlvbl9uYW1l``
+   ``IjogIlJhZ2lvbmVyaWEgR2VuZXJhbGUgZGVsbG8gU3RhdG8iLCAib3JnYW5p``
+   ``emF0aW9uX2lkIjogIlFMSENGQyIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19``
+   ``XV0``
 -  Contents: ``["2GLC42sKQveCfGfryNRN9w", "evidence", [{"type":``
-   ``"electronic_record", "record": {"type": "eidas.it.cie",``
-   ``"source": {"organization_name": "Ministero dell'Interno",``
-   ``"organization_id": "m_it", "country_code": "IT"}}}]]``
+   ``"electronic_record", "record": {"type": "eidas.it.pdnd",``
+   ``"source": {"organization_name": "Ragioneria Generale dello Stato",``
+   ``"organization_id": "QLHCFC", "country_code":"IT"}}}]]``
 
 Claim **given_name**:
 
--  SHA-256 Hash: ``zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o``
+-  SHA-256 Hash: ``gHYi19frbD_i4BoaWENOjc3lCnMj4pbGNQcsBj_QM4Q``
 -  Disclosure:
-   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFy``
-   ``aW8iXQ``
--  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "given_name", "Mario"]``
+   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ``
+-  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "given_name", "Mario"]``
 
 Claim **family_name**:
 
--  SHA-256 Hash: ``VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA``
+-  SHA-256 Hash: ``dZWjq7mJSSX-XTI_HWuE8B2x6IdM5lE-doD_yBpKJao``
 -  Disclosure:
-   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJv``
-   ``c3NpIl0``
--  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "family_name", "Rossi"]``
+   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0``
+-  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "family_name", "Rossi"]``
 
 Claim **birthdate**:
 
--  SHA-256 Hash: ``CFLGzentGNRFngnLVVQVcoAFi05r6RJUX-rdbLdEfew``
+-  SHA-256 Hash: ``FV2CDNWuTqTgOHaftvVaumBF0OlmnyxMswyf4uIxrhY``
 -  Disclosure:
-   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoZGF0ZSIsICIxOTgw``
-   ``LTAxLTEwIl0``
--  Contents: ``["Qg_O64zqAxe412a108iroA", "birthdate", "1980-01-10"]``
+   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImJpcnRoZGF0ZSIsICIxOTgwLTAxLTEwIl0``
+-  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "birthdate", "1980-01-10"]``
 
 Claim **place_of_birth**:
 
--  SHA-256 Hash: ``JU_sTaHCngS32X-0ajHrd1-HCLCkpT5YqgcfQme168w``
+-  SHA-256 Hash: ``1iztq7bov64xTYbDkWFc44_VjWe029hZqXeUIloqUN4``
 -  Disclosure:
-   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBsYWNlX29mX2JpcnRoIiwg``
+   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgInBsYWNlX29mX2JpcnRoIiwg``
    ``eyJjb3VudHJ5IjogIklUIiwgImxvY2FsaXR5IjogIlJvbWUifV0``
 -  Contents:
-   ``["AJx-095VPrpTtN4QMOqROA", "place_of_birth", {"country":``
+   ``["Qg_O64zqAxe412a108iroA", "place_of_birth", {"country":``
    ``"IT", "locality": "Rome"}]``
 
 Claim **tax_id_code**:
 
--  SHA-256 Hash: ``8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E``
+-  SHA-256 Hash: ``ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E``
 -  Disclosure:
-   ``WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
+   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJ``
    ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["Pc33JM2LchcU_lHggv_ufQ", "tax_id_code",``
+-  Contents: ``["AJx-095VPrpTtN4QMOqROA", "tax_id_code",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 The combined format for the PID issuance is given by
 
 .. code-block::
 
-  eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJSUzUxMiIsImtpZCI6ImQxMjZhNmE4NTZmNzcyNDU2MDQ4NGZhOWRjNTlkMTk1IiwidHJ1c3RfY2hhaW4iOlsiTkVoUmRFUnBZbmxIWTNNNVdsZFdUV1oyYVVobSAuLi4iLCJleUpoYkdjaU9pSlNVekkxTmlJc0ltdHBaQ0k2IC4uLiIsIklrSllkbVp5Ykc1b1FVMTFTRkl3TjJGcVZXMUIgLi4uIl19.eyJpc3MiOiJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnIiwic3ViIjoiTnpiTHNYaDh1RENjZDdub1dYRlpBZkhreFpzUkdDOVhzLi4uIiwianRpIjoidXJuOnV1aWQ6NmM1YzBhNDktYjU4OS00MzFkLWJhZTctMjE5MTIyYTllYzJjIiwiaWF0IjoxNTQxNDkzNzI0LCJleHAiOjE1NDE0OTM3MjQsInN0YXR1cyI6Imh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmcvc3RhdHVzIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJSU0EiLCJ1c2UiOiJzaWciLCJuIjoiMVRhLXNFIOKApiIsImUiOiJBUUFCIiwia2lkIjoiWWhORlMzWW5DOXRqaUNhaXZoV0xWVUozQXh3R0d6Xzk4dVJGYXFNRUVzIn19LCJ0eXBlIjoiUGVyc29uSWRlbnRpZmljYXRpb25EYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiT0dtN3J5WGd0NVh6bGV2cC1IdS1VVGswYS1UeEFhUEFvYnF2MXBJV01mdyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhcyIsImFzc3VyYW5jZV9sZXZlbCI6ImhpZ2gifSwiY2xhaW1zIjp7Il9zZCI6WyI4SmpvekJmb3ZNTnZRM0hmbG1QV3k0TzE5R3B4czYxRldIalplYlU1ODlFIiwiQm9NR2t0VzFyYmlrbnR3OEZ6eF9CZUw0WWJBbmRyNkFIc2RncGF0RkNpZyIsIkNGTEd6ZW50R05SRm5nbkxWVlFWY29BRmkwNXI2UkpVWC1yZGJMZEVmZXciLCJKVV9zVGFIQ25nUzMyWC0wYWpIcmQxLUhDTENrcFQ1WXFnY2ZRbWUxNjh3IiwiVlFJLVMxbVQxS3hmcTJvOEo5aW83eE1NWDJNSXhhRzlNOVBlSlZxck1jQSIsInpWZGdoY21DbE1WV2xVZ0dzR3BTa0NQa0VIWjR1OW9XajFTbElCbENjMW8iXX19LCJfc2RfYWxnIjoic2hhLTI1NiJ9.WzEiFaOjnobQisjTQ92JtKEXRN-2Sgvjklpu4IdC_cT2T6Tm8Z6sqbVy6n94AAEv-HFSv5JoSt6YjPDnGzOxN_W_131rILU8YaiNt8w31nRGIvHjJIC0w-hHIcG1LmvJshSMcT3RHeApRCmsO7xkHWmUsjt37dOzEagEti5i47hnZAbu7vWXsvUlBNNN8v7tJBLspO2Q0vnWhEDX1hQ7IH1b8oKh-_aQrhwVm9Bcs9CG8o6N9iqubCSpFI6Gty4ZZgHEb95knETVhw8IL10Z9P_Hr9twXZQaCCC8xrNh4afwR9TiDQzTr92m7luyvDfmzVgHCponI7VBhqmRqZVYQyDhq6EJbtRtIsYenla5NSKBjV8Etdlec94vJAHZNzue9aNUQeXae55V5m5O9wLoWhgV2vl4xV5C-N5s5Uzs08GAxo-CUaNOD3BQE9vfrT47IBCm4hUCnvDise_aWNCeKOQABV1J9_tV9lWZsECVuUuWWwELHCUXgdyiA3QtUtXz
+  eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJSUzUxMiIsImtpZCI6ImQxMjZhNmE4NTZmNzcyNDU2MDQ4NGZhOWRjNTlkMTk1IiwidHJ1c3RfY2hhaW4iOlsiTkVoUmRFUnBZbmxIWTNNNVdsZFdUV1oyYVVobSAuLi4iLCJleUpoYkdjaU9pSlNVekkxTmlJc0ltdHBaQ0k2IC4uLiIsIklrSllkbVp5Ykc1b1FVMTFTRkl3TjJGcVZXMUIgLi4uIl19.eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsInN1YiI6Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcy4uLiIsImp0aSI6InVybjp1dWlkOjZjNWMwYTQ5LWI1ODktNDMxZC1iYWU3LTIxOTEyMmE5ZWMyYyIsImlhdCI6MTU0MTQ5MzcyNCwiZXhwIjoxNTQxNDkzNzI0LCJzdGF0dXMiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy9zdGF0dXMiLCJjbmYiOnsiandrIjp7Imt0eSI6IlJTQSIsInVzZSI6InNpZyIsIm4iOiIxVGEtc0Ug4oCmIiwiZSI6IkFRQUIiLCJraWQiOiJZaE5GUzNZbkM5dGppQ2FpdmhXTFZVSjNBeHdHR3pfOTh1UkZhcU1FRXMifX0sInR5cGUiOiJIZWFsdGhJbnN1cmFuY2VEYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiMmpJUjE4Z2ZlQVNIWUdCMjdzN3NTM1NfaVE0eHhGSXhDUnlpb2hyQmZucyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhczIiLCJhc3N1cmFuY2VfbGV2ZWwiOiJoaWdoIn0sImNsYWltcyI6eyJfc2QiOlsiMWl6dHE3Ym92NjR4VFliRGtXRmM0NF9WaldlMDI5aFpxWGVVSWxvcVVONCIsIkVOTm8zMWpmekZwOFkyRFcwUi1mSU1lV3dlN0VMR3ZHb0hNd01CcHUxNEUiLCJGVjJDRE5XdVRxVGdPSGFmdHZWYXVtQkYwT2xtbnl4TXN3eWY0dUl4cmhZIiwiZFpXanE3bUpTU1gtWFRJX0hXdUU4QjJ4NklkTTVsRS1kb0RfeUJwS0phbyIsImdIWWkxOWZyYkRfaTRCb2FXRU5PamMzbENuTWo0cGJHTlFjc0JqX1FNNFEiXX19LCJfc2RfYWxnIjoic2hhLTI1NiJ9.Dy8IdMBmzL5QSxAHiYTv9Fg0HhiI-AFIwL2slNEVI5iTxcne0reX2w-Bo78bY0UkOF5LHBLjGV_l5wbX6pvDY0v193ifp7KzJIpj2jUuQ-XR7RHng9RFdjKSj7urVYaseQxKA97vWcJxNX7bYKLQ6jKOdxl0CXmFdg00HTA1MnO7OPWdRiT7BlDyl0HfwQ-X08Yk23zX2Po90p1pBIWMlqnkfeZwQIWyz6LvFcK7OClEYlmzhtLR5QmYHbIbu9oGhn00hv0Q94TcheGpSm8WmfUjE-dV6YvfWtkcsTg7bjmawt6B4W_YMwV9pSmoC1euwO1svoyAdqxjGbInmLT4hA
 
 MDOC-CBOR
 =========
