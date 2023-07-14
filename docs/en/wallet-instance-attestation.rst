@@ -104,38 +104,38 @@ Header
 
 Payload
 ^^^^^^^
-+--------+--------------------------------------+
-| **key**| **value**                            |
-+--------+--------------------------------------+
-|| iss   || The thumbprint                      |
-||       || of the JWK of the Wallet Instance   |
-||       || for which the attestation is        |
-||       || being requested.                    |
-+--------+--------------------------------------+
-|| aud   || The public url of the Wallet        |
-||       || Provider                            |
-+--------+--------------------------------------+
-|| jti   || Unique identifier of the request.   |
-||       || This parameter will be used to      |
-||       || avoid replay attacks.               |
-+--------+--------------------------------------+
-|| type  || String. It must be set to           |
-||       || ``WalletInstanceAttestationRequest``|
-+--------+--------------------------------------+
-|| nonce || The nonce obtained from the         |
-||       || Wallet Porvider.                    |
-+--------+--------------------------------------+
-|| cnf   || This parameter will contain the     |
-||       || configuration of the Wallet         |
-||       || Instance in JSON format. Among      |
-||       || the mandatory attributes there      |
-||       || will be the jwk parameter           |
-||       || containing the public key of the    |
-||       || Wallet Instance. It will also       |
-||       || contain all the information         |
-||       || useful for the Wallet Provider      |
-||       || to verify that the app is genuine.  |
-+--------+--------------------------------------+
++--------+----------------------------------------+
+| **key**| **value**                              |
++--------+----------------------------------------+
+|| iss   || The thumbprint                        |
+||       || of the JWK of the Wallet Instance     |
+||       || for which the attestation is          |
+||       || being requested.                      |
++--------+----------------------------------------+
+|| aud   || The public url of the Wallet          |
+||       || Provider.                             |
++--------+----------------------------------------+
+|| jti   || Unique identifier of the request.     |
+||       || This parameter will be used to        |
+||       || avoid replay attacks.                 |
++--------+----------------------------------------+
+|| type  || String. It must be set to             |
+||       || ``WalletInstanceAttestationRequest``. |
++--------+----------------------------------------+
+|| nonce || The nonce obtained from the           |
+||       || Wallet Porvider.                      |
++--------+----------------------------------------+
+|| cnf   || This parameter will contain the       |
+||       || configuration of the Wallet           |
+||       || Instance in JSON format. Among        |
+||       || the mandatory attributes there        |
+||       || will be the jwk parameter             |
+||       || containing the public key of the      |
+||       || Wallet Instance. It will also         |
+||       || contain all the information           |
+||       || useful for the Wallet Provider        |
+||       || to verify that the app is genuine.    |
++--------+----------------------------------------+
 
 Below a non-normative example of the Wallet Instance Attestation
 request where the decoded JWS headers and payload are separated by a comma:

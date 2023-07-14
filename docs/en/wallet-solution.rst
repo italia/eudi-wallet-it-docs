@@ -123,39 +123,39 @@ Payload
 Payload `wallet_provider`
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+------------------------------------+------------------------------------+
-| **Key**                            | **Value**                          |
-+------------------------------------+------------------------------------+
-| jwks                               | Contains an array of all the Wallet|
-|                                    | Provider's public keys.            |
-+------------------------------------+------------------------------------+
-| token_endpoint                     | Endpoint for obtaining the Wallet  |
-|                                    | Instance Attestation.              |
-+------------------------------------+------------------------------------+
-| attested_security_context_values_supported          | List of supported values for the   |
-|                                    | certified security context. These  |
-|                                    | values specify the security level  |
-|                                    | of the app—low, medium, or high.   |
-|                                    | An attested security context is    |
-|                                    | defined by the proof that the      |
-|                                    | Wallet Instance can send to the    |
-|                                    | Wallet Provider. Note: this        |
-|                                    | parameter is non-standard and      |
-|                                    | under discussion.                  |
-+------------------------------------+------------------------------------+
-| grant_types_supported              | The types of grants supported by   |
-|                                    | the endpoint token. For the Wallet |
-|                                    | Provider, the token corresponds to |
-|                                    | the Wallet Instance attestation.   |
-|                                    | Thus, this attribute contains an   |
-|                                    | array with only one element.       |
-+------------------------------------+------------------------------------+
-| token_endpoint_auth_methods_suppor | Supported authentication method for|
-| ted                                | the endpoint token.                |
-+------------------------------------+------------------------------------+
-| token_endpoint_auth_signing_alg_va | List of supported signature        |
-| lues_supported                     | algorithms.                        |
-+------------------------------------+------------------------------------+
++---------------------------------------------+------------------------------------+
+| **Key**                                     | **Value**                          |
++---------------------------------------------+------------------------------------+
+| jwks                                        | Contains an array of all the Wallet|
+|                                             | Provider's public keys.            |
++---------------------------------------------+------------------------------------+
+| token_endpoint                              | Endpoint for obtaining the Wallet  |
+|                                             | Instance Attestation.              |
++---------------------------------------------+------------------------------------+
+| attested_security_context_values_supported  | List of supported values for the   |
+|                                             | certified security context. These  |
+|                                             | values specify the security level  |
+|                                             | of the app—low, medium, or high.   |
+|                                             | An attested security context is    |
+|                                             | defined by the proof that the      |
+|                                             | Wallet Instance can send to the    |
+|                                             | Wallet Provider. Note: this        |
+|                                             | parameter is non-standard and      |
+|                                             | under discussion.                  |
++---------------------------------------------+------------------------------------+
+| grant_types_supported                       | The types of grants supported by   |
+|                                             | the endpoint token. For the Wallet |
+|                                             | Provider, the token corresponds to |
+|                                             | the Wallet Instance attestation.   |
+|                                             | Thus, this attribute contains an   |
+|                                             | array with only one element.       |
++---------------------------------------------+------------------------------------+
+| token_endpoint_auth_methods_suppor          | Supported authentication method for|
+| ted                                         | the endpoint token.                |
++---------------------------------------------+------------------------------------+
+| token_endpoint_auth_signing_alg_va          | List of supported signature        |
+| lues_supported                              | algorithms.                        |
++---------------------------------------------+------------------------------------+
 
 .. note::
    The `asc_values_supported` parameter is experimental and under review.
