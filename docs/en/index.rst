@@ -65,7 +65,7 @@ Index of content
    ssi-introduction.rst
    defined-terms.rst
    trust.rst
-   pid-data-model.rst
+   pid-eaa-data-model.rst
    pid-eaa-issuance.rst
    wallet-solution.rst
    wallet-instance-attestation.rst
