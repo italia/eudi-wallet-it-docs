@@ -121,7 +121,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
 PID/(Q)EAA Verification field 
 -----------------------------
 
-The ``verification`` claim contain the information, as sub claims, regarding the identity trust framework used by the PID/(Q)EAA Issuer to provide a verified User claims.  Some of these additional claims MAY be included in the Disclosures and MAY be selectively disclosed and they are given in the following tables that also specify whether a claim is selectively disclosable (SD) or not (NSD).
+The ``verification`` claim contains the information, as sub claims, regarding the identity trust framework used by the PID/(Q)EAA Issuer to provide a verified User claims.  Some of these additional claims MAY be included in the Disclosures and MAY be selectively disclosed and they are given in the following tables that also specify whether a claim is selectively disclosable (SD) or not (NSD).
 
 The ``verification`` claim is a JSON structure with all the following mandatory sub-claims.
 
@@ -136,7 +136,7 @@ The ``verification`` claim is a JSON structure with all the following mandatory 
       - [NSD]. For PID credential it MUST be set to ``eidas``. For (Q)EAA it MUST be set to ``eidas2``.
       - `[OID.IDA. Section 5.1] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1>`_
     * - **assurance_level**
-      - [NSD]. MUST be set according to the LoA. For PID credential it MUST be set o ``high``.
+      - [NSD]. MUST be set according to the LoA required. For PID credential it MUST be set to ``high``.
       - `[OID.IDA. Section 5.1] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1>`_
     * - **evidence**
       - [SD]. JSON Array. Each element is the electronic evidence of the user identification during the PID issuing phase or, in case of (Q)EAA, it represents the evidence of the Authentic Sources that ensure the authenticity of the data conveyed by the (Q)EAA. It MUST contain at least the following claims:
