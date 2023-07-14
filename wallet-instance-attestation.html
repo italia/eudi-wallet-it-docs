@@ -1392,13 +1392,10 @@ signature (es. ES256).</p></td>
 Provider to sign the attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p>typ</p></td>
-<td><p>Media type, in this case we use
-the value va+jwt (Verifiable
-Assertion JWT).
-This parameter is currently
-non-standard as it is not yet
-registered as <a class="reference external" href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media
-Types</a>.</p></td>
+<td><p>Media type, set to
+<cite>wallet-attestation+jwt</cite>,
+according to
+[<a class="reference external" href="https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html">OPENID4VC-HAIP</a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p>x5c</p></td>
 <td><p>Array containing the X.509
@@ -1637,7 +1634,7 @@ private key of the Wallet Provider.</p>
 <span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;va+jwt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wallet-attestation+jwt&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="s2">&quot;x5c&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MIIBjDCC ... XFehgKQA==&quot;</span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 <span class="p">.</span><span class="w"></span>
