@@ -121,7 +121,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
 PID/(Q)EAA Verification field 
 -----------------------------
 
-The ``verification`` claim contain the information as sub claims regarding the identity proofing evidence during the issuing phase of the PID.  Some of these additional claims MAY be included in the Disclosures and MAY be selectively disclosed and they are given in the following tables that also specify whether a claim is selectively disclosable (SD) or not (NSD).
+The ``verification`` claim contain the information, as sub claims, regarding the identity trust framework used by the PID/(Q)EAA Issuer to provide a verified User claims.  Some of these additional claims MAY be included in the Disclosures and MAY be selectively disclosed and they are given in the following tables that also specify whether a claim is selectively disclosable (SD) or not (NSD).
 
 The ``verification`` claim is a JSON structure with all the following mandatory sub-claims.
 
@@ -167,7 +167,7 @@ The ``record`` MUST have at least the following sub parameters:
     - `[OID.IDA. Section 5.1.1.2] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2>`_
 
 .. warning::
-  Note that the sub-claims of the **evidence** parameter are not selectively disclosable separately, thus, for example, the User cannot give only the *record type* without disclosure the *record source* (organization name, identifier and country that hendles the User identity proofing). 
+  Note that the sub-claims of the **evidence** parameter are not selectively disclosable separately, thus, for example, the User cannot give only the *record type* without disclosure the *record source* (organization name, identifier and country). 
 
 PID Claims field 
 ----------------
