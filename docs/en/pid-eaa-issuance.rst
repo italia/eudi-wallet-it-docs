@@ -94,7 +94,7 @@ The PID/(Q)EAA Issuance phase is based on the **Authorization Code Flow** with *
     **Federation Check:** The Wallet Instance needs to check if the PID/(Q)EAA Issuer is part of Federation and then it can consume its Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Issuer is represented within the section `Entity Configuration Credential Issuer`_.
 
 
-**Steps 5-6 (PAR Request):** The Wallet Instance creates a PKCE code verifier that sends in a *pushed authorization request*, using the request parameter (see :rfc:`9126` Section 3) to the PID/(Q)EAA Issuer authorization endpoint. The Wallet Instance signs the request using its private key. A OAuth2 client authentication method must be involved, since in this flow the pushed authorization endpoint is a protected endpoint. The client authentication is based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the **client_assertion** parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify the types of the credentials when requesting authorization for the PID/(Q)EAA issuance.
+**Steps 5-6 (PAR Request):** The Wallet Instance creates a PKCE code verifier that sends in a *pushed authorization request*, using the request parameter (see :rfc:`9126` Section 3) to the PID/(Q)EAA Issuer PAR endpoint. The Wallet Instance signs the request using its private key. A OAuth2 client authentication method MUST be involved, since in this flow the pushed authorization endpoint is a protected endpoint. The client authentication is based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the **client_assertion** parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify the types of the credentials when requesting authorization for the PID/(Q)EAA issuance.
 
 Below a non-normative example of the PAR.
 
@@ -177,7 +177,7 @@ The JWS payload of the request object is represented below:
 .. note::
 
    **User Authentication and Consent:** The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and asks the User consent for the PID issuance. 
-   The (Q)EAA Issuer performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Issuer MUST use [`OpenID4VP`_] to dynamically request presentation of the PID. From a protocol perspective, the Credential Issuer then acts as a verifier and sends a presentation request to the Wallet Instance. The Wallet Instance MUST have these Credentials obtained prior to starting a transaction with the (Q)EAA Issuer.
+   The (Q)EAA Issuer performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Issuer MUST use [`OpenID4VP`_] to dynamically request presentation of the PID. From a protocol perspective, the Credential Issuer then acts as a verifier and sends a presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to starting a transaction with the (Q)EAA Issuer.
 
 **Steps 10-11 (Authorization Response):** The PID/(Q)EAA Issuer sends an authorization code to the Wallet Instance. 
 
@@ -190,6 +190,7 @@ The JWS payload of the request object is represented below:
     HTTP/1.1 302 Found
     Location: eudiw://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Fpid-provider.example.org
 
+**Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance creates a key for DPoP and a fresh DPoP proof for the token request to the PID/(Q)EAA Issuer. DPoP provides a way to bind the access token to a certain sender (Wallet Instance) `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Thus, it mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint of PID/(Q)EAA Issuer as the attacker needs to present a valid DPoP proof.
 
 **Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Issuer token endpoint using the authorization *code*, *code_verifier*, *DPoP proof* and *private_key_jwt*.
 
@@ -232,7 +233,7 @@ The JWS payload of the request object is represented below:
     }
 
 
-**Steps 16-18 (DPoP Proof):** The Wallet Instance creates a new key pair to which the new credential shall be bound. Then, it creates a proof of possession with the new key and the *c_nonce* obtained in **Step 15** and it creates a DPoP proof for the request to the PID/(Q)EAA credential issuance endpoint.  
+**Steps 16-18 (DPoP Proof for Credential Endpoint):** The Wallet Instance creates a new key pair to which the new credential shall be bound. Then, it creates a proof of possession with the new key and the *c_nonce* obtained in **Step 15** and it creates a DPoP proof for the request to the PID/(Q)EAA credential issuance endpoint.  
 
 **Step 19 (Credential Request):** The Wallet Instance sends a PID/(Q)EAA issuance request to the PID/(Q)EAA credential endpoint. It contains the *access token*, the *DPoP proof*, the *credential type*, the *proof* (proof of possession of the key) and the *format*.
 
@@ -387,9 +388,6 @@ The JWT payload is given by the following parameters:
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
       - UNIX Timestamp with the time of JWT issuance, coded as NumericDate.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **jti** [FIXME]
-      - Unique identifier of the JWT. The value MUST be assigned in a UUID v4 string format according to [:rfc:`4122`].
       - :rfc:`9126` and :rfc:`7519`.
     * - **response_type**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
@@ -640,7 +638,7 @@ A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a resu
     - It MUST be an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet Instance MUST verify that this value matches the PID/(Q)EAA Issuer where it has requested the credential.
     - [:rfc:`9068`], `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
   * - **sub** 
-    - It identifies the subject of the JWT. It MUST be of type *pairwise*. 
+    - It identifies the principal that is the subject of the JWT. It MUST be set to the value of the ``sub`` field in the PID/(Q)EAA SD-JWT-VC. 
     - [:rfc:`9068`], [:rfc:`7519`] and [`OpenID.Core#SubjectIDTypes <https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes>`_].
   * - **client_id** 
     - MUST be set to the *jwk* value in the *cnf* parameter inside the Wallet Instance Attestation. 
@@ -820,9 +818,10 @@ Below a non-normative example of an Entity Configuration containing an `openid_c
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
             "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
             "credential_endpoint": "https://pid-provider.example.org/credential",
-            "credentials_supported": [{
-              "eu.eudiw.pid.it": {
+            "credentials_supported": [
+              {
                 "format": "vc+sd-jwt",
+                "id": "eu.eudiw.pid.it",
                 "cryptographic_binding_methods_supported": ["jwk"],
                 "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
                 "display": [{
@@ -924,7 +923,7 @@ Below a non-normative example of an Entity Configuration containing an `openid_c
                   }
                 }
               }
-            }]
+            ]
           },
 
           "federation_entity": {

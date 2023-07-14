@@ -19,7 +19,7 @@ The User attributes carried in the Italian PID are:
 
 The italian PID is extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.
 
-The (Q)EAAs are issued by the (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format. They MAY contain any (qualified) attributes, entitlement or any elettronic attestation. 
+The (Q)EAAs are issued by the (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format. They MAY contain any (qualified) attributes, entitlement or any elettronic attestations. 
 
 The italian (Q)EAAs are extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where the data are taken. 
 
