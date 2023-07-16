@@ -1008,6 +1008,51 @@ and the generic entity
 </table>
 <section id="payload-wallet-provider">
 <h3>Payload <cite>wallet_provider</cite><a class="headerlink" href="#payload-wallet-provider" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Key</strong></p></td>
+<td><p><strong>Value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>jwks</p></td>
+<td><p>Contains an array of all the Wallet
+Provider's public keys.</p></td>
+</tr>
+<tr class="row-odd"><td><p>token_endpoint</p></td>
+<td><p>Endpoint for obtaining the Wallet
+Instance Attestation.</p></td>
+</tr>
+<tr class="row-even"><td><p>attested_security_context_values_supported</p></td>
+<td><p>List of supported values for the
+certified security context. These
+values specify the security level
+of the app—low, medium, or high.
+An attested security context is
+defined by the proof that the
+Wallet Instance can send to the
+Wallet Provider. Note: this
+parameter is defined in this
+specification</p></td>
+</tr>
+<tr class="row-odd"><td><p>grant_types_supported</p></td>
+<td><p>The types of grants supported by
+the endpoint token. For the Wallet
+Provider, the token corresponds to
+the Wallet Instance attestation.
+Thus, this attribute contains an
+array with only one element.</p></td>
+</tr>
+<tr class="row-even"><td><p>token_endpoint_auth_methods_suppor
+ted</p></td>
+<td><p>Supported authentication method for
+the endpoint token.</p></td>
+</tr>
+<tr class="row-odd"><td><p>token_endpoint_auth_signing_alg_va
+lues_supported</p></td>
+<td><p>List of supported signature
+algorithms.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <cite>asc_values_supported</cite> parameter is experimental and under review.</p>

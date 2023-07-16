@@ -140,8 +140,8 @@ Payload `wallet_provider`
 |                                             | defined by the proof that the      |
 |                                             | Wallet Instance can send to the    |
 |                                             | Wallet Provider. Note: this        |
-|                                             | parameter is defined in this           |
-|                                             | specification                         |
+|                                             | parameter is defined in this       |
+|                                             | specification                      |
 +---------------------------------------------+------------------------------------+
 | grant_types_supported                       | The types of grants supported by   |
 |                                             | the endpoint token. For the Wallet |
