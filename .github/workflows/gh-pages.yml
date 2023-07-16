@@ -11,12 +11,16 @@ on:
       - LICENSE.md
       - .gitignore
   pull_request:
-    branches: [ "*" ]
+    branches: ["*"]
     paths-ignore:
       - README.md
       - CONTRIBUTING.md
       - LICENSE.md
       - .gitignore
+  release:
+    types:
+      - created
+      - edited
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -44,17 +48,17 @@ jobs:
 
       - name: Build branch
         run: |-
-          sphinx-build -b html docs/it/  html/${GITHUB_HEAD_REF}/it
-          sphinx-build -b html docs/en/  html/${GITHUB_HEAD_REF}/en
+          if [[ "$GITHUB_REF" = /refs/tags/* ]]; then
+            replace=/refs/tags/
 
-      - name: Install deps
-        run: |-
-            python -m pip install -r requirements-dev.txt
-
-      - name: Build branch
-        run: |-
-          sphinx-build -b html docs/it/ html/${GITHUB_HEAD_REF}/it
-          sphinx-build -b html docs/en/ html/${GITHUB_HEAD_REF}/en
+            TAG=$(echo "$GITHUB_REF" | sed "s/\/refs\/tags\///")
+            SUBPATH="v$TAG/" # note the trailing slash
+          else
+            SUBPATH="${GITHUB_HEAD_REF}/" # note the trailing slash
+          fi
+          echo "Publish on $SUBPATH sub path"
+          sphinx-build -b html docs/it/  html/$SUBPATHit
+          sphinx-build -b html docs/en/  html/$SUBPATHen
 
       # Runs a single command using the runners shell
       - name: Create GH page index

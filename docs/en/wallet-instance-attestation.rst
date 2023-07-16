@@ -78,8 +78,6 @@ Detailed Design
 
 The detailed design is explained below.
 
-
-
 Format of the Wallet Instance Attestation Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To obtain a Wallet Instance Attestation from the Wallet
@@ -189,15 +187,10 @@ Header
 | kid                               | Key id used by the Wallet         |
 |                                   | Provider to sign the attestation. |
 +-----------------------------------+-----------------------------------+
-| typ                               | Media type, in this case we use   |
-|                                   | the value va+jwt (Verifiable      |
-|                                   | Assertion JWT).                   |
-|                                   | This parameter is currently       |
-|                                   | non-standard as it is not yet     |
-|                                   | registered as `IANA Media         |
-|                                   | Types <https://www.iana.org/assig |
-|                                   | nments/media-types/media-types.xh |
-|                                   | tml>`__.                          |
+| typ                               | Media type, set to                |
+|                                   | `wallet-attestation+jwt`,         |
+|                                   | according to                      |
+|                                   | [`OPENID4VC-HAIP`_]               |
 +-----------------------------------+-----------------------------------+
 | x5c                               | Array containing the X.509        |
 |                                   | certificate (and the entire chain |
@@ -296,7 +289,7 @@ Below is an example of Wallet Instance Attestation:
       "eyJhbGciOiJFUz...jJLA",
       "eyJhbGciOiJFUz...H9gw",
     ],
-    "typ": "va+jwt",
+    "typ": "wallet-attestation+jwt",
     "x5c": ["MIIBjDCC ... XFehgKQA=="]
   }
   .
