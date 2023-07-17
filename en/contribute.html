@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | contribute.rst</title>
+  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | How to contribute</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -597,17 +597,19 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-issuance.html">PID Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
@@ -662,7 +664,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">contribute.rst</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
 
@@ -679,7 +681,7 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-issuance.html#id38">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
     </div>
@@ -692,7 +694,7 @@
 <div class="navbar-toggler--wrap navbar-toggler--wrap--bottom p-3">
   <div class="navbar-toggler navbar-toggler--open p-0 border-0 ml-auto">
     <div class="navbar-toggler-bottom__chapter align-middle text-truncate">
-      <span class="it-list mr-2"></span>contribute.rst
+      <span class="it-list mr-2"></span>How to contribute
     </div>
   </div>
 </div>
@@ -771,17 +773,19 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-issuance.html">PID Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
@@ -836,7 +840,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">contribute.rst</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
 
@@ -849,7 +853,7 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-issuance.html#id38">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
       </div>
@@ -872,9 +876,16 @@
             </div>
           
           
-  <section id="contribute-rst">
-<span id="id1"></span><h1>contribute.rst<a class="headerlink" href="#contribute-rst" title="Permalink to this heading">¶</a></h1>
-<p>Instruction to join in the development here.</p>
+  <section id="how-to-contribute">
+<span id="contribute-rst"></span><h1>How to contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this heading">¶</a></h1>
+<p>The IT Wallet project, including this document, follows an <strong>open development process</strong>. This approach ensures the development process is accessible to all, inviting all interested parties to participate.</p>
+<p>Consequently, stakeholders, national and international community members are not only encouraged but also heartily welcomed to contribute to the refinement of these technical rules.</p>
+<p>Below are several methods available for contributing to this project:</p>
+<ul class="simple">
+<li><p><strong>GitHub issues</strong>. By opening an issue, you can seek clarification, propose enhancements, or report editorial typos. If you are working on an issue, we encourage you to open a draft pull request and link it.</p></li>
+<li><p><strong>Pull requests</strong>. Pull requests represent active contributions to the project, typically, but not always following issue-based discussions. Once a pull request is initiated, it facilitates discussion and review of the proposed changes before they are merged into the main branch (<cite>versione-corrente</cite>).</p></li>
+<li><p><strong>Developers Italia Slack channel</strong>. Slack is a messaging application designed for businesses, connecting people to the information they need. <em>Developers Italia</em> is an open community based on contributions and participation from public administrations, developers, technicians, students, and citizens. <em>Developers Italia</em> has initiated a Slack channel that [everyone can join for free](<a class="reference external" href="https://slack.developers.italia.it/">https://slack.developers.italia.it/</a>), where you can learn about all their activities and partake in discussions.</p></li>
+</ul>
 </section>
 
 

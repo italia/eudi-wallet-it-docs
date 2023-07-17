@@ -14,7 +14,7 @@
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
   <link rel="top" title="Italian eIDAS Wallet Technical Specifications version: latest documentation" href="index.html">
-  <link rel="next" title="PID Data Model" href="pid-data-model.html">
+  <link rel="next" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html">
   <link rel="prev" title="Defined Terms" href="defined-terms.html">
 
   
@@ -597,17 +597,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-issuance.html">PID Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
@@ -662,7 +664,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
 
@@ -679,7 +681,7 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-issuance.html#id38">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
     </div>
@@ -771,17 +773,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-issuance.html">PID Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
@@ -836,7 +840,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
 
@@ -849,7 +853,7 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-issuance.html#id38">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
       </div>
@@ -1560,7 +1564,7 @@ offline trust evaluation mechanisms.</p>
 
           
             <div class="footer-buttons footer-buttons--next" role="navigation" aria-label="footer navigation">
-                  <a href="pid-data-model.html" class="" title="PID Data Model" accesskey="n" rel="next">PID Data Model</a>
+                  <a href="pid-eaa-data-model.html" class="" title="PID/(Q)EAA Data Model" accesskey="n" rel="next">PID/(Q)EAA Data Model</a>
               </div>
             
           </div>
