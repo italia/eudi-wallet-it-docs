@@ -587,48 +587,104 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-data-model.html#sd-jwt-parameters">SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-data-model.html#verification-field">Verification field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-data-model.html#claims-field">Claims field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-data-model.html#non-normative-examples">Non-normative examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-issuance.html">PID Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#credential-response">Credential Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-view-of-the-components">Static view of the components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-view-of-the-components">Dynamic view of the components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-provider-entity-configuration">Format of the Wallet Provider Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#endpoints">Endpoints</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#same-device-flow">Same Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-cross-device-flow">Remote Cross Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#dpop-http-header">DPoP HTTP Header</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
@@ -679,7 +735,7 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-issuance.html#id38">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
     </div>
@@ -763,48 +819,104 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-data-model.html#sd-jwt-parameters">SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-data-model.html#verification-field">Verification field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-data-model.html#claims-field">Claims field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-data-model.html#non-normative-examples">Non-normative examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-issuance.html">PID Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#credential-response">Credential Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-view-of-the-components">Static view of the components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-view-of-the-components">Dynamic view of the components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-provider-entity-configuration">Format of the Wallet Provider Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#endpoints">Endpoints</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#same-device-flow">Same Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-cross-device-flow">Remote Cross Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#dpop-http-header">DPoP HTTP Header</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
@@ -851,7 +963,7 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-issuance.html#id38">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
       </div>
@@ -884,47 +996,47 @@
     RFC
 
       <ul>
-        <li><a href="pid-eaa-issuance.html#index-34">RFC 4122</a>, <a href="relying-party-solution.html#index-5">[1]</a>
+        <li><a href="pid-issuance.html#index-26">RFC 4122</a>, <a href="relying-party-solution.html#index-5">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-23">RFC 6749</a>, <a href="pid-eaa-issuance.html#index-27">[1]</a>, <a href="pid-eaa-issuance.html#index-28">[2]</a>, <a href="pid-eaa-issuance.html#index-40">[3]</a>, <a href="pid-eaa-issuance.html#index-41">[4]</a>, <a href="pid-eaa-issuance.html#index-42">[5]</a>, <a href="pid-eaa-issuance.html#index-5">[6]</a>, <a href="pid-eaa-issuance.html#index-59">[7]</a>, <a href="pid-eaa-issuance.html#index-6">[8]</a>
+        <li><a href="pid-issuance.html#index-15">RFC 6749</a>, <a href="pid-issuance.html#index-19">[1]</a>, <a href="pid-issuance.html#index-20">[2]</a>, <a href="pid-issuance.html#index-32">[3]</a>, <a href="pid-issuance.html#index-33">[4]</a>, <a href="pid-issuance.html#index-34">[5]</a>, <a href="pid-issuance.html#index-5">[6]</a>, <a href="pid-issuance.html#index-50">[7]</a>, <a href="pid-issuance.html#index-6">[8]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-25">RFC 6749#section-4.1.2</a>, <a href="pid-eaa-issuance.html#index-26">[1]</a>
+        <li><a href="pid-issuance.html#index-17">RFC 6749#section-4.1.2</a>, <a href="pid-issuance.html#index-18">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-29">RFC 7515</a>, <a href="pid-eaa-issuance.html#index-31">[1]</a>, <a href="pid-eaa-issuance.html#index-33">[2]</a>, <a href="pid-eaa-issuance.html#index-58">[3]</a>, <a href="pid-eaa-issuance.html#index-60">[4]</a>, <a href="pid-eaa-issuance.html#index-62">[5]</a>, <a href="pid-eaa-issuance.html#index-64">[6]</a>, <a href="relying-party-solution.html#index-0">[7]</a>, <a href="relying-party-solution.html#index-2">[8]</a>, <a href="relying-party-solution.html#index-4">[9]</a>
+        <li><a href="pid-issuance.html#index-21">RFC 7515</a>, <a href="pid-issuance.html#index-23">[1]</a>, <a href="pid-issuance.html#index-25">[2]</a>, <a href="pid-issuance.html#index-51">[3]</a>, <a href="pid-issuance.html#index-53">[4]</a>, <a href="pid-issuance.html#index-55">[5]</a>, <a href="relying-party-solution.html#index-0">[6]</a>, <a href="relying-party-solution.html#index-2">[7]</a>, <a href="relying-party-solution.html#index-4">[8]</a>
 </li>
         <li><a href="algorithms.html#index-14">RFC 7516</a>, <a href="algorithms.html#index-3">[1]</a>, <a href="algorithms.html#index-4">[2]</a>, <a href="algorithms.html#index-5">[3]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-9">RFC 7516#section-4.1.1</a>, <a href="relying-party-solution.html#index-11">[1]</a>
+        <li><a href="pid-issuance.html#index-9">RFC 7516#section-4.1.1</a>, <a href="relying-party-solution.html#index-11">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-32">RFC 7517</a>, <a href="pid-eaa-issuance.html#index-61">[1]</a>, <a href="pid-eaa-issuance.html#index-63">[2]</a>, <a href="pid-eaa-issuance.html#index-65">[3]</a>, <a href="relying-party-solution.html#index-13">[4]</a>, <a href="relying-party-solution.html#index-3">[5]</a>, <a href="trust.html#index-2">[6]</a>, <a href="trust.html#index-3">[7]</a>
+        <li><a href="pid-issuance.html#index-24">RFC 7517</a>, <a href="pid-issuance.html#index-52">[1]</a>, <a href="pid-issuance.html#index-54">[2]</a>, <a href="pid-issuance.html#index-56">[3]</a>, <a href="relying-party-solution.html#index-13">[4]</a>, <a href="relying-party-solution.html#index-3">[5]</a>, <a href="trust.html#index-2">[6]</a>, <a href="trust.html#index-3">[7]</a>
 </li>
         <li><a href="algorithms.html#index-0">RFC 7518</a>, <a href="algorithms.html#index-1">[1]</a>, <a href="algorithms.html#index-10">[2]</a>, <a href="algorithms.html#index-11">[3]</a>, <a href="algorithms.html#index-12">[4]</a>, <a href="algorithms.html#index-13">[5]</a>, <a href="algorithms.html#index-15">[6]</a>, <a href="algorithms.html#index-16">[7]</a>, <a href="algorithms.html#index-17">[8]</a>, <a href="algorithms.html#index-2">[9]</a>, <a href="algorithms.html#index-6">[10]</a>, <a href="algorithms.html#index-7">[11]</a>, <a href="algorithms.html#index-8">[12]</a>, <a href="algorithms.html#index-9">[13]</a>
 </li>
-        <li><a href="pid-eaa-data-model.html#index-0">RFC 7519</a>, <a href="pid-eaa-data-model.html#index-1">[1]</a>, <a href="pid-eaa-issuance.html#index-12">[2]</a>, <a href="pid-eaa-issuance.html#index-14">[3]</a>, <a href="pid-eaa-issuance.html#index-16">[4]</a>, <a href="pid-eaa-issuance.html#index-18">[5]</a>, <a href="pid-eaa-issuance.html#index-35">[6]</a>, <a href="pid-eaa-issuance.html#index-38">[7]</a>, <a href="pid-eaa-issuance.html#index-39">[8]</a>, <a href="pid-eaa-issuance.html#index-43">[9]</a>, <a href="pid-eaa-issuance.html#index-46">[10]</a>, <a href="pid-eaa-issuance.html#index-49">[11]</a>, <a href="pid-eaa-issuance.html#index-51">[12]</a>, <a href="pid-eaa-issuance.html#index-52">[13]</a>, <a href="pid-eaa-issuance.html#index-54">[14]</a>, <a href="pid-eaa-issuance.html#index-56">[15]</a>, <a href="pid-eaa-issuance.html#index-66">[16]</a>, <a href="pid-eaa-issuance.html#index-67">[17]</a>, <a href="relying-party-solution.html#index-10">[18]</a>, <a href="relying-party-solution.html#index-12">[19]</a>, <a href="relying-party-solution.html#index-6">[20]</a>, <a href="relying-party-solution.html#index-9">[21]</a>, <a href="trust.html#index-0">[22]</a>, <a href="trust.html#index-1">[23]</a>
+        <li><a href="pid-data-model.html#index-0">RFC 7519</a>, <a href="pid-data-model.html#index-1">[1]</a>, <a href="pid-issuance.html#index-27">[2]</a>, <a href="pid-issuance.html#index-30">[3]</a>, <a href="pid-issuance.html#index-31">[4]</a>, <a href="pid-issuance.html#index-35">[5]</a>, <a href="pid-issuance.html#index-38">[6]</a>, <a href="pid-issuance.html#index-41">[7]</a>, <a href="pid-issuance.html#index-43">[8]</a>, <a href="pid-issuance.html#index-44">[9]</a>, <a href="pid-issuance.html#index-46">[10]</a>, <a href="pid-issuance.html#index-48">[11]</a>, <a href="pid-issuance.html#index-57">[12]</a>, <a href="pid-issuance.html#index-58">[13]</a>, <a href="relying-party-solution.html#index-10">[14]</a>, <a href="relying-party-solution.html#index-12">[15]</a>, <a href="relying-party-solution.html#index-6">[16]</a>, <a href="relying-party-solution.html#index-9">[17]</a>, <a href="trust.html#index-0">[18]</a>, <a href="trust.html#index-1">[19]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-3">RFC 7521</a>
+        <li><a href="pid-issuance.html#index-3">RFC 7521</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-1">RFC 7636</a>
+        <li><a href="pid-issuance.html#index-1">RFC 7636</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-7">RFC 7636#section-4.2</a>
+        <li><a href="pid-issuance.html#index-7">RFC 7636#section-4.2</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-8">RFC 7636#section-4.3</a>
+        <li><a href="pid-issuance.html#index-8">RFC 7636#section-4.3</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-57">RFC 7638</a>
+        <li><a href="pid-issuance.html#index-49">RFC 7638</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-10">RFC 7638#section_3</a>
+        <li><a href="pid-issuance.html#index-10">RFC 7638#section_3</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-20">RFC 8259</a>
+        <li><a href="pid-issuance.html#index-12">RFC 8259</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-30">RFC 8725</a>, <a href="relying-party-solution.html#index-1">[1]</a>
+        <li><a href="pid-issuance.html#index-22">RFC 8725</a>, <a href="relying-party-solution.html#index-1">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-44">RFC 9068</a>, <a href="pid-eaa-issuance.html#index-45">[1]</a>, <a href="pid-eaa-issuance.html#index-47">[2]</a>, <a href="pid-eaa-issuance.html#index-48">[3]</a>, <a href="pid-eaa-issuance.html#index-50">[4]</a>, <a href="pid-eaa-issuance.html#index-53">[5]</a>, <a href="pid-eaa-issuance.html#index-55">[6]</a>
+        <li><a href="pid-issuance.html#index-36">RFC 9068</a>, <a href="pid-issuance.html#index-37">[1]</a>, <a href="pid-issuance.html#index-39">[2]</a>, <a href="pid-issuance.html#index-40">[3]</a>, <a href="pid-issuance.html#index-42">[4]</a>, <a href="pid-issuance.html#index-45">[5]</a>, <a href="pid-issuance.html#index-47">[6]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-36">RFC 9110</a>, <a href="pid-eaa-issuance.html#index-37">[1]</a>, <a href="relying-party-solution.html#index-7">[2]</a>, <a href="relying-party-solution.html#index-8">[3]</a>
+        <li><a href="pid-issuance.html#index-28">RFC 9110</a>, <a href="pid-issuance.html#index-29">[1]</a>, <a href="relying-party-solution.html#index-7">[2]</a>, <a href="relying-party-solution.html#index-8">[3]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-0">RFC 9126</a>, <a href="pid-eaa-issuance.html#index-11">[1]</a>, <a href="pid-eaa-issuance.html#index-13">[2]</a>, <a href="pid-eaa-issuance.html#index-15">[3]</a>, <a href="pid-eaa-issuance.html#index-17">[4]</a>, <a href="pid-eaa-issuance.html#index-2">[5]</a>, <a href="pid-eaa-issuance.html#index-21">[6]</a>, <a href="pid-eaa-issuance.html#index-22">[7]</a>, <a href="pid-eaa-issuance.html#index-24">[8]</a>
+        <li><a href="pid-issuance.html#index-0">RFC 9126</a>, <a href="pid-issuance.html#index-13">[1]</a>, <a href="pid-issuance.html#index-14">[2]</a>, <a href="pid-issuance.html#index-16">[3]</a>, <a href="pid-issuance.html#index-2">[4]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-19">RFC 9396</a>, <a href="pid-eaa-issuance.html#index-4">[1]</a>
+        <li><a href="pid-issuance.html#index-11">RFC 9396</a>, <a href="pid-issuance.html#index-4">[1]</a>
 </li>
       </ul></li>
   </ul></td>

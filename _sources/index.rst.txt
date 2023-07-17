@@ -60,13 +60,13 @@ Index of content
 ----------------
 
 .. toctree:: 
-   :maxdepth: 2
+   :maxdepth: 3
    
    ssi-introduction.rst
    defined-terms.rst
    trust.rst
-   pid-eaa-data-model.rst
-   pid-eaa-issuance.rst
+   pid-data-model.rst
+   pid-issuance.rst
    wallet-solution.rst
    wallet-instance-attestation.rst
    relying-party-solution.rst
