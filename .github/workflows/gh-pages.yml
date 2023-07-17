@@ -58,8 +58,8 @@ jobs:
             echo "Building for PR: $SUBPATH"
           fi
           echo "Publishing $SUBPATH"
-          sphinx-build -b html docs/it/  html/$SUBPATHit
-          sphinx-build -b html docs/en/  html/$SUBPATHen
+          sphinx-build -b html docs/it/  html/$SUBPATH/it
+          sphinx-build -b html docs/en/  html/$SUBPATH/en
 
       # Runs a single command using the runners shell
       - name: Create GH page index
