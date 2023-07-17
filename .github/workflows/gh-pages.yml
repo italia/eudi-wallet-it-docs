@@ -49,14 +49,14 @@ jobs:
       - name: Build branch
         run: |-
           if [[ "$GITHUB_REF" = /refs/tags/* ]]; then
-            replace=/refs/tags/
-
             TAG=$(echo "$GITHUB_REF" | sed "s/\/refs\/tags\///")
             SUBPATH="v$TAG/" # note the trailing slash
+            echo "Building for TAG: $SUBPATH"
           else
             SUBPATH="${GITHUB_HEAD_REF}/" # note the trailing slash
+            echo "Building for PR: $SUBPATH"
           fi
-          echo "Publish on $SUBPATH sub path"
+          echo "Publishing $SUBPATH"
           sphinx-build -b html docs/it/  html/$SUBPATHit
           sphinx-build -b html docs/en/  html/$SUBPATHen
 
@@ -67,11 +67,11 @@ jobs:
           echo '
           <html>
           <head>
-            <title>Italian eIDAS Wallet Technical Specifications</title>
+            <title>EUDI Wallet docs</title>
             <meta name="viewport" content="initial-scale=1.0">
           </head>
           <body>
-          <h1>Italian eIDAS Wallet Technical Specifications</h1>
+          <h1>EUDI Wallet docs</h1>
 
           <ul>
             <li><a href="it/">Italian version</a></li>
