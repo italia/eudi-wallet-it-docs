@@ -21,9 +21,9 @@ The italian PID is extended according to the `OpenID Identity Assurance Profile 
 
 The (Q)EAAs are issued by the (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format. They MAY contain any (qualified) attributes, entitlement or any elettronic attestations. 
 
-The italian (Q)EAAs are extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where the data are taken. 
+The (Q)EAAs are extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where where the data comes from. 
 
-The PID/(Q)EAA data format and the mechanism through which it is issued into the Wallet Instance and presented to a RP will be detailed in the next sections. 
+The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to an RP is described in the following sections. 
 
 SD-JWT
 ======
@@ -87,7 +87,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
       - **Description**
       - **Reference**
     * - **iss**
-      - The PID/(Q)EAA Issuer identifier as URL string (the issuer of this JWT)
+      - URL string representing the PID/(Q)EAA Issuer unique identifier.
       - `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
     * - **sub**
       - Thumbprint of the JWK in the ``cnf`` parameter
@@ -121,7 +121,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
 PID/(Q)EAA Verification field 
 -----------------------------
 
-The ``verification`` claim contains the information, as sub claims, regarding the identity trust framework used by the PID/(Q)EAA Issuer to provide a verified User claims.  Some of these additional claims MAY be included in the Disclosures and MAY be selectively disclosed and they are given in the following tables that also specify whether a claim is selectively disclosable (SD) or not (NSD).
+The ``verification`` claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User claims.  Some of these additional claims MAY be selectively disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable (SD) or not (NSD).
 
 The ``verification`` claim is a JSON structure with all the following mandatory sub-claims.
 
@@ -139,7 +139,7 @@ The ``verification`` claim is a JSON structure with all the following mandatory 
       - [NSD]. MUST be set according to the LoA required. For PID credential it MUST be set to ``high``.
       - `[OID.IDA. Section 5.1] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1>`_
     * - **evidence**
-      - [SD]. JSON Array. Each element is the electronic evidence of the user identification during the PID issuing phase or, in case of (Q)EAA, it represents the evidence of the Authentic Sources that ensure the authenticity of the data conveyed by the (Q)EAA. It MUST contain at least the following claims:
+      - [SD]. JSON Array. Each element is the electronic evidence of the User identification during the PID issuance or, in the case of (Q)EAA, it represents the evidence of the Authentic Source that ensures the authenticity of the data conveyed by the (Q)EAA. It MUST contain at least the following claims:
 
             - **type**: MUST be set to ``electronic_record``
             - **record**: JSON object (see the table below)
@@ -172,7 +172,7 @@ The ``record`` MUST have at least the following sub parameters:
 PID Claims field 
 ----------------
 
-The ``claims`` parameter contains the user attributes claims with the following mandatory fields:
+The ``claims`` parameter contains the User attributes with the following mandatory fields:
 
 
 .. list-table:: 
@@ -209,7 +209,7 @@ The ``claims`` parameter contains the user attributes claims with the following 
 PID Non-normative examples
 --------------------------
 
-In the following, we provide a non-normative example of PID VC in JSON.
+In the following, the non-normative example of a PID digital credential.
 
 .. code-block:: JSON
 
@@ -416,7 +416,7 @@ In the following, we provide a non-normative example of (Q)EAA VC in JSON.
     }
   }
 
-The corresponding SD-JWT verson for PID is given by
+The corresponding SD-JWT for the preivous data is represented as follow, as decoded JSON for both header and payload.
 
 .. code-block:: JSON
 
