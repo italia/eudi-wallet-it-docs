@@ -53,7 +53,7 @@ jobs:
             SUBPATH="v$TAG/" # note the trailing slash
             echo "Building for TAG: $SUBPATH"
           else
-            SUBPATH="${GITHUB_HEAD_REF}/" # note the trailing slash
+            SUBPATH=$(echo "$GITHUB_HEAD_REF/") # "${GITHUB_HEAD_REF}/" # note the trailing slash
             echo "Building for PR: $SUBPATH"
           fi
           echo "Publishing $SUBPATH"
