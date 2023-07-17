@@ -124,12 +124,12 @@ Payload
 |                                   | metadata. In this case we         |
 |                                   | will have the Wallet              |
 |                                   | Provider metadata contained within|
-|                                   | the ``wallet_provider``           |
+|                                   | the ``eudi_wallet_provider``      |
 |                                   | attribute and the more generic    |
 |                                   | entity ``federation_entity``.     |
 +-----------------------------------+-----------------------------------+
 
-Payload of `wallet_provider`
+Payload `eudi_wallet_provider`
 ''''''''''''''''''''''''''''''
 +------------------------------------+------------------------------------+
 | **key**                            | **value**                          |
@@ -217,7 +217,7 @@ Below a non-normative example of the Entity Configuration.
     ]
   },
   "metadata": {
-    "wallet_provider": {
+    "eudi_wallet_provider": {
       "jwks": {
         "keys": [
           {
@@ -369,10 +369,15 @@ Header
 | kid                               | Key id used by the Wallet         |
 |                                   | Provider to sign the attestation. |
 +-----------------------------------+-----------------------------------+
-| typ                               | Media type, set to                |
-|                                   | `wallet-attestation+jwt`,         |
-|                                   | according to                      |
-|                                   | [`OPENID4VC-HAIP`_]               |
+| typ                               | Media type, in this case we use   |
+|                                   | the value va+jwt (Verifiable      |
+|                                   | Assertion JWT).                   |
+|                                   | This parameter is currently       |
+|                                   | non-standard as it is not yet     |
+|                                   | registered as `IANA Media         |
+|                                   | Types <https://www.iana.org/assig |
+|                                   | nments/media-types/media-types.xh |
+|                                   | tml>`__.                          |
 +-----------------------------------+-----------------------------------+
 | x5c                               | Array containing the X.509        |
 |                                   | certificate (and the entire chain |
@@ -473,7 +478,7 @@ Below is an example of Wallet Instance Attestation:
       "eyJhbGciOiJFUz...jJLA",
       "eyJhbGciOiJFUz...H9gw",
     ],
-    "typ": "wallet-attestation+jwt",
+    "typ": "va+jwt",
     "x5c": ["MIIBjDCC ... XFehgKQA=="]
   }
   .
