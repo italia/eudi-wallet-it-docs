@@ -12,7 +12,6 @@ on:
       - .gitignore
   pull_request:
     branches-ignore: ["gh-pages"]
-    branches: ["*"]
     paths-ignore:
       - README.md
       - CONTRIBUTING.md
