@@ -19,7 +19,7 @@ The User attributes carried in the Italian PID are:
 
 The italian PID is extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.
 
-The (Q)EAAs are issued by the (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format. They MAY contain any (qualified) attributes, entitlement or any elettronic attestations. 
+The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format. 
 
 The (Q)EAAs are extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where where the data comes from. 
 
@@ -28,7 +28,7 @@ The PID/(Q)EAA data format and the mechanism through which a digital credential 
 SD-JWT
 ======
 
-The PID/(Q)EAA is given as a Verifiable Credential with JSON payload based on the `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`__.
+The PID/(Q)EAA is issued in the form of a digital credential. The digital credential format is `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`__.
 
 An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in `[SD-JWT]. Section 5.1.2. <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
@@ -156,7 +156,7 @@ The ``record`` MUST have at least the following sub parameters:
     - **Description**
     - **Reference**
   * - **type** 
-    - Identification of the trust framework used for obtaining the verified claims. For example, in case of PID, ``eidas.it.cie`` means that the CIE id identification scheme is used by the User. 
+    - It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, ``eidas.it.cie`` means that the CIE id identification scheme is used. 
     - `[OID.IDA. Section 5.1.1.2] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2>`_
   * - **source**
     - JSON Object cointaining the follwoing mandatory claims:
@@ -167,7 +167,7 @@ The ``record`` MUST have at least the following sub parameters:
     - `[OID.IDA. Section 5.1.1.2] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2>`_
 
 .. warning::
-  Note that the sub-claims of the **evidence** parameter are not selectively disclosable separately, thus, for example, the User cannot give only the *record type* without disclosure the *record source* (organization name, identifier and country). 
+  Note that the sub-claims of the **evidence** parameter are not selectively disclosable separately, thus, for example, the User cannot give only the *record type* without the disclosure of the *record source* value (organization name, identifier and country). 
 
 PID Claims field 
 ----------------
@@ -380,7 +380,7 @@ The combined format for the PID issuance is given by
 (Q)EAA Non-normative examples
 -----------------------------
 
-In the following, we provide a non-normative example of (Q)EAA VC in JSON.
+In the following, we provide a non-normative example of (Q)EAA in JSON.
 
 .. code-block:: JSON
 
