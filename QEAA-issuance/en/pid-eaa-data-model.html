@@ -891,12 +891,12 @@
 </ul>
 </div></blockquote>
 <p>The italian PID is extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.</p>
-<p>The (Q)EAAs are issued by the (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format. They MAY contain any (qualified) attributes, entitlement or any elettronic attestations.</p>
+<p>The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format.</p>
 <p>The (Q)EAAs are extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that allows the recipients to know the Authentic Sources where where the data comes from.</p>
 <p>The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to an RP is described in the following sections.</p>
 <section id="id2">
 <h2>SD-JWT<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
-<p>The PID/(Q)EAA is given as a Verifiable Credential with JSON payload based on the <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">Selective Disclosure JWT format</a> as specified in <a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html">[draft-terbu-sd-jwt-vc-latest]</a>.</p>
+<p>The PID/(Q)EAA is issued in the form of a digital credential. The digital credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">Selective Disclosure JWT format</a> as specified in <a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html">[draft-terbu-sd-jwt-vc-latest]</a>.</p>
 <p>An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the <strong>_sd_alg</strong> claim described in <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">[SD-JWT]. Section 5.1.2.</a> and other claims specified in this section, some of them may be selectively disclosable claims.</p>
 <p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The <strong>_sd_alg</strong> claim MUST be set to one of the specified algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a>.</p>
 <p>Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, <strong>_sd</strong>.</p>
@@ -1060,7 +1060,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>type</strong></p></td>
-<td><p>Identification of the trust framework used for obtaining the verified claims. For example, in case of PID, <code class="docutils literal notranslate"><span class="pre">eidas.it.cie</span></code> means that the CIE id identification scheme is used by the User.</p></td>
+<td><p>It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, <code class="docutils literal notranslate"><span class="pre">eidas.it.cie</span></code> means that the CIE id identification scheme is used.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2">[OID.IDA. Section 5.1.1.2]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>source</strong></p></td>
@@ -1077,7 +1077,7 @@
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Note that the sub-claims of the <strong>evidence</strong> parameter are not selectively disclosable separately, thus, for example, the User cannot give only the <em>record type</em> without disclosure the <em>record source</em> (organization name, identifier and country).</p>
+<p>Note that the sub-claims of the <strong>evidence</strong> parameter are not selectively disclosable separately, thus, for example, the User cannot give only the <em>record type</em> without the disclosure of the <em>record source</em> value (organization name, identifier and country).</p>
 </div>
 </section>
 <section id="pid-claims-field">
@@ -1293,7 +1293,7 @@
 </section>
 <section id="q-eaa-non-normative-examples">
 <h3>(Q)EAA Non-normative examples<a class="headerlink" href="#q-eaa-non-normative-examples" title="Permalink to this heading">¶</a></h3>
-<p>In the following, we provide a non-normative example of (Q)EAA VC in JSON.</p>
+<p>In the following, we provide a non-normative example of (Q)EAA in JSON.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
