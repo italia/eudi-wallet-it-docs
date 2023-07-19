@@ -115,7 +115,7 @@ Payload
 |                                   | houses its metadata. In this case,|
 |                                   | it contains the Wallet Provider's |
 |                                   | metadata within the               |
-|                                   | ``wallet_provider`` attribute|
+|                                   | ``wallet_provider`` attribute     |
 |                                   | and the generic entity            |
 |                                   | ``federation_entity``.            |
 +-----------------------------------+-----------------------------------+
