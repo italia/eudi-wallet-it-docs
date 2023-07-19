@@ -123,36 +123,36 @@ Payload
 Payload `wallet_provider`
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+---------------------------------------------+------------------------------------+
-| **Key**                                     | **Value**                          |
-+---------------------------------------------+------------------------------------+
-| jwks                                        | Contains an array of all the Wallet|
-|                                             | Provider's public keys.            |
-+---------------------------------------------+------------------------------------+
-| token_endpoint                              | Endpoint for obtaining the Wallet  |
-|                                             | Instance Attestation.              |
-+---------------------------------------------+------------------------------------+
-| attested_security_context_values_supported  | List of supported values for the   |
-|                                             | certified security context. These  |
-|                                             | values specify the security level  |
-|                                             | of the app—low, medium, or high.   |
-|                                             | An attested security context is    |
-|                                             | defined by the proof that the      |
-|                                             | Wallet Instance can send to the    |
-|                                             | Wallet Provider. Note: this        |
-|                                             | parameter is defined in this       |
-|                                             | specification                      |
-+---------------------------------------------+------------------------------------+
-| grant_types_supported                       | The types of grants supported by   |
-|                                             | the endpoint token. It MUST be set to |
++---------------------------------------------+---------------------------------------------------------------------+
+| **Key**                                     | **Value**                                                           |
++---------------------------------------------+---------------------------------------------------------------------+
+| jwks                                        | Contains an array of all the Wallet                                 |
+|                                             | Provider's public keys.                                             |
++---------------------------------------------+---------------------------------------------------------------------+
+| token_endpoint                              | Endpoint for obtaining the Wallet                                   |
+|                                             | Instance Attestation.                                               |
++---------------------------------------------+---------------------------------------------------------------------+
+| attested_security_context_values_supported  | List of supported values for the                                    |
+|                                             | certified security context. These                                   |
+|                                             | values specify the security level                                   |
+|                                             | of the app—low, medium, or high.                                    |
+|                                             | An attested security context is                                     |
+|                                             | defined by the proof that the                                       |
+|                                             | Wallet Instance can send to the                                     |
+|                                             | Wallet Provider. Note: this                                         |
+|                                             | parameter is defined in this                                        |
+|                                             | specification                                                       |
++---------------------------------------------+---------------------------------------------------------------------+
+| grant_types_supported                       | The types of grants supported by                                    |
+|                                             | the endpoint token. It MUST be set to                               |
 |                                             | ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation`` |
-+---------------------------------------------+------------------------------------+
-| token_endpoint_auth_methods_suppor          | Supported authentication method for|
-| ted                                         | the endpoint token.                |
-+---------------------------------------------+------------------------------------+
-| token_endpoint_auth_signing_alg_va          | List of supported signature        |
-| lues_supported                              | algorithms.                        |
-+---------------------------------------------+------------------------------------+
++---------------------------------------------+---------------------------------------------------------------------+
+| token_endpoint_auth_methods_suppor          | Supported authentication method for                                 |
+| ted                                         | the endpoint token.                                                 |
++---------------------------------------------+---------------------------------------------------------------------+
+| token_endpoint_auth_signing_alg_va          | List of supported signature                                         |
+| lues_supported                              | algorithms.                                                         |
++---------------------------------------------+---------------------------------------------------------------------+
 
 .. note::
    The `asc_values_supported` parameter is experimental and under review.
