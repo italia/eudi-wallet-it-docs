@@ -144,11 +144,8 @@ Payload `wallet_provider`
 |                                             | specification                      |
 +---------------------------------------------+------------------------------------+
 | grant_types_supported                       | The types of grants supported by   |
-|                                             | the endpoint token. For the Wallet |
-|                                             | Provider, the token corresponds to |
-|                                             | the Wallet Instance attestation.   |
-|                                             | Thus, this attribute contains an   |
-|                                             | array with only one element.       |
+|                                             | the endpoint token. It MUST be set to |
+|                                             | ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation`` |
 +---------------------------------------------+------------------------------------+
 | token_endpoint_auth_methods_suppor          | Supported authentication method for|
 | ted                                         | the endpoint token.                |
