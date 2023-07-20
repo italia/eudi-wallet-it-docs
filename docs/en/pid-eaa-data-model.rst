@@ -162,7 +162,7 @@ The ``record`` MUST have at least the following sub parameters:
     - JSON Object cointaining the follwoing mandatory claims:
 
       - **organization_name**: Name of the Organization. In case of PID, it is the Organization handling the eID used by the User. For the (Q)EAA it is the Authentic Source.
-      - **organization_id**: Identification code for the Organization. For public Organization, it MUST be set to the *IPA Code*.
+      - **organization_id**: Identification code for the Organization. For public Organization, it MUST be set to the *IPA Code*, following the URN namespace ``urn:eudi:it:organization_id:ipa_code:<that-value>``.
       - **country_code**: String representing country in `[ISO3166-1] Alpha-2 (e.g., IT) or [ISO3166-3] syntax <https://www.iso.org/iso-3166-country-codes.html>`_.
     - `[OID.IDA. Section 5.1.1.2] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2>`_
 
