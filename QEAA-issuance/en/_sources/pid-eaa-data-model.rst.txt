@@ -133,7 +133,7 @@ The ``verification`` claim is a JSON structure with all the following mandatory 
       - **Description**
       - **Reference**
     * - **trust_framework**
-      - [NSD]. For PID credential it MUST be set to ``eidas``. For (Q)EAA it MUST be set to ``eidas2``.
+      - [NSD]. It MUST be set to ``eidas``.
       - `[OID.IDA. Section 5.1] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1>`_
     * - **assurance_level**
       - [NSD]. MUST be set according to the LoA required. For PID credential it MUST be set to ``high``.
