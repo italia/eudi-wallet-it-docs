@@ -387,7 +387,7 @@ In the following, we provide a non-normative example of (Q)EAA in JSON.
   {
   "verified_claims": {
       "verification": {
-        "trust_framework": "eidas2",
+        "trust_framework": "eidas",
         "assurance_level": "high",
         "evidence": [
           {
@@ -423,7 +423,7 @@ The corresponding SD-JWT for the preivous data is represented as follow, as deco
   {
      "typ":"vc+sd-jwt",
      "alg":"RS512",
-     "kid":"dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw",
+     "kid":"d126a6a856f7724560484fa9dc59d195",
      "trust_chain" : [
       "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
       "eyJhbGciOiJSUzI1NiIsImtpZCI6 ...",
@@ -443,10 +443,11 @@ The corresponding SD-JWT for the preivous data is represented as follow, as deco
     "cnf": {
       "jwk": {
         "kty": "RSA",
-        "use": "sig",
-        "n": "1Ta-sE …",
         "e": "AQAB",
-        "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
+        "use": "sig",
+        "kid": "d126a6a856f7724560484fa9dc59d195",
+        "alg": "RS256",
+        "n": "oians5wYCWk4wFtEStVYcn_xOw9edKMNGH33_q6_pBI0XaTY7P3apUgjO0ivk5c1NQAVY6PZmcPQ8P1Y0cBAC9STRmzvTvDQcOocLhVy2ZlcXTu39oOGLNra8_LQsaMA386lO_qMW4-uY6DbGZY4vHkScvAC9FIZYDPafqWBEQUNV2QOFMH5VPoihCTKHwMGXnZBatYObg57xSOUX-bvhO_sFMm3k4RvsXcr3MFojAhLfwutu_jK9k7N9KR_mNc5IpiOyhZw_sUmF6SamRqsSPp42KD10hPMW0YJTDMYxBdHrMFeSMHYIMY4oBBT43__a55zILI_CnIk4241wOvGvw"
       }
     },
     "type": "HealthInsuranceData",
@@ -455,7 +456,7 @@ The corresponding SD-JWT for the preivous data is represented as follow, as deco
         "_sd": [
           "2jIR18gfeASHYGB27s7sS3S_iQ4xxFIxCRyiohrBfns"
         ],
-        "trust_framework": "eidas2",
+        "trust_framework": "eidas",
         "assurance_level": "high"
       },
       "claims": {
@@ -532,7 +533,7 @@ The combined format for the PID issuance is given by
 
 .. code-block::
 
-  eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJSUzUxMiIsImtpZCI6ImQxMjZhNmE4NTZmNzcyNDU2MDQ4NGZhOWRjNTlkMTk1IiwidHJ1c3RfY2hhaW4iOlsiTkVoUmRFUnBZbmxIWTNNNVdsZFdUV1oyYVVobSAuLi4iLCJleUpoYkdjaU9pSlNVekkxTmlJc0ltdHBaQ0k2IC4uLiIsIklrSllkbVp5Ykc1b1FVMTFTRkl3TjJGcVZXMUIgLi4uIl19.eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsInN1YiI6Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcy4uLiIsImp0aSI6InVybjp1dWlkOjZjNWMwYTQ5LWI1ODktNDMxZC1iYWU3LTIxOTEyMmE5ZWMyYyIsImlhdCI6MTU0MTQ5MzcyNCwiZXhwIjoxNTQxNDkzNzI0LCJzdGF0dXMiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy9zdGF0dXMiLCJjbmYiOnsiandrIjp7Imt0eSI6IlJTQSIsInVzZSI6InNpZyIsIm4iOiIxVGEtc0Ug4oCmIiwiZSI6IkFRQUIiLCJraWQiOiJZaE5GUzNZbkM5dGppQ2FpdmhXTFZVSjNBeHdHR3pfOTh1UkZhcU1FRXMifX0sInR5cGUiOiJIZWFsdGhJbnN1cmFuY2VEYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiMmpJUjE4Z2ZlQVNIWUdCMjdzN3NTM1NfaVE0eHhGSXhDUnlpb2hyQmZucyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhczIiLCJhc3N1cmFuY2VfbGV2ZWwiOiJoaWdoIn0sImNsYWltcyI6eyJfc2QiOlsiMWl6dHE3Ym92NjR4VFliRGtXRmM0NF9WaldlMDI5aFpxWGVVSWxvcVVONCIsIkVOTm8zMWpmekZwOFkyRFcwUi1mSU1lV3dlN0VMR3ZHb0hNd01CcHUxNEUiLCJGVjJDRE5XdVRxVGdPSGFmdHZWYXVtQkYwT2xtbnl4TXN3eWY0dUl4cmhZIiwiZFpXanE3bUpTU1gtWFRJX0hXdUU4QjJ4NklkTTVsRS1kb0RfeUJwS0phbyIsImdIWWkxOWZyYkRfaTRCb2FXRU5PamMzbENuTWo0cGJHTlFjc0JqX1FNNFEiXX19LCJfc2RfYWxnIjoic2hhLTI1NiJ9.Dy8IdMBmzL5QSxAHiYTv9Fg0HhiI-AFIwL2slNEVI5iTxcne0reX2w-Bo78bY0UkOF5LHBLjGV_l5wbX6pvDY0v193ifp7KzJIpj2jUuQ-XR7RHng9RFdjKSj7urVYaseQxKA97vWcJxNX7bYKLQ6jKOdxl0CXmFdg00HTA1MnO7OPWdRiT7BlDyl0HfwQ-X08Yk23zX2Po90p1pBIWMlqnkfeZwQIWyz6LvFcK7OClEYlmzhtLR5QmYHbIbu9oGhn00hv0Q94TcheGpSm8WmfUjE-dV6YvfWtkcsTg7bjmawt6B4W_YMwV9pSmoC1euwO1svoyAdqxjGbInmLT4hA
+  eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJSUzUxMiIsImtpZCI6ImQxMjZhNmE4NTZmNzcyNDU2MDQ4NGZhOWRjNTlkMTk1IiwidHJ1c3RfY2hhaW4iOlsiTkVoUmRFUnBZbmxIWTNNNVdsZFdUV1oyYVVobSAuLi4iLCJleUpoYkdjaU9pSlNVekkxTmlJc0ltdHBaQ0k2IC4uLiIsIklrSllkbVp5Ykc1b1FVMTFTRkl3TjJGcVZXMUIgLi4uIl19.eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsInN1YiI6Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcy4uLiIsImp0aSI6InVybjp1dWlkOjZjNWMwYTQ5LWI1ODktNDMxZC1iYWU3LTIxOTEyMmE5ZWMyYyIsImlhdCI6MTU0MTQ5MzcyNCwiZXhwIjoxNTQxNDkzNzI0LCJzdGF0dXMiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy9zdGF0dXMiLCJjbmYiOnsiandrIjp7Imt0eSI6IlJTQSIsImUiOiJBUUFCIiwidXNlIjoic2lnIiwia2lkIjoiZDEyNmE2YTg1NmY3NzI0NTYwNDg0ZmE5ZGM1OWQxOTUiLCJhbGciOiJSUzI1NiIsIm4iOiJvaWFuczV3WUNXazR3RnRFU3RWWWNuX3hPdzllZEtNTkdIMzNfcTZfcEJJMFhhVFk3UDNhcFVnak8waXZrNWMxTlFBVlk2UFptY1BROFAxWTBjQkFDOVNUUm16dlR2RFFjT29jTGhWeTJabGNYVHUzOW9PR0xOcmE4X0xRc2FNQTM4NmxPX3FNVzQtdVk2RGJHWlk0dkhrU2N2QUM5RklaWURQYWZxV0JFUVVOVjJRT0ZNSDVWUG9paENUS0h3TUdYblpCYXRZT2JnNTd4U09VWC1idmhPX3NGTW0zazRSdnNYY3IzTUZvakFoTGZ3dXR1X2pLOWs3TjlLUl9tTmM1SXBpT3loWndfc1VtRjZTYW1ScXNTUHA0MktEMTBoUE1XMFlKVERNWXhCZEhyTUZlU01IWUlNWTRvQkJUNDNfX2E1NXpJTElfQ25JazQyNDF3T3ZHdncifX0sInR5cGUiOiJIZWFsdGhJbnN1cmFuY2VEYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiMmpJUjE4Z2ZlQVNIWUdCMjdzN3NTM1NfaVE0eHhGSXhDUnlpb2hyQmZucyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhcyIsImFzc3VyYW5jZV9sZXZlbCI6ImhpZ2gifSwiY2xhaW1zIjp7Il9zZCI6WyIxaXp0cTdib3Y2NHhUWWJEa1dGYzQ0X1ZqV2UwMjloWnFYZVVJbG9xVU40IiwiRU5ObzMxamZ6RnA4WTJEVzBSLWZJTWVXd2U3RUxHdkdvSE13TUJwdTE0RSIsIkZWMkNETld1VHFUZ09IYWZ0dlZhdW1CRjBPbG1ueXhNc3d5ZjR1SXhyaFkiLCJkWldqcTdtSlNTWC1YVElfSFd1RThCMng2SWRNNWxFLWRvRF95QnBLSmFvIiwiZ0hZaTE5ZnJiRF9pNEJvYVdFTk9qYzNsQ25NajRwYkdOUWNzQmpfUU00USJdfX0sIl9zZF9hbGciOiJzaGEtMjU2In0.PrVt9qpf1WmfoRKncGXw6loKRANomsL-foXMqMUIyK2AO0tWM5laveqRet9Bb5A0fPq7rxNQLU57ngV3o8VzKLhFkbKm1_wtA5XuZXBfz0qGCmIP6tZQu9yAvXy162h6_i4FOINyHoL8i5mNPFTHFY0nBYTyVkCScfBC2Ccv4i7RSALbpbpviTpoYVBzFWtdOKuuMED5XwKpW9-VF_JK11yaJJ880walzu5tZ3XAOb0KkfUS3sCmSkKO5wMm1SeaS7xL5iiPSnAMTMrlmKE6qcwAkdDX-hNeGzncwBjHASTWb2udayK8Cal-wFGDWrRWGq3mU0rfuxMIFkjv4gdi8Q
 
 MDOC-CBOR
 =========
