@@ -16,7 +16,7 @@ The relevant entities and interfaces involved in the issuance flow are:
         - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
         - National eID Relying Party (OpenID Connect or SAML2): It represents the component to authenticate the End-User with the national Digital Identity Providers.
     - National IdP: It represents preexisting identity systems based on SAML2 or OpenID Connect, already in production in each Member State (for Italy SPID and CIE id authentication schemed notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
-    - *(Q)EAA Issuer*: It represents the issuer of (Q)EAAs. It is composed of:
+    - *(Q)EAA Issuer*: It represents the Issuer of (Q)EAAs. It is composed of:
 
       - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release (Q)EAAs.
       - Relying Party: It represents the component to authenticate the User with the PID. The (Q)EAA Issuer acts as a verifier and it sends a presentation request to the Wallet Instance according to [`OpenID4VP`_]. The Wallet Instance MUST have a valid PID obtained prior to starting a transaction with the (Q)EAA Issuer.
