@@ -156,7 +156,7 @@ The ``record`` MUST have at least the following sub parameters:
     - **Description**
     - **Reference**
   * - **type** 
-    - It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, ``eidas.it.cie`` means that the CIE id identification scheme is used. 
+    - It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, ``https://eudi.wallet.cie.gov.it`` means that the CIE id identification scheme is used. 
     - `[OID.IDA. Section 5.1.1.2] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2>`_
   * - **source**
     - JSON Object cointaining the follwoing mandatory claims:
@@ -222,7 +222,7 @@ In the following, the non-normative example of a PID.
           {
             "type": "electronic_record",
             "record": {
-              "type": "eidas.it.cie",
+              "type": "https://eudi.wallet.cie.gov.it",
               "source": {
                 "organization_name": "Ministero dell'Interno",
                 "organization_id": "m_it",
@@ -315,7 +315,7 @@ Claim **evidence**:
    ``OiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdhbml6YXRpb25faWQi``
    ``OiAibV9pdCIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19XV0``
 -  Contents: ``["2GLC42sKQveCfGfryNRN9w", "evidence", [{"type":``
-   ``"electronic_record", "record": {"type": "eidas.it.cie",``
+   ``"electronic_record", "record": {"type": "https://eudi.wallet.cie.gov.it",``
    ``"source": {"organization_name": "Ministero dell'Interno",``
    ``"organization_id": "m_it", "country_code": "IT"}}}]]``
 
@@ -393,7 +393,7 @@ In the following, we provide a non-normative example of (Q)EAA in JSON.
           {
             "type": "electronic_record",
             "record": {
-              "type": "eidas.it.pdnd",
+              "type": "https://eudi.wallet.pdnd.gov.it",
               "source": {
                 "organization_name": "Ragioneria Generale dello Stato",
                 "organization_id": "QLHCFC",
@@ -485,7 +485,7 @@ Claim **evidence**:
    ``emF0aW9uX2lkIjogIlFMSENGQyIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19``
    ``XV0``
 -  Contents: ``["2GLC42sKQveCfGfryNRN9w", "evidence", [{"type":``
-   ``"electronic_record", "record": {"type": "eidas.it.pdnd",``
+   ``"electronic_record", "record": {"type": "https://eudi.wallet.pdnd.gov.it",``
    ``"source": {"organization_name": "Ragioneria Generale dello Stato",``
    ``"organization_id": "QLHCFC", "country_code":"IT"}}}]]``
 
