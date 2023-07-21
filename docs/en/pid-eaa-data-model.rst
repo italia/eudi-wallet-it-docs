@@ -209,7 +209,7 @@ The ``claims`` parameter contains the User attributes with the following mandato
 PID Non-normative examples
 --------------------------
 
-In the following, the non-normative example of a PID digital credential.
+In the following, the non-normative example of a PID.
 
 .. code-block:: JSON
 
