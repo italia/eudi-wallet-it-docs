@@ -1079,7 +1079,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p><strong>Steps 16-18 (DPoP Proof for Credential Endpoint):</strong> The Wallet Instance creates a new key pair to which the new credential SHALL be bound. Then, it creates a proof of possession with the new key and the <em>c_nonce</em> obtained in <strong>Step 15</strong> and it creates a DPoP proof for the request to the PID/(Q)EAA credential issuance endpoint.</p>
+<p><strong>Steps 16-18 (DPoP Proof for Credential Endpoint):</strong> The Wallet Instance SHOULD create a new key pair to which the new credential SHALL be bound. Then, it creates a proof of possession with the new key and the <em>c_nonce</em> obtained in <strong>Step 15</strong> and it creates a DPoP proof for the request to the PID/(Q)EAA credential issuance endpoint.</p>
 <p><strong>Step 19 (Credential Request):</strong> The Wallet Instance sends a PID/(Q)EAA issuance request to the PID/(Q)EAA credential endpoint. It contains the <em>Access Token</em>, the <em>DPoP proof</em>, the <em>credential type</em>, the <em>proof</em> (proof of possession of the key) and the <em>format</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

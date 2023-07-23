@@ -233,7 +233,7 @@ The JWS payload of the request object is represented below:
     }
 
 
-**Steps 16-18 (DPoP Proof for Credential Endpoint):** The Wallet Instance creates a new key pair to which the new credential SHALL be bound. Then, it creates a proof of possession with the new key and the *c_nonce* obtained in **Step 15** and it creates a DPoP proof for the request to the PID/(Q)EAA credential issuance endpoint.  
+**Steps 16-18 (DPoP Proof for Credential Endpoint):** The Wallet Instance SHOULD create a new key pair to which the new credential SHALL be bound. Then, it creates a proof of possession with the new key and the *c_nonce* obtained in **Step 15** and it creates a DPoP proof for the request to the PID/(Q)EAA credential issuance endpoint.  
 
 **Step 19 (Credential Request):** The Wallet Instance sends a PID/(Q)EAA issuance request to the PID/(Q)EAA credential endpoint. It contains the *Access Token*, the *DPoP proof*, the *credential type*, the *proof* (proof of possession of the key) and the *format*.
 
