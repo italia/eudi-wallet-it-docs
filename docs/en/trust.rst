@@ -256,7 +256,7 @@ Entity Configuration
 
 The Entity Configuration is the verifiable document that each Federation Entity must publish on its own behalf in the web path **.well-known/openid-federation**.
 
-The Entity Confgiuration HTTP response MUST have the media type `application/entity-statement+jwt`.
+The Entity Configuration HTTP response MUST set the media type `application/entity-statement+jwt`.
 
 The Entity Configuration must be cryptographically signed. The public part of this key must be present in the
 Entity Configuration and within the Entity Statement issued by a immediate superior concerning the Federation Entity.
