@@ -340,10 +340,10 @@ Here a non-normative example of ``presentation_definition``:
 
   {
     "presentation_definition": {
-      "id": "pid-sd-jwt:unique_id+given_name+family_name",
+      "id": "presentation definitions",
       "input_descriptors": [
         {
-          "id": "eu.europa.ec.eudiw.pid.it.1",
+          "id": "pid-sd-jwt:unique_id+given_name+family_name",
           "name": "Person Identification Data",
           "purpose": "User authentication",
           "format": "vc+sd-jwt",
@@ -409,13 +409,8 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
         "id": "04a98be3-7fb0-4cf5-af9a-31579c8b0e7d",
         "descriptor_map": [
             {
-                "id": "eu.europa.ec.eudiw.pid.it.1:unique_id",
+                "id": "pid-sd-jwt:unique_id+given_name+family_name",
                 "path": "$.vp_token.verified_claims.claims._sd[0]",
-                "format": "vc+sd-jwt"
-            },
-            {
-                "id": "eu.europa.ec.eudiw.pid.it.1:given_name",
-                "path": "$.vp_token.verified_claims.claims._sd[1]",
                 "format": "vc+sd-jwt"
             }
         ]
