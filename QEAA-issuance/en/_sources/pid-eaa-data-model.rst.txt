@@ -21,7 +21,7 @@ The italian PID is extended according to the `OpenID Identity Assurance Profile 
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format. 
 
-The (Q)EAAs are extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where where the data comes from. 
+The (Q)EAAs are extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where the data comes from. 
 
 The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to an RP is described in the following sections. 
 
@@ -139,7 +139,7 @@ The ``verification`` claim is a JSON structure with all the following mandatory 
       - [NSD]. MUST be set according to the LoA required. For PID credential it MUST be set to ``high``.
       - `[OID.IDA. Section 5.1] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1>`_
     * - **evidence**
-      - [SD]. JSON Array. Each element is the electronic evidence of the User identification during the PID issuance or, in the case of (Q)EAA, it represents the evidence of the Authentic Source that ensures the authenticity of the data conveyed by the (Q)EAA. It MUST contain at least the following claims:
+      - [SD]. JSON Array. Each element is the electronic evidence of the User identification during the PID issuance or, in the case of (Q)EAA, with this evidence the Authentic Source assures the authenticity of the data conveyed in the (Q)EAA. It MUST contain at least the following claims:
 
             - **type**: MUST be set to ``electronic_record``
             - **record**: JSON object (see the table below)
@@ -156,7 +156,7 @@ The ``record`` MUST have at least the following sub parameters:
     - **Description**
     - **Reference**
   * - **type** 
-    - It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, ``https://eudi.wallet.cie.gov.it`` means that the CIE id identification scheme is used. 
+    - It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, the value ``https://eudi.wallet.cie.gov.it`` means that the CIE id identification scheme is used. 
     - `[OID.IDA. Section 5.1.1.2] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2>`_
   * - **source**
     - JSON Object cointaining the follwoing mandatory claims:
@@ -396,7 +396,7 @@ In the following, we provide a non-normative example of (Q)EAA in JSON.
               "type": "https://eudi.wallet.pdnd.gov.it",
               "source": {
                 "organization_name": "Ragioneria Generale dello Stato",
-                "organization_id": "QLHCFC",
+                "organization_id": "urn:eudi:it:organization_id:ipa_code:QLHCFC",
                 "country_code": "IT"
               }
             }

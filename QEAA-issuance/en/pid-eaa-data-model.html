@@ -892,7 +892,7 @@
 </div></blockquote>
 <p>The italian PID is extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.</p>
 <p>The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format.</p>
-<p>The (Q)EAAs are extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that allows the recipients to know the Authentic Sources where where the data comes from.</p>
+<p>The (Q)EAAs are extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that allows the recipients to know the Authentic Sources where the data comes from.</p>
 <p>The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to an RP is described in the following sections.</p>
 <section id="id2">
 <h2>SD-JWT<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
@@ -1033,7 +1033,7 @@
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1">[OID.IDA. Section 5.1]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>evidence</strong></p></td>
-<td><p>[SD]. JSON Array. Each element is the electronic evidence of the User identification during the PID issuance or, in the case of (Q)EAA, it represents the evidence of the Authentic Source that ensures the authenticity of the data conveyed by the (Q)EAA. It MUST contain at least the following claims:</p>
+<td><p>[SD]. JSON Array. Each element is the electronic evidence of the User identification during the PID issuance or, in the case of (Q)EAA, with this evidence the Authentic Source assures the authenticity of the data conveyed in the (Q)EAA. It MUST contain at least the following claims:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>type</strong>: MUST be set to <code class="docutils literal notranslate"><span class="pre">electronic_record</span></code></p></li>
@@ -1060,7 +1060,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>type</strong></p></td>
-<td><p>It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, <code class="docutils literal notranslate"><span class="pre">https://eudi.wallet.cie.gov.it</span></code> means that the CIE id identification scheme is used.</p></td>
+<td><p>It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, the value <code class="docutils literal notranslate"><span class="pre">https://eudi.wallet.cie.gov.it</span></code> means that the CIE id identification scheme is used.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2">[OID.IDA. Section 5.1.1.2]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>source</strong></p></td>
@@ -1306,7 +1306,7 @@
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eudi.wallet.pdnd.gov.it&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">              </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ragioneria Generale dello Stato&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QLHCFC&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:it:organization_id:ipa_code:QLHCFC&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">              </span><span class="nt">&quot;country_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 <span class="w">          </span><span class="p">}</span><span class="w"></span>
