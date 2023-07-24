@@ -16,7 +16,7 @@ This section describes how a Relying Party may ask to a Wallet Instance the pres
 
 In this section the following flows are described:
 
-- **Same Device Flow**, where the Verifier and the Wallet Instance acts in the same device.
+- **Remote Same Device Flow**, where the Verifier and the Wallet Instance acts in the same device.
 - **Remote Cross Device Flow**, where the Verifier and the Wallet Instance acts in different devices and the Verifier is a remote Relying Party.
 
 The flows are analyzed in this chapter, taking into account security and privacy considerations.
@@ -25,10 +25,15 @@ The flows are analyzed in this chapter, taking into account security and privacy
     Relying Party and Verifier are the same entity.
 
 
-Remote Cross Device Flow
----------------------------
-In the **Cross Device Authorization Flow**, the User interacts with a remote Relying Party.
-This scenario requests the Verifier to show a QR Code which the User frames with their Wallet Instance.
+Remote Protocol Flow
+--------------------
+In the **Same Device** and **Cross Device** Authorization Flows, the User interacts with a remote Relying Party.
+This scenario requests the Verifier to provide the URL where the signed request object is available.
+
+The Verifier MUST detect the device type of the requestor (Wallet Instance), if it is a mobile device or a workstationm and activate one the supported remote flows:
+
+* In the *Same Device** flow the Verifier MUST provide a HTTP redirect (302) location to the Wallet Instance;
+* In the *Cross Device** flow the Verifier MUST provide a QR Code which the User frames with their Wallet Instance.
 
 Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.
 
@@ -48,11 +53,11 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **2**
     - The Relying Party creates an Authorization Request which contains the scopes of the request.
   * - **3**
-    - The Relying Party inserts the reference URI of the *request_uri* into a QR Code.
+    - In the **Same Device Flow** the Relying Party responses with the Request URI in the form of HTTP Location (302). In the **Cross Device Flow** the Request URI is provided in the form of a QR Code.
   * - **4**
-    - The QR Code is shown to the User that frames it.
+    - Only in **Cross Device Flow**: The QR Code is shown to the User that frames it.
   * - **5** and **6**
-    - The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code.
+    - Only in **Cross Device Flow**:  The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code.
   * - **7**
     - The Wallet Instance requests the content of the Authorization Request by invoking the Request URI, passing an Authorization DPoP HTTP Header containing the Wallet Instance Attestation and the DPoP proof HTTP Header.
   * - **8**
@@ -95,6 +100,16 @@ The payload of the QR Code is a **Base64 encoded string** based on the following
 
 In the Same Device Flow the URL is provided as described in the previous section, where the parameter **client_id** and **request_uri** are the same if the ones used in the Cross Device Flow and the only difference if in the url schema and in the removal of the Verifier's FQDN
 
+This Same Device Flow utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).
+
+The Relying Party produces the URL to be provided to the Wallet Instance using a HTTP 302 response (redirect), as represented in the following non-normative example:
+
+.. code:: text
+
+    HTTP/1.1 /pre-authz-endpoint Found
+    Location: https://verifier.example.org/request_uri_endpoint?
+    client_id=https%3A%2F%2Fverifier.example.org%2Fcb
+    &request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri_endpoint
 
 Where:
 
@@ -130,23 +145,6 @@ Below follows its Base64 decoded content:
 .. code-block:: text
 
   eudiw://authorize?client_id=https://verifier.example.org&request_uri=https://verifier.example.org/request_uri
-
-
-Same Device Flow
-----------------
-In the **Same Device Authorization Flow**, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
-This scenario utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).
-
-The flow is identical to the cross device with the only replacement of the steps relating to the use of the QRCode, i.e. steps number **3**, **4**, **5** and **6**, which are replaced by a single step described below.
-
-The Relying Party produces a URL similar to the one contained in the QRCode produced in the Cross Device Flow, then provides it to the Wallet Instance via an HTTP 302 response (redirect), represented in the following non-normative example:
-
-.. code:: text
-
-    HTTP/1.1 /pre-authz-endpoint Found
-    Location: https://verifier.example.org/request_uri_endpoint?
-    client_id=https%3A%2F%2Fverifier.example.org%2Fcb
-    &request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri_endpoint
 
 
 Request Object Details
