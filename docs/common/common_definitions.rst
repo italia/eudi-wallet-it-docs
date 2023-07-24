@@ -57,5 +57,6 @@
 .. _DPOP: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop
 .. _RFC 7519: https://www.rfc-editor.org/rfc/rfc7519
 .. _OAUTH2: https://www.rfc-editor.org/rfc/rfc6749
+.. _OPENID4VC-HAIP: https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html
 
 

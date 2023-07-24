@@ -50,6 +50,7 @@ The Disclosures are sent to the Holder together with the SD-JWT in the *Combined
 
 See `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
 
+
 PID/(Q)EAA SD-JWT parameters
 ----------------------------
 
@@ -173,7 +174,6 @@ PID Claims field
 ----------------
 
 The ``claims`` parameter contains the User attributes with the following mandatory fields:
-
 
 .. list-table:: 
     :widths: 20 60 20
