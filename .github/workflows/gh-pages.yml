@@ -4,7 +4,7 @@ name: gh-pages
 
 on:
   push:
-    branches: ["versione-corrente"]
+    branches: ["*"]
     paths-ignore:
       - README.md
       - CONTRIBUTING.md
@@ -24,7 +24,7 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -53,12 +53,12 @@ jobs:
             SUBPATH="v$TAG/" # note the trailing slash
             echo "Building for TAG: $SUBPATH"
           else
-            SUBPATH="${GITHUB_HEAD_REF}/" # note the trailing slash
+            SUBPATH=$(echo "$GITHUB_REF" | sed "s/refs\/heads\///") # "${GITHUB_HEAD_REF}/" # note the trailing slash
             echo "Building for PR: $SUBPATH"
           fi
           echo "Publishing $SUBPATH"
-          sphinx-build -b html docs/it/  html/$SUBPATHit
-          sphinx-build -b html docs/en/  html/$SUBPATHen
+          sphinx-build -b html docs/it/  html/$SUBPATH/it
+          sphinx-build -b html docs/en/  html/$SUBPATH/en
 
       # Runs a single command using the runners shell
       - name: Create GH page index

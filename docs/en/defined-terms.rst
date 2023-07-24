@@ -47,6 +47,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.
    * - Trust Layer
      - An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.
+   * - Level of Assurance
+     - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the credential was issued.
 
 Acronyms
 --------
@@ -67,4 +69,6 @@ Acronyms
     - Verifiable Presentation
   * - **API**
     - Application Programming Interface
+  * - **LoA**
+    - Level of Assurance
 
