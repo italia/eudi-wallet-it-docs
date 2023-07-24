@@ -50,7 +50,7 @@ High-Level (Q)EAA flow
 
 The :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` shows a general architecture and highlights the main operations involved in the issuance of a (Q)EAA, following the assumptions listed below:
 
-  - the User has a valid PID stored in its own Wallet Instance;
+  - the User has a valid PID stored in their own Wallet Instance;
   - the (Q)EAA requires a high security implementation profile.
 
 .. _fig_High-Level-Flow-ITWallet-QEAA-Issuance:
