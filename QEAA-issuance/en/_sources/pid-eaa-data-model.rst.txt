@@ -206,7 +206,7 @@ The ``claims`` parameter contains the User attributes with the following mandato
 
 
 
-PID Non-normative examples
+PID Non-normative Examples
 --------------------------
 
 In the following, the non-normative example of a PID.
@@ -416,7 +416,7 @@ In the following, we provide a non-normative example of (Q)EAA in JSON.
     }
   }
 
-The corresponding SD-JWT for the preivous data is represented as follow, as decoded JSON for both header and payload.
+The corresponding SD-JWT for the previous data is represented as follow, as decoded JSON for both header and payload.
 
 .. code-block:: JSON
 
@@ -472,7 +472,7 @@ The corresponding SD-JWT for the preivous data is represented as follow, as deco
     "_sd_alg": "sha-256"
   }
 
-In the following the disclosure list is given
+In the following the disclosure list is given:
 
 Claim **evidence**:
 
@@ -529,7 +529,7 @@ Claim **tax_id_code**:
 -  Contents: ``["AJx-095VPrpTtN4QMOqROA", "tax_id_code",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
-The combined format for the PID issuance is given by
+The combined format for the PID issuance is represented below:
 
 .. code-block::
 
