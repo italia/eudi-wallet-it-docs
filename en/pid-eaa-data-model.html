@@ -579,7 +579,8 @@
 <li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Defined Terms</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
@@ -589,16 +590,38 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-claims-field">PID Claims field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-non-normative-examples">PID Non-normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
@@ -606,31 +629,77 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#same-device-flow">Same Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-cross-device-flow">Remote Cross Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#dpop-http-header">DPoP HTTP Header</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
@@ -755,7 +824,8 @@
 <li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Defined Terms</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
@@ -765,16 +835,38 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">SD-JWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-claims-field">PID Claims field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-non-normative-examples">PID Non-normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#mdoc-cbor">MDOC-CBOR</a></li>
 </ul>
 </li>
@@ -782,31 +874,77 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#same-device-flow">Same Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-cross-device-flow">Remote Cross Device Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#dpop-http-header">DPoP HTTP Header</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
@@ -891,12 +1029,12 @@
 </ul>
 </div></blockquote>
 <p>The italian PID is extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.</p>
-<p>The (Q)EAAs are issued by the (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format. They MAY contain any (qualified) attributes, entitlement or any elettronic attestations.</p>
-<p>The (Q)EAAs are extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that allows the recipients to know the Authentic Sources where where the data comes from.</p>
+<p>The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format.</p>
+<p>The (Q)EAAs are extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that allows the recipients to know the Authentic Sources where the data comes from.</p>
 <p>The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to an RP is described in the following sections.</p>
 <section id="id2">
 <h2>SD-JWT<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
-<p>The PID/(Q)EAA is given as a Verifiable Credential with JSON payload based on the <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">Selective Disclosure JWT format</a> as specified in <a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html">[draft-terbu-sd-jwt-vc-latest]</a>.</p>
+<p>The PID/(Q)EAA is issued in the form of a digital credential. The digital credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">Selective Disclosure JWT format</a> as specified in <a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html">[draft-terbu-sd-jwt-vc-latest]</a>.</p>
 <p>An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the <strong>_sd_alg</strong> claim described in <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">[SD-JWT]. Section 5.1.2.</a> and other claims specified in this section, some of them may be selectively disclosable claims.</p>
 <p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The <strong>_sd_alg</strong> claim MUST be set to one of the specified algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a>.</p>
 <p>Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, <strong>_sd</strong>.</p>
@@ -1025,7 +1163,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>trust_framework</strong></p></td>
-<td><p>[NSD]. For PID credential it MUST be set to <code class="docutils literal notranslate"><span class="pre">eidas</span></code>. For (Q)EAA it MUST be set to <code class="docutils literal notranslate"><span class="pre">eidas2</span></code>.</p></td>
+<td><p>[NSD]. It MUST be set to <code class="docutils literal notranslate"><span class="pre">eidas</span></code>.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1">[OID.IDA. Section 5.1]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>assurance_level</strong></p></td>
@@ -1033,7 +1171,7 @@
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1">[OID.IDA. Section 5.1]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>evidence</strong></p></td>
-<td><p>[SD]. JSON Array. Each element is the electronic evidence of the User identification during the PID issuance or, in the case of (Q)EAA, it represents the evidence of the Authentic Source that ensures the authenticity of the data conveyed by the (Q)EAA. It MUST contain at least the following claims:</p>
+<td><p>[SD]. JSON Array. Each element is the electronic evidence of the User identification during the PID issuance or, in the case of (Q)EAA, with this evidence the Authentic Source assures the authenticity of the data conveyed in the (Q)EAA. It MUST contain at least the following claims:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>type</strong>: MUST be set to <code class="docutils literal notranslate"><span class="pre">electronic_record</span></code></p></li>
@@ -1060,14 +1198,14 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>type</strong></p></td>
-<td><p>Identification of the trust framework used for obtaining the verified claims. For example, in case of PID, <code class="docutils literal notranslate"><span class="pre">eidas.it.cie</span></code> means that the CIE id identification scheme is used by the User.</p></td>
+<td><p>It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, the value <code class="docutils literal notranslate"><span class="pre">https://eudi.wallet.cie.gov.it</span></code> means that the CIE id identification scheme is used.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2">[OID.IDA. Section 5.1.1.2]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>source</strong></p></td>
 <td><p>JSON Object cointaining the follwoing mandatory claims:</p>
 <ul class="simple">
-<li><p><strong>organization_name</strong>: Name of the Organization. In case of PID, it is the Organization handling the eID used by the User. For the (Q)EAA it is the Authentic Source.</p></li>
-<li><p><strong>organization_id</strong>: Identification code for the Organization. For public Organization, it MUST be set to the <em>IPA Code</em>.</p></li>
+<li><p><strong>organization_name</strong>: Name of the Organization acting as Authentic Source.</p></li>
+<li><p><strong>organization_id</strong>: Identification code for the Organization. For public Organization, it MUST be set to the <em>IPA Code</em>, following the URN namespace <code class="docutils literal notranslate"><span class="pre">urn:eudi:it:organization_id:ipa_code:&lt;that-value&gt;</span></code>.</p></li>
 <li><p><strong>country_code</strong>: String representing country in <a class="reference external" href="https://www.iso.org/iso-3166-country-codes.html">[ISO3166-1] Alpha-2 (e.g., IT) or [ISO3166-3] syntax</a>.</p></li>
 </ul>
 </td>
@@ -1077,7 +1215,7 @@
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Note that the sub-claims of the <strong>evidence</strong> parameter are not selectively disclosable separately, thus, for example, the User cannot give only the <em>record type</em> without disclosure the <em>record source</em> (organization name, identifier and country).</p>
+<p>Note that the sub-claims of the <strong>evidence</strong> parameter are not selectively disclosable separately, thus, for example, the User cannot give only the <em>record type</em> without the disclosure of the <em>record source</em> value (organization name, identifier and country).</p>
 </div>
 </section>
 <section id="pid-claims-field">
@@ -1129,8 +1267,8 @@
 </table>
 </section>
 <section id="pid-non-normative-examples">
-<h3>PID Non-normative examples<a class="headerlink" href="#pid-non-normative-examples" title="Permalink to this heading">¶</a></h3>
-<p>In the following, the non-normative example of a PID digital credential.</p>
+<h3>PID Non-normative Examples<a class="headerlink" href="#pid-non-normative-examples" title="Permalink to this heading">¶</a></h3>
+<p>In the following, the non-normative example of a PID.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1140,7 +1278,7 @@
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;electronic_record&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">          </span><span class="nt">&quot;record&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas.it.cie&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eudi.wallet.cie.gov.it&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">              </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ministero dell&#39;Interno&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">              </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m_it&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1230,7 +1368,7 @@
 <code class="docutils literal notranslate"><span class="pre">OiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdhbml6YXRpb25faWQi</span></code>
 <code class="docutils literal notranslate"><span class="pre">OiAibV9pdCIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19XV0</span></code></p></li>
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;2GLC42sKQveCfGfryNRN9w&quot;,</span> <span class="pre">&quot;evidence&quot;,</span> <span class="pre">[{&quot;type&quot;:</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;electronic_record&quot;,</span> <span class="pre">&quot;record&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;eidas.it.cie&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;electronic_record&quot;,</span> <span class="pre">&quot;record&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;https://eudi.wallet.cie.gov.it&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;source&quot;:</span> <span class="pre">{&quot;organization_name&quot;:</span> <span class="pre">&quot;Ministero</span> <span class="pre">dell'Interno&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;organization_id&quot;:</span> <span class="pre">&quot;m_it&quot;,</span> <span class="pre">&quot;country_code&quot;:</span> <span class="pre">&quot;IT&quot;}}}]]</span></code></p></li>
 </ul>
@@ -1293,20 +1431,20 @@
 </section>
 <section id="q-eaa-non-normative-examples">
 <h3>(Q)EAA Non-normative examples<a class="headerlink" href="#q-eaa-non-normative-examples" title="Permalink to this heading">¶</a></h3>
-<p>In the following, we provide a non-normative example of (Q)EAA VC in JSON.</p>
+<p>In the following, we provide a non-normative example of (Q)EAA in JSON.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;assurance_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;evidence&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;electronic_record&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">          </span><span class="nt">&quot;record&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas.it.pdnd&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eudi.wallet.pdnd.gov.it&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">              </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ragioneria Generale dello Stato&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QLHCFC&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:it:organization_id:ipa_code:QLHCFC&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">              </span><span class="nt">&quot;country_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 <span class="w">          </span><span class="p">}</span><span class="w"></span>
@@ -1327,11 +1465,11 @@
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The corresponding SD-JWT for the preivous data is represented as follow, as decoded JSON for both header and payload.</p>
+<p>The corresponding SD-JWT for the previous data is represented as follow, as decoded JSON for both header and payload.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;RS512&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;d126a6a856f7724560484fa9dc59d195&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;trust_chain&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;NEhRdERpYnlHY3M5WldWTWZ2aUhm ...&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6 ...&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1350,10 +1488,11 @@
 <span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sig&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1Ta-sE …&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;e&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AQAB&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sig&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d126a6a856f7724560484fa9dc59d195&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oians5wYCWk4wFtEStVYcn_xOw9edKMNGH33_q6_pBI0XaTY7P3apUgjO0ivk5c1NQAVY6PZmcPQ8P1Y0cBAC9STRmzvTvDQcOocLhVy2ZlcXTu39oOGLNra8_LQsaMA386lO_qMW4-uY6DbGZY4vHkScvAC9FIZYDPafqWBEQUNV2QOFMH5VPoihCTKHwMGXnZBatYObg57xSOUX-bvhO_sFMm3k4RvsXcr3MFojAhLfwutu_jK9k7N9KR_mNc5IpiOyhZw_sUmF6SamRqsSPp42KD10hPMW0YJTDMYxBdHrMFeSMHYIMY4oBBT43__a55zILI_CnIk4241wOvGvw&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">},</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HealthInsuranceData&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1362,7 +1501,7 @@
 <span class="w">      </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="s2">&quot;2jIR18gfeASHYGB27s7sS3S_iQ4xxFIxCRyiohrBfns&quot;</span><span class="w"></span>
 <span class="w">      </span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;assurance_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1379,7 +1518,7 @@
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In the following the disclosure list is given</p>
+<p>In the following the disclosure list is given:</p>
 <p>Claim <strong>evidence</strong>:</p>
 <ul class="simple">
 <li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">2jIR18gfeASHYGB27s7sS3S_iQ4xxFIxCRyiohrBfns</span></code></p></li>
@@ -1391,7 +1530,7 @@
 <code class="docutils literal notranslate"><span class="pre">emF0aW9uX2lkIjogIlFMSENGQyIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19</span></code>
 <code class="docutils literal notranslate"><span class="pre">XV0</span></code></p></li>
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;2GLC42sKQveCfGfryNRN9w&quot;,</span> <span class="pre">&quot;evidence&quot;,</span> <span class="pre">[{&quot;type&quot;:</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;electronic_record&quot;,</span> <span class="pre">&quot;record&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;eidas.it.pdnd&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;electronic_record&quot;,</span> <span class="pre">&quot;record&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;https://eudi.wallet.pdnd.gov.it&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;source&quot;:</span> <span class="pre">{&quot;organization_name&quot;:</span> <span class="pre">&quot;Ragioneria</span> <span class="pre">Generale</span> <span class="pre">dello</span> <span class="pre">Stato&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;organization_id&quot;:</span> <span class="pre">&quot;QLHCFC&quot;,</span> <span class="pre">&quot;country_code&quot;:&quot;IT&quot;}}}]]</span></code></p></li>
 </ul>
@@ -1435,8 +1574,8 @@
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;AJx-095VPrpTtN4QMOqROA&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;]</span></code></p></li>
 </ul>
-<p>The combined format for the PID issuance is given by</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJSUzUxMiIsImtpZCI6ImQxMjZhNmE4NTZmNzcyNDU2MDQ4NGZhOWRjNTlkMTk1IiwidHJ1c3RfY2hhaW4iOlsiTkVoUmRFUnBZbmxIWTNNNVdsZFdUV1oyYVVobSAuLi4iLCJleUpoYkdjaU9pSlNVekkxTmlJc0ltdHBaQ0k2IC4uLiIsIklrSllkbVp5Ykc1b1FVMTFTRkl3TjJGcVZXMUIgLi4uIl19</span><span class="o">.</span><span class="n">eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsInN1YiI6Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcy4uLiIsImp0aSI6InVybjp1dWlkOjZjNWMwYTQ5LWI1ODktNDMxZC1iYWU3LTIxOTEyMmE5ZWMyYyIsImlhdCI6MTU0MTQ5MzcyNCwiZXhwIjoxNTQxNDkzNzI0LCJzdGF0dXMiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy9zdGF0dXMiLCJjbmYiOnsiandrIjp7Imt0eSI6IlJTQSIsInVzZSI6InNpZyIsIm4iOiIxVGEtc0Ug4oCmIiwiZSI6IkFRQUIiLCJraWQiOiJZaE5GUzNZbkM5dGppQ2FpdmhXTFZVSjNBeHdHR3pfOTh1UkZhcU1FRXMifX0sInR5cGUiOiJIZWFsdGhJbnN1cmFuY2VEYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiMmpJUjE4Z2ZlQVNIWUdCMjdzN3NTM1NfaVE0eHhGSXhDUnlpb2hyQmZucyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhczIiLCJhc3N1cmFuY2VfbGV2ZWwiOiJoaWdoIn0sImNsYWltcyI6eyJfc2QiOlsiMWl6dHE3Ym92NjR4VFliRGtXRmM0NF9WaldlMDI5aFpxWGVVSWxvcVVONCIsIkVOTm8zMWpmekZwOFkyRFcwUi1mSU1lV3dlN0VMR3ZHb0hNd01CcHUxNEUiLCJGVjJDRE5XdVRxVGdPSGFmdHZWYXVtQkYwT2xtbnl4TXN3eWY0dUl4cmhZIiwiZFpXanE3bUpTU1gtWFRJX0hXdUU4QjJ4NklkTTVsRS1kb0RfeUJwS0phbyIsImdIWWkxOWZyYkRfaTRCb2FXRU5PamMzbENuTWo0cGJHTlFjc0JqX1FNNFEiXX19LCJfc2RfYWxnIjoic2hhLTI1NiJ9</span><span class="o">.</span><span class="n">Dy8IdMBmzL5QSxAHiYTv9Fg0HhiI</span><span class="o">-</span><span class="n">AFIwL2slNEVI5iTxcne0reX2w</span><span class="o">-</span><span class="n">Bo78bY0UkOF5LHBLjGV_l5wbX6pvDY0v193ifp7KzJIpj2jUuQ</span><span class="o">-</span><span class="n">XR7RHng9RFdjKSj7urVYaseQxKA97vWcJxNX7bYKLQ6jKOdxl0CXmFdg00HTA1MnO7OPWdRiT7BlDyl0HfwQ</span><span class="o">-</span><span class="n">X08Yk23zX2Po90p1pBIWMlqnkfeZwQIWyz6LvFcK7OClEYlmzhtLR5QmYHbIbu9oGhn00hv0Q94TcheGpSm8WmfUjE</span><span class="o">-</span><span class="n">dV6YvfWtkcsTg7bjmawt6B4W_YMwV9pSmoC1euwO1svoyAdqxjGbInmLT4hA</span>
+<p>The combined format for the PID issuance is represented below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJSUzUxMiIsImtpZCI6ImQxMjZhNmE4NTZmNzcyNDU2MDQ4NGZhOWRjNTlkMTk1IiwidHJ1c3RfY2hhaW4iOlsiTkVoUmRFUnBZbmxIWTNNNVdsZFdUV1oyYVVobSAuLi4iLCJleUpoYkdjaU9pSlNVekkxTmlJc0ltdHBaQ0k2IC4uLiIsIklrSllkbVp5Ykc1b1FVMTFTRkl3TjJGcVZXMUIgLi4uIl19</span><span class="o">.</span><span class="n">eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsInN1YiI6Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcy4uLiIsImp0aSI6InVybjp1dWlkOjZjNWMwYTQ5LWI1ODktNDMxZC1iYWU3LTIxOTEyMmE5ZWMyYyIsImlhdCI6MTU0MTQ5MzcyNCwiZXhwIjoxNTQxNDkzNzI0LCJzdGF0dXMiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy9zdGF0dXMiLCJjbmYiOnsiandrIjp7Imt0eSI6IlJTQSIsImUiOiJBUUFCIiwidXNlIjoic2lnIiwia2lkIjoiZDEyNmE2YTg1NmY3NzI0NTYwNDg0ZmE5ZGM1OWQxOTUiLCJhbGciOiJSUzI1NiIsIm4iOiJvaWFuczV3WUNXazR3RnRFU3RWWWNuX3hPdzllZEtNTkdIMzNfcTZfcEJJMFhhVFk3UDNhcFVnak8waXZrNWMxTlFBVlk2UFptY1BROFAxWTBjQkFDOVNUUm16dlR2RFFjT29jTGhWeTJabGNYVHUzOW9PR0xOcmE4X0xRc2FNQTM4NmxPX3FNVzQtdVk2RGJHWlk0dkhrU2N2QUM5RklaWURQYWZxV0JFUVVOVjJRT0ZNSDVWUG9paENUS0h3TUdYblpCYXRZT2JnNTd4U09VWC1idmhPX3NGTW0zazRSdnNYY3IzTUZvakFoTGZ3dXR1X2pLOWs3TjlLUl9tTmM1SXBpT3loWndfc1VtRjZTYW1ScXNTUHA0MktEMTBoUE1XMFlKVERNWXhCZEhyTUZlU01IWUlNWTRvQkJUNDNfX2E1NXpJTElfQ25JazQyNDF3T3ZHdncifX0sInR5cGUiOiJIZWFsdGhJbnN1cmFuY2VEYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiMmpJUjE4Z2ZlQVNIWUdCMjdzN3NTM1NfaVE0eHhGSXhDUnlpb2hyQmZucyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhcyIsImFzc3VyYW5jZV9sZXZlbCI6ImhpZ2gifSwiY2xhaW1zIjp7Il9zZCI6WyIxaXp0cTdib3Y2NHhUWWJEa1dGYzQ0X1ZqV2UwMjloWnFYZVVJbG9xVU40IiwiRU5ObzMxamZ6RnA4WTJEVzBSLWZJTWVXd2U3RUxHdkdvSE13TUJwdTE0RSIsIkZWMkNETld1VHFUZ09IYWZ0dlZhdW1CRjBPbG1ueXhNc3d5ZjR1SXhyaFkiLCJkWldqcTdtSlNTWC1YVElfSFd1RThCMng2SWRNNWxFLWRvRF95QnBLSmFvIiwiZ0hZaTE5ZnJiRF9pNEJvYVdFTk9qYzNsQ25NajRwYkdOUWNzQmpfUU00USJdfX0sIl9zZF9hbGciOiJzaGEtMjU2In0</span><span class="o">.</span><span class="n">PrVt9qpf1WmfoRKncGXw6loKRANomsL</span><span class="o">-</span><span class="n">foXMqMUIyK2AO0tWM5laveqRet9Bb5A0fPq7rxNQLU57ngV3o8VzKLhFkbKm1_wtA5XuZXBfz0qGCmIP6tZQu9yAvXy162h6_i4FOINyHoL8i5mNPFTHFY0nBYTyVkCScfBC2Ccv4i7RSALbpbpviTpoYVBzFWtdOKuuMED5XwKpW9</span><span class="o">-</span><span class="n">VF_JK11yaJJ880walzu5tZ3XAOb0KkfUS3sCmSkKO5wMm1SeaS7xL5iiPSnAMTMrlmKE6qcwAkdDX</span><span class="o">-</span><span class="n">hNeGzncwBjHASTWb2udayK8Cal</span><span class="o">-</span><span class="n">wFGDWrRWGq3mU0rfuxMIFkjv4gdi8Q</span>
 </pre></div>
 </div>
 </section>

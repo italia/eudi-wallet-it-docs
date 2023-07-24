@@ -2,6 +2,13 @@
 
 .. _defined-terms.rst:
 
+
+Normative Language and Conventions
+++++++++++++++++++++++++++++++++++
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+
+
 Defined Terms
 +++++++++++++
 
@@ -40,6 +47,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.
    * - Trust Layer
      - An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.
+   * - Level of Assurance
+     - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the credential was issued.
 
 Acronyms
 --------
@@ -60,4 +69,6 @@ Acronyms
     - Verifiable Presentation
   * - **API**
     - Application Programming Interface
+  * - **LoA**
+    - Level of Assurance
 

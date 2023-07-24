@@ -10,8 +10,8 @@ Relying Party Solution
 
 This section describes how a Relying Party may ask to a Wallet Instance the presentation of the PID and the (Q)EAAs, according the following specifications: 
 
-- `OpenID for Verifiable Presentations - draft 19 <OID4VP>`_.
-- `Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP) <DPOP>`_.
+- `OpenID for Verifiable Presentations - draft 19 <https://openid.net/specs/openid-4-verifiable-presentations-1_0.html>`_.
+- `Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP) <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop>`_.
 
 
 In this section the following flows are described:
@@ -340,10 +340,10 @@ Here a non-normative example of ``presentation_definition``:
 
   {
     "presentation_definition": {
-      "id": "pid-sd-jwt:unique_id+given_name+family_name",
+      "id": "presentation definitions",
       "input_descriptors": [
         {
-          "id": "eu.europa.ec.eudiw.pid.it.1",
+          "id": "pid-sd-jwt:unique_id+given_name+family_name",
           "name": "Person Identification Data",
           "purpose": "User authentication",
           "format": "vc+sd-jwt",
@@ -384,8 +384,7 @@ After getting the User authorization and consent for the presentation of the cre
 .. note::
     **Why the response is encrypted?**
 
-    The response sent from the Wallet Instance to the Relying Party is encrypted
-    to prevent a technique called `SSL split attack <https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/>`_, that could be enabled by malicious app installed locally by Users,that intecepts the network traffic, or be present by-design in network environments where a next-generation firewalls or other security devices may reduce the privacy of the Users.
+    The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the verifier's network. This is only possible if the network environment of the verifier employs `TLS termination <https://www.f5.com/glossary/ssl-termination>`_. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.
 
 Below a non-normative example of the request:
 
@@ -410,13 +409,8 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
         "id": "04a98be3-7fb0-4cf5-af9a-31579c8b0e7d",
         "descriptor_map": [
             {
-                "id": "eu.europa.ec.eudiw.pid.it.1:unique_id",
+                "id": "pid-sd-jwt:unique_id+given_name+family_name",
                 "path": "$.vp_token.verified_claims.claims._sd[0]",
-                "format": "vc+sd-jwt"
-            },
-            {
-                "id": "eu.europa.ec.eudiw.pid.it.1:given_name",
-                "path": "$.vp_token.verified_claims.claims._sd[1]",
                 "format": "vc+sd-jwt"
             }
         ]
