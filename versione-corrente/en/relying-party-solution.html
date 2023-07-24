@@ -1119,7 +1119,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <p>In a Cross Device Flow, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request.</p>
 <p>The User frames the QR Code using the Wallet Instance, then grants the consent to release their attributes to the RP.</p>
 <p>The payload of the QR Code is a <strong>Base64 encoded string</strong> based on the following format:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span>
 </pre></div>
 </div>
 <p>Where:</p>
@@ -1167,10 +1167,10 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <li><p>obtain the signed request object from the Relying Party.</p></li>
 </ul>
 <p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed request object:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">request_uri</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="w"></span>
-<span class="nx">HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">verifier</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span><span class="w"></span>
-<span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="nx">DPoP</span><span class="w"> </span><span class="nx">$WalletInstanceAttestation</span><span class="w"></span>
-<span class="nx">DPoP</span><span class="o">:</span><span class="w"> </span><span class="nx">$WalletInstanceAttestationProofOfPossession</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">request_uri</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">verifier</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span>
+<span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="nx">DPoP</span><span class="w"> </span><span class="nx">$WalletInstanceAttestation</span>
+<span class="nx">DPoP</span><span class="o">:</span><span class="w"> </span><span class="nx">$WalletInstanceAttestationProofOfPossession</span>
 </pre></div>
 </div>
 <p>More detailed information about the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation</a> is available in its dedicated section of this technical specification.</p>
@@ -1378,31 +1378,31 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <p>The usage of <code class="docutils literal notranslate"><span class="pre">scope</span></code> instead of <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code> is still under discussion and needs better refinements.</p>
 </div>
 <p>Here a non-normative example of <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;presentation_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;presentation definitions&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">      </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person Identification Data&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User authentication&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;$.credentialSubject.unique_id&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;$.credentialSubject.given_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;$.credentialSubject.family_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="p">]</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">          </span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;limit_discolusre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;preferred&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;presentation_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;presentation definitions&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person Identification Data&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User authentication&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;$.credentialSubject.unique_id&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;$.credentialSubject.given_name&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;$.credentialSubject.family_name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;limit_discolusre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;preferred&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1434,21 +1434,21 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 </pre></div>
 </div>
 <p>Below is a non-normative example of the decrypted JSON <code class="docutils literal notranslate"><span class="pre">response</span></code> content:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;presentation_submission&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;definition_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;32f54163-7166-48f1-93d8-ff217bdb0653&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;04a98be3-7fb0-4cf5-af9a-31579c8b0e7d&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;descriptor_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">          </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.vp_token.verified_claims.claims._sd[0]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="w"></span>
-<span class="w">          </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;presentation_submission&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;definition_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;32f54163-7166-48f1-93d8-ff217bdb0653&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;04a98be3-7fb0-4cf5-af9a-31579c8b0e7d&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;descriptor_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.vp_token.verified_claims.claims._sd[0]&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Where the following parameters are used:</p>

@@ -1210,30 +1210,30 @@ Assertion Request JWT)</p></td>
 </table>
 <p>Below a non-normative example of the Wallet Instance Attestation
 request where the decoded JWS headers and payload are separated by a comma:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;var+jwt&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="p">.</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;aud&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;jti&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;6ec69324-60a8-4e5b-a697-a766d85790ea&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestationRequest&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;nonce&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.....&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686645115</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686652315</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;var+jwt&quot;</span>
+<span class="p">}</span>
+<span class="p">.</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;aud&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;jti&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;6ec69324-60a8-4e5b-a697-a766d85790ea&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestationRequest&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;nonce&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.....&quot;</span>
+<span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686645115</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1686652315</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Whose corresponding JWS is verifiable through the public key
@@ -1493,56 +1493,56 @@ and must be intended as experimental.</p>
 <p>The Wallet Instance Attestation JWS is signed using the private key of the Wallet Provider.</p>
 </div>
 <p>Below is an example of Wallet Instance Attestation:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;trust_chain&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wallet-attestation+jwt&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;x5c&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MIIBjDCC ... XFehgKQA==&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="p">.</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestation&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;policy_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/privacy_policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;tos_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/info_policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;logo_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/logo.svg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;attested_security_context&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/basic&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;authorization_endpoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;eudiw:&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;response_types_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;vp_token&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;vp_formats_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;jwt_vp_json&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;jwt_vc_json&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;request_object_signing_alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;ES256&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;presentation_definition_uri_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1687281195</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1687288395</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;trust_chain&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wallet-attestation+jwt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;x5c&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MIIBjDCC ... XFehgKQA==&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="p">.</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestation&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;policy_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/privacy_policy&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;tos_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/info_policy&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;logo_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;attested_security_context&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/basic&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">&quot;authorization_endpoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;eudiw:&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;response_types_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;vp_token&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="s2">&quot;vp_formats_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;jwt_vp_json&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;jwt_vc_json&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">&quot;request_object_signing_alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;ES256&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="s2">&quot;presentation_definition_uri_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1687281195</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1687288395</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
