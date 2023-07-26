@@ -1110,9 +1110,8 @@ This scenario requests the Verifier to provide the URL where the signed request 
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In the Same Device Flow the URL is provided as described in the previous section, where the parameter <strong>client_id</strong> and <strong>request_uri</strong> are the same if the ones used in the Cross Device Flow and the only difference if in the url schema and in the removal of the Verifier's FQDN</p>
-<p>This Same Device Flow utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).</p>
-<p>The Relying Party produces the URL to be provided to the Wallet Instance using a HTTP 302 response (redirect), as represented in the following non-normative example:</p>
+<p>In the Same Device Flow the parameter <strong>client_id</strong> and <strong>request_uri</strong> are the same if the ones used in the Cross Device Flow with the only difference about the url schema and the removal of the Verifier's FQDN from the URL.</p>
+<p>In the Same Device Flow the Relying Party uses a HTTP response redirect (status code 302) to give to the Wallet Instance the resource where the request object is available for download, as represented in the following non-normative example:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HTTP/1.1 /pre-authz-endpoint Found
 Location: https://verifier.example.org/request_uri_endpoint?
 client_id=https%3A%2F%2Fverifier.example.org%2Fcb
