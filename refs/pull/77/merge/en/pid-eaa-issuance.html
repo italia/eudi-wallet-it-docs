@@ -1118,31 +1118,31 @@ response_type=code
 </pre></div>
 </div>
 <p>The JWS header of request object is represented below:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The JWS payload of the request object is represented below:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="nt">&quot;response_type&quot;</span><span class="p">:</span><span class="s2">&quot;code&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="s2">&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;code_challenge&quot;</span><span class="p">:</span><span class="s2">&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;code_challenge_method&quot;</span><span class="p">:</span><span class="s2">&quot;S256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;authorization_details&quot;</span><span class="p">:[</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;credential_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="p">],</span><span class="w"></span>
-<span class="nt">&quot;redirect_uri&quot;</span><span class="p">:</span><span class="s2">&quot;eudiw://start.wallet.example.org&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;client_assertion_type&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;response_type&quot;</span><span class="p">:</span><span class="s2">&quot;code&quot;</span><span class="p">,</span>
+<span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
+<span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="s2">&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;</span><span class="p">,</span>
+<span class="nt">&quot;code_challenge&quot;</span><span class="p">:</span><span class="s2">&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;</span><span class="p">,</span>
+<span class="nt">&quot;code_challenge_method&quot;</span><span class="p">:</span><span class="s2">&quot;S256&quot;</span><span class="p">,</span>
+<span class="nt">&quot;authorization_details&quot;</span><span class="p">:[</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;credential_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">],</span>
+<span class="nt">&quot;redirect_uri&quot;</span><span class="p">:</span><span class="s2">&quot;eudiw://start.wallet.example.org&quot;</span><span class="p">,</span>
+<span class="nt">&quot;client_assertion_type&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1154,10 +1154,10 @@ response_type=code
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-cache, no-store</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;request_uri&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:request_uri:bwc4JK-ESC0w8acc191e-Y1LTC2&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;request_uri&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:request_uri:bwc4JK-ESC0w8acc191e-Y1LTC2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Steps 8-9 (Authorization Request):</strong> The Wallet Instance sends an authorization request to the PID/(Q)EAA Issuer authorization endpoint.</p>
@@ -1206,13 +1206,13 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DPoP&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2677</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tZign[...]snFbp&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU&quot;</span><span class="p">,</span>
+<span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DPoP&quot;</span><span class="p">,</span>
+<span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2677</span><span class="p">,</span>
+<span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tZign[...]snFbp&quot;</span><span class="p">,</span>
+<span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Steps 16-18 (DPoP Proof for Credential Endpoint):</strong> The Wallet Instance SHOULD create a new key pair to which the new credential SHALL be bound. Then, it creates a proof of possession with the new key and the <em>c_nonce</em> obtained in <strong>Step 15</strong> and it creates a DPoP proof for the request to the PID/(Q)EAA credential issuance endpoint.</p>
@@ -1240,26 +1240,26 @@ credential_definition=%7B%22type%22:%5B%22PersonIdentificationData%22%5D%7D
 </pre></div>
 </div>
 <p>A non-normative example of proof parameter is given below:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="nt">&quot;proof_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJraWQiOiJkaWQ6ZXhhbXBsZTplYm …&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;proof_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
+<span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJraWQiOiJkaWQ6ZXhhbXBsZTplYm …&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Where the decoded content of the JWT is represented below:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid4vci-proof+jwt&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid4vci-proof+jwt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0b434530-e151-4c40-98b7-74c75a5ef760&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1504699136</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tZign...snFbp&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0b434530-e151-4c40-98b7-74c75a5ef760&quot;</span><span class="p">,</span>
+<span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
+<span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1504699136</span><span class="p">,</span>
+<span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tZign...snFbp&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Steps 20-22 (Credential Response):</strong> The PID/(Q)EAA Issuer checks the <em>DPoP proof</em> and whether the <em>Access Token</em> is valid and suitable for the requested PID/(Q)EAA. It also checks the proof of possession for the key material the new credential SHALL be bound to. If all checks succeed, the PID/(Q)EAA Issuer creates a new credential bound to the key material and sends it to the Wallet Instance. The Wallet Instance MUST perform the PID/(Q)EAA integrity and authenticity checks before proceeding with the secure storage of the credential.</p>
@@ -1268,12 +1268,12 @@ credential_definition=%7B%22type%22:%5B%22PersonIdentificationData%22%5D%7D
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
 <span class="na">Pragma</span><span class="o">:</span> <span class="l">no-cache</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;vc+sd-jwt&quot;</span><span class="w"></span>
-<span class="nt">&quot;credential&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LUpixVCWJk0eOt4CXQe1NXK[...]WZwmhmn9OQp6YxX0a2L&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fGFF7[...]UkhLa&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;vc+sd-jwt&quot;</span>
+<span class="nt">&quot;credential&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LUpixVCWJk0eOt4CXQe1NXK[...]WZwmhmn9OQp6YxX0a2L&quot;</span><span class="p">,</span>
+<span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fGFF7[...]UkhLa&quot;</span><span class="p">,</span>
+<span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
