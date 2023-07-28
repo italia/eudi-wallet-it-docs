@@ -98,11 +98,10 @@ The payload of the QR Code is a **Base64 encoded string** based on the following
 
   eudiw://authorize?client_id=`$client_id`&request_uri=`$request_uri`
 
-In the Same Device Flow the URL is provided as described in the previous section, where the parameter **client_id** and **request_uri** are the same if the ones used in the Cross Device Flow and the only difference if in the url schema and in the removal of the Verifier's FQDN
+In the Same Device Flow the parameter **client_id** and **request_uri** are the same if the ones used in the Cross Device Flow with the only difference about the url schema and the removal of the Verifier's FQDN from the URL. 
 
-This Same Device Flow utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).
+In the Same Device Flow the Relying Party uses a HTTP response redirect (status code 302) to give to the Wallet Instance the resource where the request object is available for download, as represented in the following non-normative example:
 
-The Relying Party produces the URL to be provided to the Wallet Instance using a HTTP 302 response (redirect), as represented in the following non-normative example:
 
 .. code:: text
 
