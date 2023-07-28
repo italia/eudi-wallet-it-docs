@@ -409,7 +409,6 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
 
   {
     "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
-    "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb"
     "vp_token": "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
     "presentation_submission": {
         "definition_id": "32f54163-7166-48f1-93d8-ff217bdb0653",
@@ -438,8 +437,6 @@ Where the following parameters are used:
     - JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token.
   * - **state**
     - Unique identifier provided by the Verifier within the Authorization Request.
-  * - **nonce**
-    - Nonce provided by the Verifier within the Authorization Request.
 
 
 Below is a non-normative example of the ``vp_token`` decoded content, represented in the form of JWS header and payload, separated by a period:
