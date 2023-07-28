@@ -693,8 +693,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#same-device-flow">Same Device Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#remote-cross-device-flow">Remote Cross Device Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#dpop-http-header">DPoP HTTP Header</a></li>
@@ -938,8 +937,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#same-device-flow">Same Device Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#remote-cross-device-flow">Remote Cross Device Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#dpop-http-header">DPoP HTTP Header</a></li>
@@ -1023,7 +1021,7 @@
 </ul>
 <p>In this section the following flows are described:</p>
 <ul class="simple">
-<li><p><strong>Same Device Flow</strong>, where the Verifier and the Wallet Instance acts in the same device.</p></li>
+<li><p><strong>Remote Same Device Flow</strong>, where the Verifier and the Wallet Instance acts in the same device.</p></li>
 <li><p><strong>Remote Cross Device Flow</strong>, where the Verifier and the Wallet Instance acts in different devices and the Verifier is a remote Relying Party.</p></li>
 </ul>
 <p>The flows are analyzed in this chapter, taking into account security and privacy considerations.</p>
@@ -1031,21 +1029,17 @@
 <p class="admonition-title">Note</p>
 <p>Relying Party and Verifier are the same entity.</p>
 </div>
-<section id="same-device-flow">
-<h2>Same Device Flow<a class="headerlink" href="#same-device-flow" title="Permalink to this heading">¶</a></h2>
-<p>In the <strong>Same Device Authorization Flow</strong>, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
-This scenario utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This flow will be described more in detail in future releases of this documentation.</p>
-</div>
-</section>
-<section id="remote-cross-device-flow">
-<h2>Remote Cross Device Flow<a class="headerlink" href="#remote-cross-device-flow" title="Permalink to this heading">¶</a></h2>
-<p>In the <strong>Cross Device Authorization Flow</strong>, the User interacts with a remote Relying Party.
-This scenario requests the Verifier to show a QR Code which the User frames with their Wallet Instance.</p>
+<section id="remote-protocol-flow">
+<h2>Remote Protocol Flow<a class="headerlink" href="#remote-protocol-flow" title="Permalink to this heading">¶</a></h2>
+<p>In the <strong>Same Device</strong> and <strong>Cross Device</strong> Authorization Flows, the User interacts with a remote Relying Party.
+This scenario requests the Verifier to provide the URL where the signed request object is available.</p>
+<p>The Verifier MUST detect the device type of the requestor (Wallet Instance), if it is a mobile device or a workstationm and activate one the supported remote flows:</p>
+<ul class="simple">
+<li><p>In the <em>Same Device*</em> flow the Verifier MUST provide a HTTP redirect (302) location to the Wallet Instance;</p></li>
+<li><p>In the <em>Cross Device*</em> flow the Verifier MUST provide a QR Code which the User frames with their Wallet Instance.</p></li>
+</ul>
 <p>Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.</p>
-<a class="reference external image-reference" href="//www.plantuml.com/plantuml/png/ZPF1Rjf048Rl-nIZd5gfUG4agaGqgcXLuG99Bf6gnJlWRSmidPsrIv--QpjhOn1IRlZtDpyp_upll6YMi2-L3k8ex3V8IXsYPdDxq2Hmy-YHRq1x26FzMPSb2imfMb2EBLAFaIMMHqixoA9uR84AbPfEuJv8WHH1BTOHm7Ig0jn-ZgydiCG_0Rr0naum5pHHyIvmZahdOYijsDXKc0fcZ55hFHtRVwrbShd4VYvXvaoghoUmAbmTrLOqUFeN_UzQgJhHkQRaqOiFVuKZtBV-k9o_q9RTVY1J5ryVrZsssFp6MFL2c-DfQHHgAmMS1Gpt8f5enuk8zl0bSnc8UqMwaanNSM6qvl2MJDV-k9zn26d6v3LQQUVK8q_8TdiyGtwWQAD53vGkRHGGlZslOMLtf2KmNhnENQ61f-o3_zW1OUXswnXoHnv9Xl632ccgcQEjvJsQqu72i8biiLfV78q_D8unNcXNK1r-lIFV6QD14gjBc7iVa5F22Rmsym1ax7Bq7gH0o7kxI-1AmugS8BWAUGGV2kqHE0Pc6QEvcyJ9Rg5AtLWItB6LuoVGwOlidiX0uKg331jBfjccstPxQ0oGV624U5QT1Ze-bPPUqRIvTPTWaTy5vu4PIS2ZzyrGv2Z7yyfPKydzITWu7AD7EhtZnNTbyFIZFJlbEoGJzkL_"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
+<a class="reference external image-reference" href="//www.plantuml.com/plantuml/png/ZPDFQnin4CNl-XH3JWaqKDfRm2N13MrQYhUEarm2GLwDRJNhaJiQhUj--iwkkki_nf3RUlJJqvkPv-iebYKjAsEJ14hBAR8nAwtvqgyi2PmzHEGpi17IVlt9LXKAt95AK8ajijv7nbXjFCsXqEAc1Meq9i7b9_suWZ7-JXW52Ww2fQ3JIWo9IuK60xX9ia1IDIi-4C1WO6mflhQ2ZKwDdSwGKMij7zZ_RV5E_1ZZVF2Is0DtxsLgVGK_nyFW44PZ-3gP5AhYFAitEF_u_iC5hBqiG1Px8iRXhgt-UstCd4DQwRiXHlYCjIyH0bKRiywFmNrfIL-4vic-UFj7M4NwwJoCxvvfnc7PaqZEPBnfwyljf6T7qr-DsMUQRdRlQw5rVh0ok15HefsN8bPD5g402Qz89qQTRnm9JJZz7tNkOT_FmOHoextMNaYoKeyy8llPvW3vWMAT5RkbREMrWF3jQGBtVavM4kFHSUSA7JmMv_4Y0sdhTXOOoa0HIRRj9vEwheQ1PfwNw7ORIjjD5AFxoL4AuwfHrF7cyDIhbpVCTyZeckZR2kvYJCZzX3DuikSjK70eCSOshMKlTmoSC6me24AeaVVWrSB6d7xFgEBXIZkxXBfpuqbmpbusxy1sVz_yYnmiGkMGOUh9DTiCixo7HW0f9aRGMEKQM4QeFBsYQ-UMa-2HtmINYHb98AhbfYaALEBXpM5pa_j8U6sECIBjvdZqVNVLQsCEedoDvDAo-WS0"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -1064,13 +1058,13 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <td><p>The Relying Party creates an Authorization Request which contains the scopes of the request.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>3</strong></p></td>
-<td><p>The Relying Party inserts the reference URI of the <em>request_uri</em> into a QR Code.</p></td>
+<td><p>In the <strong>Same Device Flow</strong> the Relying Party responses with the Request URI in the form of HTTP Location (302). In the <strong>Cross Device Flow</strong> the Request URI is provided in the form of a QR Code.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>4</strong></p></td>
-<td><p>The QR Code is shown to the User that frames it.</p></td>
+<td><p>Only in <strong>Cross Device Flow</strong>: The QR Code is shown to the User that frames it.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>5</strong> and <strong>6</strong></p></td>
-<td><p>The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code.</p></td>
+<td><p>Only in <strong>Cross Device Flow</strong>:  The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>7</strong></p></td>
 <td><p>The Wallet Instance requests the content of the Authorization Request by invoking the Request URI, passing an Authorization DPoP HTTP Header containing the Wallet Instance Attestation and the DPoP proof HTTP Header.</p></td>
@@ -1116,11 +1110,23 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </section>
 <section id="authorization-request-details">
 <h2>Authorization Request Details<a class="headerlink" href="#authorization-request-details" title="Permalink to this heading">¶</a></h2>
-<p>In a Cross Device Flow, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request.</p>
+<p>In the Cross Device Flow, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request.</p>
 <p>The User frames the QR Code using the Wallet Instance, then grants the consent to release their attributes to the RP.</p>
 <p>The payload of the QR Code is a <strong>Base64 encoded string</strong> based on the following format:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span>
 </pre></div>
+</div>
+<p>In the Same Device Flow the parameter <strong>client_id</strong> and <strong>request_uri</strong> are the same if the ones used in the Cross Device Flow with the only difference about the url schema and the removal of the Verifier's FQDN from the URL.</p>
+<p>In the Same Device Flow the Relying Party uses a HTTP response redirect (status code 302) to give to the Wallet Instance the resource where the request object is available for download, as represented in the following non-normative example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HTTP/1.1 /pre-authz-endpoint Found
+Location: https://verifier.example.org/request_uri_endpoint?
+client_id=https%3A%2F%2Fverifier.example.org%2Fcb
+&amp;request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri_endpoint
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Same Device flow proposed in this specification is under discussion and must be considered as experimental.</p>
 </div>
 <p>Where:</p>
 <table class="docutils align-default">
@@ -1160,7 +1166,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <h2>Request Object Details<a class="headerlink" href="#request-object-details" title="Permalink to this heading">¶</a></h2>
 <p>The following actions are made by the Wallet Instance:</p>
 <ul class="simple">
-<li><p>scan the QR Code;</p></li>
+<li><p>scan the QR Code (Cross Device only);</p></li>
 <li><p>extract from the payload the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter;</p></li>
 <li><p>invoke the retrieved URI;</p></li>
 <li><p>provide in the request its Wallet instance Attestation, using <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">DPOP</a> to proof the legitimate possession of it;</p></li>
@@ -1470,7 +1476,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <td><p>JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
-<td><p>Unique identifier provided by the Verifier inside the Authorization Request</p></td>
+<td><p>Unique identifier provided by the Verifier within the Authorization Request.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1487,11 +1493,43 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
  &quot;aud&quot;: &quot;https://verifier.example.org/callback&quot;,
  &quot;iat&quot;: 1541493724,
  &quot;exp&quot;: 1573029723,
- &quot;nonce&quot;: &quot;n-0S6_WzA2Mj&quot;,
+ &quot;nonce&quot;: &quot;2c128e4d-fc91-4cd3-86b8-18bdea0988cb&quot;
  &quot;vp&quot;: &quot;&lt;SD-JWT&gt;~&lt;Disclosure 1&gt;~&lt;Disclosure 2&gt;~...~&lt;Disclosure N&gt;&quot;
 }
 </pre></div>
 </div>
+<p>Where the following parameters are used:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>vp</strong></p></td>
+<td><p>The digital credential in its original state. The public key contained in the digital credential MUST be used to verify the entire VP JWS as Proof of Possession of the private key which the public part is carried in the digital credential (Holder Key Binding).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>jti</strong></p></td>
+<td><p>JWS Unique identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>Unix timestamp of the issuance datetime.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>Unix timestamp beyond which the presentation of the digital credential will no longer be considered valid.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>aud</strong></p></td>
+<td><p>Audience of the VP, corresponding to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> within the Authorization request issued by the Relying Party.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nonce</strong></p></td>
+<td><p>Nonce provided by the Verifier within the Authorization Request.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="relying-party-entity-configuration">
 <h2>Relying Party Entity Configuration<a class="headerlink" href="#relying-party-entity-configuration" title="Permalink to this heading">¶</a></h2>
