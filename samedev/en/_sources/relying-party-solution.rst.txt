@@ -40,7 +40,7 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
 
 .. image:: ../../images/cross_device_auth_seq_diagram.svg
   :align: center
-  :target: //www.plantuml.com/plantuml/png/ZPF1Rjf048Rl-nIZd5gfUG4agaGqgcXLuG99Bf6gnJlWRSmidPsrIv--QpjhOn1IRlZtDpyp_upll6YMi2-L3k8ex3V8IXsYPdDxq2Hmy-YHRq1x26FzMPSb2imfMb2EBLAFaIMMHqixoA9uR84AbPfEuJv8WHH1BTOHm7Ig0jn-ZgydiCG_0Rr0naum5pHHyIvmZahdOYijsDXKc0fcZ55hFHtRVwrbShd4VYvXvaoghoUmAbmTrLOqUFeN_UzQgJhHkQRaqOiFVuKZtBV-k9o_q9RTVY1J5ryVrZsssFp6MFL2c-DfQHHgAmMS1Gpt8f5enuk8zl0bSnc8UqMwaanNSM6qvl2MJDV-k9zn26d6v3LQQUVK8q_8TdiyGtwWQAD53vGkRHGGlZslOMLtf2KmNhnENQ61f-o3_zW1OUXswnXoHnv9Xl632ccgcQEjvJsQqu72i8biiLfV78q_D8unNcXNK1r-lIFV6QD14gjBc7iVa5F22Rmsym1ax7Bq7gH0o7kxI-1AmugS8BWAUGGV2kqHE0Pc6QEvcyJ9Rg5AtLWItB6LuoVGwOlidiX0uKg331jBfjccstPxQ0oGV624U5QT1Ze-bPPUqRIvTPTWaTy5vu4PIS2ZzyrGv2Z7yyfPKydzITWu7AD7EhtZnNTbyFIZFJlbEoGJzkL_
+  :target: //www.plantuml.com/plantuml/png/ZPDFQnin4CNl-XH3JWaqKDfRm2N13MrQYhUEarm2GLwDRJNhaJiQhUj--iwkkki_nf3RUlJJqvkPv-iebYKjAsEJ14hBAR8nAwtvqgyi2PmzHEGpi17IVlt9LXKAt95AK8ajijv7nbXjFCsXqEAc1Meq9i7b9_suWZ7-JXW52Ww2fQ3JIWo9IuK60xX9ia1IDIi-4C1WO6mflhQ2ZKwDdSwGKMij7zZ_RV5E_1ZZVF2Is0DtxsLgVGK_nyFW44PZ-3gP5AhYFAitEF_u_iC5hBqiG1Px8iRXhgt-UstCd4DQwRiXHlYCjIyH0bKRiywFmNrfIL-4vic-UFj7M4NwwJoCxvvfnc7PaqZEPBnfwyljf6T7qr-DsMUQRdRlQw5rVh0ok15HefsN8bPD5g402Qz89qQTRnm9JJZz7tNkOT_FmOHoextMNaYoKeyy8llPvW3vWMAT5RkbREMrWF3jQGBtVavM4kFHSUSA7JmMv_4Y0sdhTXOOoa0HIRRj9vEwheQ1PfwNw7ORIjjD5AFxoL4AuwfHrF7cyDIhbpVCTyZeckZR2kvYJCZzX3DuikSjK70eCSOshMKlTmoSC6me24AeaVVWrSB6d7xFgEBXIZkxXBfpuqbmpbusxy1sVz_yYnmiGkMGOUh9DTiCixo7HW0f9aRGMEKQM4QeFBsYQ-UMa-2HtmINYHb98AhbfYaALEBXpM5pa_j8U6sECIBjvdZqVNVLQsCEedoDvDAo-WS0
 
 .. list-table::
   :widths: 50 50
@@ -150,7 +150,7 @@ Request Object Details
 ----------------------
 The following actions are made by the Wallet Instance:
 
-- scan the QR Code;
+- scan the QR Code (Cross Device only);
 - extract from the payload the ``request_uri`` parameter;
 - invoke the retrieved URI;
 - provide in the request its Wallet instance Attestation, using `DPOP`_ to proof the legitimate possession of it;
@@ -423,7 +423,7 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
     }
   }
 
-Where the following parameters are used: 
+Where the following parameters are used:
 
 .. list-table::
   :widths: 25 50
@@ -436,7 +436,7 @@ Where the following parameters are used:
   * - **presentation_submission**
     - JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token.
   * - **state**
-    - Unique identifier provided by the Verifier inside the Authorization Request
+    - Unique identifier provided by the Verifier within the Authorization Request.
 
 
 Below is a non-normative example of the ``vp_token`` decoded content, represented in the form of JWS header and payload, separated by a period:
@@ -455,9 +455,30 @@ Below is a non-normative example of the ``vp_token`` decoded content, represente
     "aud": "https://verifier.example.org/callback",
     "iat": 1541493724,
     "exp": 1573029723,
-    "nonce": "n-0S6_WzA2Mj",
+    "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb"
     "vp": "<SD-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>"
    }
+
+Where the following parameters are used:
+
+.. list-table::
+  :widths: 25 50
+  :header-rows: 1
+
+  * - **Name**
+    - **Description**
+  * - **vp**
+    - The digital credential in its original state. The public key contained in the digital credential MUST be used to verify the entire VP JWS as Proof of Possession of the private key which the public part is carried in the digital credential (Holder Key Binding).
+  * - **jti**
+    - JWS Unique identifier.
+  * - **iat**
+    - Unix timestamp of the issuance datetime.
+  * - **exp**
+    - Unix timestamp beyond which the presentation of the digital credential will no longer be considered valid.
+  * - **aud**
+    - Audience of the VP, corresponding to the ``redirect_uri`` within the Authorization request issued by the Relying Party.
+  * - **nonce**
+    - Nonce provided by the Verifier within the Authorization Request.
 
 Relying Party Entity Configuration
 ---------------------------------------------

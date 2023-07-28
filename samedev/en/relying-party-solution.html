@@ -1033,7 +1033,7 @@ This scenario requests the Verifier to provide the URL where the signed request 
 <li><p>In the <em>Cross Device*</em> flow the Verifier MUST provide a QR Code which the User frames with their Wallet Instance.</p></li>
 </ul>
 <p>Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.</p>
-<a class="reference external image-reference" href="//www.plantuml.com/plantuml/png/ZPF1Rjf048Rl-nIZd5gfUG4agaGqgcXLuG99Bf6gnJlWRSmidPsrIv--QpjhOn1IRlZtDpyp_upll6YMi2-L3k8ex3V8IXsYPdDxq2Hmy-YHRq1x26FzMPSb2imfMb2EBLAFaIMMHqixoA9uR84AbPfEuJv8WHH1BTOHm7Ig0jn-ZgydiCG_0Rr0naum5pHHyIvmZahdOYijsDXKc0fcZ55hFHtRVwrbShd4VYvXvaoghoUmAbmTrLOqUFeN_UzQgJhHkQRaqOiFVuKZtBV-k9o_q9RTVY1J5ryVrZsssFp6MFL2c-DfQHHgAmMS1Gpt8f5enuk8zl0bSnc8UqMwaanNSM6qvl2MJDV-k9zn26d6v3LQQUVK8q_8TdiyGtwWQAD53vGkRHGGlZslOMLtf2KmNhnENQ61f-o3_zW1OUXswnXoHnv9Xl632ccgcQEjvJsQqu72i8biiLfV78q_D8unNcXNK1r-lIFV6QD14gjBc7iVa5F22Rmsym1ax7Bq7gH0o7kxI-1AmugS8BWAUGGV2kqHE0Pc6QEvcyJ9Rg5AtLWItB6LuoVGwOlidiX0uKg331jBfjccstPxQ0oGV624U5QT1Ze-bPPUqRIvTPTWaTy5vu4PIS2ZzyrGv2Z7yyfPKydzITWu7AD7EhtZnNTbyFIZFJlbEoGJzkL_"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
+<a class="reference external image-reference" href="//www.plantuml.com/plantuml/png/ZPDFQnin4CNl-XH3JWaqKDfRm2N13MrQYhUEarm2GLwDRJNhaJiQhUj--iwkkki_nf3RUlJJqvkPv-iebYKjAsEJ14hBAR8nAwtvqgyi2PmzHEGpi17IVlt9LXKAt95AK8ajijv7nbXjFCsXqEAc1Meq9i7b9_suWZ7-JXW52Ww2fQ3JIWo9IuK60xX9ia1IDIi-4C1WO6mflhQ2ZKwDdSwGKMij7zZ_RV5E_1ZZVF2Is0DtxsLgVGK_nyFW44PZ-3gP5AhYFAitEF_u_iC5hBqiG1Px8iRXhgt-UstCd4DQwRiXHlYCjIyH0bKRiywFmNrfIL-4vic-UFj7M4NwwJoCxvvfnc7PaqZEPBnfwyljf6T7qr-DsMUQRdRlQw5rVh0ok15HefsN8bPD5g402Qz89qQTRnm9JJZz7tNkOT_FmOHoextMNaYoKeyy8llPvW3vWMAT5RkbREMrWF3jQGBtVavM4kFHSUSA7JmMv_4Y0sdhTXOOoa0HIRRj9vEwheQ1PfwNw7ORIjjD5AFxoL4AuwfHrF7cyDIhbpVCTyZeckZR2kvYJCZzX3DuikSjK70eCSOshMKlTmoSC6me24AeaVVWrSB6d7xFgEBXIZkxXBfpuqbmpbusxy1sVz_yYnmiGkMGOUh9DTiCixo7HW0f9aRGMEKQM4QeFBsYQ-UMa-2HtmINYHb98AhbfYaALEBXpM5pa_j8U6sECIBjvdZqVNVLQsCEedoDvDAo-WS0"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -1156,7 +1156,7 @@ client_id=https%3A%2F%2Fverifier.example.org%2Fcb
 <h2>Request Object Details<a class="headerlink" href="#request-object-details" title="Permalink to this heading">¶</a></h2>
 <p>The following actions are made by the Wallet Instance:</p>
 <ul class="simple">
-<li><p>scan the QR Code;</p></li>
+<li><p>scan the QR Code (Cross Device only);</p></li>
 <li><p>extract from the payload the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter;</p></li>
 <li><p>invoke the retrieved URI;</p></li>
 <li><p>provide in the request its Wallet instance Attestation, using <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">DPOP</a> to proof the legitimate possession of it;</p></li>
@@ -1466,7 +1466,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <td><p>JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
-<td><p>Unique identifier provided by the Verifier inside the Authorization Request</p></td>
+<td><p>Unique identifier provided by the Verifier within the Authorization Request.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1483,11 +1483,43 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
  &quot;aud&quot;: &quot;https://verifier.example.org/callback&quot;,
  &quot;iat&quot;: 1541493724,
  &quot;exp&quot;: 1573029723,
- &quot;nonce&quot;: &quot;n-0S6_WzA2Mj&quot;,
+ &quot;nonce&quot;: &quot;2c128e4d-fc91-4cd3-86b8-18bdea0988cb&quot;
  &quot;vp&quot;: &quot;&lt;SD-JWT&gt;~&lt;Disclosure 1&gt;~&lt;Disclosure 2&gt;~...~&lt;Disclosure N&gt;&quot;
 }
 </pre></div>
 </div>
+<p>Where the following parameters are used:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>vp</strong></p></td>
+<td><p>The digital credential in its original state. The public key contained in the digital credential MUST be used to verify the entire VP JWS as Proof of Possession of the private key which the public part is carried in the digital credential (Holder Key Binding).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>jti</strong></p></td>
+<td><p>JWS Unique identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>Unix timestamp of the issuance datetime.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>Unix timestamp beyond which the presentation of the digital credential will no longer be considered valid.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>aud</strong></p></td>
+<td><p>Audience of the VP, corresponding to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> within the Authorization request issued by the Relying Party.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nonce</strong></p></td>
+<td><p>Nonce provided by the Verifier within the Authorization Request.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="relying-party-entity-configuration">
 <h2>Relying Party Entity Configuration<a class="headerlink" href="#relying-party-entity-configuration" title="Permalink to this heading">¶</a></h2>
