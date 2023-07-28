@@ -110,6 +110,9 @@ In the Same Device Flow the Relying Party uses a HTTP response redirect (status 
     client_id=https%3A%2F%2Fverifier.example.org%2Fcb
     &request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri_endpoint
 
+.. note::
+    The Same Device flow proposed in this specification is under discussion and must be considered as experimental.
+
 Where:
 
 .. list-table::
