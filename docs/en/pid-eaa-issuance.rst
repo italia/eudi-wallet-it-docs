@@ -137,7 +137,7 @@ The JWS payload of the request object is represented below:
         "type":"openid_credential",
         "format": "vc+sd-jwt",
         "credential_definition": {
-            "type": ["PersonIdentificationData"]
+            "type": "PersonIdentificationData"
         }
     }
     ],
