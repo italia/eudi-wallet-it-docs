@@ -106,9 +106,9 @@ In the Same Device Flow the Relying Party uses a HTTP response redirect (status 
 .. code:: text
 
     HTTP/1.1 /pre-authz-endpoint Found
-    Location: https://verifier.example.org/request_uri_endpoint?
+    Location: eudiw://authorize?
     client_id=https%3A%2F%2Fverifier.example.org%2Fcb
-    &request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri_endpoint
+    &request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri_endpoint%2Funique-session-identifier
 
 .. note::
     The Same Device flow proposed in this specification is under discussion and must be considered as experimental.
@@ -140,13 +140,13 @@ Below is a non-normative example of the QR Code raw payload:
 
 .. code-block:: text
 
-  ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaQ==
+  ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaS8kdW5pcXVlLXNlc3Npb24taWRlbnRpZmllcg==
 
 Below follows its Base64 decoded content:
 
 .. code-block:: text
 
-  eudiw://authorize?client_id=https://verifier.example.org&request_uri=https://verifier.example.org/request_uri
+  eudiw://authorize?client_id=https://verifier.example.org&request_uri=https://verifier.example.org/request_uri/$unique-session-identifier
 
 
 Request Object Details
