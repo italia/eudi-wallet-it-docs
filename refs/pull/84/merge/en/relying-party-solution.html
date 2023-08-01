@@ -1076,10 +1076,10 @@ This scenario requests the Verifier to provide the URL where the signed request 
 <td><p>The Relying Party issues a signed Request Object, returning it as response.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>10</strong></p></td>
-<td><p>The Wallet Instance verifies Request Object JWS.</p></td>
+<td><p>The Wallet Instance attests the trust to the Relying Party by verifying the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>11</strong></p></td>
-<td><p>The Wallet Instance attests the trust to the Relying Party by verifying the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></td>
+<td><p>The Wallet Instance verifies Request Object JWS.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>12</strong> and <strong>13</strong></p></td>
 <td><p>The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.</p></td>

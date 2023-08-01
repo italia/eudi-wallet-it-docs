@@ -65,9 +65,9 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
   * - **9**
     - The Relying Party issues a signed Request Object, returning it as response.
   * - **10**
-    - The Wallet Instance verifies Request Object JWS.
-  * - **11**
     - The Wallet Instance attests the trust to the Relying Party by verifying the ``trust_chain``.
+  * - **11**
+    - The Wallet Instance verifies Request Object JWS.
   * - **12** and **13**
     - The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.
   * - **14**
