@@ -695,6 +695,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-device-security-considerations">Cross Device Security Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#dpop-http-header">DPoP HTTP Header</a></li>
 </ul>
@@ -939,6 +940,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-device-security-considerations">Cross Device Security Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#dpop-http-header">DPoP HTTP Header</a></li>
 </ul>
@@ -1154,13 +1156,25 @@ client_id=https%3A%2F%2Fverifier.example.org%2Fcb
 </div>
 <p>Below is a non-normative example of a QR Code issued by the Relying Party:</p>
 <img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the QR Code raw payload:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaS8kdW5pcXVlLXNlc3Npb24taWRlbnRpZmllcg==
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaS8=
 </pre></div>
 </div>
 <p>Below follows its Base64 decoded content:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https://verifier.example.org/request_uri/$unique-session-identifier
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https://verifier.example.org/request_uri
 </pre></div>
 </div>
+</section>
+<section id="cross-device-security-considerations">
+<h2>Cross Device Security Considerations<a class="headerlink" href="#cross-device-security-considerations" title="Permalink to this heading">¶</a></h2>
+<p>When the flow is Cross Device, the user-agent needs to check the session status to an endpoint made available by Relying Party and specialized for this scope. This check MAY be implemented in the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or with a push strategy (eg: web socket).</p>
+<p>Since the QRcode page and the specialized endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.</p>
+<p>The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request (using the <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter). The status returned by this specialized endpoint MAY return the HTTP status codes listed below:</p>
+<ul class="simple">
+<li><p><strong>201 Created</strong>. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
+<li><p><strong>202 Accepted</strong>. This response is given when the signed request object was obtained by the Wallet Instance.</p></li>
+<li><p><strong>302 Found</strong>. The Wallet Instance has sent the presentation to the Relying Party's  <strong>redirect_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. The <code class="docutils literal notranslate"><span class="pre">Location</span></code> within the HTTP Response allows the user-agent to leave the QRCode page.</p></li>
+<li><p><strong>403 Forbidden</strong>. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.</p></li>
+</ul>
 </section>
 <section id="request-object-details">
 <h2>Request Object Details<a class="headerlink" href="#request-object-details" title="Permalink to this heading">¶</a></h2>
