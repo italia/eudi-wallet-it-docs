@@ -148,19 +148,27 @@ Below follows its Base64 decoded content:
 
   eudiw://authorize?client_id=https://verifier.example.org&request_uri=https://verifier.example.org/request_uri
 
-Cross Device Security Considerations
-------------------------------------
+Cross Device Flow Security Considerations
+-----------------------------------------
 
-When the flow is Cross Device, the user-agent needs to check the session status to an endpoint made available by Relying Party and specialized for this scope. This check MAY be implemented in the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or with a push strategy (eg: web socket). 
+When the flow is Cross Device, the user-agent needs to check the session status to an endpoint made available by Relying Party and specialized for this scope. This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or with a push strategy (eg: web socket). 
 
 Since the QRcode page and the specialized endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API. 
 
-The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request (using the ``state`` parameter). The status returned by this specialized endpoint MAY return the HTTP status codes listed below:
+The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request (using the ``state`` parameter). The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:
 
 * **201 Created**. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
 * **202 Accepted**. This response is given when the signed request object was obtained by the Wallet Instance.
 * **302 Found**. The Wallet Instance has sent the presentation to the Relying Party's  **redirect_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. The ``Location`` within the HTTP Response allows the user-agent to leave the QRCode page.
 * **403 Forbidden**. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.
+
+Below a non normative example of how the HTTP Request to this specialized endpoint, that MUST carry the session cookie to be updated following the status of the authentication:
+
+.. code::
+
+  GET /session-state?state=3be39b69-6ac1-41aa-921b-3e6c07ddcb03
+  HTTP/1.1
+  HOST: verifier.example.org
 
 
 Request Object Details
