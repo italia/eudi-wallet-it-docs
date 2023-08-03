@@ -116,7 +116,7 @@ Payload
 +-----------------------------------+-----------------------------------+
 | jwks                              | A JSON Web Key Set (JWKS) `RFC    |
 |                                   | 7517 <http://tools.ietf.org/html  |
-|                                   | rfc7517.html>`                    |
+|                                   | rfc7517.html>`_                   |
 |                                   | that represents the public part   |
 |                                   | of the signing keys of the Entity |
 |                                   | at issue. Each JWK in the JWK set |
