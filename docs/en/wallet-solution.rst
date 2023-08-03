@@ -106,10 +106,21 @@ Payload
 | exp                               | Expiration datetime               |
 |                                   | in Unix Timestamp format.         |
 +-----------------------------------+-----------------------------------+
-| jwks                              | Contains an array of all public   |
-|                                   | keys associated with the domain.  |
-|                                   | These could match the Wallet      |
-|                                   | Provider's keys.                  |
+| authority_hints                   | Array of URLs (String). It        |
+|                                   | contains a list of URLs of the    |
+|                                   | immediate superior Entities, such |
+|                                   | as the Trust Anchor or an         |
+|                                   | Intermediate, that MAY issue an   |
+|                                   | Entity Statement related to this  |
+|                                   | subject.                          |
++-----------------------------------+-----------------------------------+
+| jwks                              | A JSON Web Key Set (JWKS) `RFC    |
+|                                   | 7517 <http://tools.ietf.org/html  |
+|                                   | rfc7517.html>`                    |
+|                                   | that represents the public part   |
+|                                   | of the signing keys of the Entity |
+|                                   | at issue. Each JWK in the JWK set |
+|                                   | MUST have a key ID (claim kid).   |
 +-----------------------------------+-----------------------------------+
 | metadata                          | For each entity, this attribute   |
 |                                   | houses its metadata. In this case,|
@@ -126,7 +137,8 @@ Payload `wallet_provider`
 +---------------------------------------------+---------------------------------------------------------------------+
 | **Key**                                     | **Value**                                                           |
 +---------------------------------------------+---------------------------------------------------------------------+
-| jwks                                        | Contains an array of all the Wallet                                 |
+| jwks                                        | A JSON Web Key Set (JWKS)                                           |
+|                                             | that represents the  Wallet                                         |
 |                                             | Provider's public keys.                                             |
 +---------------------------------------------+---------------------------------------------------------------------+
 | token_endpoint                              | Endpoint for obtaining the Wallet                                   |
@@ -237,6 +249,9 @@ Below a non-normative example of the Entity Configuration.
       "logo_uri": "https://wallet-provider.example.org/logo.svg"
     }
   },
+  "authority_hints": [
+    "https://registry.eudi-wallet.example.it"
+  ]
   "iat": 1687171759,
   "exp": 1709290159
   }
@@ -264,7 +279,7 @@ External references
 
 ³ Depending on the device operating system, TEE is defined by `Trusty`_ or `Secure Enclave`_ for Android and iOS devices, respectively.
 
-.. _Trust Model section: trust.html 
+.. _Trust Model section: trust.html
 .. _Wallet Instance Attestation section: wallet-instance-attestation.html
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
