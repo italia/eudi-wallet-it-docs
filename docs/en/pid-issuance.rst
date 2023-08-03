@@ -3,19 +3,20 @@
 .. _pid_issuance.rst:
 
 PID Issuance
-+++++++++++++
+++++++++++++
 
 The relevant entities and interfaces involved in the issuance flow are:
 
-    - *Wallet Provider*: It represents an organization (public or private) that is responsible for the release of an eIDAS-compliant EUDI Wallet Solution. It also issues thes Wallet Instance Attestation to its Wallet Instances by means of an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a Trust Framework in compliance to the security and privacy requirements.
-    - *Wallet Solution*: It represents the entire product and service owned by a Wallet Provider, offered to all Users of that solution. A Wallet Solution must be certified as being EUDI-compliant by a Conformity Assessment Body (CAB).
-    - *Wallet Instance*: instance of a Wallet Solution, installed on User's device. It provides interfaces for User interaction with the Wallet Provider, Relying Parties, PID and (Q)EAA Providers.
-    - *PID Provider*: It represents the issuer of eIDAS Person Identification Data (PID). It is composed of:
+    - *Wallet Provider*: This organization (public or private) is responsible for releasing an eIDAS-compliant EUDI Wallet Solution. It also issues Wallet Instance Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuineness and authenticity of the Wallet Instance and its compliance with a Trust Framework meeting security and privacy requirements.
+    - *Wallet Solution*: This represents the entire product and service owned by a Wallet Provider, offered to all users of that solution. A Wallet Solution must be certified as EUDI-compliant by a Conformity Assessment Body (CAB).
+    - *Wallet Instance*: An instance of a Wallet Solution, installed on a user's device. It provides interfaces for user interaction with the Wallet Provider, Relying Parties, PID, and (Q)EAA Providers.
+    - *PID Provider*: This entity issues eIDAS Person Identification Data (PID). It consists of:
 
-        - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
-        - National eID Relying Party (OpenID Connect or SAML2): It represents the component to authenticate the End-User with the national Digital Identity Providers.
-    - National IdP: It represents preexisting identity systems based on SAML2 or OpenID Connect, already in production in each Member State (for Italy SPID and CIE id authentication schemed notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
-    
+        - OpenID4VCI Component: Based on the “OpenID for Verifiable Credential Issuance” specification `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, it releases PID credentials.
+        - National eID Relying Party (OpenID Connect or SAML2): This component authenticates the End-User with national Digital Identity Providers.
+
+    - National IdP: This represents pre-existing identity systems based on SAML2 or OpenID Connect, already in production in each Member State (such as SPID and CIE ID authentication schemes notified as eIDAS with *LoA* **High** in Italy, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`
+
 .. _fig_High-Level-Flow-EUDIW-PID-Issuing:
 .. figure:: ../../images/High-Level-Flow-EUDIW-PID-Issuing.svg
     :figwidth: 100%
