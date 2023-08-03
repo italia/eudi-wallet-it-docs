@@ -88,9 +88,10 @@ Once the Relying Party authentication is performed by the Wallet Instance, the U
 
 Authorization Request Details
 -----------------------------
-In the Cross Device Flow, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request.
 
-The User frames the QR Code using the Wallet Instance, then grants the consent to release their attributes to the RP.
+In the **Cross Device Flow**, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request.
+
+The User frames the QR Code using the Wallet Instance, then grants the consent to release their attributes to the Relying Party.
 
 The payload of the QR Code is a **Base64 encoded string** based on the following format:
 
@@ -98,17 +99,18 @@ The payload of the QR Code is a **Base64 encoded string** based on the following
 
   eudiw://authorize?client_id=`$client_id`&request_uri=`$request_uri`
 
-In the Same Device Flow the parameter **client_id** and **request_uri** are the same if the ones used in the Cross Device Flow with the only difference about the url schema and the removal of the Verifier's FQDN from the URL.
+The `request_uri` parameter MUST contain the endpoint where the signed presentation request object is available for download. The value corresponding to that endpoint MUST be randomized, according to `RFC 9101,
+The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
 
-In the Same Device Flow the Relying Party uses a HTTP response redirect (status code 302) to give to the Wallet Instance the resource where the request object is available for download, as represented in the following non-normative example:
+In the **Same Device Flow** the Relying Party uses a HTTP response redirect (status code 302) as represented in the following non-normative example:
 
 
 .. code:: text
 
     HTTP/1.1 /pre-authz-endpoint Found
-    Location: eudiw://authorize?
+    Location: https://wallet-providers.eudi.wallet.gov.it?
     client_id=https%3A%2F%2Fverifier.example.org%2Fcb
-    &request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri_endpoint
+    &request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri%3Fid%3Drandom-value
 
 .. note::
     The Same Device flow proposed in this specification is under discussion and must be considered as experimental.
@@ -122,9 +124,9 @@ Where:
   * - **Name**
     - **Description**
   * - **client_id**
-    - Client unique identifier of the Verifier.
+    - Client unique identifier of the Relying Party.
   * - **request_uri**
-    - The Verifier request URI used by the Wallet Instance to retrieve the Request Object.
+    - The Relying Partyrequest URI used by the Wallet Instance to retrieve the Request Object, extended with a random value passed by URL parameter.
 
 .. note::
     The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.
@@ -146,23 +148,26 @@ Below follows its Base64 decoded content:
 
 .. code-block:: text
 
-  eudiw://authorize?client_id=https://verifier.example.org&request_uri=https://verifier.example.org/request_uri
+  eudiw://authorize?client_id=https://verifier.example.org&request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri%3Fid%3Drandom-value
 
-Cross Device Flow Security Considerations
------------------------------------------
 
-When the flow is Cross Device, the user-agent needs to check the session status to an endpoint made available by Relying Party and specialized for this scope. This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or with a push strategy (eg: web socket). 
+Cross Device Flow Status Checks and Security
+--------------------------------------------
 
-Since the QRcode page and the specialized endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API. 
+When the flow is Cross Device, the user-agent needs to check the session status to the endpoint specialized for this scope and made available by Relying Party. This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).
 
-The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request (using the ``state`` parameter). The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:
+Since the QRcode page and the specialized endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.
+
+The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request (using the ``random-value`` parameter within the ``request_uri`` value). The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:
 
 * **201 Created**. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
 * **202 Accepted**. This response is given when the signed request object was obtained by the Wallet Instance.
 * **302 Found**. The Wallet Instance has sent the presentation to the Relying Party's  **redirect_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. The ``Location`` within the HTTP Response allows the user-agent to leave the QRCode page.
 * **403 Forbidden**. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.
 
-Below a non normative example of how the HTTP Request to this specialized endpoint, that MUST carry the session cookie to be updated following the status of the authentication:
+The request to the endpoint MUST carry within its HTTP headers the session cookie, to be then updated on occurrence following the status of the authentication if this is successful.
+
+Below a non-normative example of the HTTP Request to this specialized endpoint:
 
 .. code::
 
