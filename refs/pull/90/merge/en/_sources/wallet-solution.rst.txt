@@ -242,7 +242,7 @@ Below a non-normative example of the Entity Configuration.
       ]
     },
     "federation_entity": {
-      "organization_name": "PagoPa S.p.A.",
+      "organization_name": "IT Wallet Provider",
       "homepage_uri": "https://wallet-provider.example.org",
       "policy_uri": "https://wallet-provider.example.org/privacy_policy",
       "tos_uri": "https://wallet-provider.example.org/info_policy",
