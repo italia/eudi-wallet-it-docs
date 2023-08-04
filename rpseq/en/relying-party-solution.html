@@ -1029,15 +1029,16 @@
 <p>In the <strong>Same Device</strong> and <strong>Cross Device</strong> Authorization Flows described in this chapter, the User interacts with a remote Relying Party.</p>
 <section id="remote-protocol-flow">
 <h2>Remote Protocol Flow<a class="headerlink" href="#remote-protocol-flow" title="Permalink to this heading">¶</a></h2>
-<p>In this scenario the Relying Party provides the URL where the signed presentation request object is available.</p>
+<p>In this scenario the Relying Party provides the URL where the signed presentation request object is available for download.</p>
 <p>The Relying Party MUST detect the device type of the requestor (Wallet Instance), if it is a mobile device or a workstation, and activate one the supported remote flows:</p>
 <ul class="simple">
 <li><p><strong>Same Device</strong>, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;</p></li>
 <li><p><strong>Cross Device</strong>, the Relying Party MUST provide a QR Code which the User frames with their Wallet Instance.</p></li>
 </ul>
 <p>Once the Wallet Instances establishes the trust with the Relying Party, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.</p>
+<p>Below a sequence diagrams that summarizes the interactions between all the involved parties.</p>
 <a class="reference external image-reference" href="//www.plantuml.com/plantuml/svg/XLLTJoCt57tthxXA7nhGBcMtRv6e5YW5TjjcceJT5oJaZ6yI5yUU-cD2MlM_z_g3oOH4geIGnZxt-9pxSVF9UMvzM2l6WpSwhETe6MENjJSM1WyExG2uWy3OtBpaW-yT_8ojhD4DuBjVvNBbhrH0rX2Fh6N3jOV1DwuKUhZNHAzhJ1oRDn2SmvKrc-u9pb0Be6VsSHDKMwcNKD7XDY5RP2p0-vyeP0IHPeeswW7DMxdaNXhD0YS08KSmmRy2EW-LDHvhZu9Ed0cs9fQB2uYEu3Bu5MfwCmN3iBBew3j_LIlky0GkBXYllMovnwYWnTS7hYtIMU8mLlwTWhfN7_NmzDHv0foUahT03hs1ddUeZNcMn7_8Q3F7Kx0IRD5SKD7v7vDh8n364xYRpIfwKKXB1c7uu_d74zX8lmA_scUX13T6Qiy4zhsmdRCDOqjhGaCQZ7ijD1YjjYMbOGJJbTaawgAWuKkC1Q7RpGZ63Ufq-wO7W3VDEr2cvWhuNhxP1dBejEQQI26oTeStBzwIl2wZ3vFxHxsmPjqXoHKZU4dUxSsimuxdVs8TYp3VzkFf8ARdGE6bz-XorGd2oNvbAl3c6JKxNlmIGdwvxvkcPckbGFkeGJg8_GncaG2_81sd9-YEQt4qLHIZZGUBBRqjtX4ovWkmvIgGX7vCpHi-bqfwYUwCX9KoxAVWiE0vkvt-lI63cGtETv2lQELY-mRo6tekkESx55TIHFhFtsOmbKlDVR1uU5rqeO2lrT2TP43OwLsOE18wZjykvM7NNjT6BwHTe-XR2hloL-Ffx60MNHCPgQPvBDhcAHVrU4rlUcdExYMVAuIzhP093Xg1HbSGHd85zyu5j3cPfTR7azHZeRwfqRdqSjrHCMQreIZJeYKORTtxsxlPxUJcvdTsF6B4u7g5zJFS6IKew0jkuKfgGGLCGYYA-f7-AkCSXPCZ2daFmH4YSJLXhcGDpnIOrvRKkGtx5hs1DdL7JbMPbJF6O4Rzserkl1JIrSeu5C2zjt8UFBeHLQJeb0kWVkuMbhG4ZFq5t2Bmbaj59KYZdbB1UZbxQ4GfLbxcnGyCysQ5aEx52VIc8sxC7pwSVO2Fv-Sm_a8o_XdOia3ZfXoCOELzuo1ObNl6bYPwgkFA-xVVVPktqvKtw9IlSM-1Rihc9fbPRl_5QEt_Tc-BtTR_F1sLpEtlKd0-gXX6Ww-hFnielpCv2Ld7vR7GfMonp4aYYNxTEmY4emBXIvDgOoouKCVEMmILj7-YVs6j_WC0"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
-<p>In the Figure above is represented the Relying Party presentation flow with Same Device and Cross Device use cases. The details of each step is described in the table below.</p>
+<p>The details of each step is described in the previous picture are described in the table below.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -1090,7 +1091,7 @@
 </section>
 <section id="authorization-request-details">
 <h2>Authorization Request Details<a class="headerlink" href="#authorization-request-details" title="Permalink to this heading">¶</a></h2>
-<p>The Relying Party creates a signed request object and give to the Wallet Instance the request URI that points to the resource where the signed request object is available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.</p>
+<p>The Relying Party creates a signed request object, then gives to the Wallet Instance the request URI that points to the resource where the signed request object MUST be available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1106,15 +1107,15 @@
 <td><p>Client unique identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
-<td><p>The Relying Party request URI used by the Wallet Instance to retrieve the Request Object, extended with a random value that uniquely identifies the transaction.</p></td>
+<td><p>The Relying Party request URI used by the Wallet Instance to retrieve the signed request object. The URI value is intentionally extended with a random value that uniquely identifies the transaction.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Below a non-normative example of the response containing the required parameters described above.</p>
+<p>Below a non-normative example of the response containing the required parameters previously described.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span>
 </pre></div>
 </div>
-<p>The <cite>request_uri</cite> parameter MUST contain the endpoint where the signed presentation request object is available for download. The value corresponding to that endpoint MUST be randomized, according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1">RFC 9101,
+<p>The value corresponding to the <cite>request_uri</cite> endpoint MUST be randomized, according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1">RFC 9101,
 The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)</a> Section 5.2.1.</p>
 <p>In the <strong>Same Device Flow</strong> the Relying Party uses a HTTP response redirect (status code 302) as represented in the following non-normative example:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HTTP/1.1 /pre-authz-endpoint Found
@@ -1123,13 +1124,13 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 &amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
 </pre></div>
 </div>
-<p>In the <strong>Cross Device Flow</strong>, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request. The User frames the QR Code using the Wallet Instance. The payload of the QR Code is a <strong>Base64 encoded string</strong>.</p>
-<p>Below is a non-normative example of a QR Code issued by the Relying Party.</p>
-<img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the QR Code raw payload:</p>
+<p>In the <strong>Cross Device Flow</strong>, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request. The User frames the QR Code using their Wallet Instance. The QR Code payload MUST be a <strong>Base64 encoded string</strong>.</p>
+<p>Below is represented a non-normative example of a QR Code issued by the Relying Party.</p>
+<img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is represented a non-normative example of the QR Code raw payload:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaS8=
 </pre></div>
 </div>
-<p>Below follows its Base64 decoded content:</p>
+<p>The decoded content of the previous Base64 value is represented below:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://relying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
 </pre></div>
 </div>

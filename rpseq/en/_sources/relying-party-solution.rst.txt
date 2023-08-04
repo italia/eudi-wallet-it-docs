@@ -25,7 +25,7 @@ In the **Same Device** and **Cross Device** Authorization Flows described in thi
 Remote Protocol Flow
 --------------------
 
-In this scenario the Relying Party provides the URL where the signed presentation request object is available.
+In this scenario the Relying Party provides the URL where the signed presentation request object is available for download.
 
 The Relying Party MUST detect the device type of the requestor (Wallet Instance), if it is a mobile device or a workstation, and activate one the supported remote flows:
 
@@ -34,14 +34,14 @@ The Relying Party MUST detect the device type of the requestor (Wallet Instance)
 
 Once the Wallet Instances establishes the trust with the Relying Party, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.
 
+Below a sequence diagrams that summarizes the interactions between all the involved parties.
 
 .. image:: ../../images/cross_device_auth_seq_diagram.svg
   :align: center
   :target: //www.plantuml.com/plantuml/svg/XLLTJoCt57tthxXA7nhGBcMtRv6e5YW5TjjcceJT5oJaZ6yI5yUU-cD2MlM_z_g3oOH4geIGnZxt-9pxSVF9UMvzM2l6WpSwhETe6MENjJSM1WyExG2uWy3OtBpaW-yT_8ojhD4DuBjVvNBbhrH0rX2Fh6N3jOV1DwuKUhZNHAzhJ1oRDn2SmvKrc-u9pb0Be6VsSHDKMwcNKD7XDY5RP2p0-vyeP0IHPeeswW7DMxdaNXhD0YS08KSmmRy2EW-LDHvhZu9Ed0cs9fQB2uYEu3Bu5MfwCmN3iBBew3j_LIlky0GkBXYllMovnwYWnTS7hYtIMU8mLlwTWhfN7_NmzDHv0foUahT03hs1ddUeZNcMn7_8Q3F7Kx0IRD5SKD7v7vDh8n364xYRpIfwKKXB1c7uu_d74zX8lmA_scUX13T6Qiy4zhsmdRCDOqjhGaCQZ7ijD1YjjYMbOGJJbTaawgAWuKkC1Q7RpGZ63Ufq-wO7W3VDEr2cvWhuNhxP1dBejEQQI26oTeStBzwIl2wZ3vFxHxsmPjqXoHKZU4dUxSsimuxdVs8TYp3VzkFf8ARdGE6bz-XorGd2oNvbAl3c6JKxNlmIGdwvxvkcPckbGFkeGJg8_GncaG2_81sd9-YEQt4qLHIZZGUBBRqjtX4ovWkmvIgGX7vCpHi-bqfwYUwCX9KoxAVWiE0vkvt-lI63cGtETv2lQELY-mRo6tekkESx55TIHFhFtsOmbKlDVR1uU5rqeO2lrT2TP43OwLsOE18wZjykvM7NNjT6BwHTe-XR2hloL-Ffx60MNHCPgQPvBDhcAHVrU4rlUcdExYMVAuIzhP093Xg1HbSGHd85zyu5j3cPfTR7azHZeRwfqRdqSjrHCMQreIZJeYKORTtxsxlPxUJcvdTsF6B4u7g5zJFS6IKew0jkuKfgGGLCGYYA-f7-AkCSXPCZ2daFmH4YSJLXhcGDpnIOrvRKkGtx5hs1DdL7JbMPbJF6O4Rzserkl1JIrSeu5C2zjt8UFBeHLQJeb0kWVkuMbhG4ZFq5t2Bmbaj59KYZdbB1UZbxQ4GfLbxcnGyCysQ5aEx52VIc8sxC7pwSVO2Fv-Sm_a8o_XdOia3ZfXoCOELzuo1ObNl6bYPwgkFA-xVVVPktqvKtw9IlSM-1Rihc9fbPRl_5QEt_Tc-BtTR_F1sLpEtlKd0-gXX6Ww-hFnielpCv2Ld7vR7GfMonp4aYYNxTEmY4emBXIvDgOoouKCVEMmILj7-YVs6j_WC0
 
 
-In the Figure above is represented the Relying Party presentation flow with Same Device and Cross Device use cases. The details of each step is described in the table below.
-
+The details of each step is described in the previous picture are described in the table below.
 
 
 .. list-table::
@@ -79,7 +79,7 @@ In the Figure above is represented the Relying Party presentation flow with Same
 Authorization Request Details
 -----------------------------
 
-The Relying Party creates a signed request object and give to the Wallet Instance the request URI that points to the resource where the signed request object is available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.
+The Relying Party creates a signed request object, then gives to the Wallet Instance the request URI that points to the resource where the signed request object MUST be available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.
 
 .. list-table::
   :widths: 25 50
@@ -90,15 +90,15 @@ The Relying Party creates a signed request object and give to the Wallet Instanc
   * - **client_id**
     - Client unique identifier of the Relying Party.
   * - **request_uri**
-    - The Relying Party request URI used by the Wallet Instance to retrieve the Request Object, extended with a random value that uniquely identifies the transaction.
+    - The Relying Party request URI used by the Wallet Instance to retrieve the signed request object. The URI value is intentionally extended with a random value that uniquely identifies the transaction.
 
-Below a non-normative example of the response containing the required parameters described above.
+Below a non-normative example of the response containing the required parameters previously described.
 
 .. code-block:: javascript
 
   eudiw://authorize?client_id=`$client_id`&request_uri=`$request_uri`
 
-The `request_uri` parameter MUST contain the endpoint where the signed presentation request object is available for download. The value corresponding to that endpoint MUST be randomized, according to `RFC 9101,
+The value corresponding to the `request_uri` endpoint MUST be randomized, according to `RFC 9101,
 The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
 
 
@@ -112,21 +112,21 @@ In the **Same Device Flow** the Relying Party uses a HTTP response redirect (sta
     &request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
 
 
-In the **Cross Device Flow**, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request. The User frames the QR Code using the Wallet Instance. The payload of the QR Code is a **Base64 encoded string**.
+In the **Cross Device Flow**, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request. The User frames the QR Code using their Wallet Instance. The QR Code payload MUST be a **Base64 encoded string**.
 
-Below is a non-normative example of a QR Code issued by the Relying Party.
+Below is represented a non-normative example of a QR Code issued by the Relying Party.
 
 .. image:: ../../images/verifier_qr_code.svg
   :align: center
 
 
-Below is a non-normative example of the QR Code raw payload:
+Below is represented a non-normative example of the QR Code raw payload:
 
 .. code-block:: text
 
   ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaS8=
 
-Below follows its Base64 decoded content:
+The decoded content of the previous Base64 value is represented below:
 
 .. code-block:: text
 
