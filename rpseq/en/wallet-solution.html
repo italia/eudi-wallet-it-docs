@@ -1125,13 +1125,24 @@ Provider.</p></td>
 <td><p>Expiration datetime
 in Unix Timestamp format.</p></td>
 </tr>
-<tr class="row-even"><td><p>jwks</p></td>
-<td><p>Contains an array of all public
-keys associated with the domain.
-These could match the Wallet
-Provider's keys.</p></td>
+<tr class="row-even"><td><p>authority_hints</p></td>
+<td><p>Array of URLs (String). It
+contains a list of URLs of the
+immediate superior Entities, such
+as the Trust Anchor or an
+Intermediate, that MAY issue an
+Entity Statement related to this
+subject.</p></td>
 </tr>
-<tr class="row-odd"><td><p>metadata</p></td>
+<tr class="row-odd"><td><p>jwks</p></td>
+<td><p>A JSON Web Key Set (JWKS) <a class="reference external" href="http://tools.ietf.org/htmlrfc7517.html">RFC
+7517</a>
+that represents the public part
+of the signing keys of the Entity
+at issue. Each JWK in the JWK set
+MUST have a key ID (claim kid).</p></td>
+</tr>
+<tr class="row-even"><td><p>metadata</p></td>
 <td><p>For each entity, this attribute
 houses its metadata. In this case,
 it contains the Wallet Provider's
@@ -1150,7 +1161,8 @@ and the generic entity
 <td><p><strong>Value</strong></p></td>
 </tr>
 <tr class="row-even"><td><p>jwks</p></td>
-<td><p>Contains an array of all the Wallet
+<td><p>A JSON Web Key Set (JWKS)
+that represents the  Wallet
 Provider's public keys.</p></td>
 </tr>
 <tr class="row-odd"><td><p>token_endpoint</p></td>
@@ -1268,13 +1280,16 @@ algorithms.</p></td>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="s2">&quot;federation_entity&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;organization_name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PagoPa S.p.A.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;organization_name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;IT Wallet Provider&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;homepage_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;policy_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/privacy_policy&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;tos_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/info_policy&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;logo_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/logo.svg&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">},</span>
+<span class="s2">&quot;authority_hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;https://registry.eudi-wallet.example.it&quot;</span>
+<span class="p">]</span>
 <span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1687171759</span><span class="p">,</span>
 <span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1709290159</span>
 <span class="p">}</span>
