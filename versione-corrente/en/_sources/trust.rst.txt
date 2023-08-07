@@ -438,12 +438,6 @@ Below there is a non-normative example of an Entity Statement issued by an Accre
                          "email"
                       ]
                 },
-               "request_authentication_methods_supported": {
-                "one_of": ["request_object"]
-                },
-               "request_authentication_signing_alg_values_supported": {
-                    "subset_of": ["RS256", "RS512", "ES256", "ES512", "PS256", "PS512"]
-               }
             },
             "client": {
                 "vp_formats": {
