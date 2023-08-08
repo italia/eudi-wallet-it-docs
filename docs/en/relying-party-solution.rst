@@ -16,8 +16,8 @@ This section describes how a Relying Party may ask to a Wallet Instance the pres
 
 In this section the following flows are described:
 
-- **Remote Same Device Flow**, where the Web Browser and the Wallet Instance are used in the same device.
-- **Remote Cross Device Flow**, where the Web Browser and the Wallet Instance are used in different devices.
+- **Remote Same Device Flow**, where the user-agent and the Wallet Instance are used in the same device.
+- **Remote Cross Device Flow**, where the user-agent and the Wallet Instance are used in different devices.
 
 In the **Same Device** and **Cross Device** Authorization Flows described in this chapter, the User interacts with a remote Relying Party.
 
@@ -27,8 +27,7 @@ Remote Protocol Flow
 
 In this scenario the Relying Party provides the URL where the signed presentation request object is available for download.
 
-The Relying Party MUST detect the device type of the requestor (Wallet Instance), if it is a mobile device or a workstation, and activate one the supported remote flows:
-
+Depending on whether the Relying Party client is on a mobile device or a workstation, it must activate one of the supported remote flows:
 * **Same Device**, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;
 * **Cross Device**, the Relying Party MUST provide a QR Code which the User frames with their Wallet Instance.
 
