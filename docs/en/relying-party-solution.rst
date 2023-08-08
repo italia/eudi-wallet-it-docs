@@ -16,8 +16,8 @@ This section describes how a Relying Party may ask to a Wallet Instance the pres
 
 In this section the following flows are described:
 
-- **Remote Same Device Flow**, where the Web Browser and the Wallet Instance are used in the same device.
-- **Remote Cross Device Flow**, where the Web Browser and the Wallet Instance are used in different devices.
+- **Remote Same Device Flow**, where the user-agent and the Wallet Instance are used in the same device.
+- **Remote Cross Device Flow**, where the user-agent and the Wallet Instance are used in different devices.
 
 In the **Same Device** and **Cross Device** Authorization Flows described in this chapter, the User interacts with a remote Relying Party.
 
