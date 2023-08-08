@@ -151,7 +151,7 @@ request where the decoded JWS headers and payload are separated by a comma:
     "aud": "https://wallet-provider.example.org",
     "jti": "6ec69324-60a8-4e5b-a697-a766d85790ea",
     "type": "WalletInstanceAttestationRequest",
-    "nonce" : "....."
+    "nonce" : ".....",
     "cnf": {
       "jwk": {
         "crv": "P-256",
@@ -331,3 +331,25 @@ Below is an example of Wallet Instance Attestation:
     "iat": 1687281195,
     "exp": 1687288395
   }
+
+Obtain a Wallet Instance Attestation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To obtain the Wallet Instance Attestation it is necessary
+to make a `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.2>`__
+request to the Wallet Solution `token endpoint`_.
+
+Below a non-normative example of the request.
+
+.. code-block:: http
+
+    POST /token HTTP/1.1
+    Host: wallet-provider.example.org
+    Content-Type: application/x-www-form-urlencoded
+
+    grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
+    &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0.eyJpc3MiOiJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIiwiYXVkIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCJqdGkiOiJmNTY1MjA3Mi1hYmVmLTQ1OTktYjg2My05YTY5MDYwNzMyY2MiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJub25jZSI6Ii4uLi4uIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImlhdCI6MTY5MTQ4ODk2MiwiZXhwIjoxNjkxNDk2MTYyfQ.Azg8zBzjCB2ms9XHVDCzP92kh3XcVR6dD4Z_aFZslBO-6i3xwGwDsk4W8uESr-ba84wXgyIzn_vKX3exVFfO6g
+
+the assertion parameter is used as an authentication parameter of the Wallet Instance.
+
+.. _token endpoint: wallet-solution.html#wallet-instance-attestation
