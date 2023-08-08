@@ -260,10 +260,10 @@ Below a non-normative example of the Entity Configuration.
 Wallet Instance Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The **token** endpoint requires two parameters as input, in HTTP Post method:
+The **token** endpoint (as defined in `RFC 7523 section 4`_) requires two parameters as input, in HTTP Post method:
 
 ``grant_type`` which in our case is a string:
-``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation``
+``urn:ietf:params:oauth:grant-type:jwt-bearer``
 
 ``assertion`` which contains the signed JWT of the Wallet Instance Attestation
 Request.
@@ -283,3 +283,4 @@ External references
 .. _Wallet Instance Attestation section: wallet-instance-attestation.html
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
+.. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
