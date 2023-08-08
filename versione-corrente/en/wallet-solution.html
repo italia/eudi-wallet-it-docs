@@ -688,6 +688,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -933,6 +934,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -1298,9 +1300,9 @@ algorithms.</p></td>
 </section>
 <section id="wallet-instance-attestation">
 <h3>Wallet Instance Attestation<a class="headerlink" href="#wallet-instance-attestation" title="Permalink to this heading">¶</a></h3>
-<p>The <strong>token</strong> endpoint requires two parameters as input, in HTTP Post method:</p>
+<p>The <strong>token</strong> endpoint (as defined in <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7523.html#section-4">RFC 7523 section 4</a>) requires two parameters as input, in HTTP Post method:</p>
 <p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> which in our case is a string:
-<code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:grant-type:jwt-bearer</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">assertion</span></code> which contains the signed JWT of the Wallet Instance Attestation
 Request.</p>
 <p>The response will then contain the Wallet Instance Attestation.</p>
