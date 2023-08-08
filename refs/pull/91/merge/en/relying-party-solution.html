@@ -1030,11 +1030,9 @@
 <section id="remote-protocol-flow">
 <h2>Remote Protocol Flow<a class="headerlink" href="#remote-protocol-flow" title="Permalink to this heading">¶</a></h2>
 <p>In this scenario the Relying Party provides the URL where the signed presentation request object is available for download.</p>
-<p>The Relying Party MUST detect the device type of the requestor (Wallet Instance), if it is a mobile device or a workstation, and activate one the supported remote flows:</p>
-<ul class="simple">
-<li><p><strong>Same Device</strong>, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;</p></li>
-<li><p><strong>Cross Device</strong>, the Relying Party MUST provide a QR Code which the User frames with their Wallet Instance.</p></li>
-</ul>
+<p>Depending on whether the Relying Party client is on a mobile device or a workstation, it must activate one of the supported remote flows:
+* <strong>Same Device</strong>, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;
+* <strong>Cross Device</strong>, the Relying Party MUST provide a QR Code which the User frames with their Wallet Instance.</p>
 <p>Once the Wallet Instances establishes the trust with the Relying Party, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.</p>
 <p>Below a sequence diagrams that summarizes the interactions between all the involved parties.</p>
 <a class="reference external image-reference" href="//www.plantuml.com/plantuml/svg/XLLTJoCt57tthxXA7nhGBcMtRv6e5YW5TjjcceJT5oJaZ6yI5yUU-cD2MlM_z_g3oOH4geIGnZxt-9pxSVF9UMvzM2l6WpSwhETe6MENjJSM1WyExG2uWy3OtBpaW-yT_8ojhD4DuBjVvNBbhrH0rX2Fh6N3jOV1DwuKUhZNHAzhJ1oRDn2SmvKrc-u9pb0Be6VsSHDKMwcNKD7XDY5RP2p0-vyeP0IHPeeswW7DMxdaNXhD0YS08KSmmRy2EW-LDHvhZu9Ed0cs9fQB2uYEu3Bu5MfwCmN3iBBew3j_LIlky0GkBXYllMovnwYWnTS7hYtIMU8mLlwTWhfN7_NmzDHv0foUahT03hs1ddUeZNcMn7_8Q3F7Kx0IRD5SKD7v7vDh8n364xYRpIfwKKXB1c7uu_d74zX8lmA_scUX13T6Qiy4zhsmdRCDOqjhGaCQZ7ijD1YjjYMbOGJJbTaawgAWuKkC1Q7RpGZ63Ufq-wO7W3VDEr2cvWhuNhxP1dBejEQQI26oTeStBzwIl2wZ3vFxHxsmPjqXoHKZU4dUxSsimuxdVs8TYp3VzkFf8ARdGE6bz-XorGd2oNvbAl3c6JKxNlmIGdwvxvkcPckbGFkeGJg8_GncaG2_81sd9-YEQt4qLHIZZGUBBRqjtX4ovWkmvIgGX7vCpHi-bqfwYUwCX9KoxAVWiE0vkvt-lI63cGtETv2lQELY-mRo6tekkESx55TIHFhFtsOmbKlDVR1uU5rqeO2lrT2TP43OwLsOE18wZjykvM7NNjT6BwHTe-XR2hloL-Ffx60MNHCPgQPvBDhcAHVrU4rlUcdExYMVAuIzhP093Xg1HbSGHd85zyu5j3cPfTR7azHZeRwfqRdqSjrHCMQreIZJeYKORTtxsxlPxUJcvdTsF6B4u7g5zJFS6IKew0jkuKfgGGLCGYYA-f7-AkCSXPCZ2daFmH4YSJLXhcGDpnIOrvRKkGtx5hs1DdL7JbMPbJF6O4Rzserkl1JIrSeu5C2zjt8UFBeHLQJeb0kWVkuMbhG4ZFq5t2Bmbaj59KYZdbB1UZbxQ4GfLbxcnGyCysQ5aEx52VIc8sxC7pwSVO2Fv-Sm_a8o_XdOia3ZfXoCOELzuo1ObNl6bYPwgkFA-xVVVPktqvKtw9IlSM-1Rihc9fbPRl_5QEt_Tc-BtTR_F1sLpEtlKd0-gXX6Ww-hFnielpCv2Ld7vR7GfMonp4aYYNxTEmY4emBXIvDgOoouKCVEMmILj7-YVs6j_WC0"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>

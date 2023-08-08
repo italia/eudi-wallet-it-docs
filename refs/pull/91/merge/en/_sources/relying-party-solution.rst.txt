@@ -27,8 +27,7 @@ Remote Protocol Flow
 
 In this scenario the Relying Party provides the URL where the signed presentation request object is available for download.
 
-The Relying Party MUST detect the device type of the requestor (Wallet Instance), if it is a mobile device or a workstation, and activate one the supported remote flows:
-
+Depending on whether the Relying Party client is on a mobile device or a workstation, it must activate one of the supported remote flows:
 * **Same Device**, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;
 * **Cross Device**, the Relying Party MUST provide a QR Code which the User frames with their Wallet Instance.
 
