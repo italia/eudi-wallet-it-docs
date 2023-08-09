@@ -1025,25 +1025,22 @@
 </ul>
 <p>In this section the following flows are described:</p>
 <ul class="simple">
-<li><p><strong>Remote Same Device Flow</strong>, where the Verifier and the Wallet Instance acts in the same device.</p></li>
-<li><p><strong>Remote Cross Device Flow</strong>, where the Verifier and the Wallet Instance acts in different devices and the Verifier is a remote Relying Party.</p></li>
+<li><p><strong>Remote Same Device Flow</strong>, where the user-agent and the Wallet Instance are used in the same device.</p></li>
+<li><p><strong>Remote Cross Device Flow</strong>, where the user-agent and the Wallet Instance are used in different devices.</p></li>
 </ul>
-<p>The flows are analyzed in this chapter, taking into account security and privacy considerations.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Relying Party and Verifier are the same entity.</p>
-</div>
+<p>In the <strong>Same Device</strong> and <strong>Cross Device</strong> Authorization Flows described in this chapter, the User interacts with a remote Relying Party.</p>
 <section id="remote-protocol-flow">
 <h2>Remote Protocol Flow<a class="headerlink" href="#remote-protocol-flow" title="Permalink to this heading">¶</a></h2>
-<p>In the <strong>Same Device</strong> and <strong>Cross Device</strong> Authorization Flows, the User interacts with a remote Relying Party.
-This scenario requests the Verifier to provide the URL where the signed request object is available.</p>
-<p>The Verifier MUST detect the device type of the requestor (Wallet Instance), if it is a mobile device or a workstationm and activate one the supported remote flows:</p>
+<p>In this scenario the Relying Party provides the URL where the signed presentation request object is available for download.</p>
+<p>Depending on whether the Relying Party client is on a mobile device or a workstation, it must activate one of the supported remote flows:</p>
 <ul class="simple">
-<li><p>In the <em>Same Device*</em> flow the Verifier MUST provide a HTTP redirect (302) location to the Wallet Instance;</p></li>
-<li><p>In the <em>Cross Device*</em> flow the Verifier MUST provide a QR Code which the User frames with their Wallet Instance.</p></li>
+<li><p><strong>Same Device</strong>, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;</p></li>
+<li><p><strong>Cross Device</strong>, the Relying Party MUST provide a QR Code which the User frames with their Wallet Instance.</p></li>
 </ul>
-<p>Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.</p>
-<a class="reference external image-reference" href="//www.plantuml.com/plantuml/png/ZPDFQnin4CNl-XH3JWaqKDfRm2N13MrQYhUEarm2GLwDRJNhaJiQhUj--iwkkki_nf3RUlJJqvkPv-iebYKjAsEJ14hBAR8nAwtvqgyi2PmzHEGpi17IVlt9LXKAt95AK8ajijv7nbXjFCsXqEAc1Meq9i7b9_suWZ7-JXW52Ww2fQ3JIWo9IuK60xX9ia1IDIi-4C1WO6mflhQ2ZKwDdSwGKMij7zZ_RV5E_1ZZVF2Is0DtxsLgVGK_nyFW44PZ-3gP5AhYFAitEF_u_iC5hBqiG1Px8iRXhgt-UstCd4DQwRiXHlYCjIyH0bKRiywFmNrfIL-4vic-UFj7M4NwwJoCxvvfnc7PaqZEPBnfwyljf6T7qr-DsMUQRdRlQw5rVh0ok15HefsN8bPD5g402Qz89qQTRnm9JJZz7tNkOT_FmOHoextMNaYoKeyy8llPvW3vWMAT5RkbREMrWF3jQGBtVavM4kFHSUSA7JmMv_4Y0sdhTXOOoa0HIRRj9vEwheQ1PfwNw7ORIjjD5AFxoL4AuwfHrF7cyDIhbpVCTyZeckZR2kvYJCZzX3DuikSjK70eCSOshMKlTmoSC6me24AeaVVWrSB6d7xFgEBXIZkxXBfpuqbmpbusxy1sVz_yYnmiGkMGOUh9DTiCixo7HW0f9aRGMEKQM4QeFBsYQ-UMa-2HtmINYHb98AhbfYaALEBXpM5pa_j8U6sECIBjvdZqVNVLQsCEedoDvDAo-WS0"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
+<p>Once the Wallet Instance establishes the trust with the Relying Party, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.</p>
+<p>Below a sequence diagrams that summarizes the interactions between all the involved parties.</p>
+<a class="reference external image-reference" href="//www.plantuml.com/plantuml/uml/XLLTJoCt57tthxXA7neGK7Rx5ebgMKg1tRPCax2y8277labS77lgZmbfrV_UQtkOJ4YaIWXfx7EFpxaVDvzyu2x4bMOy1clYQeQECNOfWdKmUF3e1i0zHCPczhKSVE_XPsoKG3-0xtvLYsNuh2EocdYKK3Kt0GQFN6iCS6U8tWZC7EjTI2IgKxv04yeBdA6HGA_imiQeDyeieAB3JKOso5Y4qvyeP0IFE8C9kYG736_KWWTb3OkS08GSmHZ_YkW3LCu6504bdNWRdI2MYmj8Xk0oXYKQUZC7mx1owEcxV5LBxl48BYuO5q4rF61IqE3R0rSEwInpMAV-pa7TgqzcU7pi0m6EZybR98V1mjOw26jV5D7l4xf2yHoT0jTApgXY_8_nbPK8zsEudKuhUb0gH_vW-EFvnoDOgx24iDnbeVpMLfd09FQjiAsnDMCBPsDD6gn_ApDOepTjHkC89akxpjIjWfgCf7hGxNe4zpMQVFkk0u3NzGbeAxW6lfDkjeOIEX7S42aarkxm-ZKuajSbz65yzsJcpguw9BbY16-JTtCzxR3tipzHf1hCDlruEaZfsLDu6GBwKdI2SB9VsGg2VK733jU-3I6_FFHDKwyrIg9xCg0yf7O6Ey-0Nv2EynDqnuqyc2gACJQ0muRUbYU4JFa2RBYE9A4V8tZDPqgheD2VaR2s3Bifs2zuoMwdVsV6OEgY3nta6pertxo3_8Q1Inxu5iMraed-o-CK9cfXU8WEzwzRNIZXMpNqHmKGjthdre6m9atVDkLnsrvNrioLMw7iMuhRybVta-dUAFewCL9DorWqzNCfwk6QNlVINDmhFjC8EqkX4Emr0esk98pY6kwyZ-XACjjQ7qvIZuNwHg3t-MNHKJ7cZAKesw0Z6EtSkvlRwStu-lftTZXYnE1gYU85RgsM5FGLD_1P6Ka5p48eYlgH_YhhFOMJ8mevXUW9aRdgEDDAm0i5bgsbJ6d3liLWeIdTaLFLpiePOp2bVkr6DrrAvOMs7YNm49oQnO1-H1LfTQevK3zt2qiv0gR-0kuGUCELfXBaKS-fOBsSFTIoBLRPvQqV69RD2Z7VooFOJaVUc3zyEFi07y_FuVuhoVXduCe2pPjoC89b2BM7w7Jf6TSsqRD8A-_VVlUjtqzNsQ0JliAT1RfkDpV9B7BxBoPh_xTx6-os_fV9gCtSxYu57vAAOJBujlgBWVPtfYIXwBWy5BfG3PeIaacINty2aN1K87ojSssi0nz5whnvr5dx9_eNL_e_"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
+<p>The details of each step is described in the previous picture are described in the table below.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -1055,58 +1052,40 @@ This scenario requests the Verifier to provide the URL where the signed request 
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>1</strong></p></td>
+<tr class="row-even"><td><p><strong>1</strong>, <strong>2</strong></p></td>
 <td><p>The User asks for access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the <em>Login with the Wallet</em> button. The Authorization flow starts.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>2</strong></p></td>
-<td><p>The Relying Party creates an Authorization Request which contains the scopes of the request.</p></td>
+<tr class="row-odd"><td><p><strong>3</strong>, <strong>4</strong>, <strong>5</strong></p></td>
+<td><p>The Relying Party creates an Authorization Request which contains the scopes of the request and send it back.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>3</strong></p></td>
-<td><p>In the <strong>Same Device Flow</strong> the Relying Party responses with the Request URI in the form of HTTP Location (302). In the <strong>Cross Device Flow</strong> the Request URI is provided in the form of a QR Code.</p></td>
+<tr class="row-even"><td><p><strong>6</strong>, <strong>7</strong>, <strong>8</strong>, <strong>9</strong></p></td>
+<td><p>In the <strong>Cross Device Flow</strong>: the Request URI is provided in the form of a QR Code that is shown to the User that frames it. The Wallet Instance decodes the QR Code and extracts the Request URI from the QR Code payload. In the <strong>Same Device Flow</strong> the Relying Party responses with the Request URI in the form of HTTP Redirect Location (302).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>4</strong></p></td>
-<td><p>Only in <strong>Cross Device Flow</strong>: The QR Code is shown to the User that frames it.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>5</strong> and <strong>6</strong></p></td>
-<td><p>Only in <strong>Cross Device Flow</strong>:  The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>7</strong></p></td>
+<tr class="row-odd"><td><p><strong>10</strong></p></td>
 <td><p>The Wallet Instance requests the content of the Authorization Request by invoking the Request URI, passing an Authorization DPoP HTTP Header containing the Wallet Instance Attestation and the DPoP proof HTTP Header.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>8</strong></p></td>
+<tr class="row-even"><td><p><strong>11</strong></p></td>
 <td><p>The Relying Party attests the trust to the Wallet Instance using the Wallet Instance Attestation and verifies its capabilities.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>9</strong></p></td>
+<tr class="row-odd"><td><p><strong>12</strong></p></td>
 <td><p>The Relying Party issues a signed Request Object, returning it as response.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>10</strong></p></td>
-<td><p>The Wallet Instance attests the trust to the Relying Party by verifying the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></td>
+<tr class="row-even"><td><p><strong>13</strong>, <strong>14</strong>, <strong>15</strong>, <strong>16</strong></p></td>
+<td><p>The Wallet Instance verifies Request Object JWS. The Wallet Instance attests the trust to the Relying Party by verifying the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>. The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>11</strong></p></td>
-<td><p>The Wallet Instance verifies Request Object JWS.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>12</strong> and <strong>13</strong></p></td>
-<td><p>The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>14</strong></p></td>
-<td><p>The Wallet Instance requests the User's consent for the release of the credentials.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>15</strong></p></td>
-<td><p>The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>16</strong></p></td>
-<td><p>The Wallet Instance provides the Authorization Response to the Relying Party.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>17</strong></p></td>
-<td><p>The Relying Party attests the Credential Issuer trust.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>18</strong></p></td>
-<td><p>The Relying Party verifies the signature of the Authorization Response JWS.</p></td>
+<tr class="row-odd"><td><p><strong>17</strong>, <strong>18</strong></p></td>
+<td><p>The Wallet Instance requests the User's consent for the release of the credentials. The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>19</strong></p></td>
-<td><p>The Relying Party verifies the Authorization Response, performs checks for integrity, revocation and proof of possession of the presented credentials.</p></td>
+<td><p>The Wallet Instance provides the Authorization Response to the Relying Party using a HTTP method POST (response Mode &quot;direct_post&quot;).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>20</strong></p></td>
+<tr class="row-odd"><td><p><strong>20</strong>, <strong>21</strong>, <strong>22</strong></p></td>
+<td><p>The Relying Party verifies the Authorization Response, extract the Credential and attests the trust to the credentials Issuer. The Relying Party verifies the revocation status and the proof of possession of the presented credential.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>23</strong></p></td>
+<td><p>The Relying Party authenticates the User and update its session.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>24</strong></p></td>
 <td><p>The Relying Party notifies the Wallet Instance that the operation ends successfully.</p></td>
 </tr>
 </tbody>
@@ -1114,26 +1093,7 @@ This scenario requests the Verifier to provide the URL where the signed request 
 </section>
 <section id="authorization-request-details">
 <h2>Authorization Request Details<a class="headerlink" href="#authorization-request-details" title="Permalink to this heading">¶</a></h2>
-<p>In the <strong>Cross Device Flow</strong>, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request.</p>
-<p>The User frames the QR Code using the Wallet Instance, then grants the consent to release their attributes to the Relying Party.</p>
-<p>The payload of the QR Code is a <strong>Base64 encoded string</strong> based on the following format:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span>
-</pre></div>
-</div>
-<p>The <cite>request_uri</cite> parameter MUST contain the endpoint where the signed presentation request object is available for download. The value corresponding to that endpoint MUST be randomized, according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1">RFC 9101,
-The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)</a> Section 5.2.1.</p>
-<p>In the <strong>Same Device Flow</strong> the Relying Party uses a HTTP response redirect (status code 302) as represented in the following non-normative example:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HTTP/1.1 /pre-authz-endpoint Found
-Location: https://wallet-providers.eudi.wallet.gov.it?
-client_id=https%3A%2F%2Fverifier.example.org%2Fcb
-&amp;request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri%3Fid%3Drandom-value
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Same Device flow proposed in this specification is under discussion and must be considered as experimental.</p>
-</div>
-<p>Where:</p>
+<p>The Relying Party creates a signed request object, then gives it to the Wallet Instance through a HTTP URL (request URI) that points to the resource where the signed request object MUST be available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1146,43 +1106,56 @@ client_id=https%3A%2F%2Fverifier.example.org%2Fcb
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>Client unique identifier of the Relying Party.</p></td>
+<td><p>Unique identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
-<td><p>The Relying Partyrequest URI used by the Wallet Instance to retrieve the Request Object, extended with a random value passed by URL parameter.</p></td>
+<td><p>The HTTP URL used by the Wallet Instance to retrieve the signed request object from the Relying Party. The URL is intentionally extended with a random value that uniquely identifies the transaction.</p></td>
 </tr>
 </tbody>
 </table>
+<p>Below a non-normative example of the response containing the required parameters previously described.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span>
+</pre></div>
+</div>
+<p>The value corresponding to the <cite>request_uri</cite> endpoint MUST be randomized, according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1">RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)</a> Section 5.2.1.</p>
+<p>In the <strong>Same Device Flow</strong> the Relying Party uses a HTTP response redirect (status code 302) as represented in the following non-normative example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HTTP/1.1 /pre-authz-endpoint Found
+Location: https://wallet-providers.eudi.wallet.gov.it?
+client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
+&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
+</pre></div>
+</div>
+<p>In the <strong>Cross Device Flow</strong>, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request. The User frames the QR Code using their Wallet Instance. The QR Code payload MUST be a <strong>Base64 encoded string</strong>.</p>
+<p>Below is represented a non-normative example of a QR Code issued by the Relying Party.</p>
+<img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is represented a non-normative example of the QR Code raw payload:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaS8=
+</pre></div>
+</div>
+<p>The decoded content of the previous Base64 value is represented below:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://relying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <em>error correction level</em> chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.</p>
 </div>
-<p>Below is a non-normative example of a QR Code issued by the Relying Party:</p>
-<img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the QR Code raw payload:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaS8=
-</pre></div>
-</div>
-<p>Below follows its Base64 decoded content:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https%3A%2F%2Fverifier.example.org%2Frequest_uri%3Fid%3Drandom-value
-</pre></div>
-</div>
 </section>
 <section id="cross-device-flow-status-checks-and-security">
 <h2>Cross Device Flow Status Checks and Security<a class="headerlink" href="#cross-device-flow-status-checks-and-security" title="Permalink to this heading">¶</a></h2>
-<p>When the flow is Cross Device, the user-agent needs to check the session status to the endpoint specialized for this scope and made available by Relying Party. This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).</p>
-<p>Since the QRcode page and the specialized endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.</p>
+<p>When the flow is Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).</p>
+<p>Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.</p>
 <p>The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request (using the <code class="docutils literal notranslate"><span class="pre">random-value</span></code> parameter within the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> value). The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:</p>
 <ul class="simple">
-<li><p><strong>201 Created</strong>. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
+<li><p><strong>204 No Content</strong>. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
 <li><p><strong>202 Accepted</strong>. This response is given when the signed request object was obtained by the Wallet Instance.</p></li>
 <li><p><strong>302 Found</strong>. The Wallet Instance has sent the presentation to the Relying Party's  <strong>redirect_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. The <code class="docutils literal notranslate"><span class="pre">Location</span></code> within the HTTP Response allows the user-agent to leave the QRCode page.</p></li>
 <li><p><strong>403 Forbidden</strong>. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.</p></li>
 </ul>
 <p>The request to the endpoint MUST carry within its HTTP headers the session cookie, to be then updated on occurrence following the status of the authentication if this is successful.</p>
 <p>Below a non-normative example of the HTTP Request to this specialized endpoint:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET /session-state?state=3be39b69-6ac1-41aa-921b-3e6c07ddcb03
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET /session-state?id=3be39b69-6ac1-41aa-921b-3e6c07ddcb03
 HTTP/1.1
-HOST: verifier.example.org
+HOST: relying-party.example.org
 </pre></div>
 </div>
 </section>
@@ -1198,7 +1171,7 @@ HOST: verifier.example.org
 </ul>
 <p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed request object:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">request_uri</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="nx">HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">verifier</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span>
+<span class="nx">HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">relying</span><span class="o">-</span><span class="nx">party</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span>
 <span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="nx">DPoP</span><span class="w"> </span><span class="nx">$WalletInstanceAttestation</span>
 <span class="nx">DPoP</span><span class="o">:</span><span class="w"> </span><span class="nx">$WalletInstanceAttestationProofOfPossession</span>
 </pre></div>
@@ -1293,7 +1266,7 @@ HOST: verifier.example.org
 {
   &quot;jti&quot;: &quot;f47c96a1-f928-4768-aa30-ef32dc78aa69&quot;,
   &quot;htm&quot;: &quot;GET&quot;,
-  &quot;htu&quot;: &quot;https://verifier.example.org/request_uri&quot;,
+  &quot;htu&quot;: &quot;https://relying-party.example.org/request_uri&quot;,
   &quot;iat&quot;: 1562262616,
   &quot;ath&quot;: &quot;fUHyO2r2Z3DZ53EsNrWBb0xWXoaNy59IiKCAqksmQEo&quot;
 }
@@ -1318,13 +1291,13 @@ HOST: verifier.example.org
 {
   &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:unique_id+given_name+family_name&quot;,
   &quot;client_id_scheme&quot;: &quot;entity_id&quot;,
-  &quot;client_id&quot;: &quot;https://verifier.example.org&quot;,
+  &quot;client_id&quot;: &quot;https://relying-party.example.org&quot;,
   &quot;response_mode&quot;: &quot;direct_post.jwt&quot;,
   &quot;response_type&quot;: &quot;vp_token&quot;,
-  &quot;response_uri&quot;: &quot;https://verifier.example.org/callback&quot;,
+  &quot;response_uri&quot;: &quot;https://relying-party.example.org/callback&quot;,
   &quot;nonce&quot;: &quot;2c128e4d-fc91-4cd3-86b8-18bdea0988cb&quot;,
   &quot;state&quot;: &quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;,
-  &quot;iss&quot;: &quot;https://verifier.example.org&quot;,
+  &quot;iss&quot;: &quot;https://relying-party.example.org&quot;,
   &quot;iat&quot;: 1672418465,
   &quot;exp&quot;: 1672422065
 }
@@ -1393,7 +1366,7 @@ HOST: verifier.example.org
 <td><p>Unique identifier of the Authorization Request.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>The entity that issued the JWT. It will be populated with the Verifier URI</p></td>
+<td><p>The entity that issued the JWT. It will be populated with the Relying Party URI</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>The NumericDate representing the time at which the JWT was issued</p></td>
@@ -1441,8 +1414,8 @@ HOST: verifier.example.org
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>: JSON object according to <a class="reference external" href="https://identity.foundation/presentation-exchange/spec/v2.0.0/">Presentation Exchange</a>. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code> or <code class="docutils literal notranslate"><span class="pre">scope</span></code> are present.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code>: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition</span> <span class="pre">parameter</span></code> or a <code class="docutils literal notranslate"><span class="pre">scope</span></code> value representing a Presentation Definition is not present.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>: A JSON object containing the Verifier metadata values. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is taken from <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code>: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. The <code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>: A JSON object containing the Relying Party metadata values. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is taken from <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code>: string containing an HTTPS URL pointing to a resource where a JSON object with the Relying Party metadata can be retrieved. The <code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>: the redirect URI to which the Wallet Instance MUST redirect the Authorization Response. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is present.</p></li>
 </ul>
 </div>
@@ -1453,11 +1426,11 @@ HOST: verifier.example.org
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong></p>
-<p>The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the verifier's network. This is only possible if the network environment of the verifier employs <a class="reference external" href="https://www.f5.com/glossary/ssl-termination">TLS termination</a>. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.</p>
+<p>The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs <a class="reference external" href="https://www.f5.com/glossary/ssl-termination">TLS termination</a>. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.</p>
 </div>
 <p>Below a non-normative example of the request:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/callback</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">HOST</span><span class="o">:</span> <span class="l">verifier.example.org</span>
+<span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 
 response=eyJhbGciOiJFUzI1NiIs...9t2LQ
@@ -1500,7 +1473,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <td><p>JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
-<td><p>Unique identifier provided by the Verifier within the Authorization Request.</p></td>
+<td><p>Unique identifier provided by the Relying Party within the Authorization Request.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1514,7 +1487,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 {
  &quot;iss&quot;: &quot;https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;,
  &quot;jti&quot;: &quot;3978344f-8596-4c3a-a978-8fcaba3903c5&quot;,
- &quot;aud&quot;: &quot;https://verifier.example.org/callback&quot;,
+ &quot;aud&quot;: &quot;https://relying-party.example.org/callback&quot;,
  &quot;iat&quot;: 1541493724,
  &quot;exp&quot;: 1573029723,
  &quot;nonce&quot;: &quot;2c128e4d-fc91-4cd3-86b8-18bdea0988cb&quot;
@@ -1550,17 +1523,17 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <td><p>Audience of the VP, corresponding to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> within the Authorization request issued by the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nonce</strong></p></td>
-<td><p>Nonce provided by the Verifier within the Authorization Request.</p></td>
+<td><p>Nonce provided by the Relying Party within the Authorization Request.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="relying-party-entity-configuration">
 <h2>Relying Party Entity Configuration<a class="headerlink" href="#relying-party-entity-configuration" title="Permalink to this heading">¶</a></h2>
-<p>According to the <a class="reference external" href="trust.html">Trust Model</a> section, the Verifier is a Federation Entity and MUST expose a .well-known endpoint containing its Entity Configuration.</p>
+<p>According to the <a class="reference external" href="trust.html">Trust Model</a> section, the Relying Party is a Federation Entity and MUST expose a .well-known endpoint containing its Entity Configuration.</p>
 <p>Below a non-normative example of the request made by the Wallet Instance to the <em>openid-federation</em> .well-known endpoint to obtain the Relying Party Entity Configuration:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/openid-federation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">HOST</span><span class="o">:</span> <span class="l">verifier.example.org</span>
+<span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 </pre></div>
 </div>
 <p>Below is a non-normative response example:</p>
@@ -1604,14 +1577,14 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
             },
 
             &quot;contacts&quot;: [
-                &quot;ops@verifier.example.org&quot;
+                &quot;ops@relying-party.example.org&quot;
             ],
 
             &quot;request_uris&quot;: [
-                &quot;https://verifier.example.org/request_uri&quot;
+                &quot;https://relying-party.example.org/request_uri&quot;
             ],
             &quot;redirect_uris&quot;: [
-                &quot;https://verifier.example.org/callback&quot;
+                &quot;https://relying-party.example.org/callback&quot;
             ],
 
             &quot;default_acr_values&quot;: [
@@ -1784,12 +1757,12 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
             ],
         },
         &quot;federation_entity&quot;: {
-            &quot;organization_name&quot;: &quot;OpenID Wallet Verifier example&quot;,
-            &quot;homepage_uri&quot;: &quot;https://verifier.example.org/home&quot;,
-            &quot;policy_uri&quot;: &quot;https://verifier.example.org/policy&quot;,
-            &quot;logo_uri&quot;: &quot;https://verifier.example.org/static/logo.svg&quot;,
+            &quot;organization_name&quot;: &quot;OpenID Wallet Relying Party example&quot;,
+            &quot;homepage_uri&quot;: &quot;https://relying-party.example.org/home&quot;,
+            &quot;policy_uri&quot;: &quot;https://relying-party.example.org/policy&quot;,
+            &quot;logo_uri&quot;: &quot;https://relying-party.example.org/static/logo.svg&quot;,
             &quot;contacts&quot;: [
-               &quot;tech@verifier.example.org&quot;
+               &quot;tech@relying-party.example.org&quot;
              ]
         }
     },
