@@ -142,16 +142,14 @@ When the flow is Cross Device, the user-agent needs to check the session status 
 
 Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.
 
-The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request (using the ``random-value`` parameter within the ``request_uri`` value). The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:
+The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:
 
-* **204 No Content**. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
+* **200 OK**. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
 * **202 Accepted**. This response is given when the signed request object was obtained by the Wallet Instance.
 * **302 Found**. The Wallet Instance has sent the presentation to the Relying Party's  **redirect_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. The ``Location`` within the HTTP Response allows the user-agent to leave the QRCode page.
-* **403 Forbidden**. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.
+* **401 Unauthorized**. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.
 
-The request to the endpoint MUST carry within its HTTP headers the session cookie, to be then updated on occurrence following the status of the authentication if this is successful.
-
-Below a non-normative example of the HTTP Request to this specialized endpoint:
+Below a non-normative example of the HTTP Request to this specialized endpoint, where the parameter ``id`` contains an opaque and random value:
 
 .. code::
 
