@@ -46,7 +46,7 @@ The Disclosures are sent to the Holder together with the SD-JWT in the *Combined
 
 .. code-block::
 
-  <SD-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
+  <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
 See `[draft-terbu-sd-jwt-vc-latest] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
 
