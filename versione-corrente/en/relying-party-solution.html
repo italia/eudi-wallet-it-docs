@@ -1132,7 +1132,7 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 </pre></div>
 </div>
 <p>The decoded content of the previous Base64 value is represented below:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://relying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1144,15 +1144,14 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 <h2>Cross Device Flow Status Checks and Security<a class="headerlink" href="#cross-device-flow-status-checks-and-security" title="Permalink to this heading">¶</a></h2>
 <p>When the flow is Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).</p>
 <p>Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.</p>
-<p>The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request (using the <code class="docutils literal notranslate"><span class="pre">random-value</span></code> parameter within the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> value). The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:</p>
+<p>The Relyng Party MUST bind the request of the user-agent, with a Secured and Httponly session cookie, with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:</p>
 <ul class="simple">
-<li><p><strong>204 No Content</strong>. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
+<li><p><strong>200 OK</strong>. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
 <li><p><strong>202 Accepted</strong>. This response is given when the signed request object was obtained by the Wallet Instance.</p></li>
 <li><p><strong>302 Found</strong>. The Wallet Instance has sent the presentation to the Relying Party's  <strong>redirect_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. The <code class="docutils literal notranslate"><span class="pre">Location</span></code> within the HTTP Response allows the user-agent to leave the QRCode page.</p></li>
-<li><p><strong>403 Forbidden</strong>. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.</p></li>
+<li><p><strong>401 Unauthorized</strong>. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.</p></li>
 </ul>
-<p>The request to the endpoint MUST carry within its HTTP headers the session cookie, to be then updated on occurrence following the status of the authentication if this is successful.</p>
-<p>Below a non-normative example of the HTTP Request to this specialized endpoint:</p>
+<p>Below a non-normative example of the HTTP Request to this specialized endpoint, where the parameter <code class="docutils literal notranslate"><span class="pre">id</span></code> contains an opaque and random value:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET /session-state?id=3be39b69-6ac1-41aa-921b-3e6c07ddcb03
 HTTP/1.1
 HOST: relying-party.example.org
