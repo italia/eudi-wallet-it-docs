@@ -2,22 +2,22 @@
 
 .. _trust.rst:
 
-The Infrastructure of Trust
-+++++++++++++++++++++++++++
+The Trust Infrastructure
+++++++++++++++++++++++++
 
-The EUDI Wallet Architecture Reference Framework (`EIDAS-ARF`_) defines the Trust Model as a *"collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem"*.
+The EUDI Wallet Architecture Reference Framework (`EIDAS-ARF`_) describes the Trust Model as a *"set of rules that validates the legitimacy of the components and entities involved in the EUDI Wallet ecosystem"*.
 
-This section defines how the Trust Model is implemented in an infrastructure compliant to OpenID Connect Federation 1.0 `OIDC-FED`_, where a Federation RESTful API is involved for the distribution of metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants (Federation Entities).
+This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Connect Federation 1.0 `OIDC-FED`_. This infrastructure involves a Federation RESTful API for distributing metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants (Federation Entities).
 
-The infrastructure of Trust enables the trust assessment mechanism to be applied between the parties defined in the `EIDAS-ARF`_.
+The Trust Infrastructure facilitates the application of a trust assessment mechanism among the parties defined in the `EIDAS-ARF`_.
 
 ..  figure:: ../../images/trust-roles.svg
     :alt: federation portrait
     :width: 100%
    
-    The roles of the Federation infrastructure, where the Trust Anchor has its subordinates,
-    one or more Intermediates and Leafs and where Intermediates have their Leafs. In this
-    representation both the Trust Anchor and the Intermediates play the role of Accreditation Body.
+    The roles within the Federation infrastructure, where the Trust Anchor oversees its subordinates,
+    which include one or more Intermediates and Leafs. In this
+    representation, both the Trust Anchor and the Intermediates assume the role of Accreditation Body.
 
 
 Federation Roles
