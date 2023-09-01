@@ -8,10 +8,10 @@ PID/(Q)EAA Issuance
 This section describes the PID and (Q)EAAs issuance flow with an high level of security. 
 The relevant entities and interfaces involved in the issuance flow are:
 
-    - *Wallet Provider*: The entity responsible for releasing an EUDI Wallet Solution. It also issues Wallet Instance Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuineness and authenticity of the Wallet Instance and its compliance with a Trust Framework meeting security and privacy requirements.
-    - *Wallet Solution*: Entire product and service owned by a Wallet Provider, offered to all the Users of that solution. A Wallet Solution must be certified as EUDI-compliant by a Conformity Assessment Body (CAB).
+    - *Wallet Provider*: The entity responsible for releasing an EUDI Wallet Solution. It also issues Wallet Instance Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a Trust Framework in compliance to the security and privacy requirements.
+    - *Wallet Solution*: Entire product and service owned by a Wallet Provider, offered to all the Users of that solution. The Wallet Solution is certified as EUDI-compliant by a Conformity Assessment Body (CAB).
     - *Wallet Instance*: Instance of a Wallet Solution, installed on the User device. It provides interfaces for user interaction with the Wallet Provider, Relying Parties, PID, and (Q)EAA Providers.
-    - *PID Provider*: The entity that issues the eIDAS Person Identification Data (PID). It consists of:
+    - *PID Provider*: The entity that issues the eIDAS Person Identification Data (PID). It is composed of:
 
         - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
         - National eID Relying Party (OpenID Connect or SAML2): It represents the component to authenticate the End-User with the national Digital Identity Providers.
