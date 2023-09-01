@@ -420,8 +420,9 @@ The JWT payload is given by the following parameters:
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **jti**
-      - Unique JWT identifier to prevent the reuse of the JWT (replay attack).
+      - Unique JWT identifier to prevent the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
+
 
 Pushed Authorization Request (PAR) Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
