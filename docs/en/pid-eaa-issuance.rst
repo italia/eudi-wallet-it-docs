@@ -8,14 +8,15 @@ PID/(Q)EAA Issuance
 This section describes the PID and (Q)EAAs issuance flow with an high level of security. 
 The relevant entities and interfaces involved in the issuance flow are:
 
-    - *Wallet Provider*: It represents an organization (public or private) that is responsible for the release of an eIDAS-compliant EUDI Wallet Solution. It also issues thes Wallet Instance Attestation to its Wallet Instances by means of an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a Trust Framework in compliance to the security and privacy requirements.
-    - *Wallet Solution*: It represents the entire product and service owned by a Wallet Provider, offered to all Users of that solution. A Wallet Solution must be certified as being EUDI-compliant by a Conformity Assessment Body (CAB).
-    - *Wallet Instance*: instance of a Wallet Solution, installed on User's device. It provides interfaces for User interaction with the Wallet Provider, Relying Parties, PID and (Q)EAA Providers.
-    - *PID Provider*: It represents the issuer of eIDAS Person Identification Data (PID). It is composed of:
+    - *Wallet Provider*: The entity responsible for releasing an EUDI Wallet Solution. It also issues Wallet Instance Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a Trust Framework in compliance to the security and privacy requirements.
+    - *Wallet Solution*: Entire product and service owned by a Wallet Provider, offered to all the Users of that solution. The Wallet Solution is certified as EUDI-compliant by a Conformity Assessment Body (CAB).
+    - *Wallet Instance*: Instance of a Wallet Solution, installed on the User device. It provides interfaces for user interaction with the Wallet Provider, Relying Parties, PID, and (Q)EAA Providers.
+    - *PID Provider*: The entity that issues the eIDAS Person Identification Data (PID). It is composed of:
 
         - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
         - National eID Relying Party (OpenID Connect or SAML2): It represents the component to authenticate the End-User with the national Digital Identity Providers.
-    - National IdP: It represents preexisting identity systems based on SAML2 or OpenID Connect, already in production in each Member State (for Italy SPID and CIE id authentication schemed notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
+        - National IdP: It represents preexisting identity systems based on SAML2 or OpenID Connect, already in production in each Member State (for Italy SPID and CIE id authentication schemed notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
+    
     - *(Q)EAA Issuer*: It represents the Issuer of (Q)EAAs. It is composed of:
 
       - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release (Q)EAAs.
@@ -137,7 +138,7 @@ The JWS payload of the request object is represented below:
         "type":"openid_credential",
         "format": "vc+sd-jwt",
         "credential_definition": {
-            "type": ["PersonIdentificationData"]
+            "type": "PersonIdentificationData"
         }
     }
     ],
@@ -420,6 +421,9 @@ The JWT payload is given by the following parameters:
     * - **client_assertion**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+    * - **jti**
+      - Unique JWT identifier to prevent the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
+      - [:rfc:`7519`].
 
 
 Pushed Authorization Request (PAR) Response
