@@ -579,56 +579,128 @@
 <li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Defined Terms</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Trust Infrastructure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims-field">PID Claims field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-issuance.html">PID Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#same-device-flow">Same Device Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#remote-cross-device-flow">Remote Cross Device Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dpop-http-header">DPoP HTTP Header</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
@@ -662,7 +734,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
 
@@ -679,7 +751,7 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-issuance.html#id38">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
     </div>
@@ -753,56 +825,128 @@
 <li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Defined Terms</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Trust Infrastructure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-data-model.html">PID Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#id1">SD-JWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims-field">PID Claims field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pid-issuance.html">PID Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#authorization-endpoint">Authorization endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#token-endpoint">Token endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-issuance.html#credential-endpoint">Credential endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-end-design">High-end design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detail-design">Detail design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#same-device-flow">Same Device Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#remote-cross-device-flow">Remote Cross Device Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#request-object-details">Request Object Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dpop-http-header">DPoP HTTP Header</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
@@ -836,7 +980,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">contribute.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
 </ul>
 
@@ -849,7 +993,7 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-issuance.html#id38">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
 </ul>
 
       </div>
@@ -876,34 +1020,27 @@
 <span id="id1"></span><h1>Relying Party Solution<a class="headerlink" href="#relying-party-solution" title="Permalink to this heading">¶</a></h1>
 <p>This section describes how a Relying Party may ask to a Wallet Instance the presentation of the PID and the (Q)EAAs, according the following specifications:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="OID4VP">OpenID for Verifiable Presentations - draft 19</a>.</p></li>
-<li><p><a class="reference external" href="DPOP">Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)</a>.</p></li>
+<li><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentations - draft 19</a>.</p></li>
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">Draft: OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)</a>.</p></li>
 </ul>
 <p>In this section the following flows are described:</p>
 <ul class="simple">
-<li><p><strong>Same Device Flow</strong>, where the Verifier and the Wallet Instance acts in the same device.</p></li>
-<li><p><strong>Remote Cross Device Flow</strong>, where the Verifier and the Wallet Instance acts in different devices and the Verifier is a remote Relying Party.</p></li>
+<li><p><strong>Remote Same Device Flow</strong>, where the user-agent and the Wallet Instance are used in the same device.</p></li>
+<li><p><strong>Remote Cross Device Flow</strong>, where the user-agent and the Wallet Instance are used in different devices.</p></li>
 </ul>
-<p>The flows are analyzed in this chapter, taking into account security and privacy considerations.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Relying Party and Verifier are the same entity.</p>
-</div>
-<section id="same-device-flow">
-<h2>Same Device Flow<a class="headerlink" href="#same-device-flow" title="Permalink to this heading">¶</a></h2>
-<p>In the <strong>Same Device Authorization Flow</strong>, the User interacts with a Verifier that resides in the same device of the Wallet Instance.
-This scenario utilizes HTTP redirects to finalize the authorization phase and obtain Verifiable Presentation(s).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This flow will be described more in detail in future releases of this documentation.</p>
-</div>
-</section>
-<section id="remote-cross-device-flow">
-<h2>Remote Cross Device Flow<a class="headerlink" href="#remote-cross-device-flow" title="Permalink to this heading">¶</a></h2>
-<p>In the <strong>Cross Device Authorization Flow</strong>, the User interacts with a remote Relying Party.
-This scenario requests the Verifier to show a QR Code which the User frames with their Wallet Instance.</p>
-<p>Once the Relying Party authentication is performed by the Wallet Instance, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.</p>
-<a class="reference external image-reference" href="//www.plantuml.com/plantuml/png/ZPF1Rjf048Rl-nIZd5gfUG4agaGqgcXLuG99Bf6gnJlWRSmidPsrIv--QpjhOn1IRlZtDpyp_upll6YMi2-L3k8ex3V8IXsYPdDxq2Hmy-YHRq1x26FzMPSb2imfMb2EBLAFaIMMHqixoA9uR84AbPfEuJv8WHH1BTOHm7Ig0jn-ZgydiCG_0Rr0naum5pHHyIvmZahdOYijsDXKc0fcZ55hFHtRVwrbShd4VYvXvaoghoUmAbmTrLOqUFeN_UzQgJhHkQRaqOiFVuKZtBV-k9o_q9RTVY1J5ryVrZsssFp6MFL2c-DfQHHgAmMS1Gpt8f5enuk8zl0bSnc8UqMwaanNSM6qvl2MJDV-k9zn26d6v3LQQUVK8q_8TdiyGtwWQAD53vGkRHGGlZslOMLtf2KmNhnENQ61f-o3_zW1OUXswnXoHnv9Xl632ccgcQEjvJsQqu72i8biiLfV78q_D8unNcXNK1r-lIFV6QD14gjBc7iVa5F22Rmsym1ax7Bq7gH0o7kxI-1AmugS8BWAUGGV2kqHE0Pc6QEvcyJ9Rg5AtLWItB6LuoVGwOlidiX0uKg331jBfjccstPxQ0oGV624U5QT1Ze-bPPUqRIvTPTWaTy5vu4PIS2ZzyrGv2Z7yyfPKydzITWu7AD7EhtZnNTbyFIZFJlbEoGJzkL_"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
+<p>In the <strong>Same Device</strong> and <strong>Cross Device</strong> Flows described in this chapter, the User interacts with a remote Relying Party.</p>
+<section id="remote-protocol-flow">
+<h2>Remote Protocol Flow<a class="headerlink" href="#remote-protocol-flow" title="Permalink to this heading">¶</a></h2>
+<p>In this scenario the Relying Party provides the URL where the signed presentation request object is available for download.</p>
+<p>Depending on whether the Relying Party client is on a mobile device or a workstation, it must activate one of the supported remote flows:</p>
+<ul class="simple">
+<li><p><strong>Same Device</strong>, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;</p></li>
+<li><p><strong>Cross Device</strong>, the Relying Party MUST provide a QR Code which the User frames with their Wallet Instance.</p></li>
+</ul>
+<p>Once the Wallet Instance establishes the trust with the Relying Party, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.</p>
+<p>Below a sequence diagram that summarizes the interactions between all the involved parties.</p>
+<a class="reference external image-reference" href="//www.plantuml.com/plantuml/uml/XLLTJoCt57tthxXA7neGK7Rx5ebgMKg1tRPCax2y8277labS77lgZmbfrV_UQtkOJ4YaIWXfx7EFpxaVDvzyu2x4bMOy1clYQeQECNOfWdKmUF3e1i0zHCPczhKSVE_XPsoKG3-0xtvLYsNuh2EocdYKK3Kt0GQFN6iCS6U8tWZC7EjTI2IgKxv04yeBdA6HGA_imiQeDyeieAB3JKOso5Y4qvyeP0IFE8C9kYG736_KWWTb3OkS08GSmHZ_YkW3LCu6504bdNWRdI2MYmj8Xk0oXYKQUZC7mx1owEcxV5LBxl48BYuO5q4rF61IqE3R0rSEwInpMAV-pa7TgqzcU7pi0m6EZybR98V1mjOw26jV5D7l4xf2yHoT0jTApgXY_8_nbPK8zsEudKuhUb0gH_vW-EFvnoDOgx24iDnbeVpMLfd09FQjiAsnDMCBPsDD6gn_ApDOepTjHkC89akxpjIjWfgCf7hGxNe4zpMQVFkk0u3NzGbeAxW6lfDkjeOIEX7S42aarkxm-ZKuajSbz65yzsJcpguw9BbY16-JTtCzxR3tipzHf1hCDlruEaZfsLDu6GBwKdI2SB9VsGg2VK733jU-3I6_FFHDKwyrIg9xCg0yf7O6Ey-0Nv2EynDqnuqyc2gACJQ0muRUbYU4JFa2RBYE9A4V8tZDPqgheD2VaR2s3Bifs2zuoMwdVsV6OEgY3nta6pertxo3_8Q1Inxu5iMraed-o-CK9cfXU8WEzwzRNIZXMpNqHmKGjthdre6m9atVDkLnsrvNrioLMw7iMuhRybVta-dUAFewCL9DorWqzNCfwk6QNlVINDmhFjC8EqkX4Emr0esk98pY6kwyZ-XACjjQ7qvIZuNwHg3t-MNHKJ7cZAKesw0Z6EtSkvlRwStu-lftTZXYnE1gYU85RgsM5FGLD_1P6Ka5p48eYlgH_YhhFOMJ8mevXUW9aRdgEDDAm0i5bgsbJ6d3liLWeIdTaLFLpiePOp2bVkr6DrrAvOMs7YNm49oQnO1-H1LfTQevK3zt2qiv0gR-0kuGUCELfXBaKS-fOBsSFTIoBLRPvQqV69RD2Z7VooFOJaVUc3zyEFi07y_FuVuhoVXduCe2pPjoC89b2BM7w7Jf6TSsqRD8A-_VVlUjtqzNsQ0JliAT1RfkDpV9B7BxBoPh_xTx6-os_fV9gCtSxYu57vAAOJBujlgBWVPtfYIXwBWy5BfG3PeIaacINty2aN1K87ojSssi0nz5whnvr5dx9_eNL_e_"><img alt="_images/cross_device_auth_seq_diagram.svg" class="align-center" src="_images/cross_device_auth_seq_diagram.svg" /></a>
+<p>The details of each step shown in the previous picture are described in the table below.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -915,58 +1052,40 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>1</strong></p></td>
+<tr class="row-even"><td><p><strong>1</strong>, <strong>2</strong></p></td>
 <td><p>The User asks for access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the <em>Login with the Wallet</em> button. The Authorization flow starts.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>2</strong></p></td>
-<td><p>The Relying Party creates an Authorization Request which contains the scopes of the request.</p></td>
+<tr class="row-odd"><td><p><strong>3</strong>, <strong>4</strong>, <strong>5</strong></p></td>
+<td><p>The Relying Party creates an Authorization Request which contains the scopes of the request and sends it back.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>3</strong></p></td>
-<td><p>The Relying Party inserts the reference URI of the <em>request_uri</em> into a QR Code.</p></td>
+<tr class="row-even"><td><p><strong>6</strong>, <strong>7</strong>, <strong>8</strong>, <strong>9</strong></p></td>
+<td><p>In the <strong>Cross Device Flow</strong>: the Request URI is provided in the form of a QR Code that is shown to the User that frames it. The Wallet Instance decodes the QR Code and extracts the Request URI from the QR Code payload. In the <strong>Same Device Flow</strong> the Relying Party responses with the Request URI in the form of HTTP Redirect Location (302).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>4</strong></p></td>
-<td><p>The QR Code is shown to the User that frames it.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>5</strong> and <strong>6</strong></p></td>
-<td><p>The Wallet Instance decodes the QR Code and extracts the Request URI from the payload of the QR Code.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>7</strong></p></td>
+<tr class="row-odd"><td><p><strong>10</strong></p></td>
 <td><p>The Wallet Instance requests the content of the Authorization Request by invoking the Request URI, passing an Authorization DPoP HTTP Header containing the Wallet Instance Attestation and the DPoP proof HTTP Header.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>8</strong></p></td>
+<tr class="row-even"><td><p><strong>11</strong></p></td>
 <td><p>The Relying Party attests the trust to the Wallet Instance using the Wallet Instance Attestation and verifies its capabilities.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>9</strong></p></td>
+<tr class="row-odd"><td><p><strong>12</strong></p></td>
 <td><p>The Relying Party issues a signed Request Object, returning it as response.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>10</strong></p></td>
-<td><p>The Wallet Instance verifies Request Object JWS.</p></td>
+<tr class="row-even"><td><p><strong>13</strong>, <strong>14</strong>, <strong>15</strong>, <strong>16</strong></p></td>
+<td><p>The Wallet Instance verifies Request Object JWS. The Wallet Instance attests the trust to the Relying Party by verifying the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>. The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attest its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>11</strong></p></td>
-<td><p>The Wallet Instance attests the trust to the Relying Party by verifying the <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>12</strong> and <strong>13</strong></p></td>
-<td><p>The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attests its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>14</strong></p></td>
-<td><p>The Wallet Instance requests the User's consent for the release of the credentials.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>15</strong></p></td>
-<td><p>The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>16</strong></p></td>
-<td><p>The Wallet Instance provides the Authorization Response to the Relying Party.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>17</strong></p></td>
-<td><p>The Relying Party attests the Credential Issuer trust.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>18</strong></p></td>
-<td><p>The Relying Party verifies the signature of the Authorization Response JWS.</p></td>
+<tr class="row-odd"><td><p><strong>17</strong>, <strong>18</strong></p></td>
+<td><p>The Wallet Instance requests the User's consent for the release of the credentials. The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>19</strong></p></td>
-<td><p>The Relying Party verifies the Authorization Response, performs checks for integrity, revocation and proof of possession of the presented credentials.</p></td>
+<td><p>The Wallet Instance provides the Authorization Response to the Relying Party using a HTTP method POST (response Mode &quot;direct_post&quot;).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>20</strong></p></td>
+<tr class="row-odd"><td><p><strong>20</strong>, <strong>21</strong>, <strong>22</strong></p></td>
+<td><p>The Relying Party verifies the Authorization Response, extracts the Credential and attests the trust to the credentials Issuer. The Relying Party verifies the revocation status and the proof of possession of the presented credential.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>23</strong></p></td>
+<td><p>The Relying Party authenticates the User and updates its session.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>24</strong></p></td>
 <td><p>The Relying Party notifies the Wallet Instance that the operation ends successfully.</p></td>
 </tr>
 </tbody>
@@ -974,13 +1093,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </section>
 <section id="authorization-request-details">
 <h2>Authorization Request Details<a class="headerlink" href="#authorization-request-details" title="Permalink to this heading">¶</a></h2>
-<p>In a Cross Device Flow, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request.</p>
-<p>The User frames the QR Code using the Wallet Instance, then grants the consent to release their attributes to the RP.</p>
-<p>The payload of the QR Code is a <strong>Base64 encoded string</strong> based on the following format:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Where:</p>
+<p>The Relying Party creates a signed request object, then gives it to the Wallet Instance through a HTTP URL (request URI) that points to the resource where the signed request object MUST be available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -993,24 +1106,55 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>Client unique identifier of the Verifier.</p></td>
+<td><p>Unique identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
-<td><p>The Verifier request URI used by the Wallet Instance to retrieve the Request Object.</p></td>
+<td><p>The HTTP URL used by the Wallet Instance to retrieve the signed request object from the Relying Party. The URL is intentionally extended with a random value that uniquely identifies the transaction.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <em>error correction level</em> chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allow the QR Code to remain readable even if it is damaged or partially obscured.</p>
-</div>
-<p>Below is a non-normative example of a QR Code issued by the Relying Party:</p>
-<img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is a non-normative example of the QR Code raw payload:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaQ==
+<p>Below a non-normative example of the response containing the required parameters previously described.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eudiw</span><span class="o">:</span><span class="c1">//authorize?client_id=`$client_id`&amp;request_uri=`$request_uri`</span>
 </pre></div>
 </div>
-<p>Below follows its Base64 decoded content:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https://verifier.example.org&amp;request_uri=https://verifier.example.org/request_uri
+<p>The value corresponding to the <cite>request_uri</cite> endpoint MUST be randomized, according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1">RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)</a> Section 5.2.1.</p>
+<p>In the <strong>Same Device Flow</strong> the Relying Party uses a HTTP response redirect (status code 302) as represented in the following non-normative example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HTTP/1.1 /pre-authz-endpoint Found
+Location: https://wallet-providers.eudi.wallet.gov.it?
+client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
+&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
+</pre></div>
+</div>
+<p>In the <strong>Cross Device Flow</strong>, a QR Code is shown by the Relying Party to the User in order to issue the Authorization Request. The User frames the QR Code using their Wallet Instance. The QR Code payload MUST be a <strong>Base64 encoded string</strong>.</p>
+<p>Below is represented a non-normative example of a QR Code issued by the Relying Party.</p>
+<img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is represented a non-normative example of the QR Code raw payload:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ZXVkaXc6Ly9hdXRob3JpemU/Y2xpZW50X2lkPWh0dHBzOi8vdmVyaWZpZXIuZXhhbXBsZS5vcmcmcmVxdWVzdF91cmk9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZy9yZXF1ZXN0X3VyaS8=
+</pre></div>
+</div>
+<p>The decoded content of the previous Base64 value is represented below:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eudiw://authorize?client_id=https%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <em>error correction level</em> chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured.</p>
+</div>
+</section>
+<section id="cross-device-flow-status-checks-and-security">
+<h2>Cross Device Flow Status Checks and Security<a class="headerlink" href="#cross-device-flow-status-checks-and-security" title="Permalink to this heading">¶</a></h2>
+<p>When the flow is Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).</p>
+<p>Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.</p>
+<p>The Relying Party MUST bind the request of the user-agent, with a Secure and HttpOnly session cookie, with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:</p>
+<ul class="simple">
+<li><p><strong>200 OK</strong>. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
+<li><p><strong>202 Accepted</strong>. This response is given when the signed request object was obtained by the Wallet Instance.</p></li>
+<li><p><strong>302 Found</strong>. The Wallet Instance has sent the presentation to the Relying Party's  <strong>redirect_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. The <code class="docutils literal notranslate"><span class="pre">Location</span></code> within the HTTP Response allows the user-agent to leave the QRCode page.</p></li>
+<li><p><strong>401 Unauthorized</strong>. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.</p></li>
+</ul>
+<p>Below a non-normative example of the HTTP Request to this specialized endpoint, where the parameter <code class="docutils literal notranslate"><span class="pre">id</span></code> contains an opaque and random value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET /session-state?id=3be39b69-6ac1-41aa-921b-3e6c07ddcb03
+HTTP/1.1
+HOST: relying-party.example.org
 </pre></div>
 </div>
 </section>
@@ -1018,21 +1162,21 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <h2>Request Object Details<a class="headerlink" href="#request-object-details" title="Permalink to this heading">¶</a></h2>
 <p>The following actions are made by the Wallet Instance:</p>
 <ul class="simple">
-<li><p>scan the QR Code;</p></li>
+<li><p>scan the QR Code (Cross Device only);</p></li>
 <li><p>extract from the payload the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter;</p></li>
 <li><p>invoke the retrieved URI;</p></li>
-<li><p>provide in the request its Wallet instance Attestation, using <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">DPOP</a> to proof the legitimate possession of it;</p></li>
+<li><p>provide in the request its Wallet Instance Attestation, using <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">DPOP</a> to proof the legitimate possession of it;</p></li>
 <li><p>obtain the signed request object from the Relying Party.</p></li>
 </ul>
 <p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed request object:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">request_uri</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="w"></span>
-<span class="nx">HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">verifier</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span><span class="w"></span>
-<span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="nx">DPoP</span><span class="w"> </span><span class="nx">$WalletInstanceAttestation</span><span class="w"></span>
-<span class="nx">DPoP</span><span class="o">:</span><span class="w"> </span><span class="nx">$WalletInstanceAttestationProofOfPossession</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">request_uri</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">relying</span><span class="o">-</span><span class="nx">party</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span>
+<span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="nx">DPoP</span><span class="w"> </span><span class="nx">$WalletInstanceAttestation</span>
+<span class="nx">DPoP</span><span class="o">:</span><span class="w"> </span><span class="nx">$WalletInstanceAttestationProofOfPossession</span>
 </pre></div>
 </div>
 <p>More detailed information about the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation</a> is available in its dedicated section of this technical specification.</p>
-<p>To attest an high level of security, the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.</p>
+<p>To attest a high level of security, the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.</p>
 <p>Herein the description of the parameters defined in <em>OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1065,7 +1209,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <td><p>[<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwk</strong></p></td>
-<td><p>representing the public key chosen by the client, in JSON Web Key (JWK) [RFC7517] format, as defined in Section 4.1.3 of [RFC7515]. It MUST NOT contain a private key.</p></td>
+<td><p>Representing the public key chosen by the client, in JSON Web Key (JWK) [RFC7517] format, as defined in Section 4.1.3 of [RFC7515]. It MUST NOT contain a private key.</p></td>
 <td><p>[<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] and [<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
 </tr>
 </tbody>
@@ -1121,7 +1265,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 {
   &quot;jti&quot;: &quot;f47c96a1-f928-4768-aa30-ef32dc78aa69&quot;,
   &quot;htm&quot;: &quot;GET&quot;,
-  &quot;htu&quot;: &quot;https://verifier.example.org/request_uri&quot;,
+  &quot;htu&quot;: &quot;https://relying-party.example.org/request_uri&quot;,
   &quot;iat&quot;: 1562262616,
   &quot;ath&quot;: &quot;fUHyO2r2Z3DZ53EsNrWBb0xWXoaNy59IiKCAqksmQEo&quot;
 }
@@ -1146,13 +1290,13 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 {
   &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:unique_id+given_name+family_name&quot;,
   &quot;client_id_scheme&quot;: &quot;entity_id&quot;,
-  &quot;client_id&quot;: &quot;https://verifier.example.org&quot;,
+  &quot;client_id&quot;: &quot;https://relying-party.example.org&quot;,
   &quot;response_mode&quot;: &quot;direct_post.jwt&quot;,
   &quot;response_type&quot;: &quot;vp_token&quot;,
-  &quot;response_uri&quot;: &quot;https://verifier.example.org/callback&quot;,
+  &quot;response_uri&quot;: &quot;https://relying-party.example.org/callback&quot;,
   &quot;nonce&quot;: &quot;2c128e4d-fc91-4cd3-86b8-18bdea0988cb&quot;,
   &quot;state&quot;: &quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;,
-  &quot;iss&quot;: &quot;https://verifier.example.org&quot;,
+  &quot;iss&quot;: &quot;https://relying-party.example.org&quot;,
   &quot;iat&quot;: 1672418465,
   &quot;exp&quot;: 1672422065
 }
@@ -1206,7 +1350,7 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <td><p>Unique Identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_mode</strong></p></td>
-<td><p>Used to ask the Wallet Instance in which way it has to send the response. It MUST be <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code></p></td>
+<td><p>Used to ask the Wallet Instance in which way it has to send the response. It MUST be <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_type</strong></p></td>
 <td><p>The supported response type, MUST be set to``vp_token``.</p></td>
@@ -1221,10 +1365,10 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <td><p>Unique identifier of the Authorization Request.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>The entity that issued the JWT. It will be populated with the Verifier URI</p></td>
+<td><p>The entity that issued the JWT. It will be populated with the Relying Party URI.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
-<td><p>The NumericDate representing the time at which the JWT was issued</p></td>
+<td><p>The NumericDate representing the time at which the JWT was issued.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>The NumericDate representing the expiration time on or after which the JWT MUST NOT be accepted for processing.</p></td>
@@ -1236,41 +1380,41 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <p>The usage of <code class="docutils literal notranslate"><span class="pre">scope</span></code> instead of <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code> is still under discussion and needs better refinements.</p>
 </div>
 <p>Here a non-normative example of <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;presentation_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">      </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person Identification Data&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User authentication&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;$.credentialSubject.unique_id&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;$.credentialSubject.given_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;$.credentialSubject.family_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="p">]</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">          </span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;limit_discolusre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;preferred&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;presentation_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;presentation definitions&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person Identification Data&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User authentication&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;$.credentialSubject.unique_id&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;$.credentialSubject.given_name&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;$.credentialSubject.family_name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;limit_discolusre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;preferred&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following parameters, even if defined in [OID4VP], are not mentioned in the previous non-normative example, since their usage is conditional and may change in future release of this documentation.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>: JSON object according to <a class="reference external" href="PresentationExch">Presentation Exchange</a>. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code> or <code class="docutils literal notranslate"><span class="pre">scope</span></code> are present.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code>: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition</span> <span class="pre">parameter</span></code> or a <code class="docutils literal notranslate"><span class="pre">scope</span></code> value representing a Presentation Definition is not present.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>: A JSON object containing the Verifier metadata values. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is taken from <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code>: string containing an HTTPS URL pointing to a resource where a JSON object with the Verifier metadata can be retrieved. The <code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>: JSON object according to <a class="reference external" href="https://identity.foundation/presentation-exchange/spec/v2.0.0/">Presentation Exchange</a>. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code> or <code class="docutils literal notranslate"><span class="pre">scope</span></code> are present.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code>: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code> parameter or a <code class="docutils literal notranslate"><span class="pre">scope</span></code> value representing a Presentation Definition is not present.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>: A JSON object containing the Relying Party metadata values. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> is taken from <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code>: string containing an HTTPS URL pointing to a resource where a JSON object with the Relying Party metadata can be retrieved. The <code class="docutils literal notranslate"><span class="pre">client_metadata_uri</span></code> parameter MUST NOT be present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>: the redirect URI to which the Wallet Instance MUST redirect the Authorization Response. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> is present.</p></li>
 </ul>
 </div>
@@ -1281,38 +1425,32 @@ This scenario requests the Verifier to show a QR Code which the User frames with
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong></p>
-<p>The response sent from the Wallet Instance to the Relying Party is encrypted
-to prevent a technique called <a class="reference external" href="https://pdos.csail.mit.edu/papers/ssl-splitting-usenixsecurity03/">SSL split attack</a>, that could be enabled by malicious app installed locally by Users,that intecepts the network traffic, or be present by-design in network environments where a next-generation firewalls or other security devices may reduce the privacy of the Users.</p>
+<p>The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs <a class="reference external" href="https://www.f5.com/glossary/ssl-termination">TLS termination</a>. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.</p>
 </div>
 <p>Below a non-normative example of the request:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/callback</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">HOST</span><span class="o">:</span> <span class="l">verifier.example.org</span>
+<span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 
 response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 </pre></div>
 </div>
 <p>Below is a non-normative example of the decrypted JSON <code class="docutils literal notranslate"><span class="pre">response</span></code> content:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;presentation_submission&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;definition_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;32f54163-7166-48f1-93d8-ff217bdb0653&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;04a98be3-7fb0-4cf5-af9a-31579c8b0e7d&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;descriptor_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">          </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1:unique_id&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.vp_token.verified_claims.claims._sd[0]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="w"></span>
-<span class="w">          </span><span class="p">},</span><span class="w"></span>
-<span class="w">          </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1:given_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.vp_token.verified_claims.claims._sd[1]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="w"></span>
-<span class="w">          </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;presentation_submission&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;definition_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;32f54163-7166-48f1-93d8-ff217bdb0653&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;04a98be3-7fb0-4cf5-af9a-31579c8b0e7d&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;descriptor_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.vp_token.verified_claims.claims._sd[0]&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Where the following parameters are used:</p>
@@ -1334,7 +1472,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <td><p>JSON Object contains mappings between the requested Verifiable Credentials and where to find them within the returned VP Token.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
-<td><p>Unique identifier provided by the Verifier inside the Authorization Request</p></td>
+<td><p>Unique identifier provided by the Relying Party within the Authorization Request.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1348,21 +1486,53 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 {
  &quot;iss&quot;: &quot;https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;,
  &quot;jti&quot;: &quot;3978344f-8596-4c3a-a978-8fcaba3903c5&quot;,
- &quot;aud&quot;: &quot;https://verifier.example.org/callback&quot;,
+ &quot;aud&quot;: &quot;https://relying-party.example.org/callback&quot;,
  &quot;iat&quot;: 1541493724,
  &quot;exp&quot;: 1573029723,
- &quot;nonce&quot;: &quot;n-0S6_WzA2Mj&quot;,
- &quot;vp&quot;: &quot;&lt;SD-JWT&gt;~&lt;Disclosure 1&gt;~&lt;Disclosure 2&gt;~...~&lt;Disclosure N&gt;&quot;
+ &quot;nonce&quot;: &quot;2c128e4d-fc91-4cd3-86b8-18bdea0988cb&quot;
+ &quot;vp&quot;: &quot;&lt;Issuer-Signed-JWT&gt;~&lt;Disclosure 1&gt;~&lt;Disclosure 2&gt;~...~&lt;Disclosure N&gt;&quot;
 }
 </pre></div>
 </div>
+<p>Where the following parameters are used:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>vp</strong></p></td>
+<td><p>The digital credential in its original state. The public key contained in the digital credential MUST be used to verify the entire VP JWS as Proof of Possession of the private key which the public part is carried in the digital credential (Holder Key Binding).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>jti</strong></p></td>
+<td><p>JWS Unique identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>Unix timestamp of the issuance datetime.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>Unix timestamp beyond which the presentation of the digital credential will no longer be considered valid.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>aud</strong></p></td>
+<td><p>Audience of the VP, corresponding to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> within the Authorization request issued by the Relying Party.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nonce</strong></p></td>
+<td><p>Nonce provided by the Relying Party within the Authorization Request.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="relying-party-entity-configuration">
 <h2>Relying Party Entity Configuration<a class="headerlink" href="#relying-party-entity-configuration" title="Permalink to this heading">¶</a></h2>
-<p>According to the <a class="reference external" href="trust.html">Trust Model</a> section, the Verifier is a Federation Entity and MUST expose a .well-known endpoint containing its Entity Configuration.</p>
+<p>According to the <a class="reference external" href="trust.html">Trust Model</a> section, the Relying Party is a Federation Entity and MUST expose a .well-known endpoint containing its Entity Configuration.</p>
 <p>Below a non-normative example of the request made by the Wallet Instance to the <em>openid-federation</em> .well-known endpoint to obtain the Relying Party Entity Configuration:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/openid-federation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">HOST</span><span class="o">:</span> <span class="l">verifier.example.org</span>
+<span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 </pre></div>
 </div>
 <p>Below is a non-normative response example:</p>
@@ -1406,14 +1576,14 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
             },
 
             &quot;contacts&quot;: [
-                &quot;ops@verifier.example.org&quot;
+                &quot;ops@relying-party.example.org&quot;
             ],
 
             &quot;request_uris&quot;: [
-                &quot;https://verifier.example.org/request_uri&quot;
+                &quot;https://relying-party.example.org/request_uri&quot;
             ],
             &quot;redirect_uris&quot;: [
-                &quot;https://verifier.example.org/callback&quot;
+                &quot;https://relying-party.example.org/callback&quot;
             ],
 
             &quot;default_acr_values&quot;: [
@@ -1586,12 +1756,12 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
             ],
         },
         &quot;federation_entity&quot;: {
-            &quot;organization_name&quot;: &quot;OpenID Wallet Verifier example&quot;,
-            &quot;homepage_uri&quot;: &quot;https://verifier.example.org/home&quot;,
-            &quot;policy_uri&quot;: &quot;https://verifier.example.org/policy&quot;,
-            &quot;logo_uri&quot;: &quot;https://verifier.example.org/static/logo.svg&quot;,
+            &quot;organization_name&quot;: &quot;OpenID Wallet Relying Party example&quot;,
+            &quot;homepage_uri&quot;: &quot;https://relying-party.example.org/home&quot;,
+            &quot;policy_uri&quot;: &quot;https://relying-party.example.org/policy&quot;,
+            &quot;logo_uri&quot;: &quot;https://relying-party.example.org/static/logo.svg&quot;,
             &quot;contacts&quot;: [
-               &quot;tech@verifier.example.org&quot;
+               &quot;tech@relying-party.example.org&quot;
              ]
         }
     },
