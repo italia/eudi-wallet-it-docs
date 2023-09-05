@@ -200,7 +200,7 @@ Header
 +-----------------------------------+-----------------------------------+
 | trust_chain                       | Array containing the JWS of the   |
 |                                   | trust chain relating to the       |
-|                                   | Wallet Provider                   |
+|                                   | Wallet Provider.                  |
 +-----------------------------------+-----------------------------------+
 
 Payload
