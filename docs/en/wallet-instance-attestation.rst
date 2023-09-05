@@ -194,12 +194,13 @@ Header
 +-----------------------------------+-----------------------------------+
 | x5c                               | Array containing the X.509        |
 |                                   | certificate (and the entire chain |
-|                                   | of certificates) used to certify  |
-|                                   | the public key of the issuer.     |
+|                                   | of certificates) used to attest   |
+|                                   | the public key of the Wallet      |
+|                                   | Provider.                         |
 +-----------------------------------+-----------------------------------+
 | trust_chain                       | Array containing the JWS of the   |
-|                                   | trust chain relating to its       |
-|                                   | issuer (Wallet Provider).         |
+|                                   | trust chain relating to the       |
+|                                   | Wallet Provider                   |
 +-----------------------------------+-----------------------------------+
 
 Payload
@@ -226,17 +227,6 @@ Payload
 ||                          || problems is to have a limited                 |
 ||                          || duration of the attestation.                  |
 +---------------------------+------------------------------------------------+
-|| type                     || String:                                       |
-||                          || "WalletInstanceAttestation".                  |
-+---------------------------+------------------------------------------------+
-|| policy_uri               || URL to the privacy policy                     |
-||                          || of the wallet.                                |
-+---------------------------+------------------------------------------------+
-|| tos_uri                  || URL to the terms                              |
-||                          || of use of the Wallet Provider.                |
-+---------------------------+------------------------------------------------+
-|| logo_uri                 || URL of the Wallet Provider logo in SVG format |
-+---------------------------+------------------------------------------------+
 || attested_security_context|| Attested security context:                    |
 ||                          || Represents a level of "trust" of              |
 ||                          || the service containing a Level Of             |
@@ -248,12 +238,12 @@ Payload
 ||                          || with the public key of the Wallet             |
 ||                          || necessary for the holder binding.             |
 +---------------------------+------------------------------------------------+
-|| authorization_endpoint   || URL of the OP's OAuth 2.0                     |
+|| authorization_endpoint   || URL of the SIOPv2                             |
 ||                          || Authorization Endpoint.                       |
 +---------------------------+------------------------------------------------+
 || response_types_supported || JSON array containing a list of               |
 ||                          || the OAuth 2.0 response_type values            |
-||                          || that this OP supports.                        |
+||                          || that this SIOP supports.                      |
 +---------------------------+------------------------------------------------+
 || vp_formats_supported     || JSON object containing                        |
 ||                          || ``jwt_vp_json`` and ``jwt_vc_json``           |
@@ -261,7 +251,7 @@ Payload
 +---------------------------+------------------------------------------------+
 || request_object_signing   || JSON array containing a list of the           |
 || _alg_values_supported    || JWS signing algorithms (alg values)           |
-||                          || supported by the OP for Request Objects.      |
+||                          || supported by the SIOP for Request Objects.    |
 +---------------------------+------------------------------------------------+
 || presentation_definition  || Boolean value specifying whether the          |
 || _uri_supported           || Wallet Instance supports the transfer of      |
@@ -296,10 +286,6 @@ Below is an example of Wallet Instance Attestation:
   {
     "iss": "https://wallet-provider.example.org",
     "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "type": "WalletInstanceAttestation",
-    "policy_uri": "https://wallet-provider.example.org/privacy_policy",
-    "tos_uri": "https://wallet-provider.example.org/info_policy",
-    "logo_uri": "https://wallet-provider.example.org/logo.svg",
     "attested_security_context": "https://wallet-provider.example.org/LoA/basic",
     "cnf":
     {
