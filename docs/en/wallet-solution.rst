@@ -260,15 +260,7 @@ Below a non-normative example of the Entity Configuration.
 Wallet Instance Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The **token** endpoint (as defined in `RFC 7523 section 4`_) requires two parameters as input, in HTTP Post method:
-
-``grant_type`` which in our case is a string:
-``urn:ietf:params:oauth:grant-type:jwt-bearer``
-
-``assertion`` which contains the signed JWT of the Wallet Instance Attestation
-Request.
-
-The response will then contain the Wallet Instance Attestation.
+Please refer to the `Wallet Instance Attestation section`_
 
 
 External references
