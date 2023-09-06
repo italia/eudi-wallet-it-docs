@@ -1153,9 +1153,9 @@ Assertion Request JWT)</p></td>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">Unique identifier of the request.</div>
-<div class="line">This parameter will be used to</div>
-<div class="line">avoid replay attacks.</div>
+<div class="line">Unique identifier of the request, according to</div>
+<div class="line"><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7519">RFC7519</a>.</div>
+<div class="line"><br /></div>
 </div>
 </td>
 </tr>
@@ -1165,7 +1165,7 @@ Assertion Request JWT)</p></td>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">String. It must be set to</div>
+<div class="line">String. It MUST be set to</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">WalletInstanceAttestationRequest</span></code>.</div>
 </div>
 </td>
@@ -1177,7 +1177,7 @@ Assertion Request JWT)</p></td>
 </td>
 <td><div class="line-block">
 <div class="line">The nonce obtained from the</div>
-<div class="line">Wallet Porvider.</div>
+<div class="line">Wallet Provider.</div>
 </div>
 </td>
 </tr>
@@ -1186,25 +1186,13 @@ Assertion Request JWT)</p></td>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">This parameter will contain the</div>
-<div class="line">configuration of the Wallet</div>
-<div class="line">Instance in JSON format. Among</div>
-<div class="line">the mandatory attributes there</div>
-<div class="line">will be the jwk parameter</div>
+<div class="line">JSON object, according to</div>
+<div class="line"><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7800.html">RFC7800</a></div>
 <div class="line">containing the public key of the</div>
-<div class="line">Wallet Instance. It will also</div>
-<div class="line">contain all the information</div>
-<div class="line">useful for the Wallet Provider</div>
-<div class="line">to verify that the app is genuine.</div>
+<div class="line">Wallet Instance.</div>
 </div>
 </td>
 </tr>
@@ -1515,7 +1503,7 @@ request to the Wallet Solution <a class="reference external" href="wallet-soluti
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
-&amp;assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0.eyJpc3MiOiJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIiwiYXVkIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCJqdGkiOiJmNTY1MjA3Mi1hYmVmLTQ1OTktYjg2My05YTY5MDYwNzMyY2MiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJub25jZSI6Ii4uLi4uIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImlhdCI6MTY5MTQ4ODk2MiwiZXhwIjoxNjkxNDk2MTYyfQ.Azg8zBzjCB2ms9XHVDCzP92kh3XcVR6dD4Z_aFZslBO-6i3xwGwDsk4W8uESr-ba84wXgyIzn_vKX3exVFfO6g
+&amp;assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeGRxd2xVTl9LWl83NTVUT1ZEbmJIaDg2TW1KcHh2a1UifQ.eyJpc3MiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsICJhdWQiOiAiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAianRpIjogImY1NjUyMDcyLWFiZWYtNDU5OS1iODYzLTlhNjkwNjA3MzJjYyIsICJub25jZSI6ICIuLi4uLiIsICJjbmYiOiB7Imp3ayI6IHsiY3J2IjogIlAtMjU2IiwgImt0eSI6ICJFQyIsICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCAieSI6ICJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwgImtpZCI6ICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn19LCAiaWF0IjogMTY5MTQ4ODk2MiwgImV4cCI6IDE2OTE0OTYxNjJ9.Dg_yFaiv6lVftR3FFx0v5JW250mBgXLVP1j0ezZcHRyitqSY7xGmx4y-MGur93FAS85vf_Da-L-REVEltwU2Jw
 </pre></div>
 </div>
 <p>the assertion parameter is used as an authentication parameter
