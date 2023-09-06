@@ -349,3 +349,4 @@ The response is the `Wallet Instance Attestation`_ JWT in plain text:
 .. _token endpoint: wallet-solution.html#wallet-instance-attestation
 .. _Wallet Instance Attestation Request: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request
 .. _Wallet Instance Attestation: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation
+.. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4

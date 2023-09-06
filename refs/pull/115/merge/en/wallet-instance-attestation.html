@@ -1497,7 +1497,7 @@ and must be intended as experimental.</p>
 <p>To obtain the Wallet Instance Attestation it is necessary
 to make a <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.2">POST</a>
 request to the Wallet Solution <a class="reference external" href="wallet-solution.html#wallet-instance-attestation">token endpoint</a>.</p>
-<p>The <strong>token</strong> endpoint (as defined in <a href="#id4"><span class="problematic" id="id5">`RFC 7523 section 4`_</span></a>) requires two parameters as input, in HTTP Post method:</p>
+<p>The <strong>token</strong> endpoint (as defined in <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7523.html#section-4">RFC 7523 section 4</a>) requires two parameters as input, in HTTP Post method:</p>
 <p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> which in our case is a string:
 <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:grant-type:jwt-bearer</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">assertion</span></code> which contains the signed JWT of the <a class="reference external" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Wallet Instance Attestation Request</a></p>

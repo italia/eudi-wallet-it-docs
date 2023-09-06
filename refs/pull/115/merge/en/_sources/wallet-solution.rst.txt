@@ -275,4 +275,4 @@ External references
 .. _Wallet Instance Attestation section: wallet-instance-attestation.html
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
-.. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
+
