@@ -188,77 +188,70 @@ Header
 +-----------------------------------+-----------------------------------+
 | x5c                               | Array containing the X.509        |
 |                                   | certificate (and the entire chain |
-|                                   | of certificates) used to certify  |
-|                                   | the public key of the issuer.     |
+|                                   | of certificates) used to attest   |
+|                                   | the public key of the Wallet      |
+|                                   | Provider.                         |
 +-----------------------------------+-----------------------------------+
 | trust_chain                       | Array containing the JWS of the   |
-|                                   | trust chain relating to its       |
-|                                   | issuer (Wallet Provider).         |
+|                                   | trust chain relating to the       |
+|                                   | Wallet Provider.                  |
 +-----------------------------------+-----------------------------------+
 
 Payload
 ^^^^^^^
 
-+---------------------------+-----------------------------------------------+
-| **key**                   | **value**                                     |
-+---------------------------+-----------------------------------------------+
-|| iss                      || The public url of the Wallet                 |
-||                          || Instance attestation issuer. See             |
-||                          || the example below in this section.           |
-+---------------------------+-----------------------------------------------+
-|| sub                      || Thumbprint value                             |
-||                          || of the JWK of the Wallet Instance            |
-||                          || for which the attestation is                 |
-||                          || being issued.                                |
-+---------------------------+-----------------------------------------------+
-|| iat                      || Unix timestamp of attestation                |
-||                          || issuance time.                               |
-+---------------------------+-----------------------------------------------+
-|| exp                      || Unix timestamp regarding the                 |
-||                          || expiration date time.                        |
-||                          || A good practice to avoid security            |
-||                          || problems is to have a limited                |
-||                          || duration of the attestation.                 |
-+---------------------------+-----------------------------------------------+
-|| policy_uri               || URL to the privacy policy                    |
-||                          || of the wallet.                               |
-+---------------------------+-----------------------------------------------+
-|| tos_uri                  || URL to the terms                             |
-||                          || of use of the Wallet Provider.               |
-+---------------------------+-----------------------------------------------+
-|| logo_uri                 || URL of the Wallet Provider logo in SVG format|
-+---------------------------+-----------------------------------------------+
-|| attested_security_context|| Attested security context:                   |
-||                          || Represents a level of "trust" of             |
-||                          || the service containing a Level Of            |
-||                          || Agreement defined in the metadata            |
-||                          || of the Wallet Provider.                      |
-+---------------------------+-----------------------------------------------+
-|| cnf                      || This parameter contains the ``jwk``          |
-||                          || parameter                                    |
-||                          || with the public key of the Wallet            |
-||                          || necessary for the holder binding.            |
-+---------------------------+-----------------------------------------------+
-|| authorization_endpoint   || URL of the OP's OAuth 2.0                    |
-||                          || Authorization Endpoint.                      |
-+---------------------------+-----------------------------------------------+
-|| response_types_supported || JSON array containing a list of              |
-||                          || the OAuth 2.0 response_type values           |
-||                          || that this OP supports.                       |
-+---------------------------+-----------------------------------------------+
-|| vp_formats_supported     || JSON object containing                       |
-||                          || ``jwt_vp_json`` and ``jwt_vc_json``          |
-||                          || supported algorithms array.                  |
-+---------------------------+-----------------------------------------------+
-|| request_object_signing   || JSON array containing a list of the          |
-|| _alg_values_supported    || JWS signing algorithms (alg values)          |
-||                          || supported by the OP for Request Objects.     |
-+---------------------------+-----------------------------------------------+
-|| presentation_definition  || Boolean value specifying whether the         |
-|| _uri_supported           || Wallet Instance supports the transfer of     |
-||                          || presentation_definition by                   |
-||                          || reference, with true indicating support.     |
-+---------------------------+-----------------------------------------------+
++---------------------------+------------------------------------------------+
+| **key**                   | **value**                                      |
++---------------------------+------------------------------------------------+
+|| iss                      || The public url of the Wallet                  |
+||                          || Instance attestation issuer. See              |
+||                          || the example below in this section.            |
++---------------------------+------------------------------------------------+
+|| sub                      || Thumbprint value                              |
+||                          || of the JWK of the Wallet Instance             |
+||                          || for which the attestation is                  |
+||                          || being issued.                                 |
++---------------------------+------------------------------------------------+
+|| iat                      || Unix timestamp of attestation                 |
+||                          || issuance time.                                |
++---------------------------+------------------------------------------------+
+|| exp                      || Unix timestamp regarding the                  |
+||                          || expiration date time.                         |
+||                          || A good practice to avoid security             |
+||                          || problems is to have a limited                 |
+||                          || duration of the attestation.                  |
++---------------------------+------------------------------------------------+
+|| attested_security_context|| Attested security context:                    |
+||                          || Represents a level of "trust" of              |
+||                          || the service containing a Level Of             |
+||                          || Agreement defined in the metadata             |
+||                          || of the Wallet Provider.                       |
++---------------------------+------------------------------------------------+
+|| cnf                      || This parameter contains the ``jwk``           |
+||                          || parameter                                     |
+||                          || with the public key of the Wallet             |
+||                          || necessary for the holder binding.             |
++---------------------------+------------------------------------------------+
+|| authorization_endpoint   || URL of the SIOPv2                             |
+||                          || Authorization Endpoint.                       |
++---------------------------+------------------------------------------------+
+|| response_types_supported || JSON array containing a list of               |
+||                          || the OAuth 2.0 response_type values            |
+||                          || that this SIOP supports.                      |
++---------------------------+------------------------------------------------+
+|| vp_formats_supported     || JSON object containing                        |
+||                          || ``jwt_vp_json`` and ``jwt_vc_json``           |
+||                          || supported algorithms array.                   |
++---------------------------+------------------------------------------------+
+|| request_object_signing   || JSON array containing a list of the           |
+|| _alg_values_supported    || JWS signing algorithms (alg values)           |
+||                          || supported by the SIOP for Request Objects.    |
++---------------------------+------------------------------------------------+
+|| presentation_definition  || Boolean value specifying whether the          |
+|| _uri_supported           || Wallet Instance supports the transfer of      |
+||                          || presentation_definition by                    |
+||                          || reference, with true indicating support.      |
++---------------------------+------------------------------------------------+
 
 .. note::
    The claim ``attested_security_context`` (Attested Security Context) is under discussion
@@ -287,9 +280,6 @@ Below is an example of Wallet Instance Attestation:
   {
     "iss": "https://wallet-provider.example.org",
     "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "policy_uri": "https://wallet-provider.example.org/privacy_policy",
-    "tos_uri": "https://wallet-provider.example.org/info_policy",
-    "logo_uri": "https://wallet-provider.example.org/logo.svg",
     "attested_security_context": "https://wallet-provider.example.org/LoA/basic",
     "cnf":
     {

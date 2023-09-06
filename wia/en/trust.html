@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | The Infrastructure of Trust</title>
+  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | The Trust Infrastructure</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -584,7 +584,7 @@
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Infrastructure of Trust</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Trust Infrastructure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-model-requirements">Trust Model Requirements</a></li>
@@ -764,7 +764,7 @@
 <div class="navbar-toggler--wrap navbar-toggler--wrap--bottom p-3">
   <div class="navbar-toggler navbar-toggler--open p-0 border-0 ml-auto">
     <div class="navbar-toggler-bottom__chapter align-middle text-truncate">
-      <span class="it-list mr-2"></span>The Infrastructure of Trust
+      <span class="it-list mr-2"></span>The Trust Infrastructure
     </div>
   </div>
 </div>
@@ -830,7 +830,7 @@
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Infrastructure of Trust</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Trust Infrastructure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trust-model-requirements">Trust Model Requirements</a></li>
@@ -1016,17 +1016,17 @@
             </div>
           
           
-  <section id="the-infrastructure-of-trust">
-<span id="trust-rst"></span><h1>The Infrastructure of Trust<a class="headerlink" href="#the-infrastructure-of-trust" title="Permalink to this heading">¶</a></h1>
-<p>The EUDI Wallet Architecture Reference Framework (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>) defines the Trust Model as a <em>&quot;collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem&quot;</em>.</p>
-<p>This section defines how the Trust Model is implemented in an infrastructure compliant to OpenID Connect Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>, where a Federation RESTful API is involved for the distribution of metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants (Federation Entities).</p>
-<p>The infrastructure of Trust enables the trust assessment mechanism to be applied between the parties defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
+  <section id="the-trust-infrastructure">
+<span id="trust-rst"></span><h1>The Trust Infrastructure<a class="headerlink" href="#the-trust-infrastructure" title="Permalink to this heading">¶</a></h1>
+<p>The EUDI Wallet Architecture Reference Framework (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>) describes the Trust Model as a <em>&quot;collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem&quot;</em>.</p>
+<p>This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Connect Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>. This infrastructure involves a Federation RESTful API for distributing metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants (Federation Entities).</p>
+<p>The Trust Infrastructure facilitates the application of a trust assessment mechanism among the parties defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/trust-roles.svg"><img alt="federation portrait" src="_images/trust-roles.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The roles of the Federation infrastructure, where the Trust Anchor has its subordinates,
-one or more Intermediates and Leafs and where Intermediates have their Leafs. In this
-representation both the Trust Anchor and the Intermediates play the role of Accreditation Body.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The roles within the Federation infrastructure, where the Trust Anchor oversees its subordinates,
+which include one or more Intermediates and Leafs. In this
+representation, both the Trust Anchor and the Intermediates assume the role of Accreditation Body.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="federation-roles">
