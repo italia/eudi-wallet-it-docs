@@ -157,7 +157,8 @@ Payload `wallet_provider`
 +---------------------------------------------+---------------------------------------------------------------------+
 | grant_types_supported                       | The types of grants supported by                                    |
 |                                             | the endpoint token. It MUST be set to                               |
-|                                             | ``urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation`` |
+|                                             | ``urn:ietf:params:oauth:client-assertion-type:                      |
+|                                             | jwt-client-attestation``                                            |
 +---------------------------------------------+---------------------------------------------------------------------+
 | token_endpoint_auth_methods_suppor          | Supported authentication method for                                 |
 | ted                                         | the endpoint token.                                                 |
