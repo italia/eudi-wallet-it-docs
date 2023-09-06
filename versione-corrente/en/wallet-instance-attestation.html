@@ -1270,13 +1270,14 @@ according to
 <tr class="row-odd"><td><p>x5c</p></td>
 <td><p>Array containing the X.509
 certificate (and the entire chain
-of certificates) used to certify
-the public key of the issuer.</p></td>
+of certificates) used to attest
+the public key of the Wallet
+Provider.</p></td>
 </tr>
 <tr class="row-even"><td><p>trust_chain</p></td>
 <td><p>Array containing the JWS of the
-trust chain relating to its
-issuer (Wallet Provider).</p></td>
+trust chain relating to the
+Wallet Provider.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1345,48 +1346,6 @@ issuer (Wallet Provider).</p></td>
 </td>
 </tr>
 <tr class="row-even"><td><div class="line-block">
-<div class="line">type</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="line-block">
-<div class="line">String:</div>
-<div class="line">&quot;WalletInstanceAttestation&quot;.</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><div class="line-block">
-<div class="line">policy_uri</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="line-block">
-<div class="line">URL to the privacy policy</div>
-<div class="line">of the wallet.</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><div class="line-block">
-<div class="line">tos_uri</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="line-block">
-<div class="line">URL to the terms</div>
-<div class="line">of use of the Wallet Provider.</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><div class="line-block">
-<div class="line">logo_uri</div>
-</div>
-</td>
-<td><div class="line-block">
-<div class="line">URL of the Wallet Provider logo in SVG format</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><div class="line-block">
 <div class="line">attested_security_context</div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1424,7 +1383,7 @@ issuer (Wallet Provider).</p></td>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">URL of the OP's OAuth 2.0</div>
+<div class="line">URL of the SIOPv2</div>
 <div class="line">Authorization Endpoint.</div>
 </div>
 </td>
@@ -1438,7 +1397,7 @@ issuer (Wallet Provider).</p></td>
 <td><div class="line-block">
 <div class="line">JSON array containing a list of</div>
 <div class="line">the OAuth 2.0 response_type values</div>
-<div class="line">that this OP supports.</div>
+<div class="line">that this SIOP supports.</div>
 </div>
 </td>
 </tr>
@@ -1464,7 +1423,7 @@ issuer (Wallet Provider).</p></td>
 <td><div class="line-block">
 <div class="line">JSON array containing a list of the</div>
 <div class="line">JWS signing algorithms (alg values)</div>
-<div class="line">supported by the OP for Request Objects.</div>
+<div class="line">supported by the SIOP for Request Objects.</div>
 </div>
 </td>
 </tr>
@@ -1510,10 +1469,6 @@ and must be intended as experimental.</p>
 <span class="p">{</span>
 <span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestation&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;policy_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/privacy_policy&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;tos_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/info_policy&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;logo_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/logo.svg&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;attested_security_context&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/basic&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span>
 <span class="w">  </span><span class="p">{</span>
