@@ -108,7 +108,7 @@ Below a non-normative example of the PAR.
     &code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
     &code_challenge_method=S256
     &request=eyJhbGciOiJSUzI1NiIsImtpZCI6ImsyYmRjIn0.ew0KIC Jpc3MiOiAiczZCaGRSa3F0MyIsDQogImF1ZCI6ICJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbSIsDQo gInJlc3BvbnNlX3R5cGUiOiAiY29kZSBpZF90b2tlbiIsDQogImNsaWVudF9pZCI6ICJzNkJoZFJrcXQz IiwNCiAicmVkaXJlY3RfdXJpIjogImh0dHBzOi8vY2xpZW50LmV4YW1...
-    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation
+    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WalletInstanceAttestation$ 
 
 The JWS header of request object is represented below:
@@ -141,7 +141,7 @@ The JWS payload of the request object is represented below:
     }
     ],
     "redirect_uri":"eudiw://start.wallet.example.org",
-    "client_assertion_type":"urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation", 
+    "client_assertion_type":"urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation", 
     }
 
 
@@ -340,7 +340,7 @@ The requests to the PID/(Q)EAA authorization endpoint MUST be HTTP with method P
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the request object.
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
     * - **client_assertion_type**
-      - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation``.
+      - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation``.
       - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
     * - **client_assertion**
       - It MUST be the Wallet Instance Attestation signed JWT.
