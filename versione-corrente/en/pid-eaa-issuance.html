@@ -1116,7 +1116,7 @@ response_type=code
 &amp;code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
 &amp;code_challenge_method=S256
 &amp;request=eyJhbGciOiJSUzI1NiIsImtpZCI6ImsyYmRjIn0.ew0KIC Jpc3MiOiAiczZCaGRSa3F0MyIsDQogImF1ZCI6ICJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbSIsDQo gInJlc3BvbnNlX3R5cGUiOiAiY29kZSBpZF90b2tlbiIsDQogImNsaWVudF9pZCI6ICJzNkJoZFJrcXQz IiwNCiAicmVkaXJlY3RfdXJpIjogImh0dHBzOi8vY2xpZW50LmV4YW1...
-&amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation
+&amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
 &amp;client_assertion=$WalletInstanceAttestation$
 </pre></div>
 </div>
@@ -1144,7 +1144,7 @@ response_type=code
 <span class="p">}</span>
 <span class="p">],</span>
 <span class="nt">&quot;redirect_uri&quot;</span><span class="p">:</span><span class="s2">&quot;eudiw://start.wallet.example.org&quot;</span><span class="p">,</span>
-<span class="nt">&quot;client_assertion_type&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation&quot;</span><span class="p">,</span>
+<span class="nt">&quot;client_assertion_type&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1320,7 +1320,7 @@ credential_definition=%7B%22type%22:%5B%22PersonIdentificationData%22%5D%7D
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests">OpenID Connect Core. Section 6</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_assertion_type</strong></p></td>
-<td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation</span></code>.</p></td>
+<td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation</span></code>.</p></td>
 <td><p><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7521">Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants</a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_assertion</strong></p></td>
