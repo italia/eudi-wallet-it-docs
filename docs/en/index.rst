@@ -11,7 +11,7 @@ Across Europe, 21 digital identities (eIDs) currently exist in 16 different Memb
 In its integration effort, the European Council called for the eIDAS Regulation on electronic identification and trust services for electronic transactions in the internal market to be updated by implementing a new tool: the European Digital Identity Wallet.
 The European Digital Identity Wallet (EUDI Wallet or EUDIW) project was created to overcome the differences, both in technological and user experience terms, that exist across national experiences towards a uniform digital identity solution so as to enable cross-border access to digital services. 
 
-Italy responded to the input received from the European community by creating the Italian digital identity Wallet, or IT Wallet, project.
+Italy responded to the input received from the European community by creating the National digital identity Wallet solution, called IT Wallet, to be fully interoperable with all the other solutions made available by other European Member States and in full compliance to the European regulation.
 The current Italian scenario counts 3 coexisting digital identity tools that are partially overlapping, sometimes competing, and based on different technologies. This points to a highly fragmented system which yields difficulties for users and service providers and is ultimately unsustainable.
 Therefore, the IT Wallet proposes to rationalise the digital identity ecosystem in Italy in order to simplify the experience of citizens, public administrations, and businesses in accessing digital services.
 
@@ -19,7 +19,7 @@ To achieve these objectives and enhance the already active and eIDAS-notified di
 
 The purpose of the following technical rules is to define the technical architecture and reference framework to be used as a guideline by all the parties involved in the development of the IT Wallet project.
 
-In this documentation you can find the technical specification for implementing the following components:
+In this documentation you can find the technical specification for implementing the components that compose the Wallet ecosystem:
 
  - Entities of the ecosystem according to `EIDAS-ARF`_.
  - Infrastructure of trust attesting realiability and eligibility of the participants.
