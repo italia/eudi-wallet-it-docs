@@ -102,38 +102,32 @@ Header
 
 Payload
 ^^^^^^^
-+--------+----------------------------------------+
-| **key**| **value**                              |
-+--------+----------------------------------------+
-|| iss   || The thumbprint                        |
-||       || of the JWK of the Wallet Instance     |
-||       || for which the attestation is          |
-||       || being requested.                      |
-+--------+----------------------------------------+
-|| aud   || The public url of the Wallet          |
-||       || Provider.                             |
-+--------+----------------------------------------+
-|| jti   || Unique identifier of the request.     |
-||       || This parameter will be used to        |
-||       || avoid replay attacks.                 |
-+--------+----------------------------------------+
-|| type  || String. It must be set to             |
-||       || ``WalletInstanceAttestationRequest``. |
-+--------+----------------------------------------+
-|| nonce || The nonce obtained from the           |
-||       || Wallet Porvider.                      |
-+--------+----------------------------------------+
-|| cnf   || This parameter will contain the       |
-||       || configuration of the Wallet           |
-||       || Instance in JSON format. Among        |
-||       || the mandatory attributes there        |
-||       || will be the jwk parameter             |
-||       || containing the public key of the      |
-||       || Wallet Instance. It will also         |
-||       || contain all the information           |
-||       || useful for the Wallet Provider        |
-||       || to verify that the app is genuine.    |
-+--------+----------------------------------------+
++--------+-------------------------------------------------------------+
+| **key**| **value**                                                   |
++--------+-------------------------------------------------------------+
+|| iss   || The thumbprint                                             |
+||       || of the JWK of the Wallet Instance                          |
+||       || for which the attestation is                               |
+||       || being requested.                                           |
++--------+-------------------------------------------------------------+
+|| aud   || The public url of the Wallet                               |
+||       || Provider.                                                  |
++--------+-------------------------------------------------------------+
+|| jti   || Unique identifier of the request, according to             |
+||       || `RFC7519 <https://datatracker.ietf.org/doc/html/rfc7519>`_.|
+||       ||                                                            |
++--------+-------------------------------------------------------------+
+|| type  || String. It MUST be set to                                  |
+||       || ``WalletInstanceAttestationRequest``.                      |
++--------+-------------------------------------------------------------+
+|| nonce || The nonce obtained from the                                |
+||       || Wallet Provider.                                           |
++--------+-------------------------------------------------------------+
+|| cnf   || JSON object, according to                                  |
+||       || `RFC7800 <https://www.rfc-editor.org/rfc/rfc7800.html>`_   |
+||       || containing the public key of the                           |
+||       || Wallet Instance.                                           |
++--------+-------------------------------------------------------------+
 
 Below a non-normative example of the Wallet Instance Attestation
 request where the decoded JWS headers and payload are separated by a comma:
@@ -334,7 +328,7 @@ Below a non-normative example of the request.
     Content-Type: application/x-www-form-urlencoded
 
     grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
-    &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXAiOiJ2YXIrand0In0.eyJpc3MiOiJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIiwiYXVkIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCJqdGkiOiJmNTY1MjA3Mi1hYmVmLTQ1OTktYjg2My05YTY5MDYwNzMyY2MiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvblJlcXVlc3QiLCJub25jZSI6Ii4uLi4uIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImlhdCI6MTY5MTQ4ODk2MiwiZXhwIjoxNjkxNDk2MTYyfQ.Azg8zBzjCB2ms9XHVDCzP92kh3XcVR6dD4Z_aFZslBO-6i3xwGwDsk4W8uESr-ba84wXgyIzn_vKX3exVFfO6g
+    &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeGRxd2xVTl9LWl83NTVUT1ZEbmJIaDg2TW1KcHh2a1UifQ.eyJpc3MiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsICJhdWQiOiAiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAianRpIjogImY1NjUyMDcyLWFiZWYtNDU5OS1iODYzLTlhNjkwNjA3MzJjYyIsICJub25jZSI6ICIuLi4uLiIsICJjbmYiOiB7Imp3ayI6IHsiY3J2IjogIlAtMjU2IiwgImt0eSI6ICJFQyIsICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCAieSI6ICJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwgImtpZCI6ICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn19LCAiaWF0IjogMTY5MTQ4ODk2MiwgImV4cCI6IDE2OTE0OTYxNjJ9.Dg_yFaiv6lVftR3FFx0v5JW250mBgXLVP1j0ezZcHRyitqSY7xGmx4y-MGur93FAS85vf_Da-L-REVEltwU2Jw
 
 the assertion parameter is used as an authentication parameter
 of the Wallet Instance.
