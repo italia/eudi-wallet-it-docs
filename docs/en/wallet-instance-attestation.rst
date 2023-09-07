@@ -96,7 +96,7 @@ Header
 | kid                               | Key id of the Wallet Instance     |
 +-----------------------------------+-----------------------------------+
 | typ                               | Media type, in this case we use   |
-|                                   | the value var+jwt (Verifiable     |
+|                                   | the value ``wiar+jwt`` (Verifiable|
 |                                   | Assertion Request JWT)            |
 +-----------------------------------+-----------------------------------+
 
@@ -116,9 +116,6 @@ Payload
 || jti   || Unique identifier of the request.     |
 ||       || This parameter will be used to        |
 ||       || avoid replay attacks.                 |
-+--------+----------------------------------------+
-|| type  || String. It must be set to             |
-||       || ``WalletInstanceAttestationRequest``. |
 +--------+----------------------------------------+
 || nonce || The nonce obtained from the           |
 ||       || Wallet Porvider.                      |
@@ -143,14 +140,13 @@ request where the decoded JWS headers and payload are separated by a comma:
   {
     "alg": "ES256",
     "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "typ": "var+jwt"
+    "typ": "wiar+jwt"
   }
   .
   {
     "iss": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "aud": "https://wallet-provider.example.org",
     "jti": "6ec69324-60a8-4e5b-a697-a766d85790ea",
-    "type": "WalletInstanceAttestationRequest",
     "nonce" : ".....",
     "cnf": {
       "jwk": {
