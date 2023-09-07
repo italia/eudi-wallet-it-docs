@@ -91,17 +91,17 @@ Header
 | **key**                           | **value**                         |
 +-----------------------------------+-----------------------------------+
 | alg                               | Algorithm to verify the token     |
-|                                   | signature (es. ES256)             |
+|                                   | signature (es. ES256).            |
 +-----------------------------------+-----------------------------------+
-| kid                               | Key id of the Wallet Instance     |
+| kid                               | Key id of the Wallet Instance.    |
 +-----------------------------------+-----------------------------------+
 | typ                               | Media type, in this case we use   |
-|                                   | the value var+jwt (Verifiable     |
-|                                   | Assertion Request JWT)            |
+|                                   | the value ``wiar+jwt``.           |
 +-----------------------------------+-----------------------------------+
 
 Payload
 ^^^^^^^
+
 +--------+-------------------------------------------------------------+
 | **key**| **value**                                                   |
 +--------+-------------------------------------------------------------+
@@ -117,9 +117,6 @@ Payload
 ||       || `RFC7519 <https://datatracker.ietf.org/doc/html/rfc7519>`_.|
 ||       ||                                                            |
 +--------+-------------------------------------------------------------+
-|| type  || String. It MUST be set to                                  |
-||       || ``WalletInstanceAttestationRequest``.                      |
-+--------+-------------------------------------------------------------+
 || nonce || The nonce obtained from the                                |
 ||       || Wallet Provider.                                           |
 +--------+-------------------------------------------------------------+
@@ -129,6 +126,7 @@ Payload
 ||       || Wallet Instance.                                           |
 +--------+-------------------------------------------------------------+
 
+
 Below a non-normative example of the Wallet Instance Attestation
 request where the decoded JWS headers and payload are separated by a comma:
 
@@ -137,14 +135,13 @@ request where the decoded JWS headers and payload are separated by a comma:
   {
     "alg": "ES256",
     "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "typ": "var+jwt"
+    "typ": "wiar+jwt"
   }
   .
   {
     "iss": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "aud": "https://wallet-provider.example.org",
     "jti": "6ec69324-60a8-4e5b-a697-a766d85790ea",
-    "type": "WalletInstanceAttestationRequest",
     "nonce" : ".....",
     "cnf": {
       "jwk": {
