@@ -1100,15 +1100,14 @@ and a <code class="docutils literal notranslate"><span class="pre">nonce</span><
 </tr>
 <tr class="row-even"><td><p>alg</p></td>
 <td><p>Algorithm to verify the token
-signature (es. ES256)</p></td>
+signature (es. ES256).</p></td>
 </tr>
 <tr class="row-odd"><td><p>kid</p></td>
-<td><p>Key id of the Wallet Instance</p></td>
+<td><p>Key id of the Wallet Instance.</p></td>
 </tr>
 <tr class="row-even"><td><p>typ</p></td>
 <td><p>Media type, in this case we use
-the value var+jwt (Verifiable
-Assertion Request JWT)</p></td>
+the value <code class="docutils literal notranslate"><span class="pre">wiar+jwt</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1160,17 +1159,6 @@ Assertion Request JWT)</p></td>
 </td>
 </tr>
 <tr class="row-odd"><td><div class="line-block">
-<div class="line">type</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="line-block">
-<div class="line">String. It MUST be set to</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">WalletInstanceAttestationRequest</span></code>.</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><div class="line-block">
 <div class="line">nonce</div>
 <div class="line"><br /></div>
 </div>
@@ -1181,7 +1169,7 @@ Assertion Request JWT)</p></td>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><div class="line-block">
+<tr class="row-even"><td><div class="line-block">
 <div class="line">cnf</div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1203,14 +1191,13 @@ request where the decoded JWS headers and payload are separated by a comma:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;var+jwt&quot;</span>
+<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wiar+jwt&quot;</span>
 <span class="p">}</span>
 <span class="p">.</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;aud&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;jti&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;6ec69324-60a8-4e5b-a697-a766d85790ea&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WalletInstanceAttestationRequest&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;nonce&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.....&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
