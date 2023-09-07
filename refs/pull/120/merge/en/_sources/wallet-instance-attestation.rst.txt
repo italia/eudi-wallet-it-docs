@@ -91,13 +91,12 @@ Header
 | **key**                           | **value**                         |
 +-----------------------------------+-----------------------------------+
 | alg                               | Algorithm to verify the token     |
-|                                   | signature (es. ES256)             |
+|                                   | signature (es. ES256).            |
 +-----------------------------------+-----------------------------------+
-| kid                               | Key id of the Wallet Instance     |
+| kid                               | Key id of the Wallet Instance.    |
 +-----------------------------------+-----------------------------------+
 | typ                               | Media type, in this case we use   |
-|                                   | the value ``wiar+jwt`` (Verifiable|
-|                                   | Assertion Request JWT)            |
+|                                   | the value ``wiar+jwt``.           |
 +-----------------------------------+-----------------------------------+
 
 Payload
