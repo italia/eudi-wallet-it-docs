@@ -119,7 +119,7 @@ Payload
 ||       ||                                                            |
 +--------+-------------------------------------------------------------+
 || nonce || The nonce obtained from the                                |
-||       || App Attestation Service                                    |
+||       || App Attestation Service.                                    |
 +--------+-------------------------------------------------------------+
 || cnf   || JSON object, according to                                  |
 ||       || `RFC7800 <https://www.rfc-editor.org/rfc/rfc7800.html>`_   |
