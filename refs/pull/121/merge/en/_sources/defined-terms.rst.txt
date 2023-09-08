@@ -17,7 +17,7 @@ The terms *User*, *Trust Service*, *Trust Model*, *Trusted List*, *Trust Framewo
 Below are the description of acronyms and definitions which are useful for further insights into topics that complement the it-wallet and the interacting components.
 
 
-.. list-table:: 
+.. list-table::
    :widths: 20 60
    :header-rows: 1
 
@@ -37,6 +37,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
    * - Wallet Instance Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
+   * - App Attestation Service
+     - External service from the device manufacturer that allows you to certify the authenticity of the mobile app (Wallet Instance).
    * - Qualified Electronic Attestation of Attributes (QEAA)
      - A digitally verifiable attestation in electronic form, issued by a QTSP, that substantiates a person's possession of attributes.
    * - Qualified Electronic Signature Provider
@@ -53,15 +55,15 @@ Below are the description of acronyms and definitions which are useful for furth
 Acronyms
 --------
 
-.. list-table:: 
+.. list-table::
   :widths: 20 80
   :header-rows: 1
 
   * - **Acronym**
     - **Description**
   * - **OID4VP**
-    - OpenID for Verifiable Presentation 
-  * - **PID** 
+    - OpenID for Verifiable Presentation
+  * - **PID**
     - Person Identification Data
   * - **VC**
     - Verifiable Credential
