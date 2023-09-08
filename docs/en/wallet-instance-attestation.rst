@@ -68,7 +68,7 @@ This section describes the Wallet Instance Attestation format and how the Wallet
 - **Message 2-3**: The Wallet Instance retrieves metadata about its Wallet Provider, including the list of supported algorithms, public keys, and endpoints.
 - **Message 4**: The Wallet Instance verifies the Wallet Provider's trustworthiness by resolving the provider's trust chain to the Trust Anchor.
 - **Message 5**: The Wallet Instance generates a new key pair.
-- **Message 6-7**: The wallet instance requests a ``nonce`` from the App Attestation Service.
+- **Message 6-7**: The Wallet Instance requests a ``nonce`` from the App Attestation Service.
 - **Message 8**: The Wallet Instance creates a Wallet Instance Attestation Request in JWS format, signed with the private key associated with the public key for which it seeks attestation.
 - **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation Request to the Wallet Provider, which validates it and issues a signed attestation in return.
 - **Message 13-14**: The Wallet Instance receives the Wallet Instance Attestation signed by the Wallet Provider and performs formal verification.
