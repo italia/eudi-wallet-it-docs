@@ -38,7 +38,7 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Wallet Instance Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
    * - App Attestation Service
-     - External service from the device manufacturer that allows you to certify the authenticity of the mobile app (Wallet Instance).
+     - Device manufacturer service that allows you to certify the authenticity of the mobile app (Wallet Instance).
    * - Qualified Electronic Attestation of Attributes (QEAA)
      - A digitally verifiable attestation in electronic form, issued by a QTSP, that substantiates a person's possession of attributes.
    * - Qualified Electronic Signature Provider

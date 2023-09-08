@@ -84,7 +84,7 @@ Format of the Wallet Instance Attestation Request
 To obtain a Wallet Instance Attestation from the Wallet
 Provider it is necessary to send a Wallet Instance Attestation
 Request from the Wallet Instance containing the associated public key
-and a ``nonce`` previously requested. A ``jwti`` is used to avoid replay attacks.
+, the ``nonce`` value previously requested and a ``jti`` value.
 
 Header
 ^^^^^^
