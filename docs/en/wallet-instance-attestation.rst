@@ -62,12 +62,13 @@ This section describes the Wallet Instance Attestation format and how the Wallet
 .. figure:: ../../images/dynamic_view_sequence_wallet_instance_attestation.svg
    :name: Sequence Diagram for Wallet Instance Attestation Request
    :alt: The figure illustrates the sequence diagram for issuing a Wallet Instance Attestation, with the steps explained below.
-   :target: https://www.plantuml.com/plantuml/uml/XPB1RzKm3CRl-IlCJY3nn7s7QOZ3118IGi0kkxYDLLcqJd2SLMz_FLvV6r7AnDN-_Fi-ExajXcfr6iEhh3XC24Rf2Kmh1QoMf4uTQGZPLTnpHZ6u-bv8hm0Br7tz7iUH33wAGwMdHJBpFpLVD3roN35p5qA5qusBhtsQZN7a9uBvekMLzo19GUbNfMBlib8X1_PAaUHveeIPJpTpTmrtPDjiNdrW8iE8Xc7kJgvoeyzh1VeaXYmimnyqi7EcyXP-qddnPAN9EruXYJcnsEhdf1yUrqbqC3MjnM3aOgxT5hmZ8NNrWix8MhQcH_zwMGyaIK-U5KwNgRNGB3yeFIF-kZYyBuNKE4a3VRh_5h0tVbpoTRiROLE__Y_eZOTP9W_RyZOpa5GM4YhbA2uy25fLQgrXkmDANDe7OClN7ktbXO-FyJ8jqluYpguDtVJSFc9y42MCPx04gJDa0Q5vz_LkIMATnjy0
+   :target: https://www.plantuml.com/plantuml/uml/XP91RzH038NlyojCJwt4YdiFgrOSgY8X8GJqqekJMC5guXaydesslnvdanqHbegh_VozyVFSPKErCWxXNLBiHmIZ-0gcXG8MYrB6XZI4v2fkEQ4ON7tFf5U06Sgs_eJ3G0QFub1fwIIP-9-QBneFtAsOgTbgxbC2D2F764S1jplmolDw20LsUoVVkXKRuy2l1DC2vjNyMQA2qg_Yb0z9APEJMwMEP9x8OUBTVcfkuO7iF9lMHy58XXqQXgdPkSgDFgyLQACOih3qVz30ZedoUtYXuycJbKRlU8MaIv75LZyd_S21dKGNfgOb6moSpRNd1Hz8I6VrZ4x8cjSccjt2rsK_aEWR1o_1RfbRAzNqez8C-Uj0S9ypwHnn9Nrw-XQmDJwSNjXiKiAgllulw6QERezcbmlpUQWdAImab3DSdnvyC--mMnmVnQXNjYEqFwbz0QLS1dFiqgxKpBsW5QNQwi-PeNIdzeLptQGU-EreBW_tDgsZRNREBXLTzLm_RVSiIjWTmIB4nf05XARDDxqZwSeu_0O0
 
 - **Message 1**: The User starts the Wallet Instance mobile app, a new Wallet Instance Attestation is automatically obtained if the previous one results expired.
 - **Message 2-3**: The Wallet Instance retrieves metadata about its Wallet Provider, including the list of supported algorithms, public keys, and endpoints.
 - **Message 4**: The Wallet Instance verifies the Wallet Provider's trustworthiness by resolving the provider's trust chain to the Trust Anchor.
-- **Message 5-7**: The Wallet Instance generates a new key pair and requests a ``nonce`` from the Wallet Provider to guard against replay attacks.
+- **Message 5**: The Wallet Instance generates a new key pair.
+- **Message 6-7**: The wallet instance requests a ``nonce`` from the App Attestation Service.
 - **Message 8**: The Wallet Instance creates a Wallet Instance Attestation Request in JWS format, signed with the private key associated with the public key for which it seeks attestation.
 - **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation Request to the Wallet Provider, which validates it and issues a signed attestation in return.
 - **Message 13-14**: The Wallet Instance receives the Wallet Instance Attestation signed by the Wallet Provider and performs formal verification.
@@ -83,7 +84,7 @@ Format of the Wallet Instance Attestation Request
 To obtain a Wallet Instance Attestation from the Wallet
 Provider it is necessary to send a Wallet Instance Attestation
 Request from the Wallet Instance containing the associated public key
-and a ``nonce`` previously requested to avoid replay attacks.
+and a ``nonce`` previously requested. A ``jwti`` is used to avoid replay attacks.
 
 Header
 ^^^^^^
@@ -118,7 +119,7 @@ Payload
 ||       ||                                                            |
 +--------+-------------------------------------------------------------+
 || nonce || The nonce obtained from the                                |
-||       || Wallet Provider.                                           |
+||       || App Attestation Service                                    |
 +--------+-------------------------------------------------------------+
 || cnf   || JSON object, according to                                  |
 ||       || `RFC7800 <https://www.rfc-editor.org/rfc/rfc7800.html>`_   |
