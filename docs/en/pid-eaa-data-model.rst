@@ -7,8 +7,7 @@ PID/(Q)EAA Data Model
 +++++++++++++++++++++
 
 The Person Identification Data (PID) is issued by the PID Provider following national laws and allows a natural person to be authenitcated and identified. 
-
-The User attributes carried in the Italian PID are:
+The User attributes carried within the Italian PID are the ones listed below:
 
     - Current Family Name
     - Current First Name
@@ -23,7 +22,7 @@ The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provid
 
 The (Q)EAAs are extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where the data comes from. 
 
-The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to an RP is described in the following sections. 
+The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to an Relying Party is described in the following sections. 
 
 SD-JWT
 ======
@@ -91,7 +90,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
       - URL string representing the PID/(Q)EAA Issuer unique identifier.
       - `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
     * - **sub**
-      - Thumbprint of the JWK in the ``cnf`` parameter
+      - Thumbprint of the JWK in the ``cnf`` parameter.
       - `[RFC7519, Section 4.1.2] <https://www.iana.org/go/rfc7519>`_.
     * - **jti**
       - Unique Token ID identifier of this JWT. It SHOULD be a String in *uuid4* format.
@@ -103,10 +102,10 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
       - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **status**
-      - HTTPS URL where the credential validity status is available
+      - HTTPS URL where the credential validity status is available.
       - `[SD-JWT-VC. Section 4.2.2.2] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#section-4.2.2.2>`_.
     * - **cnf**
-      - JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the presenter is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the presenter is in control of that key. 
+      - JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key. 
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
     * - **type**
       - Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
@@ -122,7 +121,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
 PID/(Q)EAA Verification field 
 -----------------------------
 
-The ``verification`` claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User claims.  Some of these additional claims MAY be selectively disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable (SD) or not (NSD).
+The ``verification`` claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User attributes (claims).  Some of these additional claims MAY be selectively disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable (SD) or not (NSD).
 
 The ``verification`` claim is a JSON structure with all the following mandatory sub-claims.
 
@@ -183,13 +182,13 @@ The ``claims`` parameter contains the User attributes with the following mandato
       - **Description**
       - **Reference**
     * - **given_name**
-      - [SD]. Current First Name
+      - [SD]. Current First Name.
       - `[OpenID Connect Core 1.0, Section 5.1] <http://openid.net/specs/openid-connect-core-1_0.html>`_
     * - **family_name**
-      - [SD]. Current Family Name
+      - [SD]. Current Family Name.
       - `[OpenID Connect Core 1.0, Section 5.1] <http://openid.net/specs/openid-connect-core-1_0.html>`_
     * - **birthdate**
-      - [SD]. Date of Birth
+      - [SD]. Date of Birth.
       - `[OpenID Connect Core 1.0, Section 5.1] <http://openid.net/specs/openid-connect-core-1_0.html>`_
     * - **place_of_birth**
       - [SD]. Place of Birth. JSON Object with the following subclaims:
