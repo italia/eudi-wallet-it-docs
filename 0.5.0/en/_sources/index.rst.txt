@@ -19,7 +19,7 @@ To achieve these objectives and enhance the already active and eIDAS-notified di
 
 The purpose of the following technical rules is to define the technical architecture and reference framework to be used as a guideline by all the parties involved in the development of the IT Wallet project.
 
-In this documentation there are the technical details for implementing the components that compose the Wallet ecosystem:
+This documentation defines the national implementation profile of EUDI Wallet, containing the technical details about components of the Wallet ecosystem, listed as follows:
 
  - Entities of the ecosystem according to `EIDAS-ARF`_.
  - Infrastructure of trust attesting realiability and eligibility of the participants.
