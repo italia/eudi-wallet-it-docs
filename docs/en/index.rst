@@ -7,10 +7,9 @@ Italian EUDI Wallet Technical Specifications
 Introduction
 ------------
 
-Across Europe, 21 digital identities (eIDs) currently exist in 16 different Member States.
-The European Council called for the eIDAS Regulation on electronic identification and trust services for electronic transactions in the internal market to be updated by implementing a new tool: the **European Digital Identity Wallet**.
-
-The European Digital Identity Wallet (EUDI Wallet or EUDIW) project was created to overcome the differences, both in technological and user experience terms, that exist across national experiences towards a uniform digital identity solution so as to enable cross-border access to digital services. 
+The European Council requested the update of the 
+eIDAS Regulation on electronic identification and trust services by 
+implementing a new tool: the <European Digital Identity Wallet `https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-digital-identity_en`>_.
 
 Italy responded to the input received from the European community by creating the National digital identity Wallet solution, called IT Wallet, to be fully interoperable with all the other solutions made available by other European Member States and in full compliance to the European regulation.
 
