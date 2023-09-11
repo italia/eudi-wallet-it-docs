@@ -5,43 +5,33 @@
 Wallet Instance Attestation
 +++++++++++++++++++++++++++
 
-The Wallet Instance Attestation is data containing details about the Wallet Provider, the Wallet Solution, the Wallet Instance, and the device's security level where the Wallet Instance is installed. It generally attests the **authenticity, integrity, security, privacy, and trust** of a specific Wallet Instance. The Wallet Instance Attestation MUST contain the Wallet Instance public key.
+The Wallet Instance Attestation containing details about the Wallet Instance and the device's security level where the Wallet Instance is installed. It generally attests the **authenticity**, **integrity**, **security**, **privacy**, and **trust** of a specific Wallet Instance. The Wallet Instance Attestation MUST contain a Wallet Instance public key.
 
 General Properties
 ------------------
 
-The objectives include:
+The Wallet Instance Attestation:
 
-- Ensuring that the Wallet Instance maintains a level of **integrity** that is capable of preventing any manipulation or forgery attempts by unauthorized third parties.
-- Having the Wallet Provider issue a certificate of conformity to assure that the previously mentioned security and trust objectives are fulfilled.
+- MUST be issued and MUST be signed by Wallet Provider;
+- MUST give all the relevant information to attests the **integrity** and **security** of the device where the Wallet Instance is installed.
 
-To meet these requirements, it is necessary for each Wallet Instance to issue an attestation of conformity, guaranteeing its security and compliance with the Trust Model.
-
-This verifiable attestation, called **Wallet Instance Attestation**, must be electronically signed by its issuer.
-
-.. hint::
-  Given that the Wallet Instance does not represent an accredited entity and does not belong to an organization but resides on the User's device, the Trust Model, based on sustainability and scalability criteria, must delegate the task of issuing the **Wallet Instance Attestation** to the **Wallet Provider**.
+It is necessary for each Wallet Instance to obtain an the Wallet Instance Attestation before entering the Operational state.
 
 Requirements
 ------------
 
-The following requirements are assumed for the Wallet Instance Attestation:
+The following requirements for the Wallet Instance Attestation are met:
 
-1. **Efficiency**: The Wallet Instance Attestation should use an efficient format like JSON Web Token (JWT) for light and fast data management, and compliance with various formats used for eudiw solutions.
-2. **Simplicity**: The Wallet Provider should be based on a REST architecture for issuing Wallet Instance Attestations.
-3. **Public key holder binding**: The Wallet Instance Attestation must be securely linked to the Wallet Instance public key.
-4. **Issued and signed by an accredited Wallet Provider**: The Wallet Instance Attestation must be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
-5. **Authenticity/Genuineness of the Wallet Instance**: The Wallet Instance Attestation must ensure the integrity and authenticity of the Wallet Instance, verifying that it was accurately created and provided by the Wallet Provider. ⚠️
-6. **Ability to request multiple claims for several public keys**: Each Wallet Instance should be able to request multiple attestations for different public keys associated with it. This requirement provides a privacy-preserving measure, as the public key could be used as a tracking tool in the credentials’ disclosure phase (also see point 10 below).
-7. **Reusability**: The Wallet Instance Attestation should be usable multiple times during the validity period of the attestation, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
-8. **Expiration**: The Wallet Instance Attestation should have a well-defined expiration date, after which it will no longer be considered valid, thereby ensuring the security and updating of attestations over time.
-9. **Revocation in case of loss/deletion of the private key**: If the private key associated with the Wallet Instance is lost or deleted, the attestation automatically becomes invalid to prevent unauthorized use of the Wallet Instance. ⚠️
-10. **Pseudonymisation**: The attestations are designed to be pseudonymised (i.e., they do not contain direct references to the person, making it impossible to identify them in the absence of additional information - see art. 4(5) GDPR for a comprehensive definition). Without such a measure, the use of the attestation on multiple RPs would pose a significant risk, as it would theoretically allow the RPs to merge databases and track Users. This requirement enhances the measures adopted according to
+1. The Wallet Instance Attestation MUST use a signed JSON Web Token (JWT) format.
+2. The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Instance Attestations.
+3. The Wallet Instance Attestation MUST be securely bound to the Wallet Instance public key (**Holder Key Binding**).
+4. The Wallet Instance Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
+5. The Wallet Instance Attestation MUST ensure the integrity and authenticity of the Wallet Instance, verifying that it was accurately created and provided by the Wallet Provider.
+6. Each Wallet Instance SHOULD be able to request multiple attestations for different public keys associated with it. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see alos the point number 10, listed below).
+7. The Wallet Instance Attestation SHOULD be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
+8. The Wallet Instance Attestation SHOULD have an expiration date time, after which it will no longer be considered valid.
+9. When the private key associated with the Wallet Instance is lost or deleted, the attestation MUST become invalid to prevent unauthorized use of the Wallet Instance.
 
- art. 32 GDPR.
-
-.. attention::
-  ⚠️ Implementation of points no. 5 and 9 is still under discussion. This version assumes the authenticity and non-revocability of the Wallet Instance.
 
 High-level Design
 -----------------
@@ -64,14 +54,14 @@ This section describes the Wallet Instance Attestation format and how the Wallet
    :alt: The figure illustrates the sequence diagram for issuing a Wallet Instance Attestation, with the steps explained below.
    :target: https://www.plantuml.com/plantuml/ZP91RzH038NlyojCJwr4n7qFgrOSAf2G409wwSL9h60ryGmUpqRRNuyt6qBJe5MlzlFtx3TpcmtLoj27Tqcn6n2CuZEO5WfOB4ePQj8GagkuuOHYSFKZaru1PYZh-WFsFHby4eTAGvDavFzglceyS3jZndgjkKi9q8mSOnm5tEx0Cy_h8HIezaxUkHKROy_F1A_C7oKgAFqkJlcGb38vkL5gIKuJEOnSxSTw1_S-z6ef6CYmHSCmrfMhtEZBN84cYY4BI_U21dPCbD_34nqdJrOQlECLaZP55flzdFJJrtKIRKnDIpQN_RtjdeJKXHCr8MkUcsYsWs_dqq2Y7nky1DLvRguiVX-Lq3RnmDs_V1VMvuVl0HlZmsbWh5SHuGlzzHjWDwVizZwrlNWPwqWA2mdb3DVJsZUdIwh9rML6dR8TeVb5pHCevTAROy_jXPgv4xIYjBIMv53QgNtf-kMDBuishtT1tD8wHUUNBPwNlzi-YXAsHx08iJPa0Q5nzLjlITeoz7y0
 
-- **Message 1**: The User starts the Wallet Instance mobile app, a new Wallet Instance Attestation is automatically obtained if the previous one results expired.
-- **Message 2-3**: The Wallet Instance retrieves metadata about its Wallet Provider, including the list of supported algorithms, public keys, and endpoints.
-- **Message 4**: The Wallet Instance verifies the Wallet Provider's trustworthiness by resolving the provider's trust chain to the Trust Anchor.
+- **Message 1**: The User starts the Wallet Instance mobile app and gets authenticated in it, a new Wallet Instance Attestation is automatically obtained if the previous one results expired.
+- **Message 2-3**: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.
+- **Message 4**: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.
 - **Message 5**: The Wallet Instance generates a new key pair.
 - **Message 6-7**: The Wallet Instance requests a ``nonce`` from the App Attestation Service.
-- **Message 8**: The Wallet Instance creates a Wallet Instance Attestation Request in JWS format, signed with the private key associated with the public key for which it seeks attestation.
-- **Message 9-13**: The Wallet Instance sends the Wallet Instance Attestation Request to the Wallet Provider, which validates it and issues a signed attestation in return.
-- **Message 13-14**: The Wallet Instance receives the Wallet Instance Attestation signed by the Wallet Provider and performs formal verification.
+- **Message 8**: The Wallet Instance creates a Wallet Instance Attestation Request in JWS format, signed with the private key associated with the public key for which it request the attestation.
+- **Message 9-13**: The Wallet Instance provides the Wallet Instance Attestation Request to the Wallet Provider, which validates it and issues a signed attestation to the Wallet Instance.
+- **Message 13-14**: The Wallet Instance receives the Wallet Instance Attestation signed by the Wallet Provider and performs security and integrity verifications.
 - **Message 15**: The Wallet Instance Attestation is now ready for use.
 
 Detailed Design
@@ -94,10 +84,11 @@ Header
 | alg                               | Algorithm to verify the token     |
 |                                   | signature (es. ES256).            |
 +-----------------------------------+-----------------------------------+
-| kid                               | Key id of the Wallet Instance.    |
+| kid                               | Key id of the public key          |
+|                                   | created by the Wallet Instance.   |
 +-----------------------------------+-----------------------------------+
-| typ                               | Media type, in this case we use   |
-|                                   | the value ``wiar+jwt``.           |
+| typ                               | Media type, set to                |
+|                                   | ``wiar+jwt``.                     |
 +-----------------------------------+-----------------------------------+
 
 Payload
@@ -106,7 +97,7 @@ Payload
 +--------+-------------------------------------------------------------+
 | **key**| **value**                                                   |
 +--------+-------------------------------------------------------------+
-|| iss   || The thumbprint                                             |
+|| iss   || Thumbprint value                                           |
 ||       || of the JWK of the Wallet Instance                          |
 ||       || for which the attestation is                               |
 ||       || being requested.                                           |
@@ -118,7 +109,7 @@ Payload
 ||       || `RFC7519 <https://datatracker.ietf.org/doc/html/rfc7519>`_.|
 ||       ||                                                            |
 +--------+-------------------------------------------------------------+
-|| nonce || The nonce obtained from the                                |
+|| nonce || The nonce value obtained from the                          |
 ||       || App Attestation Service.                                   |
 +--------+-------------------------------------------------------------+
 || cnf   || JSON object, according to                                  |
@@ -157,15 +148,16 @@ request where the decoded JWS headers and payload are separated by a comma:
     "exp": 1686652315
   }
 
-Whose corresponding JWS is verifiable through the public key
-of the Wallet Instance present.
+Whose corresponding JWS is verifiable using the public key
+of the Wallet Provider corresponding to the `kid` made available 
+in the header.
 
 
 Format of the Wallet Instance Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A JWT was chosen as the format for the Wallet Instance Attestation.
-Let's see below the various fields that compose it.
+The Wallet Instance Attestation MUST be provisioned in JWT format, whose
+headers and payload claims are listed below.
 
 Header
 ^^^^^^
@@ -185,15 +177,21 @@ Header
 |                                   | [`OPENID4VC-HAIP`_]               |
 +-----------------------------------+-----------------------------------+
 | x5c                               | Array containing the X.509        |
-|                                   | certificate (and the entire chain |
-|                                   | of certificates) used to attest   |
+|                                   | chain                             |
+|                                   | of certificates used to attest    |
 |                                   | the public key of the Wallet      |
 |                                   | Provider.                         |
 +-----------------------------------+-----------------------------------+
-| trust_chain                       | Array containing the JWS of the   |
-|                                   | trust chain relating to the       |
+| trust_chain                       | Array containing the Federation   |
+|                                   | Trust Chain relating to the       |
 |                                   | Wallet Provider.                  |
 +-----------------------------------+-----------------------------------+
+
+.. note::
+   
+   The claim `trust_chain` or the claim `x5c` MUST be provisioned.
+   If these are both provisioned, the related public key contained in
+   MUST be the same in both `trust_chain` and `x5c`.
 
 Payload
 ^^^^^^^
@@ -201,9 +199,7 @@ Payload
 +---------------------------+------------------------------------------------+
 | **key**                   | **value**                                      |
 +---------------------------+------------------------------------------------+
-|| iss                      || The public url of the Wallet                  |
-||                          || Instance attestation issuer. See              |
-||                          || the example below in this section.            |
+|| iss                      || The public url of the Wallet Provider         |
 +---------------------------+------------------------------------------------+
 || sub                      || Thumbprint value                              |
 ||                          || of the JWK of the Wallet Instance             |
@@ -220,22 +216,19 @@ Payload
 ||                          || duration of the attestation.                  |
 +---------------------------+------------------------------------------------+
 || attested_security_context|| Attested security context:                    |
-||                          || Represents a level of "trust" of              |
-||                          || the service containing a Level Of             |
-||                          || Agreement defined in the metadata             |
-||                          || of the Wallet Provider.                       |
+||                          || Represents the level of "security"            |
+||                          || attested by the Wallet Provider.              |
 +---------------------------+------------------------------------------------+
 || cnf                      || This parameter contains the ``jwk``           |
 ||                          || parameter                                     |
-||                          || with the public key of the Wallet             |
-||                          || necessary for the holder binding.             |
+||                          || with the public key of the Wallet Instance    |
+||                          || necessary for the Holder Key Binding.         |
 +---------------------------+------------------------------------------------+
 || authorization_endpoint   || URL of the SIOPv2                             |
 ||                          || Authorization Endpoint.                       |
 +---------------------------+------------------------------------------------+
 || response_types_supported || JSON array containing a list of               |
-||                          || the OAuth 2.0 response_type values            |
-||                          || that this SIOP supports.                      |
+||                          || the OAuth 2.0 ``response_type`` values.       |
 +---------------------------+------------------------------------------------+
 || vp_formats_supported     || JSON object containing                        |
 ||                          || ``jwt_vp_json`` and ``jwt_vc_json``           |
@@ -243,21 +236,17 @@ Payload
 +---------------------------+------------------------------------------------+
 || request_object_signing   || JSON array containing a list of the           |
 || _alg_values_supported    || JWS signing algorithms (alg values)           |
-||                          || supported by the SIOP for Request Objects.    |
+||                          || supported.                                    |
 +---------------------------+------------------------------------------------+
 || presentation_definition  || Boolean value specifying whether the          |
 || _uri_supported           || Wallet Instance supports the transfer of      |
-||                          || presentation_definition by                    |
-||                          || reference, with true indicating support.      |
+||                          || ``presentation_definition`` by                |
+||                          || reference. MUST set to `false`.               |
 +---------------------------+------------------------------------------------+
 
 .. note::
    The claim ``attested_security_context`` (Attested Security Context) is under discussion
-   and must be intended as experimental.
-
-.. note::
-
-    The Wallet Instance Attestation JWS is signed using the private key of the Wallet Provider.
+   and MUST be intended as experimental.
 
 Below is an example of Wallet Instance Attestation:
 
@@ -272,7 +261,6 @@ Below is an example of Wallet Instance Attestation:
       "eyJhbGciOiJFUz...H9gw",
     ],
     "typ": "wallet-attestation+jwt",
-    "x5c": ["MIIBjDCC ... XFehgKQA=="]
   }
   .
   {
@@ -310,21 +298,20 @@ Below is an example of Wallet Instance Attestation:
     "exp": 1687288395
   }
 
-Obtain a Wallet Instance Attestation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Obtain the Wallet Instance Attestation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To obtain the Wallet Instance Attestation it is necessary
-to make a `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.2>`__
-request to the Wallet Solution `token endpoint`_.
+to make an HTTP request in method `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.2>`__
+to the `token endpoint`_ of the Wallet Provider.
 
-The **token** endpoint (as defined in `RFC 7523 section 4`_) requires two parameters as input, in HTTP Post method:
+The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters 
+encoded in ``application/x-www-form-urlencoded`` format:
 
-``grant_type`` which in our case is a string:
-``urn:ietf:params:oauth:grant-type:jwt-bearer``
+* ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
+* ``assertion`` containing the signed JWT defined in the Section `Wallet Instance Attestation Request`_.
 
-``assertion`` which contains the signed JWT of the `Wallet Instance Attestation Request`_
-
-Below a non-normative example of the request.
+Below a non-normative example of the HTTP request.
 
 .. code-block:: http
 
@@ -335,13 +322,12 @@ Below a non-normative example of the request.
     grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
     &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeGRxd2xVTl9LWl83NTVUT1ZEbmJIaDg2TW1KcHh2a1UifQ.eyJpc3MiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsICJhdWQiOiAiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAianRpIjogImY1NjUyMDcyLWFiZWYtNDU5OS1iODYzLTlhNjkwNjA3MzJjYyIsICJub25jZSI6ICIuLi4uLiIsICJjbmYiOiB7Imp3ayI6IHsiY3J2IjogIlAtMjU2IiwgImt0eSI6ICJFQyIsICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCAieSI6ICJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwgImtpZCI6ICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn19LCAiaWF0IjogMTY5MTQ4ODk2MiwgImV4cCI6IDE2OTE0OTYxNjJ9.Dg_yFaiv6lVftR3FFx0v5JW250mBgXLVP1j0ezZcHRyitqSY7xGmx4y-MGur93FAS85vf_Da-L-REVEltwU2Jw
 
-The response is the `Wallet Instance Attestation`_ JWT in plain text:
+The response is the `Wallet Instance Attestation`_ in JWT format:
 
 .. code-block:: http
 
   HTTP/1.1 201 OK
-  Content-Type: application/entity-statement+jwt
-
+  Content-Type: application/jwt
   eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGxldC1hdHRlc3RhdGlvbitqd3QiLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIiwidHJ1c3RfY2hhaW4iOlsiZXlKaGJHY2lPaUpGVXouLi42UzBBIiwiZXlKaGJHY2lPaUpGVXouLi5qSkxBIiwiZXlKaGJHY2lPaUpGVXouLi5IOWd3Il19.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvbiIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmciLCJhdHRlc3RlZF9zZWN1cml0eV9jb250ZXh0IjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvTG9BL2Jhc2ljIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImF1dGhvcml6YXRpb25fZW5kcG9pbnQiOiJldWRpdzoiLCJyZXNwb25zZV90eXBlc19zdXBwb3J0ZWQiOlsidnBfdG9rZW4iXSwidnBfZm9ybWF0c19zdXBwb3J0ZWQiOnsiand0X3ZwX2pzb24iOnsiYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiXX0sImp3dF92Y19qc29uIjp7ImFsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2Il19fSwicmVxdWVzdF9vYmplY3Rfc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6WyJFUzI1NiJdLCJwcmVzZW50YXRpb25fZGVmaW5pdGlvbl91cmlfc3VwcG9ydGVkIjpmYWxzZSwiaWF0IjoxNjg3MjgxMTk1LCJleHAiOjE2ODcyODgzOTV9.tNvCyFPCL5tUi2NakKwdaG9xbrtWWl4djSRYRfHrF8NdmffdT044U55pRn35J2cl0LZxbesEDrfSAz2pllw2Ug
 
 .. _token endpoint: wallet-solution.html#wallet-instance-attestation
