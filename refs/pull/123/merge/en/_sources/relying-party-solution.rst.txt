@@ -13,11 +13,16 @@ according to `OpenID for Verifiable Presentations - draft 20 <https://openid.net
 
 In this section the following flows are described:
 
-- **Remote Same Device Flow**, where the Web Browser and the Wallet Instance are used in the same device.
-- **Remote Cross Device Flow**, where the Web Browser and the Wallet Instance are used in different devices.
+- **Remote Same Device Flow**, where the user-agent and the Wallet Instance are used in the same device.
+- **Remote Cross Device Flow**, where the user-agent and the Wallet Instance are used in different devices.
 
 In the **Same Device** and **Cross Device** Flows described in this chapter, the User interacts with a remote Relying Party.
 
+.. note::
+    The provisioning of the Wallet Instance Attestation from the Wallet Instace to the Relying Party is 
+    under discussion within the international standardization working groups. At the current stage of the draft of this implementation profile,
+    a mechanism based on `OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP) <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop>`_
+    is used.
 
 Remote Protocol Flow
 --------------------
@@ -136,7 +141,7 @@ The decoded content of the previous Base64 value is represented below:
 Cross Device Flow Status Checks and Security
 --------------------------------------------
 
-When the flow is Cross Device, the Web Browser needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the Web Browser checks the status with a polling strategy in seconds or a push strategy (eg: web socket).
+When the flow is Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).
 
 Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.
 
@@ -144,7 +149,7 @@ The Relying Party MUST bind the request of the user-agent, with a Secure and Htt
 
 * **201 Created**. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
 * **202 Accepted**. This response is given when the signed request object was obtained by the Wallet Instance.
-* **200 OK**. The Wallet Instance has provided the presentation to the Relying Party's  **redirect_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the Web Browser to access to the protected resource. An URL is provided carrying the location where the Web Browser is intended to navigate.
+* **200 OK**. The Wallet Instance has provided the presentation to the Relying Party's  **redirect_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.
 * **401 Unauthorized**. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.
 
 Below a non-normative example of the HTTP Request to this specialized endpoint, where the parameter ``id`` contains an opaque and random value:
