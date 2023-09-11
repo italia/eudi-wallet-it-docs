@@ -323,7 +323,7 @@ The JWS payload parameters are described herein:
   * - **Name**
     - **Description**
   * - **scope**
-    - Aliases for well-defined Presentation Definitions IDs. It is used to identify which required credentials and User attributes are requested by the Relying Party, according to the Section "Using scope Parameter to Request Verifiable Credential(s)" of [`OID4VP`_].
+    - Aliases for well-defined Presentation Definitions IDs. It is used to identify which required credentials and User attributes are requested by the Relying Party, according to the Section "Using scope Parameter to Request Verifiable Credential(s)" of [OID4VP].
   * - **client_id_scheme**
     - String identifying the scheme of the value in the ``client_id``. It MUST be set to the value ``entity_id``.
   * - **client_id**
