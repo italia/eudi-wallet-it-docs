@@ -1,8 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
-=============================================
-Italian EUDI Wallet Technical Specifications
-=============================================
+==============================================
+The Italian EUDI Wallet implementation profile
+==============================================
 
 Introduction
 ------------
