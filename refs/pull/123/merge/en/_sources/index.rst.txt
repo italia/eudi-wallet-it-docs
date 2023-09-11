@@ -9,7 +9,7 @@ Introduction
 
 The European Council requested the update of the 
 eIDAS Regulation on electronic identification and trust services by 
-implementing a new tool: the <European Digital Identity Wallet `https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-digital-identity_en`>_.
+implementing a new tool: the `European Digital Identity Wallet <https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-digital-identity_en>`_.
 
 Italy responded to the input received from the European community by creating the National digital identity Wallet solution, called IT Wallet, to be fully interoperable with all the other solutions made available by other European Member States and in full compliance to the European regulation.
 
