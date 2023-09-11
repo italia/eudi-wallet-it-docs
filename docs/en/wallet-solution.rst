@@ -157,7 +157,8 @@ Payload `wallet_provider`
 +---------------------------------------------+---------------------------------------------------------------------+
 | grant_types_supported                       | The types of grants supported by                                    |
 |                                             | the endpoint token. It MUST be set to                               |
-|                                             | ``urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation`` |
+|                                             | ``urn:ietf:params:oauth:client-assertion-type:                      |
+|                                             | jwt-client-attestation``                                            |
 +---------------------------------------------+---------------------------------------------------------------------+
 | token_endpoint_auth_methods_suppor          | Supported authentication method for                                 |
 | ted                                         | the endpoint token.                                                 |
@@ -230,7 +231,7 @@ Below a non-normative example of the Entity Configuration.
         "https://wallet-provider.example.org/LoA/high"
       ],
       "grant_types_supported": [
-        "urn:ietf:params:oauth:client-assertion-type:jwt-key-attestation"
+        "urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation"
       ],
       "token_endpoint_auth_methods_supported": [
         "private_key_jwt"
@@ -260,15 +261,7 @@ Below a non-normative example of the Entity Configuration.
 Wallet Instance Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The **token** endpoint (as defined in `RFC 7523 section 4`_) requires two parameters as input, in HTTP Post method:
-
-``grant_type`` which in our case is a string:
-``urn:ietf:params:oauth:grant-type:jwt-bearer``
-
-``assertion`` which contains the signed JWT of the Wallet Instance Attestation
-Request.
-
-The response will then contain the Wallet Instance Attestation.
+Please refer to the `Wallet Instance Attestation section`_
 
 
 External references
@@ -283,4 +276,4 @@ External references
 .. _Wallet Instance Attestation section: wallet-instance-attestation.html
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
-.. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
+
