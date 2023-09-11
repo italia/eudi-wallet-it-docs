@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # -- PROJECT Variables ----------------------------------------------------
-settings_project_name = "Italian eIDAS Wallet Technical Specifications"
+settings_project_name = "The Italian EUDI Wallet implementation profile"
 settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
 settings_doc_version = 'version: latest'
