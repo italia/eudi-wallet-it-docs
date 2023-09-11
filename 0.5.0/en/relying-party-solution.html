@@ -1028,10 +1028,17 @@
 according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentations - draft 20</a>.</p>
 <p>In this section the following flows are described:</p>
 <ul class="simple">
-<li><p><strong>Remote Same Device Flow</strong>, where the Web Browser and the Wallet Instance are used in the same device.</p></li>
-<li><p><strong>Remote Cross Device Flow</strong>, where the Web Browser and the Wallet Instance are used in different devices.</p></li>
+<li><p><strong>Remote Same Device Flow</strong>, where the user-agent and the Wallet Instance are used in the same device.</p></li>
+<li><p><strong>Remote Cross Device Flow</strong>, where the user-agent and the Wallet Instance are used in different devices.</p></li>
 </ul>
 <p>In the <strong>Same Device</strong> and <strong>Cross Device</strong> Flows described in this chapter, the User interacts with a remote Relying Party.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The provisioning of the Wallet Instance Attestation from the Wallet Instace to the Relying Party is
+under discussion within the international standardization working groups. At the current stage of the draft of this implementation profile,
+a mechanism based on <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop">OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)</a>
+is used.</p>
+</div>
 <section id="remote-protocol-flow">
 <h2>Remote Protocol Flow<a class="headerlink" href="#remote-protocol-flow" title="Permalink to this heading">¶</a></h2>
 <p>In this scenario the Relying Party MUST provide the URL where the signed presentation request object is available for download.</p>
@@ -1146,13 +1153,13 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 </section>
 <section id="cross-device-flow-status-checks-and-security">
 <h2>Cross Device Flow Status Checks and Security<a class="headerlink" href="#cross-device-flow-status-checks-and-security" title="Permalink to this heading">¶</a></h2>
-<p>When the flow is Cross Device, the Web Browser needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the Web Browser checks the status with a polling strategy in seconds or a push strategy (eg: web socket).</p>
+<p>When the flow is Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).</p>
 <p>Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.</p>
 <p>The Relying Party MUST bind the request of the user-agent, with a Secure and HttpOnly session cookie, with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:</p>
 <ul class="simple">
 <li><p><strong>201 Created</strong>. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
 <li><p><strong>202 Accepted</strong>. This response is given when the signed request object was obtained by the Wallet Instance.</p></li>
-<li><p><strong>200 OK</strong>. The Wallet Instance has provided the presentation to the Relying Party's  <strong>redirect_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the Web Browser to access to the protected resource. An URL is provided carrying the location where the Web Browser is intended to navigate.</p></li>
+<li><p><strong>200 OK</strong>. The Wallet Instance has provided the presentation to the Relying Party's  <strong>redirect_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.</p></li>
 <li><p><strong>401 Unauthorized</strong>. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.</p></li>
 </ul>
 <p>Below a non-normative example of the HTTP Request to this specialized endpoint, where the parameter <code class="docutils literal notranslate"><span class="pre">id</span></code> contains an opaque and random value:</p>
@@ -1346,7 +1353,7 @@ HOST: relying-party.example.org
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>scope</strong></p></td>
-<td><p>Aliases for well-defined Presentation Definitions IDs. It is used to identify which required credentials and User attributes are requested by the Relying Party, according to the Section &quot;Using scope Parameter to Request Verifiable Credential(s)&quot; of [<a href="#id2"><span class="problematic" id="id3">`OID4VP`_</span></a>].</p></td>
+<td><p>Aliases for well-defined Presentation Definitions IDs. It is used to identify which required credentials and User attributes are requested by the Relying Party, according to the Section &quot;Using scope Parameter to Request Verifiable Credential(s)&quot; of [OID4VP].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_id_scheme</strong></p></td>
 <td><p>String identifying the scheme of the value in the <code class="docutils literal notranslate"><span class="pre">client_id</span></code>. It MUST be set to the value <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></td>
