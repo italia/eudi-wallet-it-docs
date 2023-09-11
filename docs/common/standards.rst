@@ -15,7 +15,7 @@ Technical References
       - O. Terbu, D.Fett, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
     * - `EIDAS-ARF`_
       - EUDI Wallet - Architecture and Reference Framework
-    * - `OpenID4VP`_
+    * - `OPENID4VP`_
       - OpenID for Verifiable Presentations - draft 19 
     * - `PresentationExch`_
       - Presentation Exchange 2.0 for Presentation Definition
