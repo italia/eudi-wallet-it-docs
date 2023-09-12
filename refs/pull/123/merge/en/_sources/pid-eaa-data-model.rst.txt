@@ -22,7 +22,7 @@ The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provid
 
 The (Q)EAAs are extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where the data comes from. 
 
-The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to an Relying Party is described in the following sections. 
+The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections. 
 
 SD-JWT
 ======
