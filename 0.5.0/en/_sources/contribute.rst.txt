@@ -23,33 +23,36 @@ We would like to thank the following individuals for their comments,
 concerns, ideas, contributions, some of which substantial, to this 
 implementation profile and to the initial set of implementations.
 
-- Amir Sharif
-- Giada Sciarretta
-- Francesco Ventola
-- Francesco Marino
-- Francesco Grauso
-- Emanuele De Cupis
-- Giuseppe De Marco
-- Roland Hedberg
-- Takahiko Kawasaki
-- Francesco Ventola
-- Torsten Lodderstedt
-- Kristina Yasuda
-- Paul Bastien
 - Alen Horvat
-- Riccardo Iaconelli
-- Emiliano Vernini
-- Michele Silletti
-- Marta Sciunnach
-- Salvatore Manfredi
+- Amir Sharif
 - Andrea Prosseda
-- Lorenzo Cerini
-- Stefano Alifuoco
-- Peter Altmann
+- Emanuele De Cupis
+- Emiliano Vernini
+- Francesco Grauso
+- Francesco Marino
+- Francesco Ventola
+- Giada Sciarretta
+- Giuseppe De Marco
+- Kristina Yasuda
 - Leif Johansson
+- Lorenzo Cerini
+- Marta Sciunnach
+- Michele Silletti
+- Nicola Saitto
+- Paul Bastien
+- Pasquale De Rose
+- Peter Altmann
+- Riccardo Iaconelli
+- Roland Hedberg
+- Salvatore Laiso
+- Salvatore Manfredi
+- Stefano Alifuoco
+- Takahiko Kawasaki
+- Torsten Lodderstedt
+- Vladimir Duzhinov
 
 If anyone has been forgotten, please accept our apologies with the 
-request to propose the modification of this page via a Pull Request 
-and a brief description of the contribution offered, during which 
+request to propose the modification of this page via a [Pull Request](https://github.com/italia/eudi-wallet-it-docs) 
+with a brief description of the contribution offered, during which 
 event or channel, and during which period. We will then have the opportunity 
 to apologize again and make amends as soon as possible, including you in the list.
