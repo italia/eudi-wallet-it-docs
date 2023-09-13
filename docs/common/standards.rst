@@ -53,7 +53,7 @@ Technical References
       - Lodderstedt, T., Campbell, B., "JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)", November 2022.
     * - :rfc:`6749`
       - The OAuth 2.0 Authorization Framework
-    * - `DPOP`
-      - D. Fett, B. Campbell, J. Bradley, T. Lodderstedt, M. Jones, D. Waite, "OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)"
-    * - `OPENID4VC-HAIP`
+    * - `DPOP`_
+      - D\. Fett, B. Campbell, J. Bradley, T. Lodderstedt, M. Jones, D. Waite, "OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)"
+    * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC"
