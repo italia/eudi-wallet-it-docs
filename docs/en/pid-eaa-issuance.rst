@@ -170,7 +170,8 @@ The JWS payload of the request object is represented below:
     **Federation Check:** The PID/(Q)EAA Provider MUST check that the Wallet Provider is part of the federation and in addition it MUST verify the Wallet Instance Attestation validity by checking its signature and data. 
 
 
-**Step 7 (PAR Response):** The PID/(Q)EAA Provider MUST issue the ``request_uri`` one-time use and bind it to the client identifier (``client_id``) that is provided in the Request Object. Furthermore, the entropy of the ``request_uri`` MUST be sufficiently large. The adequate shortness of the validity and the entropy of the ``request_uri`` depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the ``request_uri`` MUST include a cryptographic random value of 128 bits or more (:rfc:`9101`). The entire ``request_uri`` SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (:rfc:`9101`):
+**Step 7 (PAR Response):**  The PID/(Q)EAA Provider MUST issue the ``request_uri`` one-time use and bind it to the client identifier (``client_id``) that is provided in the Request Object. Furthermore, the entropy of the ``request_uri`` MUST be sufficiently large. The adequate shortness of the validity and the entropy of the ``request_uri`` depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the ``request_uri`` MUST include a cryptographic random value of 128 bits or more (:rfc:`9101`). The entire ``request_uri`` SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (:rfc:`9101`):
+
     1. Many phones on the market still do not accept large payloads. The restriction is typically either 512 or 1024 ASCII characters.
     2. On a slow connection such as a 2G mobile connection, a large URL would cause a slow response; therefore, the use of such is not advisable from the user-experience point of view. 
  
@@ -190,6 +191,7 @@ The JWS payload of the request object is represented below:
 
 
 **Steps 8-9 (Authorization Request):** The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
+
     1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user agent (derived from :rfc:`9126`).
     2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`9126`).
     3. It MUST reject all the Authorization Requests that do not contain the ``request_uri`` parameter as the PAR is the only way to pass the Authorization Request from the Wallet Instance (derived from :rfc:`9126`).  
