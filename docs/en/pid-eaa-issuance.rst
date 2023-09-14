@@ -209,6 +209,7 @@ The JWS payload of the request object is represented below:
    The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to dynamically request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider then acts as a Verifier and sends a presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to starting a transaction with the (Q)EAA Provider.
 
 **Steps 10-11 (Authorization Response):** The PID/(Q)EAA Provider sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
+
     1. It MUST check the Authorization Response contains all the defined parameters according to what we defined in :ref:`Table of the HTTP Response parameters <table_http_response_claim>`.
     2. It MUST check the returned value by the PID/(Q)EAA Provider for ``state`` parameter is equal to the value sent by Wallet Instance in the Request Object (:rfc:`6749`).
     3. It MUST check that the URL of PID/(Q)EAA Provider in ``iss`` parameter is equal to the URL identifier of intended PID/(Q)EAA Provider that the Wallet Instance start the communication with (:rfc:`9027`).
@@ -338,6 +339,7 @@ Where the decoded content of the JWT is represented below:
 
 
 **Steps 19-21 (Credential Response):** The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to following the steps in Section 7.2.2 of `OPENID4VCI`_. If all checks succeed, the PID/(Q)EAA Provider creates a new credential bound to the key material and sends it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA credential: 
+
     1. It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to what we defined in :ref:`Table of the credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using using the ``kid`` header of the SD-JWT.
     3. It MUST check that the received PID credential (in credential claim) contains all the mandatory parameters that we defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
