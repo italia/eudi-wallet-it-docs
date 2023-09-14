@@ -173,6 +173,7 @@ The JWS payload of the request object is represented below:
 **Step 7 (PAR Response):** The PID/(Q)EAA Provider MUST issue the ``request_uri`` one-time use and bind it to the client identifier (``client_id``) that is provided in the Request Object. Furthermore, the entropy of the ``request_uri`` MUST be sufficiently large. The adequate shortness of the validity and the entropy of the ``request_uri`` depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the ``request_uri`` MUST include a cryptographic random value of 128 bits or more (:rfc:`9101`). The entire ``request_uri`` SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (:rfc:`9101`):
     1. Many phones on the market still do not accept large payloads. The restriction is typically either 512 or 1024 ASCII characters.
     2. On a slow connection such as a 2G mobile connection, a large URL would cause a slow response; therefore, the use of such is not advisable from the user-experience point of view. 
+ 
  The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instance. 
 
 .. code-block:: http
@@ -224,7 +225,7 @@ The JWS payload of the request object is represented below:
 **Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization ``code``, ``code_verifier``, *DPoP Proof JWT* and ``private_key_jwt`` parameters (``client_assertion_type`` and ``client_assertion``). 
 The ``client_assertion`` is signed using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is inside the Wallet Instance Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
     1. It MUST authenticate the Wallet Instance based on the ``private_key_jwt`` Client Authentication method `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
-    2. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749``).
+    2. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`).
     3. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
     4. It MUST ensure the ``redirect_uri`` is identical to the value that was initially included in the Request Object `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
     5. It MUST validate the DPoP Proof JWT following the steps in Section 4.3 of (:rfc:`9449`).   
@@ -340,6 +341,7 @@ Where the decoded content of the JWT is represented below:
     3. It MUST check that the received PID credential (in credential claim) contains all the mandatory parameters that we defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
     4. It MUST process and verify the PID that is in SD-JWT VC following the steps in Section 6 of `SD.JWT#Verification <https://drafts.oauth.net/oauth-selective-disclosure-jwt/draft-ietf-oauth-selective-disclosure-jwt.html#name-verification-and-processing>`_.
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify if the issuer of the PID is trusted.
+
 If the checks are successful it can proceed with secure storage of the PID credential. 
 
 
