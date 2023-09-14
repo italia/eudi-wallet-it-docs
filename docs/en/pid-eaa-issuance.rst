@@ -227,6 +227,7 @@ The JWS payload of the request object is represented below:
 
 **Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization ``code``, ``code_verifier``, *DPoP Proof JWT* and ``private_key_jwt`` parameters (``client_assertion_type`` and ``client_assertion``). 
 The ``client_assertion`` is signed using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is inside the Wallet Instance Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
+
    1. It MUST authenticate the Wallet Instance based on the ``private_key_jwt`` Client Authentication method `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
    2. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`).
    3. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
