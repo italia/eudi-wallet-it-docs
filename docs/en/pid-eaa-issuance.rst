@@ -225,7 +225,7 @@ The ``client_assertion`` is signed using the private key that is created during 
     2. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749``).
     3. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
     4. It MUST ensure the ``redirect_uri`` is identical to the value that was initially included in the Request Object `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
-    5. It MUST validate the DPoP Proof JWT following the steps in Section 4.3 of (:rfc:`9449``).   
+    5. It MUST validate the DPoP Proof JWT following the steps in Section 4.3 of (:rfc:`9449`).   
 
 .. code-block:: http
 
@@ -616,7 +616,7 @@ The JOSE header of a **DPoP JWT** MUST contain at least the following parameters
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be none or an identifier for a symmetric algorithm (MAC).
       - [:rfc:`7515`].
     * - **jwk** 
-      - representing the public key chosen by the client, in JSON Web Key (JWK) [RFC7517] format that the Access Token shall be bound to, as defined in Section 4.1.3 of [RFC7515]. It MUST NOT contain a private key.
+      - representing the public key chosen by the Wallet Insatnce, in JSON Web Key (JWK) [RFC7517] format that the Access Token shall be bound to, as defined in Section 4.1.3 of [RFC7515]. It MUST NOT contain a private key.
       - [:rfc:`7517`] and [:rfc:`7515`].
 
 
@@ -770,7 +770,7 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - MUST be `openid4vci-proof+jwt`.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * - **jwk** 
-    - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [RFC7517] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [RFC7515]. The jwk value MUST be equal to the same public key that is generated for the DPoP. 
+    - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [RFC7517] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [RFC7515]. The ``jwk`` value MUST be equal to the same public key that is generated for the DPoP. 
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
 
 .. list-table:: 
