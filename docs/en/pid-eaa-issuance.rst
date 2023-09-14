@@ -168,10 +168,11 @@ The JWS payload of the request object is represented below:
     **Federation Check:** The PID/(Q)EAA Provider MUST check that the Wallet Provider is part of the federation and in addition it MUST verify the Wallet Instance Attestation validity by checking its signature and data. 
 
 
-**Step 7 (PAR Response):** The PID/(Q)EAA Provider MUST issue the ``request_uri`` one-time use and bind it to the client identifier (``client_id``) that is provided in the Request Object. Furthermore, the entropy of the ``request_uri`` MUST be sufficiently large. The adequate shortness of the validity and the entropy of the ``request_uri`` depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the ``request_uri`` MUST include a cryptographic random value of 128 bits or more (:rfc:`RFC9101`). The entire ``request_uri`` SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (:rfc:`RFC9101`):
+**Step 7 (PAR Response):** The PID/(Q)EAA Provider MUST issue the ``request_uri`` one-time use and bind it to the client identifier (``client_id``) that is provided in the Request Object. Furthermore, the entropy of the ``request_uri`` MUST be sufficiently large. The adequate shortness of the validity and the entropy of the ``request_uri`` depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the ``request_uri`` MUST include a cryptographic random value of 128 bits or more (:rfc:`9101`). The entire ``request_uri`` SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (:rfc:`9101`):
     1. Many phones on the market still do not accept large payloads. The restriction is typically either 512 or 1024 ASCII characters.
     2. On a slow connection such as a 2G mobile connection, a large URL would cause a slow response; therefore, the use of such is not advisable from the user-experience point of view. 
  The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instance. 
+
 .. code-block:: http
 
     HTTP/1.1 201 Created
