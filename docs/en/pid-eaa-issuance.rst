@@ -701,7 +701,7 @@ A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a resu
     - It MUST be set to the *jwk* value in the *cnf* parameter, as taken in the Wallet Instance Attestation. 
     - [:rfc:`9068`].
   * - **aud** 
-    - It MUST match the value *client_id*. The RP MUST verify that this value matches its client ID.
+    - It Must be Set to the URL of Credential Endpoint of the PID/(Q)EAA Provider. 
     - [:rfc:`9068`].
   * - **iat** 
     - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
