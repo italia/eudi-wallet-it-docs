@@ -203,8 +203,8 @@ The JWS payload of the request object is represented below:
 
 **Steps 10-11 (Authorization Response):** The PID/(Q)EAA Provider sends an authorization **code** together with **state** and **iss** parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
     1. It MUST check the Authorization Response contains all the defined parameters according to what we defined in Section `Pushed Authorization Request (PAR)`_.
-    2. It MUST check the returned value by the PID/(Q)EAA Provider for **state** parameter is equal to the value sent by Wallet Instance in the Request Object [CIE/SPID_OIDC].
-    3. It MUST check that the URL of PID/(Q)EAA Provider in **iss** parameter is equal to the URL identifier of intended PID/(Q)EAA Provider that the Wallet Instance start the communication with [CIE/SPID_OIDC].
+    2. It MUST check the returned value by the PID/(Q)EAA Provider for **state** parameter is equal to the value sent by Wallet Instance in the Request Object (:rfc:`6749`).
+    3. It MUST check that the URL of PID/(Q)EAA Provider in **iss** parameter is equal to the URL identifier of intended PID/(Q)EAA Provider that the Wallet Instance start the communication with (:rfc:`9027`).
 
 .. note::
 
@@ -215,15 +215,15 @@ The JWS payload of the request object is represented below:
     HTTP/1.1 302 Found
     Location: eudiw://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Fpid-provider.example.org
 
-**Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`RFC9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the created private key for DPoP by Wallet Instance. DPoP provides a way to bind the Access Token to a certain sender (Wallet Instance) `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. This mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint of PID/(Q)EAA Issuer as the attacker needs to present a valid DPoP Proof JWT.
+**Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`RFC9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the created private key for DPoP by Wallet Instance. DPoP provides a way to bind the Access Token to a certain sender (Wallet Instance) (:rfc:`9449`). This mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint of PID/(Q)EAA Issuer as the attacker needs to present a valid DPoP Proof JWT.
 
 **Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization **code**, **code_verifier**, **DPoP Proof JWT** and **private_key_jwt** parameters (**client_assertion_type** and **client_assertion**). 
 The **client_assertion** is signed using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is inside the Wallet Instance Attestation (**cnf** claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
-    1. It MUST authenticate the Wallet Instance based on the **private_key_jwt** Client Authentication method [OIDC_Core].
-    2. It MUST ensure that the Authorization **code** is issued to the authenticated Wallet Instance [OIDC_Core, RFC6749].
-    3. It MUST ensure the Authorization **code** is valid and has not been previously used [OIDC_Core, RFC6749];
-    4. It MUST ensure the **redirect_uri** is identical to the value that was initially included in the Request Object [OIDC_Core];
-    5. It MUST validate the DPoP Proof JWT following the steps in [RFC9449#Section 4.3].   
+    1. It MUST authenticate the Wallet Instance based on the **private_key_jwt** Client Authentication method `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
+    2. It MUST ensure that the Authorization **code** is issued to the authenticated Wallet Instance (:rfc:`RFC6749``).
+    3. It MUST ensure the Authorization **code** is valid and has not been previously used (:rfc:`RFC6749``).
+    4. It MUST ensure the **redirect_uri** is identical to the value that was initially included in the Request Object `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
+    5. It MUST validate the DPoP Proof JWT following the steps in Section 4.3 of (:rfc:`RFC9449``).   
 
 .. code-block:: http
 
@@ -264,7 +264,7 @@ The **client_assertion** is signed using the private key that is created during 
     }
 
 
-**Steps 16-17 (DPoP Proof for Credential Endpoint):** The Wallet Instance creates a proof of possession with the DPoP key following the steps in Section 7.2.1 of `OPENID4VCI`_ and the **c_nonce** obtained in **Step 15** and it creates a DPoP Proof JWT based on [RFC9449#Section 4] for the request to the PID/(Q)EAA credential issuance endpoint. The **jwk** value in the proof parameter MUST be equal to the same public key that is generated for the DPoP.     
+**Steps 16-17 (DPoP Proof for Credential Endpoint):** The Wallet Instance creates a proof of possession with the DPoP key following the steps in Section 7.2.1 of `OPENID4VCI`_ and the **c_nonce** obtained in **Step 15** and it creates a DPoP Proof JWT based on Section 4 of (:rfc:`rfc9449`) for the request to the PID/(Q)EAA credential issuance endpoint. The **jwk** value in the proof parameter MUST be equal to the same public key that is generated for the DPoP.     
 
 **Step 18 (Credential Request):** The Wallet Instance sends a PID/(Q)EAA issuance request to the PID/(Q)EAA credential endpoint. It contains the *Access Token*, the *DPoP Proof JWT*, the *credential type*, the *proof* (proof of possession of the key) and the *format*.
 
@@ -330,11 +330,11 @@ Where the decoded content of the JWT is represented below:
 
 
 
-**Steps 19-21 (Credential Response):** The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in [RFC9449#Section4.3] and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to following the steps in Section 7.2.2 of `OPENID4VCI`_. If all checks succeed, the PID/(Q)EAA Provider creates a new credential bound to the key material and sends it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA credential: 
+**Steps 19-21 (Credential Response):** The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to following the steps in Section 7.2.2 of `OPENID4VCI`_. If all checks succeed, the PID/(Q)EAA Provider creates a new credential bound to the key material and sends it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA credential: 
     1. It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to what we defined in the Section 5.3.4.
     2. It MUST check the PID integrity by verifying the signature using the algorithm specified in the **alg** header parameter of SD-JWT (Section 3.1.1) and the public key that is identified using using the **kid** header of the SD-JWT.
     3. It MUST check that the received PID credential (in credential claim) contains all the mandatory parameters that we defined in the Section 3.1.1.
-    4. It MUST process and verify the PID that is in SD-JWT VC following the steps in [SD-JWT#Section 6].
+    4. It MUST process and verify the PID that is in SD-JWT VC following the steps in Section 6 of `SD.JWT#Verification <https://drafts.oauth.net/oauth-selective-disclosure-jwt/draft-ietf-oauth-selective-disclosure-jwt.html#name-verification-and-processing>`_.
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify if the issuer of the PID is trusted.
 If the checks are successful it can proceed with secure storage of the PID credential. 
 
@@ -557,7 +557,7 @@ Token Request
 
 The request to the PID/(Q)EAA Token endpoint MUST be an HTTP request with method POST, where its body message is encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with *private_key_jwt* authentication and a *DPoP proof* containing the mandatory parameters, defined in the table below.
 
-The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP header. The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Thus, this mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter. 
+The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP header. The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (:rfc:`9449`). Thus, this mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter. 
 
 
 .. list-table:: 
@@ -672,7 +672,7 @@ Token endpoint response MUST contain the following mandatory claims.
 Access Token
 ^^^^^^^^^^^^
 
-A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of `[DPoP-draft16] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_.
+A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (:rfc:`9449`).
 
 .. list-table:: 
   :widths: 20 60 20
@@ -704,7 +704,7 @@ A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a resu
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **jkt**
     - JWK SHA-256 Thumbprint Confirmation Method. The value of the jkt member MUST be the base64url encoding (as defined in [RFC7515]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.
-    - [`DPoP-draft16 <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-16>`_. Section 6.1] and [:rfc:`7638`].
+    - [:rfc:`9449`. Section 6.1] and [:rfc:`7638`].
 
 
 
@@ -717,7 +717,7 @@ Credential Request
 ^^^^^^^^^^^^^^^^^^^
 
 The Wallet Instance when requests the PID/(Q)EAA to the PID/(Q)EAA Credential endpoint, MUST use the following parameters in the entity-body of the HTTP POST request, using the `application/json` media type.
-The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DPoP field of the Header based on the steps defined in Section 4.3 of [DPoP-draft16]. The *DPoP proof* in addition to the values that are defined in the Token Endpoint section MUST contain the following claim:
+The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DPoP field of the Header based on the steps defined in Section 4.3 of (:rfc:`9449`). The *DPoP proof* in addition to the values that are defined in the Token Endpoint section MUST contain the following claim:
 
   - **ath**: hash of the Access Token. The value MUST be the result of a base64url encoding (as defined in Section 2 of :rfc:`7515`) the SHA-256 hash of the ASCII encoding of the associated Access Token's value.
 
