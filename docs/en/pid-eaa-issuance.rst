@@ -168,10 +168,10 @@ The JWS payload of the request object is represented below:
     **Federation Check:** The PID/(Q)EAA Provider MUST check that the Wallet Provider is part of the federation and in addition it MUST verify the Wallet Instance Attestation validity by checking its signature and data. 
 
 
-**Step 7 (PAR Response):** The PID/(Q)EAA Provider MUST issue the **request_uri** one-time use and bind it to the client identifier (**client_id**) that is provided in the Request Object. Furthermore, the entropy of the **request_uri** MUST be sufficiently large. The adequate shortness of the validity and the entropy of the **request_uri** depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the **request_uri** MUST include a cryptographic random value of 128 bits or more (:rfc:`RFC9101`). The entire **request_uri** SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (:rfc:`RFC9101`):
+**Step 7 (PAR Response):** The PID/(Q)EAA Provider MUST issue the ``request_uri`` one-time use and bind it to the client identifier (``client_id``) that is provided in the Request Object. Furthermore, the entropy of the ``request_uri`` MUST be sufficiently large. The adequate shortness of the validity and the entropy of the ``request_uri`` depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the ``request_uri`` MUST include a cryptographic random value of 128 bits or more (:rfc:`RFC9101`). The entire ``request_uri`` SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (:rfc:`RFC9101`):
     1. Many phones on the market still do not accept large payloads. The restriction is typically either 512 or 1024 ASCII characters.
     2. On a slow connection such as a 2G mobile connection, a large URL would cause a slow response; therefore, the use of such is not advisable from the user-experience point of view. 
- The PID/(Q)EAA Provider returns the issued **request_uri** to the Wallet Instance. 
+ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instance. 
 .. code-block:: http
 
     HTTP/1.1 201 Created
@@ -186,9 +186,9 @@ The JWS payload of the request object is represented below:
 
 
 **Steps 8-9 (Authorization Request):** The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the **code_challenge** parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a **request_uri** value once (:rfc:`RFC9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
-    1. It MUST treat **request_uri** values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user agent (derived from :rfc:`RFC9126`).
+    1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user agent (derived from :rfc:`RFC9126`).
     2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`RFC9126`).
-    3. It MUST reject all the Authorization Requests that do not contain the **request_uri** parameter as the PAR is the only way to pass the Authorization Request from the Wallet Instance (derived from :rfc:`RFC9126`).  
+    3. It MUST reject all the Authorization Requests that do not contain the ``request_uri`` parameter as the PAR is the only way to pass the Authorization Request from the Wallet Instance (derived from :rfc:`RFC9126`).  
 
 
 .. code-block:: http
@@ -202,10 +202,10 @@ The JWS payload of the request object is represented below:
    **User Authentication and Consent:** The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and requires the User consent for the PID issuance. 
    The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to dynamically request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider then acts as a Verifier and sends a presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to starting a transaction with the (Q)EAA Provider.
 
-**Steps 10-11 (Authorization Response):** The PID/(Q)EAA Provider sends an authorization **code** together with **state** and **iss** parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
-    1. It MUST check the Authorization Response contains all the defined parameters according to what we defined in Section `Pushed Authorization Request (PAR)`_.
-    2. It MUST check the returned value by the PID/(Q)EAA Provider for **state** parameter is equal to the value sent by Wallet Instance in the Request Object (:rfc:`6749`).
-    3. It MUST check that the URL of PID/(Q)EAA Provider in **iss** parameter is equal to the URL identifier of intended PID/(Q)EAA Provider that the Wallet Instance start the communication with (:rfc:`9027`).
+**Steps 10-11 (Authorization Response):** The PID/(Q)EAA Provider sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
+    1. It MUST check the Authorization Response contains all the defined parameters according to what we defined in :ref:`Table of the HTTP Response parameters <table_http_response_claim>`.
+    2. It MUST check the returned value by the PID/(Q)EAA Provider for ``state`` parameter is equal to the value sent by Wallet Instance in the Request Object (:rfc:`6749`).
+    3. It MUST check that the URL of PID/(Q)EAA Provider in ``iss`` parameter is equal to the URL identifier of intended PID/(Q)EAA Provider that the Wallet Instance start the communication with (:rfc:`9027`).
 
 .. note::
 
@@ -218,12 +218,12 @@ The JWS payload of the request object is represented below:
 
 **Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`RFC9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the created private key for DPoP by Wallet Instance. DPoP provides a way to bind the Access Token to a certain sender (Wallet Instance) (:rfc:`9449`). This mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint of PID/(Q)EAA Issuer as the attacker needs to present a valid DPoP Proof JWT.
 
-**Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization **code**, **code_verifier**, **DPoP Proof JWT** and **private_key_jwt** parameters (**client_assertion_type** and **client_assertion**). 
-The **client_assertion** is signed using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is inside the Wallet Instance Attestation (**cnf** claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
-    1. It MUST authenticate the Wallet Instance based on the **private_key_jwt** Client Authentication method `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
-    2. It MUST ensure that the Authorization **code** is issued to the authenticated Wallet Instance (:rfc:`RFC6749``).
-    3. It MUST ensure the Authorization **code** is valid and has not been previously used (:rfc:`RFC6749``).
-    4. It MUST ensure the **redirect_uri** is identical to the value that was initially included in the Request Object `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
+**Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization ``code``, ``code_verifier``, *DPoP Proof JWT* and *private_key_jwt* parameters (``client_assertion_type`` and ``client_assertion``). 
+The ``client_assertion`` is signed using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is inside the Wallet Instance Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
+    1. It MUST authenticate the Wallet Instance based on the ``private_key_jwt`` Client Authentication method `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
+    2. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`RFC6749``).
+    3. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`RFC6749``).
+    4. It MUST ensure the ``redirect_uri`` is identical to the value that was initially included in the Request Object `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
     5. It MUST validate the DPoP Proof JWT following the steps in Section 4.3 of (:rfc:`RFC9449``).   
 
 .. code-block:: http
@@ -248,7 +248,7 @@ The **client_assertion** is signed using the private key that is created during 
     &client_assertion=eyJhbGciOiJIUzI1NiI
 
 
-**Step 15 (Token Response):** The PID/(Q)EAA Provider validates the request and if it is successful, it issues an *Access Token* (bound to the DPoP key) and a fresh **c_nonce**.  
+**Step 15 (Token Response):** The PID/(Q)EAA Provider validates the request and if it is successful, it issues an *Access Token* (bound to the DPoP key) and a fresh ``c_nonce``.  
 
 .. code-block:: http
 
@@ -265,13 +265,13 @@ The **client_assertion** is signed using the private key that is created during 
     }
 
 
-**Steps 16-17 (DPoP Proof for Credential Endpoint):** The Wallet Instance creates a proof of possession with the DPoP key following the steps in Section 7.2.1 of `OPENID4VCI`_ and the **c_nonce** obtained in **Step 15** and it creates a DPoP Proof JWT based on Section 4 of (:rfc:`rfc9449`) for the request to the PID/(Q)EAA credential issuance endpoint. The **jwk** value in the proof parameter MUST be equal to the same public key that is generated for the DPoP.     
+**Steps 16-17 (DPoP Proof for Credential Endpoint):** The Wallet Instance creates a proof of possession with the DPoP key following the steps in Section 7.2.1 of `OPENID4VCI`_ and the ``c_nonce`` obtained in **Step 15** and it creates a DPoP Proof JWT based on Section 4 of (:rfc:`rfc9449`) for the request to the PID/(Q)EAA credential issuance endpoint. The ``jwk`` value in the proof parameter MUST be equal to the same public key that is generated for the DPoP.     
 
-**Step 18 (Credential Request):** The Wallet Instance sends a PID/(Q)EAA issuance request to the PID/(Q)EAA credential endpoint. It contains the *Access Token*, the *DPoP Proof JWT*, the *credential type*, the *proof* (proof of possession of the key) and the *format*.
+**Step 18 (Credential Request):** The Wallet Instance sends a PID/(Q)EAA issuance request to the PID/(Q)EAA credential endpoint. It contains the *Access Token*, the *DPoP Proof JWT*, the *credential type*, the ``proof`` (proof of possession of the key) and the ``format``.
 
 .. note::
 
-    **PID Credential Schema and Status registration:** The PID/(Q)EAA Issuer MUST register all the issued credentials for their later revocation, if needed. 
+    **PID Credential Schema and Status registration:** The PID/(Q)EAA Provider MUST register all the issued credentials for their later revocation, if needed. 
 
 .. code-block:: http
 
@@ -332,9 +332,9 @@ Where the decoded content of the JWT is represented below:
 
 
 **Steps 19-21 (Credential Response):** The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to following the steps in Section 7.2.2 of `OPENID4VCI`_. If all checks succeed, the PID/(Q)EAA Provider creates a new credential bound to the key material and sends it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA credential: 
-    1. It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to what we defined in the Section 5.3.4.
-    2. It MUST check the PID integrity by verifying the signature using the algorithm specified in the **alg** header parameter of SD-JWT (Section 3.1.1) and the public key that is identified using using the **kid** header of the SD-JWT.
-    3. It MUST check that the received PID credential (in credential claim) contains all the mandatory parameters that we defined in the Section 3.1.1.
+    1. It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to what we defined in :ref:`Table of the credential response parameters <table_credential_response_claim>`.
+    2. It MUST check the PID integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using using the ``kid`` header of the SD-JWT.
+    3. It MUST check that the received PID credential (in credential claim) contains all the mandatory parameters that we defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
     4. It MUST process and verify the PID that is in SD-JWT VC following the steps in Section 6 of `SD.JWT#Verification <https://drafts.oauth.net/oauth-selective-disclosure-jwt/draft-ietf-oauth-selective-disclosure-jwt.html#name-verification-and-processing>`_.
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify if the issuer of the PID is trusted.
 If the checks are successful it can proceed with secure storage of the PID credential. 
@@ -426,7 +426,7 @@ The JWT payload is given by the following parameters:
       - It MUST be set to the ``client_id``.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
-      - It MUST be set to the identifier of the PID/(Q)EAA Issuer.
+      - It MUST be set to the identifier of the PID/(Q)EAA Provider.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
       - UNIX Timestamp with the expiry time of the JWT.
@@ -798,7 +798,7 @@ Credential Response
 ^^^^^^^^^^^^^^^^^^^^
 
 Credential Response to the Wallet Instance MUST be sent using `application/json` media type. The response MUST contain the following mandatory claims: 
-
+.. _table_credential_response_claim:
 .. list-table:: 
   :widths: 20 60 20
   :header-rows: 1
