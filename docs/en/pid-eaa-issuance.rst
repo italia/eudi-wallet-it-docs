@@ -799,8 +799,9 @@ Credential Response
 ^^^^^^^^^^^^^^^^^^^^
 
 Credential Response to the Wallet Instance MUST be sent using `application/json` media type. The response MUST contain the following mandatory claims: 
+
 .. _table_credential_response_claim:
-.. list-table:: 
+.. list-table:: Credential http response parameters
   :widths: 20 60 20
   :header-rows: 1
 
