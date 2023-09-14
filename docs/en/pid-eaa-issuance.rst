@@ -266,7 +266,7 @@ The ``client_assertion`` is signed using the private key that is created during 
     }
 
 
-**Steps 16-17 (DPoP Proof for Credential Endpoint):** The Wallet Instance creates a proof of possession with the DPoP key following the steps in Section 7.2.1 of `OPENID4VCI`_ and the ``c_nonce`` obtained in **Step 15** and it creates a DPoP Proof JWT based on Section 4 of (:rfc:`rfc9449`) for the request to the PID/(Q)EAA credential issuance endpoint. The ``jwk`` value in the proof parameter MUST be equal to the same public key that is generated for the DPoP.     
+**Steps 16-17 (DPoP Proof for Credential Endpoint):** The Wallet Instance creates a proof of possession with the DPoP key following the steps in Section 7.2.1 of `OPENID4VCI`_ and the ``c_nonce`` obtained in **Step 15** and it creates a DPoP Proof JWT based on Section 4 of (:rfc:`9449`) for the request to the PID/(Q)EAA credential issuance endpoint. The ``jwk`` value in the proof parameter MUST be equal to the same public key that is generated for the DPoP.     
 
 **Step 18 (Credential Request):** The Wallet Instance sends a PID/(Q)EAA issuance request to the PID/(Q)EAA credential endpoint. It contains the *Access Token*, the *DPoP Proof JWT*, the *credential type*, the ``proof`` (proof of possession of the key) and the ``format``.
 
