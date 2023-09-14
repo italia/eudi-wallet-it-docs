@@ -614,8 +614,8 @@ Each JWS containing a Trust Chain in the form of a JWS header parameter can be v
 Even if the Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.
 
 
-Privacy Final Remarks
----------------------
+Privacy Remarks
+---------------
 
 - Wallet Instances MUST NOT publish their metadata through an online service.
 - The trust infrastructure MUST be public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.

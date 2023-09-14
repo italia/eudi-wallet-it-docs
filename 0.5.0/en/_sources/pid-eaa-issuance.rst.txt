@@ -238,7 +238,7 @@ The JWS payload of the request object is represented below:
 
 .. note::
 
-    **PID Credential Schema and Status registration:** The PID/(Q)EAA Issuer MUST register all the issued credentials for their later revocation. 
+    **PID/(Q)EAA Credential Schema and Status registration:** The PID/(Q)EAA Issuer MUST register all the issued credentials for their later revocation. 
 
 .. code-block:: http
 
