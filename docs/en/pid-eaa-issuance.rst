@@ -104,9 +104,9 @@ The PID/(Q)EAA Issuance phase is based on the **Authorization Code Flow** with *
     5. It MUST check that the ``aud`` claim in the Request Object is equal to the identifier of PID/(Q)EAA Provider (:rfc:`9126`, :rfc:`9101`).
     6. It MUST reject the PAR request, if it contains the ``request_uri`` parameter (:rfc:`9126`).
     7. It MUST check that the Request Object contains all the mandatory parameters and their values are validated according to what we defined in Table :ref:`Pushed Authorization Request Parameters <table_http_request_claim:>` [derived from :rfc:`9126`].
-    8. It MUST check that the Request Object is not expired by checking the **exp** claim (:rfc:`9126`).
-    9. It MUST check that the Request Object was issued at a time acceptable by the PID/(Q)EAA Provider by checking the **iat** claim. For example, basing on the security policies of the PID/(Q)EAA Provider, it might reject the request if the **iat** claim is too far away from the current time (:rfc:`9126`).
-    10. It MUST check that the **jti** claim in the Request Object has not been used before by the Wallet Instance identified by the **client_id**. This allows the PID/(Q)EAA Provider to mitigate replay attacks (:rfc:`7519`).
+    8. It MUST check that the Request Object is not expired by checking the ``exp`` claim (:rfc:`9126`).
+    9. It MUST check that the Request Object was issued at a time acceptable by the PID/(Q)EAA Provider by checking the ``iat`` claim. For example, basing on the security policies of the PID/(Q)EAA Provider, it might reject the request if the ``iat`` claim is too far away from the current time (:rfc:`9126`).
+    10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the PID/(Q)EAA Provider to mitigate replay attacks (:rfc:`7519`).
 
 Below a non-normative example of the PAR.
 
