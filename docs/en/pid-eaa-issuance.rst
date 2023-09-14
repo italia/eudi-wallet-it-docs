@@ -86,7 +86,9 @@ The PID/(Q)EAA Issuance phase is based on the **Authorization Code Flow** with *
     :figwidth: 100%
     :align: center
     :target: https://www.plantuml.com/plantuml/svg/dLNTRl964BtVfnWbaHeaezn7QXIIq0GrhIWbogMrs0ECCBlk_a3eqtVMApjhGZ-H3t5XF3DdvfpvuTuwQPpVLa9wfvNVBj08KVCxAgYMoi75cqLp0TA25sAXF-ABNopOBNlLQwtm0YvVQRLs3vN7Vko3qVikNFPjxxAgqC54SGcgmCPdBr2Lm5d4IT-fqJig8nuiZdocawURwxy6uz6exqU2FtiOte6_1RrmaXGSj3Vm6I0y3Dc-luK3MY6CqWv1xz307YxVNoRpiOY18A4Ywq0lOMwyTLZ2YRI1H8F1UOTtdBNGQabc2swDOB72mf5M378oM7YkXKlHctub6R7Ca-UN-VDiFFvJ7Ca7nHgBZUKKqeKyAVJ4Miy8P248ndaRXz-Giycc4icYHu8Mo5du0vqifPCf4GW20NCnA1t3__uuPbub0XT7Iq8JVO3OPpgQmGp_ySXINHkqjLOMStUeCOEY8bGkfp9hmlDY7OYe5Hx_phVerfhTJ4JgGgMrQ4BTAMBo-jUhg4qhpSWv3c-ONWqWrPIoHK_J4-tuecjl57-ewbbmbbPAEc-m1JZkQwo-wrFJdvsig2HtWAH1Wk8CT_97rLd_A5_k3MM07pKPj3cfGTmA3l7o5aQUjJRqRypJzIvfLW8p45usaVJjG24hjaPDo5eVAFOxujkD2sS69CCp41KHVqzk3InheqJ1_DZsgG5M5eFrfv5nyZJw6rxr25xudfrEmW-jrgp2aG29x66OCmYTmomKr8cs_qvGidWhL6ZO04zJFOKD7lxNLXlDmxJKviGH0AStg81Pr9gOLxArSxPqBOo2971fIrT6AjTkdoxRrMqlmTcR6eQZ98D5EnqK2SLQKc5aKQ2rULDy5Zb4p6IY6JzNcjlUFUJfk7yvOP4NVsjjBQDpGSmoHZRkYVzPsh9V6KPALec-dRoFdVM4nYc_C7TzvRl8lCGbAOhQSH5RwRBeDKXdlVsdU7Xz6uiPhiYwCF5L5IvCKkRGOCNCIX2a8Xe3D-HYA-Dkt1ZSwVW8oSNfcfKmIphMLlUPxUp-9CfsbuurQVR2stX24tVhj4bPYNkkqM-h_m00
+   
     PID/(Q)EAA Issuance - Detailed flow
+
 
 **Steps 1-4 (Discovery):** The User selects the PID/(Q)EAA Provider, and the Wallet Instance obtains the Metadata for the selected PID/(Q)EAA Provider.
 
