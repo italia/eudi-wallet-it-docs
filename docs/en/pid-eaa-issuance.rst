@@ -186,10 +186,10 @@ The JWS payload of the request object is represented below:
     
 
 
-**Steps 8-9 (Authorization Request):** The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the **code_challenge** parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a **request_uri** value once (:rfc:`RFC9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
-    1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user agent (derived from :rfc:`RFC9126`).
-    2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`RFC9126`).
-    3. It MUST reject all the Authorization Requests that do not contain the ``request_uri`` parameter as the PAR is the only way to pass the Authorization Request from the Wallet Instance (derived from :rfc:`RFC9126`).  
+**Steps 8-9 (Authorization Request):** The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
+    1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user agent (derived from :rfc:`9126`).
+    2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`9126`).
+    3. It MUST reject all the Authorization Requests that do not contain the ``request_uri`` parameter as the PAR is the only way to pass the Authorization Request from the Wallet Instance (derived from :rfc:`9126`).  
 
 
 .. code-block:: http
@@ -217,15 +217,15 @@ The JWS payload of the request object is represented below:
     HTTP/1.1 302 Found
     Location: eudiw://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Fpid-provider.example.org
 
-**Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`RFC9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the created private key for DPoP by Wallet Instance. DPoP provides a way to bind the Access Token to a certain sender (Wallet Instance) (:rfc:`9449`). This mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint of PID/(Q)EAA Issuer as the attacker needs to present a valid DPoP Proof JWT.
+**Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the created private key for DPoP by Wallet Instance. DPoP provides a way to bind the Access Token to a certain sender (Wallet Instance) (:rfc:`9449`). This mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint of PID/(Q)EAA Issuer as the attacker needs to present a valid DPoP Proof JWT.
 
-**Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization ``code``, ``code_verifier``, *DPoP Proof JWT* and *private_key_jwt* parameters (``client_assertion_type`` and ``client_assertion``). 
+**Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization ``code``, ``code_verifier``, *DPoP Proof JWT* and ``private_key_jwt`` parameters (``client_assertion_type`` and ``client_assertion``). 
 The ``client_assertion`` is signed using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is inside the Wallet Instance Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
     1. It MUST authenticate the Wallet Instance based on the ``private_key_jwt`` Client Authentication method `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
-    2. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`RFC6749``).
-    3. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`RFC6749``).
+    2. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749``).
+    3. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
     4. It MUST ensure the ``redirect_uri`` is identical to the value that was initially included in the Request Object `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
-    5. It MUST validate the DPoP Proof JWT following the steps in Section 4.3 of (:rfc:`RFC9449``).   
+    5. It MUST validate the DPoP Proof JWT following the steps in Section 4.3 of (:rfc:`9449``).   
 
 .. code-block:: http
 
