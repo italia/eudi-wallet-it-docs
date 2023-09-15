@@ -625,7 +625,7 @@ The JOSE header of a **DPoP JWT** MUST contain at least the following parameters
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be none or an identifier for a symmetric algorithm (MAC).
       - [:rfc:`7515`].
     * - **jwk** 
-      - representing the public key chosen by the Wallet Insatnce, in JSON Web Key (JWK) [RFC7517] format that the Access Token shall be bound to, as defined in Section 4.1.3 of [RFC7515]. It MUST NOT contain a private key.
+      - representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the Access Token shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`]. It MUST NOT contain a private key.
       - [:rfc:`7517`] and [:rfc:`7515`].
 
 
