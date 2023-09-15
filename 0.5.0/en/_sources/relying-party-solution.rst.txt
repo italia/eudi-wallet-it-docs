@@ -168,7 +168,7 @@ The following actions are made by the Wallet Instance:
 - scan the QR Code (Cross Device only);
 - extract from the payload the ``request_uri`` parameter;
 - invoke the retrieved URI;
-- provide in the request its Wallet Instance Attestation, using `DPOP`_ to proof the legitimate possession of it;
+- provide in the request its Wallet Instance Attestation, using :rfc:`9449` to proof the legitimate possession of it;
 - obtain the signed request object from the Relying Party.
 - evaluate the trust with the Relying Party, by evaluating the Trust Chain related to it.
 
@@ -242,7 +242,7 @@ The payload of a **DPoP proof** MUST contain at least the following claims:
       - [:rfc:`7519`. Section 4.1.6].
     * - **ath**
       - Hash of the Wallet Instance Attestation. 
-      - [`DPOP`_. Section 4.2].
+      - [:rfc:`9449`. Section 4.2].
 
 
 Therein a non-normative example of the DPoP decoded content:
