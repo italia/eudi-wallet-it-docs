@@ -210,7 +210,7 @@ The JWS payload of the request object is represented below:
 
 **Steps 10-11 (Authorization Response):** The PID/(Q)EAA Provider sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
 
-    1. It MUST check the Authorization Response contains all the defined parameters according to what we defined in :ref:`Table of the HTTP Response parameters <table_http_response_claim>`.
+    1. It MUST check the Authorization Response contains all the defined parameters according to :ref:`Table of the HTTP Response parameters <table_http_response_claim>`.
     2. It MUST check the returned value by the PID/(Q)EAA Provider for ``state`` parameter is equal to the value sent by Wallet Instance in the Request Object (:rfc:`6749`).
     3. It MUST check that the URL of PID/(Q)EAA Provider in ``iss`` parameter is equal to the URL identifier of intended PID/(Q)EAA Provider that the Wallet Instance start the communication with (:rfc:`9027`).
 
