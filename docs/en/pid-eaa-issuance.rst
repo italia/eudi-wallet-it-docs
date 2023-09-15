@@ -347,7 +347,7 @@ Where the decoded content of the JWT is represented below:
     4. It MUST process and verify the PID that is in SD-JWT VC following the steps in Section 6 of `SD.JWT#Verification <https://drafts.oauth.net/oauth-selective-disclosure-jwt/draft-ietf-oauth-selective-disclosure-jwt.html#name-verification-and-processing>`_.
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify if the issuer of the PID is trusted.
 
-If the checks are successful it can proceed with secure storage of the PID credential. 
+If the checks defined above are successful the Wallet Instance proceeds with the secure storage of the PID credential. 
 
 
 .. code-block:: http
