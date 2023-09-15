@@ -45,7 +45,6 @@
 .. _JWE: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-encryption
 .. _JWK: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key
 .. _JWS: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-signature
-.. _OAuth-DPoP: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop-10
 .. _EIDAS-ARF: https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
 .. _SD-JWT: https://www.ietf.org/archive/id/draft-fett-oauth-selective-disclosure-jwt-02.html
@@ -54,7 +53,7 @@
 .. _SD-JWT-VC: https://www.ietf.org/id/draft-terbu-sd-jwt-vc-02.html
 .. _PresentationExch: https://identity.foundation/presentation-exchange/spec/v2.0.0
 .. _JARM: https://openid.net/specs/oauth-v2-jarm-final.html
-.. _DPOP: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop
+.. _RFC 9449: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop
 .. _RFC 7519: https://www.rfc-editor.org/rfc/rfc7519
 .. _OAUTH2: https://www.rfc-editor.org/rfc/rfc6749
 .. _OPENID4VC-HAIP: https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html

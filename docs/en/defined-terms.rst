@@ -51,6 +51,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.
    * - Level of Assurance
      - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the credential was issued.
+   * - Holder Key Binding
+     - Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.
 
 Acronyms
 --------
