@@ -27,7 +27,7 @@ In the **Same Device** and **Cross Device** Flows described in this chapter, the
 Remote Protocol Flow
 --------------------
 
-In this scenario the Relying Party MUST provide the URL where the signed presentation request object is available for download.
+In this scenario the Relying Party MUST provide the URL where the signed presentation Request Object is available for download.
 
 Depending on whether the Relying Party client is on a mobile device or a workstation, 
 the Relying Party MUST activate one of the supported remote flows:
@@ -64,7 +64,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **11**
     - The Relying Party attests the trust to the Wallet Instance using the Wallet Instance Attestation and evaluates the Wallet Instance capabilities.
   * - **12**
-    - The Relying Party issues a signed Request Object, returning it as response. The ``exp`` value of the signed request object MUST be no more than 180 seconds.
+    - The Relying Party issues a signed Request Object, returning it as response. The ``exp`` value of the signed Request Object MUST be no more than 240 seconds.
   * - **13**, **14**, **15**, **16**
     - The Wallet Instance verifies the Request Object JWS. The Wallet Instance attests the trust to the Relying Party by verifying the Trust Chain. The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attest its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.
   * - **17**, **18**
@@ -82,7 +82,7 @@ The details of each step shown in the previous picture are described in the tabl
 Authorization Request Details
 -----------------------------
 
-The Relying Party MUST create a request object in the format of signed JWT, then provide it to the Wallet Instance through an HTTP URL (request URI). The HTTP URL points to the web resource where the signed request object is available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.
+The Relying Party MUST create a Request Object in the format of signed JWT, then provide it to the Wallet Instance through an HTTP URL (request URI). The HTTP URL points to the web resource where the signed request object is available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.
 
 .. list-table::
   :widths: 25 50
@@ -93,7 +93,7 @@ The Relying Party MUST create a request object in the format of signed JWT, then
   * - **client_id**
     - Unique identifier of the Relying Party.
   * - **request_uri**
-    - The HTTP URL used by the Wallet Instance to retrieve the signed request object from the Relying Party. The URL is intentionally extended with a random value that uniquely identifies the transaction.
+    - The HTTP URL used by the Wallet Instance to retrieve the signed Request Object from the Relying Party. The URL is intentionally extended with a random value that uniquely identifies the transaction.
 
 Below a non-normative example of the response containing the required parameters previously described.
 
@@ -147,8 +147,8 @@ Since the QRcode page and the status endpoint are implemented by the Relying Par
 
 The Relying Party MUST bind the request of the user-agent, with a Secure and HttpOnly session cookie, with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:
 
-* **201 Created**. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
-* **202 Accepted**. This response is given when the signed request object was obtained by the Wallet Instance.
+* **201 Created**. The signed Request Object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
+* **202 Accepted**. This response is given when the signed Request Object was obtained by the Wallet Instance.
 * **200 OK**. The Wallet Instance has provided the presentation to the Relying Party's  **redirect_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.
 * **401 Unauthorized**. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.
 
@@ -169,10 +169,10 @@ The following actions are made by the Wallet Instance:
 - extract from the payload the ``request_uri`` parameter;
 - invoke the retrieved URI;
 - provide in the request its Wallet Instance Attestation, using :rfc:`9449` to proof the legitimate possession of it;
-- obtain the signed request object from the Relying Party.
+- obtain the signed Request Object from the Relying Party.
 - evaluate the trust with the Relying Party, by evaluating the Trust Chain related to it.
 
-Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed request object:
+Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed Request Object:
 
 .. code-block:: javascript
 
@@ -272,7 +272,7 @@ Therein a non-normative example of the DPoP decoded content:
 Request URI response
 --------------------
 
-The Relying Party issues the signed request object, where a non-normative example in the form of decoded header and payload is shown below:
+The Relying Party issues the signed Request Object, where a non-normative example in the form of decoded header and payload is shown below:
 
 .. code-block:: text
 

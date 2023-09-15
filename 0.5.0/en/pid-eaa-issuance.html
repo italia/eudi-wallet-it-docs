@@ -1143,14 +1143,14 @@ response_type=code
 &amp;client_assertion=$WalletInstanceAttestation$
 </pre></div>
 </div>
-<p>The JWS header of request object is represented below:</p>
+<p>The JWS header of Request Object is represented below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The JWS payload of the request object is represented below:</p>
+<p>The JWS payload of the Request Object is represented below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
 <span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
@@ -1393,7 +1393,7 @@ credential_definition=%7B%22type%22:%5B%22PersonIdentificationData%22%5D%7D
 <td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>request</strong></p></td>
-<td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Instance Attestation MUST be used for signing the request object.</p></td>
+<td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Instance Attestation MUST be used for signing the Request Object.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests">OpenID Connect Core. Section 6</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_assertion_type</strong></p></td>
@@ -1597,7 +1597,7 @@ The authorization server MUST first verify the identity of the User that own the
 <td><p>[<span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>], <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7521">Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>state</strong></p></td>
-<td><p>The Wallet Instance MUST check the correspondence with the <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter value in the request object. It is defined as in the <a class="reference internal" href="#table-jwt-request"><span class="std std-ref">Table of the JWT Request parameters</span></a>.</p></td>
+<td><p>The Wallet Instance MUST check the correspondence with the <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter value in the Request Object. It is defined as in the <a class="reference internal" href="#table-jwt-request"><span class="std std-ref">Table of the JWT Request parameters</span></a>.</p></td>
 <td><p>[<span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
@@ -1643,7 +1643,7 @@ defined in <span class="target" id="index-55"></span><a class="rfc reference ext
 <td><p><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7521">Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>redirect_uri</strong></p></td>
-<td><p>It MUST be set as in the request object <a class="reference internal" href="#table-jwt-request"><span class="std std-ref">Table of the JWT Request parameters</span></a>.</p></td>
+<td><p>It MUST be set as in the Request Object <a class="reference internal" href="#table-jwt-request"><span class="std std-ref">Table of the JWT Request parameters</span></a>.</p></td>
 <td><p><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7521">Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>code_verifier</strong></p></td>

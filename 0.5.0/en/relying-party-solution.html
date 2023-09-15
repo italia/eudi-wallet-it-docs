@@ -1043,7 +1043,7 @@ is used.</p>
 </div>
 <section id="remote-protocol-flow">
 <h2>Remote Protocol Flow<a class="headerlink" href="#remote-protocol-flow" title="Permalink to this heading">¶</a></h2>
-<p>In this scenario the Relying Party MUST provide the URL where the signed presentation request object is available for download.</p>
+<p>In this scenario the Relying Party MUST provide the URL where the signed presentation Request Object is available for download.</p>
 <p>Depending on whether the Relying Party client is on a mobile device or a workstation,
 the Relying Party MUST activate one of the supported remote flows:</p>
 <ul class="simple">
@@ -1081,7 +1081,7 @@ the Relying Party MUST activate one of the supported remote flows:</p>
 <td><p>The Relying Party attests the trust to the Wallet Instance using the Wallet Instance Attestation and evaluates the Wallet Instance capabilities.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>12</strong></p></td>
-<td><p>The Relying Party issues a signed Request Object, returning it as response. The <code class="docutils literal notranslate"><span class="pre">exp</span></code> value of the signed request object MUST be no more than 180 seconds.</p></td>
+<td><p>The Relying Party issues a signed Request Object, returning it as response. The <code class="docutils literal notranslate"><span class="pre">exp</span></code> value of the signed Request Object MUST be no more than 240 seconds.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>13</strong>, <strong>14</strong>, <strong>15</strong>, <strong>16</strong></p></td>
 <td><p>The Wallet Instance verifies the Request Object JWS. The Wallet Instance attests the trust to the Relying Party by verifying the Trust Chain. The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attest its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.</p></td>
@@ -1106,7 +1106,7 @@ the Relying Party MUST activate one of the supported remote flows:</p>
 </section>
 <section id="authorization-request-details">
 <h2>Authorization Request Details<a class="headerlink" href="#authorization-request-details" title="Permalink to this heading">¶</a></h2>
-<p>The Relying Party MUST create a request object in the format of signed JWT, then provide it to the Wallet Instance through an HTTP URL (request URI). The HTTP URL points to the web resource where the signed request object is available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.</p>
+<p>The Relying Party MUST create a Request Object in the format of signed JWT, then provide it to the Wallet Instance through an HTTP URL (request URI). The HTTP URL points to the web resource where the signed request object is available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1122,7 +1122,7 @@ the Relying Party MUST activate one of the supported remote flows:</p>
 <td><p>Unique identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
-<td><p>The HTTP URL used by the Wallet Instance to retrieve the signed request object from the Relying Party. The URL is intentionally extended with a random value that uniquely identifies the transaction.</p></td>
+<td><p>The HTTP URL used by the Wallet Instance to retrieve the signed Request Object from the Relying Party. The URL is intentionally extended with a random value that uniquely identifies the transaction.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1159,8 +1159,8 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 <p>Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under its responsability the implementation details of this solution, since it is related to the Relying Party's internal API.</p>
 <p>The Relying Party MUST bind the request of the user-agent, with a Secure and HttpOnly session cookie, with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:</p>
 <ul class="simple">
-<li><p><strong>201 Created</strong>. The signed request object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
-<li><p><strong>202 Accepted</strong>. This response is given when the signed request object was obtained by the Wallet Instance.</p></li>
+<li><p><strong>201 Created</strong>. The signed Request Object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
+<li><p><strong>202 Accepted</strong>. This response is given when the signed Request Object was obtained by the Wallet Instance.</p></li>
 <li><p><strong>200 OK</strong>. The Wallet Instance has provided the presentation to the Relying Party's  <strong>redirect_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.</p></li>
 <li><p><strong>401 Unauthorized</strong>. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.</p></li>
 </ul>
@@ -1179,10 +1179,10 @@ HOST: relying-party.example.org
 <li><p>extract from the payload the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter;</p></li>
 <li><p>invoke the retrieved URI;</p></li>
 <li><p>provide in the request its Wallet Instance Attestation, using <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a> to proof the legitimate possession of it;</p></li>
-<li><p>obtain the signed request object from the Relying Party.</p></li>
+<li><p>obtain the signed Request Object from the Relying Party.</p></li>
 <li><p>evaluate the trust with the Relying Party, by evaluating the Trust Chain related to it.</p></li>
 </ul>
-<p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed request object:</p>
+<p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed Request Object:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">request_uri</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="nx">HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">relying</span><span class="o">-</span><span class="nx">party</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span>
 <span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="nx">DPoP</span><span class="w"> </span><span class="nx">$WalletInstanceAttestation</span>
@@ -1289,7 +1289,7 @@ HOST: relying-party.example.org
 </section>
 <section id="request-uri-response">
 <h2>Request URI response<a class="headerlink" href="#request-uri-response" title="Permalink to this heading">¶</a></h2>
-<p>The Relying Party issues the signed request object, where a non-normative example in the form of decoded header and payload is shown below:</p>
+<p>The Relying Party issues the signed Request Object, where a non-normative example in the form of decoded header and payload is shown below:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
   &quot;alg&quot;: &quot;ES256&quot;,
   &quot;typ&quot;: &quot;JWT&quot;,
