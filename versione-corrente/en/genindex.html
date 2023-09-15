@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | Index</title>
+  <title>The Italian EUDI Wallet implementation profile version: latest documentation | Index</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -13,7 +13,7 @@
 
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
-  <link rel="top" title="Italian eIDAS Wallet Technical Specifications version: latest documentation" href="index.html">
+  <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
 
   
   
@@ -99,7 +99,7 @@
       <div class="col-md-6">
         <i class="docs-icon-document docs__document-info__icon"></i>
         <a href="index.html" class="text-white font-weight-normal">
-          Italian eIDAS Wallet Technical Specifications version: latest documentation
+          The Italian EUDI Wallet implementation profile version: latest documentation
         </a>
       </div>
       <div class="docs__document-info__ownership col-md-5 offset-md-1 mt-3 mt-md-0">
@@ -607,7 +607,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -667,7 +667,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -686,7 +686,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -732,8 +732,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
       
@@ -749,7 +752,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -853,7 +857,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -913,7 +917,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -932,7 +936,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -978,8 +982,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
         
@@ -991,7 +998,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1024,47 +1032,69 @@
     RFC
 
       <ul>
-        <li><a href="pid-eaa-issuance.html#index-35">RFC 4122</a>, <a href="relying-party-solution.html#index-5">[1]</a>
+        <li><a href="standards.html#index-0">RFC 2119</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-24">RFC 6749</a>, <a href="pid-eaa-issuance.html#index-28">[1]</a>, <a href="pid-eaa-issuance.html#index-29">[2]</a>, <a href="pid-eaa-issuance.html#index-41">[3]</a>, <a href="pid-eaa-issuance.html#index-42">[4]</a>, <a href="pid-eaa-issuance.html#index-43">[5]</a>, <a href="pid-eaa-issuance.html#index-5">[6]</a>, <a href="pid-eaa-issuance.html#index-6">[7]</a>, <a href="pid-eaa-issuance.html#index-60">[8]</a>
+        <li><a href="standards.html#index-1">RFC 2616</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-26">RFC 6749#section-4.1.2</a>, <a href="pid-eaa-issuance.html#index-27">[1]</a>
+        <li><a href="standards.html#index-2">RFC 3339</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-30">RFC 7515</a>, <a href="pid-eaa-issuance.html#index-32">[1]</a>, <a href="pid-eaa-issuance.html#index-34">[2]</a>, <a href="pid-eaa-issuance.html#index-59">[3]</a>, <a href="pid-eaa-issuance.html#index-61">[4]</a>, <a href="pid-eaa-issuance.html#index-63">[5]</a>, <a href="pid-eaa-issuance.html#index-65">[6]</a>, <a href="relying-party-solution.html#index-0">[7]</a>, <a href="relying-party-solution.html#index-2">[8]</a>, <a href="relying-party-solution.html#index-4">[9]</a>
+        <li><a href="standards.html#index-3">RFC 3986</a>
 </li>
-        <li><a href="algorithms.html#index-14">RFC 7516</a>, <a href="algorithms.html#index-3">[1]</a>, <a href="algorithms.html#index-4">[2]</a>, <a href="algorithms.html#index-5">[3]</a>
+        <li><a href="pid-eaa-issuance.html#index-65">RFC 4122</a>, <a href="relying-party-solution.html#index-6">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-9">RFC 7516#section-4.1.1</a>, <a href="relying-party-solution.html#index-11">[1]</a>
+        <li><a href="pid-eaa-issuance.html#index-24">RFC 6749</a>, <a href="pid-eaa-issuance.html#index-28">[1]</a>, <a href="pid-eaa-issuance.html#index-29">[2]</a>, <a href="pid-eaa-issuance.html#index-33">[3]</a>, <a href="pid-eaa-issuance.html#index-34">[4]</a>, <a href="pid-eaa-issuance.html#index-55">[5]</a>, <a href="pid-eaa-issuance.html#index-57">[6]</a>, <a href="pid-eaa-issuance.html#index-71">[7]</a>, <a href="pid-eaa-issuance.html#index-72">[8]</a>, <a href="pid-eaa-issuance.html#index-73">[9]</a>, <a href="pid-eaa-issuance.html#index-93">[10]</a>, <a href="standards.html#index-15">[11]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-33">RFC 7517</a>, <a href="pid-eaa-issuance.html#index-62">[1]</a>, <a href="pid-eaa-issuance.html#index-64">[2]</a>, <a href="pid-eaa-issuance.html#index-66">[3]</a>, <a href="relying-party-solution.html#index-13">[4]</a>, <a href="relying-party-solution.html#index-3">[5]</a>, <a href="trust.html#index-2">[6]</a>, <a href="trust.html#index-3">[7]</a>
+        <li><a href="pid-eaa-issuance.html#index-53">RFC 6749#section-4.1.2</a>, <a href="pid-eaa-issuance.html#index-54">[1]</a>
 </li>
-        <li><a href="algorithms.html#index-0">RFC 7518</a>, <a href="algorithms.html#index-1">[1]</a>, <a href="algorithms.html#index-10">[2]</a>, <a href="algorithms.html#index-11">[3]</a>, <a href="algorithms.html#index-12">[4]</a>, <a href="algorithms.html#index-13">[5]</a>, <a href="algorithms.html#index-15">[6]</a>, <a href="algorithms.html#index-16">[7]</a>, <a href="algorithms.html#index-17">[8]</a>, <a href="algorithms.html#index-2">[9]</a>, <a href="algorithms.html#index-6">[10]</a>, <a href="algorithms.html#index-7">[11]</a>, <a href="algorithms.html#index-8">[12]</a>, <a href="algorithms.html#index-9">[13]</a>
+        <li><a href="standards.html#index-4">RFC 7009</a>
 </li>
-        <li><a href="pid-eaa-data-model.html#index-0">RFC 7519</a>, <a href="pid-eaa-data-model.html#index-1">[1]</a>, <a href="pid-eaa-issuance.html#index-12">[2]</a>, <a href="pid-eaa-issuance.html#index-14">[3]</a>, <a href="pid-eaa-issuance.html#index-16">[4]</a>, <a href="pid-eaa-issuance.html#index-18">[5]</a>, <a href="pid-eaa-issuance.html#index-20">[6]</a>, <a href="pid-eaa-issuance.html#index-36">[7]</a>, <a href="pid-eaa-issuance.html#index-39">[8]</a>, <a href="pid-eaa-issuance.html#index-40">[9]</a>, <a href="pid-eaa-issuance.html#index-44">[10]</a>, <a href="pid-eaa-issuance.html#index-47">[11]</a>, <a href="pid-eaa-issuance.html#index-50">[12]</a>, <a href="pid-eaa-issuance.html#index-52">[13]</a>, <a href="pid-eaa-issuance.html#index-53">[14]</a>, <a href="pid-eaa-issuance.html#index-55">[15]</a>, <a href="pid-eaa-issuance.html#index-57">[16]</a>, <a href="pid-eaa-issuance.html#index-67">[17]</a>, <a href="pid-eaa-issuance.html#index-68">[18]</a>, <a href="relying-party-solution.html#index-10">[19]</a>, <a href="relying-party-solution.html#index-12">[20]</a>, <a href="relying-party-solution.html#index-6">[21]</a>, <a href="relying-party-solution.html#index-9">[22]</a>, <a href="trust.html#index-0">[23]</a>, <a href="trust.html#index-1">[24]</a>
+        <li><a href="standards.html#index-5">RFC 7159</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-3">RFC 7521</a>
+        <li><a href="pid-eaa-issuance.html#index-100">RFC 7515</a>, <a href="pid-eaa-issuance.html#index-58">[1]</a>, <a href="pid-eaa-issuance.html#index-60">[2]</a>, <a href="pid-eaa-issuance.html#index-62">[3]</a>, <a href="pid-eaa-issuance.html#index-64">[4]</a>, <a href="pid-eaa-issuance.html#index-92">[5]</a>, <a href="pid-eaa-issuance.html#index-94">[6]</a>, <a href="pid-eaa-issuance.html#index-96">[7]</a>, <a href="pid-eaa-issuance.html#index-99">[8]</a>, <a href="relying-party-solution.html#index-1">[9]</a>, <a href="relying-party-solution.html#index-3">[10]</a>, <a href="relying-party-solution.html#index-5">[11]</a>, <a href="standards.html#index-6">[12]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-1">RFC 7636</a>
+        <li><a href="algorithms.html#index-14">RFC 7516</a>, <a href="algorithms.html#index-3">[1]</a>, <a href="algorithms.html#index-4">[2]</a>, <a href="algorithms.html#index-5">[3]</a>, <a href="standards.html#index-7">[4]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-7">RFC 7636#section-4.2</a>
+        <li><a href="pid-eaa-issuance.html#index-37">RFC 7516#section-4.1.1</a>, <a href="relying-party-solution.html#index-13">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-8">RFC 7636#section-4.3</a>
+        <li><a href="pid-eaa-issuance.html#index-101">RFC 7517</a>, <a href="pid-eaa-issuance.html#index-61">[1]</a>, <a href="pid-eaa-issuance.html#index-63">[2]</a>, <a href="pid-eaa-issuance.html#index-95">[3]</a>, <a href="pid-eaa-issuance.html#index-97">[4]</a>, <a href="pid-eaa-issuance.html#index-98">[5]</a>, <a href="relying-party-solution.html#index-15">[6]</a>, <a href="relying-party-solution.html#index-4">[7]</a>, <a href="standards.html#index-8">[8]</a>, <a href="trust.html#index-2">[9]</a>, <a href="trust.html#index-3">[10]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-58">RFC 7638</a>
+        <li><a href="algorithms.html#index-0">RFC 7518</a>, <a href="algorithms.html#index-1">[1]</a>, <a href="algorithms.html#index-10">[2]</a>, <a href="algorithms.html#index-11">[3]</a>, <a href="algorithms.html#index-12">[4]</a>, <a href="algorithms.html#index-13">[5]</a>, <a href="algorithms.html#index-15">[6]</a>, <a href="algorithms.html#index-16">[7]</a>, <a href="algorithms.html#index-17">[8]</a>, <a href="algorithms.html#index-2">[9]</a>, <a href="algorithms.html#index-6">[10]</a>, <a href="algorithms.html#index-7">[11]</a>, <a href="algorithms.html#index-8">[12]</a>, <a href="algorithms.html#index-9">[13]</a>, <a href="standards.html#index-9">[14]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-10">RFC 7638#section_3</a>
+        <li><a href="pid-eaa-data-model.html#index-0">RFC 7519</a>, <a href="pid-eaa-data-model.html#index-1">[1]</a>, <a href="pid-eaa-issuance.html#index-102">[2]</a>, <a href="pid-eaa-issuance.html#index-103">[3]</a>, <a href="pid-eaa-issuance.html#index-17">[4]</a>, <a href="pid-eaa-issuance.html#index-40">[5]</a>, <a href="pid-eaa-issuance.html#index-42">[6]</a>, <a href="pid-eaa-issuance.html#index-44">[7]</a>, <a href="pid-eaa-issuance.html#index-46">[8]</a>, <a href="pid-eaa-issuance.html#index-48">[9]</a>, <a href="pid-eaa-issuance.html#index-66">[10]</a>, <a href="pid-eaa-issuance.html#index-69">[11]</a>, <a href="pid-eaa-issuance.html#index-70">[12]</a>, <a href="pid-eaa-issuance.html#index-74">[13]</a>, <a href="pid-eaa-issuance.html#index-78">[14]</a>, <a href="pid-eaa-issuance.html#index-81">[15]</a>, <a href="pid-eaa-issuance.html#index-83">[16]</a>, <a href="pid-eaa-issuance.html#index-84">[17]</a>, <a href="pid-eaa-issuance.html#index-86">[18]</a>, <a href="pid-eaa-issuance.html#index-88">[19]</a>, <a href="relying-party-solution.html#index-10">[20]</a>, <a href="relying-party-solution.html#index-11">[21]</a>, <a href="relying-party-solution.html#index-14">[22]</a>, <a href="relying-party-solution.html#index-7">[23]</a>, <a href="standards.html#index-10">[24]</a>, <a href="trust.html#index-0">[25]</a>, <a href="trust.html#index-1">[26]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-21">RFC 8259</a>
+        <li><a href="pid-eaa-issuance.html#index-5">RFC 7521</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-31">RFC 8725</a>, <a href="relying-party-solution.html#index-1">[1]</a>
+        <li><a href="pid-eaa-issuance.html#index-1">RFC 7636</a>, <a href="pid-eaa-issuance.html#index-4">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-45">RFC 9068</a>, <a href="pid-eaa-issuance.html#index-46">[1]</a>, <a href="pid-eaa-issuance.html#index-48">[2]</a>, <a href="pid-eaa-issuance.html#index-49">[3]</a>, <a href="pid-eaa-issuance.html#index-51">[4]</a>, <a href="pid-eaa-issuance.html#index-54">[5]</a>, <a href="pid-eaa-issuance.html#index-56">[6]</a>
+        <li><a href="pid-eaa-issuance.html#index-35">RFC 7636#section-4.2</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-37">RFC 9110</a>, <a href="pid-eaa-issuance.html#index-38">[1]</a>, <a href="relying-party-solution.html#index-7">[2]</a>, <a href="relying-party-solution.html#index-8">[3]</a>
+        <li><a href="pid-eaa-issuance.html#index-36">RFC 7636#section-4.3</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-0">RFC 9126</a>, <a href="pid-eaa-issuance.html#index-11">[1]</a>, <a href="pid-eaa-issuance.html#index-13">[2]</a>, <a href="pid-eaa-issuance.html#index-15">[3]</a>, <a href="pid-eaa-issuance.html#index-17">[4]</a>, <a href="pid-eaa-issuance.html#index-2">[5]</a>, <a href="pid-eaa-issuance.html#index-22">[6]</a>, <a href="pid-eaa-issuance.html#index-23">[7]</a>, <a href="pid-eaa-issuance.html#index-25">[8]</a>
+        <li><a href="pid-eaa-issuance.html#index-90">RFC 7638</a>, <a href="standards.html#index-11">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-19">RFC 9396</a>, <a href="pid-eaa-issuance.html#index-4">[1]</a>
+        <li><a href="pid-eaa-issuance.html#index-38">RFC 7638#section_3</a>
+</li>
+        <li><a href="standards.html#index-12">RFC 7800</a>
+</li>
+        <li><a href="standards.html#index-13">RFC 8174</a>
+</li>
+        <li><a href="pid-eaa-issuance.html#index-49">RFC 8259</a>
+</li>
+        <li><a href="pid-eaa-issuance.html#index-59">RFC 8725</a>, <a href="relying-party-solution.html#index-2">[1]</a>, <a href="standards.html#index-14">[2]</a>
+</li>
+        <li><a href="pid-eaa-issuance.html#index-25">RFC 9027</a>
+</li>
+        <li><a href="pid-eaa-issuance.html#index-76">RFC 9068</a>, <a href="pid-eaa-issuance.html#index-77">[1]</a>, <a href="pid-eaa-issuance.html#index-79">[2]</a>, <a href="pid-eaa-issuance.html#index-80">[3]</a>, <a href="pid-eaa-issuance.html#index-82">[4]</a>, <a href="pid-eaa-issuance.html#index-85">[5]</a>, <a href="pid-eaa-issuance.html#index-87">[6]</a>
+</li>
+        <li><a href="pid-eaa-issuance.html#index-10">RFC 9101</a>, <a href="pid-eaa-issuance.html#index-12">[1]</a>, <a href="pid-eaa-issuance.html#index-18">[2]</a>, <a href="pid-eaa-issuance.html#index-19">[3]</a>, <a href="pid-eaa-issuance.html#index-8">[4]</a>
+</li>
+        <li><a href="pid-eaa-issuance.html#index-67">RFC 9110</a>, <a href="pid-eaa-issuance.html#index-68">[1]</a>, <a href="relying-party-solution.html#index-8">[2]</a>, <a href="relying-party-solution.html#index-9">[3]</a>
+</li>
+        <li><a href="pid-eaa-issuance.html#index-0">RFC 9126</a>, <a href="pid-eaa-issuance.html#index-11">[1]</a>, <a href="pid-eaa-issuance.html#index-13">[2]</a>, <a href="pid-eaa-issuance.html#index-14">[3]</a>, <a href="pid-eaa-issuance.html#index-15">[4]</a>, <a href="pid-eaa-issuance.html#index-16">[5]</a>, <a href="pid-eaa-issuance.html#index-2">[6]</a>, <a href="pid-eaa-issuance.html#index-20">[7]</a>, <a href="pid-eaa-issuance.html#index-21">[8]</a>, <a href="pid-eaa-issuance.html#index-22">[9]</a>, <a href="pid-eaa-issuance.html#index-23">[10]</a>, <a href="pid-eaa-issuance.html#index-3">[11]</a>, <a href="pid-eaa-issuance.html#index-39">[12]</a>, <a href="pid-eaa-issuance.html#index-41">[13]</a>, <a href="pid-eaa-issuance.html#index-43">[14]</a>, <a href="pid-eaa-issuance.html#index-45">[15]</a>, <a href="pid-eaa-issuance.html#index-50">[16]</a>, <a href="pid-eaa-issuance.html#index-51">[17]</a>, <a href="pid-eaa-issuance.html#index-52">[18]</a>, <a href="pid-eaa-issuance.html#index-7">[19]</a>, <a href="pid-eaa-issuance.html#index-9">[20]</a>
+</li>
+        <li><a href="pid-eaa-issuance.html#index-47">RFC 9396</a>, <a href="pid-eaa-issuance.html#index-6">[1]</a>
+</li>
+        <li><a href="pid-eaa-issuance.html#index-26">RFC 9449</a>, <a href="pid-eaa-issuance.html#index-27">[1]</a>, <a href="pid-eaa-issuance.html#index-30">[2]</a>, <a href="pid-eaa-issuance.html#index-31">[3]</a>, <a href="pid-eaa-issuance.html#index-32">[4]</a>, <a href="pid-eaa-issuance.html#index-56">[5]</a>, <a href="pid-eaa-issuance.html#index-75">[6]</a>, <a href="pid-eaa-issuance.html#index-89">[7]</a>, <a href="pid-eaa-issuance.html#index-91">[8]</a>, <a href="relying-party-solution.html#index-0">[9]</a>, <a href="relying-party-solution.html#index-12">[10]</a>, <a href="standards.html#index-16">[11]</a>
 </li>
       </ul></li>
   </ul></td>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | Wallet Solution</title>
+  <title>The Italian EUDI Wallet implementation profile version: latest documentation | Wallet Solution</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -13,7 +13,7 @@
 
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
-  <link rel="top" title="Italian eIDAS Wallet Technical Specifications version: latest documentation" href="index.html">
+  <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
   <link rel="next" title="Wallet Instance Attestation" href="wallet-instance-attestation.html">
   <link rel="prev" title="PID/(Q)EAA Issuance" href="pid-eaa-issuance.html">
 
@@ -101,7 +101,7 @@
       <div class="col-md-6">
         <i class="docs-icon-document docs__document-info__icon"></i>
         <a href="index.html" class="text-white font-weight-normal">
-          Italian eIDAS Wallet Technical Specifications version: latest documentation
+          The Italian EUDI Wallet implementation profile version: latest documentation
         </a>
       </div>
       <div class="docs__document-info__ownership col-md-5 offset-md-1 mt-3 mt-md-0">
@@ -609,7 +609,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -669,7 +669,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -688,7 +688,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -734,8 +734,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
       
@@ -751,7 +754,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -855,7 +859,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -915,7 +919,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -934,7 +938,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -980,8 +984,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
         
@@ -993,7 +1000,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1020,66 +1028,67 @@
 <span id="wallet-solution-rst"></span><h1>Wallet Solution<a class="headerlink" href="#wallet-solution" title="Permalink to this heading">¶</a></h1>
 <p>The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of Users in managing their digital assets securely. Designed to provide a seamless User experience, this solution enables Users to leverage the capabilities of the Wallet effectively.</p>
 <p>The Wallet Solution is issued by the Wallet Provider in the form of a mobile app, it also consists of services and web interfaces for the exchange of data between the Wallet Provider and its Wallet Instances for the requirements of the trust model and in total respect of the user's privacy, in accordance with national and EU legislation.</p>
-<p>The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID¹), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short¹. Once a User installs the mobile app on their device, we refer to such an installation as a Wallet Instance for the User.</p>
-<p>Supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the Wallet Solution. The Wallet Provider is responsible for issuing the Wallet Instance Attestation — a cryptographic proof that verifies the authenticity and integrity of the Wallet Instance.</p>
+<p>The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID¹), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short¹. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.</p>
+<p>By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, since it is responsible for issuing the Wallet Instance Attestation, that is a cryptographic proof that allow the evaluation of the authenticity and the integrity of the Wallet Instance.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Trustworthiness within the Wallet ecosystem</strong>: the Wallet Instance must establish trust and reliability within the Wallet ecosystem.</p></li>
-<li><p><strong>Compliance with Provider specifications for obtaining PID and (Q)EAA</strong>: the Wallet Instance must adhere to the specifications set by Providers for obtaining Personal Identification (PID) and Qualified or non-qualified Electronic Address Authentication (Q)EAA.</p></li>
-<li><p><strong>Support for Android and iOS operating systems</strong>: the Wallet Instance must be compatible and functional at least on both Android and iOS operating systems, as well as available on the Play Store and App Store respectively.</p></li>
-<li><p><strong>Verification of device ownership by the User</strong>: the Wallet Instance must provide a mechanism to verify the User's actual possession of the device and its control.</p></li>
+<li><p><strong>Trustworthiness within the Wallet ecosystem</strong>: the Wallet Instance MUST establish trust and reliability within the Wallet ecosystem.</p></li>
+<li><p><strong>Compliance with Provider specifications for obtaining PID and (Q)EAA</strong>: the Wallet Instance MUST adhere to the specifications set by Providers for obtaining Personal Identification (PID) and (Q)EAAs.</p></li>
+<li><p><strong>Support for Android and iOS operating systems</strong>: the Wallet Instance MUST be compatible and functional at least on both Android and iOS operating systems, as well as available on the Play Store and App Store respectively.</p></li>
+<li><p><strong>Verification of device ownership by the User</strong>: the Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.</p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="wallet-instance">
 <h2>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Permalink to this heading">¶</a></h2>
-<p>The Wallet Instance serves as a unique and secure representation of the User within the Wallet ecosystem. It establishes a strong and reliable identity for the User, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.</p>
-<p>The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These attestations, provided by the underlying Wallet Provider operated by the Wallet Provider, reference a pair of asymmetric cryptographic keys exclusively owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its legitimacy when engaging with other ecosystem actors.</p>
-<p>To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)³. This ensures that only the User can access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation section</a> and the <a class="reference external" href="trust.html">Trust Model section</a> of this document.</p>
+<p>The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem. It establishes a strong and reliable identity for the User, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.</p>
+<p>The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, reference the public part of the asymmetric cryptographic key owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.</p>
+<p>To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)³. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation section</a> and the <a class="reference external" href="trust.html">Trust Model section</a> of this document.</p>
 </section>
 <section id="wallet-instance-lifecycle">
 <h2>Wallet Instance Lifecycle<a class="headerlink" href="#wallet-instance-lifecycle" title="Permalink to this heading">¶</a></h2>
-<p>The Wallet Instance can exist in three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed².</p>
+<p>The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed².</p>
 <section id="initialization-process">
 <h3>Initialization Process<a class="headerlink" href="#initialization-process" title="Permalink to this heading">¶</a></h3>
-<p>To activate the Wallet Instance, Users must install the mobile application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.</p>
-<p>After completing these steps, the Wallet Instance is in the Operational state.</p>
+<p>To activate the Wallet Instance, the Users MUST install the mobile wallet application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.</p>
+<p>After completing these steps, the Wallet Instance sets the Operational state.</p>
 </section>
 <section id="transition-to-valid-state">
 <h3>Transition to Valid state<a class="headerlink" href="#transition-to-valid-state" title="Permalink to this heading">¶</a></h3>
-<p>To transition from the Operational state to the Valid state, the Wallet Instance must obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes active, enabling secure transaction execution.</p>
-<p>In order to securely and unambiguously identify Users, the Wallet Instance adopts a Level of Assurance (LoA) 3 authentication, which guarantees a high level of confidence in the User's identity. The authentication method is chosen by the PID provider from among the notified eID solutions at the national level.</p>
+<p>To transition from the Operational state to the Valid state, the Wallet Instance MUST obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes Valid.</p>
+<p>In order to securely and unambiguously identify Users, the Wallet Instance adopts a Level of Assurance (LoA) 3 authentication, which guarantees a high level of confidence in the User's identity. The authentication method is chosen by the PID Provider from among the notified eID solutions at the national level.</p>
 <p>Once the Wallet Instance is in the Operational state, Users can:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers¹</p></li>
-<li><p>Authenticate to Relying Parties¹</p></li>
-<li><p>Authorize the sharing of their data with Relying Parties</p></li>
+<li><p>Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers¹;</p></li>
+<li><p>Authenticate to Relying Parties¹;</p></li>
+<li><p>Authorize the presentation of their digital credentials with Relying Parties.</p></li>
 </ul>
 </div></blockquote>
-<p>Please refer to the relative sections for further information about PID and (Q)EAAs issuance and attestation presentation.</p>
+<p>Please refer to the relative sections for further information about PID and (Q)EAAs issuance and presentation.</p>
 </section>
 <section id="return-to-operational-state">
 <h3>Return to Operational state<a class="headerlink" href="#return-to-operational-state" title="Permalink to this heading">¶</a></h3>
-<p>A Valid Wallet Instance may revert to the Operational state under specific circumstances. These circumstances include the expiration or revocation of the associated PID by the relevant PID Provider.</p>
+<p>A Valid Wallet Instance may revert to the Operational state under specific circumstances. These circumstances include the expiration or the revocation of the associated PID by its PID Provider.</p>
 </section>
 <section id="deactivation">
 <h3>Deactivation<a class="headerlink" href="#deactivation" title="Permalink to this heading">¶</a></h3>
-<p>Users have the ability to deactivate the Wallet Instance voluntarily. This action removes the operational capabilities of the Wallet Instance and sets it to the deactivated state. Deactivation provides Users with control over access and usage according to their preferences.</p>
+<p>Users have the ability to deactivate the Wallet Instance voluntarily. This action removes the operational capabilities of the Wallet Instance and sets it to the Deactivated state. Deactivation provides Users with control over access and usage according to their preferences.</p>
 </section>
 </section>
 <section id="wallet-provider-endpoints">
 <h2>Wallet Provider Endpoints<a class="headerlink" href="#wallet-provider-endpoints" title="Permalink to this heading">¶</a></h2>
-<p>The Wallet Provider that issues the Wallet Instance Attestations must
-make available a series of APIs in REST format that follow the OpenID
-Federation standard.</p>
+<p>The Wallet Provider that issues the Wallet Instance Attestations MUST
+made available its APIs in the form of RESTful services, as listed below.</p>
 <section id="wallet-provider-metadata">
 <h3>Wallet Provider Metadata<a class="headerlink" href="#wallet-provider-metadata" title="Permalink to this heading">¶</a></h3>
-<p>A <strong>GET /.well-known/openid-federation endpoint</strong> for retrieving the Wallet
+<p>An HTTP GET request to the <strong>/.well-known/openid-federation</strong> endpoint allows the retrieval of the Wallet
 Provider Entity Configuration.</p>
 <p>The Wallet Provider Entity Configuration is a JWS containing the public keys and supported algorithms of the Wallet Provider metadata definition. It is structured in accordance with the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OpenID Connect Federation</a> and the Trust Model section outlined in this specification.</p>
+<p>The returning Entity Configuration of the Wallet Provider MUST contain the
+attributes listed below:</p>
 </section>
 </section>
 <section id="header">
@@ -1090,13 +1099,13 @@ Provider Entity Configuration.</p>
 <td><p><strong>Value</strong></p></td>
 </tr>
 <tr class="row-even"><td><p>alg</p></td>
-<td><p>Algorithm employed to verify the token signature (e.g., ES256).</p></td>
+<td><p>Algorithm used to verify the token signature (e.g., ES256).</p></td>
 </tr>
 <tr class="row-odd"><td><p>kid</p></td>
 <td><p>Thumbprint of the public key used for signing.</p></td>
 </tr>
 <tr class="row-even"><td><p>typ</p></td>
-<td><p>Media type, here we use the entity-statement+jwt value.</p></td>
+<td><p>Media type, set to <code class="docutils literal notranslate"><span class="pre">entity-statement+jwt</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1128,8 +1137,8 @@ Provider.</p></td>
 in Unix Timestamp format.</p></td>
 </tr>
 <tr class="row-even"><td><p>authority_hints</p></td>
-<td><p>Array of URLs (String). It
-contains a list of URLs of the
+<td><p>Array of URLs (String) containing
+the list of URLs of the
 immediate superior Entities, such
 as the Trust Anchor or an
 Intermediate, that MAY issue an
@@ -1145,18 +1154,16 @@ at issue. Each JWK in the JWK set
 MUST have a key ID (claim kid).</p></td>
 </tr>
 <tr class="row-even"><td><p>metadata</p></td>
-<td><p>For each entity, this attribute
-houses its metadata. In this case,
-it contains the Wallet Provider's
-metadata within the
-<code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code> attribute
-and the generic entity
-<code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>.</p></td>
+<td><p>Contains the
+metadata
+<code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code>
+and the
+<code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> metadata.</p></td>
 </tr>
 </tbody>
 </table>
-<section id="payload-wallet-provider">
-<h3>Payload <cite>wallet_provider</cite><a class="headerlink" href="#payload-wallet-provider" title="Permalink to this heading">¶</a></h3>
+<section id="id1">
+<h3><cite>wallet_provider</cite> metadata<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Key</strong></p></td>
@@ -1173,37 +1180,35 @@ Instance Attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p>attested_security_context_values_supported</p></td>
 <td><p>List of supported values for the
-certified security context. These
+certifiable security context. These
 values specify the security level
-of the app—low, medium, or high.
+of the app, according to the levels: low, medium, or high.
 An attested security context is
 defined by the proof that the
-Wallet Instance can send to the
-Wallet Provider. Note: this
-parameter is defined in this
-specification</p></td>
+Wallet Instance can provide to the
+Wallet Provider.</p></td>
 </tr>
 <tr class="row-odd"><td><p>grant_types_supported</p></td>
 <td><p>The types of grants supported by
-the endpoint token. It MUST be set to
+the token endpoint. It MUST be set to
 <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:</span>
-<span class="pre">jwt-client-attestation</span></code></p></td>
+<span class="pre">jwt-client-attestation</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>token_endpoint_auth_methods_suppor
 ted</p></td>
-<td><p>Supported authentication method for
-the endpoint token.</p></td>
+<td><p>Supported authentication methods for
+the token endpoint.</p></td>
 </tr>
 <tr class="row-odd"><td><p>token_endpoint_auth_signing_alg_va
 lues_supported</p></td>
-<td><p>List of supported signature
-algorithms.</p></td>
+<td><p>Supported signature
+algorithms for the token endpoint</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <cite>asc_values_supported</cite> parameter is experimental and under review.</p>
+<p>The <cite>attested_security_context_values_supported</cite> parameter is experimental and under review.</p>
 </div>
 </section>
 <section id="payload-federation-entity">
@@ -1301,7 +1306,7 @@ algorithms.</p></td>
 </section>
 <section id="wallet-instance-attestation">
 <h3>Wallet Instance Attestation<a class="headerlink" href="#wallet-instance-attestation" title="Permalink to this heading">¶</a></h3>
-<p>Please refer to the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation section</a></p>
+<p>Please refer to the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation section</a>.</p>
 </section>
 </section>
 <section id="external-references">

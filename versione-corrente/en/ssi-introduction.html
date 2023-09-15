@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | Self Sovereign Identity</title>
+  <title>The Italian EUDI Wallet implementation profile version: latest documentation | Self Sovereign Identity</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -13,9 +13,9 @@
 
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
-  <link rel="top" title="Italian eIDAS Wallet Technical Specifications version: latest documentation" href="index.html">
+  <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
   <link rel="next" title="Normative Language and Conventions" href="defined-terms.html">
-  <link rel="prev" title="Italian EUDI Wallet Technical Specifications" href="index.html">
+  <link rel="prev" title="The Italian EUDI Wallet implementation profile" href="index.html">
 
   
   
@@ -101,7 +101,7 @@
       <div class="col-md-6">
         <i class="docs-icon-document docs__document-info__icon"></i>
         <a href="index.html" class="text-white font-weight-normal">
-          Italian eIDAS Wallet Technical Specifications version: latest documentation
+          The Italian EUDI Wallet implementation profile version: latest documentation
         </a>
       </div>
       <div class="docs__document-info__ownership col-md-5 offset-md-1 mt-3 mt-md-0">
@@ -609,7 +609,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -669,7 +669,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -688,7 +688,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -734,8 +734,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
       
@@ -751,7 +754,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -855,7 +859,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -915,7 +919,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -934,7 +938,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -980,8 +984,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
         
@@ -993,7 +1000,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1012,7 +1020,7 @@
           </div>-->
           
             <div class="footer-buttons footer-buttons--prev" role="navigation" aria-label="footer navigation">
-                <a href="index.html" class="" title="Italian EUDI Wallet Technical Specifications" accesskey="p" rel="prev"> Torna a Italian EUDI Wallet Technical Specifications</a>
+                <a href="index.html" class="" title="The Italian EUDI Wallet implementation profile" accesskey="p" rel="prev"> Torna a The Italian EUDI Wallet implementation profile</a>
             </div>
           
           
@@ -1028,26 +1036,25 @@ Users possess their digital documents and determine to which actors they present
 <p>The main roles in an SSI ecosystem are are listed as follow:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Issuers: parties who can issue attributes or &quot;credentials&quot; about a person;</p></li>
-<li><p>Verifiers: parties who request Holders' attributes because they want to know something about them;</p></li>
-<li><p>Holders: individuals who own a Wallet and have control over the attributes they can acquire, store, and present to Verifiers;</p></li>
-<li><p>Verifiable Data Registries: Authorities that publish certificates, attestations, metadata, and schemes needed for trust establishment between the parties.</p></li>
+<li><p>Issuers: parties who can issue digital credentials about a person;</p></li>
+<li><p>verifiers: parties who request Holders' digital credentials for authentication and authorization purposes;</p></li>
+<li><p>Holders: individuals who own a Wallet and have control over the digital credentials they can request, acquire, store, and present to verifiers;</p></li>
+<li><p>Verifiable Data Registries: Authorities that publish certificates, attestations, metadata, and schemes needed for allowing the trust establishment between the parties.</p></li>
 </ul>
 </div></blockquote>
-<p><strong>What it is useful for</strong></p>
-<p>In the SSI model, the data source (e.g., an educational institution) provides credentials to the User, who can store them in their digital Wallet.
-A secure Self-Sovereign Identity Wallet is crucial, as it allows people to carry their credentials on their digital devices. The Wallet typically comes in the form of an application on the User's mobile phone. Portability is, therefore, one of the principles of SSI.</p>
-<dl class="simple">
-<dt>Other key elements that characterize an SSI system include:</dt><dd><ul class="simple">
-<li><p><strong>Privacy and control</strong>: SSI enables individuals to maintain control over their personal data. They can choose what information to release, to whom, and for what purpose. This reduces the risk of personal data being collected, stored, or misused;</p></li>
-<li><p><strong>Security</strong>: SSI leverages advanced cryptographic techniques to ensure the integrity and security of identity information. It avoids the risk of identity theft, fraud, and unauthorized access since the data remains under the individual's control and is not stored in a single vulnerable location;</p></li>
+<p>In the SSI model, the data source (e.g., an educational institution) provides digital credentials to the User, who can store them in their digital Wallet.
+A secure Self-Sovereign Identity Wallet is crucial, as it allows people to carry their credentials on their personal digital devices. The Wallet typically comes in the form of an application on the User's mobile phone. Portability is, therefore, one of the principles of SSI.</p>
+<p>Other key elements that characterize an SSI system include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Privacy and control</strong>: SSI enables individuals to maintain control over their personal data. They can choose what information to release, to whom, and for what purpose;</p></li>
+<li><p><strong>Security</strong>: SSI leverages advanced cryptographic techniques to ensure the integrity and security of identity information. It avoids the risk of identity theft, fraud, and unauthorized access since the data remains under the individual's control;</p></li>
 <li><p><strong>Interoperability</strong>: SSI promotes interoperability by enabling different systems and organizations to recognize and verify identities without relying on a central authority. This allows for seamless and trusted interactions between individuals, organizations, and even across borders;</p></li>
 <li><p><strong>Efficiency and cost reduction</strong>: individuals can manage their own identities with SSI, eliminating the need for multiple identity credentials and repetitive identity verification processes. This can streamline administrative procedures, reduce costs, and enhance the user experience.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p><strong>Example</strong></p>
-<p>When a User wants to purchase a good or access to a service, the service provider asks the User for specific proof. Instead of presenting physical identification documents or disclosing their full data, the individual can use their SSI system.
+<p>When a User wants to purchase a good or access to a service, the service provider asks the User for authentication or for a specific proof. Instead of presenting physical identification documents or disclosing their full data, the individual can use their SSI system if supported by the service provider.
 An example of SSI in action could be a scenario where an individual needs to prove their age to access a restricted service, such as purchasing age-restricted items. They would release only the necessary information, such as a digitally signed proof of being above the legal age, without revealing any other personal details. The verifier can then cryptographically validate the proof.</p>
 </section>
 </section>

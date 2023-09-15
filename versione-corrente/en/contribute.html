@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | How to contribute</title>
+  <title>The Italian EUDI Wallet implementation profile version: latest documentation | How to contribute</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -13,8 +13,8 @@
 
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
-  <link rel="top" title="Italian eIDAS Wallet Technical Specifications version: latest documentation" href="index.html">
-  <link rel="next" title="Standards" href="standards.html">
+  <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
+  <link rel="next" title="Technical References" href="standards.html">
   <link rel="prev" title="Cryptographic algorithms" href="algorithms.html">
 
   
@@ -101,7 +101,7 @@
       <div class="col-md-6">
         <i class="docs-icon-document docs__document-info__icon"></i>
         <a href="index.html" class="text-white font-weight-normal">
-          Italian eIDAS Wallet Technical Specifications version: latest documentation
+          The Italian EUDI Wallet implementation profile version: latest documentation
         </a>
       </div>
       <div class="docs__document-info__ownership col-md-5 offset-md-1 mt-3 mt-md-0">
@@ -609,7 +609,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -669,7 +669,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -688,7 +688,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -734,8 +734,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
       
@@ -751,7 +754,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -855,7 +859,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -915,7 +919,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -934,7 +938,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -980,8 +984,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
         
@@ -993,7 +1000,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1026,12 +1034,52 @@
 <li><p><strong>Pull requests</strong>. Pull requests represent active contributions to the project, typically, but not always following issue-based discussions. Once a pull request is initiated, it facilitates discussion and review of the proposed changes before they are merged into the main branch (<cite>versione-corrente</cite>).</p></li>
 <li><p><strong>Developers Italia Slack channel</strong>. Slack is a messaging application designed for businesses, connecting people to the information they need. <em>Developers Italia</em> is an open community based on contributions and participation from public administrations, developers, technicians, students, and citizens. <em>Developers Italia</em> has initiated a Slack channel that [everyone can join for free](<a class="reference external" href="https://slack.developers.italia.it/">https://slack.developers.italia.it/</a>), where you can learn about all their activities and partake in discussions.</p></li>
 </ul>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">¶</a></h2>
+<p>We would like to thank the following individuals for their comments,
+concerns, ideas, contributions, some of which substantial, to this
+implementation profile and to the initial set of implementations.</p>
+<ul class="simple">
+<li><p>Alen Horvat</p></li>
+<li><p>Amir Sharif</p></li>
+<li><p>Andrea Prosseda</p></li>
+<li><p>Emanuele De Cupis</p></li>
+<li><p>Emiliano Vernini</p></li>
+<li><p>Francesco Grauso</p></li>
+<li><p>Francesco Marino</p></li>
+<li><p>Francesco Ventola</p></li>
+<li><p>Giada Sciarretta</p></li>
+<li><p>Giuseppe De Marco</p></li>
+<li><p>Kristina Yasuda</p></li>
+<li><p>Leif Johansson</p></li>
+<li><p>Lorenzo Cerini</p></li>
+<li><p>Marta Sciunnach</p></li>
+<li><p>Michele Silletti</p></li>
+<li><p>Nicola Saitto</p></li>
+<li><p>Paul Bastien</p></li>
+<li><p>Pasquale De Rose</p></li>
+<li><p>Peter Altmann</p></li>
+<li><p>Riccardo Iaconelli</p></li>
+<li><p>Roland Hedberg</p></li>
+<li><p>Salvatore Laiso</p></li>
+<li><p>Salvatore Manfredi</p></li>
+<li><p>Stefano Alifuoco</p></li>
+<li><p>Takahiko Kawasaki</p></li>
+<li><p>Torsten Lodderstedt</p></li>
+<li><p>Vladimir Duzhinov</p></li>
+</ul>
+<p>If anyone has been forgotten, please accept our apologies with the
+request to propose the modification of this page via a [Pull Request](<a class="reference external" href="https://github.com/italia/eudi-wallet-it-docs">https://github.com/italia/eudi-wallet-it-docs</a>)
+with a brief description of the contribution offered, during which
+event or channel, and during which period. We will then have the opportunity
+to apologize again and make amends as soon as possible, including you in the list.</p>
+</section>
 </section>
 
 
           
             <div class="footer-buttons footer-buttons--next" role="navigation" aria-label="footer navigation">
-                  <a href="standards.html" class="" title="Standards" accesskey="n" rel="next">Standards</a>
+                  <a href="standards.html" class="" title="Technical References" accesskey="n" rel="next">Technical References</a>
               </div>
             
           </div>

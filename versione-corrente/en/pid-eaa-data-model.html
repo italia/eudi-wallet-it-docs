@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italian eIDAS Wallet Technical Specifications version: latest documentation | PID/(Q)EAA Data Model</title>
+  <title>The Italian EUDI Wallet implementation profile version: latest documentation | PID/(Q)EAA Data Model</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
@@ -13,7 +13,7 @@
 
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
-  <link rel="top" title="Italian eIDAS Wallet Technical Specifications version: latest documentation" href="index.html">
+  <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
   <link rel="next" title="PID/(Q)EAA Issuance" href="pid-eaa-issuance.html">
   <link rel="prev" title="The Trust Infrastructure" href="trust.html">
 
@@ -101,7 +101,7 @@
       <div class="col-md-6">
         <i class="docs-icon-document docs__document-info__icon"></i>
         <a href="index.html" class="text-white font-weight-normal">
-          Italian eIDAS Wallet Technical Specifications version: latest documentation
+          The Italian EUDI Wallet implementation profile version: latest documentation
         </a>
       </div>
       <div class="docs__document-info__ownership col-md-5 offset-md-1 mt-3 mt-md-0">
@@ -609,7 +609,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -669,7 +669,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -688,7 +688,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -734,8 +734,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
       
@@ -751,7 +754,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -855,7 +859,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-considerations">Privacy Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
@@ -915,7 +919,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-wallet-provider">Payload <cite>wallet_provider</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
 </ul>
@@ -934,7 +938,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-a-wallet-instance-attestation">Obtain a Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -980,8 +984,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 </ul>
 
         
@@ -993,7 +1000,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1018,8 +1026,8 @@
           
   <section id="pid-q-eaa-data-model">
 <span id="pid-eaa-data-model-rst"></span><h1>PID/(Q)EAA Data Model<a class="headerlink" href="#pid-q-eaa-data-model" title="Permalink to this heading">¶</a></h1>
-<p>The Person Identification Data (PID) is issued by the PID Provider following national laws and allows a natural person to be authenitcated and identified.</p>
-<p>The User attributes carried in the Italian PID are:</p>
+<p>The Person Identification Data (PID) is issued by the PID Provider following national laws and allows a natural person to be authenitcated and identified.
+The User attributes carried within the Italian PID are the ones listed below:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Current Family Name</p></li>
@@ -1033,7 +1041,7 @@
 <p>The italian PID is extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.</p>
 <p>The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format.</p>
 <p>The (Q)EAAs are extended according to the <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html">OpenID Identity Assurance Profile [OIDC.IDA]</a>, that allows the recipients to know the Authentic Sources where the data comes from.</p>
-<p>The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to an RP is described in the following sections.</p>
+<p>The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections.</p>
 <section id="id2">
 <h2>SD-JWT<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
 <p>The PID/(Q)EAA is issued in the form of a digital credential. The digital credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">Selective Disclosure JWT format</a> as specified in <a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-oauth-sd-jwt-vc.html">[draft-terbu-sd-jwt-vc-latest]</a>.</p>
@@ -1106,7 +1114,7 @@
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.1]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>Thumbprint of the JWK in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter</p></td>
+<td><p>Thumbprint of the JWK in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.2]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
@@ -1122,11 +1130,11 @@
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.4]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>status</strong></p></td>
-<td><p>HTTPS URL where the credential validity status is available</p></td>
+<td><p>HTTPS URL where the credential validity status is available.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#section-4.2.2.2">[SD-JWT-VC. Section 4.2.2.2]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>cnf</strong></p></td>
-<td><p>JSON object containing the proof-of-possession key materials. By including a <strong>cnf</strong> (confirmation) claim in a JWT, the issuer of the JWT declares that the presenter is in control of the private key related to the public one defined in the <strong>cnf</strong> parameter. The recipient MUST cryptographically verify that the presenter is in control of that key.</p></td>
+<td><p>JSON object containing the proof-of-possession key materials. By including a <strong>cnf</strong> (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the <strong>cnf</strong> parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7800">[RFC7800, Section 3.1]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>type</strong></p></td>
@@ -1149,7 +1157,7 @@
 </section>
 <section id="pid-q-eaa-verification-field">
 <h3>PID/(Q)EAA Verification field<a class="headerlink" href="#pid-q-eaa-verification-field" title="Permalink to this heading">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">verification</span></code> claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User claims.  Some of these additional claims MAY be selectively disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable (SD) or not (NSD).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">verification</span></code> claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User attributes (claims).  Some of these additional claims MAY be selectively disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable (SD) or not (NSD).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">verification</span></code> claim is a JSON structure with all the following mandatory sub-claims.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1237,15 +1245,15 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>given_name</strong></p></td>
-<td><p>[SD]. Current First Name</p></td>
+<td><p>[SD]. Current First Name.</p></td>
 <td><p><a class="reference external" href="http://openid.net/specs/openid-connect-core-1_0.html">[OpenID Connect Core 1.0, Section 5.1]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>family_name</strong></p></td>
-<td><p>[SD]. Current Family Name</p></td>
+<td><p>[SD]. Current Family Name.</p></td>
 <td><p><a class="reference external" href="http://openid.net/specs/openid-connect-core-1_0.html">[OpenID Connect Core 1.0, Section 5.1]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>birthdate</strong></p></td>
-<td><p>[SD]. Date of Birth</p></td>
+<td><p>[SD]. Date of Birth.</p></td>
 <td><p><a class="reference external" href="http://openid.net/specs/openid-connect-core-1_0.html">[OpenID Connect Core 1.0, Section 5.1]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>place_of_birth</strong></p></td>

@@ -38,8 +38,8 @@ Therein a table with the summary of the Federation Entity roles mapped on the co
 |  EUDI Role                              | Federation Role| Notes                             |
 +=========================================+================+===================================+
 |  Public Key Infrastructure (PKI)        | Trust Anchor   | The Federation has PKI            |
-|                                         | Intermediates  | capabilities and the              |
-|                                         |                | Entity that configures            |
+|                                         |                | capabilities and the              |
+|                                         | Intermediates  | Entity that configures            |
 |                                         |                | the entire infrastructure         |
 |                                         |                | is the Trust Anchor.              |
 |                                         |                |                                   |
@@ -59,15 +59,14 @@ Therein a table with the summary of the Federation Entity roles mapped on the co
 |  Trust Service Provider (TSP)           | Leaf           |                                   |
 +-----------------------------------------+----------------+-----------------------------------+
 |  Trusted List                           | Trust Anchor   | The listing endpoint, the         |
-|                                         | Intermediates  | trust mark status endpoint        |
-|                                         |                | and the fetch endpoint must       |
+|                                         |                | trust mark status endpoint        |
+|                                         | Intermediates  | and the fetch endpoint must       |
 |                                         |                | be exposed by both Trust Anchors  |
 |                                         |                | and their Intermediates, making   |
 |                                         |                | the Trusted List distributed      |
 |                                         |                | over multiple Federation Entities,|
 |                                         |                | where each of these is responsible|
 |                                         |                | for their accredited subordinates.|
-|                                         |                |                                   |
 +-----------------------------------------+----------------+-----------------------------------+
 |  EUDI Wallet Provider                   | Leaf           |                                   |
 +-----------------------------------------+----------------+-----------------------------------+
@@ -83,7 +82,7 @@ OpenID Federation facilitates the building of an infrastructure that is:
 - **Guarantor of the non-repudiation of long-lived attestations**, historical keys endpoints and historical Trust Chains are saved for years according to data retention policies. This enables the certification of the validity of historical compliance, even in cases of revocation, expiration, or rotation of the keys used for signature verification;
 - **Dynamic and flexible**, any participants have the freedom to modify parts of their metadata autonomously, as these are published within their domains and verified through the Trust Chain. Simultaneously, the Trust Anchor or its Intermediate may publish a metadata policy to dynamically modify the metadata of all participants — such as disabling a vulnerable signature algorithm — and obtain certainty of propagation within a configured period of time within the federation;
 - **Developer friendly**, JWT and JSON formats have been adopted on the web for years. They are cost-effective in terms of storage and processing and have a wide range of solutions available, such as libraries and software development kits, which enable rapid implementation of the solution;
-- **Scalable**, the Trust Model can accommodate more than a single organization by using Intermediates.
+- **Scalable**, the Trust Model can accommodate more than a single organization by using Intermediates and multiple Trust Anchors where needed.
 
 Trust Model Requirements
 ------------------------
@@ -98,14 +97,12 @@ In the table below there’s the map of the components that the ARF defines with
 |  Issuers registration                              | |check-icon| | Trust Anchor   |
 |                                                    |              |                |
 |                                                    |              | Intermediate   |
-|                                                    |              | OnBoarding     |
+|                                                    |              | accreditation  |
 |                                                    |              | systems        |
 |                                                    |              |                |
 +----------------------------------------------------+--------------+----------------+
 |  Recognised data models and schemas                | |check-icon| | Entity         |
 |                                                    |              | Configuration  |
-|                                                    |              |                |
-|                                                    |              |                |
 |                                                    |              |                |
 |                                                    |              | Entity         |
 |                                                    |              | Statements     |
@@ -113,16 +110,12 @@ In the table below there’s the map of the components that the ARF defines with
 |  Relying Parties’ registration and authentication  | |check-icon| | static         |
 |                                                    |              | Trust Chains   |
 |                                                    |              |                |
-|                                                    |              |                |
-|                                                    |              |                |
 |                                                    |              | Federation     |
 |                                                    |              | Entity         |
 |                                                    |              | Discovery      |
 +----------------------------------------------------+--------------+----------------+
 |  Trust mechanisms in a cross-domain scenario       | |check-icon| | static         |
 |                                                    |              | Trust Chains   |
-|                                                    |              |                |
-|                                                    |              |                |
 |                                                    |              |                |
 |                                                    |              | Federation     |
 |                                                    |              | Entity         |
@@ -150,14 +143,15 @@ All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 |                           |                                              |party (Superior Entity). It’s   |                 |
 |                           |                                              |called Entity Configuration.    |  Relying Party  |
 |                           |                                              |                                |                 |
-|                           |                                              |                                |                 |
+|                           |                                              |                                |  Credential     |
+|                           |                                              |                                |  Issuer         |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
 | subordinate list endpoint | **GET** /list                                |Lists the Subordinates.         |  Trust Anchor   |
 |                           |                                              |                                |                 |
 |                           |                                              |                                |  Intermediate   |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
 | fetch endpoint            | **GET** /fetch?sub=https://rp.example.org    |                                |  Trust Anchor   |
-|                           |                                              |Returns a document (JWS)        |                 |
+|                           |                                              |Returns a signed document (JWS) |                 |
 |                           |                                              |about a specific subject, its   |  Intermediate   |
 |                           |                                              |Subordinate. It’s called Entity |                 |
 |                           |                                              |Statement.                      |                 |
@@ -169,13 +163,13 @@ All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 |                           |                                              |subject.                        |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
 | historical keys           | **GET**                                      |                                |  Trust Anchor   |
-|                           |                                              |Lists its expired and revoked   |                 |
+|                           |                                              |Lists the expired and revoked   |                 |
 |                           |                                              |keys, with the motivation of the|  Intermediate   |
 |                           | .well-known/openid-federation-historical-jwks|revocation.                     |                 |
 |                           |                                              |                                |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
 
-All the responses of the Federation endpoints are in the form of a JWS, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default, however these may be signed if required.
+All the responses of the Federation endpoints are in the form of a JWS, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default, however these MAY be signed if required.
 
 
 Configuration of the Federation
@@ -184,7 +178,7 @@ Configuration of the Federation
 The configuration of the Federation is published by the Trust Anchor within its Entity Configuration, available at the well-known web path corresponding to **.well-known/openid-federation**.
 
 All entities MUST obtain the Federation configuration before entering the operational phase, and they
-MUST keep it up-to-date. The Federation configuration contains the Trust Anchor
+MUST keep it up-to-date. The Federation configuration is the Trust Anchor's Entity Configuration, it contains the 
 public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (**max_path_length**).
 
 Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OpenID Connect Federation <OIDC-FED>`_ specifications, Section 3.1 for the Federation statements and Section 4 for the Metadata identifiers:
@@ -289,15 +283,15 @@ The Entity Configurations of all the participants have in common the parameters 
    * - **exp**
      - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated at :rfc:`7519`.
    * - **jwks**
-     - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid) and MAY have a `x5c` parameter, as defined in :rfc:`7517`.
+     - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid) and MAY have a `x5c` parameter, as defined in :rfc:`7517`. It contains the Federation Entity Keys required for trust evaluation.
    * - **metadata**
      - JSON Object. Each key of the JSON Object represents a metadata type identifier
        containing JSON Object representing the Metadata, according to the Metadata 
-       schema of that type. An Entity Configuration MAY contain more Metadata statements, but only   one for each type of
+       schema of that type. An Entity Configuration MAY contain more Metadata statements, but only one for each type of
        Metadata (<**entity_type**>). the metadata types are defined in the section `Metadata Types <Metadata Types>`_.
 
 .. note::
-  Inside the Entity Configuration the claims **iss** e **sub** contain the same value (HTTPs URL).
+  Inside the Entity Configuration the claims **iss** e **sub** MUST contain the same value (HTTPs URL).
 
 Entity Configuration Trust Anchor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -465,7 +459,7 @@ Below there is a non-normative example of an Entity Statement issued by an Accre
 Entity Statement
 ^^^^^^^^^^^^^^^^^^
 
-The Entity Statement issued by Trust Anchors and Intermediates contain the following attributes:
+The Entity Statement issued by Trust Anchors and Intermediates contains the following attributes:
 
 
 .. list-table::
@@ -515,9 +509,9 @@ Each Entity Statement is verifiable over time and has an expiration date. The re
 .. note::
     The revocation of an Entity is made with the unavailability of the Entity Statement related to it. If the Trust Anchor or its Intermediates doesn't publish a valid Entity Statement, or if they publish an expired/invalid Entity Statement, the subject of the Entity Statement MUST be intended as not valid or revoked.
 
-The concatenation of the statements, through the combination of these signing mechanisms and the binding of claims and public keys, creates the Trust Chain.
+The concatenation of the statements, through the combination of these signing mechanisms and the binding of claims and public keys, forms the Trust Chain.
 
-The Trust Chains can also be verified offline, using only the Trust Anchor's public keys.
+The Trust Chains can also be verified offline, using  one of the Trust Anchor's public keys.
 
 .. note::
     Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it **requires the presentation of the Wallet Instance Attestation during the credential issuance and presentation phases**.
@@ -567,14 +561,15 @@ Below is a non-normative example of a Trust Chain in its original format (JSON A
 .. code-block:: python
 
     [
-     "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVEUkNOSGhWYXpWd01VRlpjMVU0UlRremMxSjRNMGRVYUU4MWVVWk5VMVUyWkdSM1lqRmZTV2h1UVEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk1OTA2MDIsImlhdCI6MTY0OTQxNzg2MiwiaXNzIjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vcnAuZXhhbXBsZS5vcmciLCJqd2tzIjp7ImtleXMiOlt7Imt0eSI6IkVDIiwia2lkIjoiZURSQ05IaFZhelZ3TVVGWmMxVTRSVGt6YzFKNE0wZFVhRTgxZVVaTlUxVTJaR1IzWWpGZlNXaHVRUSIsImNydiI6IlAtMjU2IiwieCI6Ik1wVlVHeUhlOGhQVHh5dklZRFd2NnJpZHN5aDFDUFB2TG94ZU0wUWhaN3ciLCJ5IjoidF95ZlBRd1Z1am5oS25fNVZnT05WcW93UzJvZGZwVWxfWnNvV1UzTDRHTSJ9XX0sIm1ldGFkYXRhIjp7Im9wZW5pZF9yZWx5aW5nX3BhcnR5Ijp7ImFwcGxpY2F0aW9uX3R5cGUiOiJ3ZWIiLCJjbGllbnRfaWQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnLyIsImNsaWVudF9yZWdpc3RyYXRpb25fdHlwZXMiOlsiYXV0b21hdGljIl0sImp3a3MiOnsia2V5cyI6W3sia3R5IjoiRUMiLCJraWQiOiJlRFJDTkhoVmF6VndNVUZaYzFVNFJUa3pjMUo0TTBkVWFFODFlVVpOVTFVMlpHUjNZakZmU1dodVFRIiwiY3J2IjoiUC0yNTYiLCJ4IjoiTXBWVUd5SGU4aFBUeHl2SVlEV3Y2cmlkc3loMUNQUHZMb3hlTTBRaFo3dyIsInkiOiJ0X3lmUFF3VnVqbmhLbl81VmdPTlZxb3dTMm9kZnBVbF9ac29XVTNMNEdNIn1dfSwiY2xpZW50X25hbWUiOiJOYW1lIG9mIGFuIGV4YW1wbGUgb3JnYW5pemF0aW9uIiwiY29udGFjdHMiOlsib3BzQHJwLmV4YW1wbGUuaXQiXSwiZ3JhbnRfdHlwZXMiOlsicmVmcmVzaF90b2tlbiIsImF1dGhvcml6YXRpb25fY29kZSJdLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vcnAuZXhhbXBsZS5vcmcvb2lkYy9ycC9jYWxsYmFjay8iXSwicmVzcG9uc2VfdHlwZXMiOlsiY29kZSJdLCJzY29wZXMiOiJldS5ldXJvcGEuZWMuZXVkaXcucGlkLjEgZXUuZXVyb3BhLmVjLmV1ZGl3LnBpZC5pdC4xIGVtYWlsIiwic3ViamVjdF90eXBlIjoicGFpcndpc2UifSwiZmVkZXJhdGlvbl9lbnRpdHkiOnsiZmVkZXJhdGlvbl9yZXNvbHZlX2VuZHBvaW50IjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZy9yZXNvbHZlLyIsIm9yZ2FuaXphdGlvbl9uYW1lIjoiRXhhbXBsZSBSUCIsImhvbWVwYWdlX3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdCIsInBvbGljeV91cmkiOiJodHRwczovL3JwLmV4YW1wbGUuaXQvcG9saWN5IiwibG9nb191cmkiOiJodHRwczovL3JwLmV4YW1wbGUuaXQvc3RhdGljL2xvZ28uc3ZnIiwiY29udGFjdHMiOlsidGVjaEBleGFtcGxlLml0Il19fSwidHJ1c3RfbWFya3MiOlt7ImlkIjoiaHR0cHM6Ly9yZWdpc3RyeS5laWRhcy50cnVzdC1hbmNob3IuZXhhbXBsZS5ldS9vcGVuaWRfcmVseWluZ19wYXJ0eS9wdWJsaWMvIiwidHJ1c3RfbWFyayI6ImV5SmggXHUyMDI2In1dLCJhdXRob3JpdHlfaGludHMiOlsiaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZWlkYXMuZXhhbXBsZS5vcmciXX0.dIRBRyfEsmi_6oGrJAHaYUPCtXSvBZBMdokVZtjyYgzMKEP6eSLixa8nUU9BWBWP_ELNgdKbPquSbWIGx66D5w",
-     "eyJhbGciOiJFUzI1NiIsImtpZCI6IlFWUnVXSE5FWTJzMFdHNW5hSHB3VjJKVGRtd3hiRUpVY2pCdk9FeHNWMFExT0dnMFZWQnhhbTUyT0EiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZWlkYXMuZXhhbXBsZS5vcmciLCJzdWIiOiJodHRwczovL3JwLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6ImVEUkNOSGhWYXpWd01VRlpjMVU0UlRremMxSjRNMGRVYUU4MWVVWk5VMVUyWkdSM1lqRmZTV2h1UVEiLCJjcnYiOiJQLTI1NiIsIngiOiJNcFZVR3lIZThoUFR4eXZJWURXdjZyaWRzeWgxQ1BQdkxveGVNMFFoWjd3IiwieSI6InRfeWZQUXdWdWpuaEtuXzVWZ09OVnFvd1Myb2RmcFVsX1pzb1dVM0w0R00ifV19LCJtZXRhZGF0YV9wb2xpY3kiOnsib3BlbmlkX3JlbHlpbmdfcGFydHkiOnsic2NvcGVzIjp7InN1YnNldF9vZiI6WyJldS5ldXJvcGEuZWMuZXVkaXcucGlkLjEsICBldS5ldXJvcGEuZWMuZXVkaXcucGlkLml0LjEiXX0sInJlcXVlc3RfYXV0aGVudGljYXRpb25fbWV0aG9kc19zdXBwb3J0ZWQiOnsib25lX29mIjpbInJlcXVlc3Rfb2JqZWN0Il19LCJyZXF1ZXN0X2F1dGhlbnRpY2F0aW9uX3NpZ25pbmdfYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOnsic3Vic2V0X29mIjpbIlJTMjU2IiwiUlM1MTIiLCJFUzI1NiIsIkVTNTEyIiwiUFMyNTYiLCJQUzUxMiJdfX19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmV1L29wZW5pZF9yZWx5aW5nX3BhcnR5L3B1YmxpYy8iLCJ0cnVzdF9tYXJrIjoiZXlKaGIgXHUyMDI2In1dfQ.rIgdHa7CoaP3SO3ZNsjDWt7-8Tea41An3YBw-qaWFNdQMUzcTqRwcD4vtX6TZEEoRO3KEu8bJeaKlikHRHzoBg",
-     "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVVRldSakJKYlhVeU5TMHRhV1JrYlhCMWVURlBjazV6UzBGRVFTMWFNVFpEYTNOWk1WUktURTR5Y3ciLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly90cnVzdC1hbmNob3IuZXhhbXBsZS5ldSIsInN1YiI6Imh0dHBzOi8vaW50ZXJtZWRpYXRlLmVpZGFzLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6IlFWUnVXSE5FWTJzMFdHNW5hSHB3VjJKVGRtd3hiRUpVY2pCdk9FeHNWMFExT0dnMFZWQnhhbTUyT0EiLCJjcnYiOiJQLTI1NiIsIngiOiJCR1VOOXN6ZG0xT1RxVWhUQ3JkcWRmQjhtTUJqb2JCYk5Nd2JxZnd4c3pZIiwieSI6IkdnMUhCNGVJRWJhQjA4NEJiUW5QX0lseFJZYTNhVVRHSTF0aW5qTmVSdmMifV19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmV1L2ZlZGVyYXRpb25fZW50aXR5L3RoYXQtcHJvZmlsZSIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19.KR2oBDMfqLGCZ2ZqN0FgOP7cWsW4ClxBaj4-j_c3HC-YEecK6SLlNk00bGqoEe2NCMy2lqk9dYQO1IauB_ZG7A"
+      "eyJhbGciOiJFUzI1NiIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk1OTA2MDIsImlhdCI6MTY0OTQxNzg2MiwiaXNzIjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vcnAuZXhhbXBsZS5vcmciLCJqd2tzIjp7ImtleXMiOlt7Imt0eSI6IkVDIiwia2lkIjoiTkZNMVdVVmlVbFl6VVdwTGFtbGZjRXBQUlZZMlZYWklSakJuUVhabVJIaEtZVVZZVWxkVFFuQTJOQSIsImNydiI6IlAtMjU2IiwieCI6InVzbEMzd2QtcFgzd3o0YlJZbnd5M2x6cGJHWkZoTjk2aEwyQUhBM01RNlkiLCJ5IjoiVkxDQlhGV2xkTlNOSXo4a0gyOXZMUjROMThCa3dHT1gyNnpRb3J1UTFNNCJ9XX0sIm1ldGFkYXRhIjp7Im9wZW5pZF9yZWx5aW5nX3BhcnR5Ijp7ImFwcGxpY2F0aW9uX3R5cGUiOiJ3ZWIiLCJjbGllbnRfaWQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnLyIsImNsaWVudF9yZWdpc3RyYXRpb25fdHlwZXMiOlsiYXV0b21hdGljIl0sImp3a3MiOnsia2V5cyI6W3sia3R5IjoiRUMiLCJraWQiOiJORk0xV1VWaVVsWXpVV3BMYW1sZmNFcFBSVlkyVlhaSVJqQm5RWFptUkhoS1lVVllVbGRUUW5BMk5BIiwiY3J2IjoiUC0yNTYiLCJ4IjoidXNsQzN3ZC1wWDN3ejRiUllud3kzbHpwYkdaRmhOOTZoTDJBSEEzTVE2WSIsInkiOiJWTENCWEZXbGROU05JejhrSDI5dkxSNE4xOEJrd0dPWDI2elFvcnVRMU00In1dfSwiY2xpZW50X25hbWUiOiJOYW1lIG9mIGFuIGV4YW1wbGUgb3JnYW5pemF0aW9uIiwiY29udGFjdHMiOlsib3BzQHJwLmV4YW1wbGUuaXQiXSwiZ3JhbnRfdHlwZXMiOlsicmVmcmVzaF90b2tlbiIsImF1dGhvcml6YXRpb25fY29kZSJdLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vcnAuZXhhbXBsZS5vcmcvb2lkYy9ycC9jYWxsYmFjay8iXSwicmVzcG9uc2VfdHlwZXMiOlsiY29kZSJdLCJzY29wZSI6ImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSBldS5ldXJvcGEuZWMuZXVkaXcucGlkLml0LjEgZW1haWwiLCJzdWJqZWN0X3R5cGUiOiJwYWlyd2lzZSJ9LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJmZWRlcmF0aW9uX3Jlc29sdmVfZW5kcG9pbnQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnL3Jlc29sdmUvIiwib3JnYW5pemF0aW9uX25hbWUiOiJFeGFtcGxlIFJQIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly9ycC5leGFtcGxlLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9zdGF0aWMvbG9nby5zdmciLCJjb250YWN0cyI6WyJ0ZWNoQGV4YW1wbGUuaXQiXX19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3JlZ2lzdHJ5LmVpZGFzLnRydXN0LWFuY2hvci5leGFtcGxlLmV1L29wZW5pZF9yZWx5aW5nX3BhcnR5L3B1YmxpYy8iLCJ0cnVzdF9tYXJrIjoiZXlKaCBcdTIwMjYifV0sImF1dGhvcml0eV9oaW50cyI6WyJodHRwczovL2ludGVybWVkaWF0ZS5laWRhcy5leGFtcGxlLm9yZyJdfQ.Un315HdckvhYA-iRregZAmL7pnfjQH2APz82blQO5S0sl1JR0TEFp5E1T913g8GnuwgGtMQUqHPZwV6BvTLA8g",
+      "eyJhbGciOiJFUzI1NiIsImtpZCI6IlNURkRXV2hKY0dWWFgzQjNSVmRaYWtsQ0xUTnVNa000WTNGNlFUTk9kRXRyZFhGWVlYWjJjWGN0UVEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZWlkYXMuZXhhbXBsZS5vcmciLCJzdWIiOiJodHRwczovL3JwLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJjcnYiOiJQLTI1NiIsIngiOiJ1c2xDM3dkLXBYM3d6NGJSWW53eTNsenBiR1pGaE45NmhMMkFIQTNNUTZZIiwieSI6IlZMQ0JYRldsZE5TTkl6OGtIMjl2TFI0TjE4Qmt3R09YMjZ6UW9ydVExTTQifV19LCJtZXRhZGF0YV9wb2xpY3kiOnsib3BlbmlkX3JlbHlpbmdfcGFydHkiOnsic2NvcGUiOnsic3Vic2V0X29mIjpbImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSwgIGV1LmV1cm9wYS5lYy5ldWRpdy5waWQuaXQuMSJdfSwicmVxdWVzdF9hdXRoZW50aWNhdGlvbl9tZXRob2RzX3N1cHBvcnRlZCI6eyJvbmVfb2YiOlsicmVxdWVzdF9vYmplY3QiXX0sInJlcXVlc3RfYXV0aGVudGljYXRpb25fc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6eyJzdWJzZXRfb2YiOlsiUlMyNTYiLCJSUzUxMiIsIkVTMjU2IiwiRVM1MTIiLCJQUzI1NiIsIlBTNTEyIl19fX0sInRydXN0X21hcmtzIjpbeyJpZCI6Imh0dHBzOi8vdHJ1c3QtYW5jaG9yLmV4YW1wbGUuZXUvb3BlbmlkX3JlbHlpbmdfcGFydHkvcHVibGljLyIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19._qt5-T6DahP3TuWa_27klE8I9Z_sPK2FtQlKY6pGMPchbSI2aHXY3aAXDUrObPo4CHtqgg3J2XcrghDFUCFGEQ",
+      "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVXa3pUbWt0WW5kblZHMWxhMjU1ZDJkQ2RVZERSazQwUWt0WVlVMWFhRFZYT1RobFpHdFdXSGQ1WnciLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly90cnVzdC1hbmNob3IuZXhhbXBsZS5ldSIsInN1YiI6Imh0dHBzOi8vaW50ZXJtZWRpYXRlLmVpZGFzLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6IlNURkRXV2hKY0dWWFgzQjNSVmRaYWtsQ0xUTnVNa000WTNGNlFUTk9kRXRyZFhGWVlYWjJjWGN0UVEiLCJjcnYiOiJQLTI1NiIsIngiOiJyQl9BOGdCUnh5NjhVTkxZRkZLR0ZMR2VmWU5XYmgtSzh1OS1GYlQyZkZJIiwieSI6IlNuWVk2Y3NjZnkxcjBISFhLTGJuVFZsamFndzhOZzNRUEs2WFVoc2UzdkUifV19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmV1L2ZlZGVyYXRpb25fZW50aXR5L3RoYXQtcHJvZmlsZSIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19.r3uoi-U0tx0gDFlnDdITbcwZNUpy7M2tnh08jlD-Ej9vMzWMCXOCCuwIn0ZT0jS4M_sHneiG6tLxRqj-htI70g"
     ]
+
 
 .. note::
 
-    The entire Trust Chain is verifiable by only possessing the Trust Anchor’s public key.
+    The entire Trust Chain is verifiable by only possessing the Trust Anchor’s public keys.
 
 
 Offline Trust Attestation Mechanisms
@@ -590,9 +585,10 @@ offline trust evaluation mechanisms.
 Offline EUDI Wallet Trust Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Given that a mobile device SHOULD not publish its metadata online at the *.well-known/openid-federation* endpoint, or in any other way, it is not mandatory for the Wallet Instance to publish its metadata if the User does not want this. As a result, the Wallet Instance does not need to publish its federation metadata online.
+Given that a mobile device SHOULD not publish its metadata online at the *.well-known/openid-federation* endpoint, or in any other way, it is not mandatory for the Wallet Instance to publish its metadata if the User does not want this. As a result, the Wallet Instance does not require to publish its federation metadata online.
 
 However, the Wallet Instance MUST obtain a Wallet Attestation Instance issued by its Wallet Provider, which should contain a Trust Chain related to its issuer (Wallet Provider).
+
 
 Offline Relying Party Metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -605,33 +601,34 @@ The Wallet Instance that verifies the request issued by the Relying Party MUST u
 
 Furthermore, the Wallet Instance applies the metadata policy, if available, to filter out any User attributes not attested in the Relying Party metadata, as derived from the Trust Chain made available in the Relying Party's signed request.
 
+
 Non-repudiability of the Long Lived Attestations
 --------------------------------------------------
 
-The Trust Anchor and its Intermediate MUST expose the Historical keys endpoint, where are published all the public keys that are no longer used, whether expired or revoked.
+The Trust Anchor and its Intermediate MUST expose the Federation Historical Keys endpoint, where are published all the public part of the Federation Entity Keys that are no longer used, whether expired or revoked.
 
 The details of this endpoint are defined in the `OIDC-FED`_ Section 7.6.
 
 Each JWS containing a Trust Chain in the form of a JWS header parameter can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.
 
-Even if the Trust Anchor has changed its cryptographic keys for digital signature, the historical keys endpoint always makes the keys no longer used available for historical signature verifications.
+Even if the Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.
 
 
-Privacy Considerations
-----------------------
+Privacy Remarks
+---------------
 
-- Wallet Instances do not publish their metadata through an online service.
-- The trust infrastructure is public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.
+- Wallet Instances MUST NOT publish their metadata through an online service.
+- The trust infrastructure MUST be public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.
 - When a Wallet Instance requests the Entity Statements to build the Trust Chain for a specific Relying Party or validates a Trust Mark online, issued for a specific Relying Party, the Trust Anchor or its Intermediate do not know that a particular Wallet Instance is inquiring about a specific Relying Party; instead, they only serve the statements related to that Relying Party as a public resource.
-- The Wallet instance metadata must not contain information that may disclose technical information about the hardware used.
+- The Wallet Instance metadata MUST not contain information that may disclose technical information about the hardware used.
 - Leaf entity, Intermediate, and Trust Anchor metadata may include the necessary amount of data as part of administrative, technical, and security contact information. It is generally not recommended to use personal contact details in such cases. From a legal perspective, the publication of such information is needed for operational support concerning technical and security matters and is in line with GDPR.
 
 Considerations about Decentralization
 -------------------------------------
 
-- There should be more than one Trust Anchor.
-- In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may represent itself as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: Italian RP with an Italian Wallet Instance may consider the Italian Accreditation Body as Trust Anchor).
+- There may be more than a single Trust Anchor.
+- In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may represent itself as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: an Italian Relying Party with an Italian Wallet Instance may consider the Italian Intermediate as a Trust Anchor for the scopes of their interactions).
 - Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests).
-- Since the credential presentation must be signed, saving the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance has a snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. This information must be stored on the Wallet Device and backed up in a remote and secure cloud storage, with the explicit permission of its User.
+- Since the credential presentation must be signed, saving the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. This information must be stored on the Wallet Device and may be backed up in a remote and secure cloud storage, with the explicit permission of its User.
 - Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.
 - Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The Metadata Policy of a Trust Chain must be applied to overload any information related to protocol metadata and allowed grants of the participants.
