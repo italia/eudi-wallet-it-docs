@@ -279,7 +279,7 @@ The ``client_assertion`` is signed using the private key that is created during 
 
 .. note::
 
-    **PID Credential Schema and Status registration:** The PID/(Q)EAA Provider MUST register all the issued credentials for their later revocation, if needed. 
+    **PID/(Q)EAA Credential Schema and Status registration:** The PID/(Q)EAA Provider MUST register all the issued credentials for their later revocation, if needed. 
 
 .. code-block:: http
 
