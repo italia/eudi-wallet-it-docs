@@ -124,7 +124,7 @@ Below a non-normative example of the PAR.
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WalletInstanceAttestation$ 
 
-The JWS header of request object is represented below:
+The JWS header of Request Object is represented below:
 
 .. code-block:: JSON
 
@@ -134,7 +134,7 @@ The JWS header of request object is represented below:
   }
 
 
-The JWS payload of the request object is represented below:
+The JWS payload of the Request Object is represented below:
 
 .. code-block:: JSON
 
@@ -388,7 +388,7 @@ The requests to the PID/(Q)EAA authorization endpoint MUST be HTTP with method P
       - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **request**
-      - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the request object.
+      - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the Request Object.
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
     * - **client_assertion_type**
       - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation``.
@@ -543,7 +543,7 @@ If the authentication is successful the PID/(Q)EAA Issuer redirects the User by 
       - Unique *Authorization Code* that the Wallet Instance submits to the Token Endpoint.
       - [:rfc:`6749#section-4.1.2`], `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
     * - **state**
-      - The Wallet Instance MUST check the correspondence with the ``state`` parameter value in the request object. It is defined as in the :ref:`Table of the JWT Request parameters <table_jwt_request>`.
+      - The Wallet Instance MUST check the correspondence with the ``state`` parameter value in the Request Object. It is defined as in the :ref:`Table of the JWT Request parameters <table_jwt_request>`.
       - [:rfc:`6749#section-4.1.2`].
     * - **iss**
       - Unique identifier of the PID/(Q)EAA Issuer who created the Authentication Response. The Wallet Instance MUST validate this parameter.
@@ -583,7 +583,7 @@ All the parameters listed below are REQUIRED:
       - Authorization code returned in the Authentication Response.
       - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_.
     * - **redirect_uri**
-      - It MUST be set as in the request object :ref:`Table of the JWT Request parameters <table_jwt_request>`.
+      - It MUST be set as in the Request Object :ref:`Table of the JWT Request parameters <table_jwt_request>`.
       - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_.
     * - **code_verifier**
       - Verification code of the **code_challenge**.
