@@ -779,7 +779,7 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - MUST be `openid4vci-proof+jwt`.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * - **jwk** 
-    - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [RFC7517] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [RFC7515]. The ``jwk`` value MUST be equal to the same public key that is generated for the DPoP. 
+    - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`]. The ``jwk`` value MUST be equal to the same public key that is generated for the DPoP. 
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
 
 .. list-table:: 
