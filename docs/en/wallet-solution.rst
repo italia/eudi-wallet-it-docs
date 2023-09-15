@@ -9,84 +9,87 @@ The Wallet Solution is a comprehensive product offered by the Wallet Provider to
 
 The Wallet Solution is issued by the Wallet Provider in the form of a mobile app, it also consists of services and web interfaces for the exchange of data between the Wallet Provider and its Wallet Instances for the requirements of the trust model and in total respect of the user's privacy, in accordance with national and EU legislation.
 
-The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID¹), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short¹. Once a User installs the mobile app on their device, we refer to such an installation as a Wallet Instance for the User.
+The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID¹), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short¹. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.
 
-Supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the Wallet Solution. The Wallet Provider is responsible for issuing the Wallet Instance Attestation — a cryptographic proof that verifies the authenticity and integrity of the Wallet Instance.
+By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, since it is responsible for issuing the Wallet Instance Attestation, that is a cryptographic proof that allow the evaluation of the authenticity and the integrity of the Wallet Instance.
 
 
 Requirements
 ^^^^^^^^^^^^^^^^^^^^
 
- - **Trustworthiness within the Wallet ecosystem**: the Wallet Instance must establish trust and reliability within the Wallet ecosystem.
- - **Compliance with Provider specifications for obtaining PID and (Q)EAA**: the Wallet Instance must adhere to the specifications set by Providers for obtaining Personal Identification (PID) and Qualified or non-qualified Electronic Address Authentication (Q)EAA.
- - **Support for Android and iOS operating systems**: the Wallet Instance must be compatible and functional at least on both Android and iOS operating systems, as well as available on the Play Store and App Store respectively.
- - **Verification of device ownership by the User**: the Wallet Instance must provide a mechanism to verify the User's actual possession of the device and its control.
+ - **Trustworthiness within the Wallet ecosystem**: the Wallet Instance MUST establish trust and reliability within the Wallet ecosystem.
+ - **Compliance with Provider specifications for obtaining PID and (Q)EAA**: the Wallet Instance MUST adhere to the specifications set by Providers for obtaining Personal Identification (PID) and (Q)EAAs.
+ - **Support for Android and iOS operating systems**: the Wallet Instance MUST be compatible and functional at least on both Android and iOS operating systems, as well as available on the Play Store and App Store respectively.
+ - **Verification of device ownership by the User**: the Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
 
 Wallet Instance
 ^^^^^^^^^^^^^^^^^^^^
-The Wallet Instance serves as a unique and secure representation of the User within the Wallet ecosystem. It establishes a strong and reliable identity for the User, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.
+The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem. It establishes a strong and reliable identity for the User, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.
 
-The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These attestations, provided by the underlying Wallet Provider operated by the Wallet Provider, reference a pair of asymmetric cryptographic keys exclusively owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its legitimacy when engaging with other ecosystem actors.
+The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, reference the public part of the asymmetric cryptographic key owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.
 
-To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)³. This ensures that only the User can access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Instance Attestation section`_ and the `Trust Model section`_ of this document.
+To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)³. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Instance Attestation section`_ and the `Trust Model section`_ of this document.
 
 Wallet Instance Lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Wallet Instance can exist in three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed².
+The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed².
 
 Initialization Process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To activate the Wallet Instance, Users must install the mobile application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.
+To activate the Wallet Instance, the Users MUST install the mobile wallet application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.
 
-After completing these steps, the Wallet Instance is in the Operational state.
+After completing these steps, the Wallet Instance sets the Operational state.
 
 Transition to Valid state
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To transition from the Operational state to the Valid state, the Wallet Instance must obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes active, enabling secure transaction execution.
+To transition from the Operational state to the Valid state, the Wallet Instance MUST obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes Valid.
 
-In order to securely and unambiguously identify Users, the Wallet Instance adopts a Level of Assurance (LoA) 3 authentication, which guarantees a high level of confidence in the User's identity. The authentication method is chosen by the PID provider from among the notified eID solutions at the national level.
+In order to securely and unambiguously identify Users, the Wallet Instance adopts a Level of Assurance (LoA) 3 authentication, which guarantees a high level of confidence in the User's identity. The authentication method is chosen by the PID Provider from among the notified eID solutions at the national level.
 
 Once the Wallet Instance is in the Operational state, Users can:
 
- - Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers¹
- - Authenticate to Relying Parties¹
- - Authorize the sharing of their data with Relying Parties
+ - Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers¹;
+ - Authenticate to Relying Parties¹;
+ - Authorize the presentation of their digital credentials with Relying Parties.
 
-Please refer to the relative sections for further information about PID and (Q)EAAs issuance and attestation presentation.
+Please refer to the relative sections for further information about PID and (Q)EAAs issuance and presentation.
 
 Return to Operational state
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A Valid Wallet Instance may revert to the Operational state under specific circumstances. These circumstances include the expiration or revocation of the associated PID by the relevant PID Provider.
+A Valid Wallet Instance may revert to the Operational state under specific circumstances. These circumstances include the expiration or the revocation of the associated PID by its PID Provider.
+
 
 Deactivation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Users have the ability to deactivate the Wallet Instance voluntarily. This action removes the operational capabilities of the Wallet Instance and sets it to the deactivated state. Deactivation provides Users with control over access and usage according to their preferences.
+Users have the ability to deactivate the Wallet Instance voluntarily. This action removes the operational capabilities of the Wallet Instance and sets it to the Deactivated state. Deactivation provides Users with control over access and usage according to their preferences.
 
 
 Wallet Provider Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Wallet Provider that issues the Wallet Instance Attestations must
-make available a series of APIs in REST format that follow the OpenID
-Federation standard.
+The Wallet Provider that issues the Wallet Instance Attestations MUST
+made available its APIs in the form of RESTful services, as listed below.
 
 Wallet Provider Metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A **GET /.well-known/openid-federation endpoint** for retrieving the Wallet
+An HTTP GET request to the **/.well-known/openid-federation** endpoint allows the retrieval of the Wallet
 Provider Entity Configuration.
 
 The Wallet Provider Entity Configuration is a JWS containing the public keys and supported algorithms of the Wallet Provider metadata definition. It is structured in accordance with the `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_ and the Trust Model section outlined in this specification.
+
+The returning Entity Configuration of the Wallet Provider MUST contain the 
+attributes listed below:
 
 Header
 ^^^^^^
 +---------+-----------------------------------------------------------------+
 | **Key** | **Value**                                                       |
 +---------+-----------------------------------------------------------------+
-| alg     | Algorithm employed to verify the token signature (e.g., ES256). |
+| alg     | Algorithm used to verify the token signature (e.g., ES256).     |
 +---------+-----------------------------------------------------------------+
 | kid     | Thumbprint of the public key used for signing.                  |
 +---------+-----------------------------------------------------------------+
-| typ     | Media type, here we use the entity-statement+jwt value.         |
+| typ     | Media type, set to ``entity-statement+jwt``.                    |
 +---------+-----------------------------------------------------------------+
 
 Payload
@@ -106,8 +109,8 @@ Payload
 | exp                               | Expiration datetime               |
 |                                   | in Unix Timestamp format.         |
 +-----------------------------------+-----------------------------------+
-| authority_hints                   | Array of URLs (String). It        |
-|                                   | contains a list of URLs of the    |
+| authority_hints                   | Array of URLs (String) containing |
+|                                   | the list of URLs of the           |
 |                                   | immediate superior Entities, such |
 |                                   | as the Trust Anchor or an         |
 |                                   | Intermediate, that MAY issue an   |
@@ -122,17 +125,15 @@ Payload
 |                                   | at issue. Each JWK in the JWK set |
 |                                   | MUST have a key ID (claim kid).   |
 +-----------------------------------+-----------------------------------+
-| metadata                          | For each entity, this attribute   |
-|                                   | houses its metadata. In this case,|
-|                                   | it contains the Wallet Provider's |
-|                                   | metadata within the               |
-|                                   | ``wallet_provider`` attribute     |
-|                                   | and the generic entity            |
-|                                   | ``federation_entity``.            |
+| metadata                          | Contains the                      |
+|                                   | metadata                          |
+|                                   | ``wallet_provider``               |
+|                                   | and the                           |
+|                                   | ``federation_entity`` metadata.   |
 +-----------------------------------+-----------------------------------+
 
-Payload `wallet_provider`
-~~~~~~~~~~~~~~~~~~~~~~~~~
+`wallet_provider` metadata
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +---------------------------------------------+---------------------------------------------------------------------+
 | **Key**                                     | **Value**                                                           |
@@ -145,30 +146,28 @@ Payload `wallet_provider`
 |                                             | Instance Attestation.                                               |
 +---------------------------------------------+---------------------------------------------------------------------+
 | attested_security_context_values_supported  | List of supported values for the                                    |
-|                                             | certified security context. These                                   |
+|                                             | certifiable security context. These                                 |
 |                                             | values specify the security level                                   |
-|                                             | of the app—low, medium, or high.                                    |
+|                                             | of the app, according to the levels: low, medium, or high.          |
 |                                             | An attested security context is                                     |
 |                                             | defined by the proof that the                                       |
-|                                             | Wallet Instance can send to the                                     |
-|                                             | Wallet Provider. Note: this                                         |
-|                                             | parameter is defined in this                                        |
-|                                             | specification                                                       |
+|                                             | Wallet Instance can provide to the                                  |
+|                                             | Wallet Provider.                                                    |
 +---------------------------------------------+---------------------------------------------------------------------+
 | grant_types_supported                       | The types of grants supported by                                    |
-|                                             | the endpoint token. It MUST be set to                               |
+|                                             | the token endpoint. It MUST be set to                               |
 |                                             | ``urn:ietf:params:oauth:client-assertion-type:                      |
-|                                             | jwt-client-attestation``                                            |
+|                                             | jwt-client-attestation``.                                           |
 +---------------------------------------------+---------------------------------------------------------------------+
-| token_endpoint_auth_methods_suppor          | Supported authentication method for                                 |
-| ted                                         | the endpoint token.                                                 |
+| token_endpoint_auth_methods_suppor          | Supported authentication methods for                                |
+| ted                                         | the token endpoint.                                                 |
 +---------------------------------------------+---------------------------------------------------------------------+
-| token_endpoint_auth_signing_alg_va          | List of supported signature                                         |
-| lues_supported                              | algorithms.                                                         |
+| token_endpoint_auth_signing_alg_va          | Supported signature                                                 |
+| lues_supported                              | algorithms for the token endpoint                                   |
 +---------------------------------------------+---------------------------------------------------------------------+
 
 .. note::
-   The `asc_values_supported` parameter is experimental and under review.
+   The `attested_security_context_values_supported` parameter is experimental and under review.
 
 Payload `federation_entity`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -261,7 +260,7 @@ Below a non-normative example of the Entity Configuration.
 Wallet Instance Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please refer to the `Wallet Instance Attestation section`_
+Please refer to the `Wallet Instance Attestation section`_.
 
 
 External references

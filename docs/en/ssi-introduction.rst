@@ -19,24 +19,23 @@ SSI is also significant in the field of data exchange and data governance. This 
 
 The main roles in an SSI ecosystem are are listed as follow:
 
- - Issuers: parties who can issue attributes or "credentials" about a person;
- - Verifiers: parties who request Holders' attributes because they want to know something about them;
- - Holders: individuals who own a Wallet and have control over the attributes they can acquire, store, and present to Verifiers;
- - Verifiable Data Registries: Authorities that publish certificates, attestations, metadata, and schemes needed for trust establishment between the parties.
+ - Issuers: parties who can issue digital credentials about a person;
+ - verifiers: parties who request Holders' digital credentials for authentication and authorization purposes;
+ - Holders: individuals who own a Wallet and have control over the digital credentials they can request, acquire, store, and present to verifiers;
+ - Verifiable Data Registries: Authorities that publish certificates, attestations, metadata, and schemes needed for allowing the trust establishment between the parties.
 
-**What it is useful for**
-
-In the SSI model, the data source (e.g., an educational institution) provides credentials to the User, who can store them in their digital Wallet.
-A secure Self-Sovereign Identity Wallet is crucial, as it allows people to carry their credentials on their digital devices. The Wallet typically comes in the form of an application on the User's mobile phone. Portability is, therefore, one of the principles of SSI.
+In the SSI model, the data source (e.g., an educational institution) provides digital credentials to the User, who can store them in their digital Wallet.
+A secure Self-Sovereign Identity Wallet is crucial, as it allows people to carry their credentials on their personal digital devices. The Wallet typically comes in the form of an application on the User's mobile phone. Portability is, therefore, one of the principles of SSI.
 
 Other key elements that characterize an SSI system include:
- - **Privacy and control**: SSI enables individuals to maintain control over their personal data. They can choose what information to release, to whom, and for what purpose. This reduces the risk of personal data being collected, stored, or misused;
- - **Security**: SSI leverages advanced cryptographic techniques to ensure the integrity and security of identity information. It avoids the risk of identity theft, fraud, and unauthorized access since the data remains under the individual's control and is not stored in a single vulnerable location;
+
+ - **Privacy and control**: SSI enables individuals to maintain control over their personal data. They can choose what information to release, to whom, and for what purpose;
+ - **Security**: SSI leverages advanced cryptographic techniques to ensure the integrity and security of identity information. It avoids the risk of identity theft, fraud, and unauthorized access since the data remains under the individual's control;
  - **Interoperability**: SSI promotes interoperability by enabling different systems and organizations to recognize and verify identities without relying on a central authority. This allows for seamless and trusted interactions between individuals, organizations, and even across borders;
  - **Efficiency and cost reduction**: individuals can manage their own identities with SSI, eliminating the need for multiple identity credentials and repetitive identity verification processes. This can streamline administrative procedures, reduce costs, and enhance the user experience.
 
 **Example**
 
-When a User wants to purchase a good or access to a service, the service provider asks the User for specific proof. Instead of presenting physical identification documents or disclosing their full data, the individual can use their SSI system.
+When a User wants to purchase a good or access to a service, the service provider asks the User for authentication or for a specific proof. Instead of presenting physical identification documents or disclosing their full data, the individual can use their SSI system if supported by the service provider.
 An example of SSI in action could be a scenario where an individual needs to prove their age to access a restricted service, such as purchasing age-restricted items. They would release only the necessary information, such as a digitally signed proof of being above the legal age, without revealing any other personal details. The verifier can then cryptographically validate the proof.
 

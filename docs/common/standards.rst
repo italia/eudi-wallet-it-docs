@@ -10,12 +10,12 @@ Technical References
     * - `OIDC-FED`_
       - OpenID Connect Federation 1.0
     * - `OPENID4VCI`_
-      - T. Lodderstedt, K. Yasuda, T. Looker, "OpenID for Verifiable Credential Issuance", February 2023.
+      - T\. Lodderstedt, K. Yasuda, T. Looker, "OpenID for Verifiable Credential Issuance", February 2023.
     * - `SD-JWT-VC`_
-      - O. Terbu, D.Fett, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
+      - O\. Terbu, D.Fett, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
     * - `EIDAS-ARF`_
       - EUDI Wallet - Architecture and Reference Framework
-    * - `OpenID4VP`_
+    * - `OPENID4VP`_
       - OpenID for Verifiable Presentations - draft 19 
     * - `PresentationExch`_
       - Presentation Exchange 2.0 for Presentation Definition
@@ -53,7 +53,7 @@ Technical References
       - Lodderstedt, T., Campbell, B., "JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)", November 2022.
     * - :rfc:`6749`
       - The OAuth 2.0 Authorization Framework
-    * - `DPOP`
-      - D. Fett, B. Campbell, J. Bradley, T. Lodderstedt, M. Jones, D. Waite, "OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)"
-    * - `OPENID4VC-HAIP`
+    * - `DPOP`_
+      - D\. Fett, B. Campbell, J. Bradley, T. Lodderstedt, M. Jones, D. Waite, "OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)"
+    * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC"
