@@ -192,7 +192,7 @@ The JWS payload of the request object is represented below:
 
 **Steps 8-9 (Authorization Request):** The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
 
-    1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user agent (derived from :rfc:`9126`).
+    1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user-agent (derived from :rfc:`9126`).
     2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`9126`).
     3. It MUST reject all the Authorization Requests that do not contain the ``request_uri`` parameter as the PAR is the only way to pass the Authorization Request from the Wallet Instance (derived from :rfc:`9126`).  
 
