@@ -345,7 +345,7 @@ Where the decoded content of the JWT is represented below:
     2. It MUST check the PID integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using using the ``kid`` header of the SD-JWT.
     3. It MUST check that the received PID credential (in credential claim) contains all the mandatory parameters defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
     4. It MUST process and verify the PID that is in SD-JWT VC following the steps in Section 6 of `SD.JWT#Verification <https://drafts.oauth.net/oauth-selective-disclosure-jwt/draft-ietf-oauth-selective-disclosure-jwt.html#name-verification-and-processing>`_.
-    5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify if the issuer of the PID is trusted.
+    5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID Provider is trusted.
 
 If the checks defined above are successful the Wallet Instance proceeds with the secure storage of the PID credential. 
 
