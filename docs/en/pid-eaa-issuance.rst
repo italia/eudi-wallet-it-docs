@@ -206,7 +206,7 @@ The JWS payload of the request object is represented below:
 .. note::
 
    **User Authentication and Consent:** The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and requires the User consent for the PID issuance. 
-   The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to dynamically request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider then acts as a Verifier and sends a presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to starting a transaction with the (Q)EAA Provider.
+   The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to dynamically request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider then acts as a Relying Party and provide the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to start the transaction with the (Q)EAA Provider.
 
 **Steps 10-11 (Authorization Response):** The PID/(Q)EAA Provider sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
 
