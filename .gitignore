@@ -17,3 +17,16 @@ build
 env-preview
 .venv
 .vscode
+*.py
+*.cfg
+*.tmpl
+*.exe
+*.csh
+*.fish
+*.ps1
+*.9
+v_env/bin/python3
+v_env/bin/python
+v_env/bin/pip3
+v_env/bin/pip
+v_env/bin/activate
