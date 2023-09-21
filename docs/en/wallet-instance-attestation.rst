@@ -69,15 +69,49 @@ Detailed Design
 
 The detailed design is explained below.
 
-Format of the Wallet Instance Attestation Request
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Wallet Instance Attestation Request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To obtain a Wallet Instance Attestation from the Wallet
 Provider it is necessary to send a Wallet Instance Attestation
 Request from the Wallet Instance containing the associated public key
 , the ``nonce`` value previously requested and a ``jti`` value.
 
-Header
-^^^^^^
+The Wallet Instance MUST do an HTTP request to the Wallet Provider `token endpoint`_,
+using the method `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.2>`__.
+
+The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters 
+encoded in ``application/x-www-form-urlencoded`` format:
+
+* ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
+* ``assertion`` containing the signed JWT defined in the Section `Wallet Instance Attestation Request`_.
+
+Below a non-normative example of the HTTP request.
+
+.. code-block:: http
+
+    POST /token HTTP/1.1
+    Host: wallet-provider.example.org
+    Content-Type: application/x-www-form-urlencoded
+
+    grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
+    &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeGRxd2xVTl9LWl83NTVUT1ZEbmJIaDg2TW1KcHh2a1UifQ.eyJpc3MiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsICJhdWQiOiAiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAianRpIjogImY1NjUyMDcyLWFiZWYtNDU5OS1iODYzLTlhNjkwNjA3MzJjYyIsICJub25jZSI6ICIuLi4uLiIsICJjbmYiOiB7Imp3ayI6IHsiY3J2IjogIlAtMjU2IiwgImt0eSI6ICJFQyIsICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCAieSI6ICJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwgImtpZCI6ICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn19LCAiaWF0IjogMTY5MTQ4ODk2MiwgImV4cCI6IDE2OTE0OTYxNjJ9.Dg_yFaiv6lVftR3FFx0v5JW250mBgXLVP1j0ezZcHRyitqSY7xGmx4y-MGur93FAS85vf_Da-L-REVEltwU2Jw
+
+The response is the `Wallet Instance Attestation`_ in JWT format:
+
+.. code-block:: http
+
+    HTTP/1.1 201 OK
+    Content-Type: application/jwt
+    
+    eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGxldC1hdHRlc3RhdGlvbitqd3QiLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIiwidHJ1c3RfY2hhaW4iOlsiZXlKaGJHY2lPaUpGVXouLi42UzBBIiwiZXlKaGJHY2lPaUpGVXouLi5qSkxBIiwiZXlKaGJHY2lPaUpGVXouLi5IOWd3Il19.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvbiIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmciLCJhdHRlc3RlZF9zZWN1cml0eV9jb250ZXh0IjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvTG9BL2Jhc2ljIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImF1dGhvcml6YXRpb25fZW5kcG9pbnQiOiJldWRpdzoiLCJyZXNwb25zZV90eXBlc19zdXBwb3J0ZWQiOlsidnBfdG9rZW4iXSwidnBfZm9ybWF0c19zdXBwb3J0ZWQiOnsiand0X3ZwX2pzb24iOnsiYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiXX0sImp3dF92Y19qc29uIjp7ImFsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2Il19fSwicmVxdWVzdF9vYmplY3Rfc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6WyJFUzI1NiJdLCJwcmVzZW50YXRpb25fZGVmaW5pdGlvbl91cmlfc3VwcG9ydGVkIjpmYWxzZSwiaWF0IjoxNjg3MjgxMTk1LCJleHAiOjE2ODcyODgzOTV9.tNvCyFPCL5tUi2NakKwdaG9xbrtWWl4djSRYRfHrF8NdmffdT044U55pRn35J2cl0LZxbesEDrfSAz2pllw2Ug
+
+
+Below are described the JWT headers and the payload claims
+of the `assertion` used in the request.
+
+
+Assertion Header
+^^^^^^^^^^^^^^^^
 +-----------------------------------+-----------------------------------+
 | **key**                           | **value**                         |
 +-----------------------------------+-----------------------------------+
@@ -91,8 +125,8 @@ Header
 |                                   | ``wiar+jwt``.                     |
 +-----------------------------------+-----------------------------------+
 
-Payload
-^^^^^^^
+Assertion Payload
+^^^^^^^^^^^^^^^^^
 
 +--------+-------------------------------------------------------------+
 | **key**| **value**                                                   |
@@ -153,8 +187,8 @@ of the Wallet Provider corresponding to the `kid` made available
 in the header.
 
 
-Format of the Wallet Instance Attestation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Wallet Instance Attestation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Wallet Instance Attestation MUST be provisioned in JWT format, whose
 headers and payload claims are listed below.
@@ -297,39 +331,6 @@ Below is an example of Wallet Instance Attestation:
     "iat": 1687281195,
     "exp": 1687288395
   }
-
-Obtain the Wallet Instance Attestation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To obtain the Wallet Instance Attestation it is necessary
-to make an HTTP request in method `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.2>`__
-to the `token endpoint`_ of the Wallet Provider.
-
-The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters 
-encoded in ``application/x-www-form-urlencoded`` format:
-
-* ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
-* ``assertion`` containing the signed JWT defined in the Section `Wallet Instance Attestation Request`_.
-
-Below a non-normative example of the HTTP request.
-
-.. code-block:: http
-
-    POST /token HTTP/1.1
-    Host: wallet-provider.example.org
-    Content-Type: application/x-www-form-urlencoded
-
-    grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
-    &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeGRxd2xVTl9LWl83NTVUT1ZEbmJIaDg2TW1KcHh2a1UifQ.eyJpc3MiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsICJhdWQiOiAiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAianRpIjogImY1NjUyMDcyLWFiZWYtNDU5OS1iODYzLTlhNjkwNjA3MzJjYyIsICJub25jZSI6ICIuLi4uLiIsICJjbmYiOiB7Imp3ayI6IHsiY3J2IjogIlAtMjU2IiwgImt0eSI6ICJFQyIsICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCAieSI6ICJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwgImtpZCI6ICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn19LCAiaWF0IjogMTY5MTQ4ODk2MiwgImV4cCI6IDE2OTE0OTYxNjJ9.Dg_yFaiv6lVftR3FFx0v5JW250mBgXLVP1j0ezZcHRyitqSY7xGmx4y-MGur93FAS85vf_Da-L-REVEltwU2Jw
-
-The response is the `Wallet Instance Attestation`_ in JWT format:
-
-.. code-block:: http
-
-    HTTP/1.1 201 OK
-    Content-Type: application/jwt
-    
-    eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGxldC1hdHRlc3RhdGlvbitqd3QiLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIiwidHJ1c3RfY2hhaW4iOlsiZXlKaGJHY2lPaUpGVXouLi42UzBBIiwiZXlKaGJHY2lPaUpGVXouLi5qSkxBIiwiZXlKaGJHY2lPaUpGVXouLi5IOWd3Il19.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvbiIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmciLCJhdHRlc3RlZF9zZWN1cml0eV9jb250ZXh0IjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvTG9BL2Jhc2ljIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImF1dGhvcml6YXRpb25fZW5kcG9pbnQiOiJldWRpdzoiLCJyZXNwb25zZV90eXBlc19zdXBwb3J0ZWQiOlsidnBfdG9rZW4iXSwidnBfZm9ybWF0c19zdXBwb3J0ZWQiOnsiand0X3ZwX2pzb24iOnsiYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiXX0sImp3dF92Y19qc29uIjp7ImFsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2Il19fSwicmVxdWVzdF9vYmplY3Rfc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6WyJFUzI1NiJdLCJwcmVzZW50YXRpb25fZGVmaW5pdGlvbl91cmlfc3VwcG9ydGVkIjpmYWxzZSwiaWF0IjoxNjg3MjgxMTk1LCJleHAiOjE2ODcyODgzOTV9.tNvCyFPCL5tUi2NakKwdaG9xbrtWWl4djSRYRfHrF8NdmffdT044U55pRn35J2cl0LZxbesEDrfSAz2pllw2Ug
 
 
 .. _token endpoint: wallet-solution.html#wallet-instance-attestation
