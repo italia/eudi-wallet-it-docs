@@ -1422,7 +1422,7 @@ specific Trust Marks.</p></td>
 <tbody>
 <tr class="row-even"><td><p><strong>authority_hints</strong></p></td>
 <td><p>Array of URLs (String). It contains a list of URLs of the immediate superior entities, such as the Trust Anchor or
-an Intermediate, that issue an Entity Statement related to this subject.</p></td>
+an Intermediate, that issues an Entity Statement related to this subject.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_marks</strong></p></td>
@@ -1632,7 +1632,7 @@ and in relation to the signature mechanisms MUST be applied for the Entity State
 <h3>Wallet Instance Attestation<a class="headerlink" href="#wallet-instance-attestation" title="Permalink to this heading">¶</a></h3>
 <p>The Wallet Provider issues the Wallet Instance Attestation, certifying the operational status of its Wallet Instances and including one of their public keys.</p>
 <p>The Wallet Instance Attestation contains the Trust Chain that attests the validity for its issuer (Wallet Provider).</p>
-<p>The Wallet Instance presents its Wallet Instance Attestation within the signed request during the PID issuance phase, containing the Trust Chain related to the Wallet Provider. The PID Provider issues a PID including the public key contained in the Wallet Instance Attestation, this produces the Holder Key Binding within the issued PID.</p>
+<p>The Wallet Instance presents its Wallet Instance Attestation within the signed request during the PID issuance phase, containing the Trust Chain related to the Wallet Provider. The PID Provider issues a PID including the public key provided by the Wallet Instance to have the Holder Key Binding within the issued PID.</p>
 </section>
 <section id="trust-chain">
 <h3>Trust Chain<a class="headerlink" href="#trust-chain" title="Permalink to this heading">¶</a></h3>
@@ -1667,8 +1667,8 @@ offline trust evaluation mechanisms.</p>
 </div>
 <section id="offline-eudi-wallet-trust-attestation">
 <h4>Offline EUDI Wallet Trust Attestation<a class="headerlink" href="#offline-eudi-wallet-trust-attestation" title="Permalink to this heading">¶</a></h4>
-<p>Given that a mobile device SHOULD not publish its metadata online at the <em>.well-known/openid-federation</em> endpoint, or in any other way, it is not mandatory for the Wallet Instance to publish its metadata online if the User does not want this. As a result, the Wallet Instance MUST NOT publish its federation metadata online.</p>
-<p>However, the Wallet Instance MUST obtain a Wallet Attestation Instance issued by its Wallet Provider, it SHOULD contain the Trust Chain related to its issuer (Wallet Provider).</p>
+<p>Given that the Wallet Instance cannot publish its metadata online at the <em>.well-known/openid-federation</em> endpoint,
+it MUST obtain a Wallet Instance Attestation issued by its Wallet Provider. The Wallet Instance Attestation MUST contain all the relevant information regarding the security capabilities of the Wallet Instance and its protocol related configuration. It SHOULD contain the Trust Chain related to its issuer (Wallet Provider).</p>
 </section>
 <section id="offline-relying-party-metadata">
 <h4>Offline Relying Party Metadata<a class="headerlink" href="#offline-relying-party-metadata" title="Permalink to this heading">¶</a></h4>
@@ -1700,9 +1700,9 @@ offline trust evaluation mechanisms.</p>
 <h2>Considerations about Decentralization<a class="headerlink" href="#considerations-about-decentralization" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>There may be more than a single Trust Anchor.</p></li>
-<li><p>In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may assume the role of the Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: an Italian Relying Party with an Italian Wallet Instance may consider the Italian Intermediate as a Trust Anchor for the scopes of their interactions).</p></li>
+<li><p>In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate acts as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: an Italian Relying Party with an Italian Wallet Instance may consider the Italian Intermediate as a Trust Anchor for the scopes of their interactions).</p></li>
 <li><p>Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests).</p></li>
-<li><p>Since the credential presentation must be signed, saving the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. This information must be stored on the Wallet Device and may be backed up in a remote and secure cloud storage, with the explicit permission of its User.</p></li>
+<li><p>Since the credential presentation must be signed, storing the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. This information must be stored on the Wallet Device and may be backed up in a remote and secure cloud storage, with the explicit permission of its User.</p></li>
 <li><p>Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.</p></li>
 <li><p>Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The Metadata Policy of a Trust Chain must be applied to overload any information related to protocol metadata and allowed grants of the participants.</p></li>
 </ul>

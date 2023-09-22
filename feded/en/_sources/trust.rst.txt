@@ -334,7 +334,7 @@ In addition to the previously defined claims, the Entity Configuration of the Le
      - **Required**
    * - **authority_hints**
      - Array of URLs (String). It contains a list of URLs of the immediate superior entities, such as the Trust Anchor or
-       an Intermediate, that issue an Entity Statement related to this subject.
+       an Intermediate, that issues an Entity Statement related to this subject.
      - |check-icon|
    * - **trust_marks**
      - A JSON Array containing the Trust Marks.
@@ -541,7 +541,7 @@ The Wallet Provider issues the Wallet Instance Attestation, certifying the opera
 
 The Wallet Instance Attestation contains the Trust Chain that attests the validity for its issuer (Wallet Provider).
 
-The Wallet Instance presents its Wallet Instance Attestation within the signed request during the PID issuance phase, containing the Trust Chain related to the Wallet Provider. The PID Provider issues a PID including the public key contained in the Wallet Instance Attestation, this produces the Holder Key Binding within the issued PID.
+The Wallet Instance presents its Wallet Instance Attestation within the signed request during the PID issuance phase, containing the Trust Chain related to the Wallet Provider. The PID Provider issues a PID including the public key provided by the Wallet Instance to have the Holder Key Binding within the issued PID.
 
 Trust Chain
 ^^^^^^^^^^^^^^^
@@ -586,9 +586,9 @@ offline trust evaluation mechanisms.
 Offline EUDI Wallet Trust Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Given that a mobile device SHOULD not publish its metadata online at the *.well-known/openid-federation* endpoint, or in any other way, it is not mandatory for the Wallet Instance to publish its metadata online if the User does not want this. As a result, the Wallet Instance MUST NOT publish its federation metadata online.
+Given that the Wallet Instance cannot publish its metadata online at the *.well-known/openid-federation* endpoint, 
+it MUST obtain a Wallet Instance Attestation issued by its Wallet Provider. The Wallet Instance Attestation MUST contain all the relevant information regarding the security capabilities of the Wallet Instance and its protocol related configuration. It SHOULD contain the Trust Chain related to its issuer (Wallet Provider).
 
-However, the Wallet Instance MUST obtain a Wallet Attestation Instance issued by its Wallet Provider, it SHOULD contain the Trust Chain related to its issuer (Wallet Provider).
 
 
 Offline Relying Party Metadata
@@ -628,8 +628,8 @@ Considerations about Decentralization
 -------------------------------------
 
 - There may be more than a single Trust Anchor.
-- In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate may assume the role of the Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: an Italian Relying Party with an Italian Wallet Instance may consider the Italian Intermediate as a Trust Anchor for the scopes of their interactions).
+- In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate acts as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: an Italian Relying Party with an Italian Wallet Instance may consider the Italian Intermediate as a Trust Anchor for the scopes of their interactions).
 - Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests).
-- Since the credential presentation must be signed, saving the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. This information must be stored on the Wallet Device and may be backed up in a remote and secure cloud storage, with the explicit permission of its User.
+- Since the credential presentation must be signed, storing the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. This information must be stored on the Wallet Device and may be backed up in a remote and secure cloud storage, with the explicit permission of its User.
 - Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.
 - Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The Metadata Policy of a Trust Chain must be applied to overload any information related to protocol metadata and allowed grants of the participants.
