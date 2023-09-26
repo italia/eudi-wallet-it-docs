@@ -33,12 +33,14 @@ implementation profile and to the initial set of implementations.
 - Francesco Ventola
 - Giada Sciarretta
 - Giuseppe De Marco
+- Klaas Wierenga
 - Kristina Yasuda
 - Leif Johansson
 - Lorenzo Cerini
 - Marta Sciunnach
 - Michele Silletti
 - Nicola Saitto
+- Niels van Dijk
 - Paul Bastien
 - Pasquale De Rose
 - Peter Altmann
@@ -50,6 +52,7 @@ implementation profile and to the initial set of implementations.
 - Takahiko Kawasaki
 - Torsten Lodderstedt
 - Vladimir Duzhinov
+
 
 If anyone has been forgotten, please accept our apologies with the 
 request to propose the modification of this page via a [Pull Request](https://github.com/italia/eudi-wallet-it-docs) 
