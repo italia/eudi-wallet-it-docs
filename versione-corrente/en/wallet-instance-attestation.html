@@ -686,9 +686,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#detailed-design">Detailed Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -936,9 +935,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#detailed-design">Detailed Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#format-of-the-wallet-instance-attestation-request">Format of the Wallet Instance Attestation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#format-of-the-wallet-instance-attestation">Format of the Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#obtain-the-wallet-instance-attestation">Obtain the Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Wallet Instance Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -1081,14 +1079,40 @@
 <section id="detailed-design">
 <h2>Detailed Design<a class="headerlink" href="#detailed-design" title="Permalink to this heading">¶</a></h2>
 <p>The detailed design is explained below.</p>
-<section id="format-of-the-wallet-instance-attestation-request">
-<h3>Format of the Wallet Instance Attestation Request<a class="headerlink" href="#format-of-the-wallet-instance-attestation-request" title="Permalink to this heading">¶</a></h3>
+<section id="wallet-instance-attestation-request">
+<h3>Wallet Instance Attestation Request<a class="headerlink" href="#wallet-instance-attestation-request" title="Permalink to this heading">¶</a></h3>
 <p>To obtain a Wallet Instance Attestation from the Wallet
 Provider it is necessary to send a Wallet Instance Attestation
 Request from the Wallet Instance containing the associated public key
 , the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value previously requested and a <code class="docutils literal notranslate"><span class="pre">jti</span></code> value.</p>
-<section id="header">
-<h4>Header<a class="headerlink" href="#header" title="Permalink to this heading">¶</a></h4>
+<p>The Wallet Instance MUST do an HTTP request to the Wallet Provider <a class="reference external" href="wallet-solution.html#wallet-instance-attestation">token endpoint</a>,
+using the method <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.2">POST</a>.</p>
+<p>The <strong>token</strong> endpoint (as defined in <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7523.html#section-4">RFC 7523 section 4</a>) requires the following parameters
+encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:grant-type:jwt-bearer</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assertion</span></code> containing the signed JWT defined in the Section <a class="reference external" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Wallet Instance Attestation Request</a>.</p></li>
+</ul>
+<p>Below a non-normative example of the HTTP request.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">wallet-provider.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+
+grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
+&amp;assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeGRxd2xVTl9LWl83NTVUT1ZEbmJIaDg2TW1KcHh2a1UifQ.eyJpc3MiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsICJhdWQiOiAiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAianRpIjogImY1NjUyMDcyLWFiZWYtNDU5OS1iODYzLTlhNjkwNjA3MzJjYyIsICJub25jZSI6ICIuLi4uLiIsICJjbmYiOiB7Imp3ayI6IHsiY3J2IjogIlAtMjU2IiwgImt0eSI6ICJFQyIsICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCAieSI6ICJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwgImtpZCI6ICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn19LCAiaWF0IjogMTY5MTQ4ODk2MiwgImV4cCI6IDE2OTE0OTYxNjJ9.Dg_yFaiv6lVftR3FFx0v5JW250mBgXLVP1j0ezZcHRyitqSY7xGmx4y-MGur93FAS85vf_Da-L-REVEltwU2Jw
+</pre></div>
+</div>
+<p>The response is the <a class="reference external" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Wallet Instance Attestation</a> in JWT format:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/jwt</span>
+
+eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGxldC1hdHRlc3RhdGlvbitqd3QiLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIiwidHJ1c3RfY2hhaW4iOlsiZXlKaGJHY2lPaUpGVXouLi42UzBBIiwiZXlKaGJHY2lPaUpGVXouLi5qSkxBIiwiZXlKaGJHY2lPaUpGVXouLi5IOWd3Il19.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvbiIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmciLCJhdHRlc3RlZF9zZWN1cml0eV9jb250ZXh0IjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvTG9BL2Jhc2ljIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImF1dGhvcml6YXRpb25fZW5kcG9pbnQiOiJldWRpdzoiLCJyZXNwb25zZV90eXBlc19zdXBwb3J0ZWQiOlsidnBfdG9rZW4iXSwidnBfZm9ybWF0c19zdXBwb3J0ZWQiOnsiand0X3ZwX2pzb24iOnsiYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiXX0sImp3dF92Y19qc29uIjp7ImFsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2Il19fSwicmVxdWVzdF9vYmplY3Rfc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6WyJFUzI1NiJdLCJwcmVzZW50YXRpb25fZGVmaW5pdGlvbl91cmlfc3VwcG9ydGVkIjpmYWxzZSwiaWF0IjoxNjg3MjgxMTk1LCJleHAiOjE2ODcyODgzOTV9.tNvCyFPCL5tUi2NakKwdaG9xbrtWWl4djSRYRfHrF8NdmffdT044U55pRn35J2cl0LZxbesEDrfSAz2pllw2Ug
+</pre></div>
+</div>
+<p>Below are described the JWT headers and the payload claims
+of the <cite>assertion</cite> used in the request.</p>
+<section id="assertion-header">
+<h4>Assertion Header<a class="headerlink" href="#assertion-header" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -1109,8 +1133,8 @@ created by the Wallet Instance.</p></td>
 </tbody>
 </table>
 </section>
-<section id="payload">
-<h4>Payload<a class="headerlink" href="#payload" title="Permalink to this heading">¶</a></h4>
+<section id="assertion-payload">
+<h4>Assertion Payload<a class="headerlink" href="#assertion-payload" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -1215,12 +1239,12 @@ of the Wallet Provider corresponding to the <cite>kid</cite> made available
 in the header.</p>
 </section>
 </section>
-<section id="format-of-the-wallet-instance-attestation">
-<h3>Format of the Wallet Instance Attestation<a class="headerlink" href="#format-of-the-wallet-instance-attestation" title="Permalink to this heading">¶</a></h3>
+<section id="id1">
+<h3>Wallet Instance Attestation<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <p>The Wallet Instance Attestation MUST be provisioned in JWT format, whose
 headers and payload claims are listed below.</p>
-<section id="id1">
-<h4>Header<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<section id="header">
+<h4>Header<a class="headerlink" href="#header" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -1261,8 +1285,8 @@ If these are both provisioned, the related public key contained in
 MUST be the same in both <cite>trust_chain</cite> and <cite>x5c</cite>.</p>
 </div>
 </section>
-<section id="id2">
-<h4>Payload<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
+<section id="payload">
+<h4>Payload<a class="headerlink" href="#payload" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -1467,34 +1491,6 @@ and MUST be intended as experimental.</p>
 </pre></div>
 </div>
 </section>
-</section>
-<section id="obtain-the-wallet-instance-attestation">
-<h3>Obtain the Wallet Instance Attestation<a class="headerlink" href="#obtain-the-wallet-instance-attestation" title="Permalink to this heading">¶</a></h3>
-<p>To obtain the Wallet Instance Attestation it is necessary
-to make an HTTP request in method <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.2">POST</a>
-to the <a class="reference external" href="wallet-solution.html#wallet-instance-attestation">token endpoint</a> of the Wallet Provider.</p>
-<p>The <strong>token</strong> endpoint (as defined in <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7523.html#section-4">RFC 7523 section 4</a>) requires the following parameters
-encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">grant_type</span></code> set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:grant-type:jwt-bearer</span></code>;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">assertion</span></code> containing the signed JWT defined in the Section <a class="reference external" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request">Wallet Instance Attestation Request</a>.</p></li>
-</ul>
-<p>Below a non-normative example of the HTTP request.</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">wallet-provider.example.org</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
-
-grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
-&amp;assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeGRxd2xVTl9LWl83NTVUT1ZEbmJIaDg2TW1KcHh2a1UifQ.eyJpc3MiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsICJhdWQiOiAiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAianRpIjogImY1NjUyMDcyLWFiZWYtNDU5OS1iODYzLTlhNjkwNjA3MzJjYyIsICJub25jZSI6ICIuLi4uLiIsICJjbmYiOiB7Imp3ayI6IHsiY3J2IjogIlAtMjU2IiwgImt0eSI6ICJFQyIsICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCAieSI6ICJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwgImtpZCI6ICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn19LCAiaWF0IjogMTY5MTQ4ODk2MiwgImV4cCI6IDE2OTE0OTYxNjJ9.Dg_yFaiv6lVftR3FFx0v5JW250mBgXLVP1j0ezZcHRyitqSY7xGmx4y-MGur93FAS85vf_Da-L-REVEltwU2Jw
-</pre></div>
-</div>
-<p>The response is the <a class="reference external" href="wallet-instance-attestation.html#format-of-the-wallet-instance-attestation">Wallet Instance Attestation</a> in JWT format:</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/jwt</span>
-
-eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGxldC1hdHRlc3RhdGlvbitqd3QiLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIiwidHJ1c3RfY2hhaW4iOlsiZXlKaGJHY2lPaUpGVXouLi42UzBBIiwiZXlKaGJHY2lPaUpGVXouLi5qSkxBIiwiZXlKaGJHY2lPaUpGVXouLi5IOWd3Il19.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvbiIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmciLCJhdHRlc3RlZF9zZWN1cml0eV9jb250ZXh0IjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvTG9BL2Jhc2ljIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImF1dGhvcml6YXRpb25fZW5kcG9pbnQiOiJldWRpdzoiLCJyZXNwb25zZV90eXBlc19zdXBwb3J0ZWQiOlsidnBfdG9rZW4iXSwidnBfZm9ybWF0c19zdXBwb3J0ZWQiOnsiand0X3ZwX2pzb24iOnsiYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiXX0sImp3dF92Y19qc29uIjp7ImFsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2Il19fSwicmVxdWVzdF9vYmplY3Rfc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6WyJFUzI1NiJdLCJwcmVzZW50YXRpb25fZGVmaW5pdGlvbl91cmlfc3VwcG9ydGVkIjpmYWxzZSwiaWF0IjoxNjg3MjgxMTk1LCJleHAiOjE2ODcyODgzOTV9.tNvCyFPCL5tUi2NakKwdaG9xbrtWWl4djSRYRfHrF8NdmffdT044U55pRn35J2cl0LZxbesEDrfSAz2pllw2Ug
-</pre></div>
-</div>
 </section>
 </section>
 </section>
