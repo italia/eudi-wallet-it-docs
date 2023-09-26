@@ -13,13 +13,13 @@ The relevant entities and interfaces involved in the issuance flow are:
     - *Wallet Instance*: Instance of a Wallet Solution, installed on the User device. It provides interfaces for User interaction with the Wallet Provider, Relying Parties, PID, and (Q)EAA Providers.
     - *PID Provider*: The entity that issues the eIDAS Person Identification Data (PID). It is composed of:
 
-        - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
+        - OpenID4VCI Component: based on the "OpenID for Verifiable Credential Issuance" specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
         - National eID Relying Party (OpenID Connect or SAML2): It represents the component to authenticate the User with the national Digital Identity Providers.
         - National Identity Provider: It represents preexisting identity systems based on SAML2 or OpenID Connect, already in production in each Member State (for Italy SPID and CIE id authentication schemed notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
     
     - *(Q)EAA Provider*: It represents the Issuer of (Q)EAAs. It is composed of:
 
-      - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release (Q)EAAs.
+      - OpenID4VCI Component: based on the "OpenID for Verifiable Credential Issuance" specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release (Q)EAAs.
       - Relying Party: It represents the component to authenticate the User with the PID. The (Q)EAA Provider acts as a Verifier and it sends a presentation request to the Wallet Instance according to [`OpenID4VP`_]. The Wallet Instance MUST have a valid PID obtained prior to starting a transaction with the (Q)EAA Provider.
     
 
@@ -305,7 +305,7 @@ A non-normative example of proof parameter is given below:
 
     {
     "proof_type": "jwt",
-    "jwt": "eyJraWQiOiJkaWQ6ZXhhbXBsZTplYm …"
+    "jwt": "eyJraWQiOiJkaWQ6ZXhhbXBsZTplYm ..."
     }
 
 
@@ -859,7 +859,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
           "keys": [{
             "kty": "RSA",
             "use": "sig",
-            "n": "1Ta-sE …",
+            "n": "1Ta-sE ...",
             "e": "AQAB",
             "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
           }]
