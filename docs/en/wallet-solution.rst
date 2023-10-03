@@ -77,7 +77,7 @@ Provider Entity Configuration.
 
 The Wallet Provider Entity Configuration is a JWS containing the public keys and supported algorithms of the Wallet Provider metadata definition. It is structured in accordance with the `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_ and the Trust Model section outlined in this specification.
 
-The returning Entity Configuration of the Wallet Provider MUST contain the 
+The returning Entity Configuration of the Wallet Provider MUST contain the
 attributes listed below:
 
 Header
