@@ -184,7 +184,7 @@ request where the decoded JWS headers and payload are separated by a comma:
 
 Whose corresponding JWS is verifiable using the public key
 of the Wallet Provider corresponding to the `kid` made available
-in the header.
+in the JWS header.
 
 
 Wallet Instance Attestation
