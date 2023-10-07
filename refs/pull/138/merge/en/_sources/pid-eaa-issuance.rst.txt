@@ -127,7 +127,7 @@ Below a non-normative example of the PAR.
 
 An example of Wallet Instance Attestation Proof of Possession is as the following:
 
-.. code-block:: JSON
+.. code-block:: 
 
   {    
     "alg": "ES256",
@@ -145,7 +145,7 @@ An example of Wallet Instance Attestation Proof of Possession is as the followin
 
 The JWS of Request Object is represented below:
 
-.. code-block:: JSON
+.. code-block::
 
   {
     "alg": "ES256",
@@ -403,7 +403,7 @@ The requests to the PID/(Q)EAA authorization endpoint MUST be HTTP with method P
       - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation``.
       - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
     * - **client_assertion**
-      - It MUST be set to a value containing two JWTs, separated by a ``~`` character. It MUST NOT contain more or less than precisely two JWTs separated by the ``~`` character. The first JWT MUST be the Wallet Instance Attestation JWT and the second JWT MUST be the Wallet Instance Attestation Proof of Possession.
+      - It MUST be set to a value containing the Wallet Instance Attestation JWT and the Proof of Possession, separated by a ``~`` character. 
       - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
 
 The JWT Request Object has the following JOSE header parameters:
@@ -647,7 +647,7 @@ All the parameters listed below are REQUIRED:
       - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation``.
       - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
     * - **client_assertion**
-      - It MUST be set to a value containing two JWTs, the Wallet Instance Attestation and the Proof of Possession, separated by a ``~`` character (WIA~WIA-PoP). The Wallet Instance Attestation Proof of Possession MUST contain the claims as in the :ref:`Table of the JWT Wallet Instance Attestation PoP <table_jwt_pop>` in the Section :ref:`Pushed Authorization Request (PAR) Response<sec_par>`.
+      - It MUST be set to a value containing the Wallet Instance Attestation JWT and the Proof of Possession JWT, separated by a ``~`` character (WIA~WIA-PoP). The Wallet Instance Attestation Proof of Possession MUST contain the claims as in the :ref:`Table of the JWT Wallet Instance Attestation PoP <table_jwt_pop>` in the Section :ref:`Pushed Authorization Request (PAR) Response<sec_par>`.
       - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
 
 A **DPoP Proof JWT** is included in an HTTP request using the ``DPoP`` header parameter containing a DPoP JWS.

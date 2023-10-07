@@ -1143,49 +1143,49 @@ response_type=code
 </pre></div>
 </div>
 <p>An example of Wallet Instance Attestation Proof of Possession is as the following:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>{
-  &quot;alg&quot;: &quot;ES256&quot;,
-  &quot;kid&quot;: &quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;,
-  &quot;typ&quot;: &quot;jwt-client-attestation-pop&quot;,
-}
-.
-{
-  &quot;iss&quot;: &quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;,
-  &quot;aud&quot;: &quot;https://pid-provider.example.org&quot;,
-  &quot;jti&quot;:&quot;ad25868c-8377-479b-8094-46fb1e797625&quot;,
-  &quot;iat&quot;: 1686645115,
-  &quot;exp&quot;: 1686652315
-}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;jwt-client-attestation-pop&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="o">.</span>
+<span class="p">{</span>
+  <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;jti&quot;</span><span class="p">:</span><span class="s2">&quot;ad25868c-8377-479b-8094-46fb1e797625&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1686645115</span><span class="p">,</span>
+  <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1686652315</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The JWS of Request Object is represented below:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>{
-  &quot;alg&quot;: &quot;ES256&quot;,
-  &quot;kid&quot;: &quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;,
-}
-.
-{
-&quot;iss&quot;:&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;,
-&quot;aud&quot;:&quot;https://pid-provider.example.org&quot;,
-&quot;exp&quot;:1672422065,
-&quot;iat&quot;: 1672418465,
-&quot;jti&quot;:&quot;ac80df576e7109686717bf50b869e882&quot;,
-&quot;response_type&quot;:&quot;code&quot;,
-&quot;client_id&quot;:&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;,
-&quot;state&quot;:&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;,
-&quot;code_challenge&quot;:&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;,
-&quot;code_challenge_method&quot;:&quot;S256&quot;,
-&quot;authorization_details&quot;:[
-{
-    &quot;type&quot;:&quot;openid_credential&quot;,
-    &quot;format&quot;: &quot;vc+sd-jwt&quot;,
-    &quot;credential_definition&quot;: {
-        &quot;type&quot;: &quot;PersonIdentificationData&quot;
-    }
-}
-],
-&quot;redirect_uri&quot;:&quot;eudiw://start.wallet.example.org&quot;,
-}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="o">.</span>
+<span class="p">{</span>
+<span class="s2">&quot;iss&quot;</span><span class="p">:</span><span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
+<span class="s2">&quot;aud&quot;</span><span class="p">:</span><span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
+<span class="s2">&quot;exp&quot;</span><span class="p">:</span><span class="mi">1672422065</span><span class="p">,</span>
+<span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1672418465</span><span class="p">,</span>
+<span class="s2">&quot;jti&quot;</span><span class="p">:</span><span class="s2">&quot;ac80df576e7109686717bf50b869e882&quot;</span><span class="p">,</span>
+<span class="s2">&quot;response_type&quot;</span><span class="p">:</span><span class="s2">&quot;code&quot;</span><span class="p">,</span>
+<span class="s2">&quot;client_id&quot;</span><span class="p">:</span><span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
+<span class="s2">&quot;state&quot;</span><span class="p">:</span><span class="s2">&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;</span><span class="p">,</span>
+<span class="s2">&quot;code_challenge&quot;</span><span class="p">:</span><span class="s2">&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;</span><span class="p">,</span>
+<span class="s2">&quot;code_challenge_method&quot;</span><span class="p">:</span><span class="s2">&quot;S256&quot;</span><span class="p">,</span>
+<span class="s2">&quot;authorization_details&quot;</span><span class="p">:[</span>
+<span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;credential_definition&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;PersonIdentificationData&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;redirect_uri&quot;</span><span class="p">:</span><span class="s2">&quot;eudiw://start.wallet.example.org&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1412,7 +1412,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_assertion</strong></p></td>
-<td><p>It MUST be set to a value containing two JWTs, separated by a <code class="docutils literal notranslate"><span class="pre">~</span></code> character. It MUST NOT contain more or less than precisely two JWTs separated by the <code class="docutils literal notranslate"><span class="pre">~</span></code> character. The first JWT MUST be the Wallet Instance Attestation JWT and the second JWT MUST be the Wallet Instance Attestation Proof of Possession.</p></td>
+<td><p>It MUST be set to a value containing the Wallet Instance Attestation JWT and the Proof of Possession, separated by a <code class="docutils literal notranslate"><span class="pre">~</span></code> character.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
 </tbody>
@@ -1730,7 +1730,7 @@ defined in <span class="target" id="index-66"></span><a class="rfc reference ext
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_assertion</strong></p></td>
-<td><p>It MUST be set to a value containing two JWTs, the Wallet Instance Attestation and the Proof of Possession, separated by a <code class="docutils literal notranslate"><span class="pre">~</span></code> character (WIA~WIA-PoP). The Wallet Instance Attestation Proof of Possession MUST contain the claims as in the <a class="reference internal" href="#table-jwt-pop"><span class="std std-ref">Table of the JWT Wallet Instance Attestation PoP</span></a> in the Section <a class="reference internal" href="#sec-par"><span class="std std-ref">Pushed Authorization Request (PAR) Response</span></a>.</p></td>
+<td><p>It MUST be set to a value containing the Wallet Instance Attestation JWT and the Proof of Possession JWT, separated by a <code class="docutils literal notranslate"><span class="pre">~</span></code> character (WIA~WIA-PoP). The Wallet Instance Attestation Proof of Possession MUST contain the claims as in the <a class="reference internal" href="#table-jwt-pop"><span class="std std-ref">Table of the JWT Wallet Instance Attestation PoP</span></a> in the Section <a class="reference internal" href="#sec-par"><span class="std std-ref">Pushed Authorization Request (PAR) Response</span></a>.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
 </tbody>
