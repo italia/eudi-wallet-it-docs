@@ -95,7 +95,7 @@ The PID/(Q)EAA Issuance phase is based on the **Authorization Code Flow** with *
 
     **Federation Check:** The Wallet Instance needs to check if the PID/(Q)EAA Provider is part of the Federation, obtaining then its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section `Entity Configuration Credential Issuer`_.
 
-**Steps 5-6 (PAR Request):** The Wallet Instance creates a fresh PKCE code verifier, Wallet Instance Attestation Proof of Possession, and ``state`` parameter for the *Pushed Authorization Request*. The Wallet Instance sends these parameters along in a *Pushed Authorization Request* using the OIDC ``request`` parameter (hereafter Request Object) (see :rfc:`9126` Section 3) to the PID/(Q)EAA Provider PAR endpoint to prevent Request URI swapping attack (see :rfc:`9126`). The Wallet Instance MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`. The Wallet Instance signs this request using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is inside the Wallet Instance Attestation ``cnf`` claim. An OAuth2 client authentication method is involved, since in this flow the Pushed Authorization Endpoint is a protected endpoint. The client authentication is based on the model defined in OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_]. The value of the ``client_assertion`` parameter is set to a value containing two JWTs, separated by a ``~`` character. It MUST NOT contain more or less than precisely two JWTs separated by the ``~`` character. The first JWT MUST be the Wallet Instance Attestation JWT and the second JWT MUST be the Wallet Instance Attestation Proof of Possession. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify the types of credentials when requesting authorization for the PID/(Q)EAA issuance. The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:
+**Steps 5-6 (PAR Request):** The Wallet Instance creates a fresh PKCE code verifier, Wallet Instance Attestation Proof of Possession, and ``state`` parameter for the *Pushed Authorization Request*. The Wallet Instance sends these parameters along in a *Pushed Authorization Request* using the OIDC ``request`` parameter (hereafter Request Object) (see :rfc:`9126` Section 3) to the PID/(Q)EAA Provider PAR endpoint to prevent Request URI swapping attack (see :rfc:`9126`). The Wallet Instance MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`. The Wallet Instance signs this request using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is inside the Wallet Instance Attestation ``cnf`` claim. An OAuth 2.0 client authentication method is involved, since in this flow the Pushed Authorization Endpoint is a protected endpoint. The client authentication is based on the model defined in OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_]. The value of the ``client_assertion`` parameter is set to a value containing two JWTs, separated by a ``~`` character. It MUST NOT contain more or less than precisely two JWTs separated by the ``~`` character. The first JWT MUST be the Wallet Instance Attestation JWT and the second JWT MUST be the Wallet Instance Attestation Proof of Possession. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify the types of credentials when requesting authorization for the PID/(Q)EAA issuance. The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:
   
     1. It MUST validate the signature of the Request Object using the algorithm specified in the ``alg`` header parameter (:rfc:`9126`, :rfc:`9101`) and the public key that can be retrieved from the Wallet Instance Attestation (``cnf``) identified using the ``kid`` header of the Request Object.
     2. It MUST check that the used algorithm for signing the request in the ``alg`` header is among the appropriate once reported in Section `Cryptographic Algorithms <algorithms.html>`_.
@@ -134,6 +134,7 @@ An example of Wallet Instance Attestation Proof of Possession is as the followin
     "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "typ": "jwt-client-attestation-pop",
   }
+  .
   {
     "iss": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "aud": "https://pid-provider.example.org",
@@ -150,6 +151,7 @@ The JWS of Request Object is represented below:
     "alg": "ES256",
     "kid": "FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc",
   }
+  .
   {
   "iss":"$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
   "aud":"https://pid-provider.example.org",
@@ -372,7 +374,7 @@ Pushed Authorization Request Endpoint
 Pushed Authorization Request (PAR) Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The requests to the PID/(Q)EAA authorization endpoint MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/x-www-form-urlencoded`` format. The Pushed Authorization Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_]
+The requests to the PID/(Q)EAA authorization endpoint MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/x-www-form-urlencoded`` format. The Pushed Authorization Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
 .. _table_http_request_claim: 
 .. list-table:: PAR http request parameters
@@ -399,10 +401,10 @@ The requests to the PID/(Q)EAA authorization endpoint MUST be HTTP with method P
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
     * - **client_assertion_type**
       - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation``.
-      - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_
+      - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
     * - **client_assertion**
       - It MUST be set to a value containing two JWTs, separated by a ``~`` character. It MUST NOT contain more or less than precisely two JWTs separated by the ``~`` character. The first JWT MUST be the Wallet Instance Attestation JWT and the second JWT MUST be the Wallet Instance Attestation Proof of Possession.
-      - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_
+      - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
 
 The JWT Request Object has the following JOSE header parameters:
 
