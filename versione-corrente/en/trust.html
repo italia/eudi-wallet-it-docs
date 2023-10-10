@@ -14,7 +14,7 @@
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
   <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
-  <link rel="next" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html">
+  <link rel="next" title="Wallet Solution" href="wallet-solution.html">
   <link rel="prev" title="Normative Language and Conventions" href="defined-terms.html">
 
   
@@ -613,6 +613,45 @@
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#id1">Wallet Instance Attestation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
@@ -653,45 +692,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#id1">Wallet Instance Attestation</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
@@ -703,6 +703,15 @@
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -721,15 +730,6 @@
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#implementation-considerations">Implementation considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
@@ -862,6 +862,45 @@
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#id1">Wallet Instance Attestation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
@@ -902,45 +941,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#id1">Wallet Instance Attestation</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
@@ -952,6 +952,15 @@
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -970,15 +979,6 @@
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#implementation-considerations">Implementation considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
@@ -1710,7 +1710,7 @@ it MUST obtain a Wallet Instance Attestation issued by its Wallet Provider. The 
 
           
             <div class="footer-buttons footer-buttons--next" role="navigation" aria-label="footer navigation">
-                  <a href="pid-eaa-data-model.html" class="" title="PID/(Q)EAA Data Model" accesskey="n" rel="next">PID/(Q)EAA Data Model</a>
+                  <a href="wallet-solution.html" class="" title="Wallet Solution" accesskey="n" rel="next">Wallet Solution</a>
               </div>
             
           </div>
