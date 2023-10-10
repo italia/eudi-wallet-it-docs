@@ -43,14 +43,14 @@ Index of content
    ssi-introduction.rst
    defined-terms.rst
    trust.rst
-   pid-eaa-data-model.rst
-   pid-eaa-issuance.rst
    wallet-solution.rst
    wallet-instance-attestation.rst
+   pid-eaa-data-model.rst
+   pid-eaa-issuance.rst
    relying-party-solution.rst
+   revocation-lists.rst
    pseudonyms.rst
    backup-restore.rst
-   revocation-lists.rst
    algorithms.rst
    contribute.rst
    standards.rst
