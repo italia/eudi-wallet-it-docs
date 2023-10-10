@@ -921,6 +921,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
             "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
           }]
         },
+        "authority_hints": ["https://superior-entity.example.org/federation"],
         "metadata": {
           "openid_credential_issuer": {
             "credential_issuer": "https://pid-provider.example.org",
