@@ -14,7 +14,7 @@
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
   <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
-  <link rel="next" title="Credential validity and non-revocation attestations" href="revocation-lists.html">
+  <link rel="next" title="Credential Revocations" href="revocation-lists.html">
   <link rel="prev" title="PID/(Q)EAA Issuance" href="pid-eaa-issuance.html">
 
   
@@ -705,13 +705,23 @@
 <li class="toctree-l2"><a class="reference internal" href="#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential validity and non-revocation attestations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#key-technical-requirements">Key Technical Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#presentation">Presentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#issuance">Issuance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#non-revocation-attestation-renewal-flow">Non-Revocation Attestation Renewal Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#proof-of-possession-pop-jwt-generation-process">Proof of Possession (PoP) JWT generation process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-revocation-flow">Credential Revocation Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Revocations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-assumptions">General Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#entities-involved-in-the-revocation-flows">Entities Involved in the Revocation Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#high-level-revocation-flow">High Level Revocation Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-wallet-instance-request">Revocation Wallet Instance Request</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#credential-revocation-request">Credential Revocation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#credential-revocation-response">Credential Revocation Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#high-level-non-revocation-attestations-flows">High Level Non-Revocation Attestations Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#non-revocation-attestation-request">Non-Revocation Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#non-revocation-attestation-response">Non-Revocation Attestation Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#non-revocation-attestation">Non-Revocation Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#non-revocation-proof-during-the-presentation-phase">Non-Revocation Proof during the Presentation Phase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
@@ -955,13 +965,23 @@
 <li class="toctree-l2"><a class="reference internal" href="#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential validity and non-revocation attestations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#key-technical-requirements">Key Technical Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#presentation">Presentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#issuance">Issuance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#non-revocation-attestation-renewal-flow">Non-Revocation Attestation Renewal Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#proof-of-possession-pop-jwt-generation-process">Proof of Possession (PoP) JWT generation process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-revocation-flow">Credential Revocation Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Revocations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-assumptions">General Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#entities-involved-in-the-revocation-flows">Entities Involved in the Revocation Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#high-level-revocation-flow">High Level Revocation Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-wallet-instance-request">Revocation Wallet Instance Request</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#credential-revocation-request">Credential Revocation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#credential-revocation-response">Credential Revocation Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#high-level-non-revocation-attestations-flows">High Level Non-Revocation Attestations Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#non-revocation-attestation-request">Non-Revocation Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#non-revocation-attestation-response">Non-Revocation Attestation Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#non-revocation-attestation">Non-Revocation Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#non-revocation-proof-during-the-presentation-phase">Non-Revocation Proof during the Presentation Phase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
@@ -1817,7 +1837,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 
           
             <div class="footer-buttons footer-buttons--next" role="navigation" aria-label="footer navigation">
-                  <a href="revocation-lists.html" class="" title="Credential validity and non-revocation attestations" accesskey="n" rel="next">Credential validity and non-revocation attestations</a>
+                  <a href="revocation-lists.html" class="" title="Credential Revocations" accesskey="n" rel="next">Credential Revocations</a>
               </div>
             
           </div>
