@@ -85,6 +85,8 @@ Revocation Wallet Instance Request
 5. **Send Response**: The PID/(Q)EAA Provider sends a response back to the Wallet Instance indicating the result of the revocation request. If the revocation was successful, the response includes a confirmation of the revocation.
 
 
+https://www.plantuml.com/plantuml/uml/TPB1RXCn48RlynGZYmEeTRffTXCIAQWe1Ib5QYkAoDbTJyFGZMtiIG92l3lsDbH1YDDQytqQ_Vwz5qbCbEscWv2_t78mJb2jJDUHuD9bx5fIQ1Bk-MzdcTAMOeyO0EPp_4WxtnfXx_BnsvQIu7mEi6VKRv1dnpmU-ClLyYqATvRmzkRs52zvpM8wN4Iov8JpyMhrgR1NuBmG-Xr5PFY_1py1KPbkhMQetjsTDsDrMYRo8vH9VCwW3nbElkxbINbaMvGNEPDUNB_NLwiFoqi5y0i6PQlYb0glxkjHtOmgJSDcgEkshlJqzVr4J-fsqfY67YRZgYnKPjll-o8IqkpiBB3L8VeTMue3-cuseQE1Z-lUPIFP7JPLFPvEXwDncJtukEd7QjUU9AiFGLNxVEa-xjD3w3jUEx8wrw1oOY1diJG6yAV-pwPZQuImt2ytzIyuQhFm8cHZdvMRHpolwlo2ANYN2AyzBhoJB0F01JcRVw7V
+
 Credential Revocation Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
