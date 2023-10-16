@@ -139,6 +139,7 @@ This process ensures that the Wallet Instance is the legitimate owner of the dig
 
 TBD.
 
+https://www.plantuml.com/plantuml/uml/dLDHRzem67pth_XaxM5JwpIC10OIKn4mDTt6AaB7O-Kc7yHjSBBO8Pqc_llia45HHn_wXBcxVBxlJhvKcXUwNASaDxyY4ZcN6kY2fobg2AIXPOGKk89A76i2fKeiQaeGGWO3c6QIpN2JHLoBJC9GQrHwTvxXhzByWS60a4e0-moY_vg-QFJl5y4Gj4XZX9iVD-Sm5YkXUGgZ0cEKMfZZzM9kkGz4PXeXss01WfpMaJy4WF9qHVj09-57lqFFBQ9_vnQHnbEnzyJumHDhF9qzL7htoQE8xIVlZ4SscdvXruklmPWIiYMElOKAfIpltdjjps-x35j-YtcHvxBUf_ikwtfHr-S-BhiTrmwalApd9LhdgdznaOkOvKMs4J4M3ZxnTPwYanMhMYkuDjgMxtgTNg_LxbXicHNh6gQRw4p5h35Aetq8jTrTSImKAuanCx5GuvYWZC4cICY_UdxoLCHS8zZzJ78lYMVfMdulCBYbZxE4PrdQCiXHOMzjvMKRGHZUJcQdodXpkFYKDrZNTGrs7EnTmbLINp-QJSQJwJmOVcDNm_2A_aTtr-of4iwQJMaabmQoAG1zg1xjsN6SBH3OsdRc2OAHWA5WmzCIuVjjE0TJTvH09NG2sYWoYT0i5GEni90rKM3AjS7YvbaS31rwh-ip_LMcm1cgF9CAwz6dtsdJ8o6NPagvJly2
 
 Non-Revocation Attestation Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
