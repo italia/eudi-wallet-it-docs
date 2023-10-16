@@ -7,7 +7,7 @@ Credential Revocations
 
 The value of digital credentials is contingent on their validity.
 A credential that has been revoked, due to legal requirements, inaccuracy or compromise, is not only valueless but potentially harmful. 
-For these reason a robust mechanism for managing the validity and revocation of digital credentials is required.
+For these reasons a robust mechanism for managing the validity and revocation of digital credentials is required.
 
 This section outlines the key technical requirements and processes related to the revocation of the digital credentials. 
 Furthermore, it provides the technical details that the Relying Parties MUST implement to verify, in a secure and reliable manner, 
@@ -15,13 +15,23 @@ the validity of a digital credential during the presentation phase.
 
 This section is structured into several subsections, these are listed below.
 
-* The "Key Technical Requirements" subsection outlines the fundamental requirements for managing digital credential revocation. These requirements define the roles and responsibilities of the Authentic Source, the Issuer, and the Wallet Instance in ensuring the validity of credentials and managing their revocation.
-* The "Presentation" subsection describe the processes by which a Wallet Instance and a Relying Party interacts with each other to demonstrate and verify the non-revocation status of the presented digital credentials. These subsections detail how a Non-Revocation Attestation, in the form of a cryptographic proof that the credential has not been revoked, is created, provided, and validated.
-* The "Non-Revocation Attestation Renewal Flow" and "Credential Revocation Flow" subsections provide detailed workflows for renewing a Non-Revocation Attestation and revoking a credential, respectively. These workflows include the generation and verification of a Proof of Possession (PoP) JWT, which proves that the Wallet Instance possesses the private key associated with the digital credential.
+* The "General Assumptions" subsection outlines ...
+* The "Requirements" subsection outlines fundamental requirements for managing digital credential revocation, ...outlining general, privacy and security requirements.
+* The "Entities Involved in the Revocation Flows" ... the roles and responsibilities of the Authentic Source, the Issuer, and the Wallet Instance in ensuring the validity of credentials and managing their revocation.
+* The "High Level Revocation Flow" subsection outlines ...
+* The "Revocation Wallet Instance Request" subsections outlines ...
+* The "High Level Non-Revocation Attestations Flows" subsection outlines ...
+* The "Non-Non-Revocation Proof during the Presentation Phase" subsection describes the processes by which a Wallet Instance and a Relying Party interacts with each other to demonstrate and verify the Non-Revocation Attestation of the presented digital credentials. These subsections detail how a Non-Revocation Attestation, in the form of a cryptographic proof that the credential has not been revoked, is created, provided, and validated.
 
 
-Key Technical Requirements
----------------------------
+General Assumptions
+-------------------
+
+TBD.
+
+
+Requirements
+------------
 
 - The Authentic Source is the provider of the data necessary for the issuance of a digital credential requested by PID/(Q)EAA Provider. 
 - The revocation requests MAY be communicated to PID/(Q)EAA Provider by Users using their personal Wallet Instance (Holder).
@@ -37,17 +47,58 @@ Key Technical Requirements
 - The Non-Revocation Attestation does not reveal any information about the Relying Party or the User's data contained in the digital credential the attestation is related to.
 
 
-Presentation Phase
-------------------
+Entities Involved in the Revocation Flows
+-----------------------------------------
 
-The Wallet Instance, according to the presentation request from the Relying Party, 
-produces a Verifiable Presentation (VP) token with the digital credential 
-and a Non-Revocation Attestation. This attestation is the proof that the credential has not been revoked.
+TBD.
 
-The Relying Party MUST validate the VP token and the Non-Revocation Attestation to certify the validity of a digital credential.
 
-Non-revocation Attestation Issuance
------------------------------------
+High Level Revocation Flow
+--------------------------
+
+TBD.
+
+All the flows and use cases not defind in the subsequent section is considered out of scope for this technical implementation profile.
+
+
+Revocation Wallet Instance Request
+----------------------------------
+
+.. code-block:: mermaid
+
+    sequenceDiagram
+        participant WalletInstance as Wallet Instance
+        participant digital credentialIssuer as PID/(Q)EAA Provider
+        WalletInstance->>digital credentialIssuer: Send Non-Revocation Attestation Request
+        digital credentialIssuer->>digital credentialIssuer: Verify credential PoP
+        digital credentialIssuer->>digital credentialIssuer: Revoke digital credential (if PoP is valid)
+        digital credentialIssuer->>WalletInstance: Send Response
+
+1. **Credential Revocation Request**: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request includes the ID of the digital credential to be revoked and a PoP JWT. The PoP JWT is signed with the private key associated with the digital credential to be revoked, and includes claims such as `iss`, `aud`, `exp`, `iat`, and `jti`.
+
+2. **Send Request to PID/(Q)EAA Provider**: The Wallet Instance sends the Credential Revocation Request to the PID/(Q)EAA Provider's revocation endpoint. The request is authenticated using the PoP JWT, which proves that the Wallet Instance possesses the private key associated with the digital credential.
+
+3. **Verify PoP**: The PID/(Q)EAA Provider verifies the PoP by checking the signature of the PoP JWT using the public key that was used when the digital credential was issued. If the verification is successful, it means that the Wallet Instance possesses the private key associated with the digital credential, and therefore has the authority to request its revocation.
+
+4. **Revoke digital credential**: If the PoP is verified successfully, the PID/(Q)EAA Provider revokes the digital credential identified by the ID in the Credential Revocation Request.
+
+5. **Send Response**: The PID/(Q)EAA Provider sends a response back to the Wallet Instance indicating the result of the revocation request. If the revocation was successful, the response includes a confirmation of the revocation.
+
+
+Credential Revocation Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TBD.
+
+
+Credential Revocation Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TBD.
+
+
+High Level Non-Revocation Attestations Flows
+--------------------------------------------
 
 The Wallet Instance sends a request for a digital credential to the PID/(Q)EAA Provider.
 
@@ -59,9 +110,6 @@ The Non-Revocation Attestation MUST be presented in conjunction with the digital
 The Non-Revocation Attestation MUST contain the expiration datetime after which the digital credential MUST NOT be considered valid anymore.
 Relying Parties determine the validity duration of the Non-Revocation Attestation based.
 The Non-Revocation Attestation enables offline use cases and potential unavailability of the in the non-revocation certification systems.
-
-Non-Revocation Attestation Flow
--------------------------------
 
 .. code-block:: mermaid
 
@@ -87,8 +135,11 @@ Upon successful request, the Wallet Instance receives the Non-Revocation Attesta
 
 This process ensures that the Wallet Instance is the legitimate owner of the digital credential and has the authority to request its Non-Revocation Attestation. It does so by signing the request and having the Issuer verify this signature using the corresponding public key boun with the related digital credetial. This ensures that the Wallet Instance is authenticated and has the digital credential which is requesting the Non-Revocation Attestation.
 
+TBD.
+
+
 Non-Revocation Attestation Request
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Wallet Instance provides the parameters listed below to the PID/(Q)EAA Provider Non-Revocation Attestation endpoint using the ``request`` parameter to prevent Request URI swapping attack.
 
@@ -109,34 +160,28 @@ The PID/(Q)EAA Provider MUST verify the Proof of Possession by checking the sign
 
 TBD: the typ value in the JWT header configuring the content type of the request (Non-Revocation Attestation request).
 
-Credential Revocation Request Flow
-----------------------------------
 
-.. code-block:: mermaid
-
-    sequenceDiagram
-        participant WalletInstance as Wallet Instance
-        participant digital credentialIssuer as PID/(Q)EAA Provider
-        WalletInstance->>digital credentialIssuer: Send Non-Revocation Attestation Request
-        digital credentialIssuer->>digital credentialIssuer: Verify credential PoP
-        digital credentialIssuer->>digital credentialIssuer: Revoke digital credential (if PoP is valid)
-        digital credentialIssuer->>WalletInstance: Send Response
-
-1. **Credential Revocation Request**: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request includes the ID of the digital credential to be revoked and a PoP JWT. The PoP JWT is signed with the private key associated with the digital credential to be revoked, and includes claims such as `iss`, `aud`, `exp`, `iat`, and `jti`.
-
-2. **Send Request to PID/(Q)EAA Provider**: The Wallet Instance sends the Credential Revocation Request to the PID/(Q)EAA Provider's revocation endpoint. The request is authenticated using the PoP JWT, which proves that the Wallet Instance possesses the private key associated with the digital credential.
-
-3. **Verify PoP**: The PID/(Q)EAA Provider verifies the PoP by checking the signature of the PoP JWT using the public key that was used when the digital credential was issued. If the verification is successful, it means that the Wallet Instance possesses the private key associated with the digital credential, and therefore has the authority to request its revocation.
-
-4. **Revoke digital credential**: If the PoP is verified successfully, the PID/(Q)EAA Provider revokes the digital credential identified by the ID in the Credential Revocation Request.
-
-5. **Send Response**: The PID/(Q)EAA Provider sends a response back to the Wallet Instance indicating the result of the revocation request. If the revocation was successful, the response includes a confirmation of the revocation.
-
-
-Digital Credential Revocation Request
--------------------------------------
+Non-Revocation Attestation Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TBD.
+
+
+Non-Revocation Attestation
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TBD.
+
+
+Non-Revocation Proof during the Presentation Phase
+--------------------------------------------------
+
+The Wallet Instance, according to the presentation request from the Relying Party, 
+produces a Verifiable Presentation (VP) token with the digital credential 
+and a Non-Revocation Attestation. This attestation is the proof that the credential has not been revoked.
+
+The Relying Party MUST validate the VP token and the Non-Revocation Attestation to certify the validity of a digital credential.
+
 
 
 External references
