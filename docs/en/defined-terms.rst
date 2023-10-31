@@ -29,6 +29,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - An entity, recognized and accredited by the State, responsible for identifying citizens for the issuance of an Electronic Identity Certificate.
    * - Electronic Attestation of Identity
      - Electronic attestation of attributes referring to master data already present in Italian digital identity systems.
+   * - Digital Credential
+     - Electronic Attestation of Identity.
    * - Federation Authority
      - A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.
    * - Wallet Instance
@@ -37,6 +39,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
    * - Wallet Instance Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
+   * - Non-Revocation Attestation
+     - Verifiable Attestation, issued by the Issuer, proving that a related Digital Credential is not revoked.
    * - App Attestation Service
      - Device manufacturer service that allows you to certify the authenticity of the mobile app (Wallet Instance).
    * - Qualified Electronic Attestation of Attributes (QEAA)
