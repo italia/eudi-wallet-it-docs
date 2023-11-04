@@ -269,9 +269,8 @@ Payload
 ||                          || authorization server supports.                |
 ||                          || `RFC 8414 section 2`_                         |
 +---------------------------+------------------------------------------------+
-|| vp_formats_supported     || JSON object containing                        |
-||                          || ``jwt_vp_json`` and ``jwt_vc_json``           |
-||                          || supported algorithms array.                   |
+|| vp_formats               || JSON object containing at least               |
+||                          || ``vc+sd-jwt``.                                |
 +---------------------------+------------------------------------------------+
 || request_object_signing   || JSON array containing a list of the           |
 || _alg_values_supported    || JWS signing algorithms (alg values)           |
@@ -324,13 +323,13 @@ Below is an example of Wallet Instance Attestation:
     "response_modes_supported": [
       "form_post.jwt"
     ],
-    "vp_formats_supported": {
-      "jwt_vp_json": {
-        "alg_values_supported": ["ES256"]
-      },
-      "jwt_vc_json": {
-        "alg_values_supported": ["ES256"]
-      }
+    "vp_formats": {
+        "vc+sd-jwt": {
+            "sd-jwt_alg_values": [
+                "ES256",
+                "ES384"
+            ]
+        }
     },
     "request_object_signing_alg_values_supported": [
       "ES256"

@@ -433,16 +433,17 @@ Below there is a non-normative example of an Entity Statement issued by an Accre
                       ]
                 },
             },
-            "client": {
-                "vp_formats": {
-                    "jwt_vp": {
-                        "alg":
-                            "subset_of": [
-                                "EdDSA",
-                                "ES256K"
-                            ]
-                        }
-                    }
+        "wallet_relying_party": {
+            "vp_formats_supported": {
+                "vc+sd-jwt": {
+                    "sd-jwt_alg_values": [
+                        "ES256",
+                        "ES384"
+                    ],
+                    "kb-jwt_alg_values": [
+                        "ES256",
+                        "ES384"
+                    ]
                 }
             }
         }

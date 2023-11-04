@@ -567,72 +567,61 @@ Below is a non-normative response example:
                     "https://www.spid.gov.it/SpidL2",
                     "https://www.spid.gov.it/SpidL3"
                 ],
-    
-                  "vp_formats": {
-                     "jwt_vp_json": {
-                        "alg": [
-                           "EdDSA",
-                           "ES256K"
+                "vp_formats_supported": {
+                    "vc+sd-jwt": {
+                        "sd-jwt_alg_values": [
+                            "ES256",
+                            "ES384"
+                        ],
+                        "kb-jwt_alg_values": [
+                            "ES256",
+                            "ES384"
                         ]
-                     }
-                  },
+                    }
+                },
                   "presentation_definitions": [
                       {
-                        "id": "pid-sd-jwt:unique_id+given_name+family_name",
+                        "id": "pid",
+                        "id": "pid",
                         "input_descriptors": [
                             {
-                                "id": "sd-jwt",
+                                "id": "IdentityCredential",
                                 "format": {
-                                    "jwt": {
-                                        "alg": [
-                                            "EdDSA",
-                                            "ES256"
-                                        ]
-                                    },
-                                    "constraints": {
-                                        "limit_disclosure": "required",
-                                        "fields": [
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.type"
-                                                ],
-                                                "filter": {
-                                                    "type": "string",
-                                                    "const": "PersonIdentificationData"
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.cnf"
-                                                ],
-                                                "filter": {
-                                                    "type": "object",
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.family_name"
-                                                ],
-                                                "intent_to_retain": "true"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.given_name"
-                                                ],
-                                                "intent_to_retain": "true"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.sd-jwt.unique_id"
-                                                ],
-                                                "intent_to_retain": "true"
+                                    "vc+sd-jwt": {}
+                                },
+                                "constraints": {
+                                    "limit_disclosure": "required",
+                                    "fields": [
+                                        {
+                                            "path": [
+                                                "$.type"
+                                            ],
+                                            "filter": {
+                                                "type": "string",
+                                                "const": "IdentityCredential"
                                             }
-                                        ]
-                                    }
+                                        },
+                                        {
+                                            "path": [
+                                                "$.family_name"
+                                            ]
+                                        },
+                                        {
+                                            "path": [
+                                                "$.given_name"
+                                            ]
+                                        },
+                                        {
+                                            "path": [
+                                                "$.unique_id"
+                                            ],
+                                            "intent_to_retain": "true"
+                                        }
+                                    ]
                                 }
                             }
                         ]
-                      },
+                    },
                       {
                         "id": "mDL-sample-req",
                         "input_descriptors": [
