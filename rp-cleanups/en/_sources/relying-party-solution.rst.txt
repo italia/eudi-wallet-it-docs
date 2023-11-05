@@ -284,7 +284,7 @@ The Relying Party issues the signed Request Object, where a non-normative exampl
   }
   .
   {
-    "scope": "eu.europa.ec.eudiw.pid.it.1 email",
+    "scope": "eu.europa.ec.eudiw.pid.it.1 tax_id_number",
     "client_id_scheme": "entity_id",
     "client_id": "https://relying-party.example.org",
     "response_mode": "direct_post.jwt",
