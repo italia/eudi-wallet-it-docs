@@ -249,9 +249,9 @@ Payload
 ||                          || problems is to have a limited                 |
 ||                          || duration of the attestation.                  |
 +---------------------------+------------------------------------------------+
-|| attested_security_context|| Attested security context:                    |
-||                          || Represents the level of "security"            |
-||                          || attested by the Wallet Provider.              |
+|| aal                      || JSON String asserting the authentication level|
+||                          || of the Wallet and the key as asserted in      |
+||                          || the cnf claim.                                |
 +---------------------------+------------------------------------------------+
 || cnf                      || This parameter contains the ``jwk``           |
 ||                          || parameter                                     |
@@ -269,8 +269,9 @@ Payload
 ||                          || authorization server supports.                |
 ||                          || `RFC 8414 section 2`_                         |
 +---------------------------+------------------------------------------------+
-|| vp_formats               || JSON object containing at least               |
-||                          || ``vc+sd-jwt``.                                |
+|| vp_formats_supported     || JSON object with name/value pairs,            |
+||                          || identifying a Credential format supported     |
+||                          || by the Wallet.                                |
 +---------------------------+------------------------------------------------+
 || request_object_signing   || JSON array containing a list of the           |
 || _alg_values_supported    || JWS signing algorithms (alg values)           |
@@ -281,10 +282,6 @@ Payload
 ||                          || ``presentation_definition`` by                |
 ||                          || reference. MUST set to `false`.               |
 +---------------------------+------------------------------------------------+
-
-.. note::
-   The claim ``attested_security_context`` (Attested Security Context) is under discussion
-   and MUST be intended as experimental.
 
 Below is an example of Wallet Instance Attestation:
 
@@ -304,7 +301,7 @@ Below is an example of Wallet Instance Attestation:
   {
     "iss": "https://wallet-provider.example.org",
     "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "attested_security_context": "https://wallet-provider.example.org/LoA/basic",
+    "aal": "https://trust-list.eu/aal/high",
     "cnf":
     {
       "jwk":
@@ -323,7 +320,7 @@ Below is an example of Wallet Instance Attestation:
     "response_modes_supported": [
       "form_post.jwt"
     ],
-    "vp_formats": {
+    "vp_formats_supported": {
         "vc+sd-jwt": {
             "sd-jwt_alg_values": [
                 "ES256",
