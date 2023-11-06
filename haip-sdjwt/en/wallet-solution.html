@@ -1176,15 +1176,12 @@ Provider's public keys.</p></td>
 <td><p>Endpoint for obtaining the Wallet
 Instance Attestation.</p></td>
 </tr>
-<tr class="row-even"><td><p>attested_security_context_values_supported</p></td>
+<tr class="row-even"><td><p>aal_values_supported</p></td>
 <td><p>List of supported values for the
 certifiable security context. These
 values specify the security level
 of the app, according to the levels: low, medium, or high.
-An attested security context is
-defined by the proof that the
-Wallet Instance can provide to the
-Wallet Provider.</p></td>
+Authenticator Assurance Level values supported.</p></td>
 </tr>
 <tr class="row-odd"><td><p>grant_types_supported</p></td>
 <td><p>The types of grants supported by
@@ -1200,13 +1197,13 @@ the token endpoint.</p></td>
 <tr class="row-odd"><td><p>token_endpoint_auth_signing_alg_va
 lues_supported</p></td>
 <td><p>Supported signature
-algorithms for the token endpoint</p></td>
+algorithms for the token endpoint.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <cite>attested_security_context_values_supported</cite> parameter is experimental and under review.</p>
+<p>The <cite>aal_values_supported</cite> parameter is experimental and under review.</p>
 </div>
 </section>
 <section id="payload-federation-entity">
@@ -1268,7 +1265,7 @@ algorithms for the token endpoint</p></td>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="s2">&quot;token_endpoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/token&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;attested_security_context_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;aal_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/basic&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/medium&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/high&quot;</span>
