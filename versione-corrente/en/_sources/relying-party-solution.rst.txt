@@ -188,16 +188,12 @@ To attest a high level of security, the Wallet Instance submits its Wallet Insta
 
 Below the description of the parameters defined in *OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)*.
 
-.. note::
-    The use of DPoP doesn't represent any breaking changes to Wallet Instances that do not support DPoP to a *request_uri* endpoint, since it is assumed to use it as an additional security mechanisms for the attestation of the status of the Wallet Instance.
-
-    If the DPoP HTTP Header is missing, the Relying Party would assume the lowest attestable level of security to the Wallet Instance it is interacting with.
+If the DPoP HTTP Header is missing, the Relying Party would assume the lowest attestable level of security to the Wallet Instance it is interacting with.
 
 DPoP HTTP Header
 ^^^^^^^^^^^^^^^^
 
 A **DPoP proof** is included in the request using the HTTP Header ``DPoP`` and containing a JWS. The JWS MUST be verified with the public key made available in the Wallet Instance Attestation (``Authorization: DPoP``).
-
 
 The JOSE header of the **DPoP JWS** MUST contain at least the following parameters:
 
@@ -288,7 +284,7 @@ The Relying Party issues the signed Request Object, where a non-normative exampl
   }
   .
   {
-    "scope": "eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:unique_id+given_name+family_name",
+    "scope": "eu.europa.ec.eudiw.pid.it.1 tax_id_number",
     "client_id_scheme": "entity_id",
     "client_id": "https://relying-party.example.org",
     "response_mode": "direct_post.jwt",
@@ -353,11 +349,7 @@ The JWS payload parameters are described herein:
 
 .. warning::
 
-    This implementation profile use the parameter ``scope`` within the request instead of the ``presentation_definition``. 
-
-Using the parameter ``scope`` requires that the Relying Party Metadata MUST 
-contain the ``presentation_definition``, where a non-normative example of it
-is given below:
+    Using the parameter ``scope`` requires that the Relying Party Metadata MUST contain the ``presentation_definition``, where a non-normative example of it is given below:
 
 .. code-block:: JSON
 
@@ -366,7 +358,7 @@ is given below:
       "id": "presentation definitions",
       "input_descriptors": [
         {
-          "id": "pid-sd-jwt:unique_id+given_name+family_name",
+          "id": "eu.europa.ec.eudiw.pid.it.1",
           "name": "Person Identification Data",
           "purpose": "User authentication",
           "format": "vc+sd-jwt",
@@ -432,7 +424,7 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
         "id": "04a98be3-7fb0-4cf5-af9a-31579c8b0e7d",
         "descriptor_map": [
             {
-                "id": "pid-sd-jwt:unique_id+given_name+family_name",
+                "id": "eu.europa.ec.eudiw.pid.it.1",
                 "path": "$.vp_token.verified_claims.claims._sd[0]",
                 "format": "vc+sd-jwt"
             }
@@ -578,7 +570,7 @@ Below is a non-normative response example:
                   },
                   "presentation_definitions": [
                       {
-                        "id": "pid-sd-jwt:unique_id+given_name+family_name",
+                        "id": "eu.europa.ec.eudiw.pid.it.1",
                         "input_descriptors": [
                             {
                                 "id": "sd-jwt",

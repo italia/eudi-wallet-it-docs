@@ -1190,11 +1190,7 @@ HOST: relying-party.example.org
 <p>More detailed information about the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation</a> is available in its dedicated section of this technical specification.</p>
 <p>To attest a high level of security, the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.</p>
 <p>Below the description of the parameters defined in <em>OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)</em>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The use of DPoP doesn't represent any breaking changes to Wallet Instances that do not support DPoP to a <em>request_uri</em> endpoint, since it is assumed to use it as an additional security mechanisms for the attestation of the status of the Wallet Instance.</p>
 <p>If the DPoP HTTP Header is missing, the Relying Party would assume the lowest attestable level of security to the Wallet Instance it is interacting with.</p>
-</div>
 <section id="dpop-http-header">
 <h3>DPoP HTTP Header<a class="headerlink" href="#dpop-http-header" title="Permalink to this heading">¶</a></h3>
 <p>A <strong>DPoP proof</strong> is included in the request using the HTTP Header <code class="docutils literal notranslate"><span class="pre">DPoP</span></code> and containing a JWS. The JWS MUST be verified with the public key made available in the Wallet Instance Attestation (<code class="docutils literal notranslate"><span class="pre">Authorization:</span> <span class="pre">DPoP</span></code>).</p>
@@ -1300,7 +1296,7 @@ HOST: relying-party.example.org
 }
 .
 {
-  &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:unique_id+given_name+family_name&quot;,
+  &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 tax_id_number&quot;,
   &quot;client_id_scheme&quot;: &quot;entity_id&quot;,
   &quot;client_id&quot;: &quot;https://relying-party.example.org&quot;,
   &quot;response_mode&quot;: &quot;direct_post.jwt&quot;,
@@ -1389,17 +1385,14 @@ HOST: relying-party.example.org
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This implementation profile use the parameter <code class="docutils literal notranslate"><span class="pre">scope</span></code> within the request instead of the <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>.</p>
+<p>Using the parameter <code class="docutils literal notranslate"><span class="pre">scope</span></code> requires that the Relying Party Metadata MUST contain the <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>, where a non-normative example of it is given below:</p>
 </div>
-<p>Using the parameter <code class="docutils literal notranslate"><span class="pre">scope</span></code> requires that the Relying Party Metadata MUST
-contain the <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>, where a non-normative example of it
-is given below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;presentation_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;presentation definitions&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person Identification Data&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User authentication&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
@@ -1458,7 +1451,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;04a98be3-7fb0-4cf5-af9a-31579c8b0e7d&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;descriptor_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.vp_token.verified_claims.claims._sd[0]&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span>
 <span class="w">          </span><span class="p">}</span>
@@ -1615,7 +1608,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
               },
               &quot;presentation_definitions&quot;: [
                   {
-                    &quot;id&quot;: &quot;pid-sd-jwt:unique_id+given_name+family_name&quot;,
+                    &quot;id&quot;: &quot;eu.europa.ec.eudiw.pid.it.1&quot;,
                     &quot;input_descriptors&quot;: [
                         {
                             &quot;id&quot;: &quot;sd-jwt&quot;,
