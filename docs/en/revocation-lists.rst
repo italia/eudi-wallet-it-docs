@@ -5,13 +5,13 @@
 Credential Revocations
 ++++++++++++++++++++++
 
-The value of digital credentials is contingent on their validity.
+The value of Digital Credentials is contingent on their validity.
 A credential that has been revoked, due to legal requirements, inaccuracy or compromise, is not only valueless but potentially harmful. 
-For these reasons a robust mechanism for managing the validity and revocation of digital credentials is required.
+For these reasons a robust mechanism for managing the validity and revocation of Digital Credentials is required.
 
-This section outlines the key technical requirements and processes related to the revocation of the digital credentials. 
+This section outlines the key technical requirements and processes related to the revocation of the Digital Credentials. 
 Furthermore, it provides the technical details that the Relying Parties MUST implement to verify, in a secure and reliable manner, 
-the validity of a digital credential during the presentation phase.
+the validity of a Digital Credential during the presentation phase.
 
 This section is structured into several subsections, these are listed below.
 
@@ -46,11 +46,11 @@ General Requirements
 ^^^^^^^^^^^^^^^^^^^^
  
 - The Issuer MUST be the only responsible for the lifecycle of credentials including the revocation status.
-- Credentials SHOULD be updates whenever one or more attributes are changed.
+- Credentials SHOULD be updated whenever one or more attributes are changed.
 - Any credential update MUST result in a new fresh issuance of it, following the principle that the credential SHOULD always have updated data. In this case, the old Credentials of the same type MUST be revoked. 
 - The revocation of a credential for technical reasons (loss or theft of the device, compromise of cryptographic keys) MAY not have an impact on any other digital credentials issued of the same type and MUST NOT lead to the revocation of a physical document associated with it.
 - The revocation of a physical document which one or more Credentials are associated with MUST result in their revocation.
-- The revocation requests of a credential MAY be communicated to the Issuer by 
+- The revocation requests of a credential MAY be communicated to the Issuer by: 
 
     - Holders using their personal Wallet Instance.
     - Authentic Sources (e.g., for attribute updates) following administrative purposes. 
