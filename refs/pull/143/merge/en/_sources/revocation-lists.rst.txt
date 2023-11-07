@@ -33,7 +33,7 @@ General Assumptions
 A Credential Issuer is in charge of the creation and the issuance of credentials, its lifecycle, and ultimately, its validity status. Some credentials may have regulatory value given by national or european laws, therefore also revocations of credentials MUST be non-repudiable.
 Some credentials may be a digital representation of a physical document issued, under a well defined national law, by an Authentic Source which, in the Wallet Ecosystem, acts as a repository or system that contains attributes and provides them to the Issuer. For this reason, an exchange of information between the two entities is required not only for the issuing the credential but also for the proper handling of its revocation.
 Moreover, due to digital signature of the credentials, any updates on them MUST result in a re-issuance.
-Finally, it is assumed that, to facilitate the association between physical document and digital credentials, the identifier of the physical document is always present as an attribute within the digital credentials.
+Finally, it is assumed that, to facilitate the association between physical document and digital credentials, the identifier of the physical document is always present as an attribute within the Digital Credentials.
 
 
 
@@ -48,7 +48,7 @@ General Requirements
 - The Issuer MUST be the only responsible for the lifecycle of credentials including the revocation status.
 - Credentials SHOULD be updated whenever one or more attributes are changed.
 - Any credential update MUST result in a new fresh issuance of it, following the principle that the credential SHOULD always have updated data. In this case, the old Credentials of the same type MUST be revoked. 
-- The revocation of a credential for technical reasons (loss or theft of the device, compromise of cryptographic keys) MAY not have an impact on any other digital credentials issued of the same type and MUST NOT lead to the revocation of a physical document associated with it.
+- The revocation of a credential for technical reasons (loss or theft of the device, compromise of cryptographic keys) MAY not have an impact on any other Digital Credentials issued of the same type and MUST NOT lead to the revocation of a physical document associated with it.
 - The revocation of a physical document which one or more Credentials are associated with MUST result in their revocation.
 - The revocation requests of a credential MAY be communicated to the Issuer by: 
 
@@ -59,7 +59,7 @@ General Requirements
 
     - A Law-Enforcing Body (e.g., Police) on behalf of the User or directly for the fulfillment of their functions and any other judicial reasons.
     - The Holder using any out-of-band procedure in force by national regulations.
-- The Authentic Source MUST provide an interface for the data sharing regarding the attributes update and revocation status of a physical document the credential is associated with.
+- The Authentic Source MUST provide an interface for the data provisioning regarding the attributes update and revocation status of a physical document the credential is associated with.
 - The Issuer MUST provide an interface handling the revocation flows (Revocation request/response, data access regarding the revocation status of a credential, etc.).
 - The Issuer MUST provide the Wallet Instance with a proof of non-revocation of a given Holder's credential (Non-Revocation Attestation).
 - The Holders MAY provide the Verifiers with a proof of non-revocation of their Credentials (Non-Revocation Attestations).
