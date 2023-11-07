@@ -1597,72 +1597,60 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
                 &quot;https://www.spid.gov.it/SpidL2&quot;,
                 &quot;https://www.spid.gov.it/SpidL3&quot;
             ],
-
-              &quot;vp_formats&quot;: {
-                 &quot;jwt_vp_json&quot;: {
-                    &quot;alg&quot;: [
-                       &quot;EdDSA&quot;,
-                       &quot;ES256K&quot;
+            &quot;vp_formats&quot;: {
+                &quot;vc+sd-jwt&quot;: {
+                    &quot;sd-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
+                    ],
+                    &quot;kb-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
                     ]
-                 }
-              },
+                }
+            },
               &quot;presentation_definitions&quot;: [
                   {
                     &quot;id&quot;: &quot;eu.europa.ec.eudiw.pid.it.1&quot;,
                     &quot;input_descriptors&quot;: [
                         {
-                            &quot;id&quot;: &quot;sd-jwt&quot;,
+                            &quot;id&quot;: &quot;IdentityCredential&quot;,
                             &quot;format&quot;: {
-                                &quot;jwt&quot;: {
-                                    &quot;alg&quot;: [
-                                        &quot;EdDSA&quot;,
-                                        &quot;ES256&quot;
-                                    ]
-                                },
-                                &quot;constraints&quot;: {
-                                    &quot;limit_disclosure&quot;: &quot;required&quot;,
-                                    &quot;fields&quot;: [
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.type&quot;
-                                            ],
-                                            &quot;filter&quot;: {
-                                                &quot;type&quot;: &quot;string&quot;,
-                                                &quot;const&quot;: &quot;PersonIdentificationData&quot;
-                                            }
-                                        },
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.cnf&quot;
-                                            ],
-                                            &quot;filter&quot;: {
-                                                &quot;type&quot;: &quot;object&quot;,
-                                            }
-                                        },
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.family_name&quot;
-                                            ],
-                                            &quot;intent_to_retain&quot;: &quot;true&quot;
-                                        },
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.given_name&quot;
-                                            ],
-                                            &quot;intent_to_retain&quot;: &quot;true&quot;
-                                        },
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.unique_id&quot;
-                                            ],
-                                            &quot;intent_to_retain&quot;: &quot;true&quot;
+                                &quot;vc+sd-jwt&quot;: {}
+                            },
+                            &quot;constraints&quot;: {
+                                &quot;limit_disclosure&quot;: &quot;required&quot;,
+                                &quot;fields&quot;: [
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.type&quot;
+                                        ],
+                                        &quot;filter&quot;: {
+                                            &quot;type&quot;: &quot;string&quot;,
+                                            &quot;const&quot;: &quot;IdentityCredential&quot;
                                         }
-                                    ]
-                                }
+                                    },
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.family_name&quot;
+                                        ]
+                                    },
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.given_name&quot;
+                                        ]
+                                    },
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.unique_id&quot;
+                                        ],
+                                        &quot;intent_to_retain&quot;: &quot;true&quot;
+                                    }
+                                ]
                             }
                         }
                     ]
-                  },
+                },
                   {
                     &quot;id&quot;: &quot;mDL-sample-req&quot;,
                     &quot;input_descriptors&quot;: [

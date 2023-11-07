@@ -1416,9 +1416,9 @@ MUST be the same in both <cite>trust_chain</cite> and <cite>x5c</cite>.</p>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">JSON object containing</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">jwt_vp_json</span></code> and <code class="docutils literal notranslate"><span class="pre">jwt_vc_json</span></code></div>
-<div class="line">supported algorithms array.</div>
+<div class="line">JSON object with name/value pairs,</div>
+<div class="line">identifying a Credential format supported</div>
+<div class="line">by the Wallet.</div>
 </div>
 </td>
 </tr>
@@ -1467,7 +1467,7 @@ MUST be the same in both <cite>trust_chain</cite> and <cite>x5c</cite>.</p>
 <span class="p">{</span>
 <span class="w">  </span><span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;aal&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/basic&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;aal&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://trust-list.eu/aal/high&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;cnf&quot;</span><span class="o">:</span>
 <span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;jwk&quot;</span><span class="o">:</span>
@@ -1487,12 +1487,12 @@ MUST be the same in both <cite>trust_chain</cite> and <cite>x5c</cite>.</p>
 <span class="w">    </span><span class="s2">&quot;form_post.jwt&quot;</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="s2">&quot;vp_formats_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;jwt_vp_json&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="s2">&quot;jwt_vc_json&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">      </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="s2">&quot;sd-jwt_alg_values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="s2">&quot;ES384&quot;</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="s2">&quot;request_object_signing_alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="s2">&quot;ES256&quot;</span>

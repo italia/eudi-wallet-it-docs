@@ -1527,19 +1527,21 @@ The Entity Statement MAY contain a metadata policy and the Trust Marks related t
                   ]
             },
         },
-        &quot;client&quot;: {
+        &quot;wallet_relying_party&quot;: {
             &quot;vp_formats&quot;: {
-                &quot;jwt_vp&quot;: {
-                    &quot;alg&quot;:
-                        &quot;subset_of&quot;: [
-                            &quot;EdDSA&quot;,
-                            &quot;ES256K&quot;
-                        ]
-                    }
+                &quot;vc+sd-jwt&quot;: {
+                    &quot;sd-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
+                    ],
+                    &quot;kb-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
+                    ]
                 }
             }
         }
-    }
+     }
 }
 </pre></div>
 </div>
