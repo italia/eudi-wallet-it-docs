@@ -40,7 +40,7 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Wallet Instance Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
    * - Non-Revocation Attestation
-     - Verifiable Attestation, issued by the Issuer, proving that a related Digital Credential is not revoked.
+     - Verifiable Attestation proving that a related Digital Credential is not revoked.
    * - App Attestation Service
      - Device manufacturer service that allows you to certify the authenticity of the mobile app (Wallet Instance).
    * - Qualified Electronic Attestation of Attributes (QEAA)

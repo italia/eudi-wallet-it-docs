@@ -1054,12 +1054,12 @@
           
   <section id="credential-revocations">
 <span id="sec-revocation-intro"></span><h1>Credential Revocations<a class="headerlink" href="#credential-revocations" title="Permalink to this heading">¶</a></h1>
-<p>The value of digital credentials is contingent on their validity.
+<p>The value of Digital Credentials is contingent on their validity.
 A credential that has been revoked, due to legal requirements, inaccuracy or compromise, is not only valueless but potentially harmful.
-For these reasons a robust mechanism for managing the validity and revocation of digital credentials is required.</p>
-<p>This section outlines the key technical requirements and processes related to the revocation of the digital credentials.
+For these reasons a robust mechanism for managing the validity and revocation of Digital Credentials is required.</p>
+<p>This section outlines the key technical requirements and processes related to the revocation of the Digital Credentials.
 Furthermore, it provides the technical details that the Relying Parties MUST implement to verify, in a secure and reliable manner,
-the validity of a digital credential during the presentation phase.</p>
+the validity of a Digital Credential during the presentation phase.</p>
 <p>This section is structured into several subsections, these are listed below.</p>
 <ul class="simple">
 <li><p>The <a class="reference internal" href="#sec-revocation-assumption"><span class="std std-ref">&quot;General Assumptions&quot;</span></a> subsection outlines the main assumptions relevant to the design of a suitable solution for the main revocation scenarios.</p></li>
@@ -1083,11 +1083,11 @@ Finally, it is assumed that, to facilitate the association between physical docu
 <h3>General Requirements<a class="headerlink" href="#general-requirements" title="Permalink to this heading">¶</a></h3>
 <ul>
 <li><p>The Issuer MUST be the only responsible for the lifecycle of credentials including the revocation status.</p></li>
-<li><p>Credentials SHOULD be updates whenever one or more attributes are changed.</p></li>
+<li><p>Credentials SHOULD be updated whenever one or more attributes are changed.</p></li>
 <li><p>Any credential update MUST result in a new fresh issuance of it, following the principle that the credential SHOULD always have updated data. In this case, the old Credentials of the same type MUST be revoked.</p></li>
 <li><p>The revocation of a credential for technical reasons (loss or theft of the device, compromise of cryptographic keys) MAY not have an impact on any other digital credentials issued of the same type and MUST NOT lead to the revocation of a physical document associated with it.</p></li>
 <li><p>The revocation of a physical document which one or more Credentials are associated with MUST result in their revocation.</p></li>
-<li><p>The revocation requests of a credential MAY be communicated to the Issuer by</p>
+<li><p>The revocation requests of a credential MAY be communicated to the Issuer by:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Holders using their personal Wallet Instance.</p></li>
