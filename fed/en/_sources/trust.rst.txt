@@ -17,7 +17,7 @@ The Infrastructure of trust facilitates the application of a trust assessment me
    
     The roles within the Federation, where the Trust Anchor oversees its subordinates,
     which include one or more Intermediates and Leaves. In this
-    representation, both the Trust Anchor and the Intermediates may assume the role of Accreditation Body.
+    representation, both the Trust Anchor and the Intermediates MAY assume the role of Accreditation Body.
 
 
 Federation Roles
@@ -486,7 +486,7 @@ The Entity Statement issued by Trust Anchors and Intermediates contains the foll
      - Federation JWKS of the *sub* entity. See `OIDC-FED`_ Section 3.1 for further details.
      - |check-icon|
    * - **metadata_policy**
-     - JSON Object that describes the Metadata policy. Each key of the JSON Object represent an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the `OIDC-FED`_ specifications, Section-5.1, for the implementation details.
+     - JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the `OIDC-FED`_ specifications, Section-5.1, for the implementation details.
      - |uncheck-icon|
    * - **trust_marks**
      - JSON Array containing the Trust Marks issued by itself for the subordinate subject.
