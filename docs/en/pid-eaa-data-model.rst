@@ -159,7 +159,7 @@ The ``record`` MUST have at least the following sub parameters:
     - It uniquely identifies the trust framework used for the provisioning of the credential. For example, in case of PID, the value ``https://eudi.wallet.cie.gov.it`` means that the CIE id identification scheme is used. 
     - `[OID.IDA. Section 5.1.1.2] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5.1.1.2>`_
   * - **source**
-    - JSON Object cointaining the follwoing mandatory claims:
+    - JSON Object cointaining the following mandatory claims:
 
       - **organization_name**: Name of the Organization acting as Authentic Source.
       - **organization_id**: Identification code for the Organization. For public Organization, it MUST be set to the *IPA Code*, following the URN namespace ``urn:eudi:it:organization_id:ipa_code:<that-value>``.
@@ -537,6 +537,247 @@ The combined format for the PID issuance is represented below:
 MDOC-CBOR
 =========
 
-[TODO]
+The PID/(Q)EAA MDOC-CBOR data model is defined in ISO/IEC 18013-5, the standard born for the the mobile driving license (mDL) use case. 
+
+The MDOC data elements MUST be encoded as defined in `RFC 8949 - Concise Binary Object Representation (CBOR) <RFC 8949 - Concise Binary Object Representation (CBOR)>`_.
+
+The PID MDOC-CBOR document type uses the namespace `eu.europa.ec.eudiw.pid.1`, according to the reverse domain approach defined in the 
+`EIDAS-ARF`_ and in fully harmonization with the ISO/IEC 18013-5 standard.
+
+The the data elements contained in the document, use the same namespace for the required PID attributes, while the national PID attributes use the domestic namespace `eu.europa.ec.eudiw.pid.it.1`, defined in this implementation profile.
+
+According to ISO/IEC 18013-5, the structure of mdoc response that is encoded in CBOR MUST be as the following:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Attribute name**
+      - **Description**
+      - **Reference**
+    * - **version**
+      - *tstr (text string)*. Version of the PID/(Q)EAA structures. For example, ``"version":"1.0"`` means that this is the first version of PID/(Q)EAA ISO-compliant attestation.
+      - [ISO 18013-5#8.3.2.1.2]
+    * - **status**
+      - *uint (unsigned int)*. Status code. For example ``"status":0`` means OK (normal processing).
+      - [ISO 18013-5#8.3.2.1.2.3]
+    * - **documents**
+      - Returned documents. For example, PID/(Q)EAA.
+      - [ISO 18013-5#8.3.2.1.2]
+
+The ``documents`` object contains the Digital Credential and it MUST have the following structure:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Attribute name**
+      - **Description**
+      - **Reference**
+    * - **docType**
+      - *tstr (text string)*. Document type returned. For example for the PID, the value MUST be ``eu.europa.ec.eudiw.pid.1.`` For an mDL, the value MUST be ``org.iso.18013-5.1.mDL``.
+      - [ISO 18013-5#8.3.2.1.2]
+    * - **issuerSigned**
+      - *bstr (byte string)*. Returned data elements signed by the Issuer.
+      - [ISO 18013-5#8.3.2.1.2]
+
+The ``issuerSigned`` object MUST have the following structure:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Attribute name**
+      - **Description**
+      - **Reference**
+    * - **nameSpaces** 
+      - *bstr (byte string)* with *tag* 24 and *major type* 6. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. The nameSpaces MUST use the same value for the document type. However, it MAY have a domestic namespace to include attributes defined in this implementation profile. In this case, it MUST append the applicable *ISO 3166-1 alpha-2 country code*. For example, in the case of Italy, the value MUST be: ``eu.europa.ec.eudiw.pid.it.1``
+      - [ISO 18013-5#8.3.2.1.2]
+    * - **issuerAuth**
+      - *bstr (byte string)*. Contains *Mobile Security Object* (MSO) for issuer data authentication
+      - [ISO 18013-5#9.1.2.4]
+
+During the presentation of a credential in mDOC-CBOR format, in addition to the objects in the table above, a ``deviceSigner`` object MUST also be added and MUST NOT be present in the issued credential provided by a PID/(Q)EAA Issuer.
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Attribute name**
+      - **Description**
+      - **Reference**
+    * - **deviceSigned**
+      - *bstr (byte string)*. Data elements signed by the Wallet Instance during the presentation phase.
+      - [ISO 18013-5#8.3.2.1.2]
+
+Where the ``deviceSigned`` MUST have the following structure:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Attribute name**
+      - **Description**
+      - **Reference**
+    * - **nameSpaces**
+      - *tstr (text string)*. It MUST be an empty structure.
+      - [ISO 18013-5#8.3.2.1.2], PID Rule Book
+    * - **deviceAuth**
+      - *bstr (byte string)*. Contains the device authentication for mDoc data authentication
+      - [ISO 18013-5#8.3.2.1.2]
+
+
+.. note::
+  
+  A ``deviceSigned`` object given during the presentation phase has two purposes:
+
+    1. Provide Optional self-attested claims in the ``nameSpaces`` object. Even if no self-attested claims are provided by the Wallet Instance, the ``nameSpaces`` object MUST be included with an empty structure.
+    2. Provide a cryptographic proof that the Holder is the legitimate owner of the Credential by means of a ``deviceAuth`` object. 
+
+
+.. note::
+
+    The ``issuerSigned`` and the ``deviceSigned`` objects contain the ``nameSpaces`` object and the *Mobile Security Object*. The latter is the only signed object, while the ``nameSpaces`` object is not signed.
+
+
+
+nameSpaces
+----------
+
+The `nameSpaces` object contains one or more *IssuerSignedItemBytes* that are encoded using CBOR bitsring 24 tag (#6.24(bstr .cbor), Marked with 24(<<... >>) in the example), representing the disclosure information for each digest within the `Mobile Security Object`. It MUST contain  the following attributes:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Name**
+      - **Encoding**
+      - **Description**
+    * - **digestID**
+      - integer
+      - This value is a reference to the equivalent hash value within ``ValueDigests`` in the *Mobile Security Object*.
+    * - **random**
+      - bstr (byte string)
+      - Random byte value used as salt for the hash function. This value shall be different for each *IssuerSignedItem* and shall have a minimum length of 16 bytes.
+    * - **elementIdentifier**
+      - tstr (text string)
+      - Data element identifier.
+    * - **elementValue**
+      - depends by the value, see the next table.
+      - Data element value.
+
+The `elementIdentifier` data that MUST be included in a PID/(Q)EAA are: 
+
+.. list-table:: 
+    :widths: 20 20 20
+    :header-rows: 1
+
+    * - **Namespace**
+      - **Element identifier**
+      - **Description**
+    * - **eu.europa.ec.eudiw.pid.1**
+      - **issuance_date**
+      - full-date (CBORTag 1004). Date when the PID/(Q)EAA was issued.
+    * - **eu.europa.ec.eudiw.pid.1**
+      - **expiry_date**
+      - full-date (CBORTag 1004). Date when the PID/(Q)EAA will expire.
+    * - **eu.europa.ec.eudiw.pid.1**
+      - **issuing_authority**
+      - tstr (text string). Name of administrative authority that has issued the PID/(Q)EAA.
+    * - **eu.europa.ec.eudiw.pid.1**
+      - **issuing_country**
+      - tstr (text string). Alpha-2 country code as defined in [ISO 3166]
+
+
+Depending on the Digital Credential type, additional `elementIdentifier` data MAY be added. For the PID it MUST support the following data:
+
+.. list-table:: 
+    :widths: 20 20 20
+    :header-rows: 1
+
+    * - **eu.europa.ec.eudiw.pid.1**
+      - **given_name**
+      - tstr (text string).
+    * - **eu.europa.ec.eudiw.pid.1**      
+      - **family_name**
+      - tstr (text string).
+    * - **eu.europa.ec.eudiw.pid.1**
+      - **birth_date**
+      - full-date (CBORTag 1004).
+    * - **eu.europa.ec.eudiw.pid.1**
+      - **birth_place**
+      - tstr (text string).
+    * - **eu.europa.ec.eudiw.pid.1**
+      - **birth_country**
+      - tstr (text string).
+    * - **eu.europa.ec.eudiw.pid.1**
+      - **unique_id**
+      - tstr (text string).
+    * - **eu.europa.ec.eudiw.pid.it.1**
+      - **tax_id_code**
+      - tstr (text string).
+
+
+Mobile Security Object
+----------------------
+
+The `issuerAuth` MUST contain a `Mobile Security Object` which is an untagged value containing a `COSE Sign1 Document`, as defined in `RFC 9052 - CBOR Object Signing and Encryption (COSE): Structures and Process <https://www.rfc-editor.org/rfc/rfc9052.html>`_. It MUST be composed by:
+
+* protected header
+* unprotected header
+* payload
+* signature.
+
+The protected header MUST contain the following parameter encoded in CBOR format:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Element**
+      - **Description**
+      - **Reference**
+    * - **Signature algorithm**
+      - `-7` means ES256, SHA-256. 
+      - RFC8152
+
+.. note::
+    Only the Signature Algorithm MUST be present in the protected headers, other elements SHOULD not be present in the protected header.
+
+
+The unprotected header MUST contain the following parameter:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Element**
+      - **Description**
+      - **Reference**
+    * - **x5chain**
+      - Identified with the label 33
+      - `RFC 9360 CBOR Object Signing and Encryption (COSE) - Header Parameters for Carrying and Referencing X.509 Certificates <RFC 9360 CBOR Object Signing and Encryption (COSE) - Header Parameters for Carrying and Referencing X.509 Certificates>`_.
+
+.. note::
+    The `x5chain` is included in the unprotected header with the aim to make the Holder able to update the X.509 certificate chain, related to the `Mobile Security Object` issuer, without breaking the signature.
+
+The payload must contain the following parameter:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Element**
+      - **Encoding**
+      - **Description**
+    * - **MobileSecurityObjectBytes**
+      - CBORTag(24) 
+      - object, without any `content-type` definition, containing the following attributes:
+
+        * version
+        * digestAlgorithm
+        * valueDigests
+        * deviceKeyInfo
+
 
 
