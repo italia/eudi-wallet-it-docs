@@ -718,7 +718,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-data-can-be-backed-up">What data can be backed up</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backup-methods">Backup methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#user-stories-and-use-cases">User Stories and Use Cases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backup-and-restore-approaches-comparison">Backup and Restore Approaches Comparison</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backup-content">Backup content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#recover">Recover</a></li>
@@ -969,7 +968,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-data-can-be-backed-up">What data can be backed up</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backup-methods">Backup methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#user-stories-and-use-cases">User Stories and Use Cases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backup-and-restore-approaches-comparison">Backup and Restore Approaches Comparison</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backup-content">Backup content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#recover">Recover</a></li>
@@ -1030,7 +1028,7 @@
 <span id="backup-restore-rst"></span><h1>EUDI Wallet Backup &amp; Recovery<a class="headerlink" href="#eudi-wallet-backup-recovery" title="Permalink to this heading">¶</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
-<p>Section 4.2.4 of eIDAS ARF v1 (EUDI Wallet Instance Lifecycle) states that the EUDI Wallet Instance becomes valid once it receives a valid PID. From this point, the User can receive and store one or more (Q)EAAs in the Wallet. Therefore, it is crucial to have a backup and recovery strategy for the Wallet Solution. Backup and recovery are distinct phases that occur during different parts of the Wallet Instance lifecycle and should be almost transparent to the User.</p>
+<p>Section 4.2.4 of the eIDAS ARF v1 (EUDI Wallet Instance Lifecycle) states that the EUDI Wallet Instance becomes valid once it receives a valid PID. From this point, the User can receive and store one or more (Q)EAAs in the Wallet. Therefore, it is crucial to have a backup and recovery strategy for the Wallet Solution. Backup and recovery are distinct phases that occur during different parts of the Wallet Instance lifecycle and should be almost transparent to the User.</p>
 <p>This document proposes a technical solution for the backup and restoration of digital credentials.</p>
 </section>
 <section id="what-data-can-be-backed-up">
@@ -1049,7 +1047,6 @@
 <p>Given the sensitive nature of the data, backups must be encrypted. When encryption is applied, it should be done with a User-provided passphrase or any other means that the User has sole control over.</p>
 <p>The backup should be stored as a serialized file (hereafter referred to as the “Backup File”) in an open format. The Backup File should include a timestamp in its name to facilitate chronological sorting, as illustrated in the non-normative example below:</p>
 <p>eudiwallet-backup-2023-02-01T08:03:11Z.eudiwb</p>
-<p>Note: The backup and restore approach could be further elaborated depending on specific contexts and settings. For example, if a seed card is used, the process would not be export/import, but instantiation with a similar seed[d].</p>
 <p>The Wallet Solution could provide various methods for exporting the backup, including:</p>
 <ul class="simple">
 <li><p>a physically attached USB device (where available);</p></li>
@@ -1057,11 +1054,6 @@
 <li><p>local saving on the device.</p></li>
 </ul>
 <p>The User should have the ability to manually initiate a backup. Additionally, the Wallet Instance should periodically create these backups and save them locally. The operating system's backup mechanism will ensure the preservation of this data. As the backup is encrypted, the user can choose to move the locally saved file anywhere they wish, but should be warned of possible risks if the passphrase they chose is not secure enough[b].</p>
-</section>
-<section id="user-stories-and-use-cases">
-<h2>User Stories and Use Cases<a class="headerlink" href="#user-stories-and-use-cases" title="Permalink to this heading">¶</a></h2>
-<p>Comment [e] suggests that we should consider different user stories and use cases. These scenarios can help us understand how the backup and restore process will work in real-world situations. They can also help us identify unique identifiers for each row in the backup and restore methods comparison table, which can then be referenced in the defined use cases in another document or section.</p>
-<p>Note: This approach could be further elaborated depending on specific contexts and settings. For instance, if a seed card is used, the process would not be export/import, but instantiation with a similar seed.</p>
 </section>
 <section id="backup-and-restore-approaches-comparison">
 <h2>Backup and Restore Approaches Comparison<a class="headerlink" href="#backup-and-restore-approaches-comparison" title="Permalink to this heading">¶</a></h2>
