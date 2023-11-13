@@ -1164,7 +1164,7 @@ The User attributes carried within the Italian PID are the ones listed below:</p
 </table>
 </section>
 <section id="pid-q-eaa-verification-field">
-<h3>PID/(Q)EAA Verification field<a class="headerlink" href="#pid-q-eaa-verification-field" title="Permalink to this heading">¶</a></h3>
+<span id="sec-pid-eaa-verification-field"></span><h3>PID/(Q)EAA Verification field<a class="headerlink" href="#pid-q-eaa-verification-field" title="Permalink to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">verification</span></code> claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User attributes (claims).  Some of these additional claims MAY be selectively disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable (SD) or not (NSD).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">verification</span></code> claim is a JSON structure with all the following mandatory sub-claims.</p>
 <table class="docutils align-default">
@@ -1788,7 +1788,7 @@ The User attributes carried within the Italian PID are the ones listed below:</p
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>issuance_date</strong></p></td>
+<td><p><strong>issue_date</strong></p></td>
 <td><p><em>full-date (CBORTag 1004)</em>. Date when the PID/(Q)EAA was issued.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
@@ -1801,7 +1801,23 @@ The User attributes carried within the Italian PID are the ones listed below:</p
 </tr>
 <tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
 <td><p><strong>issuing_country</strong></p></td>
-<td><p><em>tstr (text string)</em>. Alpha-2 country code as defined in [ISO 3166]</p></td>
+<td><p><em>tstr (text string)</em>. Alpha-2 country code as defined in [ISO 3166].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.it.1</strong></p></td>
+<td><p><strong>verification.evidence</strong></p></td>
+<td><p><em>bstr (byte string)</em>. As defined in the <a class="reference internal" href="#sec-pid-eaa-verification-field"><span class="std std-ref">PID/(Q)EAA Verification field Section</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.it.1</strong></p></td>
+<td><p><strong>verification.trust_framework</strong></p></td>
+<td><p><em>tstr (text string)</em>. As defined in the <a class="reference internal" href="#sec-pid-eaa-verification-field"><span class="std std-ref">PID/(Q)EAA Verification field Section</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.it.1</strong></p></td>
+<td><p><strong>verification.assurance_level</strong></p></td>
+<td><p><em>tstr (text string)</em>. As defined in the <a class="reference internal" href="#sec-pid-eaa-verification-field"><span class="std std-ref">PID/(Q)EAA Verification field Section</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.it.1</strong></p></td>
+<td><p><strong>status</strong></p></td>
+<td><p><em>tstr (text string)</em>. HTTPS URL where the credential validity status is available.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2007,13 +2023,13 @@ The User attributes carried within the Italian PID are the ones listed below:</p
                         6: h&#39;BB6E6C68D1B4B4EC5A2AE9206F5t4…&#39;,
                         7: h&#39;F8A5966E6DAC9970E0334D8F75E25…&#39;,
                         8: h&#39;EAD5E8B5E543BD31F3BE57DE4ED45…&#39;,
-                        9: h&#39;DEFDF1AA746718016EF1B94BFE5R6…&#39;,
+                        9: h&#39;DEFDF1AA746718016EF1B94BFE5R6…&#39;
+                    },
+                    &quot;eu.europa.ec.eudiw.pid.it.1&quot;: {
                         10: h&#39;AFC5A127BE44753172844B13491D8…&#39;,
                         11: h&#39;AFC5A127BE44753172844B13492H4…&#39;,
                         12: h&#39;DJA5A127BE44753172844B13492H4…&#39;,
-                        13: h&#39;KDL5A127BE44753172844B13492H4…&#39;
-                    },
-                    &quot;eu.europa.ec.eudiw.pid.it.1&quot;: {
+                        13: h&#39;KDL5A127BE44753172844B13492H4…&#39;,
                         14: h&#39;F9EE4D36F67DBD75E23311AC1C29…&#39;
                     }
                 },
@@ -2045,7 +2061,7 @@ The User attributes carried within the Italian PID are the ones listed below:</p
                 {
                 &quot;digestID&quot;: 2,
                 &quot;random&quot;: h&#39;AE84834F389EE69888665B90A3E4FCCE&#39;,
-                &quot;elementIdentifier&quot;: &quot;issuance_date&quot;,
+                &quot;elementIdentifier&quot;: &quot;issue_date&quot;,
                 &quot;elementValue&quot;: 1004(&quot;2023-02-22&quot;)
                 }
             &gt;&gt;),
@@ -2110,53 +2126,53 @@ The User attributes carried within the Italian PID are the ones listed below:</p
                 &quot;elementIdentifier&quot;: &quot;unique_id&quot;,
                 &quot;elementValue&quot;: &quot;xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx&quot;
                 }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 10,
-                &quot;random&quot;: h&#39;CAD1F6A38F603451F1FA653F81FF309D&#39;,
-                &quot;elementIdentifier&quot;: &quot;verification.evidence&quot;,
-                &quot;elementValue&quot;: [
-                    {
-                    &quot;type&quot;: &quot;electronic_record&quot;,
-                    &quot;record&quot;: {
-                        &quot;type&quot;: &quot;eidas.it.cie&quot;,
-                        &quot;source&quot;: {
-                            &quot;organization_name&quot;: &quot;eidas.it.cie&quot;,
-                            &quot;organization_id&quot;:  &quot;m_it&quot;,
-                            &quot;country_code&quot;: &quot;it&quot;,
-                        }
-                    }
-                    }
-                ]
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 11,
-                &quot;random&quot;: h&#39;CAD1F6A38F603451F1FA653F81FF309D,
-                &quot;elementIdentifier&quot;: &quot;status&quot;,
-                &quot;elementValue&quot;: &quot;https://pidprovider.it/status&quot;
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 12,
-                &quot;random&quot;: h&#39;564E3C65D46D06FEDEB0E7293A86GF&#39;,
-                &quot;elementIdentifier&quot;: &quot;verification.trust_framework&quot;,
-                &quot;elementValue&quot;: &quot;eidas&quot;
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 13,
-                &quot;random&quot;: h&#39;D884E5D5EF4CFC93FDB1E4EE8F3923&#39;,
-                &quot;elementIdentifier&quot;: &quot;verification.assurance_level&quot;,
-                &quot;elementValue&quot;: &quot;high&quot;
-                }
             &gt;&gt;)
             ],
             &quot;eu.europa.ec.eudiw.pid.it.1&quot;: [
+                24(&lt;&lt;
+                    {
+                    &quot;digestID&quot;: 10,
+                    &quot;random&quot;: h&#39;CAD1F6A38F603451F1FA653F81FF309D&#39;,
+                    &quot;elementIdentifier&quot;: &quot;verification.evidence&quot;,
+                    &quot;elementValue&quot;: [
+                        {
+                        &quot;type&quot;: &quot;electronic_record&quot;,
+                        &quot;record&quot;: {
+                            &quot;type&quot;: &quot;eidas.it.cie&quot;,
+                            &quot;source&quot;: {
+                                &quot;organization_name&quot;: &quot;eidas.it.cie&quot;,
+                                &quot;organization_id&quot;:  &quot;m_it&quot;,
+                                &quot;country_code&quot;: &quot;it&quot;,
+                            }
+                        }
+                        }
+                    ]
+                    }
+                &gt;&gt;),
+                24(&lt;&lt;
+                    {
+                    &quot;digestID&quot;: 11,
+                    &quot;random&quot;: h&#39;CAD1F6A38F603451F1FA653F81FF309D,
+                    &quot;elementIdentifier&quot;: &quot;status&quot;,
+                    &quot;elementValue&quot;: &quot;https://pidprovider.example.it/status&quot;
+                    }
+                &gt;&gt;),
+                24(&lt;&lt;
+                    {
+                    &quot;digestID&quot;: 12,
+                    &quot;random&quot;: h&#39;564E3C65D46D06FEDEB0E7293A86GF&#39;,
+                    &quot;elementIdentifier&quot;: &quot;verification.trust_framework&quot;,
+                    &quot;elementValue&quot;: &quot;eidas&quot;
+                    }
+                &gt;&gt;),
+                24(&lt;&lt;
+                    {
+                    &quot;digestID&quot;: 13,
+                    &quot;random&quot;: h&#39;D884E5D5EF4CFC93FDB1E4EE8F3923&#39;,
+                    &quot;elementIdentifier&quot;: &quot;verification.assurance_level&quot;,
+                    &quot;elementValue&quot;: &quot;high&quot;
+                    }
+                &gt;&gt;)
                 24(&lt;&lt;
                     {
                     &quot;digestID&quot;: 14,
