@@ -18,7 +18,7 @@ The User attributes carried within the Italian PID are the ones listed below:
 
 The italian PID is extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.
 
-The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format. 
+The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or MDOC-CBOR data format. 
 
 The (Q)EAAs are extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where the data comes from. 
 
@@ -168,6 +168,8 @@ The ``record`` MUST have at least the following sub parameters:
 
 .. warning::
   Note that the sub-claims of the **evidence** parameter are not selectively disclosable separately, thus, for example, the User cannot give only the *record type* without the disclosure of the *record source* value (organization name, identifier and country). 
+
+.. _sec-pid-user-claims:
 
 PID Claims field 
 ----------------
@@ -546,10 +548,12 @@ The PID MDOC-CBOR document type uses the namespace `eu.europa.ec.eudiw.pid.1`, a
 
 The the data elements contained in the document, use the same namespace for the required PID attributes, while the national PID attributes use the domestic namespace `eu.europa.ec.eudiw.pid.it.1`, defined in this implementation profile.
 
-According to ISO/IEC 18013-5, the structure of mdoc response that is encoded in CBOR MUST be as the following:
+According to ISO/IEC 18013-5, the structure of MDOC response that is encoded in CBOR MUST be as the following:
+
+.. _table-mdoc-attributes:
 
 .. list-table:: 
-    :widths: 20 20 60
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Attribute name**
@@ -562,13 +566,15 @@ According to ISO/IEC 18013-5, the structure of mdoc response that is encoded in 
       - *uint (unsigned int)*. Status code. For example ``"status":0`` means OK (normal processing).
       - [ISO 18013-5#8.3.2.1.2.3]
     * - **documents**
-      - Returned documents. For example, PID/(Q)EAA.
+      - *bstr (byte string)*. Returned documents. For example, PID/(Q)EAA.
       - [ISO 18013-5#8.3.2.1.2]
 
-The ``documents`` object contains the Digital Credential and it MUST have the following structure:
+The **documents** object contains the Digital Credential and it MUST have the following structure:
+
+.. _table-mdoc-documents-attributes:
 
 .. list-table:: 
-    :widths: 20 20 60
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Attribute name**
@@ -581,26 +587,26 @@ The ``documents`` object contains the Digital Credential and it MUST have the fo
       - *bstr (byte string)*. Returned data elements signed by the Issuer.
       - [ISO 18013-5#8.3.2.1.2]
 
-The ``issuerSigned`` object MUST have the following structure:
+The **issuerSigned** object MUST have the following structure:
 
 .. list-table:: 
-    :widths: 20 20 60
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Attribute name**
       - **Description**
       - **Reference**
     * - **nameSpaces** 
-      - *bstr (byte string)* with *tag* 24 and *major type* 6. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. The nameSpaces MUST use the same value for the document type. However, it MAY have a domestic namespace to include attributes defined in this implementation profile. In this case, it MUST append the applicable *ISO 3166-1 alpha-2 country code*. For example, in the case of Italy, the value MUST be: ``eu.europa.ec.eudiw.pid.it.1``
+      - *bstr (byte string)* with *tag* 24 and *major type* 6. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. The nameSpaces MUST use the same value for the document type. However, it MAY have a domestic namespace to include attributes defined in this implementation profile. In this case, it MUST append the applicable *ISO 3166-1 alpha-2 country code*. For example, in the case of Italy, the value MUST be: ``eu.europa.ec.eudiw.pid.it.1``.
       - [ISO 18013-5#8.3.2.1.2]
     * - **issuerAuth**
-      - *bstr (byte string)*. Contains *Mobile Security Object* (MSO) for issuer data authentication
+      - *bstr (byte string)*. Contains *Mobile Security Object* (MSO) for issuer data authentication.
       - [ISO 18013-5#9.1.2.4]
 
-During the presentation of a credential in mDOC-CBOR format, in addition to the objects in the table above, a ``deviceSigner`` object MUST also be added and MUST NOT be present in the issued credential provided by a PID/(Q)EAA Issuer.
+During the presentation of a credential in MDOC-CBOR format, in addition to the objects in the table above, a **deviceSigned** object MUST also be added and MUST NOT be present in the issued credential provided by a PID/(Q)EAA Issuer.
 
 .. list-table:: 
-    :widths: 20 20 60
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Attribute name**
@@ -610,26 +616,26 @@ During the presentation of a credential in mDOC-CBOR format, in addition to the 
       - *bstr (byte string)*. Data elements signed by the Wallet Instance during the presentation phase.
       - [ISO 18013-5#8.3.2.1.2]
 
-Where the ``deviceSigned`` MUST have the following structure:
+Where the **deviceSigned** MUST have the following structure:
 
 .. list-table:: 
-    :widths: 20 20 60
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Attribute name**
       - **Description**
       - **Reference**
     * - **nameSpaces**
-      - *tstr (text string)*. It MUST be an empty structure.
-      - [ISO 18013-5#8.3.2.1.2], PID Rule Book
+      - *tstr (text string)*. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. It MAY be used for self-attested claims.
+      - [ISO 18013-5#8.3.2.1.2]
     * - **deviceAuth**
-      - *bstr (byte string)*. Contains the device authentication for mDoc data authentication
+      - *bstr (byte string)*. Contains the device authentication for MDOC data authentication.
       - [ISO 18013-5#8.3.2.1.2]
 
 
 .. note::
   
-  A ``deviceSigned`` object given during the presentation phase has two purposes:
+  A **deviceSigned** object given during the presentation phase has two purposes:
 
     1. Provide Optional self-attested claims in the ``nameSpaces`` object. Even if no self-attested claims are provided by the Wallet Instance, the ``nameSpaces`` object MUST be included with an empty structure.
     2. Provide a cryptographic proof that the Holder is the legitimate owner of the Credential by means of a ``deviceAuth`` object. 
@@ -644,32 +650,32 @@ Where the ``deviceSigned`` MUST have the following structure:
 nameSpaces
 ----------
 
-The `nameSpaces` object contains one or more *IssuerSignedItemBytes* that are encoded using CBOR bitsring 24 tag (#6.24(bstr .cbor), Marked with 24(<<... >>) in the example), representing the disclosure information for each digest within the `Mobile Security Object`. It MUST contain  the following attributes:
+The **nameSpaces** object contains one or more *IssuerSignedItemBytes* that are encoded using CBOR bitsring 24 tag (#6.24(bstr .cbor), Marked with 24(<<... >>) in the example), representing the disclosure information for each digest within the `Mobile Security Object`. It MUST contain  the following attributes:
 
 .. list-table:: 
-    :widths: 20 20 60
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Name**
       - **Encoding**
       - **Description**
     * - **digestID**
-      - integer
+      - *integer*
       - This value is a reference to the equivalent hash value within ``ValueDigests`` in the *Mobile Security Object*.
     * - **random**
-      - bstr (byte string)
+      - *bstr (byte string)*
       - Random byte value used as salt for the hash function. This value shall be different for each *IssuerSignedItem* and shall have a minimum length of 16 bytes.
     * - **elementIdentifier**
-      - tstr (text string)
+      - *tstr (text string)*
       - Data element identifier.
     * - **elementValue**
       - depends by the value, see the next table.
       - Data element value.
 
-The `elementIdentifier` data that MUST be included in a PID/(Q)EAA are: 
+The **elementIdentifier** data that MUST be included in a PID/(Q)EAA are: 
 
 .. list-table:: 
-    :widths: 20 20 20
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Namespace**
@@ -677,61 +683,64 @@ The `elementIdentifier` data that MUST be included in a PID/(Q)EAA are:
       - **Description**
     * - **eu.europa.ec.eudiw.pid.1**
       - **issuance_date**
-      - full-date (CBORTag 1004). Date when the PID/(Q)EAA was issued.
+      - *full-date (CBORTag 1004)*. Date when the PID/(Q)EAA was issued.
     * - **eu.europa.ec.eudiw.pid.1**
       - **expiry_date**
-      - full-date (CBORTag 1004). Date when the PID/(Q)EAA will expire.
+      - *full-date (CBORTag 1004)*. Date when the PID/(Q)EAA will expire.
     * - **eu.europa.ec.eudiw.pid.1**
       - **issuing_authority**
-      - tstr (text string). Name of administrative authority that has issued the PID/(Q)EAA.
+      - *tstr (text string)*. Name of administrative authority that has issued the PID/(Q)EAA.
     * - **eu.europa.ec.eudiw.pid.1**
       - **issuing_country**
-      - tstr (text string). Alpha-2 country code as defined in [ISO 3166]
+      - *tstr (text string)*. Alpha-2 country code as defined in [ISO 3166]
 
 
-Depending on the Digital Credential type, additional `elementIdentifier` data MAY be added. For the PID it MUST support the following data:
+Depending on the Digital Credential type, additional **elementIdentifier** data MAY be added. For the PID it MUST support the following data:
 
 .. list-table:: 
-    :widths: 20 20 20
+    :widths: 20 60 20
     :header-rows: 1
 
+    * - **Namespace**
+      - **Element identifier**
+      - **Description**
     * - **eu.europa.ec.eudiw.pid.1**
       - **given_name**
-      - tstr (text string).
+      - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
     * - **eu.europa.ec.eudiw.pid.1**      
       - **family_name**
-      - tstr (text string).
+      - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
     * - **eu.europa.ec.eudiw.pid.1**
       - **birth_date**
-      - full-date (CBORTag 1004).
+      - *full-date (CBORTag 1004)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
     * - **eu.europa.ec.eudiw.pid.1**
       - **birth_place**
-      - tstr (text string).
+      - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
     * - **eu.europa.ec.eudiw.pid.1**
       - **birth_country**
-      - tstr (text string).
+      - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
     * - **eu.europa.ec.eudiw.pid.1**
       - **unique_id**
-      - tstr (text string).
+      - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
     * - **eu.europa.ec.eudiw.pid.it.1**
       - **tax_id_code**
-      - tstr (text string).
+      - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
 
 
 Mobile Security Object
 ----------------------
 
-The `issuerAuth` MUST contain a `Mobile Security Object` which is an untagged value containing a `COSE Sign1 Document`, as defined in `RFC 9052 - CBOR Object Signing and Encryption (COSE): Structures and Process <https://www.rfc-editor.org/rfc/rfc9052.html>`_. It MUST be composed by:
+The **issuerAuth** MUST contain a `Mobile Security Object` which is an untagged value containing a `COSE Sign1 Document`, as defined in `RFC 9052 - CBOR Object Signing and Encryption (COSE): Structures and Process <https://www.rfc-editor.org/rfc/rfc9052.html>`_. It MUST be composed by:
 
 * protected header
 * unprotected header
 * payload
 * signature.
 
-The protected header MUST contain the following parameter encoded in CBOR format:
+The **protected header** MUST contain the following parameter encoded in CBOR format:
 
 .. list-table:: 
-    :widths: 20 20 60
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Element**
@@ -742,13 +751,14 @@ The protected header MUST contain the following parameter encoded in CBOR format
       - RFC8152
 
 .. note::
+    
     Only the Signature Algorithm MUST be present in the protected headers, other elements SHOULD not be present in the protected header.
 
 
-The unprotected header MUST contain the following parameter:
+The **unprotected header** MUST contain the following parameter:
 
 .. list-table:: 
-    :widths: 20 20 60
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Element**
@@ -761,23 +771,256 @@ The unprotected header MUST contain the following parameter:
 .. note::
     The `x5chain` is included in the unprotected header with the aim to make the Holder able to update the X.509 certificate chain, related to the `Mobile Security Object` issuer, without breaking the signature.
 
-The payload must contain the following parameter:
+The **payload** MUST contain the *MobileSecurityObject*, without any `content-type` definition, encoded as a *byte string* (bstr) with *CBOR Tag* 24.
+
+The `MobileSecurityObjectBytes` MUST have the following attributes:
 
 .. list-table:: 
-    :widths: 20 20 60
+    :widths: 20 60 20
     :header-rows: 1
 
     * - **Element**
-      - **Encoding**
       - **Description**
-    * - **MobileSecurityObjectBytes**
-      - CBORTag(24) 
-      - object, without any `content-type` definition, containing the following attributes:
+      - **Reference**
+    * - **docType**
+      - See :ref:`Table <table-mdoc-documents-attributes>`.
+      - [ISO 18013-5#9.1.2.4]
+    * - **version**
+      - See :ref:`Table <table-mdoc-attributes>`.
+      - [ISO 18013-5#9.1.2.4]
+    * - **validityInfo**. 
+      - Object containing issuance and expiration datetimes. It MUST contain the following sub-value:
 
-        * version
-        * digestAlgorithm
-        * valueDigests
-        * deviceKeyInfo
+          * *signed*
+          * *validFrom*
+          * *validUntil*
+      - [ISO 18013-5#9.1.2.4]
+    * - **digestAlgorithm**
+      - According to the algorithm defined in the protected header.
+      - [ISO 18013-5#9.1.2.4]
+    * - **valueDigests**
+      - Mapped digest by unique id, grouped by namespace.
+      - [ISO 18013-5#9.1.2.4]
+    * - **deviceKeyInfo**
+      - It MUST be set to the public key that is generated by the Wallet Instance. It contains the following sub-values.
+
+          * *deviceKey* (REQUIRED).
+          * *keyAuthorizations* (OPTIONAL).
+          * *keyInfo* (OPTIONAL).
+      - [ISO 18013-5#9.1.2.4]
+
+.. note::
+    The private key related to the public key stored in the `deviceKey` object, is used to authenticate the PID during the presentation phase, where the `DeviceSignedItems` structure is involved (see the presentation phase with MDOC-CBOR).
+
+
+MDOC-CBOR Examples
+------------------
+
+A PID in MDOC-CBOR is represented below in AF Binary format:
+
+.. code-block:: text
+    
+  A366737461747573006776657273696F6E63312E3069646F63756D656E747381A267646F6354797065781865752E6575726F70612E65632E65756469772E7069642E316C6973737565725369676E6564A26A697373756572417574688443A10126A1182159021930820215308201BCA003020102021404AD06A30C1A6DC6E93BE0E2E8F78DCAFA7907C2300A06082A8648CE3D040302305B310B3009060355040613025A45312E302C060355040A0C25465053204D6F62696C69747920616E64205472616E73706F7274206F66205A65746F706961311C301A06035504030C1349414341205A65746573436F6E666964656E73301E170D3231303932393033333034355A170D3232313130333033333034345A3050311A301806035504030C114453205A65746573436F6E666964656E7331253023060355040A0C1C5A65746F70696120436974792044657074206F662054726166666963310B3009060355040613025A453059301306072A8648CE3D020106082A8648CE3D030107034200047C5545E9A0B15F4FF3CE5015121E8AD3257C28D541C1CD0D604FC9D1E352CCC38ADEF5F7902D44B7A6FC1F99F06EEDF7B0018FD9DA716AEC2F1FFAC173356C7DA3693067301F0603551D23041830168014BBA2A53201700D3C97542EF42889556D15B7AC4630150603551D250101FF040B3009060728818C5D050102301D0603551D0E04160414CE5FD758A8E88563E625CF056BFE9F692F4296FD300E0603551D0F0101FF040403020780300A06082A8648CE3D0403020347003044022012B06A3813FFEC5679F3B8CDDB51EAA4B95B0CBB1786B09405E2000E9C46618C02202C1F778AD252285ED05D9B55469F1CB78D773671F30FE7AB815371942328317C59032AD818590325A667646F6354797065781865752E6575726F70612E65632E65756469772E7069642E316776657273696F6E63312E306C76616C6964697479496E666FA3667369676E6564C074323032332D30322D32325430363A32333A35365A6976616C696446726F6DC074323032332D30322D32325430363A32333A35365A6A76616C6964556E74696CC074323032342D30322D32325430303A30303A30305A6C76616C756544696765737473A2781865752E6575726F70612E65632E65756469772E7069642E31AC015820A7FFC6F8BF1ED76651C14756A061D662F580FF4DE43B49FA82D80A4B80F8434A025820CD372FB85148700FA88095E3492D3F9F5BEB43E555E5FF26D95F5A6ADC36F8E6035820E67E72111B363D80C8124D28193926000980E1211C7986CACBD26AACC5528D48045820F7D062D662826ED95869851DB06BB539B402047BAEE53A00E0AA35BFBE98265D0658202A132DBFE4784627B86AA3807CD19CFEFF487AAB3DD7A60D0AB119A72E736936075820BDCA9E8DBCA354E824E67BFE1533FA4A238B9EA832F23FB4271EBEB3A5A8F7200858202C0EAEC2F05B6C7FE7982683E3773B5D8D7A01E33D04DFCB162ADD8BD99BEE9A095820BFE220D85657CCEC3C67E7DB1DF747E9148A152334BB6D4B65B273279BCC36EC0A582018E38144F5044301D6A0B4EC9D5F98D4CD950E6EA2C29B849CBD457DA29B6AD30B58203C71D2F0EFA09D9E3FBBDFFD29204F6B292C9F79570AEF72DD86C91F7A3AA5C50C582065743D58D89D45E52044758F546034FD13A4F994BC270CDFA7844F74EB3F4B6E0D5820B4A8EB5D523BFFA17B41BDA12DDC7DA32AE1E5F7FF3DCC394A35401F16919BBF781B65752E6575726F70612E65632E65756469772E7069642E69742E31A10E58209D6C11644651126C94ACDAF0803E86D4C71D15D3B2712A14295416734EFD514D6D6465766963654B6579496E666FA1696465766963654B6579A401022001215820BA01AEA44EEE1E338EB2F04E279DBD51B34655783EE185150838C9A7A7C4DB7122582025BA0044439A3871A7B975A0994A85E79B705A9AC263B3FE899B0A93412EE8C96F646967657374416C676F726974686D675348412D32353658400813C28FD62F2602CBC14724E5865733C44A0FCA589B55C085EC9D5C725D6CCE25BA0044439A3871A7B975A0994A85E79B705A9AC263B3FE899B0A93412EE8C96A6E616D65537061636573A2781865752E6575726F70612E65632E65756469772E7069642E318DD818586DA4686469676573744944016672616E646F6D5820156DF9227AD341EAA61AABD301106FD21BDC18820E01DFC16BCF5FECC447111B71656C656D656E744964656E7469666965726B6578706972795F646174656C656C656D656E7456616C7565D903EC6A323032342D30322D3232D818586FA4686469676573744944026672616E646F6D5820A3A1F13F05544D03A5B50B5FDB78465808393BCF3B7953A345FE28F820C7BE0D71656C656D656E744964656E7469666965726D69737375616E63655F646174656C656C656D656E7456616C7565D903EC6A323032332D30322D3232D8185866A4686469676573744944036672616E646F6D5820852591F90F2C9DED57A03632E2C1322AB52A082A431E71A4149A6830C8F1AD0C71656C656D656E744964656E7469666965726F69737375696E675F636F756E7472796C656C656D656E7456616C7565624954D818587CA4686469676573744944046672616E646F6D5820D1D587B3512ACCE15C4F6B20944CEB002A464E4A158389788563408873C3FCE571656C656D656E744964656E7469666965727169737375696E675F617574686F726974796C656C656D656E7456616C7565764D696E69737465726F2064656C6C27496E7465726E6FD8185864A4686469676573744944056672616E646F6D582094FDD7609C0E73DC8589B5CAB11E1D9058CF8BFF8A336DA5F81FCBA055396A0F71656C656D656E744964656E7469666965726A676976656E5F6E616D656C656C656D656E7456616C7565654D6172696FD8185865A4686469676573744944066672616E646F6D5820660C0A7BF79E0E0261CA1547A4294FB808AA70738F424B13AB1B9440B566AE1371656C656D656E744964656E7469666965726B66616D696C795F6E616D656C656C656D656E7456616C756565526F737369D818586BA4686469676573744944076672616E646F6D5820315C53491286488FA07F5C2CE67135EF5C9959C3469C99A14E9B6DC924F9EBA571656C656D656E744964656E746966696572696269727468646174656C656C656D656E7456616C7565D903EC6A313935362D30312D3132D818587AA4686469676573744944086672616E646F6D582081C5CC04FBDF78E0F84DF72FDB87028ADE08E66DC5F31084826EBAD7AE70D84671656C656D656E744964656E7469666965726B62697274685F706C6163656C656C656D656E7456616C756581A267636F756E747279624954686C6F63616C69747964526F6D65D818587DA4686469676573744944096672616E646F6D5820764EF39C9D01F3AA6A87F441603CFE853FBA3CEE3BC2C168BCC9E96271D6E06371656C656D656E744964656E74696669657269756E697175655F69646C656C656D656E7456616C7565781E78787878787878782D7878782D787878782D787878787878787878787878D81858E8A46864696765737449440A6672616E646F6D5820AD20B3B9C67AED8089FF33ECDC108781C3B49B81CD7A3F059D2FE236977037B271656C656D656E744964656E74696669657275766572696669636174696F6E2E65766964656E63656C656C656D656E7456616C756581A2647479706571656C656374726F6E69635F7265636F7264667265636F7264A264747970656C65696461732E69742E63696566736F75726365A3716F7267616E697A6174696F6E5F6E616D656C65696461732E69742E6369656F6F7267616E697A6174696F6E5F6964646D5F69746C636F756E7472795F636F6465626974D8185879A46864696765737449440B6672616E646F6D5820C12314B3695D1401505187E2113115E2F7B4A14B135DEE320F5E6DF81275F17671656C656D656E744964656E746966696572667374617475736C656C656D656E7456616C7565781D68747470733A2F2F70696470726F76696465722E69742F737461747573D8185877A46864696765737449440C6672616E646F6D5820A7B6A9027ED97F25DF96DD0EAB8093B264A3BD6A1D5B24228F3FC5B18EF835FB71656C656D656E744964656E746966696572781C766572696669636174696F6E2E74727573745F6672616D65776F726B6C656C656D656E7456616C7565656569646173D8185876A46864696765737449440D6672616E646F6D5820C76CE2AE4E9BE1DB07A5CB397B54ACE3ECCC786D3F85E4348B923DEE059783DB71656C656D656E744964656E746966696572781C766572696669636174696F6E2E6173737572616E63655F6C6576656C6C656C656D656E7456616C75656468696768781B65752E6575726F70612E65632E65756469772E7069642E69742E3181D8185877A46864696765737449440E6672616E646F6D5820717DF3F583B1484366C33A1F869F2B5D201D466A8B589C79AB1A2D85E595432571656C656D656E744964656E7469666965726D7461785F69645F6E756D6265726C656C656D656E7456616C75657554494E49542D585858585858585858585858585858
+
+The `Diagnostic Notation` of the above MDOC-CBOR is given below:
+
+.. code-block:: text
+    
+  {     
+    "status": 0,     
+    "version": "1.0",     
+    "documents": [        
+      {             
+      "docType": "eu.europa.ec.eudiw.pid.1",                         
+      "issuerSigned": {                
+          "issuerAuth": [                
+          << {1: -7} >>, % protected header with the value alg:ES256                    
+          {                         
+              33: h'30820215308201BCA003020102021404AD30C…'% 33->X5chain:COSE X_509  
+          },
+          <<                       
+              24(<<    
+                  {                            
+                  "docType": "eu.europa.ec.eudiw.pid.1",                                
+                  "version": "1.0",  
+                  "validityInfo": {                                
+                      "signed": 0("2023-02-22T06:23:56Z"),                                     
+                      "validFrom": 0("2023-02-22T06:23:56Z"),                                   
+                      "validUntil": 0("2024-02-22T00:00:00Z")                               
+                  },
+                  "valueDigests": { 
+                      "eu.europa.ec.eudiw.pid.1": {        
+                          1:h'0F1571A97FFB799CC8FCDF2BA4FC2909929…',                                          
+                          2: h'0CDFE077400432C055A2B69596C90…',     
+                          3: h'E2382149255AE8E955AF9B8984395…',                                        
+                          4: h'BBC77E6CCA981A3AD0C3E544EDF86…',                                     
+                          6: h'BB6E6C68D1B4B4EC5A2AE9206F5t4…',
+                          7: h'F8A5966E6DAC9970E0334D8F75E25…',
+                          8: h'EAD5E8B5E543BD31F3BE57DE4ED45…',                 
+                          9: h'DEFDF1AA746718016EF1B94BFE5R6…',
+                          10: h'AFC5A127BE44753172844B13491D8…',
+                          11: h'AFC5A127BE44753172844B13492H4…',
+                          12: h'DJA5A127BE44753172844B13492H4…',
+                          13: h'KDL5A127BE44753172844B13492H4…'
+                      },
+                      "eu.europa.ec.eudiw.pid.it.1": {  
+                          14: h'F9EE4D36F67DBD75E23311AC1C29…'
+                      }
+                  },                             
+                  "deviceKeyInfo": {                              
+                      "deviceKey": {                                  
+                          1: 2, % kty:EC2 (Eliptic curves with x and y coordinate pairs)           
+                          -1: 1, % crv:p256                     
+                          -2: h'B820963964E53AF064686DD9218303494A…', % x-coordiantes                                        
+                          -3: h'0A6DA0AF437E2943F1836F31C678D89298E9…'% y-ccordiantes                                     
+                      }                            
+                  },                             
+                  "digestAlgorithm": "SHA-256"    
+                  }                       
+              >>)                     
+          >>,                        
+          h'1AD0D6A7313EFDC38FCD765852FA2BD43DEBF48BF5A580D'                 
+          ],                 
+          "nameSpaces": {
+              "eu.europa.ec.eudiw.pid.1": [                         
+              24(<<    
+                  {      
+                  "digestID": 1,                                  
+                  "random": h'E0B70BCEFBD43686F345C9ED429343AA',                                 
+                  "elementIdentifier": "expiry_date",                                
+                  "elementValue": 1004("2024-02-22")                             
+                  }                         
+              >>), 
+              24(<<             
+                  {       
+                  "digestID": 2,                                  
+                  "random": h'AE84834F389EE69888665B90A3E4FCCE', 
+                  "elementIdentifier": "issuance_date",   
+                  "elementValue": 1004("2023-02-22")                                
+                  }
+              >>),                         
+              24(<<   
+                  {                              
+                  "digestID": 3,                                 
+                  "random": h'960CB15A2EA9B68E5233CE902807AA95',                               
+                  "elementIdentifier": "issuing_country",                               
+                  "elementValue": "IT"                                                    
+                  }                       
+              >>), 
+              24(<<       
+                  {                        
+                  "digestID": 4,    
+                  "random": h'9D3774BD5994CCFED248674B32A4F76A', 
+                  "elementIdentifier": "issuing_authority",   
+                  "elementValue": "Ministero dell'Interno"  
+                  }   
+              >>),                 
+              24(<<        
+                  {                              
+                  "digestID": 5,                         
+                  "random": h'EB12193DC66C6174530CDC29B274381F', 
+                  "elementIdentifier": "given_name",
+                  "elementValue": "Mario"                             
+                  }                         
+              >>)),            
+              24(<<                            
+                  {                               
+                  "digestID": 6,                             
+                  "random": h'DB143143538F3C8D41DC024F9CB25C9D',
+                  "elementIdentifier": "family_name",  
+                  "elementValue": "Rossi"    
+                  } 
+              >>),                         
+              24(<<               
+                  {                          
+                  "digestID": 7, 
+                  "random": h'6059FF1CE27B4997B4ADE1DE7B01DC60',
+                  "elementIdentifier": "birthdate",
+                  "elementValue": 1004("1956-01-12")% the tag 1004 defines the value    
+                                                      is a full date 
+                  }  
+              >>), 
+              24(<<  
+                  {                               
+                  "digestID": 8, 
+                  "random": h'CAD1F6A38F603451F1FA653F81FF309D',
+                  "elementIdentifier": "birth_place",
+                  "elementValue": [
+                      {  
+                          "country": "IT" , 
+                          "locality": "Rome"
+                      }      
+                  ]  
+                  }                       
+              >>),           
+              24(<<  
+                  {                              
+                  "digestID": 9,                              
+                  "random": h'53C15C57B3B076E788795829190220B4',
+                  "elementIdentifier": "unique_id",
+                  "elementValue": "xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx" 
+                  }   
+              >>),
+              24(<<  
+                  {                               
+                  "digestID": 10, 
+                  "random": h'CAD1F6A38F603451F1FA653F81FF309D',
+                  "elementIdentifier": "verification.evidence",
+                  "elementValue": [  
+                      {
+                      "type": "electronic_record", 
+                      "record": {
+                          "type": "eidas.it.cie",
+                          "source": {         
+                              "organization_name": "eidas.it.cie",
+                              "organization_id":  "m_it",
+                              "country_code": "it",
+                          }
+                      }   
+                      }
+                  ]
+                  }                       
+              >>),
+              24(<<    
+                  {      
+                  "digestID": 11,                                  
+                  "random": h'CAD1F6A38F603451F1FA653F81FF309D,                                 
+                  "elementIdentifier": "status",                                
+                  "elementValue": "https://pidprovider.it/status"                            
+                  }                         
+              >>),
+              24(<<  
+                  {                               
+                  "digestID": 12, 
+                  "random": h'564E3C65D46D06FEDEB0E7293A86GF',
+                  "elementIdentifier": "verification.trust_framework",
+                  "elementValue": "eidas" 
+                  }                       
+              >>),
+              24(<<  
+                  {                               
+                  "digestID": 13, 
+                  "random": h'D884E5D5EF4CFC93FDB1E4EE8F3923',
+                  "elementIdentifier": "verification.assurance_level",
+                  "elementValue": "high" 
+                  }                       
+              >>)  
+              ],
+              "eu.europa.ec.eudiw.pid.it.1": [
+                  24(<<
+                      {
+                      "digestID": 14, 
+                      "random": h'11aa7273a2d2daa973f5951f0c34c2fbae',
+                      "elementIdentifier": "tax_id_number", 
+                      "elementValue": "TINIT-XXXXXXXXXXXXXXX"
+                      }                         
+                  >>)                    
+              ]            
+          }  
+      }           
+      }
+    ]
+  }
 
 
 
