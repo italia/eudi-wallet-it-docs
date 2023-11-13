@@ -117,6 +117,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
             -   **claims**.
       - `[OIDC.IDA. Section 5] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-5>`_.
 
+.. _sec-pid-eaa-verification-field:
 
 PID/(Q)EAA Verification field 
 -----------------------------
@@ -682,7 +683,7 @@ The **elementIdentifier** data that MUST be included in a PID/(Q)EAA are:
       - **Element identifier**
       - **Description**
     * - **eu.europa.ec.eudiw.pid.1**
-      - **issuance_date**
+      - **issue_date**
       - *full-date (CBORTag 1004)*. Date when the PID/(Q)EAA was issued.
     * - **eu.europa.ec.eudiw.pid.1**
       - **expiry_date**
@@ -692,7 +693,20 @@ The **elementIdentifier** data that MUST be included in a PID/(Q)EAA are:
       - *tstr (text string)*. Name of administrative authority that has issued the PID/(Q)EAA.
     * - **eu.europa.ec.eudiw.pid.1**
       - **issuing_country**
-      - *tstr (text string)*. Alpha-2 country code as defined in [ISO 3166]
+      - *tstr (text string)*. Alpha-2 country code as defined in [ISO 3166].
+    * - **eu.europa.ec.eudiw.pid.it.1**
+      - **verification.evidence**
+      - *bstr (byte string)*. As defined in the :ref:`PID/(Q)EAA Verification field Section <sec-pid-eaa-verification-field>`.
+    * - **eu.europa.ec.eudiw.pid.it.1**
+      - **verification.trust_framework**
+      - *tstr (text string)*. As defined in the :ref:`PID/(Q)EAA Verification field Section <sec-pid-eaa-verification-field>`.
+    * - **eu.europa.ec.eudiw.pid.it.1**
+      - **verification.assurance_level**
+      - *tstr (text string)*. As defined in the :ref:`PID/(Q)EAA Verification field Section <sec-pid-eaa-verification-field>`.
+    * - **eu.europa.ec.eudiw.pid.it.1**
+      - **status**
+      - *tstr (text string)*. HTTPS URL where the credential validity status is available.
+      
 
 
 Depending on the Digital Credential type, additional **elementIdentifier** data MAY be added. For the PID it MUST support the following data:
@@ -857,13 +871,13 @@ The `Diagnostic Notation` of the above MDOC-CBOR is given below:
                           6: h'BB6E6C68D1B4B4EC5A2AE9206F5t4…',
                           7: h'F8A5966E6DAC9970E0334D8F75E25…',
                           8: h'EAD5E8B5E543BD31F3BE57DE4ED45…',                 
-                          9: h'DEFDF1AA746718016EF1B94BFE5R6…',
+                          9: h'DEFDF1AA746718016EF1B94BFE5R6…'
+                      },
+                      "eu.europa.ec.eudiw.pid.it.1": {  
                           10: h'AFC5A127BE44753172844B13491D8…',
                           11: h'AFC5A127BE44753172844B13492H4…',
                           12: h'DJA5A127BE44753172844B13492H4…',
-                          13: h'KDL5A127BE44753172844B13492H4…'
-                      },
-                      "eu.europa.ec.eudiw.pid.it.1": {  
+                          13: h'KDL5A127BE44753172844B13492H4…',
                           14: h'F9EE4D36F67DBD75E23311AC1C29…'
                       }
                   },                             
@@ -895,7 +909,7 @@ The `Diagnostic Notation` of the above MDOC-CBOR is given below:
                   {       
                   "digestID": 2,                                  
                   "random": h'AE84834F389EE69888665B90A3E4FCCE', 
-                  "elementIdentifier": "issuance_date",   
+                  "elementIdentifier": "issue_date",   
                   "elementValue": 1004("2023-02-22")                                
                   }
               >>),                         
@@ -960,53 +974,53 @@ The `Diagnostic Notation` of the above MDOC-CBOR is given below:
                   "elementIdentifier": "unique_id",
                   "elementValue": "xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx" 
                   }   
-              >>),
-              24(<<  
-                  {                               
-                  "digestID": 10, 
-                  "random": h'CAD1F6A38F603451F1FA653F81FF309D',
-                  "elementIdentifier": "verification.evidence",
-                  "elementValue": [  
-                      {
-                      "type": "electronic_record", 
-                      "record": {
-                          "type": "eidas.it.cie",
-                          "source": {         
-                              "organization_name": "eidas.it.cie",
-                              "organization_id":  "m_it",
-                              "country_code": "it",
-                          }
-                      }   
-                      }
-                  ]
-                  }                       
-              >>),
-              24(<<    
-                  {      
-                  "digestID": 11,                                  
-                  "random": h'CAD1F6A38F603451F1FA653F81FF309D,                                 
-                  "elementIdentifier": "status",                                
-                  "elementValue": "https://pidprovider.it/status"                            
-                  }                         
-              >>),
-              24(<<  
-                  {                               
-                  "digestID": 12, 
-                  "random": h'564E3C65D46D06FEDEB0E7293A86GF',
-                  "elementIdentifier": "verification.trust_framework",
-                  "elementValue": "eidas" 
-                  }                       
-              >>),
-              24(<<  
-                  {                               
-                  "digestID": 13, 
-                  "random": h'D884E5D5EF4CFC93FDB1E4EE8F3923',
-                  "elementIdentifier": "verification.assurance_level",
-                  "elementValue": "high" 
-                  }                       
-              >>)  
+              >>)
               ],
               "eu.europa.ec.eudiw.pid.it.1": [
+                  24(<<  
+                      {                               
+                      "digestID": 10, 
+                      "random": h'CAD1F6A38F603451F1FA653F81FF309D',
+                      "elementIdentifier": "verification.evidence",
+                      "elementValue": [  
+                          {
+                          "type": "electronic_record", 
+                          "record": {
+                              "type": "eidas.it.cie",
+                              "source": {         
+                                  "organization_name": "eidas.it.cie",
+                                  "organization_id":  "m_it",
+                                  "country_code": "it",
+                              }
+                          }   
+                          }
+                      ]
+                      }                       
+                  >>),
+                  24(<<    
+                      {      
+                      "digestID": 11,                                  
+                      "random": h'CAD1F6A38F603451F1FA653F81FF309D,                                 
+                      "elementIdentifier": "status",                                
+                      "elementValue": "https://pidprovider.example.it/status"                            
+                      }                         
+                  >>),
+                  24(<<  
+                      {                               
+                      "digestID": 12, 
+                      "random": h'564E3C65D46D06FEDEB0E7293A86GF',
+                      "elementIdentifier": "verification.trust_framework",
+                      "elementValue": "eidas" 
+                      }                       
+                  >>),
+                  24(<<  
+                      {                               
+                      "digestID": 13, 
+                      "random": h'D884E5D5EF4CFC93FDB1E4EE8F3923',
+                      "elementIdentifier": "verification.assurance_level",
+                      "elementValue": "high" 
+                      }                       
+                  >>)  
                   24(<<
                       {
                       "digestID": 14, 
