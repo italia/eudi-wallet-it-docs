@@ -3,17 +3,17 @@
 .. _backup-restore.rst:
 
 EUDI Wallet Backup & Recovery
-++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
 
 Introduction
-------------------
+------------
 
 Section 4.2.4 of the eIDAS ARF v1 (EUDI Wallet Instance Lifecycle) states that the EUDI Wallet Instance becomes valid once it receives a valid PID. From this point, the User can receive and store one or more (Q)EAAs in the Wallet. Therefore, it is crucial to have a backup and recovery strategy for the Wallet Solution. Backup and recovery are distinct phases that occur during different parts of the Wallet Instance lifecycle and should be almost transparent to the User.
 
 This document proposes a technical solution for the backup and restoration of digital credentials.
 
 What data can be backed up
-------------------
+--------------------------
 
 The ARF differentiates between Type 1 and Type 2 configurations. Type 1 is designed for PID and (Q)EAA with LoA High, while Type 2 may be used for QEAAs and EAAs. The primary difference between the two configurations is that Type 1 must use the holder key binding. A proof of possession - such as the one described in RFC7800[1] - is included in the PID; it consists of the User's device public key signed by the PID Provider. The corresponding User's device private key should be securely stored in the Secure Element[2] of the User's device (or a remote HSM when the SE is not available). By signing typically random information during the presentation phase to a Relying Party, the device can thus prove the legitimate possession of the PID.
 
@@ -27,7 +27,7 @@ Since the secure storage prevents the exportation of the private keys, it is man
 Type 2 credentials without holder key binding may be exported along with their serialized private key.
 
 Backup methods
-------------------
+--------------
 
 Given the sensitive nature of the data, backups must be encrypted. When encryption is applied, it should be done with a User-provided passphrase or any other means that the User has sole control over. 
 
@@ -44,7 +44,7 @@ The Wallet Solution could provide various methods for exporting the backup, incl
 The User should have the ability to manually initiate a backup. Additionally, the Wallet Instance should periodically create these backups and save them locally. The operating system's backup mechanism will ensure the preservation of this data. As the backup is encrypted, the user can choose to move the locally saved file anywhere they wish, but should be warned of possible risks if the passphrase they chose is not secure enough[b].
 
 Backup and Restore Approaches Comparison
-------------------
+----------------------------------------
 
 The table below compares the different credential types with their Level of Assurance and their backup and restore methods. Each row has a unique identifier for referencing in the use cases.
 
@@ -84,7 +84,7 @@ The table below compares the different credential types with their Level of Assu
      - ID5
 
 Backup content
-------------------
+---------------
 
 The backup file consists of a structured document. The schema should contain at least:
 
@@ -102,7 +102,7 @@ The backup file consists of a structured document. The schema should contain at 
 The content should be encrypted and protected by a passphrase or other mechanisms. Below is a non-normative example of the content of a Backup payload, where the first entry must be the reference to the User's PID (its type and its issuer). 
 
 Recover
-------------------
+-------
 
 Recovering an EUDI Wallet from a Backup File may follow different flows depending on the backup method and configuration types. Each recovery always begins with the issuance of a new PID. Once the new Wallet Instance is in the valid state, the User is prompted for a recovery from a backup. The User chooses a backup recovery method (USB device, cloud[5], ...), the Wallet Instance then asks the User for the passphrase to unlock the Backup File, and analyze the content inside it.
 
@@ -113,7 +113,7 @@ Type 1 credentials for which the Backup File needs to be reissued.
 Under the condition that at least one fresh PID has been reissued to the Wallet using the User authentication, a semi-automatic process follows the User for requesting and obtaining all the imported credentials.
 
 User Experience
-------------------
+---------------
 
 TBD
 
