@@ -1119,14 +1119,14 @@ for their accredited subordinates.</p></td>
 <li><p><strong>Secure and Tamper-proof</strong>, Entities' attestations of metadata and keys are cryptographically signed in the chain of trust, comprised of attestations issued by multiple parties that cannot be forged or tampered by an adversary;</p></li>
 <li><p><strong>Privacy-preserving</strong>, the infrastructure is public and exposes public data such as public keys and metadata of the participants. It does not require authentication of the requesters and therefore does not track who is assessing trust against whom;</p></li>
 <li><p><strong>Guarantor of the non-repudiation of long-lived attestations</strong>, historical keys endpoints and historical Trust Chains are saved for years according to data retention policies. This enables the certification of the validity of historical compliance, even in cases of revocation, expiration, or rotation of the keys used for signature verification;</p></li>
-<li><p><strong>Dynamic and flexible</strong>, any participants have the freedom to modify parts of their metadata autonomously, as these are published within their domains and verified through the Trust Chain. Simultaneously, the Trust Anchor or its Intermediate may publish a metadata policy to dynamically modify the metadata of all participants — such as disabling a vulnerable signature algorithm — and obtain certainty of propagation within a configured period of time within the federation;</p></li>
+<li><p><strong>Dynamic and flexible</strong>, any participants have the freedom to modify parts of their metadata autonomously, as these are published within their domains and verified through the Trust Chain. Simultaneously, the Trust Anchor or its Intermediate may publish a metadata policy to dynamically modify the metadata of all participants - such as disabling a vulnerable signature algorithm - and obtain certainty of propagation within a configured period of time within the federation;</p></li>
 <li><p><strong>Developer friendly</strong>, JWT and JSON formats have been adopted on the web for years. They are cost-effective in terms of storage and processing and have a wide range of solutions available, such as libraries and software development kits, which enable rapid implementation of the solution;</p></li>
 <li><p><strong>Scalable</strong>, the Trust Model can accommodate more than a single organization by using Intermediates and multiple Trust Anchors where needed.</p></li>
 </ul>
 </section>
 <section id="trust-model-requirements">
 <h2>Trust Model Requirements<a class="headerlink" href="#trust-model-requirements" title="Permalink to this heading">¶</a></h2>
-<p>In the table below there’s the map of the components that the ARF defines within the Trust Model and their coverage in <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>.</p>
+<p>In the table below there's the map of the components that the ARF defines within the Trust Model and their coverage in <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Component</p></th>
@@ -1155,7 +1155,7 @@ Configuration</p>
 Statements</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Relying Parties’ registration and authentication</p></td>
+<tr class="row-odd"><td><p>Relying Parties' registration and authentication</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 <td><p>static
 Trust Chains</p>
@@ -1196,7 +1196,7 @@ publicly available. The table below summarises the endpoints and their scopes.</
 <td><p>Metadata that an Entity
 publishes about itself,
 verifiable with a trusted third
-party (Superior Entity). It’s
+party (Superior Entity). It's
 called Entity Configuration.</p></td>
 <td><p>Trust Anchor</p>
 <p>Intermediate</p>
@@ -1217,7 +1217,7 @@ Issuer</p>
 <td><p><strong>GET</strong> /fetch?sub=https://rp.example.org</p></td>
 <td><p>Returns a signed document (JWS)
 about a specific subject, its
-Subordinate. It’s called Entity
+Subordinate. It's called Entity
 Statement.</p></td>
 <td><p>Trust Anchor</p>
 <p>Intermediate</p>
@@ -1270,7 +1270,7 @@ public keys for signature operations and the maximum number of Intermediates all
         &quot;keys&quot;: [
             {
                 &quot;kty&quot;: &quot;RSA&quot;,
-                &quot;n&quot;: &quot;3i5vV-_ …&quot;,
+                &quot;n&quot;: &quot;3i5vV-_ ...&quot;,
                 &quot;e&quot;: &quot;AQAB&quot;,
                 &quot;kid&quot;: &quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;,
                 &quot;x5c&quot;: [ &lt;X.509 Root CA certificate&gt; ]
@@ -1654,7 +1654,7 @@ and in relation to the signature mechanisms MUST be applied for the Entity State
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The entire Trust Chain is verifiable by only possessing the Trust Anchor’s public keys.</p>
+<p>The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.</p>
 </div>
 </section>
 <section id="offline-trust-attestation-mechanisms">

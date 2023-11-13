@@ -528,7 +528,7 @@ Below is a non-normative response example:
             "keys": [
                 {
                     "kty": "RSA",
-                    "n": "5s4qi …",
+                    "n": "5s4qi ...",
                     "e": "AQAB",
                     "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
                 }
@@ -544,7 +544,7 @@ Below is a non-normative response example:
                         {
                             "kty": "RSA",
                             "use": "sig",
-                            "n": "1Ta-sE …",
+                            "n": "1Ta-sE ...",
                             "e": "AQAB",
                             "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
                             "x5c": [ "..." ]

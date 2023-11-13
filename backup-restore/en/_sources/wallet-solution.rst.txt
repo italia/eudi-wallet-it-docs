@@ -9,7 +9,7 @@ The Wallet Solution is a comprehensive product offered by the Wallet Provider to
 
 The Wallet Solution is issued by the Wallet Provider in the form of a mobile app, it also consists of services and web interfaces for the exchange of data between the Wallet Provider and its Wallet Instances for the requirements of the trust model and in total respect of the user's privacy, in accordance with national and EU legislation.
 
-The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID¹), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short¹. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.
+The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID[1]), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.
 
 By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, since it is responsible for issuing the Wallet Instance Attestation, that is a cryptographic proof that allow the evaluation of the authenticity and the integrity of the Wallet Instance.
 
@@ -28,11 +28,11 @@ The Wallet Instance serves as a unique and secure device for authenticating the 
 
 The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, reference the public part of the asymmetric cryptographic key owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.
 
-To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)³. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Instance Attestation section`_ and the `Trust Model section`_ of this document.
+To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)[3]. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Instance Attestation section`_ and the `Trust Model section`_ of this document.
 
 Wallet Instance Lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed².
+The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed[2].
 
 Initialization Process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,8 +48,8 @@ In order to securely and unambiguously identify Users, the Wallet Instance adopt
 
 Once the Wallet Instance is in the Operational state, Users can:
 
- - Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers¹;
- - Authenticate to Relying Parties¹;
+ - Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers[1];
+ - Authenticate to Relying Parties[1];
  - Authorize the presentation of their digital credentials with Relying Parties.
 
 Please refer to the relative sections for further information about PID and (Q)EAAs issuance and presentation.
@@ -265,11 +265,11 @@ Please refer to the `Wallet Instance Attestation section`_.
 
 External references
 ^^^^^^^^^^^^^^^^^^^^
-¹ Definitions are inherited from the EUDI Wallet Architecture and Reference Framework, version 1.1.0 at the time of writing. Please refer to `this page <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#2-definitions>`_ for extended definitions and details.
+.. [1] Definitions are inherited from the EUDI Wallet Architecture and Reference Framework, version 1.1.0 at the time of writing. Please refer to `this page <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#2-definitions>`_ for extended definitions and details.
 
-² Wallet Instance states adhere to the EUDI Wallet Architecture and Reference Framework, as defined `here <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#424-eudi-wallet-instance-lifecycle>`_.
+.. [2] Wallet Instance states adhere to the EUDI Wallet Architecture and Reference Framework, as defined `here <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#424-eudi-wallet-instance-lifecycle>`_.
 
-³ Depending on the device operating system, TEE is defined by `Trusty`_ or `Secure Enclave`_ for Android and iOS devices, respectively.
+.. [3] Depending on the device operating system, TEE is defined by `Trusty`_ or `Secure Enclave`_ for Android and iOS devices, respectively.
 
 .. _Trust Model section: trust.html
 .. _Wallet Instance Attestation section: wallet-instance-attestation.html
