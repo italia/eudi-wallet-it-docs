@@ -1603,7 +1603,7 @@ The User attributes carried within the Italian PID are the ones listed below:</p
 <p>The PID/(Q)EAA MDOC-CBOR data model is defined in ISO/IEC 18013-5, the standard born for the the mobile driving license (mDL) use case.</p>
 <p>The MDOC data elements MUST be encoded as defined in <a class="reference external" href="RFC8949-ConciseBinaryObjectRepresentation(CBOR)">RFC 8949 - Concise Binary Object Representation (CBOR)</a>.</p>
 <p>The PID encoded in MDOC-CBOR format uses the document type set to <cite>eu.europa.ec.eudiw.pid.1</cite>, according to the reverse domain approach defined in the
-<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> and in fully harmonization with the ISO/IEC 18013-5 standard.</p>
+<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> and ISO/IEC 18013-5.</p>
 <p>The document's data elements utilize a consistent namespace for the mandatory Mobile Driving License attributes, while the national PID attributes use the domestic namespace <cite>eu.europa.ec.eudiw.pid.it.1</cite>, as outlined in this implementation profile.</p>
 <p>In compliance with ISO/IEC 18013-5, the MDOC data model in the domestic namespace <cite>eu.europa.ec.eudiw.pid.it.1</cite>, requires the following attributes:</p>
 <table class="docutils align-default" id="table-mdoc-attributes">
@@ -1652,7 +1652,7 @@ The User attributes carried within the Italian PID are the ones listed below:</p
 <td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuerSigned</strong></p></td>
-<td><p><em>bstr (byte string)</em>. Returned data elements signed by the Issuer.</p></td>
+<td><p><em>bstr (byte string)</em>. It MUST contain the Mobile Security Object for Issuer data authentication and the data elements protected by Issuer data authentication.</p></td>
 <td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
 </tr>
 </tbody>
@@ -1720,7 +1720,7 @@ The User attributes carried within the Italian PID are the ones listed below:</p
 <td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>deviceAuth</strong></p></td>
-<td><p><em>bstr (byte string)</em>. Contains the device authentication for MDOC data authentication.</p></td>
+<td><p><em>bstr (byte string)</em>. It MUST contain either the <em>DeviceSignature</em> or the <em>DeviceMac</em> element.</p></td>
 <td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
 </tr>
 </tbody>

@@ -545,7 +545,7 @@ The PID/(Q)EAA MDOC-CBOR data model is defined in ISO/IEC 18013-5, the standard 
 The MDOC data elements MUST be encoded as defined in `RFC 8949 - Concise Binary Object Representation (CBOR) <RFC 8949 - Concise Binary Object Representation (CBOR)>`_.
 
 The PID encoded in MDOC-CBOR format uses the document type set to `eu.europa.ec.eudiw.pid.1`, according to the reverse domain approach defined in the 
-`EIDAS-ARF`_ and in fully harmonization with the ISO/IEC 18013-5 standard.
+`EIDAS-ARF`_ and ISO/IEC 18013-5.
 
 The document's data elements utilize a consistent namespace for the mandatory Mobile Driving License attributes, while the national PID attributes use the domestic namespace `eu.europa.ec.eudiw.pid.it.1`, as outlined in this implementation profile.
 
@@ -585,7 +585,7 @@ Each document within the **documents** collection MUST have the following struct
       - *tstr (text string)*. Document type. For the PID, the value MUST be set to ``eu.europa.ec.eudiw.pid.1.`` For an mDL, the value MUST be ``org.iso.18013-5.1.mDL``.
       - [ISO 18013-5#8.3.2.1.2]
     * - **issuerSigned**
-      - *bstr (byte string)*. Returned data elements signed by the Issuer.
+      - *bstr (byte string)*. It MUST contain the Mobile Security Object for Issuer data authentication and the data elements protected by Issuer data authentication.
       - [ISO 18013-5#8.3.2.1.2]
 
 The **issuerSigned** object MUST have the following structure:
@@ -630,7 +630,7 @@ Where the **deviceSigned** MUST have the following structure:
       - *tstr (text string)*. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. It MAY be used for self-attested claims.
       - [ISO 18013-5#8.3.2.1.2]
     * - **deviceAuth**
-      - *bstr (byte string)*. Contains the device authentication for MDOC data authentication.
+      - *bstr (byte string)*. It MUST contain either the *DeviceSignature* or the *DeviceMac* element.
       - [ISO 18013-5#8.3.2.1.2]
 
 
