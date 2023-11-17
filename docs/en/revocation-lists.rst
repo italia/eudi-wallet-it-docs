@@ -282,7 +282,7 @@ TBD.
 Non-Revocation Attestation Request
 ----------------------------------
 
-The presentation of a credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a *Non-Revocation Attestation*. This Attestation is bound to a credential so that the Wallet Instance can share it to a Verifier, along with the credential itself, as a proof of non-revocation status of the credential.
+The presentation of a credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a *Non-Revocation Attestation*. This Attestation is bound to a credential so that the Wallet Instance can present it to a Verifier, along with the credential itself, as a proof of non-revocation status of the credential.
 
 The Non-Revocation Attestation MUST be presented in conjunction with the digital credential. The Non-Revocation Attestation MUST be timestamped with its issuance datetime, always referring to a previous period.
 The Non-Revocation Attestation MUST contain the expiration datetime after which the digital credential MUST NOT be considered valid anymore.
