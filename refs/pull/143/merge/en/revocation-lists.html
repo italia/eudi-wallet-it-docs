@@ -584,7 +584,7 @@
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Trust Infrastructure</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
@@ -848,7 +848,7 @@
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Trust Infrastructure</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
@@ -1323,7 +1323,7 @@ credential_proof=$CredentialPoPJWT
 </section>
 <section id="non-revocation-attestation-request">
 <span id="sec-revocation-nra-request"></span><h2>Non-Revocation Attestation Request<a class="headerlink" href="#non-revocation-attestation-request" title="Permalink to this heading">¶</a></h2>
-<p>The presentation of a credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a <em>Non-Revocation Attestation</em>. This Attestation is bound to a credential so that the Wallet Instance can share it to a Verifier, along with the credential itself, as a proof of non-revocation status of the credential.</p>
+<p>The presentation of a credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a <em>Non-Revocation Attestation</em>. This Attestation is bound to a credential so that the Wallet Instance can present it to a Verifier, along with the credential itself, as a proof of non-revocation status of the credential.</p>
 <p>The Non-Revocation Attestation MUST be presented in conjunction with the digital credential. The Non-Revocation Attestation MUST be timestamped with its issuance datetime, always referring to a previous period.
 The Non-Revocation Attestation MUST contain the expiration datetime after which the digital credential MUST NOT be considered valid anymore.
 The Non-Revocation Attestation enables offline use cases as it MUST be statically validated using the cryptographic signature of the Issuer.
