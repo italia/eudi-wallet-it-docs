@@ -151,6 +151,12 @@ Assertion Payload
 ||       || containing the public key of the                           |
 ||       || Wallet Instance.                                           |
 +--------+-------------------------------------------------------------+
+|| iat   || Unix timestamp of attestation request                      |
+||       || issuance time.                                             |
++--------+-------------------------------------------------------------+
+|| exp   || Unix timestamp regarding the                               |
+||       || expiration date time.                                      |
++--------+-------------------------------------------------------------+
 
 
 Below a non-normative example of the Wallet Instance Attestation
