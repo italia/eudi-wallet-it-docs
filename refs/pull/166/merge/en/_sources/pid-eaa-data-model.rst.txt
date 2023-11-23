@@ -6,8 +6,8 @@
 PID/(Q)EAA Data Model
 +++++++++++++++++++++
 
-The Person Identification Data (PID) is issued by the PID Provider following national laws and allows a natural person to be authenitcated and identified. 
-The User attributes carried within the Italian PID are the ones listed below:
+The Person Identification Data (PID) is issued by the PID Provider according to national laws. The main scope of the PID is allowing natural persons to be authenticated for the access to a service or to a protected resource. 
+The User attributes provided within the Italian PID are the ones listed below:
 
     - Current Family Name
     - Current First Name
@@ -16,11 +16,9 @@ The User attributes carried within the Italian PID are the ones listed below:
     - Unique Identifier
     - Taxpayer identification number
 
-The italian PID is extended according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that enables the binding of the PID to a national trust framework, giving all the evidence of the identity proofing procedures underlying the PID issuing in both remote and proximity flows.
+The Italian digital Credentials, like the PID and the (Q)EAA, contains additional claims and according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, these carries the national trust framework and the identity proofing procedures underlying the issuance. In particular, these carries some relevant information about the Authentic Sources of the subject's attributes. 
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or MDOC-CBOR data format. 
-
-The (Q)EAAs are extended according to `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, that allows the recipients to know the Authentic Sources where the data comes from. 
 
 The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections. 
 
@@ -545,7 +543,7 @@ The PID/(Q)EAA MDOC-CBOR data model is defined in ISO/IEC 18013-5, the standard 
 The MDOC data elements MUST be encoded as defined in `RFC 8949 - Concise Binary Object Representation (CBOR) <RFC 8949 - Concise Binary Object Representation (CBOR)>`_.
 
 The PID encoded in MDOC-CBOR format uses the document type set to `eu.europa.ec.eudiw.pid.1`, according to the reverse domain approach defined in the 
-`EIDAS-ARF`_ and in fully harmonization with the ISO/IEC 18013-5 standard.
+`EIDAS-ARF`_ and ISO/IEC 18013-5.
 
 The document's data elements utilize a consistent namespace for the mandatory Mobile Driving License attributes, while the national PID attributes use the domestic namespace `eu.europa.ec.eudiw.pid.it.1`, as outlined in this implementation profile.
 
@@ -585,7 +583,7 @@ Each document within the **documents** collection MUST have the following struct
       - *tstr (text string)*. Document type. For the PID, the value MUST be set to ``eu.europa.ec.eudiw.pid.1.`` For an mDL, the value MUST be ``org.iso.18013-5.1.mDL``.
       - [ISO 18013-5#8.3.2.1.2]
     * - **issuerSigned**
-      - *bstr (byte string)*. Returned data elements signed by the Issuer.
+      - *bstr (byte string)*. It MUST contain the Mobile Security Object for Issuer data authentication and the data elements protected by Issuer data authentication.
       - [ISO 18013-5#8.3.2.1.2]
 
 The **issuerSigned** object MUST have the following structure:
@@ -630,7 +628,7 @@ Where the **deviceSigned** MUST have the following structure:
       - *tstr (text string)*. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. It MAY be used for self-attested claims.
       - [ISO 18013-5#8.3.2.1.2]
     * - **deviceAuth**
-      - *bstr (byte string)*. Contains the device authentication for MDOC data authentication.
+      - *bstr (byte string)*. It MUST contain either the *DeviceSignature* or the *DeviceMac* element.
       - [ISO 18013-5#8.3.2.1.2]
 
 
