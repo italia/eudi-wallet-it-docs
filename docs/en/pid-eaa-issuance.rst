@@ -177,7 +177,7 @@ The JWS of Request Object is represented below:
       "type":"openid_credential",
       "format": "vc+sd-jwt",
       "credential_definition": {
-          "type": "PersonIdentificationData"
+          "vct": "PersonIdentificationData"
       }
   }
   ],
@@ -318,7 +318,7 @@ The ``client_assertion`` is signed using the private key that is created during 
   {
     "format": "vc+sd-jwt"
     "credential_definition":{
-      "type": ["PersonIdentificationData"]
+      "vct": ["PersonIdentificationData"]
     },
     "proof": {
       "proof_type": "jwt",
@@ -477,7 +477,7 @@ The JWT payload is given by the following parameters:
             
             - **type**: it MUST be set to ``openid_credential``,
             - **format**: it MUST be set to ``vc+sd-jwt``,
-            - **credential_definition**: JSON Object. It MUST have the **type** claim which MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the metadata of the PID/(Q)EAA Issuer. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
+            - **credential_definition**: JSON Object. It MUST have the **vct** claim which MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the metadata of the PID/(Q)EAA Issuer. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
       - See [RAR :rfc:`9396`] and `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
@@ -799,7 +799,7 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
     - **Description**
     - **Reference**
   * - **credential_definition**
-    - JSON object containing the detailed description of the credential type. It MUST have at least the **type** sub claims which is a JSON array containing the type values the Wallet SHALL request in the Credential Request. It MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the PID/(Q)EAA Issuer metadata. In the case of the PID it MUST be set to ``PersonIdentificationData``.
+    - JSON object containing the detailed description of the credential type. It MUST have at least the **vct** sub claims which is a JSON array containing the type values the Wallet SHALL request in the Credential Request. It MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the PID/(Q)EAA Issuer metadata. In the case of the PID it MUST be set to ``PersonIdentificationData``.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
   * - **format** 
     - Format of the Credential to be issued. This MUST be `vc+sd-jwt`.
@@ -968,7 +968,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                   }
                 ],
                 "credential_definition": {
-                  "type": ["PersonIdentificationData"],
+                  "vct": ["PersonIdentificationData"],
                   "credentialSubject": {
                     "given_name": {
                       "mandatory": true,
