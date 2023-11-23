@@ -113,13 +113,13 @@ High Level Revocation Flow
 A Credential Revocation Flow can start under different scenarios:
 
     - The Holders report the loss or theft of their own physical document to the Law-Enforcement Authorities: this implies that the credentials, if any, shall be revoked.
-    - The Holders notify an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials shall be revoked, as they are no longer valid due to the change in attributes. 
+    - The Holders notify an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials SHALL be revoked, as they are no longer valid due to the change in attributes. 
     - The Holders who no longer have access to their Wallet Instance (e.g. theft or loss of the device), may request the Issuer of the credentials to revoke them.
     - The Law-Enforcing Authorities, for the fulfillment of their functions and any other judicial reasons, may request the Authentic Source to revoke entitlements, licences, certificates, identification documents, etc., which in turn leads to the revocation of any linked Credentials.
-    - The Authentic Sources that for any administrative reasons update one or more attributes of a Holder, shall inform the Issuer of related Credentials. 
+    - The Authentic Sources that for any administrative reasons update one or more attributes of a Holder, SHALL inform the Issuer of related Credentials. 
     - The Issuers, for technical security reasons (e.g. in the case of compromised cryptographic keys), can decide to revoke the Credentials.
 
-The Figure below shows the main processes involved in the scenarios described above
+The Figure below shows the main processes involved in the scenarios described above.
 
 .. _fig_revocation_processes:
 .. figure:: ../../images/revocation-processes.svg
@@ -161,7 +161,7 @@ A Wallet Instance MUST request the revocation of a credential as defined below.
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
-where a non-normative example of a Credential PoP JWT is given by
+where a non-normative example of a Credential PoP is given by the following JWT headers and payload
 
 .. _credential_pop_jwt_ex:
 .. code-block::
