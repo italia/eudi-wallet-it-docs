@@ -16,7 +16,7 @@ The User attributes provided within the Italian PID are the ones listed below:
     - Unique Identifier
     - Taxpayer identification number
 
-The italian PID contains additional claims and according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, these carries the national trust framework and the identity proofing procedures underlying the issuance of the PID. In particular, the PID carries some relevant information about the Authentic Sources of the subject's attributes. 
+The Italian PID contains additional claims and according to the `OpenID Identity Assurance Profile [OIDC.IDA] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html>`_, these carries the national trust framework and the identity proofing procedures underlying the issuance of the PID. In particular, the PID carries some relevant information about the Authentic Sources of the subject's attributes. 
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC CBOR data format.  
 
