@@ -33,7 +33,7 @@ General Assumptions
 A Credential Issuer is in charge of the creation and the issuance of credentials, its lifecycle, and ultimately, its validity status. Some credentials may have regulatory value given by national or european laws, therefore also revocations of credentials MUST be non-repudiable.
 Some credentials may be a digital representation of a physical document issued, under a well defined national law, by an Authentic Source which, in the Wallet Ecosystem, acts as a repository or system that contains attributes and provides them to the Issuer. For this reason, an exchange of information between the two entities is required not only for the issuing the credential but also for the proper handling of its revocation.
 Moreover, due to digital signature of the credentials, any updates on them MUST result in a re-issuance.
-Finally, it is assumed that, to facilitate the association between physical document and digital credentials, the identifier of the physical document is always present as an attribute within the digital credentials.
+Finally, it is assumed that, to facilitate the association between physical document and digital credentials, the identifier of the physical document is always present as an attribute within the Digital Credentials.
 
 
 
@@ -48,7 +48,7 @@ General Requirements
 - The Issuer MUST be the only responsible for the lifecycle of credentials including the revocation status.
 - Credentials SHOULD be updated whenever one or more attributes are changed.
 - Any credential update MUST result in a new fresh issuance of it, following the principle that the credential SHOULD always have updated data. In this case, the old Credentials of the same type MUST be revoked. 
-- The revocation of a credential for technical reasons (loss or theft of the device, compromise of cryptographic keys) MAY not have an impact on any other digital credentials issued of the same type and MUST NOT lead to the revocation of a physical document associated with it.
+- The revocation of a credential for technical reasons (loss or theft of the device, compromise of cryptographic keys) MAY not have an impact on any other Digital Credentials issued of the same type and MUST NOT lead to the revocation of a physical document associated with it.
 - The revocation of a physical document which one or more Credentials are associated with MUST result in their revocation.
 - The revocation requests of a credential MAY be communicated to the Issuer by: 
 
@@ -59,7 +59,7 @@ General Requirements
 
     - A Law-Enforcing Body (e.g., Police) on behalf of the User or directly for the fulfillment of their functions and any other judicial reasons.
     - The Holder using any out-of-band procedure in force by national regulations.
-- The Authentic Source MUST provide an interface for the data sharing regarding the attributes update and revocation status of a physical document the credential is associated with.
+- The Authentic Source MUST provide an interface for the data provisioning regarding the attributes update and revocation status of a physical document the credential is associated with.
 - The Issuer MUST provide an interface handling the revocation flows (Revocation request/response, data access regarding the revocation status of a credential, etc.).
 - The Issuer MUST provide the Wallet Instance with a proof of non-revocation of a given Holder's credential (Non-Revocation Attestation).
 - The Holders MAY provide the Verifiers with a proof of non-revocation of their Credentials (Non-Revocation Attestations).
@@ -113,13 +113,13 @@ High Level Revocation Flow
 A Credential Revocation Flow can start under different scenarios:
 
     - The Holders report the loss or theft of their own physical document to the Law-Enforcement Authorities: this implies that the credentials, if any, shall be revoked.
-    - The Holders notify an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials shall be revoked, as they are no longer valid due to the change in attributes. 
+    - The Holders notify an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials SHALL be revoked, as they are no longer valid due to the change in attributes. 
     - The Holders who no longer have access to their Wallet Instance (e.g. theft or loss of the device), may request the Issuer of the credentials to revoke them.
     - The Law-Enforcing Authorities, for the fulfillment of their functions and any other judicial reasons, may request the Authentic Source to revoke entitlements, licences, certificates, identification documents, etc., which in turn leads to the revocation of any linked Credentials.
-    - The Authentic Sources that for any administrative reasons update one or more attributes of a Holder, shall inform the Issuer of related Credentials. 
+    - The Authentic Sources that for any administrative reasons update one or more attributes of a Holder, SHALL inform the Issuer of related Credentials. 
     - The Issuers, for technical security reasons (e.g. in the case of compromised cryptographic keys), can decide to revoke the Credentials.
 
-The Figure below shows the main processes involved in the scenarios described above
+The Figure below shows the main processes involved in the scenarios described above.
 
 .. _fig_revocation_processes:
 .. figure:: ../../images/revocation-processes.svg
@@ -161,7 +161,7 @@ A Wallet Instance MUST request the revocation of a credential as defined below.
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
-where a non-normative example of a Credential PoP JWT is given by
+where a non-normative example of a Credential PoP is given by the following JWT headers and payload
 
 .. _credential_pop_jwt_ex:
 .. code-block::
@@ -282,7 +282,7 @@ TBD.
 Non-Revocation Attestation Request
 ----------------------------------
 
-The presentation of a credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a *Non-Revocation Attestation*. This Attestation is bound to a credential so that the Wallet Instance can share it to a Verifier, along with the credential itself, as a proof of non-revocation status of the credential.
+The presentation of a credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a *Non-Revocation Attestation*. This Attestation is bound to a credential so that the Wallet Instance can present it to a Verifier, along with the credential itself, as a proof of non-revocation status of the credential.
 
 The Non-Revocation Attestation MUST be presented in conjunction with the digital credential. The Non-Revocation Attestation MUST be timestamped with its issuance datetime, always referring to a previous period.
 The Non-Revocation Attestation MUST contain the expiration datetime after which the digital credential MUST NOT be considered valid anymore.
