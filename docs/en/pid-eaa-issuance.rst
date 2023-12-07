@@ -130,7 +130,7 @@ Below a non-normative example of the PAR.
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
     &code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
     &code_challenge_method=S256
-    &request=eyJhbGciOiJSUzI1NiIsImtpZCI6ImsyYmRjIn0.ew0KIC Jpc3MiOiAiczZCaGRSa3F0MyIsDQogImF1ZCI6ICJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbSIsDQo gInJlc3BvbnNlX3R5cGUiOiAiY29kZSBpZF90b2tlbiIsDQogImNsaWVudF9pZCI6ICJzNkJoZFJrcXQz IiwNCiAicmVkaXJlY3RfdXJpIjogImh0dHBzOi8vY2xpZW50LmV4YW1...
+    &request=$SIGNED-JWT
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP 
 
@@ -901,7 +901,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
 
       {
 
-        "alg": "RS256",
+        "alg": "ES256",
         "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
         "typ": "entity-statement+jwt"
 
@@ -913,13 +913,15 @@ Below is a non-normative example of an Entity Configuration containing an `openi
         "iss": "https://pid-provider.example.org",
         "sub": "https://pid-provider.example.org",
         "jwks": {
-          "keys": [{
-            "kty": "RSA",
-            "use": "sig",
-            "n": "1Ta-sE …",
-            "e": "AQAB",
-            "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-          }]
+          "keys": [
+            {
+                "crv": "P-256",
+                "kty": "EC",
+                "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
+                "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
+                "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
+            }
+          ]
         },
         "authority_hints": ["https://superior-entity.example.org/federation"],
         "metadata": {
@@ -928,7 +930,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
             "authorization_endpoint": "https://pid-provider.example.org/connect/authorize",
             "token_endpoint": "https://pid-provider.example.org/connect/token",
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
-            "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
+            "dpop_signing_alg_values_supported": ["ES256", "ES512"],
             "credential_endpoint": "https://pid-provider.example.org/credential",
              "jwks": {
                "keys": [
@@ -945,7 +947,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                 "format": "vc+sd-jwt",
                 "id": "eudiw.pid.it",
                 "cryptographic_binding_methods_supported": ["jwk"],
-                "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
+                "cryptographic_suites_supported": ["ES256", "ES512"],
                 "display": [{
                     "name": "PID Provider Italiano di esempio",
                     "locale": "it-IT",

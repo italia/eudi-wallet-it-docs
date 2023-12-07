@@ -253,7 +253,7 @@ The corresponding SD-JWT verson for PID is given by
 
   {
      "typ":"vc+sd-jwt",
-     "alg":"RS512",
+     "alg":"ES256",
      "kid":"dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw",
      "trust_chain" : [
       "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
@@ -273,12 +273,12 @@ The corresponding SD-JWT verson for PID is given by
     "status": "https://pidprovider.example.org/status",
     "cnf": {
       "jwk": {
-        "kty": "RSA",
-        "use": "sig",
-        "n": "1Ta-sE …",
-        "e": "AQAB",
-        "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-      }
+          "crv": "P-256",
+          "kty": "EC",
+          "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
+          "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
+          "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
+        }
     },
     "type": "PersonIdentificationData",
     "verified_claims": {
@@ -422,7 +422,7 @@ The corresponding SD-JWT for the previous data is represented as follow, as deco
 
   {
      "typ":"vc+sd-jwt",
-     "alg":"RS512",
+     "alg":"ES256",
      "kid":"d126a6a856f7724560484fa9dc59d195",
      "trust_chain" : [
       "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
@@ -442,12 +442,11 @@ The corresponding SD-JWT for the previous data is represented as follow, as deco
     "status": "https://issuer.example.org/status",
     "cnf": {
       "jwk": {
-        "kty": "RSA",
-        "e": "AQAB",
-        "use": "sig",
-        "kid": "d126a6a856f7724560484fa9dc59d195",
-        "alg": "RS256",
-        "n": "oians5wYCWk4wFtEStVYcn_xOw9edKMNGH33_q6_pBI0XaTY7P3apUgjO0ivk5c1NQAVY6PZmcPQ8P1Y0cBAC9STRmzvTvDQcOocLhVy2ZlcXTu39oOGLNra8_LQsaMA386lO_qMW4-uY6DbGZY4vHkScvAC9FIZYDPafqWBEQUNV2QOFMH5VPoihCTKHwMGXnZBatYObg57xSOUX-bvhO_sFMm3k4RvsXcr3MFojAhLfwutu_jK9k7N9KR_mNc5IpiOyhZw_sUmF6SamRqsSPp42KD10hPMW0YJTDMYxBdHrMFeSMHYIMY4oBBT43__a55zILI_CnIk4241wOvGvw"
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
+        "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
+        "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
       }
     },
     "type": "HealthInsuranceData",

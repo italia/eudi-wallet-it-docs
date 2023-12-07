@@ -506,7 +506,7 @@ Below is a non-normative response example:
 .. code-block:: text
 
     {
-        "alg": "RS256",
+        "alg": "ES256",
         "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
         "typ": "entity-statement+jwt"
     }
@@ -519,9 +519,11 @@ Below is a non-normative response example:
         "jwks": {
             "keys": [
                 {
-                    "kty": "RSA",
-                    "n": "5s4qi …",
-                    "e": "AQAB",
+                    "kty": "EC",
+                    "crv": "P-256",
+                    "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
+                    "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
+                    "x5c": [ <X.509 certificate> ]
                     "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
                 }
             ]
@@ -534,10 +536,11 @@ Below is a non-normative response example:
                 "jwks": {
                     "keys": [
                         {
-                            "kty": "RSA",
+                            "kty": "EC",
                             "use": "sig",
-                            "n": "1Ta-sE …",
-                            "e": "AQAB",
+                            "crv": "P-256",
+                            "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
+                            "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
                             "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
                             "x5c": [ "..." ]
                         }
@@ -676,8 +679,8 @@ Below is a non-normative response example:
                 
                 // JARM related
                 "authorization_signed_response_alg": [[
-                    "RS256",
-                    "ES256"
+                    "ES256",
+                    "ES384"
                 ],
                 "authorization_encrypted_response_alg": [
                     "RSA-OAEP",
@@ -696,8 +699,8 @@ Below is a non-normative response example:
                 "subject_type": "pairwise",
                 "require_auth_time": true,
                 "id_token_signed_response_alg": [
-                    "RS256",
-                    "ES256"
+                    "ES256",
+                    "ES384"
                 ],
                 "id_token_encrypted_response_alg": [
                     "RSA-OAEP",

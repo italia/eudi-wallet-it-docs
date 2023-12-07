@@ -14,10 +14,13 @@ The following algorithms MUST be supported:
   * - **Algorithm**
     - **Operations**
     - **References**
-  * - **RS256** 
+  * - **ES256** 
     - Signature
     - :rfc:`7518`.
-  * - **RS512**
+  * - **ES384** 
+    - Signature
+    - :rfc:`7518`.
+  * - **ES256**
     - Signature
     - :rfc:`7518`.
   * - **RSA-OAEP**
@@ -42,12 +45,6 @@ The following algorithms are RECOMMENDED to be supported:
   * - **Algorithm**
     - **Operations**
     - **References**
-  * - **ES256** 
-    - Signature
-    - :rfc:`7518`.
-  * - **ES512**
-    - Signature
-    - :rfc:`7518`.
   * - **PS256** 
     - Signature
     - :rfc:`7518`.
@@ -88,11 +85,6 @@ The following algorithms MUST NOT be supported:
   * - **HS512** 
     - Signature
     - :rfc:`7518`.
-
-.. warning:: 
-
-  The length of the RSA keys MUST be equal to or greater than 2048 bits.
-  A length of 4096 bits is RECOMMENDED.
 
 
 

@@ -186,7 +186,7 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
 .. code-block:: text
 
     {
-        "alg": "RS256",
+        "alg": "ES256",
         "kid": "FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc",
         "typ": "entity-statement+jwt"
     }
@@ -198,13 +198,6 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
         "sub": "https://registry.eidas.trust-anchor.example.eu",
         "jwks": {
             "keys": [
-                {
-                    "kty": "RSA",
-                    "n": "3i5vV-_ …",
-                    "e": "AQAB",
-                    "kid": "FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc",
-                    "x5c": [ <X.509 Root CA certificate> ]
-                },
                 {
                     "kty": "EC",
                     "kid": "X2ZOMHNGSDc4ZlBrcXhMT3MzRmRZOG9Jd3o2QjZDam51cUhhUFRuOWd0WQ",
@@ -400,7 +393,7 @@ Below there is a non-normative example of an Entity Statement issued by an Accre
 .. code-block:: text
 
     {
-        "alg": "RS256",
+        "alg": "ES256",
         "kid": "em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg",
         "typ": "entity-statement+jwt"
     }
