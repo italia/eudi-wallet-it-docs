@@ -1220,22 +1220,22 @@ credential_proof=$CredentialPoPJWT
 </pre></div>
 </div>
 <p>where a non-normative example of a Credential PoP is given by the following JWT headers and payload</p>
-<div class="highlight-default notranslate" id="credential-pop-jwt-ex"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;revocation-request+jwt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;$WIA-CNF-JWKID&quot;</span>
+<div class="highlight-default notranslate" id="credential-pop-jwt-ex"><div class="highlight"><pre><span></span>{
+    &quot;alg&quot;: &quot;ES256&quot;,
+    &quot;typ&quot;: &quot;revocation-request+jwt&quot;,
+    &quot;kid&quot;: $WIA-CNF-JWKID
 
-<span class="p">}</span>
-<span class="o">.</span>
-<span class="p">{</span>
-    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;0b434530-e151-4c40-98b7-74c75a5ef760&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/revoke&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1698744039</span><span class="p">,</span>
-    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1698744139</span><span class="p">,</span>
-    <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;6f204f7e-e453-4dfd-814e-9d155319408c&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;credential&quot;</span><span class="p">:</span> <span class="s2">&quot;$Issuer-Signed-JWT&quot;</span>
-<span class="p">}</span>
+}
+.
+{
+    &quot;iss&quot;: &quot;0b434530-e151-4c40-98b7-74c75a5ef760&quot;,
+    &quot;aud&quot;: &quot;https://pid-provider.example.org/revoke&quot;,
+    &quot;iat&quot;: 1698744039,
+    &quot;exp&quot;: 1698744139,
+    &quot;jti&quot;: &quot;6f204f7e-e453-4dfd-814e-9d155319408c&quot;,
+    &quot;format&quot;: &quot;vc+sd-jwt&quot;,
+    &quot;credential&quot;: $Issuer-Signed-JWT
+}
 </pre></div>
 </div>
 <p><strong>Step 2 (PoP verification)</strong>: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Wallet Instance Attestation and the Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Wallet Instance Attestation and Credential, and therefore is entitled to request its revocation.</p>
@@ -1262,7 +1262,7 @@ credential_proof=$CredentialPoPJWT
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Credential_proof</strong></p></td>
+<tr class="row-even"><td><p><strong>credential_proof</strong></p></td>
 <td><p>It MUST contain a JWT proof of possession of the cryptographic key the Credential to be revoked shall be bound to.</p></td>
 <td><p>This specification</p></td>
 </tr>
@@ -1338,12 +1338,12 @@ credential_proof=$CredentialPoPJWT
 <td><p>Unique identifier for the PoP proof JWT. The value SHOULD be set using a <em>UUID v4</em> value according to [<span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>].</p></td>
 <td><p>[<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Credential_format</strong></p></td>
+<tr class="row-odd"><td><p><strong>credential_format</strong></p></td>
 <td><p>The data format of the Credential to be revoked. It MUST be set to <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code> or <code class="docutils literal notranslate"><span class="pre">vc+mdoc</span></code></p></td>
 <td><p>This specification.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Credential</strong></p></td>
-<td><p>It MUST contain the Credential to be revoked encoded according to the data format given in the <code class="docutils literal notranslate"><span class="pre">Credential_format</span></code> claim.</p></td>
+<tr class="row-even"><td><p><strong>credential</strong></p></td>
+<td><p>It MUST contain the Credential to be revoked encoded according to the data format given in the <code class="docutils literal notranslate"><span class="pre">credential_format</span></code> claim.</p></td>
 <td><p>[<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
 </tr>
 </tbody>
@@ -1373,7 +1373,7 @@ Relying Parties MUST reject an expired Non-Revocation Attestation and, in the ca
 Host: pid-provider.example.org
 Content-Type: application/x-www-form-urlencoded
 
-Credential_proof=$CredentialPoPJWT
+credential_proof=$CredentialPoPJWT
 &amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
 &amp;client_assertion=$WIA~WIA-PoP
 </pre></div>

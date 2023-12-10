@@ -213,7 +213,7 @@ where a non-normative example of a Credential PoP is given by the following JWT 
     {
         "alg": "ES256",
         "typ": "revocation-request+jwt",
-        "kid": "$WIA-CNF-JWKID"
+        "kid": $WIA-CNF-JWKID
 
     }
     .
@@ -224,7 +224,7 @@ where a non-normative example of a Credential PoP is given by the following JWT 
         "exp": 1698744139, 
         "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
         "format": "vc+sd-jwt",
-        "credential": "$Issuer-Signed-JWT"
+        "credential": $Issuer-Signed-JWT
     }
 
 **Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Wallet Instance Attestation and the Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Wallet Instance Attestation and Credential, and therefore is entitled to request its revocation.
@@ -253,7 +253,7 @@ The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, 
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **Credential_proof**
+    * - **credential_proof**
       - It MUST contain a JWT proof of possession of the cryptographic key the Credential to be revoked shall be bound to. 
       - This specification
     * - **client_assertion_type**
@@ -264,6 +264,7 @@ The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, 
       - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
 
 The Revocation Endpoint MUST be provided by the Issuer within its Metadata. 
+
 
 The Credential Proof of Possession MUST be a JWT that MUST contain the paramters (JOSE Header and claims) in the following table.
 
@@ -306,11 +307,11 @@ The Credential Proof of Possession MUST be a JWT that MUST contain the paramters
     * - **jti**
       - Unique identifier for the PoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
       - [:rfc:`7519`. Section 4.1.7].
-    * - **Credential_format**
+    * - **credential_format**
       - The data format of the Credential to be revoked. It MUST be set to ``vc+sd-jwt`` or ``vc+mdoc``
       - This specification.
-    * - **Credential**
-      - It MUST contain the Credential to be revoked encoded according to the data format given in the ``Credential_format`` claim.
+    * - **credential**
+      - It MUST contain the Credential to be revoked encoded according to the data format given in the ``credential_format`` claim.
       - [:rfc:`7519`. Section 4.1.7].
 
 
@@ -350,7 +351,7 @@ The following diagram shows how the Wallet Instance MUST request a Non-Revocatio
     Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
-    Credential_proof=$CredentialPoPJWT
+    credential_proof=$CredentialPoPJWT
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
