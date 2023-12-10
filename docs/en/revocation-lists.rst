@@ -101,7 +101,7 @@ The entities involved in the main revocation processes are depicted in the diagr
 The revocation scenarios involve two main flows:
 
     - The Revocation Request flow: this flow describes how an entity requests for a credential revocation to the Issuer of that credential. 
-    - The Non-Revocation Attestation Request flow: this flow defines the technical protocol for requesting and obtaining a Non-Revocation Attestation and how the Wallet Instance will share it with a Verifier as a proof of validity of a credential.
+    - The Non-Revocation Attestation Request flow: this flow defines the technical protocol for requesting and obtaining a Non-Revocation Attestation and how the Wallet Instance will provide it with a Verifier as a proof of validity of a credential.
 
 
 
