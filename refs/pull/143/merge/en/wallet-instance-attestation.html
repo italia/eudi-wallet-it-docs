@@ -653,7 +653,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id1">SD-JWT</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims-field">PID Claims field</a></li>
@@ -661,7 +661,12 @@
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#namespaces">nameSpaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mobile-security-object">Mobile Security Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
@@ -707,6 +712,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Revocations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-assumptions">General Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#general-requirements">General Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#security-requirements">Security Requirements</a></li>
@@ -917,7 +923,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id1">SD-JWT</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims-field">PID Claims field</a></li>
@@ -925,7 +931,12 @@
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#namespaces">nameSpaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mobile-security-object">Mobile Security Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
@@ -971,6 +982,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Revocations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-assumptions">General Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#general-requirements">General Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#security-requirements">Security Requirements</a></li>
@@ -1232,6 +1244,28 @@ created by the Wallet Instance.</p></td>
 <div class="line"><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7800.html">RFC7800</a></div>
 <div class="line">containing the public key of the</div>
 <div class="line">Wallet Instance.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">iat</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Unix timestamp of attestation request</div>
+<div class="line">issuance time.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">exp</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Unix timestamp regarding the</div>
+<div class="line">expiration date time.</div>
 </div>
 </td>
 </tr>
