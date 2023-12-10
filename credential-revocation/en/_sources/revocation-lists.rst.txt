@@ -31,19 +31,21 @@ Similar to the Wallet Instance Attestation, Non-Revocation Attestations do not n
 The attestations acquired by the Holder (Wallet Instance) for its proper functioning are procured via assessments 
 and Holder's authentication with the attestation providers, entirely in an automated fashion.
 
+
 All the attestations can only be acquired when the Wallet Instance has an internet connection and is actively executed by the User.
+
 
 A Credential Issuer, together with the owner of the Credential (User), 
 is in charge of the creation and the issuance of Credentials, 
 its lifecycle and its validity status. 
 
+
 Digital Credentials may be linked to a physical documents issued by an Authentic Source in a previous period.
-The Authentic Sources are National organizations that implements repositories of data containing attributes 
-related to the Users to be provided to the Issuers duringthe issuance phase.  
+
 
 When one or more Authentic Sources are involved in the issuance of a Digital Credential, 
 the information exchanged between the Authentic Source and the PID/(Q)EAA Provider is required for the 
-issuance of the Credential and, in some cases also for the the revocation of the Credential.
+issuance of the Credential and, in the cases where the revocation is requested by the Authentic Source, also for the the revocation of the Credential.
 
 Finally, it is assumed that, to facilitate the association between physical document and a digital Credential, 
 the identifier of the physical document should be always present as an attribute within the Digital Credential.
