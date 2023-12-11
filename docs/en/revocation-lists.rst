@@ -120,16 +120,16 @@ Security Requirements
 
 - The proof of non-revocation (Non-Revocation Attestation) MUST be cryptographically verifiable, so that it can be shown to have been issued by the Issuer and not to have been tampered with.
 - The Non-Revocation Attestation MUST be non-repudiable even beyond its expiration time and even in the face of any rotations of the cryptographic keys.
-- Granting of the proof of non-revocation (Non-Revocation Attestation) MUST be allowed only to authorized entities (e.g. by the Holder or by law).
+- Granting of the proof of non-revocation (Non-Revocation Attestation) MUST be allowed only to authorized entities (e.g. by the User or by law).
 
 
 Privacy Requirements
 ^^^^^^^^^^^^^^^^^^^^
 
 - The Authentic Source MUST store in local databases only the minimum information required to notify the Issuer of a change in attributes or a change in the validity status of a physical document associated with one or more Credentials.
-- Access to Credential status information by a Verifier MUST be authorized by the Holder, except for checks carried out by Law-Enforcement Bodies on a regulatory basis. 
-- The Issuer SHOULD not directly or indirectly have any information related to the Verifier, type of Credentials, and Holder such that it is impossible to track the Holder's usage of the Credentials.
-- A proof of non-revocation (Non-Revocation Attestation) provided by the Issuer, in whatever format it is, SHOULD NOT reveal any information about the Verifier nor the User's attributes contained in the Credential the attestation is related to.
+- Access to Credential status information by a Verifier MUST be authorized by the User, except for checks carried out by Law-Enforcement Bodies on a regulatory basis. 
+- The Issuer SHOULD not directly or indirectly have any information related to the interation between the Verifier and the User, such that it is impossible to track the usage of the issued Credential.
+- A proof of non-revocation (Non-Revocation Attestation) provided by the Issuer, in whatever format it is, SHOULD NOT reveal any information about the Verifier nor the User's attributes contained in the Credential, or the Credential type, the attestation is related to.
 
 
 .. _sec_revocation_entity_relationship:
@@ -148,7 +148,7 @@ The entities involved in the main revocation processes are depicted in the diagr
 
 The revocation scenarios involve two main flows:
 
-    - The Revocation Request flow: this flow describes how an entity requests for a Credential revocation to the Issuer of that Credential. 
+    - The Revocation Request flow: this flow describes how an entity requests for a non-Revocation Attestation to the Issuer of that Credential. 
     - The Non-Revocation Attestation Request flow: this flow defines the technical protocol for requesting and obtaining a Non-Revocation Attestation and how the Wallet Instance will provide it with a Verifier as a proof of validity of a Credential.
 
 
@@ -159,11 +159,11 @@ High Level Revocation Flow
 
 A Credential Revocation Flow can start under different scenarios:
 
-    - The Holders report the loss or theft of their own physical document to the Law-Enforcement Authorities: this implies that the Credentials, if any, shall be revoked.
-    - The Holders notify an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials SHALL be revoked, as they are no longer valid due to the change in attributes. 
-    - The Holders who no longer have access to their Wallet Instance (e.g. theft or loss of the device), may request the Issuer of the Credentials to revoke them.
+    - The User report the loss or theft of their own physical document to the Law-Enforcement Authorities: this implies that the Credentials, if any, shall be revoked.
+    - The User notify an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials SHALL be revoked, as they are no longer valid due to the change in attributes. 
+    - The Users who no longer have access to their Wallet Instance (e.g. theft or loss of the device), may request the Issuer of the Credentials to revoke them.
     - The Law-Enforcing Authorities, for the fulfillment of their functions and any other judicial reasons, may request the Authentic Source to revoke entitlements, licences, certificates, identification documents, etc., which in turn leads to the revocation of any linked Credentials.
-    - The Authentic Sources that for any administrative reasons update one or more attributes of a Holder, SHALL inform the Issuer of related Credentials. 
+    - The Authentic Sources that for any administrative reasons update one or more attributes of a User, SHALL inform the Issuer of related Credentials. 
     - The Issuers, for technical security reasons (e.g. in the case of compromised cryptographic keys), can decide to revoke the Credentials.
 
 The Figure below shows the main processes involved in the scenarios described above.
