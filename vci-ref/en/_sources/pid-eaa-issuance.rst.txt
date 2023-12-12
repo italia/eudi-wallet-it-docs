@@ -950,10 +950,9 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                   "kid": "ff0bded045fe63fe5d1d64dd83b567e0"
                 }]
               }
-            "credentials_supported": [
-              {
+            "credentials_supported": {
+              "PersonIdentificationData": {
                 "format": "vc+sd-jwt",
-                "id": "eudiw.pid.it",
                 "cryptographic_binding_methods_supported": ["jwk"],
                 "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
                 "display": [{
@@ -1055,7 +1054,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                   }
                 }
               }
-            ]
+            }
           },
 
           "federation_entity": {
