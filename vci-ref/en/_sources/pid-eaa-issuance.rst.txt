@@ -256,15 +256,14 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
     HTTP/1.1 302 Found
     Location: https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Fpid-provider.example.org
 
-**Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain sender (Wallet Instance) (:rfc:`9449`) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint of PID/(Q)EAA Issuer.
+**Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain Wallet Instance (:rfc:`9449`) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint.
 
 **Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization ``code``, ``code_verifier`` and *DPoP Proof JWT*. The PID/(Q)EAA Provider performs the following checks:
 
-   1. It authenticates the Wallet Instance using OAuth 2.0 Attestation based Client Authentication method `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
-   2. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`) and was not replied.
-   3. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
-   4. It MUST ensure the ``redirect_uri`` matches the value included in the previous Request Object `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
-   5. It MUST validate the DPoP Proof JWT, according to (:rfc:`9449`) Section 4.3.
+   1. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`) and was not replied.
+   2. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
+   3. It MUST ensure the ``redirect_uri`` matches the value included in the previous Request Object `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
+   4. It MUST validate the DPoP Proof JWT, according to (:rfc:`9449`) Section 4.3.
 
 .. code-block:: http
 
