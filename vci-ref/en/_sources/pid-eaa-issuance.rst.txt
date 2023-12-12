@@ -157,7 +157,7 @@ Below an non-normative example of the Wallet Instance Attestation Proof of Posse
     "exp": 1686652315
   }
 
-Below an non-normative example of the signed Request Object Proof of Possession without encoding and signature applied:
+Below an non-normative example of the signed Request Object without encoding and signature applied:
 
 .. code-block::
 
@@ -168,12 +168,12 @@ Below an non-normative example of the signed Request Object Proof of Possession 
   .
   {
     "iss": "$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
-    "aud": "https://pid-provider.example.org/authorization-endpoint",
+    "client_id": "$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
     "exp": 1672422065,
     "iat": 1672418465,
+    "aud": "https://pid-provider.example.org/authorization-endpoint",
     "jti": "ac80df576e7109686717bf50b869e882",
     "response_type": "code",
-    "client_id": "$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
     "state": "fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
     "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
     "code_challenge_method": "S256",

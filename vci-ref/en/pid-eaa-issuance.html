@@ -1184,7 +1184,7 @@ response_type=code
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Below an non-normative example of the signed Request Object Proof of Possession without encoding and signature applied:</p>
+<p>Below an non-normative example of the signed Request Object without encoding and signature applied:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
   <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span>
@@ -1192,12 +1192,12 @@ response_type=code
 <span class="o">.</span>
 <span class="p">{</span>
   <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/authorization-endpoint&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
   <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1672422065</span><span class="p">,</span>
   <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1672418465</span><span class="p">,</span>
+  <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/authorization-endpoint&quot;</span><span class="p">,</span>
   <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;ac80df576e7109686717bf50b869e882&quot;</span><span class="p">,</span>
   <span class="s2">&quot;response_type&quot;</span><span class="p">:</span> <span class="s2">&quot;code&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
   <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;</span><span class="p">,</span>
   <span class="s2">&quot;code_challenge&quot;</span><span class="p">:</span> <span class="s2">&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;</span><span class="p">,</span>
   <span class="s2">&quot;code_challenge_method&quot;</span><span class="p">:</span> <span class="s2">&quot;S256&quot;</span><span class="p">,</span>
