@@ -1061,7 +1061,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
           },
 
           "federation_entity": {
-            "organization_name": "Pid Provider Organization Example",
+            "organization_name": "PID Provider Organization Example",
             "homepage_uri": "https://pid-provider.example.org",
             "policy_uri": "https://pid-provider.example.org/privacy_policy",
             "tos_uri": "https://pid-provider.example.org/info_policy",
