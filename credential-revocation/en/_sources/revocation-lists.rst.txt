@@ -335,7 +335,7 @@ The Non-Revocation Attestation MUST contain the expiration datetime after which 
 The Non-Revocation Attestation enables offline use cases as it MUST be statically validated using the cryptographic signature of the Issuer. 
 Relying Parties MUST reject an expired Non-Revocation Attestation and, in the case of valid Attestations, they MAY still reject them according to their own policies (e.g., if the issue date doesn't meet their security requirements). 
 
-The following diagram shows how the Wallet Instance MUST request a Non-Revocation Attestation to the Issuer.
+The following diagram shows how the Wallet Instance requests a Non-Revocation Attestation to the Issuer.
 
 .. _fig_Low-Level-Flow-Revocation-Attestation:
 .. figure:: ../../images/Low-Level-Flow-Revocation-Attestation.svg
@@ -357,7 +357,7 @@ The following diagram shows how the Wallet Instance MUST request a Non-Revocatio
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
-For a non-normative example of Credential Proof of Possession see :ref:`the one provided in the prevoius section <Credential_pop_jwt_ex>`.
+For a non-normative example of Credential Proof of Possession see :ref:`the one provided in the prevoius section <credential_pop_jwt_ex>`.
 
 **Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Wallet Instance Attestation and the Credential, which is the proof that the Wallet Instance owns the private keys associated with the Wallet Instance Attestation and Credential. Therefore the Wallet Instance is entitled to request its Non-Revocation Attestation.
 

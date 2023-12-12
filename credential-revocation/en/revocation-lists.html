@@ -1359,7 +1359,7 @@ credential_proof=$CredentialPoPJWT
 The Non-Revocation Attestation MUST contain the expiration datetime after which the digital Credential MUST NOT be considered valid anymore.
 The Non-Revocation Attestation enables offline use cases as it MUST be statically validated using the cryptographic signature of the Issuer.
 Relying Parties MUST reject an expired Non-Revocation Attestation and, in the case of valid Attestations, they MAY still reject them according to their own policies (e.g., if the issue date doesn't meet their security requirements).</p>
-<p>The following diagram shows how the Wallet Instance MUST request a Non-Revocation Attestation to the Issuer.</p>
+<p>The following diagram shows how the Wallet Instance requests a Non-Revocation Attestation to the Issuer.</p>
 <figure class="align-center" id="id5" style="width: 100%">
 <span id="fig-low-level-flow-revocation-attestation"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/PSr1ImCn40NWUtx5K3mek7WNAYsUreDTQd4lmZ9cHmna9p4pSV7YRtTQiANqEE_bork9Oj4wHOTL4zVfdOhB5WKVChB2eiSOIQ5bKMHF2q21EPo_QKKgbKCLd9i3D0yGxg7RlEpWpfnMWK9VbKIlVQ6HM0F68PUKFfPNZyUaIzrJlxi57uC50ugGhIGUz2VJPRpis_Llj-bkdFkVVCKOHbG2gnghtXYGHpXDW6s0ZPo8TNlmdBZPqdVokF_Qt5gLH0_N4PYOZMn9Sc8XE_JpN5ww5V5Of_W7"><img alt="_images/Low-Level-Flow-Revocation-Attestation.svg" src="_images/Low-Level-Flow-Revocation-Attestation.svg" /></a>
 <figcaption>
