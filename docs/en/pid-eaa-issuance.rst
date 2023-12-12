@@ -182,7 +182,7 @@ Below an non-normative example of the signed Request Object without encoding and
           "type": "openid_credential",
           "format": "vc+sd-jwt",
           "credential_definition": {
-              "type": "PersonIdentificationData"
+              "type": ["PersonIdentificationData"]
           }
       }
     ],
@@ -303,7 +303,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
               "type": "openid_credential",
               "format": "vc+sd-jwt",
               "credential_definition": {
-                  "type": "PersonIdentificationData"
+                  "type": ["PersonIdentificationData"]
               }
           }
         ]
@@ -335,7 +335,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
   {
     "format": "vc+sd-jwt"
     "credential_definition":{
-      "type": "PersonIdentificationData"
+      "type": ["PersonIdentificationData"]
     },
     "proof": {
       "proof_type": "jwt",
@@ -344,7 +344,8 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
   }
 
 
-Where the decoded content of the ``jwt`` parameter is represented below:
+Where the decoded content of the ``jwt`` parameter is represented below,
+without endpding and signature, for example purpose. The JWS header:
 
 .. code-block:: JSON
 
@@ -359,6 +360,8 @@ Where the decoded content of the ``jwt`` parameter is represented below:
     }
 
   }
+
+And the The JWS payload:
 
 .. code-block:: JSON
 
