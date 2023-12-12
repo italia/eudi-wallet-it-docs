@@ -956,7 +956,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                 "format": "vc+sd-jwt",
                 "cryptographic_binding_methods_supported": ["jwk"],
                 "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
-                "proof_types_supported": ["jwt"],
+                "proof_types": ["jwt"],
                 "display": [{
                     "name": "PID Provider Italiano di esempio",
                     "locale": "it-IT",
