@@ -14,7 +14,7 @@ The relevant entities and interfaces involved in the issuance flow are:
     - *PID Provider*: The entity that issues the eIDAS Person Identification Data (PID). It is composed of:
 
         - OpenID4VCI Component: based on the "OpenID for Verifiable Credential Issuance" specification  ` [OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release the PID.
-        - National eID Relying Party (OpenID Connect Core 1.0 or SAML2): It represents the component to authenticate the User with the national Digital Identity Providers.
+        - National eID Relying Party: The component to authenticate the User with the national Digital Identity Providers, based on OpenID Connect Core 1.0 or SAML2.
         - National Identity Provider: It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (eg: the Italian SPID and CIE id schemes notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
 
     - *(Q)EAA Provider*: It represents the Issuer of (Q)EAAs. It is composed of:
