@@ -1206,7 +1206,7 @@ response_type=code
         <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
         <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
         <span class="s2">&quot;credential_definition&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;PersonIdentificationData&quot;</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">],</span>
@@ -1320,7 +1320,7 @@ grant_type=authorization_code
 <span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;credential_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">]</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
@@ -1348,7 +1348,7 @@ grant_type=authorization_code
 <span class="p">{</span>
   <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;vc+sd-jwt&quot;</span>
   <span class="s2">&quot;credential_definition&quot;</span><span class="p">:{</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;PersonIdentificationData&quot;</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">]</span>
   <span class="p">},</span>
   <span class="s2">&quot;proof&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;proof_type&quot;</span><span class="p">:</span> <span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
@@ -1357,7 +1357,8 @@ grant_type=authorization_code
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Where the decoded content of the <code class="docutils literal notranslate"><span class="pre">jwt</span></code> parameter is represented below:</p>
+<p>Where the decoded content of the <code class="docutils literal notranslate"><span class="pre">jwt</span></code> parameter is represented below,
+without endpding and signature, for example purpose. The JWS header:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid4vci-proof+jwt&quot;</span><span class="p">,</span>
@@ -1371,6 +1372,7 @@ grant_type=authorization_code
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>And the The JWS payload:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0b434530-e151-4c40-98b7-74c75a5ef760&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
