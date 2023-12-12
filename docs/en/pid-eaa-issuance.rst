@@ -8,19 +8,19 @@ PID/(Q)EAA Issuance
 This section describes the PID and (Q)EAAs issuance flow with an high level of security. 
 The relevant entities and interfaces involved in the issuance flow are:
 
-    - *Wallet Provider*: The entity responsible for releasing an EUDI Wallet Solution. It also issues Wallet Instance Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a Trust Framework in compliance to the security and privacy requirements.
-    - *Wallet Solution*: Entire product and service owned by a Wallet Provider, offered to all the Users of that solution. The Wallet Solution is certified as EUDI-compliant by a Conformity Assessment Body (CAB).
-    - *Wallet Instance*: Instance of a Wallet Solution, installed on the User device. It provides interfaces for User interaction with the Wallet Provider, Relying Parties, PID, and (Q)EAA Providers.
+    - *Wallet Provider*: The entity responsible for releasing an EUDI Wallet Solution. The Wallet Provider issues the Wallet Instance Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a trust framework in compliance to the security and privacy requirements.
+    - *Wallet Solution*: Entire product and service owned by a Wallet Provider, offered to all the Users and certified as EUDI-compliant by a Conformity Assessment Body (CAB).
+    - *Wallet Instance*: Instance of a Wallet Solution, installed on the User device. The Wallet Instance provides graphical interfaces for User interaction with Relying Parties, PID, (Q)EAA Providers and the Wallet Provider.
     - *PID Provider*: The entity that issues the eIDAS Person Identification Data (PID). It is composed of:
 
-        - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release PID credentials.
-        - National eID Relying Party (OpenID Connect or SAML2): It represents the component to authenticate the User with the national Digital Identity Providers.
-        - National Identity Provider: It represents preexisting identity systems based on SAML2 or OpenID Connect, already in production in each Member State (for Italy SPID and CIE id authentication schemed notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
+        - OpenID4VCI Component: based on the "OpenID for Verifiable Credential Issuance" specification  ` [OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release the PID.
+        - National eID Relying Party (OpenID Connect Core 1.0 or SAML2): It represents the component to authenticate the User with the national Digital Identity Providers.
+        - National Identity Provider: It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (eg: the Italian SPID and CIE id schemes notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
     
     - *(Q)EAA Provider*: It represents the Issuer of (Q)EAAs. It is composed of:
 
-      - OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ to release (Q)EAAs.
-      - Relying Party: It represents the component to authenticate the User with the PID. The (Q)EAA Provider acts as a Verifier and it sends a presentation request to the Wallet Instance according to [`OpenID4VP`_]. The Wallet Instance MUST have a valid PID obtained prior to starting a transaction with the (Q)EAA Provider.
+      - OpenID4VCI Component: based on the "OpenID for Verifiable Credential Issuance" specification ` to release (Q)EAAs.
+      - Relying Party: Component to authenticate the User with the PID. The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [`OpenID4VP`_]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.
     
 
 High-Level PID flow
@@ -33,18 +33,18 @@ The :numref:`fig_High-Level-Flow-ITWallet-PID-Issuance` shows a general architec
     :figwidth: 100%
     :align: center
 
-    PID Issuance - General architecture and high level flow
+    PID Issuance - General architecture and high level flow.
 
-Below a detailed description for each step represented in the previous picture:
+Below the description of the steps represented in the previous picture:
 
-    0. **Wallet Instance Setup**: the first time the Wallet Instance is started a preliminary setup phase MUST be carried out. It consists of the release of a verifiable proof issued by the Attestation Service provided by the Wallet Provider that asserts the genuineness, the authenticity and the compliance with a trust framework of the Wallet Instance. The verifiable proof binds a public key corresponding to a local private key generated by the Wallet Instance. 
-    1. **Obtaining the trusted PID Provider**: the Wallet Instance discovers the trusted PID Provider using the Federation API (e.g.: using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), and then inspects the metadata looking for the availability of the PID credential. 
-    2. **Obtaining of PID Provider Metadata**: the Wallet Instance establishes the trust to the PID Provider according to the Trust Model, obtaining the Metadata that discloses the formats of the PID, the algorithms supported, and any other parameter required for interoperability needs.
-    3. **PID Request**: following the Authorization Code Flow in `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ the Wallet Instance requests a PID to the PID Provider. A fresh key pair that is generated by the Wallet Instance for the purpose of the sender-constrained Access Token will be used by the PID Provider for the Holder Key Binding of the PID.
-    4. **User Authentication**: the PID Provider authenticates the User with LoA High, acting as an IAM Proxy to the National eID system. 
-    5. **PID Issuance**: once the User authentication with LoA High happens, the User gives their consent, and the PID Provider releases a PID bound to the key material held by the requesting Wallet Instance.
+    0. **Wallet Instance Setup**: the first time the Wallet Instance is started a preliminary setup phase is carried out. It consists of the release of the Wallet Instance Attestation issued by Wallet Attestation Service asserting the genuineness and the compliance of the Wallet Instance with the shared trust framework. The Wallet Instance Attestation binds the public key provided by the Wallet Instance, related to one of the private keys generated by the Wallet Instance. 
+    1. **Digital Credential Issuers Discovery**: the Wallet Instance discovers the trusted Digital Credential Issuers using the Federation API (e.g.: using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), inspecting the Credential Issuer metadata and Trust Marks for filtering the PID Provider. 
+    2. **PID Provider Metadata**: the Wallet Instance establishes the trust to the PID Provider according to the Trust Model and obtains the Metadata that discloses the formats of the PID, the algorithms supported, and any other parameter required for interoperability needs.
+    3. **PID Request**: using the Authorization Code Flow defined in `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_ the Wallet Instance requests the PID to the PID Provider.
+    4. **User Authentication**: the PID Provider authenticates the User with LoA High, acting as an Identity and Access Management Proxy to the National eID system. 
+    5. **PID Issuance**: the User is authenticated with LoA High and the PID Provider releases a PID bound to the key material held by the requesting Wallet Instance.
 
-In the following sections the steps from 1 to 5 are further expanded into more technical details. 
+In the following sections the steps from 1 to 5 are further expanded into more technical details.
 
 High-Level (Q)EAA flow
 ----------------------
