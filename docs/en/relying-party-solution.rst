@@ -18,31 +18,46 @@ In this section the following flows are described:
 
 In the **Same Device** and **Cross Device** Flows described in this chapter, the User interacts with a remote Relying Party.
 
-.. note::
-    The provisioning of the Wallet Instance Attestation from the Wallet Instace to the Relying Party is 
-    under discussion within the international standardization working groups. At the current stage of the draft of this implementation profile,
-    a mechanism based on `OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP) <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop>`_
-    is used.
 
-Remote Protocol Flow
+High level design
+--------------------
+
+From the User's perspective, the Wallet Instance:
+
+1. scans the QR Code (Cross Device flow) or obtain the URL (Same Device flow);
+2. extracts from the payload the ``client_id`` parameter;
+3. establishes the Trust to the Relying Party by building the Federation Trust Chain. OPTIONAL, implementations may evaluate the trust after having obtained the signed Request Object (see point 5);
+4. extracts ``discovery_uri`` if any.
+  - If ``discovery_uri`` is present, then: 
+    - sends the Wallet Instance Metadata to the Relying Party's ``discovery_uri`` and obtains the signed Request Object.
+  - Else:
+    - extracts from the payload the ``request_uri`` parameter;
+    - invokes the retrieved URI;
+    - obtains the signed Request Object from the Relying Party.
+5. Assesses the trustworthiness of the Relying Party by examining its associated Trust Chain and verifying the signature to ensure interaction with a reliable entity;
+6. asks User disclosure and consent;
+7. presents the requested disclosure of credentials to the Relying Party;
+8. informs the User about the successfull authentication with the Relying Party and give a good user experience to let the User continuing its navigation.
+
+
+Detailed Protocol Flow
 --------------------
 
 In this scenario the Relying Party MUST provide the URL where the signed presentation Request Object is available for download.
 
-Depending on whether the Relying Party client is on a mobile device or a workstation, 
-the Relying Party MUST activate one of the supported remote flows:
+Depending on whether the User is using a mobile device or a workstation, the Relying Party
+must support the following remote flows:
 
 * **Same Device**, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;
-* **Cross Device**, the Relying Party MUST provide a QR Code which the User frames with their Wallet Instance.
+* **Cross Device**, the Relying Party MUST provide a QR Code which the User frames with the Wallet Instance.
 
-Once the Wallet Instance establishes the trust with the Relying Party, the User gives the consent for the release of the personal data, in the form of a Verifiable Presentation.
+Once the Wallet Instance establishes the trust with the Relying Party, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.
 
 Below a sequence diagram that summarizes the interactions between all the involved parties.
 
 .. image:: ../../images/cross_device_auth_seq_diagram.svg
   :align: center
-  :target: //www.plantuml.com/plantuml/uml/XLLTJoCt57tthxXA7neGK7Rx5ebgMKg1tRPCax2y8277labS77lgZmbfrV_UQtkOJ4YaIWXfx7EFpxaVDvzyu2x4bMOy1clYQeQECNOfWdKmUF3e1i0zHCPczhKSVE_XPsoKG3-0xtvLYsNuh2EocdYKK3Kt0GQFN6iCS6U8tWZC7EjTI2IgKxv04yeBdA6HGA_imiQeDyeieAB3JKOso5Y4qvyeP0IFE8C9kYG736_KWWTb3OkS08GSmHZ_YkW3LCu6504bdNWRdI2MYmj8Xk0oXYKQUZC7mx1owEcxV5LBxl48BYuO5q4rF61IqE3R0rSEwInpMAV-pa7TgqzcU7pi0m6EZybR98V1mjOw26jV5D7l4xf2yHoT0jTApgXY_8_nbPK8zsEudKuhUb0gH_vW-EFvnoDOgx24iDnbeVpMLfd09FQjiAsnDMCBPsDD6gn_ApDOepTjHkC89akxpjIjWfgCf7hGxNe4zpMQVFkk0u3NzGbeAxW6lfDkjeOIEX7S42aarkxm-ZKuajSbz65yzsJcpguw9BbY16-JTtCzxR3tipzHf1hCDlruEaZfsLDu6GBwKdI2SB9VsGg2VK733jU-3I6_FFHDKwyrIg9xCg0yf7O6Ey-0Nv2EynDqnuqyc2gACJQ0muRUbYU4JFa2RBYE9A4V8tZDPqgheD2VaR2s3Bifs2zuoMwdVsV6OEgY3nta6pertxo3_8Q1Inxu5iMraed-o-CK9cfXU8WEzwzRNIZXMpNqHmKGjthdre6m9atVDkLnsrvNrioLMw7iMuhRybVta-dUAFewCL9DorWqzNCfwk6QNlVINDmhFjC8EqkX4Emr0esk98pY6kwyZ-XACjjQ7qvIZuNwHg3t-MNHKJ7cZAKesw0Z6EtSkvlRwStu-lftTZXYnE1gYU85RgsM5FGLD_1P6Ka5p48eYlgH_YhhFOMJ8mevXUW9aRdgEDDAm0i5bgsbJ6d3liLWeIdTaLFLpiePOp2bVkr6DrrAvOMs7YNm49oQnO1-H1LfTQevK3zt2qiv0gR-0kuGUCELfXBaKS-fOBsSFTIoBLRPvQqV69RD2Z7VooFOJaVUc3zyEFi07y_FuVuhoVXduCe2pPjoC89b2BM7w7Jf6TSsqRD8A-_VVlUjtqzNsQ0JliAT1RfkDpV9B7BxBoPh_xTx6-os_fV9gCtSxYu57vAAOJBujlgBWVPtfYIXwBWy5BfG3PeIaacINty2aN1K87ojSssi0nz5whnvr5dx9_eNL_e_
-
+  :target: https://www.plantuml.com/plantuml/svg/XLLDRoCt3BthLn3keKwGfDdjpK2ApRhf9hjjFRMzoIL086jeMuqiJVKnZblqlvSQUcnFFhf04C0It-Dx5Cdv4ABqCQsCa2awcrOpz4A8InMTXzxNWBu7Ca0IOkQU-E3x03zZhHM67dptgruiuqUJK5J4evMkf8tGkvF6O8GRI_HMOSEnxeOaeZgL2xIHCqY1jWJAqWqRezbeku223ZTDP8r293ZzYI03kCCPJD1dEM1bhHSoQcT5aZcWnW6CyQ-48KBXNKGLiQIJu99Nn79n0TaGNAQuH4iv6p3q2u-1VlElOYa37i75XP0gwbf6p0fgR1CCFT9Pm-6y_fj1RTPxspy-3iI4nyVaBP73w61l7PHpZvheNn9wfdX8NeDl9TVO6lzZF7GbmcWCrzDfGGbBxSaVz7yyVty4QnsNe8oc50-wFEcGIH9Hwg1SZNwJJqI9XzR4tkXQY8LtgI9DBhJF3iwQpRR2QG2JfLi3rQzLL96n_3vqknx0g4BRt3xh291LTGB6AMb0Tielri3GYPAMI26pxWwldg8dUVTsP-xU7fYxjnrtV3JtRiKAcImtcc36NEzYD9csygQebbPdKKDPoPasEceC45t6Ttc1M2gdRHHlD0RMqYGw3Hdx_maQ51jiEsSq-nDLVF4qRHqkOynHdUc0gKyXxa9kqUlvvbd8RnXbAQFSHqcZoqp_-MuA4xsmCYQFBwvRNLZ2RT4FHnoGzdhdpeDoDi_DlXvftmX3P-VQhx0yj9Iwh_1YY4AL6McAkA7hwY6wHxHl5FngM_1SRtQlvSmWTCQP2LhGtk1hJSfLPk0PgU2VXv65TxKkqPD27I0lBd3p9k0NfEC6INVIbg_o4yQw21vhKbMU7SZQfXfweh5HImCt8IJq_CPC-TRRxLb8diB03QXsL49uoegGMvd2Q8dVVBgUVXfVNVqkNaSC10oNg1xXsXco1Lzm0n-rBQcl6Y648jlqLxWG24wk2N8AAL14mrMbcT4A7Wd8Qr1JNVBDeSNeeEQcRLwmuCSw4mAcIxJjxEz6qRY09SWOlPwbY640HCawzHoer1J9UrHx2inj3z8Zo5fgGvtHB8Ac5EAWPb-hjXtuux3r0trUrP2Q-_88zaFRhE0VtfszW_Vdvp3wGZB-wNdUoCrQwWrW6MCL87d3hUotlVsWyixyzt0eri-7dbVmHAwmiu5v0YKf3YptC6EszgtbNUFkC_9vCk3AFLl6469MqSy6suy86zX-kBW8hEFoDUX2rsWPqf1al-444iKP0_XKDM_ZF8IaSkVDascqVw1_QMN-0m00
 
 The details of each step shown in the previous picture are described in the table below.
 
@@ -54,35 +69,91 @@ The details of each step shown in the previous picture are described in the tabl
   * - **Id**
     - **Description**
   * - **1**, **2**
-    - The User asks for access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the *Login with the Wallet* button. The Authorization flow starts.
+    - The User requests to access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the *Login with the Wallet* button. The Authorization flow starts.
   * - **3**, **4**, **5**
-    - The Relying Party creates an Authorization Request which contains the scopes of the request and provides it to the requester.
+    - The Relying Party provides to the Wallet Instance the where a generic signed Authorization Request Object is available for download and the ``discovery_uri``  where the Wallet Instance can provide its technical capabilities to the Relying Party. 
   * - **6**, **7**, **8**, **9**
-    - In the **Cross Device Flow**: the Request URI is provided in the form of a QR Code that is shown to the User. The User frames the QRCode with the Wallet Instance and extracts the Request URI. In the **Same Device Flow** the Relying Party responses with the Request URI in the form of HTTP Redirect Location (302). 
+    - In the **Cross Device Flow**: the Request URI is provided in the form of a QR Code that is shown to the User. The User frames the QRCode with the Wallet Instance and extracts  ``client_id``, ``request_uri`` and ``discovery_uri``. In the **Same Device Flow** the Relying Party provide the same information of the Cross-Device flow but in the form of HTTP Redirect Location (302). 
   * - **10**
-    - The Wallet Instance requests the content of the Authorization Request by invoking the Request URI, passing an Authorization DPoP HTTP Header containing the Wallet Instance Attestation and the DPoP proof HTTP Header.
+    - The Wallet Instance provides its metadata to the Relying Party, informing it about some features and limitations of its implementations.
   * - **11**
-    - The Relying Party attests the trust to the Wallet Instance using the Wallet Instance Attestation and evaluates the Wallet Instance capabilities.
+    - The Relying Party evaluates the Wallet Instance capabilities and produces a signed Request Object compliant to the Wallet capabilities.
   * - **12**
-    - The Relying Party issues a signed Request Object, returning it as response. The ``exp`` value of the signed Request Object MUST be no more than 240 seconds.
+    - The Relying Party responds with a signed Request Object. The ``exp`` value of the signed Request Object MUST NOT be greater than 240 seconds.
   * - **13**, **14**, **15**, **16**
-    - The Wallet Instance verifies the Request Object JWS. The Wallet Instance attests the trust to the Relying Party by verifying the Trust Chain. The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attest its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.
+    - The Wallet Instance verifies the Request Object JWS. The Wallet Instance attests the trust to the Relying Party by verifying the Trust Chain related to it. The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attest its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.
   * - **17**, **18**
     - The Wallet Instance requests the User's consent for the release of the credentials. The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.
   * - **19**
     - The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post").
-  * - **20**, **21**, **22**
-    - The Relying Party verifies the Authorization Response, extracts the credential and attests the trust to the credentials Issuer. The Relying Party verifies the revocation status and the proof of possession of the presented credential.
-  * - **23**
-    - The Relying Party authenticates the User.
-  * - **24**
-    - The Relying Party notifies to the Wallet Instance that the operation ends successfully.
+  * - **20**, **21**, **22**, **23** and **24**
+    - The Relying Party verifies the Authorization Response, extracts the Wallet Instance Attestation to establish the trust with the Wallet Solution. Then extract the Digital Credential and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credential. Finally, the Relying Party verifies the revocation status of the presented credential.
+  * - **25**, **26**, **27** and **28**
+    - The Relying Party authenticates the User and notifies to the Wallet Instance that the operation ends successfully.
+  * - **29**
+    - The User is informed by the Wallet Instance that the Autentication succeded, then the protected resource is made available.
+
+
+Discovery endpoint
+------------------
+
+The Relying Party SHOULD provide a discovery endpoint where the Wallet Instance 
+can inform the Relying Party about its technical capabilities.
+
+This feature can be useful when, for example, the Wallet Instance supports 
+a restricted set of features, supported algorithms or custom url-schemes for 
+its authorization_endpoint, and other information that it deems necessary to 
+share with the Relying Party before it issues the request signed authorization.
+
+.. warning::
+    The Wallet Instance, when providing its technical capabilities to the 
+    Relying Party, MUST not include any user information or other explicit 
+    information regarding the hardware used or usage preferences of its User.
+
+If both the Relying Party and the Wallet Instance supports the discovery of the 
+Wallet Instance technical capabilities, the Wallet Instance capabilities MUST 
+be provided using an HTTP request to the discover_uri of the Relying Party, 
+with the method POST and content type set to `application/json`.
+
+A non-normative example of the HTTP request is represented below:
+    
+.. code:: http
+
+POST /discovery-uri HTTP/1.1
+HOST: relying-party.example.org
+Content-Type: application/json
+
+{
+    "authorization_endpoint": "eudiw:",
+    "response_types_supported": [
+    "vp_token"
+    ],
+    "response_modes_supported": [
+    "form_post.jwt"
+    ],
+    "vp_formats_supported": {
+      "vc+sd-jwt": {
+          "sd-jwt_alg_values": [
+              "ES256",
+              "ES384"
+          ]
+      }
+    },
+    "request_object_signing_alg_values_supported": [
+    "ES256"
+    ],
+    "presentation_definition_uri_supported": false,
+}
 
 
 Authorization Request Details
 -----------------------------
 
-The Relying Party MUST create a Request Object in the format of signed JWT, then provide it to the Wallet Instance through an HTTP URL (request URI). The HTTP URL points to the web resource where the signed request object is available for download. The URL parameters contained in the Relying Party response, containing the request URI, are described in the Table below.
+The Relying Party MUST create a Request Object in the format of signed JWT, 
+then provide it to the Wallet Instance through an HTTP URL (request URI). 
+The HTTP URL points to the web resource where the signed request object is 
+available for download. The URL parameters contained in the Relying Party 
+response, containing the request URI, are described in the Table below.
 
 .. list-table::
   :widths: 25 50
@@ -93,7 +164,7 @@ The Relying Party MUST create a Request Object in the format of signed JWT, then
   * - **client_id**
     - Unique identifier of the Relying Party.
   * - **request_uri**
-    - The HTTP URL used by the Wallet Instance to retrieve the signed Request Object from the Relying Party. The URL is intentionally extended with a random value that uniquely identifies the transaction.
+    - The HTTPs URL where the Relying Party provides the signed Request Object to the Wallet Instance. The URL is intentionally extended with a random URI fragment value, that uniquely identifies the transaction. Eg: `https://relying-party.example.org/request_uri#that-random-fragment-we-mentioned`. It is RECOMMENDED that the length of the random fragment value is longer than 12 characters.
 
 Below a non-normative example of the response containing the required parameters previously described.
 
@@ -111,7 +182,7 @@ In the **Same Device Flow** the Relying Party uses a HTTP response redirect (sta
     HTTP/1.1 /pre-authz-endpoint Found
     Location: https://wallet-providers.eudi.wallet.gov.it?
     client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
-    &request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value
+    &request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%23that-random-fragment-we-mentioned
 
 
 In the **Cross Device Flow**, a QR Code is shown by the Relying Party to the User in order to provide the Authorization Request. The User frames the QR Code using their Wallet Instance. The QR Code payload MUST be a **Base64 encoded string**.
@@ -163,106 +234,13 @@ Below a non-normative example of the HTTP Request to this specialized endpoint, 
 
 Request Object Details
 ----------------------
-The following actions are made by the Wallet Instance:
-
-- scan the QR Code (Cross Device only);
-- extract from the payload the ``request_uri`` parameter;
-- invoke the retrieved URI;
-- provide in the request its Wallet Instance Attestation, using :rfc:`9449` to proof the legitimate possession of it;
-- obtain the signed Request Object from the Relying Party.
-- evaluate the trust with the Relying Party, by evaluating the Trust Chain related to it.
 
 Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party to provide the Wallet Instance Attestion and retrieve the signed Request Object:
 
 .. code-block:: javascript
 
-  GET /request_uri HTTP/1.1
+  GET /request_uri#that-random-fragment-we-mentioned HTTP/1.1
   HOST: relying-party.example.org
-  Authorization: DPoP $WalletInstanceAttestation
-  DPoP: $WalletInstanceAttestationProofOfPossession
-
-
-More detailed information about the `Wallet Instance Attestation`_ is available in its dedicated section of this technical specification.
-
-To attest a high level of security, the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.
-
-Below the description of the parameters defined in *OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)*.
-
-If the DPoP HTTP Header is missing, the Relying Party would assume the lowest attestable level of security to the Wallet Instance it is interacting with.
-
-DPoP HTTP Header
-^^^^^^^^^^^^^^^^
-
-A **DPoP proof** is included in the request using the HTTP Header ``DPoP`` and containing a JWS. The JWS MUST be verified with the public key made available in the Wallet Instance Attestation (``Authorization: DPoP``).
-
-The JOSE header of the **DPoP JWS** MUST contain at least the following parameters:
-
-.. list-table:: 
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **JOSE header**
-      - **Description**
-      - **Reference**
-    * - **typ** 
-      - It MUST be equal to ``dpop+jwt``. 
-      - [:rfc:`7515`] and [:rfc:`8725`. Section 3.11].
-    * - **alg** 
-      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section *Cryptographic Algorithms* <supported_algs>`* and MUST NOT be none or an identifier for a symmetric algorithm (MAC).
-      - [:rfc:`7515`]
-    * - **jwk** 
-      - Representing the public key chosen by the client, in JSON Web Key (JWK) [RFC7517] format, as defined in Section 4.1.3 of [RFC7515]. It MUST NOT contain a private key.
-      - [:rfc:`7517`] and [:rfc:`7515`]
-
-
-The payload of a **DPoP proof** MUST contain at least the following claims:
-
-.. list-table:: 
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Claim**
-      - **Description**
-      - **Reference**
-    * - **jti**
-      - Unique identifier for the DPoP proof JWT. The value SHOULD be set with a *UUID v4* value, according to [:rfc:`4122`].
-      - [:rfc:`7519`. Section 4.1.7].
-    * - **htm**
-      - The value of the HTTP method of the request to which the JWT is attached.
-      - [:rfc:`9110`. Section 9.1].
-    * - **htu**
-      - The HTTP target URI, without query and fragment parts, of the request to which the JWS is attached.
-      - [:rfc:`9110`. Section 7.1].
-    * - **iat**
-      - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
-      - [:rfc:`7519`. Section 4.1.6].
-    * - **ath**
-      - Hash of the Wallet Instance Attestation. 
-      - [:rfc:`9449`. Section 4.2].
-
-
-Therein a non-normative example of the DPoP decoded content:
-
-.. code-block:: text
-
-    {
-      "typ": "dpop+jwt",
-      "alg": "ES256",
-      "jwk": {
-        "kty": "EC",
-        "x": "l8tFrhx-34tV3hRICRDY9zCkDlpBhF42UQUfWVAWBFs",
-        "y": "9VE4jf_Ok_o64zbTTlcuNJajHmt6v9TDVrU0CdvGRDA",
-        "crv": "P-256"
-      }
-    }
-    .
-    {
-      "jti": "f47c96a1-f928-4768-aa30-ef32dc78aa69",
-      "htm": "GET",
-      "htu": "https://relying-party.example.org/request_uri",
-      "iat": 1562262616,
-      "ath": "fUHyO2r2Z3DZ53EsNrWBb0xWXoaNy59IiKCAqksmQEo"
-    }
 
 
 Request URI response
@@ -289,7 +267,7 @@ The Relying Party issues the signed Request Object, where a non-normative exampl
     "client_id": "https://relying-party.example.org",
     "response_mode": "direct_post.jwt",
     "response_type": "vp_token",
-    "response_uri": "https://relying-party.example.org/callback",
+    "response_uri": "https://relying-party.example.org/response_uri#random-fragment-which-is-worth-it",
     "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb",
     "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
     "iss": "https://relying-party.example.org",
@@ -334,7 +312,7 @@ The JWS payload parameters are described herein:
   * - **response_type**
     - It MUST be set to``vp_token``.
   * - **response_uri**
-    - The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST.
+    - The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST. The URL is intentionally extended with a random URI fragment value, that uniquely identifies the transaction. Eg: `https://relying-party.example.org/response_uri#random-fragment-which-is-worth-it`. It is RECOMMENDED that the length of the random fragment value is longer than 12 characters.
   * - **nonce**
     - Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits.
   * - **state**
@@ -389,12 +367,12 @@ The JWS payload parameters are described herein:
   - ``presentation_definition_uri``: string containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when ``presentation_definition`` parameter or a ``scope`` value representing a Presentation Definition is not present.
   - ``client_metadata``: A JSON object containing the Relying Party metadata values. The ``client_metadata`` parameter MUST NOT be present when ``client_id_scheme`` is ``entity_id``. The ``client_metadata`` is taken from ``trust_chain``.
   - ``client_metadata_uri``: string containing an HTTPS URL pointing to a resource where a JSON object with the Relying Party metadata can be retrieved. The ``client_metadata_uri`` parameter MUST NOT be present when ``client_id_scheme`` is ``entity_id``.
-  - ``redirect_uri``: the redirect URI to which the Wallet Instance MUST redirect the Authorization Response. This parameter MUST not be present when ``response_uri`` is present.
 
 
 Authorization Response Details
 ------------------------------
-After getting the User authorization and consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party ``response_uri`` endpoint, the content should be encrypted according `OPENID4VP`_ Section 6.3, using the Relying Party public key.
+
+After getting the User authorization and consent for the presentation of the Credentials, the Wallet sends the Authorization Response to the Relying Party ``response_uri`` endpoint, the content SHOULD be encrypted according `OPENID4VP`_ Section 6.3, using the Relying Party public key.
 
 .. note::
     **Why the response is encrypted?**
@@ -405,7 +383,7 @@ Below a non-normative example of the request:
 
 .. code-block:: http
 
-  POST /callback HTTP/1.1
+  POST /response_uri#random-fragment-which-is-worth-it-uri HTTP/1.1
   HOST: relying-party.example.org
   Content-Type: application/x-www-form-urlencoded
   
@@ -418,7 +396,10 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
 
   {
     "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
-    "vp_token": "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
+    "vp_token": [
+        "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
+        $WalletInstanceAttestation-JWT
+    ],
     "presentation_submission": {
         "definition_id": "32f54163-7166-48f1-93d8-ff217bdb0653",
         "id": "04a98be3-7fb0-4cf5-af9a-31579c8b0e7d",
@@ -441,9 +422,11 @@ Where the following parameters are used:
   * - **Name**
     - **Description**
   * - **vp_token**
-    - JWS containing a single or an array of Verifiable Presentation(s) in the form of signed JWT.
+    - JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
+      - The Requested Digital Credential (one or more, if in format SD-JWT VC or MDOC CBOR)
+      - The Wallet Instance Attestation
   * - **presentation_submission**
-    - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned VP Token.
+    - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token.
   * - **state**
     - Unique identifier provided by the Relying Party within the Authorization Request.
 
@@ -459,9 +442,9 @@ Below is a non-normative example of the ``vp_token`` decoded content, represente
    }
    .
    {
-    "iss": "https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
+    "iss": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "jti": "3978344f-8596-4c3a-a978-8fcaba3903c5",
-    "aud": "https://relying-party.example.org/callback",
+    "aud": "https://relying-party.example.org/response_uri#random-fragment-which-is-worth-it-uri",
     "iat": 1541493724,
     "exp": 1573029723,
     "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb"
@@ -477,21 +460,21 @@ Where the following parameters are used:
   * - **Name**
     - **Description**
   * - **vp**
-    - The digital credential in its original state. The public key contained in the digital credential MUST be used to verify the entire VP JWS as Proof of Possession of the private key which the public part is carried in the digital credential (Holder Key Binding).
+    - The Digital Credential in its original state. The public key contained in the Digital Credential MUST be used to verify the entire VP JWS as Proof of Possession of the private key which the public key is included in the Digital Credential. Eg: for SD-JWT VC the pblic key is provided within the ``cnf.jwk`` claim.
   * - **jti**
-    - JWS Unique identifier.
+    - JWS unique identifier.
   * - **iat**
-    - Unix timestamp of the issuance datetime.
+    - Unix timestamp of the time of issuance of this presentation.
   * - **exp**
-    - Unix timestamp beyond which the presentation of the digital credential will no longer be considered valid.
+    - Unix timestamp beyond which this presentation will no longer be considered valid.
   * - **aud**
     - Audience of the VP, corresponding to the ``redirect_uri`` within the Authorization request issued by the Relying Party.
   * - **nonce**
-    - Nonce provided by the Relying Party within the Authorization Request.
+    - The nonce value provided by the Relying Party within the Authorization Request.
 
 Relying Party Entity Configuration
 ---------------------------------------------
-According to the `Trust Model`_ section, the Relying Party is a Federation Entity and MUST expose a well-known endpoint containing its Entity Configuration. 
+According to the `Trust Model`_ section, the Relying Party is a Federation Entity and MUST expose a *well-known* endpoint containing its Entity Configuration. 
 
 Below a non-normative example of the request made by the Wallet Instance to the *openid-federation* well-known endpoint to obtain the Relying Party Entity Configuration:
 
@@ -552,9 +535,8 @@ Below is a non-normative response example:
                     "https://relying-party.example.org/request_uri"
                 ],
                 "redirect_uris": [
-                    "https://relying-party.example.org/callback"
+                    "https://relying-party.example.org/response_uri"
                 ],
-                
                 "default_acr_values": [
                     "https://www.spid.gov.it/SpidL2",
                     "https://www.spid.gov.it/SpidL3"
@@ -676,7 +658,6 @@ Below is a non-normative response example:
                 
                 // JARM related
                 "authorization_signed_response_alg": [[
-                    "RS256",
                     "ES256"
                 ],
                 "authorization_encrypted_response_alg": [
@@ -696,7 +677,6 @@ Below is a non-normative response example:
                 "subject_type": "pairwise",
                 "require_auth_time": true,
                 "id_token_signed_response_alg": [
-                    "RS256",
                     "ES256"
                 ],
                 "id_token_encrypted_response_alg": [
