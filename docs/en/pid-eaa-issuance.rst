@@ -935,6 +935,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
         "metadata": {
           "openid_credential_issuer": {
             "credential_issuer": "https://pid-provider.example.org",
+            "authorization_servers": ["https://pid-provider.example.org"],
             "authorization_endpoint": "https://pid-provider.example.org/connect/authorize",
             "token_endpoint": "https://pid-provider.example.org/connect/token",
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
