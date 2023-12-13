@@ -361,7 +361,7 @@ without encoding and signature. The JWS header:
 
   }
 
-And the The JWS payload:
+And the JWS payload:
 
 .. code-block:: JSON
 
