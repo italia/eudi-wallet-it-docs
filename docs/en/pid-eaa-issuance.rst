@@ -8,7 +8,7 @@ PID/(Q)EAA Issuance
 This section describes the PID and (Q)EAAs issuance flow with an high level of security.
 The relevant entities and interfaces involved in the issuance flow are:
 
-    - *Wallet Provider*: The entity responsible for releasing an EUDI Wallet Solution. The Wallet Provider issues the Wallet Instance Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a trust framework in compliance to the security and privacy requirements.
+    - *Wallet Provider*: The entity responsible for releasing an EUDI Wallet Solution. The Wallet Provider issues the Wallet Instance Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance the security and privacy requirements.
     - *Wallet Solution*: Entire product and service owned by a Wallet Provider, offered to all the Users and certified as EUDI-compliant by a Conformity Assessment Body (CAB).
     - *Wallet Instance*: Instance of a Wallet Solution, installed on the User device. The Wallet Instance provides graphical interfaces for User interaction with Relying Parties, PID, (Q)EAA Providers and the Wallet Provider.
     - *PID Provider*: The entity that issues the eIDAS Person Identification Data (PID). It is composed of:
@@ -344,8 +344,8 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
   }
 
 
-Where the decoded content of the ``jwt`` parameter is represented below,
-without endpding and signature, for example purpose. The JWS header:
+Where a non-normative example of the decoded content of the ``jwt`` parameter is represented below,
+without encoding and signature. The JWS header:
 
 .. code-block:: JSON
 
@@ -373,7 +373,7 @@ And the The JWS payload:
     }
 
 
-**Steps 19-21 (Credential Response):** The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to following the steps in Section 7.2.2 of `OPENID4VCI`_. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
+**Steps 19-21 (Credential Response):** The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to `OPENID4VCI`_ Section 7.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
 
     1. It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using using the ``kid`` header of the SD-JWT.
@@ -512,7 +512,7 @@ The JWT payload is given by the following parameters:
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
 
-The JOSE header of the Wallet Instance Attestation Proof of Possession MUST contain:
+The JOSE header of the Wallet Instance Attestation proof of possession MUST contain:
 
 .. _table_jwt_pop:
 .. list-table::
@@ -532,7 +532,7 @@ The JOSE header of the Wallet Instance Attestation Proof of Possession MUST cont
       -  It MUST be set to ``jwt-client-attestation-pop``
       -  Currently under discussion in [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
-The body of the Wallet Instance Attestation Proof of Possession JWT MUST contain:
+The body of the Wallet Instance Attestation proof of possession JWT MUST contain:
 
 .. list-table::
     :widths: 20 60 20
@@ -637,7 +637,7 @@ If the authentication is successful the PID/(Q)EAA Issuer redirects the User by 
 Token endpoint
 --------------
 
-The token endpoint is used by the Wallet Instance to obtain an Access Token by presenting its authorization grant, as
+The token endpoint is used by the Wallet Instance to obtain an Access Token by presenting an authorization grant, as
 defined in :rfc:`6749`. The Token Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
 Token Request
@@ -645,7 +645,7 @@ Token Request
 
 The request to the PID/(Q)EAA Token endpoint MUST be an HTTP request with method POST, with the body message encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with ``client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation`` and ``client_assertion=WIA~WIA-PoP``.
 
-The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP header. The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (:rfc:`9449`). Thus, this mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter.
+The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP header. The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (:rfc:`9449`). This mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter.
 
 All the parameters listed below are REQUIRED:
 
@@ -687,7 +687,7 @@ The JOSE header of a **DPoP JWT** MUST contain at least the following parameters
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
       - [:rfc:`7515`].
     * - **jwk**
-      - It represents the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the Access Token SHALL be bound to, as defined in Section 4.1.3 of [:rfc:`7515`]. It MUST NOT contain a private key.
+      - It represents the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the Access Token SHALL be bound to, as defined in [:rfc:`7515`] Section 4.1.3. It MUST NOT contain a private key.
       - [:rfc:`7517`] and [:rfc:`7515`].
 
 
@@ -736,7 +736,7 @@ Token endpoint response MUST contain the following mandatory claims.
       - Expiry time of the *Access Token* in seconds.
       - :rfc:`6749`.
     * - **c_nonce**
-      - JSON string containing a ``nonce`` value to be used to create a *proof of possession* of key material when requesting a credential.
+      - JSON string containing a ``nonce`` value to be used to create a *proof of possession* of key material when requesting a Credential.
       - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
     * - **c_nonce_expires_in**
       - JSON integer, it represents the lifetime in seconds of the **c_nonce**.
