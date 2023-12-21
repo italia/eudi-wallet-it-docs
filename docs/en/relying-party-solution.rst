@@ -19,7 +19,7 @@ In this section the following flows are described:
 In the **Same Device** and **Cross Device** Flows described in this chapter, the User interacts with a remote Relying Party.
 
 
-High level design
+High Level Design
 --------------------
 
 From the User's perspective, the Wallet Instance:
