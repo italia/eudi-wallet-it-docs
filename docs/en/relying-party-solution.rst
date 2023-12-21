@@ -186,7 +186,7 @@ In the **Same Device Flow** the Relying Party uses a HTTP response redirect (sta
     &discovery_uri=https%3A%2F%2Frelying-party.example.org%2Fdiscovery_uri%23that-random-fragment-we-mentioned
 
 
-In the **Cross Device Flow**, a QR Code is shown by the Relying Party to the User in order to provide the Authorization Request. The User frames the QR Code using their Wallet Instance. The QR Code payload MUST be a **Base64 encoded string**.
+In the **Cross Device Flow**, a QR Code is shown by the Relying Party to the User in order to provide the Authorization Request. The User frames the QR Code using their Wallet Instance.
 
 Below is represented a non-normative example of a QR Code issued by the Relying Party.
 
@@ -195,11 +195,6 @@ Below is represented a non-normative example of a QR Code issued by the Relying 
 
 
 Below is represented a non-normative example of the QR Code raw payload:
-
-.. code-block:: text
-    aGFpcDovL2F1dGhvcml6ZT9jbGllbnRfaWQ9aHR0cHM6Ly92ZXJpZmllci5leGFtcGxlLm9yZyZyZXF1ZXN0X3VyaT1odHRwczovL3ZlcmlmaWVyLmV4YW1wbGUub3JnL3JlcXVlc3RfdXJpJmh0dHBzOi8vcmVseWluZy1wYXJ0eS5leGFtcGxlLm9yZy9kaXNjb3ZlcnlfdXJpI3RoYXQtcmFuZG9tLWZyYWdtZW50LXdlLW1lbnRpb25lZA==
-
-The decoded content of the previous Base64 value is represented below:
 
 .. code-block:: text
 
@@ -220,7 +215,7 @@ The Relying Party MUST bind the request of the user-agent, with a Secure and Htt
 
 * **201 Created**. The signed Request Object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
 * **202 Accepted**. This response is given when the signed Request Object was obtained by the Wallet Instance.
-* **200 OK**. The Wallet Instance has provided the presentation to the Relying Party's  **redirect_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.
+* **200 OK**. The Wallet Instance has provided the presentation to the Relying Party's  **response_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.
 * **401 Unauthorized**. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.
 
 Below a non-normative example of the HTTP Request to this specialized endpoint, where the parameter ``id`` contains an opaque and random value:
@@ -468,7 +463,7 @@ Where the following parameters are used:
   * - **exp**
     - Unix timestamp beyond which this presentation will no longer be considered valid.
   * - **aud**
-    - Audience of the VP, corresponding to the ``redirect_uri`` within the Authorization request issued by the Relying Party.
+    - Audience of the VP, corresponding to the ``response_uri`` within the Authorization request issued by the Relying Party.
   * - **nonce**
     - The nonce value provided by the Relying Party within the Authorization Request.
 
@@ -534,7 +529,7 @@ Below is a non-normative response example:
                 "request_uris": [
                     "https://relying-party.example.org/request_uri"
                 ],
-                "redirect_uris": [
+                "response_uris": [
                     "https://relying-party.example.org/response_uri"
                 ],
                 "default_acr_values": [
