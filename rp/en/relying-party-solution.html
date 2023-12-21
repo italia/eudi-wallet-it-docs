@@ -1220,10 +1220,9 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 &amp;discovery_uri=https%3A%2F%2Frelying-party.example.org%2Fdiscovery_uri%23that-random-fragment-we-mentioned
 </pre></div>
 </div>
-<p>In the <strong>Cross Device Flow</strong>, a QR Code is shown by the Relying Party to the User in order to provide the Authorization Request. The User frames the QR Code using their Wallet Instance. The QR Code payload MUST be a <strong>Base64 encoded string</strong>.</p>
+<p>In the <strong>Cross Device Flow</strong>, a QR Code is shown by the Relying Party to the User in order to provide the Authorization Request. The User frames the QR Code using their Wallet Instance.</p>
 <p>Below is represented a non-normative example of a QR Code issued by the Relying Party.</p>
 <img alt="_images/verifier_qr_code.svg" class="align-center" src="_images/verifier_qr_code.svg" /><p>Below is represented a non-normative example of the QR Code raw payload:</p>
-<p>The decoded content of the previous Base64 value is represented below:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>haip://authorize?client_id=https%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri%3Fid%3Drandom-value&amp;https%3A%2F%2Frelying-party.example.org%2Fdiscovery_uri%23that-random-fragment-we-mentioned
 </pre></div>
 </div>
@@ -1240,7 +1239,7 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 <ul class="simple">
 <li><p><strong>201 Created</strong>. The signed Request Object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
 <li><p><strong>202 Accepted</strong>. This response is given when the signed Request Object was obtained by the Wallet Instance.</p></li>
-<li><p><strong>200 OK</strong>. The Wallet Instance has provided the presentation to the Relying Party's  <strong>redirect_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.</p></li>
+<li><p><strong>200 OK</strong>. The Wallet Instance has provided the presentation to the Relying Party's  <strong>response_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.</p></li>
 <li><p><strong>401 Unauthorized</strong>. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.</p></li>
 </ul>
 <p>Below a non-normative example of the HTTP Request to this specialized endpoint, where the parameter <code class="docutils literal notranslate"><span class="pre">id</span></code> contains an opaque and random value:</p>
@@ -1507,7 +1506,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <td><p>Unix timestamp beyond which this presentation will no longer be considered valid.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>aud</strong></p></td>
-<td><p>Audience of the VP, corresponding to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> within the Authorization request issued by the Relying Party.</p></td>
+<td><p>Audience of the VP, corresponding to the <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> within the Authorization request issued by the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nonce</strong></p></td>
 <td><p>The nonce value provided by the Relying Party within the Authorization Request.</p></td>
@@ -1570,7 +1569,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
             &quot;request_uris&quot;: [
                 &quot;https://relying-party.example.org/request_uri&quot;
             ],
-            &quot;redirect_uris&quot;: [
+            &quot;response_uris&quot;: [
                 &quot;https://relying-party.example.org/response_uri&quot;
             ],
             &quot;default_acr_values&quot;: [
