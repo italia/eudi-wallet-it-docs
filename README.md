@@ -27,7 +27,6 @@ This repository hosts the sphinx project tree of EUDI Wallet Technical Specifica
 The stable release in different languages is published at the link below:
 
  - [English](https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/)
- - [Italian](https://italia.github.io/eudi-wallet-it-docs/versione-corrente/it/)
 
 ### Preview of a branch
 
