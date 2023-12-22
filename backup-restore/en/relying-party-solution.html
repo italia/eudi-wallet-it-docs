@@ -14,8 +14,8 @@
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
   <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
-  <link rel="next" title="pseudonyms.rst" href="pseudonyms.html">
-  <link rel="prev" title="Wallet Instance Attestation" href="wallet-instance-attestation.html">
+  <link rel="next" title="revocation-lists.rst" href="revocation-lists.html">
+  <link rel="prev" title="PID/(Q)EAA Issuance" href="pid-eaa-issuance.html">
 
   
   
@@ -584,7 +584,7 @@
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Trust Infrastructure</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
@@ -611,46 +611,6 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims-field">PID Claims field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-normative Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
@@ -692,6 +652,51 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id1">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims-field">PID Claims field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#namespaces">nameSpaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mobile-security-object">Mobile Security Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
@@ -703,6 +708,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -722,15 +736,6 @@
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#backup-content">Backup content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#recover">Recover</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#user-experience">User Experience</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
@@ -754,8 +759,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id45">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -834,7 +839,7 @@
 <li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Trust Infrastructure</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
@@ -861,46 +866,6 @@
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id2">SD-JWT</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims-field">PID Claims field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-normative Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
@@ -942,6 +907,51 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id1">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-verification-field">PID/(Q)EAA Verification field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims-field">PID Claims field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA Non-normative examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#namespaces">nameSpaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mobile-security-object">Mobile Security Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#remote-protocol-flow">Remote Protocol Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
@@ -953,6 +963,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -974,15 +993,6 @@
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#user-experience">User Experience</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
@@ -1000,8 +1010,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id39">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id40">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id45">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1020,7 +1030,7 @@
           </div>-->
           
             <div class="footer-buttons footer-buttons--prev" role="navigation" aria-label="footer navigation">
-                <a href="wallet-instance-attestation.html" class="" title="Wallet Instance Attestation" accesskey="p" rel="prev"> Torna a Wallet Instance Attestation</a>
+                <a href="pid-eaa-issuance.html" class="" title="PID/(Q)EAA Issuance" accesskey="p" rel="prev"> Torna a PID/(Q)EAA Issuance</a>
             </div>
           
           
@@ -1192,11 +1202,7 @@ HOST: relying-party.example.org
 <p>More detailed information about the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation</a> is available in its dedicated section of this technical specification.</p>
 <p>To attest a high level of security, the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.</p>
 <p>Below the description of the parameters defined in <em>OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)</em>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The use of DPoP doesn't represent any breaking changes to Wallet Instances that do not support DPoP to a <em>request_uri</em> endpoint, since it is assumed to use it as an additional security mechanisms for the attestation of the status of the Wallet Instance.</p>
 <p>If the DPoP HTTP Header is missing, the Relying Party would assume the lowest attestable level of security to the Wallet Instance it is interacting with.</p>
-</div>
 <section id="dpop-http-header">
 <h3>DPoP HTTP Header<a class="headerlink" href="#dpop-http-header" title="Permalink to this heading">¶</a></h3>
 <p>A <strong>DPoP proof</strong> is included in the request using the HTTP Header <code class="docutils literal notranslate"><span class="pre">DPoP</span></code> and containing a JWS. The JWS MUST be verified with the public key made available in the Wallet Instance Attestation (<code class="docutils literal notranslate"><span class="pre">Authorization:</span> <span class="pre">DPoP</span></code>).</p>
@@ -1302,7 +1308,7 @@ HOST: relying-party.example.org
 }
 .
 {
-  &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 pid-sd-jwt:unique_id+given_name+family_name&quot;,
+  &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 tax_id_number&quot;,
   &quot;client_id_scheme&quot;: &quot;entity_id&quot;,
   &quot;client_id&quot;: &quot;https://relying-party.example.org&quot;,
   &quot;response_mode&quot;: &quot;direct_post.jwt&quot;,
@@ -1391,17 +1397,14 @@ HOST: relying-party.example.org
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This implementation profile use the parameter <code class="docutils literal notranslate"><span class="pre">scope</span></code> within the request instead of the <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>.</p>
+<p>Using the parameter <code class="docutils literal notranslate"><span class="pre">scope</span></code> requires that the Relying Party Metadata MUST contain the <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>, where a non-normative example of it is given below:</p>
 </div>
-<p>Using the parameter <code class="docutils literal notranslate"><span class="pre">scope</span></code> requires that the Relying Party Metadata MUST
-contain the <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>, where a non-normative example of it
-is given below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;presentation_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;presentation definitions&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person Identification Data&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User authentication&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
@@ -1460,7 +1463,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;04a98be3-7fb0-4cf5-af9a-31579c8b0e7d&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;descriptor_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid-sd-jwt:unique_id+given_name+family_name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.it.1&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.vp_token.verified_claims.claims._sd[0]&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span>
 <span class="w">          </span><span class="p">}</span>
@@ -1606,72 +1609,60 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
                 &quot;https://www.spid.gov.it/SpidL2&quot;,
                 &quot;https://www.spid.gov.it/SpidL3&quot;
             ],
-
-              &quot;vp_formats&quot;: {
-                 &quot;jwt_vp_json&quot;: {
-                    &quot;alg&quot;: [
-                       &quot;EdDSA&quot;,
-                       &quot;ES256K&quot;
+            &quot;vp_formats&quot;: {
+                &quot;vc+sd-jwt&quot;: {
+                    &quot;sd-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
+                    ],
+                    &quot;kb-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
                     ]
-                 }
-              },
+                }
+            },
               &quot;presentation_definitions&quot;: [
                   {
-                    &quot;id&quot;: &quot;pid-sd-jwt:unique_id+given_name+family_name&quot;,
+                    &quot;id&quot;: &quot;eu.europa.ec.eudiw.pid.it.1&quot;,
                     &quot;input_descriptors&quot;: [
                         {
-                            &quot;id&quot;: &quot;sd-jwt&quot;,
+                            &quot;id&quot;: &quot;IdentityCredential&quot;,
                             &quot;format&quot;: {
-                                &quot;jwt&quot;: {
-                                    &quot;alg&quot;: [
-                                        &quot;EdDSA&quot;,
-                                        &quot;ES256&quot;
-                                    ]
-                                },
-                                &quot;constraints&quot;: {
-                                    &quot;limit_disclosure&quot;: &quot;required&quot;,
-                                    &quot;fields&quot;: [
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.type&quot;
-                                            ],
-                                            &quot;filter&quot;: {
-                                                &quot;type&quot;: &quot;string&quot;,
-                                                &quot;const&quot;: &quot;PersonIdentificationData&quot;
-                                            }
-                                        },
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.cnf&quot;
-                                            ],
-                                            &quot;filter&quot;: {
-                                                &quot;type&quot;: &quot;object&quot;,
-                                            }
-                                        },
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.family_name&quot;
-                                            ],
-                                            &quot;intent_to_retain&quot;: &quot;true&quot;
-                                        },
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.given_name&quot;
-                                            ],
-                                            &quot;intent_to_retain&quot;: &quot;true&quot;
-                                        },
-                                        {
-                                            &quot;path&quot;: [
-                                                &quot;$.sd-jwt.unique_id&quot;
-                                            ],
-                                            &quot;intent_to_retain&quot;: &quot;true&quot;
+                                &quot;vc+sd-jwt&quot;: {}
+                            },
+                            &quot;constraints&quot;: {
+                                &quot;limit_disclosure&quot;: &quot;required&quot;,
+                                &quot;fields&quot;: [
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.type&quot;
+                                        ],
+                                        &quot;filter&quot;: {
+                                            &quot;type&quot;: &quot;string&quot;,
+                                            &quot;const&quot;: &quot;IdentityCredential&quot;
                                         }
-                                    ]
-                                }
+                                    },
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.family_name&quot;
+                                        ]
+                                    },
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.given_name&quot;
+                                        ]
+                                    },
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.unique_id&quot;
+                                        ],
+                                        &quot;intent_to_retain&quot;: &quot;true&quot;
+                                    }
+                                ]
                             }
                         }
                     ]
-                  },
+                },
                   {
                     &quot;id&quot;: &quot;mDL-sample-req&quot;,
                     &quot;input_descriptors&quot;: [
@@ -1817,7 +1808,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 
           
             <div class="footer-buttons footer-buttons--next" role="navigation" aria-label="footer navigation">
-                  <a href="pseudonyms.html" class="" title="pseudonyms.rst" accesskey="n" rel="next">pseudonyms.rst</a>
+                  <a href="revocation-lists.html" class="" title="revocation-lists.rst" accesskey="n" rel="next">revocation-lists.rst</a>
               </div>
             
           </div>

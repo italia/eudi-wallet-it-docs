@@ -84,7 +84,7 @@ The PID/(Q)EAA Issuance phase is based on the **Authorization Code Flow** with *
 .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/dLNTRl964BtVfnWbaHeaezn7QXIIq0GrhIWbogMrs0ECCBlk_a3eqtVMApjhGZ-H3t5XF3DdvfpvuTuwQPpVLa9wfvNVBj08KVCxAgYMoi75cqLp0TA25sAXF-ABNopOBNlLQwtm0YvVQRLs3vN7Vko3qVikNFPjxxAgqC54SGcgmCPdBr2Lm5d4IT-fqJig8nuiZdocawURwxy6uz6exqU2FtiOte6_1RrmaXGSj3Vm6I0y3Dc-luK3MY6CqWv1xz307YxVNoRpiOY18A4Ywq0lOMwyTLZ2YRI1H8F1UOTtdBNGQabc2swDOB72mf5M378oM7YkXKlHctub6R7Ca-UN-VDiFFvJ7Ca7nHgBZUKKqeKyAVJ4Miy8P248ndaRXz-Giycc4icYHu8Mo5du0vqifPCf4GW20NCnA1t3__uuPbub0XT7Iq8JVO3OPpgQmGp_ySXINHkqjLOMStUeCOEY8bGkfp9hmlDY7OYe5Hx_phVerfhTJ4JgGgMrQ4BTAMBo-jUhg4qhpSWv3c-ONWqWrPIoHK_J4-tuecjl57-ewbbmbbPAEc-m1JZkQwo-wrFJdvsig2HtWAH1Wk8CT_97rLd_A5_k3MM07pKPj3cfGTmA3l7o5aQUjJRqRypJzIvfLW8p45usaVJjG24hjaPDo5eVAFOxujkD2sS69CCp41KHVqzk3InheqJ1_DZsgG5M5eFrfv5nyZJw6rxr25xudfrEmW-jrgp2aG29x66OCmYTmomKr8cs_qvGidWhL6ZO04zJFOKD7lxNLXlDmxJKviGH0AStg81Pr9gOLxArSxPqBOo2971fIrT6AjTkdoxRrMqlmTcR6eQZ98D5EnqK2SLQKc5aKQ2rULDy5Zb4p6IY6JzNcjlUFUJfk7yvOP4NVsjjBQDpGSmoHZRkYVzPsh9V6KPALec-dRoFdVM4nYc_C7TzvRl8lCGbAOhQSH5RwRBeDKXdlVsdU7Xz6uiPhiYwCF5L5IvCKkRGOCNCIX2a8Xe3D-HYA-Dkt1ZSwVW8oSNfcfKmIphMLlUPxUp-9CfsbuurQVR2stX24tVhj4bPYNkkqM-h_m00
+    :target: https://www.plantuml.com/plantuml/svg/bLJVRzis47xdNt587vO0DlPke4MTn6kC5OEHfSXB086HplOj4gcHnwZUm_xs7KLPfkQqQ8C0KSZxyNtVVSUFdhNZqDHA1xOcDC_eb6hbZ4fgjM6u-EBHNO3s49Hwjb_JmIyUV2DHxTuQl81tdsctv-iwu3JtsjbkJDVJkqTTryYmDWB1bDZ7T0fD1TBbVnWswrlOEFjArL2CbFnqCFy0OG7scJKPEDZWG29LWBbST0iue5VA6Si8zXKTTF3kyMxzi5931kyHQl8CTjj_FxZW6Il8s_a8gQyX3USVf5rfpPPSqsTuhB5aiYQMoDEK2W92CDYNAOGPYLhhJtSFd-vNgp_KpHxBbqaca0SXFuBw3ULGzpsqgOvaYJqqoBhIh7E449c3W7Ie6M7p-yrA05S8qfosXAulyhXUpZTsCyIJn6-Mzt2FVmVq39TF1i2XRwtnMF2XnLayAMj2mmLLwJyfMfJxE4IpmpUE2e6tjodOfSfv6UqzkiXgsY2_UIym_nsWFfaho7LyIyNag1yHSaZmj3EQWyCXv5XXoOoUJvf7iLzrJHNn0JAr5IMdZVeboU1ou5i4HpF0hoqvz0MPgsJQw5gzW6KGVHpza_gCufzaXgpCbGgwpwIVJbGJtMRXk0J1HpT8BScYCXNhYFU0wzlbdt0dAzspBoCdm-Uy1T4Pc562Q8OPH1Nb3ta_4kX-9Ybpz0vD71_2hTW1Nl3mpRlMMRlDVGvRwwOxnlO53GYZrf9GonRXGMv6KPCUMT7ByqNOEMquCx6jicquRjstdVy-EBCWvEr2lAeRlx1n98iKEnzZvp5syLV7y-FDoQDI_BkxCwnWHGxBtXDFqOcKn4kCyo7eiaJlYrwYML8gqSkSF8EoCDQKE7uKcStFtw6adlosrdkf7iT-EMJsuTFuNFApsKb85Ishwt60sVnkJhVdGyofzGR9HtkgMrIu9KEzjh5_etcMegxUUeEkFtzPgNlSaUUuKNKTtv8CvjnXBQGgK6HIDIdSyqhsIBltgyDNcpuXVsI6EUNCic4DwB9kFpmQ4VNqgaKnefs2XpA-ZLcSP-joEkgZW0jD_Hy0
    
     PID/(Q)EAA Issuance - Detailed flow
 
@@ -95,7 +95,16 @@ The PID/(Q)EAA Issuance phase is based on the **Authorization Code Flow** with *
 
     **Federation Check:** The Wallet Instance needs to check if the PID/(Q)EAA Provider is part of the Federation, obtaining then its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section `Entity Configuration Credential Issuer`_.
 
-**Steps 5-6 (PAR Request):** The Wallet Instance creates a fresh PKCE code verifier, and ``state`` parameter for the *Pushed Authorization Request*. The Wallet Instance sends these parameters along in a *Pushed Authorization Request* using the OIDC ``request`` parameter (hereafter Request Object) (see :rfc:`9126` Section 3) to the PID/(Q)EAA Provider PAR endpoint to prevent Request URI swapping attack (see :rfc:`9126`). The Wallet Instance MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`. The Wallet Instance signs this request using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is inside the Wallet Instance Attestation ``cnf`` claim.. An OAuth2 client authentication method is involved, since in this flow the Pushed Authorization Endpoint is a protected endpoint. The client authentication is based on the model defined in [:rfc:`7521`] using the Wallet Instance Attestation JWS inside the ``client_assertion`` parameter. The authorization_details [RAR :rfc:`9396`] parameter is extended to allow Wallet Instance to specify the types of credentials when requesting authorization for the PID/(Q)EAA issuance. The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:
+**Steps 5-6 (PAR Request):** The Wallet Instance:
+
+  * creates a fresh PKCE code verifier, Wallet Instance Attestation Proof of Possession, and ``state`` parameter for the *Pushed Authorization Request*. 
+  * provides to the PID/(Q)EAA Provider PAR endpoint the parameters previously listed above, using the ``request`` parameter (hereafter Request Object) according to :rfc:`9126` Section 3  to prevent Request URI swapping attack. 
+  * MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`. 
+  * signs this request using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Instance Attestation ``cnf`` claim. 
+  * MUST create the value of the ``client_assertion`` parameter according to OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint. The ``client_assertion`` value MUST NOT contain more or less than precisely two JWTs separated with the ``~`` character. The first JWT MUST be the Wallet Instance Attestation JWT and the second JWT MUST be the Wallet Instance Attestation Proof of Possession. 
+  * specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter. 
+
+The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:
   
     1. It MUST validate the signature of the Request Object using the algorithm specified in the ``alg`` header parameter (:rfc:`9126`, :rfc:`9101`) and the public key that can be retrieved from the Wallet Instance Attestation (``cnf``) identified using the ``kid`` header of the Request Object.
     2. It MUST check that the used algorithm for signing the request in the ``alg`` header is among the appropriate once reported in Section `Cryptographic Algorithms <algorithms.html>`_.
@@ -107,6 +116,7 @@ The PID/(Q)EAA Issuance phase is based on the **Authorization Code Flow** with *
     8. It MUST check that the Request Object is not expired by checking the ``exp`` claim (:rfc:`9126`).
     9. It MUST check that the Request Object was issued at a time acceptable by the PID/(Q)EAA Provider by checking the ``iat`` claim. For example, basing on the security policies of the PID/(Q)EAA Provider, it might reject the request if the ``iat`` claim is too far away from the current time (:rfc:`9126`).
     10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the PID/(Q)EAA Provider to mitigate replay attacks (:rfc:`7519`).
+    11. It MUST validate the ``client_assertion`` parameter based on Sections 4.1 and 4.2 of [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
 Below a non-normative example of the PAR.
 
@@ -122,45 +132,57 @@ Below a non-normative example of the PAR.
     &code_challenge_method=S256
     &request=eyJhbGciOiJSUzI1NiIsImtpZCI6ImsyYmRjIn0.ew0KIC Jpc3MiOiAiczZCaGRSa3F0MyIsDQogImF1ZCI6ICJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbSIsDQo gInJlc3BvbnNlX3R5cGUiOiAiY29kZSBpZF90b2tlbiIsDQogImNsaWVudF9pZCI6ICJzNkJoZFJrcXQz IiwNCiAicmVkaXJlY3RfdXJpIjogImh0dHBzOi8vY2xpZW50LmV4YW1...
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
-    &client_assertion=$WalletInstanceAttestation$ 
+    &client_assertion=$WIA~WIA-PoP 
 
-The JWS header of Request Object is represented below:
+An example of Wallet Instance Attestation Proof of Possession is as the following:
 
-.. code-block:: JSON
+.. code-block:: 
+
+  {    
+    "alg": "ES256",
+    "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
+    "typ": "jwt-client-attestation-pop",
+  }
+  .
+  {
+    "iss": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
+    "aud": "https://pid-provider.example.org",
+    "jti": "ad25868c-8377-479b-8094-46fb1e797625",
+    "iat": 1686645115,
+    "exp": 1686652315
+  }
+
+The JWS of Request Object is represented below:
+
+.. code-block::
 
   {
     "alg": "ES256",
     "kid": "FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc",
   }
-
-
-The JWS payload of the Request Object is represented below:
-
-.. code-block:: JSON
-
-    {
-    "iss":"$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
-    "aud":"https://pid-provider.example.org",
-    "exp":1672422065,
-    "iat": 1672418465,
-    "jti":"ac80df576e7109686717bf50b869e882",
-    "response_type":"code",
-    "client_id":"$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
-    "state":"fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
-    "code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
-    "code_challenge_method":"S256",
-    "authorization_details":[
-    {
-        "type":"openid_credential",
-        "format": "vc+sd-jwt",
-        "credential_definition": {
-            "type": "PersonIdentificationData"
-        }
-    }
-    ],
-    "redirect_uri":"eudiw://start.wallet.example.org",
-    "client_assertion_type":"urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation", 
-    }
+  .
+  {
+  "iss":"$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
+  "aud":"https://pid-provider.example.org",
+  "exp":1672422065,
+  "iat": 1672418465,
+  "jti":"ac80df576e7109686717bf50b869e882",
+  "response_type":"code",
+  "client_id":"$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
+  "state":"fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
+  "code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+  "code_challenge_method":"S256",
+  "authorization_details":[
+  {
+      "type":"openid_credential",
+      "format": "vc+sd-jwt",
+      "credential_definition": {
+          "type": "PersonIdentificationData"
+      }
+  }
+  ],
+  "redirect_uri":"eudiw://start.wallet.example.org",
+  }
 
 
 .. note::
@@ -223,10 +245,10 @@ The JWS payload of the Request Object is represented below:
 
 **Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the created private key for DPoP by Wallet Instance. DPoP provides a way to bind the Access Token to a certain sender (Wallet Instance) (:rfc:`9449`). This mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint of PID/(Q)EAA Issuer as the attacker needs to present a valid DPoP Proof JWT.
 
-**Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization ``code``, ``code_verifier``, *DPoP Proof JWT* and ``private_key_jwt`` parameters (``client_assertion_type`` and ``client_assertion``). 
+**Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization ``code``, ``code_verifier``, *DPoP Proof JWT* and OAuth 2.0 Attestation based Client Authentication parameters (``client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation`` and ``client_assertion=WIA~WIA-PoP``). 
 The ``client_assertion`` is signed using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Instance Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
 
-   1. It MUST authenticate the Wallet Instance based on the ``private_key_jwt`` Client Authentication method `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
+   1. It MUST authenticate the Wallet Instance based on the OAuth 2.0 Attestation based Client Authentication method `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
    2. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`).
    3. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
    4. It MUST ensure the ``redirect_uri`` is identical to the value that was initially included in the Request Object `OpenID.Core#TokenRequest <https://openid.net/specs/openid-connect-core-1_0.html#TokenRequest>`_.
@@ -250,8 +272,8 @@ The ``client_assertion`` is signed using the private key that is created during 
     &code=SplxlOBeZQQYbYS6WxSbIA
     &redirect_uri=eudiw://start.wallet.example.org
     &code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
-    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
-    &client_assertion=eyJhbGciOiJIUzI1NiI
+    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
+    &client_assertion=$WIA~WIA-PoP
 
 
 **Step 15 (Token Response):** The PID/(Q)EAA Provider validates the request and if it is successful, it issues an *Access Token* (bound to the DPoP key) and a fresh ``c_nonce``.  
@@ -279,37 +301,33 @@ The ``client_assertion`` is signed using the private key that is created during 
 
     **PID/(Q)EAA Credential Schema and Status registration:** The PID/(Q)EAA Provider MUST register all the issued credentials for their later revocation, if needed. 
 
-.. code-block:: http
+.. code-block:: 
 
-    POST /credential HTTP/1.1
-    Host: pid-provider.example.org
-    Content-Type: application/x-www-form-urlencoded
-    Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
-    DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
-        VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
-        nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
-        1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj
-        oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z
-        WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
-        c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
-        OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
-    
-    credential_definition=%7B%22type%22:%5B%22PersonIdentificationData%22%5D%7D
-    &format=vc+sd-jwt
-    &proof=%7B%22proof_type%22:%22...-ace0-9c5210e16c32%22%7D
-
-
-A non-normative example of proof parameter is given below:
-
-.. code-block:: JSON
-
-    {
-    "proof_type": "jwt",
-    "jwt": "eyJraWQiOiJkaWQ6ZXhhbXBsZTplYm ..."
+  POST /credential HTTP/1.1
+  Host: pid-provider.example.org
+  Content-Type: application/json
+  Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
+  DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
+      VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
+      nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
+      1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj
+      oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z
+      WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
+      c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
+      OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
+  {
+    "format": "vc+sd-jwt"
+    "credential_definition":{
+      "type": ["PersonIdentificationData"]
+    },
+    "proof": {
+      "proof_type": "jwt",
+      "jwt": "eyJraWQiOiJkaWQ6ZXhhbXBsZTplYm"
     }
+  }
 
 
-Where the decoded content of the JWT is represented below:
+Where the decoded content of the ``jwt`` parameter is represented below:
 
 .. code-block:: JSON
 
@@ -365,7 +383,7 @@ Pushed Authorization Request Endpoint
 Pushed Authorization Request (PAR) Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The requests to the PID/(Q)EAA authorization endpoint MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/x-www-form-urlencoded`` format.
+The requests to the PID/(Q)EAA authorization endpoint MUST use the HTTP POST method with the parameters in the message body encoded in ``application/x-www-form-urlencoded`` format. The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_] and the following parameters MUST be provided:
 
 .. _table_http_request_claim: 
 .. list-table:: PAR http request parameters
@@ -392,10 +410,10 @@ The requests to the PID/(Q)EAA authorization endpoint MUST be HTTP with method P
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
     * - **client_assertion_type**
       - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation``.
-      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
+      - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
     * - **client_assertion**
-      - It MUST be the Wallet Instance Attestation signed JWT.
-      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_
+      - It MUST be set to a value containing the Wallet Instance Attestation JWT and the Proof of Possession, separated with the ``~`` character. 
+      - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
 
 The JWT Request Object has the following JOSE header parameters:
 
@@ -474,6 +492,52 @@ The JWT payload is given by the following parameters:
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
 
+The JOSE header of the Wallet Instance Attestation Proof of Possession MUST contain: 
+
+.. _table_jwt_pop:
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **JOSE header**
+      - **Description**
+      - **Reference**
+    * - **alg**
+      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
+      - :rfc:`7516#section-4.1.1`.
+    * - **kid**
+      -  Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Instance Attestation as base64url-encoded JWK Thumbprint value.
+      - :rfc:`7638#section_3`. 
+    * - **typ**
+      -  It MUST be set to ``jwt-client-attestation-pop``
+      -  Currently under discussion in [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
+
+The body of the Wallet Instance Attestation Proof of Possession JWT MUST contain: 
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **iss**
+      - Thumbprint of the JWK in the ``cnf`` parameter.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **aud**
+      - It MUST be set to the identifier of the PID/(Q)EAA Provider.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **exp**
+      - UNIX Timestamp with the expiry time of the JWT.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **iat**
+      - UNIX Timestamp with the time of JWT issuance.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **jti**
+      - Unique identifier for the DPoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
+      - [:rfc:`7519`. Section 4.1.7].
+
+.. _sec_par:
 
 Pushed Authorization Request (PAR) Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -555,12 +619,12 @@ Token endpoint
 --------------
 
 The token endpoint is used by the Wallet Instance to obtain an Access Token by presenting its authorization grant, as 
-defined in :rfc:`6749`.
+defined in :rfc:`6749`. The Token Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
 Token Request
 ^^^^^^^^^^^^^^^
 
-The request to the PID/(Q)EAA Token endpoint MUST be an HTTP request with method POST, where its body message is encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with *private_key_jwt* authentication and a *DPoP proof* containing the parameters defined in the table below.
+The request to the PID/(Q)EAA Token endpoint MUST be an HTTP request with method POST, with the body message encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with ``client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation`` and ``client_assertion=WIA~WIA-PoP``.
 
 The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP header. The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (:rfc:`9449`). Thus, this mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter. 
 
@@ -589,18 +653,11 @@ All the parameters listed below are REQUIRED:
       - Verification code of the **code_challenge**.
       - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_.
     * - **client_assertion_type**
-      - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-bearer``.
-      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_.
+      - It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation``.
+      - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
     * - **client_assertion**
-      - JWT signed with the Wallet Instance private key containing the following parameters:
-      
-        - **iss**: This MUST contain the ``client_id``.
-        - **sub**: This MUST contain the ``iss``. 
-        - **aud**: URL of the PID/(Q)EAA Token Endpoint.
-        - **iat**: UNIX Timestamp with the time of the JWT issuance, coded as NumericDate as indicated in [:rfc: `7519`].
-        - **exp**: UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in [:rfc: `7519`].
-        - **jti**: Unique Identifier for this authentication request, generated by the Wallet Instance. E.g., ``uuid4`` format.
-      - `Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants <https://www.rfc-editor.org/rfc/rfc7521>`_.
+      - It MUST be set to a value containing the Wallet Instance Attestation JWT and the Proof of Possession JWT, separated with the ``~`` character (WIA~WIA-PoP). The Wallet Instance Attestation Proof of Possession MUST contain the claims as defined in :ref:`Table of the JWT Wallet Instance Attestation PoP <table_jwt_pop>`, Section :ref:`Pushed Authorization Request (PAR) Response<sec_par>`.
+      - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
 
 A **DPoP Proof JWT** is included in an HTTP request using the ``DPoP`` header parameter containing a DPoP JWS.
 
@@ -620,7 +677,7 @@ The JOSE header of a **DPoP JWT** MUST contain at least the following parameters
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
       - [:rfc:`7515`].
     * - **jwk** 
-      - representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the Access Token shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`]. It MUST NOT contain a private key.
+      - It represents the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the Access Token shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`]. It MUST NOT contain a private key.
       - [:rfc:`7517`] and [:rfc:`7515`].
 
 
@@ -864,6 +921,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
             "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
           }]
         },
+        "authority_hints": ["https://superior-entity.example.org/federation"],
         "metadata": {
           "openid_credential_issuer": {
             "credential_issuer": "https://pid-provider.example.org",

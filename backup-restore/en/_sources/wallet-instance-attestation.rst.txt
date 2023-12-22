@@ -79,7 +79,7 @@ Request from the Wallet Instance containing the associated public key
 The Wallet Instance MUST do an HTTP request to the Wallet Provider `token endpoint`_,
 using the method `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.2>`__.
 
-The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters 
+The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters
 encoded in ``application/x-www-form-urlencoded`` format:
 
 * ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
@@ -102,7 +102,7 @@ The response is the `Wallet Instance Attestation`_ in JWT format:
 
     HTTP/1.1 201 OK
     Content-Type: application/jwt
-    
+
     eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGxldC1hdHRlc3RhdGlvbitqd3QiLCJraWQiOiI1dDVZWXBCaE4tRWdJRUVJNWlVenI2cjBNUjAyTG5WUTBPbWVrbU5LY2pZIiwidHJ1c3RfY2hhaW4iOlsiZXlKaGJHY2lPaUpGVXouLi42UzBBIiwiZXlKaGJHY2lPaUpGVXouLi5qSkxBIiwiZXlKaGJHY2lPaUpGVXouLi5IOWd3Il19.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJ0eXBlIjoiV2FsbGV0SW5zdGFuY2VBdHRlc3RhdGlvbiIsInBvbGljeV91cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9wcml2YWN5X3BvbGljeSIsInRvc191cmkiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy9pbmZvX3BvbGljeSIsImxvZ29fdXJpIjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvbG9nby5zdmciLCJhdHRlc3RlZF9zZWN1cml0eV9jb250ZXh0IjoiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvTG9BL2Jhc2ljIiwiY25mIjp7Imp3ayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCJ5IjoiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyIsImtpZCI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMifX0sImF1dGhvcml6YXRpb25fZW5kcG9pbnQiOiJldWRpdzoiLCJyZXNwb25zZV90eXBlc19zdXBwb3J0ZWQiOlsidnBfdG9rZW4iXSwidnBfZm9ybWF0c19zdXBwb3J0ZWQiOnsiand0X3ZwX2pzb24iOnsiYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiXX0sImp3dF92Y19qc29uIjp7ImFsZ192YWx1ZXNfc3VwcG9ydGVkIjpbIkVTMjU2Il19fSwicmVxdWVzdF9vYmplY3Rfc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6WyJFUzI1NiJdLCJwcmVzZW50YXRpb25fZGVmaW5pdGlvbl91cmlfc3VwcG9ydGVkIjpmYWxzZSwiaWF0IjoxNjg3MjgxMTk1LCJleHAiOjE2ODcyODgzOTV9.tNvCyFPCL5tUi2NakKwdaG9xbrtWWl4djSRYRfHrF8NdmffdT044U55pRn35J2cl0LZxbesEDrfSAz2pllw2Ug
 
 
@@ -151,6 +151,12 @@ Assertion Payload
 ||       || containing the public key of the                           |
 ||       || Wallet Instance.                                           |
 +--------+-------------------------------------------------------------+
+|| iat   || Unix timestamp of attestation request                      |
+||       || issuance time.                                             |
++--------+-------------------------------------------------------------+
+|| exp   || Unix timestamp regarding the                               |
+||       || expiration date time.                                      |
++--------+-------------------------------------------------------------+
 
 
 Below a non-normative example of the Wallet Instance Attestation
@@ -183,8 +189,8 @@ request where the decoded JWS headers and payload are separated by a comma:
   }
 
 Whose corresponding JWS is verifiable using the public key
-of the Wallet Provider corresponding to the `kid` made available 
-in the header.
+of the Wallet Provider corresponding to the `kid` made available
+in the JWS header.
 
 
 Wallet Instance Attestation
@@ -222,7 +228,7 @@ Header
 +-----------------------------------+-----------------------------------+
 
 .. note::
-   
+
    The claim `trust_chain` or the claim `x5c` MUST be provisioned.
    If these are both provisioned, the related public key contained in
    MUST be the same in both `trust_chain` and `x5c`.
@@ -249,9 +255,9 @@ Payload
 ||                          || problems is to have a limited                 |
 ||                          || duration of the attestation.                  |
 +---------------------------+------------------------------------------------+
-|| attested_security_context|| Attested security context:                    |
-||                          || Represents the level of "security"            |
-||                          || attested by the Wallet Provider.              |
+|| aal                      || JSON String asserting the authentication level|
+||                          || of the Wallet and the key as asserted in      |
+||                          || the cnf claim.                                |
 +---------------------------+------------------------------------------------+
 || cnf                      || This parameter contains the ``jwk``           |
 ||                          || parameter                                     |
@@ -264,9 +270,14 @@ Payload
 || response_types_supported || JSON array containing a list of               |
 ||                          || the OAuth 2.0 ``response_type`` values.       |
 +---------------------------+------------------------------------------------+
-|| vp_formats_supported     || JSON object containing                        |
-||                          || ``jwt_vp_json`` and ``jwt_vc_json``           |
-||                          || supported algorithms array.                   |
+|| response_modes_supported || JSON array containing a list of the OAuth 2.0 |
+||                          || "response_mode" values that this              |
+||                          || authorization server supports.                |
+||                          || `RFC 8414 section 2`_                         |
++---------------------------+------------------------------------------------+
+|| vp_formats_supported     || JSON object with name/value pairs,            |
+||                          || identifying a Credential format supported     |
+||                          || by the Wallet.                                |
 +---------------------------+------------------------------------------------+
 || request_object_signing   || JSON array containing a list of the           |
 || _alg_values_supported    || JWS signing algorithms (alg values)           |
@@ -277,10 +288,6 @@ Payload
 ||                          || ``presentation_definition`` by                |
 ||                          || reference. MUST set to `false`.               |
 +---------------------------+------------------------------------------------+
-
-.. note::
-   The claim ``attested_security_context`` (Attested Security Context) is under discussion
-   and MUST be intended as experimental.
 
 Below is an example of Wallet Instance Attestation:
 
@@ -300,7 +307,7 @@ Below is an example of Wallet Instance Attestation:
   {
     "iss": "https://wallet-provider.example.org",
     "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "attested_security_context": "https://wallet-provider.example.org/LoA/basic",
+    "aal": "https://trust-list.eu/aal/high",
     "cnf":
     {
       "jwk":
@@ -316,13 +323,16 @@ Below is an example of Wallet Instance Attestation:
     "response_types_supported": [
       "vp_token"
     ],
+    "response_modes_supported": [
+      "form_post.jwt"
+    ],
     "vp_formats_supported": {
-      "jwt_vp_json": {
-        "alg_values_supported": ["ES256"]
-      },
-      "jwt_vc_json": {
-        "alg_values_supported": ["ES256"]
-      }
+        "vc+sd-jwt": {
+            "sd-jwt_alg_values": [
+                "ES256",
+                "ES384"
+            ]
+        }
     },
     "request_object_signing_alg_values_supported": [
       "ES256"
@@ -337,3 +347,4 @@ Below is an example of Wallet Instance Attestation:
 .. _Wallet Instance Attestation Request: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request
 .. _Wallet Instance Attestation: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation
 .. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
+.. _RFC 8414 section 2: https://www.rfc-editor.org/rfc/rfc8414.html#section-2
