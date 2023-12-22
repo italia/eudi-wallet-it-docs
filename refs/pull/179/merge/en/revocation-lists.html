@@ -1039,20 +1039,16 @@
 <p>[Example]</p>
 <section id="general-properties">
 <h2>General Properties<a class="headerlink" href="#general-properties" title="Permalink to this heading">¶</a></h2>
-<p>The revocation mechanism is designed to ensure privacy and control over the status of digital credentials. The Relying Party (RP) can check the status of the credentials but cannot continuously monitor them without control or limit. This is achieved by using sender-constrained tokens.</p>
+<p>[TODO]</p>
 </section>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>The RP MUST provide an ephemeral key for each requested credential within the presentation request.</p></li>
-<li><p>The Wallet Instance MUST issue a signed status list token, signed using the private key referred to the public one included in the credential cnf.jwk.</p></li>
-<li><p>The status list token MUST NOT contain any information about the RP.</p></li>
-<li><p>The signed status list token MUST be provided to the RP with a PoP bound to the ephemeral key provided by the RP.</p></li>
-<li><p>The RP can only use the status list token to access the RS that hosts the status list by cryptographically proving its possession.</p></li>
-<li><p>The RS that provides the status list MUST NOT know the identity of the client that consumes the status list.</p></li>
-<li><p>The status token MUST expire in a short period (less than hours), preventing any possibility to grant the access to that anonymous client the status list for that specific credential.</p></li>
-<li><p>Each time in the future the RP needs to check the status of a previously obtained digital credential, it MUST ask the Holder for a presentation of that digital credential (by type).</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p>req 1</p></li>
+<li><p>req 2</p></li>
 </ul>
+</div></blockquote>
 </section>
 <section id="attributes">
 <h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">¶</a></h2>
@@ -1076,7 +1072,7 @@
 </section>
 <section id="implementation-considerations">
 <h2>Implementation considerations<a class="headerlink" href="#implementation-considerations" title="Permalink to this heading">¶</a></h2>
-<p>The implementation of the revocation mechanism should consider the privacy of the user and the control over the status of the digital credentials. The use of sender-constrained tokens ensures that the RP cannot continuously monitor the status of the credentials without control or limit.</p>
+<p>TODO</p>
 </section>
 <section id="libraries-and-code-snippets">
 <h2>Libraries and code snippets<a class="headerlink" href="#libraries-and-code-snippets" title="Permalink to this heading">¶</a></h2>
