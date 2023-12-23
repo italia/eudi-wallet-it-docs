@@ -1036,7 +1036,7 @@
 <span id="wallet-solution-rst"></span><h1>Wallet Solution<a class="headerlink" href="#wallet-solution" title="Permalink to this heading">¶</a></h1>
 <p>The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of Users in managing their digital assets securely. Designed to provide a seamless User experience, this solution enables Users to leverage the capabilities of the Wallet effectively.</p>
 <p>The Wallet Solution is issued by the Wallet Provider in the form of a mobile app, it also consists of services and web interfaces for the exchange of data between the Wallet Provider and its Wallet Instances for the requirements of the trust model and in total respect of the user's privacy, in accordance with national and EU legislation.</p>
-<p>The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID¹), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short¹. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.</p>
+<p>The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID[1]), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.</p>
 <p>By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, since it is responsible for issuing the Wallet Instance Attestation, that is a cryptographic proof that allow the evaluation of the authenticity and the integrity of the Wallet Instance.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
@@ -1053,11 +1053,11 @@
 <h2>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Permalink to this heading">¶</a></h2>
 <p>The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem. It establishes a strong and reliable identity for the User, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.</p>
 <p>The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, reference the public part of the asymmetric cryptographic key owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.</p>
-<p>To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)³. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation section</a> and the <a class="reference external" href="trust.html">Trust Model section</a> of this document.</p>
+<p>To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)[3]. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the <a class="reference external" href="wallet-instance-attestation.html">Wallet Instance Attestation section</a> and the <a class="reference external" href="trust.html">Trust Model section</a> of this document.</p>
 </section>
 <section id="wallet-instance-lifecycle">
 <h2>Wallet Instance Lifecycle<a class="headerlink" href="#wallet-instance-lifecycle" title="Permalink to this heading">¶</a></h2>
-<p>The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed².</p>
+<p>The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed[2].</p>
 <section id="initialization-process">
 <h3>Initialization Process<a class="headerlink" href="#initialization-process" title="Permalink to this heading">¶</a></h3>
 <p>To activate the Wallet Instance, the Users MUST install the mobile wallet application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.</p>
@@ -1070,8 +1070,8 @@
 <p>Once the Wallet Instance is in the Operational state, Users can:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers¹;</p></li>
-<li><p>Authenticate to Relying Parties¹;</p></li>
+<li><p>Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers[1];</p></li>
+<li><p>Authenticate to Relying Parties[1];</p></li>
 <li><p>Authorize the presentation of their digital credentials with Relying Parties.</p></li>
 </ul>
 </div></blockquote>
@@ -1316,9 +1316,18 @@ algorithms for the token endpoint.</p></td>
 </section>
 <section id="external-references">
 <h2>External references<a class="headerlink" href="#external-references" title="Permalink to this heading">¶</a></h2>
-<p>¹ Definitions are inherited from the EUDI Wallet Architecture and Reference Framework, version 1.1.0 at the time of writing. Please refer to <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#2-definitions">this page</a> for extended definitions and details.</p>
-<p>² Wallet Instance states adhere to the EUDI Wallet Architecture and Reference Framework, as defined <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#424-eudi-wallet-instance-lifecycle">here</a>.</p>
-<p>³ Depending on the device operating system, TEE is defined by <a class="reference external" href="https://source.android.com/docs/security/features/trusty">Trusty</a> or <a class="reference external" href="https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web">Secure Enclave</a> for Android and iOS devices, respectively.</p>
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Definitions are inherited from the EUDI Wallet Architecture and Reference Framework, version 1.1.0 at the time of writing. Please refer to <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#2-definitions">this page</a> for extended definitions and details.</p>
+</aside>
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Wallet Instance states adhere to the EUDI Wallet Architecture and Reference Framework, as defined <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#424-eudi-wallet-instance-lifecycle">here</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>Depending on the device operating system, TEE is defined by <a class="reference external" href="https://source.android.com/docs/security/features/trusty">Trusty</a> or <a class="reference external" href="https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web">Secure Enclave</a> for Android and iOS devices, respectively.</p>
+</aside>
 </section>
 </section>
 
