@@ -275,7 +275,7 @@ The corresponding SD-JWT verson for PID is given by
       "jwk": {
         "kty": "RSA",
         "use": "sig",
-        "n": "1Ta-sE …",
+        "n": "1Ta-sE ...",
         "e": "AQAB",
         "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
       }
