@@ -150,7 +150,7 @@ Below an non-normative example of the Wallet Instance Attestation Proof of Posse
   .
   {
     "iss": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "aud": "https://pid-provider.example.org/authorization-endpoint",
+    "aud": "https://pid-provider.example.org/par-endpoint",
     "jti": "ad25868c-8377-479b-8094-46fb1e797625",
     "iat": 1686645115,
     "exp": 1686652315
