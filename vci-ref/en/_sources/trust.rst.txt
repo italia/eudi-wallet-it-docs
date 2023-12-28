@@ -80,7 +80,7 @@ OpenID Federation facilitates the building of an infrastructure that is:
 - **Secure and Tamper-proof**, Entities' attestations of metadata and keys are cryptographically signed in the Trust Chain, comprised of attestations issued by multiple parties. These attestations, called statements, cannot be forged or tampered by an adversary;
 - **Privacy-preserving**, the infrastructure is public and exposes public data such as public keys and metadata of the participants. It does not require authentication of the consumers and therefore does not track who is assessing trust against whom;
 - **Guarantor of the non-repudiation of long-lived attestations**, historical keys endpoints and historical Trust Chains are saved for years according to data retention policies. This enables the certification of the validity of historical compliance, even in cases of revocation, expiration, or rotation of the keys used for signature verification;
-- **Dynamic and flexible**, any participants have the freedom to modify parts of their metadata autonomously, as these are published within their domains and verified through the Trust Chain. Simultaneously, the Trust Anchor or its Intermediate may publish a metadata policy to dynamically modify the metadata of all participants — such as disabling a vulnerable signature algorithm — and obtain certainty of propagation within a configured period of time within the federation;
+- **Dynamic and flexible**, any participants have the freedom to modify parts of their metadata autonomously, as these are published within their domains and verified through the Trust Chain. Simultaneously, the Trust Anchor or its Intermediate may publish a metadata policy to dynamically modify the metadata of all participants - such as disabling a vulnerable signature algorithm - and obtain certainty of propagation within a configured period of time within the federation;
 - **Developer friendly**, JWT and JSON formats have been adopted on the web for years. They are cost-effective in terms of storage and processing and have a wide range of solutions available, such as libraries and software development kits, which enable rapid implementation of the solution;
 - **Scalable**, the Trust Model can accommodate more than a single organization by using Intermediates and multiple Trust Anchors where needed.
 
@@ -107,7 +107,7 @@ In the table below is provided the map of the components that the ARF defines wi
 |                                                    |              | Entity         |
 |                                                    |              | Statements     |
 +----------------------------------------------------+--------------+----------------+
-|  Relying Parties’ registration and authentication  | |check-icon| |                |
+|  Relying Parties' registration and authentication  | |check-icon| |                |
 |                                                    |              | Trust Chains   |
 |                                                    |              |                |
 |                                                    |              | Federation     |
@@ -140,7 +140,7 @@ All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 | federation metadata       | **GET** .well-known/openid-federation        |Metadata that an Entity         |  Intermediate   |
 |                           |                                              |publishes about itself,         |                 |
 |                           |                                              |verifiable with a trusted third |  Wallet Provider|
-|                           |                                              |party (Superior Entity). It’s   |                 |
+|                           |                                              |party (Superior Entity). It's   |                 |
 |                           |                                              |called Entity Configuration.    |  Relying Party  |
 |                           |                                              |                                |                 |
 |                           |                                              |                                |  Credential     |
@@ -153,7 +153,7 @@ All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 | fetch endpoint            | **GET** /fetch?sub=https://rp.example.org    |                                |  Trust Anchor   |
 |                           |                                              |Returns a signed document (JWS) |                 |
 |                           |                                              |about a specific subject, its   |  Intermediate   |
-|                           |                                              |Subordinate. It’s called Entity |                 |
+|                           |                                              |Subordinate. It's called Entity |                 |
 |                           |                                              |Statement.                      |                 |
 +---------------------------+----------------------------------------------+--------------------------------+-----------------+
 | trust mark status         | **POST** /status?sub=...&trust_mark_id=...   |                                |  Trust Anchor   |
@@ -200,7 +200,7 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
             "keys": [
                 {
                     "kty": "RSA",
-                    "n": "3i5vV-_ …",
+                    "n": "3i5vV-_ ...",
                     "e": "AQAB",
                     "kid": "FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc",
                     "x5c": [ <X.509 Root CA certificate> ]
@@ -571,7 +571,7 @@ Below is a non-normative example of a Trust Chain in its original format (JSON A
 
 .. note::
 
-    The entire Trust Chain is verifiable by only possessing the Trust Anchor’s public keys.
+    The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.
 
 
 Offline Trust Attestation Mechanisms
