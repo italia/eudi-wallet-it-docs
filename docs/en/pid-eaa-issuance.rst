@@ -299,9 +299,7 @@ The ``client_assertion`` is signed using the private key that is created during 
         "authorization_details": [
           {
               "type": "openid_credential",
-              "format": "vc+sd-jwt",
-              "credential_definition": {
-                  "type": ["PersonIdentificationData"]
+              "credential_configuration_id: "PersonIdentificationData"
               }
           }
         ]
