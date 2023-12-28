@@ -22,7 +22,6 @@ The relevant entities and interfaces involved in the issuance flow are:
       - OpenID4VCI Component: based on the "OpenID for Verifiable Credential Issuance" specification to release (Q)EAAs.
       - Relying Party: Component to authenticate the User with the PID. The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [`OpenID4VP`_]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.
 
-
 High-Level PID flow
 -------------------
 
@@ -922,7 +921,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
           "keys": [{
             "kty": "RSA",
             "use": "sig",
-            "n": "1Ta-sE …",
+            "n": "1Ta-sE ...",
             "e": "AQAB",
             "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
           }]
