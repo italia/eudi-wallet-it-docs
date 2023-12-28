@@ -173,13 +173,10 @@ The JWS of Request Object is represented below:
   "code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
   "code_challenge_method":"S256",
   "authorization_details":[
-  {
-      "type":"openid_credential",
-      "format": "vc+sd-jwt",
-      "credential_definition": {
-          "type": "PersonIdentificationData"
-      }
-  }
+    {
+      "type": "openid_credential",
+      "credential_configuration_id": "PersonIdentificationData"
+    }
   ],
   "redirect_uri":"eudiw://start.wallet.example.org",
   }
@@ -476,8 +473,7 @@ The JWT payload is given by the following parameters:
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
             
             - **type**: it MUST be set to ``openid_credential``,
-            - **format**: it MUST be set to ``vc+sd-jwt``,
-            - **credential_definition**: JSON Object. It MUST have the **type** claim which MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the metadata of the PID/(Q)EAA Issuer. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
+            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
       - See [RAR :rfc:`9396`] and `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_.
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
@@ -940,12 +936,13 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                   "kid": "ff0bded045fe63fe5d1d64dd83b567e0"
                 }]
               }
-            "credentials_supported": [
+            "credential_configurations_supported": [
               {
                 "format": "vc+sd-jwt",
                 "id": "eudiw.pid.it",
                 "cryptographic_binding_methods_supported": ["jwk"],
                 "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
+                "proof_types": ["jwt"],
                 "display": [{
                     "name": "PID Provider Italiano di esempio",
                     "locale": "it-IT",
