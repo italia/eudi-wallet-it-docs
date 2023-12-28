@@ -11,7 +11,7 @@ The Wallet Solution is issued by the Wallet Provider in the form of a mobile app
 
 The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID[1]), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.
 
-By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, since it is responsible for issuing the Wallet Instance Attestation, that is a cryptographic proof that allow the evaluation of the authenticity and the integrity of the Wallet Instance.
+By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, since it is responsible for issuing the Wallet Attestation, that is a cryptographic proof that allow the evaluation of the authenticity and the integrity of the Wallet Instance.
 
 
 Requirements
@@ -23,25 +23,25 @@ Requirements
  - **Verification of device ownership by the User**: the Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
 
 Wallet Instance
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem. It establishes a strong and reliable identity for the User, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.
 
-The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Instance Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, reference the public part of the asymmetric cryptographic key owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.
+The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, reference the public part of the asymmetric cryptographic key owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.
 
-To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)[3]. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Instance Attestation section`_ and the `Trust Model section`_ of this document.
+To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)[3]. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Attestation section`_ and the `Trust Model section`_ of this document.
 
 Wallet Instance Lifecycle
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed[2].
 
 Initialization Process
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 To activate the Wallet Instance, the Users MUST install the mobile wallet application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.
 
 After completing these steps, the Wallet Instance sets the Operational state.
 
 Transition to Valid state
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 To transition from the Operational state to the Valid state, the Wallet Instance MUST obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes Valid.
 
 In order to securely and unambiguously identify Users, the Wallet Instance adopts a Level of Assurance (LoA) 3 authentication, which guarantees a high level of confidence in the User's identity. The authentication method is chosen by the PID Provider from among the notified eID solutions at the national level.
@@ -55,19 +55,19 @@ Once the Wallet Instance is in the Operational state, Users can:
 Please refer to the relative sections for further information about PID and (Q)EAAs issuance and presentation.
 
 Return to Operational state
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 A Valid Wallet Instance may revert to the Operational state under specific circumstances. These circumstances include the expiration or the revocation of the associated PID by its PID Provider.
 
 
 Deactivation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 Users have the ability to deactivate the Wallet Instance voluntarily. This action removes the operational capabilities of the Wallet Instance and sets it to the Deactivated state. Deactivation provides Users with control over access and usage according to their preferences.
 
 
 Wallet Provider Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Wallet Provider that issues the Wallet Instance Attestations MUST
+The Wallet Provider that issues the Wallet Attestations MUST
 made available its APIs in the form of RESTful services, as listed below.
 
 Wallet Provider Metadata
@@ -133,7 +133,7 @@ Payload
 +-----------------------------------+-----------------------------------+
 
 `wallet_provider` metadata
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +---------------------------------------------+---------------------------------------------------------------------+
 | **Key**                                     | **Value**                                                           |
@@ -254,10 +254,10 @@ Below a non-normative example of the Entity Configuration.
   }
 
 
-Wallet Instance Attestation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Wallet Attestation
+~~~~~~~~~~~~~~~~~~
 
-Please refer to the `Wallet Instance Attestation section`_.
+Please refer to the `Wallet Attestation section`_.
 
 
 External references
@@ -269,7 +269,7 @@ External references
 .. [3] Depending on the device operating system, TEE is defined by `Trusty`_ or `Secure Enclave`_ for Android and iOS devices, respectively.
 
 .. _Trust Model section: trust.html
-.. _Wallet Instance Attestation section: wallet-instance-attestation.html
+.. _Wallet Attestation section: wallet-instance-attestation.html
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
 

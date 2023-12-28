@@ -2,34 +2,34 @@
 
 .. _wallet-instance-attestation.rst:
 
-Wallet Instance Attestation
-+++++++++++++++++++++++++++
+Wallet Attestation
+++++++++++++++++++
 
-The Wallet Instance Attestation containing details about the Wallet Instance and the device's security level where the Wallet Instance is installed. It generally attests the **authenticity**, **integrity**, **security**, **privacy**, and **trust** of a specific Wallet Instance. The Wallet Instance Attestation MUST contain a Wallet Instance public key.
+The Wallet Attestation containing details about the Wallet Instance and the device's security level where the Wallet Instance is installed. It generally attests the **authenticity**, **integrity**, **security**, **privacy**, and **trust** of a specific Wallet Instance. The Wallet Attestation MUST contain a Wallet Instance public key.
 
 General Properties
 ------------------
 
-The Wallet Instance Attestation:
+The Wallet Attestation:
 
 - MUST be issued and MUST be signed by Wallet Provider;
 - MUST give all the relevant information to attests the **integrity** and **security** of the device where the Wallet Instance is installed.
 
-It is necessary for each Wallet Instance to obtain an the Wallet Instance Attestation before entering the Operational state.
+It is necessary for each Wallet Instance to obtain an the Wallet Attestation before entering the Operational state.
 
 Requirements
 ------------
 
-The following requirements for the Wallet Instance Attestation are met:
+The following requirements for the Wallet Attestation are met:
 
-1. The Wallet Instance Attestation MUST use a signed JSON Web Token (JWT) format.
-2. The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Instance Attestations.
-3. The Wallet Instance Attestation MUST be securely bound to the Wallet Instance public key (**Holder Key Binding**).
-4. The Wallet Instance Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
-5. The Wallet Instance Attestation MUST ensure the integrity and authenticity of the Wallet Instance, verifying that it was accurately created and provided by the Wallet Provider.
+1. The Wallet Attestation MUST use a signed JSON Web Token (JWT) format.
+2. The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.
+3. The Wallet Attestation MUST be securely bound to the Wallet Instance public key (**Holder Key Binding**).
+4. The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
+5. The Wallet Attestation MUST ensure the integrity and authenticity of the Wallet Instance, verifying that it was accurately created and provided by the Wallet Provider.
 6. Each Wallet Instance SHOULD be able to request multiple attestations for different public keys associated with it. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see alos the point number 10, listed below).
-7. The Wallet Instance Attestation SHOULD be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
-8. The Wallet Instance Attestation SHOULD have an expiration date time, after which it will no longer be considered valid.
+7. The Wallet Attestation SHOULD be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
+8. The Wallet Attestation SHOULD have an expiration date time, after which it will no longer be considered valid.
 9. When the private key associated with the Wallet Instance is lost or deleted, the attestation MUST become invalid to prevent unauthorized use of the Wallet Instance.
 
 
@@ -47,32 +47,32 @@ Static Component View
 Dynamic Component View
 ~~~~~~~~~~~~~~~~~~~~~~
 
-This section describes the Wallet Instance Attestation format and how the Wallet Provider issues it.
+This section describes the Wallet Attestation format and how the Wallet Provider issues it.
 
 .. figure:: ../../images/dynamic_view_sequence_wallet_instance_attestation.svg
-   :name: Sequence Diagram for Wallet Instance Attestation Request
-   :alt: The figure illustrates the sequence diagram for issuing a Wallet Instance Attestation, with the steps explained below.
+   :name: Sequence Diagram for Wallet Attestation Request
+   :alt: The figure illustrates the sequence diagram for issuing a Wallet Attestation, with the steps explained below.
    :target: https://www.plantuml.com/plantuml/ZP91RzH038NlyojCJwr4n7qFgrOSAf2G409wwSL9h60ryGmUpqRRNuyt6qBJe5MlzlFtx3TpcmtLoj27Tqcn6n2CuZEO5WfOB4ePQj8GagkuuOHYSFKZaru1PYZh-WFsFHby4eTAGvDavFzglceyS3jZndgjkKi9q8mSOnm5tEx0Cy_h8HIezaxUkHKROy_F1A_C7oKgAFqkJlcGb38vkL5gIKuJEOnSxSTw1_S-z6ef6CYmHSCmrfMhtEZBN84cYY4BI_U21dPCbD_34nqdJrOQlECLaZP55flzdFJJrtKIRKnDIpQN_RtjdeJKXHCr8MkUcsYsWs_dqq2Y7nky1DLvRguiVX-Lq3RnmDs_V1VMvuVl0HlZmsbWh5SHuGlzzHjWDwVizZwrlNWPwqWA2mdb3DVJsZUdIwh9rML6dR8TeVb5pHCevTAROy_jXPgv4xIYjBIMv53QgNtf-kMDBuishtT1tD8wHUUNBPwNlzi-YXAsHx08iJPa0Q5nzLjlITeoz7y0
 
-- **Message 1**: The User starts the Wallet Instance mobile app and gets authenticated in it, a new Wallet Instance Attestation is automatically obtained if the previous one results expired.
+- **Message 1**: The User starts the Wallet Instance mobile app and gets authenticated in it, a new Wallet Attestation is automatically obtained if the previous one results expired.
 - **Message 2-3**: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.
 - **Message 4**: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.
 - **Message 5**: The Wallet Instance generates a new key pair.
 - **Message 6-7**: The Wallet Instance requests a ``nonce`` from the App Attestation Service.
-- **Message 8**: The Wallet Instance creates a Wallet Instance Attestation Request in JWS format, signed with the private key associated with the public key for which it request the attestation.
-- **Message 9-13**: The Wallet Instance provides the Wallet Instance Attestation Request to the Wallet Provider, which validates it and issues a signed attestation to the Wallet Instance.
-- **Message 13-14**: The Wallet Instance receives the Wallet Instance Attestation signed by the Wallet Provider and performs security and integrity verifications.
-- **Message 15**: The Wallet Instance Attestation is now ready for use.
+- **Message 8**: The Wallet Instance creates a Wallet Attestation Request in JWS format, signed with the private key associated with the public key for which it request the attestation.
+- **Message 9-13**: The Wallet Instance provides the Wallet Attestation Request to the Wallet Provider, which validates it and issues a signed attestation to the Wallet Instance.
+- **Message 13-14**: The Wallet Instance receives the Wallet Attestation signed by the Wallet Provider and performs security and integrity verifications.
+- **Message 15**: The Wallet Attestation is now ready for use.
 
 Detailed Design
 ---------------
 
 The detailed design is explained below.
 
-Wallet Instance Attestation Request
+Wallet Attestation Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To obtain a Wallet Instance Attestation from the Wallet
-Provider it is necessary to send a Wallet Instance Attestation
+To obtain a Wallet Attestation from the Wallet
+Provider it is necessary to send a Wallet Attestation
 Request from the Wallet Instance containing the associated public key
 , the ``nonce`` value previously requested and a ``jti`` value.
 
@@ -83,7 +83,7 @@ The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the follow
 encoded in ``application/x-www-form-urlencoded`` format:
 
 * ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
-* ``assertion`` containing the signed JWT defined in the Section `Wallet Instance Attestation Request`_.
+* ``assertion`` containing the signed JWT defined in the Section `Wallet Attestation Request`_.
 
 Below a non-normative example of the HTTP request.
 
@@ -96,7 +96,7 @@ Below a non-normative example of the HTTP request.
     grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
     &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeGRxd2xVTl9LWl83NTVUT1ZEbmJIaDg2TW1KcHh2a1UifQ.eyJpc3MiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsICJhdWQiOiAiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAianRpIjogImY1NjUyMDcyLWFiZWYtNDU5OS1iODYzLTlhNjkwNjA3MzJjYyIsICJub25jZSI6ICIuLi4uLiIsICJjbmYiOiB7Imp3ayI6IHsiY3J2IjogIlAtMjU2IiwgImt0eSI6ICJFQyIsICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLCAieSI6ICJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIiwgImtpZCI6ICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIn19LCAiaWF0IjogMTY5MTQ4ODk2MiwgImV4cCI6IDE2OTE0OTYxNjJ9.Dg_yFaiv6lVftR3FFx0v5JW250mBgXLVP1j0ezZcHRyitqSY7xGmx4y-MGur93FAS85vf_Da-L-REVEltwU2Jw
 
-The response is the `Wallet Instance Attestation`_ in JWT format:
+The response is the `Wallet Attestation`_ in JWT format:
 
 .. code-block:: http
 
@@ -159,7 +159,7 @@ Assertion Payload
 +--------+-------------------------------------------------------------+
 
 
-Below a non-normative example of the Wallet Instance Attestation
+Below a non-normative example of the Wallet Attestation
 request where the decoded JWS headers and payload are separated by a comma:
 
 .. code-block:: javascript
@@ -193,10 +193,10 @@ of the Wallet Provider corresponding to the `kid` made available
 in the JWS header.
 
 
-Wallet Instance Attestation
+Wallet Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Wallet Instance Attestation MUST be provisioned in JWT format, whose
+The Wallet Attestation MUST be provisioned in JWT format, whose
 headers and payload claims are listed below.
 
 Header
@@ -289,7 +289,7 @@ Payload
 ||                          || reference. MUST set to `false`.               |
 +---------------------------+------------------------------------------------+
 
-Below is an example of Wallet Instance Attestation:
+Below is an example of Wallet Attestation:
 
 .. code-block:: javascript
 
@@ -344,7 +344,7 @@ Below is an example of Wallet Instance Attestation:
 
 
 .. _token endpoint: wallet-solution.html#wallet-instance-attestation
-.. _Wallet Instance Attestation Request: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request
-.. _Wallet Instance Attestation: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation
+.. _Wallet Attestation Request: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request
+.. _Wallet Attestation: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation
 .. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
 .. _RFC 8414 section 2: https://www.rfc-editor.org/rfc/rfc8414.html#section-2

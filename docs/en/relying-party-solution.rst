@@ -1,6 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
-.. _Wallet Instance Attestation: wallet-instance-attestation.html
+.. _Wallet Attestation: wallet-instance-attestation.html
 .. _Trust Model: trust.html
 
 .. _relying-party-solution:
@@ -19,7 +19,7 @@ In this section the following flows are described:
 In the **Same Device** and **Cross Device** Flows described in this chapter, the User interacts with a remote Relying Party.
 
 .. note::
-    The provisioning of the Wallet Instance Attestation from the Wallet Instace to the Relying Party is 
+    The provisioning of the Wallet Attestation from the Wallet Instace to the Relying Party is 
     under discussion within the international standardization working groups. At the current stage of the draft of this implementation profile,
     a mechanism based on `OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP) <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop>`_
     is used.
@@ -60,9 +60,9 @@ The details of each step shown in the previous picture are described in the tabl
   * - **6**, **7**, **8**, **9**
     - In the **Cross Device Flow**: the Request URI is provided in the form of a QR Code that is shown to the User. The User frames the QRCode with the Wallet Instance and extracts the Request URI. In the **Same Device Flow** the Relying Party responses with the Request URI in the form of HTTP Redirect Location (302). 
   * - **10**
-    - The Wallet Instance requests the content of the Authorization Request by invoking the Request URI, passing an Authorization DPoP HTTP Header containing the Wallet Instance Attestation and the DPoP proof HTTP Header.
+    - The Wallet Instance requests the content of the Authorization Request by invoking the Request URI, passing an Authorization DPoP HTTP Header containing the Wallet Attestation and the DPoP proof HTTP Header.
   * - **11**
-    - The Relying Party attests the trust to the Wallet Instance using the Wallet Instance Attestation and evaluates the Wallet Instance capabilities.
+    - The Relying Party attests the trust to the Wallet Instance using the Wallet Attestation and evaluates the Wallet Instance capabilities.
   * - **12**
     - The Relying Party issues a signed Request Object, returning it as response. The ``exp`` value of the signed Request Object MUST be no more than 240 seconds.
   * - **13**, **14**, **15**, **16**
@@ -168,7 +168,7 @@ The following actions are made by the Wallet Instance:
 - scan the QR Code (Cross Device only);
 - extract from the payload the ``request_uri`` parameter;
 - invoke the retrieved URI;
-- provide in the request its Wallet Instance Attestation, using :rfc:`9449` to proof the legitimate possession of it;
+- provide in the request its Wallet Attestation, using :rfc:`9449` to proof the legitimate possession of it;
 - obtain the signed Request Object from the Relying Party.
 - evaluate the trust with the Relying Party, by evaluating the Trust Chain related to it.
 
@@ -182,9 +182,9 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
   DPoP: $WalletInstanceAttestationProofOfPossession
 
 
-More detailed information about the `Wallet Instance Attestation`_ is available in its dedicated section of this technical specification.
+More detailed information about the `Wallet Attestation`_ is available in its dedicated section of this technical specification.
 
-To attest a high level of security, the Wallet Instance submits its Wallet Instance Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.
+To attest a high level of security, the Wallet Instance submits its Wallet Attestation to the Relying Party, disclosing its capabilities and the security level attested by its Wallet Provider.
 
 Below the description of the parameters defined in *OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)*.
 
@@ -193,7 +193,7 @@ If the DPoP HTTP Header is missing, the Relying Party would assume the lowest at
 DPoP HTTP Header
 ^^^^^^^^^^^^^^^^
 
-A **DPoP proof** is included in the request using the HTTP Header ``DPoP`` and containing a JWS. The JWS MUST be verified with the public key made available in the Wallet Instance Attestation (``Authorization: DPoP``).
+A **DPoP proof** is included in the request using the HTTP Header ``DPoP`` and containing a JWS. The JWS MUST be verified with the public key made available in the Wallet Attestation (``Authorization: DPoP``).
 
 The JOSE header of the **DPoP JWS** MUST contain at least the following parameters:
 
@@ -237,7 +237,7 @@ The payload of a **DPoP proof** MUST contain at least the following claims:
       - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
       - [:rfc:`7519`. Section 4.1.6].
     * - **ath**
-      - Hash of the Wallet Instance Attestation. 
+      - Hash of the Wallet Attestation. 
       - [:rfc:`9449`. Section 4.2].
 
 
