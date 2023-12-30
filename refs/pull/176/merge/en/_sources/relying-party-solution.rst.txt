@@ -46,7 +46,7 @@ Detailed Protocol Flow
 In this scenario the Relying Party MUST provide the URL where the signed presentation Request Object is available for download.
 
 Depending on whether the User is using a mobile device or a workstation, the Relying Party
-must support the following remote flows:
+MUST support the following remote flows:
 
 * **Same Device**, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;
 * **Cross Device**, the Relying Party MUST provide a QR Code which the User frames with the Wallet Instance.
@@ -57,7 +57,7 @@ Below a sequence diagram that summarizes the interactions between all the involv
 
 .. image:: ../../images/cross_device_auth_seq_diagram.svg
   :align: center
-  :target: https://www.plantuml.com/plantuml/uml/VLLTKnit57tNhpZZFXIOG4dwvXaw8PG6ahQus0alp33oxhMj8ajRVQnnE_tllHUn_d1DNZopqZr7vzoFw_SnwP3ot2gTatTvFgQWb3glaW_eVOaKUj0HMQcnVoe7tqVyJAsfAFRmtQzcEaiVR2RLC8-fJADTGkzEMqi9ruxfNKN2WSLsI6QgOpqbbyeBMf6hmQziXzsINHetnO0FbnA9bfJAEFw98NtSqHX32Y87JhTcgfFnJcKj0ItrSKj_POe9W-0JLObgFea-XufPpiuWXd2UqumSl_aCni4WKEJlyZMOwKY7E3jJkagcrOb4GKlT0nU1v4pZw2WoX8wEq6gRwTwDVMP7oMDj5PNtZsOFF1IP3paOX2AG6R0mQGQDe5tjvvW4FPqp2yCx_t_SNlYQS7EBgz5emDvg4zWc3duyVNTOu9KrZ7amzPkjLvWIjOcLRoaivKJLjEbGhVqkb9e6dniMwsDNVNXdbo-9pdqCPtu1JcEdg66_KYQ-NVHnqv23tEuq1dJJl87rbRRGMrLG2nJeiDAEII6igyFBfnHOthrRcRjt6-RktQuxFfe4FoyA2vdqcnB6KeZ1pN3KoHjHDND6H5teHe-DDSbGHFA2t-O5ipJUkAHUwG-IRk3JADXlFy2eah1rszwC_wGgxPPcbOVpb2HgQqWm2ZccLSXN2cQot0dvZPAkTTBhA6rDBVIVxaOOcgdJAGVwttMdYsfy7Hp4mnAGrtedFg3oJiPddO-yReGBxoOcpAdUj9HtgY3pw8FvkmmWpsiZZEZceMqUadyazqh2BryIBlakxeqUMyBML1U23hGskAz9IvOBy8HLbC_Do47mhQafi48J8ViBVY81-8Nu-1d9TzhLU_aPutn2e9PLrISRiifJiYHg6GrjSHrZfb1gN2XVgzsQXULL54i3LYigfOBpZ99MvZ3UvTSVhqOVRoylVrVx4Ns5YnbLZxZobctXCotnmRXQ-ag4CCfFnFd0nyXmTisGO-Ge4SBLvB4r5HuPMBQZaRpmpQR5v5cED6sfuA0KwqGfZ6RakjbVZQBraMheb88PvqIn3wOiEiq4d6gEB0lM10wKjeSE1DrgOwKpP158AaXjvEnBqxL3-OzuyOE3ii6HvPxgGsmChQpW7zwUlCMxqrFSV6OP__J2oqQMNT7hOvPI4v63BQqSNdhxePAT-U_cK2nsXxwiuA6UqzO6BXEeMN4iSZTV56lVNDx5RRUqFmtx9NCxonZI_OG3CTZzYHG39Hk79Gb5n_a-wDIqv0f4I21-unjaZhCMzDH8RU03OgwayoRPFcj_ppzvRly3
+  :target: https://www.plantuml.com/plantuml/uml/VLLDRnit4BtpLmpKGsqZTftq9i157DUDdRJrrbBYYm63ueuarXIvvSVAQj7_tXcCLbgfSYu2bfpt-DvyZDwdh6Ck2wTqoS6NnGIZKkhIv11Xy2LX781EK9IQX1Sv-3x1pzXQWsa0t_rgP_FymHLK3V5OOnljCmmUj7EOuTOJlJV87B3S3Ib4TQfdwBEye1Nw6kYLtR1xT2lhPr3HuOeZeKMb2fp-H90XFE04HXXP3dZTsfdEDdXLD0UqE8Hx_AjWob35aD5ahEaaXH8DiLnS01k2ovBdwEbDpM0ugY8c-fQlQguJ7iF5XT8csrPdP0KjTWzSHUGp3ISdYI1uSWAjTWKV_IGKSfG3RAs22U7P7e17aVbKeeKe0YLARFvnVnLgXBjxk1cFAx9GsqXkuEZ7ytV7iBHv3iPPzFd9rczso3H9g6qoeSMuuXDLOz-8sjfQAZMBeJIaAQIko12yMwtpMOOmceSbKBOwHGtPuchGxN88TmrwleMz-eDkcZVWWj4Ez4worH84EZBQ4oamw-Rm-YL7alVeD-OUVS_Sezzn9qVJ61QYKCYuhPGmShwhkz6uapT6C_UMHLtfHa-iizbYWXmOlyiBnD84wxDwfGsGYqwdYR7VVe1Gah1jTzvD_aIJzqkpoSDbpXorCmimZYNbJSXNZ7QwsWlv3REkTTRRAEripVIV7iOmiZElSudul-jE5zRmjJfAnn9Gjdgd8O89dgTacu-oROIhuASsBh3kMofxLU2n2z7-BND6Ozam8pnwQUYsUShX6Vqh2RzU9vppBUwjdZY4dU4LWYseCtYeIINB0ZmZ5VBPZwnYQ6sDaHJQ1Boc84o10tv1EjQCf3ljwuFyXF4XGyIMLDLdFLdo5E-2caT3ExXDgM2K6WlbQxNRif0yWqaQq6oeb8e-48fRcS9ePTz-l1b_lB--_bqTHWmLNCtHFCDDS6GBFkCAFbXVSr-n44A5AJklGae49zS4EOMIE8AvcZ9nri0p0MK9MiuBtVGjva1ok6cbWfKKwqmf6C_HTxE_6KKN4jQWSuvsKZAc8H2bwBHJe5HJfEnH6ocGsnvqHD2jjeuxWnS1fm9LBsTVcguTvAzWxGUEP553uNkiZw4tjBo2VtXxzXRUdP_3tMUIySyWhZSoxuh14EOvDmbATDBASTtRJuPtvh_zeLZk3xsiu95UuCu6bWdKf3Y9tFwBREsRorlSTalxqsWecTjRnf0ogpXYWzsVY1YGR1nB4aJ7vI7epBRe1S8am7xJ6oWKvnpWIyErWH0X5SETDorEiVRtz5CMxZy0
 
 The details of each step shown in the previous picture are described in the table below.
 
@@ -71,7 +71,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **1**, **2**
     - The User requests to access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the *Login with the Wallet* button. The Authorization flow starts.
   * - **3**, **4**,
-    - The Relying Party provides to the Wallet Instance the where a generic signed Authorization Request Object is available for download and the ``discovery_uri``  where the Wallet Instance can provide its technical capabilities to the Relying Party. 
+    - The Relying Party provides the Wallet Instance with a URL where a generic signed Authorization Request Object can be downloaded and the ''discovery_uri'' where the Wallet Instance can provide technical capabilities to the Relying Party. 
   * - **5**, **6**, **7**, **8**, **9**
     - In the **Cross Device Flow**: the Request URI is provided in the form of a QR Code that is shown to the User. The User frames the QRCode with the Wallet Instance and extracts  ``client_id``, ``request_uri`` and ``discovery_uri``. In the **Same Device Flow** the Relying Party provide the same information of the Cross-Device flow but in the form of HTTP Redirect Location (302). 
   * - **10**
@@ -81,13 +81,13 @@ The details of each step shown in the previous picture are described in the tabl
   * - **12**
     - The Relying Party responds with a signed Request Object. The ``exp`` value of the signed Request Object MUST NOT be greater than 240 seconds.
   * - **13**, **14**, **15**, **16**
-    - The Wallet Instance verifies the Request Object JWS. The Wallet Instance attests the trust to the Relying Party by verifying the Trust Chain related to it. The Wallet Instance verifies the signature of the request and processes the Relying Party metadata to attest its capabilities and allowed scopes, attesting which Verifiable Credentials and personal attributes the Relying Party is granted to request.
+    - The Request Object JWS is verified by the Wallet Instance. Following that, it validates the related Trust Chain to demonstrate trust to the Relying Party. It attests to its capabilities and eligible scopes by verifying the request's signature and processing the Relying Party metadata. This method additionally verifies whose Verifiable Credentials and personal attributes the Relying Party is granted to request.
   * - **17**, **18**
     - The Wallet Instance requests the User's consent for the release of the credentials. The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.
   * - **19**
     - The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post").
   * - **20**, **21**, **22**, **23** and **24**
-    - The Relying Party verifies the Authorization Response, extracts the Wallet Instance Attestation to establish the trust with the Wallet Solution. Then extract the Digital Credential and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credential. Finally, the Relying Party verifies the revocation status of the presented Credential.
+    - The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. Then extract the Digital Credential and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credential. Finally, the Relying Party verifies the revocation status of the presented Credential.
   * - **25**, **26**, **27** and **28**
     - The Relying Party provides to the Wallet a redirect URI with a response code to be used by the Wallet to finalize the authentication.
   * - **29**
@@ -102,12 +102,12 @@ can inform the Relying Party about its technical capabilities.
 
 This feature can be useful when, for example, the Wallet Instance supports 
 a restricted set of features, supported algorithms or custom url-schemes for 
-its authorization_endpoint, and other information that it deems necessary to 
-share with the Relying Party before it issues the request signed authorization.
+its ``authorization_endpoint``, and other information that it deems necessary to 
+share with the Relying Party before it issues the signed Authorization Request Object.
 
 .. warning::
     The Wallet Instance, when providing its technical capabilities to the 
-    Relying Party, MUST not include any user information or other explicit 
+    Relying Party, MUST NOT include any user information or other explicit 
     information regarding the hardware used or usage preferences of its User.
 
 If both the Relying Party and the Wallet Instance supports the discovery of the 
