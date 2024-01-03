@@ -27,7 +27,7 @@ This documentation defines the national implementation profile of EUDI Wallet, c
  - PID/EAA in MDL CBOR format.
  - PID/EAA in `SD-JWT`_ format.
  - Wallet Solution general architecture.
- - Wallet Instance Attestation.
+ - Wallet Attestation.
  - Issuance of PID/EAA according to `OpenID4VCI`_.
  - Presentation of PID/EAA according to `OpenID4VP`_.
  - Presentation of pseudonyms according to `SIOPv2`_.
@@ -44,7 +44,7 @@ Index of content
    defined-terms.rst
    trust.rst
    wallet-solution.rst
-   wallet-instance-attestation.rst
+   wallet-attestation.rst
    pid-eaa-data-model.rst
    pid-eaa-issuance.rst
    relying-party-solution.rst
