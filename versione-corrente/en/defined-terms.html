@@ -758,8 +758,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id45">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -1008,8 +1008,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id45">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1060,29 +1060,35 @@
 <tr class="row-even"><td><p>Electronic Attestation of Identity</p></td>
 <td><p>Electronic attestation of attributes referring to master data already present in Italian digital identity systems.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Federation Authority</p></td>
+<tr class="row-odd"><td><p>Digital Credential</p></td>
+<td><p>An signed Credential whose integrity can be cryptographically verified using the public keys of its Issuer. It is also known as Credential.</p></td>
+</tr>
+<tr class="row-even"><td><p>Federation Authority</p></td>
 <td><p>A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.</p></td>
 </tr>
-<tr class="row-even"><td><p>Wallet Instance</p></td>
+<tr class="row-odd"><td><p>Wallet Instance</p></td>
 <td><p>An instance of the Wallet Solution, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Wallet Provider</p></td>
+<tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.</p></td>
 </tr>
-<tr class="row-even"><td><p>Wallet Attestation</p></td>
+<tr class="row-odd"><td><p>Wallet Attestation</p></td>
 <td><p>Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.</p></td>
 </tr>
-<tr class="row-odd"><td><p>App Attestation Service</p></td>
+<tr class="row-even"><td><p>Wallet Attestation Service</p></td>
 <td><p>Device manufacturer service that allows you to certify the authenticity of the mobile app (Wallet Instance).</p></td>
 </tr>
-<tr class="row-even"><td><p>Qualified Electronic Attestation of Attributes (QEAA)</p></td>
+<tr class="row-odd"><td><p>Qualified Electronic Attestation of Attributes (QEAA)</p></td>
 <td><p>A digitally verifiable attestation in electronic form, issued by a QTSP, that substantiates a person's possession of attributes.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Qualified Electronic Signature Provider</p></td>
+<tr class="row-even"><td><p>Qualified Electronic Signature Provider</p></td>
 <td><p>The Electronic Trust Service Provider responsible for the issuing of Qualified Electronic Signature certificates to the User.</p></td>
 </tr>
-<tr class="row-even"><td><p>Relying Party</p></td>
+<tr class="row-odd"><td><p>Relying Party</p></td>
 <td><p>A natural or legal person that implements an authentication system requiring electronic attribute attestation submissions as an authentication mechanism.</p></td>
+</tr>
+<tr class="row-even"><td><p>Verifier</p></td>
+<td><p>See Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Trust Attestation</p></td>
 <td><p>Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.</p></td>
@@ -1090,10 +1096,13 @@
 <tr class="row-even"><td><p>Trust Layer</p></td>
 <td><p>An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Level of Assurance</p></td>
-<td><p>The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the credential was issued.</p></td>
+<tr class="row-odd"><td><p>Trust Model</p></td>
+<td><p>System defining how the participants of the ecosystem establish and maintain trust in their interactions. The Trust Model outlines the rules and the procedures for the entities (like users, systems, or applications) should validate each other's identities, authenticate, and establish the level of trust before exchanging information.</p></td>
 </tr>
-<tr class="row-even"><td><p>Holder Key Binding</p></td>
+<tr class="row-even"><td><p>Level of Assurance</p></td>
+<td><p>The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the Digital Credential was issued.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Holder Key Binding</p></td>
 <td><p>Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.</p></td>
 </tr>
 </tbody>
