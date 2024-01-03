@@ -603,7 +603,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-attestation">Wallet Attestation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
@@ -631,23 +631,23 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#id1">Wallet Instance Attestation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-request">Wallet Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#id1">Wallet Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -706,6 +706,7 @@
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
@@ -856,7 +857,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-attestation">Wallet Attestation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
@@ -884,23 +885,23 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#id1">Wallet Instance Attestation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-request">Wallet Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#id1">Wallet Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -959,6 +960,7 @@
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
@@ -1036,13 +1038,13 @@
 The relevant entities and interfaces involved in the issuance flow are:</p>
 <blockquote>
 <div><ul>
-<li><p><em>Wallet Provider</em>: The entity responsible for releasing an EUDI Wallet Solution. It also issues Wallet Instance Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a Trust Framework in compliance to the security and privacy requirements.</p></li>
+<li><p><em>Wallet Provider</em>: The entity responsible for releasing an EUDI Wallet Solution. It also issues Wallet Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with a Trust Framework in compliance to the security and privacy requirements.</p></li>
 <li><p><em>Wallet Solution</em>: Entire product and service owned by a Wallet Provider, offered to all the Users of that solution. The Wallet Solution is certified as EUDI-compliant by a Conformity Assessment Body (CAB).</p></li>
 <li><p><em>Wallet Instance</em>: Instance of a Wallet Solution, installed on the User device. It provides interfaces for User interaction with the Wallet Provider, Relying Parties, PID, and (Q)EAA Providers.</p></li>
 <li><p><em>PID Provider</em>: The entity that issues the eIDAS Person Identification Data (PID). It is composed of:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  <a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a> to release PID credentials.</p></li>
+<li><p>OpenID4VCI Component: based on the &quot;OpenID for Verifiable Credential Issuance&quot; specification  <a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a> to release PID credentials.</p></li>
 <li><p>National eID Relying Party (OpenID Connect or SAML2): It represents the component to authenticate the User with the national Digital Identity Providers.</p></li>
 <li><p>National Identity Provider: It represents preexisting identity systems based on SAML2 or OpenID Connect, already in production in each Member State (for Italy SPID and CIE id authentication schemed notified eIDAS with <em>LoA</em> <strong>High</strong>, see <a class="reference external" href="https://italia.github.io/spid-cie-oidc-docs/en/">SPID/CIE OpenID Connect Specifications</a>).</p></li>
 </ul>
@@ -1050,7 +1052,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 </li>
 <li><p><em>(Q)EAA Provider</em>: It represents the Issuer of (Q)EAAs. It is composed of:</p>
 <ul class="simple">
-<li><p>OpenID4VCI Component: based on the “OpenID for Verifiable Credential Issuance” specification  <a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a> to release (Q)EAAs.</p></li>
+<li><p>OpenID4VCI Component: based on the &quot;OpenID for Verifiable Credential Issuance&quot; specification  <a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a> to release (Q)EAAs.</p></li>
 <li><p>Relying Party: It represents the component to authenticate the User with the PID. The (Q)EAA Provider acts as a Verifier and it sends a presentation request to the Wallet Instance according to [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]. The Wallet Instance MUST have a valid PID obtained prior to starting a transaction with the (Q)EAA Provider.</p></li>
 </ul>
 </li>
@@ -1096,7 +1098,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <div><ol class="arabic simple">
 <li><p><strong>Obtaining the trusted (Q)EAA Issuer</strong>: the Wallet Instance discovers the trusted (Q)EAA Issuer ufing the Federaiton API (e.g.: using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), then inspects the metadata looking for the credential capabilities.</p></li>
 <li><p><strong>Obtaining of (Q)EAA Provider Metadata</strong>: the Wallet Instance establishes the trust to the (Q)EAA Provider according to the Trust Model, obtaining the Metadata that discloses the formats of the (Q)EAA, the algorithms supported, and any other parameter required for interoperability needs.</p></li>
-<li><p><strong>(Q)EAA Request</strong>: according to the Authorization Code Flow in <a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a> the Wallet Instance requests a (Q)EAA to the (Q)EAA Provider. A fresh key pair that is generated by the Wallet Instance for the sender-constrained Access Token TO be used by (Q)EAA Provider for the key binding of the (Q)EAA. The (Q)EAA Provider checks the Wallet Instance by means of the Wallet Instance Attestation and the Trust Chain related to the Wallet Provider.</p></li>
+<li><p><strong>(Q)EAA Request</strong>: according to the Authorization Code Flow in <a class="reference external" href="https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a> the Wallet Instance requests a (Q)EAA to the (Q)EAA Provider. A fresh key pair that is generated by the Wallet Instance for the sender-constrained Access Token TO be used by (Q)EAA Provider for the key binding of the (Q)EAA. The (Q)EAA Provider checks the Wallet Instance by means of the Wallet Attestation and the Trust Chain related to the Wallet Provider.</p></li>
 <li><p><strong>User Authentication</strong>: the (Q)EAA Provider, acting as a Verifier (Relying Party), authenticates the User evaluating the presentation of the PID.</p></li>
 <li><p><strong>(Q)EAA Issuance</strong>: Once the User has been authenticated with a valid PID, the User gives their consent, then the (Q)EAA Provider releases a (Q)EAA bound to the key material held by the requesting Wallet Instance.</p></li>
 </ol>
@@ -1123,18 +1125,18 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p><strong>Steps 5-6 (PAR Request):</strong> The Wallet Instance:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>creates a fresh PKCE code verifier, Wallet Instance Attestation Proof of Possession, and <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter for the <em>Pushed Authorization Request</em>.</p></li>
+<li><p>creates a fresh PKCE code verifier, Wallet Attestation Proof of Possession, and <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter for the <em>Pushed Authorization Request</em>.</p></li>
 <li><p>provides to the PID/(Q)EAA Provider PAR endpoint the parameters previously listed above, using the <code class="docutils literal notranslate"><span class="pre">request</span></code> parameter (hereafter Request Object) according to <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> Section 3  to prevent Request URI swapping attack.</p></li>
 <li><p>MUST create the <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code> with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html"><strong>RFC 7636</strong></a>.</p></li>
-<li><p>signs this request using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Instance Attestation <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></li>
-<li><p>MUST create the value of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> parameter according to OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>], since in this flow the Pushed Authorization Endpoint is a protected endpoint. The <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> value MUST NOT contain more or less than precisely two JWTs separated with the <code class="docutils literal notranslate"><span class="pre">~</span></code> character. The first JWT MUST be the Wallet Instance Attestation JWT and the second JWT MUST be the Wallet Instance Attestation Proof of Possession.</p></li>
+<li><p>signs this request using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></li>
+<li><p>MUST create the value of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> parameter according to OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>], since in this flow the Pushed Authorization Endpoint is a protected endpoint. The <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> value MUST NOT contain more or less than precisely two JWTs separated with the <code class="docutils literal notranslate"><span class="pre">~</span></code> character. The first JWT MUST be the Wallet Attestation JWT and the second JWT MUST be the Wallet Attestation Proof of Possession.</p></li>
 <li><p>specifies the types of the requested credentials using the <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> [RAR <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] parameter.</p></li>
 </ul>
 </div></blockquote>
 <p>The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>It MUST validate the signature of the Request Object using the algorithm specified in the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>, <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>) and the public key that can be retrieved from the Wallet Instance Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code>) identified using the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header of the Request Object.</p></li>
+<li><p>It MUST validate the signature of the Request Object using the algorithm specified in the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>, <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>) and the public key that can be retrieved from the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code>) identified using the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header of the Request Object.</p></li>
 <li><p>It MUST check that the used algorithm for signing the request in the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header is among the appropriate once reported in Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a>.</p></li>
 <li><p>It MUST check that the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> in the request body of the PAR request matches the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> claim in the Request Object.</p></li>
 <li><p>It MUST check that the <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim in the Request Object matches the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> claim in the Request Object (<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>, <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>).</p></li>
@@ -1161,7 +1163,7 @@ response_type=code
 &amp;client_assertion=$WIA~WIA-PoP
 </pre></div>
 </div>
-<p>An example of Wallet Instance Attestation Proof of Possession is as the following:</p>
+<p>An example of Wallet Attestation Proof of Possession is as the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
   <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
@@ -1209,7 +1211,7 @@ response_type=code
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Federation Check:</strong> The PID/(Q)EAA Provider MUST check that the Wallet Provider is part of the federation and in addition it MUST verify the Wallet Instance Attestation validity by checking its signature and data.</p>
+<p><strong>Federation Check:</strong> The PID/(Q)EAA Provider MUST check that the Wallet Provider is part of the federation and in addition it MUST verify the Wallet Attestation validity by checking its signature and data.</p>
 </div>
 <p><strong>Step 7 (PAR Response):</strong>  The PID/(Q)EAA Provider MUST issue the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> one-time use and bind it to the client identifier (<code class="docutils literal notranslate"><span class="pre">client_id</span></code>) that is provided in the Request Object. Furthermore, the entropy of the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> MUST be sufficiently large. The adequate shortness of the validity and the entropy of the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> MUST include a cryptographic random value of 128 bits or more (<span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>). The entire <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (<span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>):</p>
 <blockquote>
@@ -1266,7 +1268,7 @@ The (Q)EAA Provider performs the User authentication requesting a valid PID to t
 </div>
 <p><strong>Steps 12-13 (DPoP Proof for Token Endpoint)</strong>: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (<span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the created private key for DPoP by Wallet Instance. DPoP provides a way to bind the Access Token to a certain sender (Wallet Instance) (<span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>). This mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint of PID/(Q)EAA Issuer as the attacker needs to present a valid DPoP Proof JWT.</p>
 <p><strong>Step 14 (Token Request):</strong> The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint using the authorization <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code>, <em>DPoP Proof JWT</em> and OAuth 2.0 Attestation based Client Authentication parameters (<code class="docutils literal notranslate"><span class="pre">client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation</span></code> and <code class="docutils literal notranslate"><span class="pre">client_assertion=WIA~WIA-PoP</span></code>).
-The <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> is signed using the private key that is created during the setup phase to obtain the Wallet Instance Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Instance Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:</p>
+The <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> is signed using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>It MUST authenticate the Wallet Instance based on the OAuth 2.0 Attestation based Client Authentication method <a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></li>
@@ -1411,7 +1413,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_id</strong></p></td>
-<td><p>MUST be set to the thumbprint of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Instance Attestation.</p></td>
+<td><p>MUST be set to the thumbprint of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation.</p></td>
 <td><p><span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>code_challenge</strong></p></td>
@@ -1423,7 +1425,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>request</strong></p></td>
-<td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Instance Attestation MUST be used for signing the Request Object.</p></td>
+<td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation MUST be used for signing the Request Object.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests">OpenID Connect Core. Section 6</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_assertion_type</strong></p></td>
@@ -1431,7 +1433,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_assertion</strong></p></td>
-<td><p>It MUST be set to a value containing the Wallet Instance Attestation JWT and the Proof of Possession, separated with the <code class="docutils literal notranslate"><span class="pre">~</span></code> character.</p></td>
+<td><p>It MUST be set to a value containing the Wallet Attestation JWT and the Proof of Possession, separated with the <code class="docutils literal notranslate"><span class="pre">~</span></code> character.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
 </tbody>
@@ -1455,7 +1457,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Instance Attestation as base64url-encoded JWK Thumbprint value.</p></td>
+<td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.</p></td>
 <td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 </tbody>
@@ -1544,7 +1546,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 </tr>
 </tbody>
 </table>
-<p>The JOSE header of the Wallet Instance Attestation Proof of Possession MUST contain:</p>
+<p>The JOSE header of the Wallet Attestation Proof of Possession MUST contain:</p>
 <table class="docutils align-default" id="table-jwt-pop">
 <colgroup>
 <col style="width: 20%" />
@@ -1563,7 +1565,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 <td><p><span class="target" id="index-47"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Instance Attestation as base64url-encoded JWK Thumbprint value.</p></td>
+<td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.</p></td>
 <td><p><span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
@@ -1572,7 +1574,7 @@ client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 </tr>
 </tbody>
 </table>
-<p>The body of the Wallet Instance Attestation Proof of Possession JWT MUST contain:</p>
+<p>The body of the Wallet Attestation Proof of Possession JWT MUST contain:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -1749,7 +1751,7 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_assertion</strong></p></td>
-<td><p>It MUST be set to a value containing the Wallet Instance Attestation JWT and the Proof of Possession JWT, separated with the <code class="docutils literal notranslate"><span class="pre">~</span></code> character (WIA~WIA-PoP). The Wallet Instance Attestation Proof of Possession MUST contain the claims as defined in <a class="reference internal" href="#table-jwt-pop"><span class="std std-ref">Table of the JWT Wallet Instance Attestation PoP</span></a>, Section <a class="reference internal" href="#sec-par"><span class="std std-ref">Pushed Authorization Request (PAR) Response</span></a>.</p></td>
+<td><p>It MUST be set to a value containing the Wallet Attestation JWT and the Proof of Possession JWT, separated with the <code class="docutils literal notranslate"><span class="pre">~</span></code> character (WIA~WIA-PoP). The Wallet Attestation Proof of Possession MUST contain the claims as defined in <a class="reference internal" href="#table-jwt-pop"><span class="std std-ref">Table of the JWT Wallet Attestation PoP</span></a>, Section <a class="reference internal" href="#sec-par"><span class="std std-ref">Pushed Authorization Request (PAR) Response</span></a>.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
 </tbody>
@@ -1880,7 +1882,7 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
 <td><p>[<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">OpenID.Core#SubjectIDTypes</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>As provided in the Wallet Instance Attestation.</p></td>
+<td><p>As provided in the Wallet Attestation.</p></td>
 <td><p>[<span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
@@ -2083,7 +2085,7 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
     &quot;keys&quot;: [{
       &quot;kty&quot;: &quot;RSA&quot;,
       &quot;use&quot;: &quot;sig&quot;,
-      &quot;n&quot;: &quot;1Ta-sE …&quot;,
+      &quot;n&quot;: &quot;1Ta-sE ...&quot;,
       &quot;e&quot;: &quot;AQAB&quot;,
       &quot;kid&quot;: &quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;
     }]
