@@ -1,6 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
-.. _Wallet Instance Attestation: wallet-instance-attestation.html
+.. _Wallet Attestation: wallet-attestation.html
 .. _Trust Model: trust.html
 
 .. _relying-party-solution:
@@ -17,7 +17,6 @@ In this section the following flows are described:
 - **Remote Cross Device Flow**, where the user-agent and the Wallet Instance are used in different devices.
 
 In the **Same Device** and **Cross Device** Flows described in this chapter, the User interacts with a remote Relying Party.
-
 
 High Level Design
 --------------------
@@ -239,7 +238,6 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
 
   GET /request_uri HTTP/1.1
   HOST: relying-party.example.org
-
 
 Request URI response
 --------------------
@@ -521,7 +519,7 @@ Below is a non-normative response example:
             "keys": [
                 {
                     "kty": "RSA",
-                    "n": "5s4qi …",
+                    "n": "5s4qi ...",
                     "e": "AQAB",
                     "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
                 }
@@ -537,7 +535,7 @@ Below is a non-normative response example:
                         {
                             "kty": "RSA",
                             "use": "sig",
-                            "n": "1Ta-sE …",
+                            "n": "1Ta-sE ...",
                             "e": "AQAB",
                             "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
                             "x5c": [ "..." ]
