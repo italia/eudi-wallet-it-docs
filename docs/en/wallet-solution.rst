@@ -269,7 +269,7 @@ External references
 .. [3] Depending on the device operating system, TEE is defined by `Trusty`_ or `Secure Enclave`_ for Android and iOS devices, respectively.
 
 .. _Trust Model section: trust.html
-.. _Wallet Attestation section: wallet-instance-attestation.html
+.. _Wallet Attestation section: wallet-attestation.html
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
 

@@ -1,6 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
-.. _Wallet Attestation: wallet-instance-attestation.html
+.. _Wallet Attestation: wallet-attestation.html
 .. _Trust Model: trust.html
 
 .. _relying-party-solution:

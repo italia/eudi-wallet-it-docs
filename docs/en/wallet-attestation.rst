@@ -1,6 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
-.. _wallet-instance-attestation.rst:
+.. _wallet-attestation.rst:
 
 Wallet Attestation
 ++++++++++++++++++
@@ -343,8 +343,8 @@ Below is an example of Wallet Attestation:
   }
 
 
-.. _token endpoint: wallet-solution.html#wallet-instance-attestation
-.. _Wallet Attestation Request: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation-request
-.. _Wallet Attestation: wallet-instance-attestation.html#format-of-the-wallet-instance-attestation
+.. _token endpoint: wallet-solution.html#wallet-attestation
+.. _Wallet Attestation Request: wallet-attestation.html#format-of-the-wallet-attestation-request
+.. _Wallet Attestation: wallet-attestation.html#format-of-the-wallet-attestation
 .. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
 .. _RFC 8414 section 2: https://www.rfc-editor.org/rfc/rfc8414.html#section-2
