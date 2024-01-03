@@ -29,7 +29,7 @@ except for Wallet Instances which are End-User's personal devices certified by t
 .. note::
     The Wallet Instance, as a personal device, is certified as reliable through a verifiable attestation issued and signed by a trusted third party.
 
-    This is called *Wallet Instance Attestation* and is documented in `the dedicated section  <Wallet Instance Attestation>`_.
+    This is called *Wallet Attestation* and is documented in `the dedicated section  <Wallet Attestation>`_.
 
 
 Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles, as defined in the `EIDAS-ARF`_.
@@ -515,9 +515,9 @@ The concatenation of the statements, through the combination of these signing me
 The Trust Chains can also be verified offline, using one of the Trust Anchor's public keys.
 
 .. note::
-    Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it **requires the presentation of the Wallet Instance Attestation during the credential issuance and presentation phases**.
+    Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it **requires the presentation of the Wallet Attestation during the credential issuance and presentation phases**.
 
-    The Wallet Instance Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.
+    The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.
 
 
 Relying Party Attestation
@@ -534,14 +534,14 @@ The Trust Chain SHOULD be contained within the signed request in the form of a J
 In offline flows, Trust Chain verification enables the assessment of the reliability of Trust Marks and Attestations contained within.
 
 
-Wallet Instance Attestation
+Wallet Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Wallet Provider issues the Wallet Instance Attestation, certifying the operational status of its Wallet Instances and including one of their public keys. 
+The Wallet Provider issues the Wallet Attestation, certifying the operational status of its Wallet Instances and including one of their public keys. 
 
-The Wallet Instance Attestation contains the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.
+The Wallet Attestation contains the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.
 
-The Wallet Instance provides its Wallet Instance Attestation within the signed request during the PID issuance phase, containing the Trust Chain related to the Wallet Provider. 
+The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase, containing the Trust Chain related to the Wallet Provider. 
 
 
 Trust Chain
@@ -584,7 +584,7 @@ Offline EUDI Wallet Trust Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Given that the Wallet Instance cannot publish its metadata online at the *.well-known/openid-federation* endpoint, 
-it MUST obtain a Wallet Instance Attestation issued by its Wallet Provider. The Wallet Instance Attestation MUST contain all the relevant information regarding the security capabilities of the Wallet Instance and its protocol related configuration. It SHOULD contain the Trust Chain related to its issuer (Wallet Provider).
+it MUST obtain a Wallet Attestation issued by its Wallet Provider. The Wallet Attestation MUST contain all the relevant information regarding the security capabilities of the Wallet Instance and its protocol related configuration. It SHOULD contain the Trust Chain related to its issuer (Wallet Provider).
 
 
 Offline Relying Party Metadata
