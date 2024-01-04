@@ -21,22 +21,23 @@ In the **Same Device** and **Cross Device** Flows described in this chapter, the
 High Level Design
 --------------------
 
-From the User's perspective, the Wallet Instance:
+From the User's perspective:
 
-1. scans the QR Code and obtains the URL (Cross Device flow) or obtain directly the URL (Same Device flow);
-2. extracts from the payload the ``client_id`` parameter;
-3. establishes the Trust to the Relying Party by building the Federation Trust Chain. Implementations may evaluate the trust after having obtained the signed Request Object (see point 5);
-4. extracts ``discovery_uri`` if any.
+1. the Wallet Instance scans the QR Code and obtains the URL (Cross Device flow) or obtain directly the URL (Same Device flow);
+2. the Wallet Instance extracts from the payload the ``client_id`` parameter;
+3. the Wallet Instance establishes the Trust to the Relying Party by building the Federation Trust Chain. Implementations may evaluate the trust after having obtained the signed Request Object (see point 5);
+4. the Wallet Instance extracts ``discovery_uri`` if any.
   - If ``discovery_uri`` is present, then: 
-    - sends the Wallet Instance Metadata to the Relying Party's ``discovery_uri`` and obtains the signed Request Object.
+    - The Wallet Instance sends the Wallet Instance Metadata to the Relying Party's ``discovery_uri``;
+    - the Wallet Instance obtains the signed Request Object.
   - Otherwise:
-    - extracts from the payload the ``request_uri`` parameter;
-    - invokes the retrieved URI;
-    - obtains the signed Request Object from the Relying Party.
-5. Assesses the trustworthiness of the Relying Party by examining its associated Trust Chain and verifying the signature to ensure interaction with a reliable entity;
-6. asks User disclosure and consent;
-7. presents the requested disclosure of credentials to the Relying Party;
-8. informs the User about the successfull authentication with the Relying Party and give a good user experience to let the User continuing its navigation.
+    - the Wallet Instance extracts from the payload the ``request_uri`` parameter;
+    - the Wallet Instance invokes the retrieved URI;
+    - the Wallet Instance obtains the signed Request Object from the Relying Party.
+5. The Wallet Instance assesses the trustworthiness of the Relying Party by examining its associated Trust Chain and verifying the signature to ensure interaction with a reliable entity;
+6. the Wallet Instance asks User disclosure and consent;
+7. the Wallet Instance presents the requested disclosure of credentials to the Relying Party;
+8. the Wallet Instance informs the User about the successfull authentication with the Relying Party and give a good user experience to let the User continuing its navigation.
 
 
 Detailed Protocol Flow
@@ -44,13 +45,12 @@ Detailed Protocol Flow
 
 In this scenario the Relying Party MUST provide the URL where the signed presentation Request Object is available for download.
 
-Depending on whether the User is using a mobile device or a workstation, the Relying Party
-MUST support the following remote flows:
+Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows:
 
 * **Same Device**, the Relying Party MUST provide a HTTP redirect (302) location to the Wallet Instance;
 * **Cross Device**, the Relying Party MUST provide a QR Code which the User frames with the Wallet Instance.
 
-Once the Wallet Instance establishes the trust with the Relying Party, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.
+Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.
 
 Below a sequence diagram that summarizes the interactions between all the involved parties.
 
@@ -72,25 +72,25 @@ The details of each step shown in the previous picture are described in the tabl
   * - **3**, **4**,
     - The Relying Party provides the Wallet Instance with a URL where a generic signed Authorization Request Object can be downloaded and the ''discovery_uri'' where the Wallet Instance can provide technical capabilities to the Relying Party. 
   * - **5**, **6**, **7**, **8**, **9**
-    - In the **Cross Device Flow**: the Request URI is provided in the form of a QR Code that is shown to the User. The User frames the QRCode with the Wallet Instance and extracts  ``client_id``, ``request_uri`` and ``discovery_uri``. In the **Same Device Flow** the Relying Party provide the same information of the Cross-Device flow but in the form of HTTP Redirect Location (302). 
+    - In the **Cross Device Flow**: the Request URI is provided in the form of a QR Code that is shown to the User. The User frames the QRCode with the Wallet Instance and extracts  ``client_id``, ``request_uri`` and ``discovery_uri``. In the **Same Device Flow** the Relying Party provides the same information of the Cross-Device flow but in the form of HTTP Redirect Location (302). 
   * - **10**
-    - The Wallet Instance provides its metadata to the Relying Party, informing it about some features and limitations of its implementations.
+    - The Wallet Instance provides its metadata to the Relying Party, informing it about any features and limitations of its implementation.
   * - **11**
-    - The Relying Party evaluates the Wallet Instance capabilities and produces a signed Request Object compliant to the Wallet capabilities.
+    - The Relying Party evaluates the Wallet Instance capabilities and produces a signed Request Object compliant to the Wallet technical capabilities.
   * - **12**
     - The Relying Party responds with a signed Request Object. The ``exp`` value of the signed Request Object MUST NOT be greater than 240 seconds.
   * - **13**, **14**, **15**, **16**
     - The Request Object JWS is verified by the Wallet Instance. Following that, it validates the related Trust Chain to demonstrate trust to the Relying Party. It attests to its capabilities and eligible scopes by verifying the request's signature and processing the Relying Party metadata. This method additionally verifies whose Verifiable Credentials and personal attributes the Relying Party is granted to request.
   * - **17**, **18**
-    - The Wallet Instance requests the User's consent for the release of the credentials. The User authorizes and consents the presentation of their credentials, by selecting/deselecting the personal data to release.
+    - The Wallet Instance requests the User's consent for the release of the Credentials. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.
   * - **19**
     - The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post").
   * - **20**, **21**, **22**, **23** and **24**
-    - The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. Then extract the Digital Credential and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credential. Finally, the Relying Party verifies the revocation status of the presented Credential.
+    - The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials.
   * - **25**, **26**, **27** and **28**
     - The Relying Party provides to the Wallet a redirect URI with a response code to be used by the Wallet to finalize the authentication.
   * - **29**
-    - The User is informed by the Wallet Instance that the Autentication succeded, then the protected resource is made available.
+    - The User is informed by the Wallet Instance that the Autentication succeded, then the protected resource is made available to the User.
 
 
 Discovery endpoint
@@ -106,12 +106,12 @@ share with the Relying Party before it issues the signed Authorization Request O
 
 .. warning::
     The Wallet Instance, when providing its technical capabilities to the 
-    Relying Party, MUST NOT include any user information or other explicit 
+    Relying Party, MUST NOT include any User information or other explicit 
     information regarding the hardware used or usage preferences of its User.
 
 If both the Relying Party and the Wallet Instance supports the discovery of the 
 Wallet Instance technical capabilities, the Wallet Instance capabilities MUST 
-be provided using an HTTP request to the discover_uri of the Relying Party, 
+be provided using an HTTP request to the `discover_uri` of the Relying Party, 
 with the method POST and content type set to `application/json`.
 
 A non-normative example of the HTTP request is represented below:
@@ -148,8 +148,8 @@ Content-Type: application/json
 Authorization Request Details
 -----------------------------
 
-The Relying Party MUST create a Request Object in the format of signed JWT, 
-then provide it to the Wallet Instance through an HTTP URL (request URI). 
+The Relying Party MUST create a Request Object in the form of a signed JWT, 
+then it MUST provide it to the Wallet Instance through an HTTP URL (request URI). 
 The HTTP URL points to the web resource where the signed request object is 
 available for download. The URL parameters contained in the Relying Party 
 response, containing the request URI, are described in the Table below.
@@ -175,6 +175,7 @@ Below a non-normative example of the response containing the required parameters
   haip://authorize?client_id=...&request_uri=...&discovery_uri=...
 
 The value corresponding to the `request_uri` endpoint MUST be randomized, according to `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
+
 
 
 In the **Same Device Flow** the Relying Party uses a HTTP response redirect (status code 302) as represented in the following non-normative example:
