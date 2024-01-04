@@ -29,15 +29,17 @@ Below are the description of acronyms and definitions which are useful for furth
      - An entity, recognized and accredited by the State, responsible for identifying citizens for the issuance of an Electronic Identity Certificate.
    * - Electronic Attestation of Identity
      - Electronic attestation of attributes referring to master data already present in Italian digital identity systems.
+   * - Digital Credential
+     - An signed Credential whose integrity can be cryptographically verified using the public keys of its Issuer. It is also known as Credential.
    * - Federation Authority
      - A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.
    * - Wallet Instance
      - An instance of the Wallet Solution, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.
    * - Wallet Provider
      - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
-   * - Wallet Instance Attestation
+   * - Wallet Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
-   * - App Attestation Service
+   * - Wallet Attestation Service
      - Device manufacturer service that allows you to certify the authenticity of the mobile app (Wallet Instance).
    * - Qualified Electronic Attestation of Attributes (QEAA)
      - A digitally verifiable attestation in electronic form, issued by a QTSP, that substantiates a person's possession of attributes.
@@ -45,12 +47,16 @@ Below are the description of acronyms and definitions which are useful for furth
      - The Electronic Trust Service Provider responsible for the issuing of Qualified Electronic Signature certificates to the User.
    * - Relying Party
      - A natural or legal person that implements an authentication system requiring electronic attribute attestation submissions as an authentication mechanism.
+   * - Verifier
+     - See Relying Party.
    * - Trust Attestation
      - Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.
    * - Trust Layer
      - An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.
+   * - Trust Model
+     - System defining how the participants of the ecosystem establish and maintain trust in their interactions. The Trust Model outlines the rules and the procedures for the entities (like users, systems, or applications) should validate each other's identities, authenticate, and establish the level of trust before exchanging information.
    * - Level of Assurance
-     - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the credential was issued.
+     - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the Digital Credential was issued.
    * - Holder Key Binding
      - Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.
 
@@ -75,4 +81,3 @@ Acronyms
     - Application Programming Interface
   * - **LoA**
     - Level of Assurance
-
