@@ -485,6 +485,8 @@ The following is a non-normative example of the response from the Relying Party 
     "redirect_uri": "https://relying-party.example.org/cb#response_code=091535f699ea575c7937fa5f0f454aee"
   }
 
+The ``redirect_uri`` value MUST be used with an HTTP method GET by either the Wallet or the user-agent to redirect the User to the Relying Party in order to complete the authentication process. The specific entity that performs this action depends on whether the flow is Same device or Cross device.
+
 
 Relying Party Entity Configuration
 -----------------------------------
