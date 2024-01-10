@@ -284,7 +284,7 @@ The ``client_assertion`` is signed using the private key that is created during 
 
 **Step 15 (Token Response):** The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) and a fresh ``c_nonce`` is provided to the Wallet Instance.
 
-.. code-block:: 
+.. code-block:: http
 
     HTTP/1.1 200 OK
     Content-Type: application/json
