@@ -750,25 +750,22 @@ The Entity Configuration is a JWS, where its header parameters are defined below
 Proximity Flow
 ==============
 
-This section describes how a Relying Party requests the presentation of an *mDoc-CBOR* Credential to a Wallet Instance according to the *ISO 18013-5 Specification*. Only *Supervised Device Retrieval flow* is supported in this technical implementation profile. 
+This section describes how a Verifier requests the presentation of an *mDoc-CBOR* Credential to a Wallet Instance according to the *ISO 18013-5 Specification*. Only *Supervised Device Retrieval flow* is supported in this technical implementation profile. 
 
 The presentation phase is divided into three sub-phases: 
  
-  1. **Device Engagement**: This subphase starts when the User is asked to disclose some attributes from their mDoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Instance and the Verifier App, so that the mDoc requests and responses can be exchanged during the communication subphase.
+  1. **Device Engagement**: This subphase begins when the User is prompted to disclose certain attributes from the mDoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Instance and the Verifier App, so that the mDoc requests and responses can be exchanged during the communication subphase.
   The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping.
-  This technical implementation profile only support QR code for the Device Engagement.
+  This technical implementation profile exclusively supports QR code for Device Engagement.
 
-  2. **Session establishment**: In session establishment, the Verifier App establishes a connection on a secure channels. 
-  The data transmitted in such a connection will all be encrypted with the session key that both the Wallet Instance and the verifier know at this point in time. 
+  2. **Session establishment**: During the session establishment phase, the Verifier App sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Verifier at this stage.
   The established session MAY be terminated based on the conditions as detailed in [ISO18013-5#9.1.1.4].
 
-  3. **Communication - Device Retrieval**: The Verifier App encrypts the mdoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The mdoc uses the data from the session establishment message to derive the session key and decrypt the mdoc request.
-  In communication subphase, the Verifier App MAY ask the Wallet for information about the holder using mDoc requests and responses. 
-  The main channel for communication is the secure channel that has been established with the session establishment. The Wallet Instance encrypts the mdoc response with the appropriate session key and sends it to the Verifier App in a session data message.  
-  For the communication sub-phase, only BLE is supported by this technical implementation profile. 
+  3. **Communication - Device Retrieval**: The Verifier App encrypts the mDoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The mDoc uses the data from the session establishment message to derive the session key and decrypt the mDoc request.
+  During the communication subphase, the Verifier App has the option to request information from the Wallet using mDoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mDoc response using the session key and transmits it to the Verifier App via a session data message. This technical implementation profile only supports Bluetooth Low Energy (BLE) for the communication sub-phase.
 
 
-The Figure below presents the flow diagram of ISO 18013-5 compliant proximity flow.
+The following figure illustrates the flow diagram compliant with ISO 18013-5 for proximity flow.
 
 .. _fig_High-Level-Flow-ITWallet-Presentation-ISO:
 .. figure:: ../../images/High-Level-Flow-ITWallet-Presentation-ISO.svg
@@ -778,9 +775,9 @@ The Figure below presents the flow diagram of ISO 18013-5 compliant proximity fl
 
     High-Level Proximity Flow
 
-**Step 1-3**: The Verifier asks the User to disclose some attributes from their mdoc(s) stored in the Wallet Instance. The User opens the Wallet Instance. The Wallet Instance MUST generate a new ephemeral key pair (EDeviceKey.Priv, EDeviceKey.Pub), and includes the cipher suite identifier, the identifier of the elliptic curve to be used for key agreement and the EDeviceKey public point, as part of the device engagement structure (see [ISO18013-5#9.1.1.4]). This pair of keys is ephemeral and MUST be invalidated as soon as the secure channel is established. Finally, the Walle Instance shows the QR Code for the Device Engagement.
+**Step 1-3**: The Verifier requests the User to reveal certain attributes from their mDoc(s) stored in the Wallet Instance. The User initiates the Wallet Instance. The Wallet Instance MUST create a new temporary key pair (EDeviceKey.Priv, EDeviceKey.Pub), and incorporate the cipher suite identifier, the identifier of the elliptic curve for key agreement, and the EDeviceKey public point into the device engagement structure (refer to [ISO18013-5#9.1.1.4]). This key pair is temporary and MUST be invalidated immediately after the secure channel is established. Finally, the Wallet Instance displays the QR Code for Device Engagement.
 
-Following is an example of a device engagement structure for QR device engagement and BLE as the data retrieval mode.
+Below an example of a device engagement structure that utilizes QR for device engagement and Bluetooth Low Energy (BLE) for data retrieval.
 
 CBOR data:
 
@@ -824,16 +821,16 @@ In diagnostic notation:
 
 
 
-**Step 4-6**: The Verifier App scan the QR Code, generates its own set of ephemeral keys (EReaderKey. Priv, EReaderKey.Pub) and computes the session key, involving the public key received in the Engagement Structure and its newly-generated private key as specified in [ISO18013-5#9.1.1.5]. Finally, generates its session key that MUST be derived independently by the Wallet Instance and the Verifier App.
+**Step 4-6**: The Verifier App scans the QR Code and generates its own ephemeral key pair (EReaderKey.Priv, EReaderKey.Pub). It then calculates the session key, using the public key received in the Engagement Structure and its newly-generated private key, as outlined in [ISO18013-5#9.1.1.5]. Finally, it generates its session key, which must be independently derived by both the Wallet Instance and the Verifier App.
 
-**Step 7**: The Verifier App generates the mdoc request that MUST be encrypted with the appropriate session key, and sends it to the Wallet Instance together with EReaderKey.Pub in a session establishment message. The mdoc request MUST be encoded as CBOR as in the following  non-normative example.
+**Step 7**: The Verifier App creates an mDoc request that MUST be encrypted using the relevant session key, and transmits it to the Wallet Instance along with EReaderKey.Pub within a session establishment message. The mDoc request MUST be encoded in CBOR, as demonstrated in the following non-normative example.
 
 CBOR data: 
 .. code-block::
 
   a26776657273696f6e63312e306b646f63526571756573747381a26c6974656d7352657175657374d818590152a267646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6a6e616d65537061636573a2746f72672e69736f2e31383031332e352e312e4954a375766572696669636174696f6e2e65766964656e6365f4781c766572696669636174696f6e2e6173737572616e63655f6c6576656cf4781c766572696669636174696f6e2e74727573745f6672616d65776f726bf4716f72672e69736f2e31383031332e352e31ab76756e5f64697374696e6775697368696e675f7369676ef47264726976696e675f70726976696c65676573f46f646f63756d656e745f6e756d626572f46a69737375655f64617465f46f69737375696e675f636f756e747279f47169737375696e675f617574686f72697479f46a62697274685f64617465f46b6578706972795f64617465f46a676976656e5f6e616d65f468706f727472616974f46b66616d696c795f6e616d65f46a726561646572417574688443a10126a11821590129308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b1300a06082a8648ce3d0403020347003044022048466e92226e042add073b8cdc43df5a19401e1d95ab226e142947e435af9db30220043af7a8e7d31646a424e02ea0c853ec9c293791f930bf589bee557370a4c97bf6584058a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9
 
-The above CBOR data in diagnostic notation: 
+The above CBOR data is represented in diagnostic notation as follows:
 .. code-block::
 
   {
@@ -875,11 +872,11 @@ The above CBOR data in diagnostic notation:
     ]
   }
 
-**Step 8**: The Wallet Instance uses the session establishment message to derive the session keys and decrypt the mdoc request. It computes the session key using the public key received from the Verifier App and its private key.
+**Step 8**: The Wallet Instance uses the session establishment message to derive the session keys and decrypt the mDoc request. It computes the session key using the public key received from the Verifier App and its private key.
 
-**Step 9-10**: Upon receiving the mDoc request, the Wallet Instance identifies the documents containing the requested attributes and prompts the User for permission to share this information with the Verifier. If the User consents, the Wallet produces an mDoc response and sends it to the Verifier App via the secure channel.
+**Step 9-10**: When the Wallet Instance receives the mDoc request, it locates the documents that contain the requested attributes and asks the User for permission to provide this information to the Verifier. If the User agrees, the Wallet generates an mDoc response and transmits it to the Verifier App through the secure channel.
 
-**Step 11-12**: In case of User consent, the Wallet Instance generates an mDoc response and sends it to the Verifier App through the secure channel. The mDoc response MUST be CBOR encoded, and its structure is defined in [ISO18013-5#8.3.2.1.2.2]. A non-normative example of a mDoc response is given below.
+**Step 11-12**: If the User gives consent, the Wallet Instance creates an mDoc response and transmits it to the Verifier App via the secure channel. The mDoc response MUST be encoded in CBOR, with its structure outlined in [ISO18013-5#8.3.2.1.2.2]. Below is a non-normative example of an mDoc response.
 
 CBOR Data:
 .. code-block::
@@ -1067,11 +1064,7 @@ In diagnostic notation:
     "status": 0
   }
 
-**Step 13**: The Verifier App MUST verify that the signatures in the mDoc **issuerSigned** field are valid using the public key of the Credential Issuer declared in the mDoc itself.  At this point, the verifier MUST check the signature in the **deviceSigned** field. If the check of these signatures is successful, the verifier can trust that the information it received is valid.
-
-
-
-
+**Step 13**: The Verifier App is required to validate the signatures in the mDoc's issuerSigned field using the public key of the Credential Issuer specified within the mDoc. Subsequently, the Verifier MUST validate the signature in the deviceSigned field. If these signature checks pass, the Verifier can confidently consider the received information as valid.
 
 Device Engagement
 -----------------
@@ -1083,7 +1076,7 @@ The Device Engagement structure MUST be have at least the following components:
   
     - the cipher identifier: see Table 22 of [ISO18013-5]
     - the mDL public ephemeral key generated by the Wallet Instance and required by the Verifier App to derive the Session Key. The mDL public ephemeral key MUST be of a type allowed by the indicated cipher suite.
-  - **TransferMethod**: an array that contains one or more transferMethod arrays when performing device engagement using the QR code. This array is for offline data retrieval methods. A transferMethod array holds two mandatory values (type and version). Only the BLE option is supported by this technical implementation profile, then the type value MUST be set to '2'. 
+  - **transferMethod**: an array that contains one or more transferMethod arrays when performing device engagement using the QR code. This array is for offline data retrieval methods. A transferMethod array holds two mandatory values (type and version). Only the BLE option is supported by this technical implementation profile, then the type value MUST be set to ``2``. 
   - **BleOptions**: this elements MUST provide options for the BLE connection (support for Peripheral Server or Central Client Mode, and the device UUID).
 
 
@@ -1149,14 +1142,14 @@ Session Termination
 
 The session MUST be terminated if at least one of the following conditions occur. 
 
-  - After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Verifier App SHOULD be no less than 300 s.
-  - If the Wallet Instance does not want to receive any further requests. 
-  - If the Verifier App does not want to send any further requests. 
+  - After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Verifier App SHOULD be no less than 300 seconds.
+  - When the Wallet Instance doesn't accept any more requests.
+  - When the Verifier App does not send any further requests. 
 
-If the Wallet Instance and the Verifier App does not want to send or receive any further requests, it MUST initiate session termination as follows. 
+If the Wallet Instance and the Verifier App does not send or receive any further requests, the session termination MUST be initiated as follows. 
 
-  - to send the status code for session termination or 
-  - to send the "End" command defined in [ISO18013-5#8.3.3.1.1.5].
+ - Send the status code for session termination, or
+ - dispatch the "End" command as outlined in [ISO18013-5#8.3.3.1.1.5].
 
 When a session is terminated, the Wallet Instance and the Verifier App MUST perform at least the following actions: 
 

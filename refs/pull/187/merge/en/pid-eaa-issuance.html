@@ -1323,24 +1323,24 @@ grant_type=authorization_code
 </pre></div>
 </div>
 <p><strong>Step 15 (Token Response):</strong> The PID/(Q)EAA Provider validates the request, if successful an <em>Access Token</em> (bound to the DPoP key) and a fresh <code class="docutils literal notranslate"><span class="pre">c_nonce</span></code> is provided to the Wallet Instance.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span>HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
 
-<span class="p">{</span>
-    <span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU ...&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;DPoP&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">2677</span><span class="p">,</span>
-    <span class="s2">&quot;c_nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;tZign[...]snFbp&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span> <span class="mi">86400</span><span class="p">,</span>
-    <span class="s2">&quot;authorization_details&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;credential_configuration_id: &quot;</span><span class="n">PersonIdentificationData</span><span class="s2">&quot;</span>
-          <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+{
+    &quot;access_token&quot;: &quot;Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU ...&quot;,
+    &quot;token_type&quot;: &quot;DPoP&quot;,
+    &quot;expires_in&quot;: 2677,
+    &quot;c_nonce&quot;: &quot;tZign[...]snFbp&quot;,
+    &quot;c_nonce_expires_in&quot;: 86400,
+    &quot;authorization_details&quot;: [
+      {
+          &quot;type&quot;: &quot;openid_credential&quot;,
+          &quot;credential_configuration_id: &quot;PersonIdentificationData&quot;
+          }
+      }
+    ]
+}
 </pre></div>
 </div>
 <p><strong>Steps 16-17 (DPoP Proof for Credential Endpoint):</strong> The Wallet Instance for requesting the Digital Credential creates a proof of possession with <code class="docutils literal notranslate"><span class="pre">c_nonce</span></code> obtained in <strong>Step 15</strong> and using the private key used for the DPoP, signing a DPoP Proof JWT according to (<span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) Section 4. The <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">proof</span></code> parameter MUST be equal to the public key referenced in the DPoP.</p>
