@@ -943,6 +943,20 @@ Below is a non-normative example of an Entity Configuration containing an `openi
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
             "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
             "credential_endpoint": "https://pid-provider.example.org/credential",
+            "display": [
+              {
+                "name": "PID Provider Italiano di esempio",
+                "locale": "it-IT"
+              },
+              {
+                "name": "Example PID Provider",
+                "locale": "en-US",
+                "logo": {
+                   "url": "https://pid-provider example.org/public/logo.svg",
+                   "alt_text": "logo di questo PID Provider"
+                },
+              }
+            ],
             "jwks": {
                "keys": [
                  {
@@ -961,21 +975,21 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                 "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
                 "proof_types": ["jwt"],
                 "display": [{
-                    "name": "PID Provider Italiano di esempio",
+                    "name": "PID Italiano di esempio",
                     "locale": "it-IT",
                     "logo": {
                       "url": "https://pid-provider example.org/public/logo.svg",
-                      "alt_text": "logo di questo PID Provider"
+                      "alt_text": "logo di questa Credenziale"
                     },
                     "background_color": "#12107c",
                     "text_color": "#FFFFFF"
                   },
                   {
-                    "name": "Example Italian PID Provider",
+                    "name": "Example Italian PID",
                     "locale": "en-US",
                     "logo": {
                       "url": "https://pid-provider.example.org/public/logo.svg",
-                      "alt_text": "The logo of this PID Provider"
+                      "alt_text": "The logo of this credentual"
                     },
                     "background_color": "#12107c",
                     "text_color": "#FFFFFF"
