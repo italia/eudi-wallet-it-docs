@@ -943,16 +943,17 @@ Below is a non-normative example of an Entity Configuration containing an `openi
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
             "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
             "credential_endpoint": "https://pid-provider.example.org/credential",
-             "jwks": {
+            "jwks": {
                "keys": [
-               {
+                 {
                   "crv": "P-256",
                   "kty": "EC",
                   "x": "newK5qDYMekrCPPO-yEYTdJVWJMTzasMavt2vm1Mb-A",
                   "y": "VizXaLO6dzeesZPxfpGZabTK3cTXtBUbIiQpmiYRtSE",
                   "kid": "ff0bded045fe63fe5d1d64dd83b567e0"
-                }]
-              }
+                 }
+               ]
+            },
             "credential_configurations_supported": [
               {
                 "format": "vc+sd-jwt",
