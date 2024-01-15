@@ -989,7 +989,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                     "locale": "en-US",
                     "logo": {
                       "url": "https://pid-provider.example.org/public/logo.svg",
-                      "alt_text": "The logo of this credentual"
+                      "alt_text": "The logo of this credential"
                     },
                     "background_color": "#12107c",
                     "text_color": "#FFFFFF"
