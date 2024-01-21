@@ -1091,8 +1091,8 @@
 </figure>
 <ul class="simple">
 <li><p><strong>Message 1</strong>: The User starts the Wallet Instance mobile app and gets authenticated to it.</p></li>
-<li><p><strong>Message 2-3</strong>: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.</p></li>
-<li><p><strong>Message 4</strong>: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.</p></li>
+<li><p><strong>Message 2</strong>: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.</p></li>
+<li><p><strong>Message 3-4</strong>: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.</p></li>
 <li><p><strong>Message 5</strong>: The Wallet Instance generates a new key pair.</p></li>
 <li><p><strong>Message 6-7</strong>: The Wallet Instance requests a <code class="docutils literal notranslate"><span class="pre">nonce</span></code> from the App Attestation Service.</p></li>
 <li><p><strong>Message 8</strong>: The Wallet Instance creates a Wallet Attestation Request in JWS format, signed with the private key associated with the public key for which it request the attestation.</p></li>

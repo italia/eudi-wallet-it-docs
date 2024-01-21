@@ -55,8 +55,8 @@ This section describes the Wallet Attestation format and how the Wallet Provider
    :target: https://www.plantuml.com/plantuml/ZP91RzH038NlyojCJwr4n7qFgrOSAf2G409wwSL9h60ryGmUpqRRNuyt6qBJe5MlzlFtx3TpcmtLoj27Tqcn6n2CuZEO5WfOB4ePQj8GagkuuOHYSFKZaru1PYZh-WFsFHby4eTAGvDavFzglceyS3jZndgjkKi9q8mSOnm5tEx0Cy_h8HIezaxUkHKROy_F1A_C7oKgAFqkJlcGb38vkL5gIKuJEOnSxSTw1_S-z6ef6CYmHSCmrfMhtEZBN84cYY4BI_U21dPCbD_34nqdJrOQlECLaZP55flzdFJJrtKIRKnDIpQN_RtjdeJKXHCr8MkUcsYsWs_dqq2Y7nky1DLvRguiVX-Lq3RnmDs_V1VMvuVl0HlZmsbWh5SHuGlzzHjWDwVizZwrlNWPwqWA2mdb3DVJsZUdIwh9rML6dR8TeVb5pHCevTAROy_jXPgv4xIYjBIMv53QgNtf-kMDBuishtT1tD8wHUUNBPwNlzi-YXAsHx08iJPa0Q5nzLjlITeoz7y0
 
 - **Message 1**: The User starts the Wallet Instance mobile app and gets authenticated to it.
-- **Message 2-3**: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.
-- **Message 4**: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.
+- **Message 2**: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.
+- **Message 3-4**: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.
 - **Message 5**: The Wallet Instance generates a new key pair.
 - **Message 6-7**: The Wallet Instance requests a ``nonce`` from the App Attestation Service.
 - **Message 8**: The Wallet Instance creates a Wallet Attestation Request in JWS format, signed with the private key associated with the public key for which it request the attestation.
