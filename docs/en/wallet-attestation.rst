@@ -15,19 +15,19 @@ The Wallet Attestation:
 - MUST be issued and MUST be signed by Wallet Provider;
 - MUST give all the relevant information to attests the **integrity** and **security** of the device where the Wallet Instance is installed.
 
-It is necessary for each Wallet Instance to obtain an the Wallet Attestation before entering the Operational state.
+It is necessary for each Wallet Instance to obtain a Wallet Attestation before entering the Operational state.
 
 Requirements
 ------------
 
 The following requirements for the Wallet Attestation are met:
 
-1. The Wallet Attestation MUST use a signed JSON Web Token (JWT) format.
+1. The Wallet Attestation MUST use the signed JSON Web Token (JWT) format.
 2. The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.
 3. The Wallet Attestation MUST be securely bound to the Wallet Instance public key (**Holder Key Binding**).
 4. The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
 5. The Wallet Attestation MUST ensure the integrity and authenticity of the Wallet Instance, verifying that it was accurately created and provided by the Wallet Provider.
-6. Each Wallet Instance SHOULD be able to request multiple attestations for different public keys associated with it. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see alos the point number 10, listed below).
+6. Each Wallet Instance SHOULD be able to request multiple attestations with different public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point number 10, listed below).
 7. The Wallet Attestation SHOULD be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
 8. The Wallet Attestation SHOULD have an expiration date time, after which it will no longer be considered valid.
 9. When the private key associated with the Wallet Instance is lost or deleted, the attestation MUST become invalid to prevent unauthorized use of the Wallet Instance.
@@ -54,13 +54,13 @@ This section describes the Wallet Attestation format and how the Wallet Provider
    :alt: The figure illustrates the sequence diagram for issuing a Wallet Attestation, with the steps explained below.
    :target: https://www.plantuml.com/plantuml/ZP91RzH038NlyojCJwr4n7qFgrOSAf2G409wwSL9h60ryGmUpqRRNuyt6qBJe5MlzlFtx3TpcmtLoj27Tqcn6n2CuZEO5WfOB4ePQj8GagkuuOHYSFKZaru1PYZh-WFsFHby4eTAGvDavFzglceyS3jZndgjkKi9q8mSOnm5tEx0Cy_h8HIezaxUkHKROy_F1A_C7oKgAFqkJlcGb38vkL5gIKuJEOnSxSTw1_S-z6ef6CYmHSCmrfMhtEZBN84cYY4BI_U21dPCbD_34nqdJrOQlECLaZP55flzdFJJrtKIRKnDIpQN_RtjdeJKXHCr8MkUcsYsWs_dqq2Y7nky1DLvRguiVX-Lq3RnmDs_V1VMvuVl0HlZmsbWh5SHuGlzzHjWDwVizZwrlNWPwqWA2mdb3DVJsZUdIwh9rML6dR8TeVb5pHCevTAROy_jXPgv4xIYjBIMv53QgNtf-kMDBuishtT1tD8wHUUNBPwNlzi-YXAsHx08iJPa0Q5nzLjlITeoz7y0
 
-- **Message 1**: The User starts the Wallet Instance mobile app and gets authenticated in it, a new Wallet Attestation is automatically obtained if the previous one results expired.
-- **Message 2-3**: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.
-- **Message 4**: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.
+- **Message 1**: The User starts the Wallet Instance mobile app and gets authenticated to it.
+- **Message 2**: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.
+- **Message 3-4**: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.
 - **Message 5**: The Wallet Instance generates a new key pair.
 - **Message 6-7**: The Wallet Instance requests a ``nonce`` from the App Attestation Service.
 - **Message 8**: The Wallet Instance creates a Wallet Attestation Request in JWS format, signed with the private key associated with the public key for which it request the attestation.
-- **Message 9-13**: The Wallet Instance provides the Wallet Attestation Request to the Wallet Provider, which validates it and issues a signed attestation to the Wallet Instance.
+- **Message 9-13**: The Wallet Instance provides the Wallet Attestation Request to the Wallet Provider, which validates it and returns a signed attestation to the Wallet Instance.
 - **Message 13-14**: The Wallet Instance receives the Wallet Attestation signed by the Wallet Provider and performs security and integrity verifications.
 - **Message 15**: The Wallet Attestation is now ready for use.
 
@@ -74,9 +74,9 @@ Wallet Attestation Request
 To obtain a Wallet Attestation from the Wallet
 Provider it is necessary to send a Wallet Attestation
 Request from the Wallet Instance containing the associated public key
-, the ``nonce`` value previously requested and a ``jti`` value.
+, the ``nonce`` value provided by the App Attestation Service and a ``jti`` value.
 
-The Wallet Instance MUST do an HTTP request to the Wallet Provider `token endpoint`_,
+The Wallet Instance MUST do an HTTP request to the Wallet Provider's `token endpoint`_,
 using the method `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.2>`__.
 
 The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters
@@ -148,8 +148,8 @@ Assertion Payload
 +--------+-------------------------------------------------------------+
 || cnf   || JSON object, according to                                  |
 ||       || `RFC7800 <https://www.rfc-editor.org/rfc/rfc7800.html>`_   |
-||       || containing the public key of the                           |
-||       || Wallet Instance.                                           |
+||       || containing the public part of an asymmetric key pair owned |
+||       || by the Wallet Instance.                                    |
 +--------+-------------------------------------------------------------+
 || iat   || Unix timestamp of attestation request                      |
 ||       || issuance time.                                             |
@@ -188,15 +188,15 @@ request where the decoded JWS headers and payload are separated by a comma:
     "exp": 1686652315
   }
 
-Whose corresponding JWS is verifiable using the public key
-of the Wallet Provider corresponding to the `kid` made available
-in the JWS header.
+Whose corresponding JWS is verifiable using the public part of an asymmetric
+key pair owned by the Wallet Instance that has a key id which is the same
+as the `kid` made available in the JWS header.
 
 
 Wallet Attestation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
-The Wallet Attestation MUST be provisioned in JWT format, whose
+The Wallet Attestation MUST be provisioned in JWT format, with
 headers and payload claims are listed below.
 
 Header
@@ -208,8 +208,9 @@ Header
 | alg                               | Algorithm to verify the token     |
 |                                   | signature (es. ES256).            |
 +-----------------------------------+-----------------------------------+
-| kid                               | Key id used by the Wallet         |
-|                                   | Provider to sign the attestation. |
+| kid                               | The key id of the key used by the |
+|                                   | Wallet Provider to sign the       |
+|                                   | attestation.                      |
 +-----------------------------------+-----------------------------------+
 | typ                               | Media type, set to                |
 |                                   | `wallet-attestation+jwt`,         |
@@ -229,8 +230,8 @@ Header
 
 .. note::
 
-   The claim `trust_chain` or the claim `x5c` MUST be provisioned.
-   If these are both provisioned, the related public key contained in
+   One of the claims `trust_chain` and `x5c` MUST be provisioned.
+   If they are both provided, the related public key
    MUST be the same in both `trust_chain` and `x5c`.
 
 Payload
