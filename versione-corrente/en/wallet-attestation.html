@@ -1058,18 +1058,18 @@
 <li><p>MUST be issued and MUST be signed by Wallet Provider;</p></li>
 <li><p>MUST give all the relevant information to attests the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed.</p></li>
 </ul>
-<p>It is necessary for each Wallet Instance to obtain an the Wallet Attestation before entering the Operational state.</p>
+<p>It is necessary for each Wallet Instance to obtain a Wallet Attestation before entering the Operational state.</p>
 </section>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
 <p>The following requirements for the Wallet Attestation are met:</p>
 <ol class="arabic simple">
-<li><p>The Wallet Attestation MUST use a signed JSON Web Token (JWT) format.</p></li>
+<li><p>The Wallet Attestation MUST use the signed JSON Web Token (JWT) format.</p></li>
 <li><p>The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.</p></li>
 <li><p>The Wallet Attestation MUST be securely bound to the Wallet Instance public key (<strong>Holder Key Binding</strong>).</p></li>
 <li><p>The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.</p></li>
 <li><p>The Wallet Attestation MUST ensure the integrity and authenticity of the Wallet Instance, verifying that it was accurately created and provided by the Wallet Provider.</p></li>
-<li><p>Each Wallet Instance SHOULD be able to request multiple attestations for different public keys associated with it. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see alos the point number 10, listed below).</p></li>
+<li><p>Each Wallet Instance SHOULD be able to request multiple attestations with different public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point number 10, listed below).</p></li>
 <li><p>The Wallet Attestation SHOULD be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.</p></li>
 <li><p>The Wallet Attestation SHOULD have an expiration date time, after which it will no longer be considered valid.</p></li>
 <li><p>When the private key associated with the Wallet Instance is lost or deleted, the attestation MUST become invalid to prevent unauthorized use of the Wallet Instance.</p></li>
@@ -1090,13 +1090,13 @@
 <a class="reference external image-reference" href="https://www.plantuml.com/plantuml/ZP91RzH038NlyojCJwr4n7qFgrOSAf2G409wwSL9h60ryGmUpqRRNuyt6qBJe5MlzlFtx3TpcmtLoj27Tqcn6n2CuZEO5WfOB4ePQj8GagkuuOHYSFKZaru1PYZh-WFsFHby4eTAGvDavFzglceyS3jZndgjkKi9q8mSOnm5tEx0Cy_h8HIezaxUkHKROy_F1A_C7oKgAFqkJlcGb38vkL5gIKuJEOnSxSTw1_S-z6ef6CYmHSCmrfMhtEZBN84cYY4BI_U21dPCbD_34nqdJrOQlECLaZP55flzdFJJrtKIRKnDIpQN_RtjdeJKXHCr8MkUcsYsWs_dqq2Y7nky1DLvRguiVX-Lq3RnmDs_V1VMvuVl0HlZmsbWh5SHuGlzzHjWDwVizZwrlNWPwqWA2mdb3DVJsZUdIwh9rML6dR8TeVb5pHCevTAROy_jXPgv4xIYjBIMv53QgNtf-kMDBuishtT1tD8wHUUNBPwNlzi-YXAsHx08iJPa0Q5nzLjlITeoz7y0"><img alt="The figure illustrates the sequence diagram for issuing a Wallet Attestation, with the steps explained below." src="_images/dynamic_view_sequence_wallet_instance_attestation.svg" /></a>
 </figure>
 <ul class="simple">
-<li><p><strong>Message 1</strong>: The User starts the Wallet Instance mobile app and gets authenticated in it, a new Wallet Attestation is automatically obtained if the previous one results expired.</p></li>
-<li><p><strong>Message 2-3</strong>: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.</p></li>
-<li><p><strong>Message 4</strong>: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.</p></li>
+<li><p><strong>Message 1</strong>: The User starts the Wallet Instance mobile app and gets authenticated to it.</p></li>
+<li><p><strong>Message 2</strong>: The Wallet Instance verifies the Wallet Provider's trustworthiness by evaluating its Trust Chain.</p></li>
+<li><p><strong>Message 3-4</strong>: The Wallet Instance retrieves the Wallet Provider metadata, including the list of supported algorithms, public keys, and endpoints.</p></li>
 <li><p><strong>Message 5</strong>: The Wallet Instance generates a new key pair.</p></li>
 <li><p><strong>Message 6-7</strong>: The Wallet Instance requests a <code class="docutils literal notranslate"><span class="pre">nonce</span></code> from the App Attestation Service.</p></li>
 <li><p><strong>Message 8</strong>: The Wallet Instance creates a Wallet Attestation Request in JWS format, signed with the private key associated with the public key for which it request the attestation.</p></li>
-<li><p><strong>Message 9-13</strong>: The Wallet Instance provides the Wallet Attestation Request to the Wallet Provider, which validates it and issues a signed attestation to the Wallet Instance.</p></li>
+<li><p><strong>Message 9-13</strong>: The Wallet Instance provides the Wallet Attestation Request to the Wallet Provider, which validates it and returns a signed attestation to the Wallet Instance.</p></li>
 <li><p><strong>Message 13-14</strong>: The Wallet Instance receives the Wallet Attestation signed by the Wallet Provider and performs security and integrity verifications.</p></li>
 <li><p><strong>Message 15</strong>: The Wallet Attestation is now ready for use.</p></li>
 </ul>
@@ -1110,8 +1110,8 @@
 <p>To obtain a Wallet Attestation from the Wallet
 Provider it is necessary to send a Wallet Attestation
 Request from the Wallet Instance containing the associated public key
-, the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value previously requested and a <code class="docutils literal notranslate"><span class="pre">jti</span></code> value.</p>
-<p>The Wallet Instance MUST do an HTTP request to the Wallet Provider <a class="reference external" href="wallet-solution.html#wallet-attestation">token endpoint</a>,
+, the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value provided by the App Attestation Service and a <code class="docutils literal notranslate"><span class="pre">jti</span></code> value.</p>
+<p>The Wallet Instance MUST do an HTTP request to the Wallet Provider's <a class="reference external" href="wallet-solution.html#wallet-attestation">token endpoint</a>,
 using the method <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.2">POST</a>.</p>
 <p>The <strong>token</strong> endpoint (as defined in <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7523.html#section-4">RFC 7523 section 4</a>) requires the following parameters
 encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format:</p>
@@ -1226,8 +1226,8 @@ created by the Wallet Instance.</p></td>
 <td><div class="line-block">
 <div class="line">JSON object, according to</div>
 <div class="line"><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7800.html">RFC7800</a></div>
-<div class="line">containing the public key of the</div>
-<div class="line">Wallet Instance.</div>
+<div class="line">containing the public part of an asymmetric key pair owned</div>
+<div class="line">by the Wallet Instance.</div>
 </div>
 </td>
 </tr>
@@ -1282,14 +1282,14 @@ request where the decoded JWS headers and payload are separated by a comma:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Whose corresponding JWS is verifiable using the public key
-of the Wallet Provider corresponding to the <cite>kid</cite> made available
-in the JWS header.</p>
+<p>Whose corresponding JWS is verifiable using the public part of an asymmetric
+key pair owned by the Wallet Instance that has a key id which is the same
+as the <cite>kid</cite> made available in the JWS header.</p>
 </section>
 </section>
 <section id="id1">
 <h3>Wallet Attestation<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
-<p>The Wallet Attestation MUST be provisioned in JWT format, whose
+<p>The Wallet Attestation MUST be provisioned in JWT format, with
 headers and payload claims are listed below.</p>
 <section id="header">
 <h4>Header<a class="headerlink" href="#header" title="Permalink to this heading">¶</a></h4>
@@ -1303,8 +1303,9 @@ headers and payload claims are listed below.</p>
 signature (es. ES256).</p></td>
 </tr>
 <tr class="row-odd"><td><p>kid</p></td>
-<td><p>Key id used by the Wallet
-Provider to sign the attestation.</p></td>
+<td><p>The key id of the key used by the
+Wallet Provider to sign the
+attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p>typ</p></td>
 <td><p>Media type, set to
@@ -1328,8 +1329,8 @@ Wallet Provider.</p></td>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The claim <cite>trust_chain</cite> or the claim <cite>x5c</cite> MUST be provisioned.
-If these are both provisioned, the related public key contained in
+<p>One of the claims <cite>trust_chain</cite> and <cite>x5c</cite> MUST be provisioned.
+If they are both provided, the related public key
 MUST be the same in both <cite>trust_chain</cite> and <cite>x5c</cite>.</p>
 </div>
 </section>
