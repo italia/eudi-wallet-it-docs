@@ -85,7 +85,7 @@ Each time a release is created or edited, a preview is built based on the tag th
 
 ## How to contribute
 
-Feel free to open [Pull Requests and to present a problem with an Issue](CONTRIBUTING.md).
+Don't hesitate to submit [Pull Requests or raise Issues](CONTRIBUTING.md) if you encounter any problems.
 
 
 ## License
