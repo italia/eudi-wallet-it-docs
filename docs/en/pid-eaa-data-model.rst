@@ -190,19 +190,19 @@ The ``claims`` parameter contains the User attributes with the following mandato
       - `[OpenID Connect Core 1.0, Section 5.1] <http://openid.net/specs/openid-connect-core-1_0.html>`_
     * - **birth_date**
       - [SD]. Date of Birth.
-      - -
+      - 
     * - **birth_place**
       - [SD]. Place of Birth. JSON Object with the following subclaims:
 
         - **country**
         - **locality**
-      - -
+      - 
     * - **unique_id**
       - [SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to `ANPR rules <https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/>`_
-      - -
+      - 
     * - **tax_id_code**
       - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
-      - -
+      - 
 
 
 
