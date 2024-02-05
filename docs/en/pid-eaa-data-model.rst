@@ -75,7 +75,7 @@ The JOSE header contains the following mandatory parameters:
     - JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
     - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-connect-federation-1_0.html#name-trust-chain-header-paramete>`_.
 
-The following claims MUST be in the JWT payload. Some of these claims MAY be selectively disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
+The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
 
 .. list-table:: 
     :widths: 20 60 20
