@@ -75,7 +75,7 @@ The JOSE header contains the following mandatory parameters:
     - JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
     - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-connect-federation-1_0.html#name-trust-chain-header-paramete>`_.
 
-The following claims MUST be in the JWT payload and MUST NOT be included in the disclosures,  i.e. cannot be selectively disclosed. 
+The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
 
 .. list-table:: 
     :widths: 20 60 20
@@ -85,31 +85,31 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
       - **Description**
       - **Reference**
     * - **iss**
-      - URL string representing the PID/(Q)EAA Issuer unique identifier.
+      - [NSD].URL string representing the PID/(Q)EAA Issuer unique identifier.
       - `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
     * - **sub**
-      - Thumbprint of the JWK in the ``cnf`` parameter.
+      - [NSD].Thumbprint of the JWK in the ``cnf`` parameter.
       - `[RFC7519, Section 4.1.2] <https://www.iana.org/go/rfc7519>`_.
     * - **jti**
-      - Unique Token ID identifier of this JWT. It SHOULD be a String in *uuid4* format.
+      - [NSD].Unique Token ID identifier of this JWT. It SHOULD be a String in *uuid4* format.
       - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7519>`_.
     * - **iat**
-      - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`. 
+      - [SD].UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.6] <https://www.iana.org/go/rfc7519>`_.
     * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
+      - [NSD].UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **status**
-      - HTTPS URL where the credential validity status is available.
+      - [NSD].HTTPS URL where the credential validity status is available. 
       - `[SD-JWT-VC. Section 4.2.2.2] <https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#section-4.2.2.2>`_.
     * - **cnf**
-      - JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key. 
+      - [NSD].JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
     * - **vct**
-      - Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
+      - [NSD].Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
       - `[draft-terbu-sd-jwt-vc-latest. Section Type Claim] <https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#type-claim>`__.
     * - **verified_claims**
-      - JSON object containing the following sub-elements: 
+      - [NSD].JSON object containing the following sub-elements: 
 
             -   **verification**; 
             -   **claims**.
@@ -120,7 +120,7 @@ The following claims MUST be in the JWT payload and MUST NOT be included in the 
 PID/(Q)EAA Verification field 
 -----------------------------
 
-The ``verification`` claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User attributes (claims).  Some of these additional claims MAY be selectively disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable (SD) or not (NSD).
+The ``verification`` claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User attributes (claims).  
 
 The ``verification`` claim is a JSON structure with all the following mandatory sub-claims.
 
@@ -188,33 +188,40 @@ The ``claims`` parameter contains the User attributes with the following mandato
     * - **family_name**
       - [SD]. Current Family Name.
       - `[OpenID Connect Core 1.0, Section 5.1] <http://openid.net/specs/openid-connect-core-1_0.html>`_
-    * - **birthdate**
+    * - **birth_date**
       - [SD]. Date of Birth.
-      - `[OpenID Connect Core 1.0, Section 5.1] <http://openid.net/specs/openid-connect-core-1_0.html>`_
-    * - **place_of_birth**
+      - 
+    * - **birth_place**
       - [SD]. Place of Birth. JSON Object with the following subclaims:
 
         - **country**
         - **locality**
-      - `[OpenID Connect for Identity Assurance 1.0, Section 4] <https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-4>`_
+      - 
     * - **unique_id**
       - [SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to `ANPR rules <https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/>`_
-      - This specification
+      - 
     * - **tax_id_code**
       - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
-      - This specification
+      - 
 
 
 
 PID Non-normative Examples
 --------------------------
 
-In the following, the non-normative example of a PID.
+In the following, the non-normative example of a PID in JSON format.
 
 .. code-block:: JSON
 
   {
-  "verified_claims": {
+    "iss": "https://issuer.example.org",
+    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+    "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
+    "iat": 1683000000,
+    "exp": 1883000000,
+    "status": "https://pidprovider.example.org/status",
+    "vct": "PidIdentificationData",
+    "verified_claims": {
       "verification": {
         "trust_framework": "eidas",
         "assurance_level": "high",
@@ -225,7 +232,8 @@ In the following, the non-normative example of a PID.
               "type": "https://eudi.wallet.cie.gov.it",
               "source": {
                 "organization_name": "Ministero dell'Interno",
-                "organization_id": "m_it",
+                "organization_id":
+                  "urn:eudi:it:organization_id:ipa_code:m_it",
                 "country_code": "IT"
               }
             }
@@ -233,12 +241,11 @@ In the following, the non-normative example of a PID.
         ]
       },
       "claims": {
-        "unique_id":
-          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "unique_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "given_name": "Mario",
         "family_name": "Rossi",
-        "birthdate": "1980-01-10",
-        "place_of_birth": {
+        "birth_date": "1980-01-10",
+        "birth_place": {
           "country": "IT",
           "locality": "Rome"
         },
@@ -265,117 +272,176 @@ The corresponding SD-JWT verson for PID is given by
 .. code-block:: JSON
 
   {
-    "iss": "https://pidprovider.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...",
+    "_sd": [
+      "7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc"
+    ],
+    "iss": "https://issuer.example.org",
+    "exp": 1883000000,
+    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
     "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
-    "iat": 1541493724,
-    "exp": 1541493724,
     "status": "https://pidprovider.example.org/status",
-    "cnf": {
-      "jwk": {
-        "kty": "RSA",
-        "use": "sig",
-        "n": "1Ta-sE ...",
-        "e": "AQAB",
-        "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-      }
-    },
-    "type": "PersonIdentificationData",
+    "vct": "PidIdentificationData",
     "verified_claims": {
       "verification": {
         "_sd": [
-          "OGm7ryXgt5Xzlevp-Hu-UTk0a-TxAaPAobqv1pIWMfw"
+          "gd8gRxKT1hg8ptnvR5fPGhae0VXllDblsiJT9adxiS8"
         ],
         "trust_framework": "eidas",
         "assurance_level": "high"
       },
       "claims": {
         "_sd": [
-          "8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E",
-          "BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig",
-          "CFLGzentGNRFngnLVVQVcoAFi05r6RJUX-rdbLdEfew",
-          "JU_sTaHCngS32X-0ajHrd1-HCLCkpT5YqgcfQme168w",
-          "VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA",
-          "zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o"
+          "4g9lBt38U1EeTA1zlvvGfFgPPcoe3zmbQ_zSRDgHQaE",
+          "EYgzJ1hTYWJjhBK2V3b8HV3e_fEf-Udffc5ymY77WtQ",
+          "EfP5vho0dBdoObBbL45cOTmMsKo6LrSuN4My72y01SE",
+          "F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s",
+          "IcYHQydT_C3U1IqaJlFicxLlaHTHvElyFZ6Jxia27qQ",
+          "lXgxEDAuPeUvmkcNGr9FZuqodwFqUT01gJj7xd4yEPA"
         ]
       }
     },
-    "_sd_alg": "sha-256"
+    "_sd_alg": "sha-256",
+    "cnf": {
+      "jwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+        "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+      }
+    }
   }
 
 In the following the disclosure list is given
 
-Claim **evidence**:
+**Claim** ``iat``:
 
--  SHA-256 Hash: ``OGm7ryXgt5Xzlevp-Hu-UTk0a-TxAaPAobqv1pIWMfw``
+-  SHA-256 Hash: ``7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc``
 -  Disclosure:
-   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImV2aWRlbmNlIiwgW3sidHlw``
-   ``ZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQiOiB7InR5cGUiOiAi``
-   ``ZWlkYXMuaXQuY2llIiwgInNvdXJjZSI6IHsib3JnYW5pemF0aW9uX25hbWUi``
-   ``OiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdhbml6YXRpb25faWQi``
-   ``OiAibV9pdCIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19XV0``
--  Contents: ``["2GLC42sKQveCfGfryNRN9w", "evidence", [{"type":``
-   ``"electronic_record", "record": {"type": "https://eudi.wallet.cie.gov.it",``
-   ``"source": {"organization_name": "Ministero dell'Interno",``
-   ``"organization_id": "m_it", "country_code": "IT"}}}]]``
+   ``WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
+-  Contents: ``["57mvycTh5yZCrKLZ5xnfUw", "iat", 1683000000]``
 
-Claim **unique_id**:
+**Claim** ``source``:
 
--  SHA-256 Hash: ``BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig``
+-  SHA-256 Hash: ``ZMHbFH9SeT9CZQaOMVrXDMGWIouzXRKspKp9fDhvJ3I``
 -  Disclosure:
-   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4``
+   ``WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsIHsib3JnYW5p``
+   ``emF0aW9uX25hbWUiOiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdh``
+   ``bml6YXRpb25faWQiOiAidXJuOmV1ZGk6aXQ6b3JnYW5pemF0aW9uX2lkOmlw``
+   ``YV9jb2RlOm1faXQiLCAiY291bnRyeV9jb2RlIjogIklUIn1d``
+-  Contents:
+   ``["kucrBmlo_hMaIFF585RzaQ", "source", {"organization_name":``
+   ``"Ministero dell'Interno", "organization_id":``
+   ``"urn:eudi:it:organization_id:ipa_code:m_it", "country_code":``
+   ``"IT"}]``
+
+**Claim** ``evidence``:
+
+-  SHA-256 Hash: ``gd8gRxKT1hg8ptnvR5fPGhae0VXllDblsiJT9adxiS8``
+-  Disclosure:
+   ``WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImV2aWRlbmNlIiwgW3sidHlw``
+   ``ZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQiOiB7Il9zZCI6IFsi``
+   ``Wk1IYkZIOVNlVDlDWlFhT01WclhETUdXSW91elhSS3NwS3A5ZkRodkozSSJd``
+   ``LCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LmNpZS5nb3YuaXQifX1d``
+   ``XQ``
+-  Contents: ``["NTNRoOiuVVRtF6CEztd9Zw", "evidence", [{"type":``
+   ``"electronic_record", "record": {"_sd":``
+   ``["ZMHbFH9SeT9CZQaOMVrXDMGWIouzXRKspKp9fDhvJ3I"], "type":``
+   ``"https://eudi.wallet.cie.gov.it"}}]]``
+
+**Claim** ``unique_id``:
+
+-  SHA-256 Hash: ``4g9lBt38U1EeTA1zlvvGfFgPPcoe3zmbQ_zSRDgHQaE``
+-  Disclosure:
+   ``WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgInVuaXF1ZV9pZCIsICJ4eHh4``
    ``eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ``
--  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "unique_id",``
+-  Contents: ``["FDSSPggzGBUwQLHDSE6wQQ", "unique_id",``
    ``"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]``
 
-Claim **given_name**:
+**Claim** ``given_name``:
 
--  SHA-256 Hash: ``zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o``
+-  SHA-256 Hash: ``lXgxEDAuPeUvmkcNGr9FZuqodwFqUT01gJj7xd4yEPA``
 -  Disclosure:
-   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFy``
+   ``WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImdpdmVuX25hbWUiLCAiTWFy``
    ``aW8iXQ``
--  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "given_name", "Mario"]``
+-  Contents: ``["KZ8e5wVEtDvb1ziSPA4DzA", "given_name", "Mario"]``
 
-Claim **family_name**:
+**Claim** ``family_name``:
 
--  SHA-256 Hash: ``VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA``
+-  SHA-256 Hash: ``IcYHQydT_C3U1IqaJlFicxLlaHTHvElyFZ6Jxia27qQ``
 -  Disclosure:
-   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJv``
+   ``WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImZhbWlseV9uYW1lIiwgIlJv``
    ``c3NpIl0``
--  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "family_name", "Rossi"]``
+-  Contents: ``["pZ5MRyOxpVWZuHLoJ-yjRg", "family_name", "Rossi"]``
 
-Claim **birthdate**:
+**Claim** ``birth_date``:
 
--  SHA-256 Hash: ``CFLGzentGNRFngnLVVQVcoAFi05r6RJUX-rdbLdEfew``
+-  SHA-256 Hash: ``EYgzJ1hTYWJjhBK2V3b8HV3e_fEf-Udffc5ymY77WtQ``
 -  Disclosure:
-   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoZGF0ZSIsICIxOTgw``
-   ``LTAxLTEwIl0``
--  Contents: ``["Qg_O64zqAxe412a108iroA", "birthdate", "1980-01-10"]``
+   ``WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgImJpcnRoX2RhdGUiLCAiMTk4``
+   ``MC0wMS0xMCJd``
+-  Contents: ``["jtVuKCpn7bTcHrAg_seUbQ", "birth_date", "1980-01-10"]``
 
-Claim **place_of_birth**:
+**Claim** ``birth_place``:
 
--  SHA-256 Hash: ``JU_sTaHCngS32X-0ajHrd1-HCLCkpT5YqgcfQme168w``
+-  SHA-256 Hash: ``EfP5vho0dBdoObBbL45cOTmMsKo6LrSuN4My72y01SE``
 -  Disclosure:
-   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBsYWNlX29mX2JpcnRoIiwg``
-   ``eyJjb3VudHJ5IjogIklUIiwgImxvY2FsaXR5IjogIlJvbWUifV0``
+   ``WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImJpcnRoX3BsYWNlIiwgeyJj``
+   ``b3VudHJ5IjogIklUIiwgImxvY2FsaXR5IjogIlJvbWUifV0``
 -  Contents:
-   ``["AJx-095VPrpTtN4QMOqROA", "place_of_birth", {"country":``
-   ``"IT", "locality": "Rome"}]``
+   ``["WDkd6JsNhDFvLP4s1hQdyA", "birth_place", {"country": "IT",``
+   ``"locality": "Rome"}]``
 
-Claim **tax_id_code**:
+**Claim** ``tax_id_code``:
 
--  SHA-256 Hash: ``8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E``
+-  SHA-256 Hash: ``F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s``
 -  Disclosure:
-   ``WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
+   ``WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
    ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["Pc33JM2LchcU_lHggv_ufQ", "tax_id_code",``
+-  Contents: ``["4ksAz6bMUKy6ZvN1h8HDuQ", "tax_id_code",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
+
+
 
 The combined format for the PID issuance is given by
 
 .. code-block::
 
-  eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJSUzUxMiIsImtpZCI6ImQxMjZhNmE4NTZmNzcyNDU2MDQ4NGZhOWRjNTlkMTk1IiwidHJ1c3RfY2hhaW4iOlsiTkVoUmRFUnBZbmxIWTNNNVdsZFdUV1oyYVVobSAuLi4iLCJleUpoYkdjaU9pSlNVekkxTmlJc0ltdHBaQ0k2IC4uLiIsIklrSllkbVp5Ykc1b1FVMTFTRkl3TjJGcVZXMUIgLi4uIl19.eyJpc3MiOiJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnIiwic3ViIjoiTnpiTHNYaDh1RENjZDdub1dYRlpBZkhreFpzUkdDOVhzLi4uIiwianRpIjoidXJuOnV1aWQ6NmM1YzBhNDktYjU4OS00MzFkLWJhZTctMjE5MTIyYTllYzJjIiwiaWF0IjoxNTQxNDkzNzI0LCJleHAiOjE1NDE0OTM3MjQsInN0YXR1cyI6Imh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmcvc3RhdHVzIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJSU0EiLCJ1c2UiOiJzaWciLCJuIjoiMVRhLXNFIOKApiIsImUiOiJBUUFCIiwia2lkIjoiWWhORlMzWW5DOXRqaUNhaXZoV0xWVUozQXh3R0d6Xzk4dVJGYXFNRUVzIn19LCJ0eXBlIjoiUGVyc29uSWRlbnRpZmljYXRpb25EYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiT0dtN3J5WGd0NVh6bGV2cC1IdS1VVGswYS1UeEFhUEFvYnF2MXBJV01mdyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhcyIsImFzc3VyYW5jZV9sZXZlbCI6ImhpZ2gifSwiY2xhaW1zIjp7Il9zZCI6WyI4SmpvekJmb3ZNTnZRM0hmbG1QV3k0TzE5R3B4czYxRldIalplYlU1ODlFIiwiQm9NR2t0VzFyYmlrbnR3OEZ6eF9CZUw0WWJBbmRyNkFIc2RncGF0RkNpZyIsIkNGTEd6ZW50R05SRm5nbkxWVlFWY29BRmkwNXI2UkpVWC1yZGJMZEVmZXciLCJKVV9zVGFIQ25nUzMyWC0wYWpIcmQxLUhDTENrcFQ1WXFnY2ZRbWUxNjh3IiwiVlFJLVMxbVQxS3hmcTJvOEo5aW83eE1NWDJNSXhhRzlNOVBlSlZxck1jQSIsInpWZGdoY21DbE1WV2xVZ0dzR3BTa0NQa0VIWjR1OW9XajFTbElCbENjMW8iXX19LCJfc2RfYWxnIjoic2hhLTI1NiJ9.WzEiFaOjnobQisjTQ92JtKEXRN-2Sgvjklpu4IdC_cT2T6Tm8Z6sqbVy6n94AAEv-HFSv5JoSt6YjPDnGzOxN_W_131rILU8YaiNt8w31nRGIvHjJIC0w-hHIcG1LmvJshSMcT3RHeApRCmsO7xkHWmUsjt37dOzEagEti5i47hnZAbu7vWXsvUlBNNN8v7tJBLspO2Q0vnWhEDX1hQ7IH1b8oKh-_aQrhwVm9Bcs9CG8o6N9iqubCSpFI6Gty4ZZgHEb95knETVhw8IL10Z9P_Hr9twXZQaCCC8xrNh4afwR9TiDQzTr92m7luyvDfmzVgHCponI7VBhqmRqZVYQyDhq6EJbtRtIsYenla5NSKBjV8Etdlec94vJAHZNzue9aNUQeXae55V5m5O9wLoWhgV2vl4xV5C-N5s5Uzs08GAxo-CUaNOD3BQE9vfrT47IBCm4hUCnvDise_aWNCeKOQABV1J9_tV9lWZsECVuUuWWwELHCUXgdyiA3QtUtXz
+  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
+  IjdXRzRuVDZLMjZfUjM5NzV6Y3duVndnb0hBN2I5ODhfMy12SnpiWmY2WWMiXSwgImlz
+  cyI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsICJleHAiOiAxODgzMDAwMDAw
+  LCAic3ViIjogIk56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJqdGki
+  OiAidXJuOnV1aWQ6NmM1YzBhNDktYjU4OS00MzFkLWJhZTctMjE5MTIyYTllYzJjIiwg
+  InN0YXR1cyI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnL3N0YXR1cyIs
+  ICJ2Y3QiOiAiUGlkSWRlbnRpZmljYXRpb25EYXRhIiwgInZlcmlmaWVkX2NsYWltcyI6
+  IHsidmVyaWZpY2F0aW9uIjogeyJfc2QiOiBbImdkOGdSeEtUMWhnOHB0bnZSNWZQR2hh
+  ZTBWWGxsRGJsc2lKVDlhZHhpUzgiXSwgInRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIs
+  ICJhc3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCJ9LCAiY2xhaW1zIjogeyJfc2QiOiBbIjRn
+  OWxCdDM4VTFFZVRBMXpsdnZHZkZnUFBjb2Uzem1iUV96U1JEZ0hRYUUiLCAiRVlnekox
+  aFRZV0pqaEJLMlYzYjhIVjNlX2ZFZi1VZGZmYzV5bVk3N1d0USIsICJFZlA1dmhvMGRC
+  ZG9PYkJiTDQ1Y09UbU1zS282THJTdU40TXk3MnkwMVNFIiwgIkY5MFNLSzluSVFjSElF
+  bGtIWV91bHRfOUZHcVllLVJ5ZHZZM0UwcVI5NnMiLCAiSWNZSFF5ZFRfQzNVMUlxYUps
+  RmljeExsYUhUSHZFbHlGWjZKeGlhMjdxUSIsICJsWGd4RURBdVBlVXZta2NOR3I5Rlp1
+  cW9kd0ZxVVQwMWdKajd4ZDR5RVBBIl19fSwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
+  bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
+  QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
+  eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.OjCk1
+  G0STMjlG1eSfQRQHEcMdWxRkEDk0yF5eVahuW7x2qymvv_iLqBOLwVb4R_kGHVc4w6ju
+  5hs2Pmz4diW4w~WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMD
+  AwMDBd~WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsIHsib3JnYW5pe
+  mF0aW9uX25hbWUiOiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdhbml6YXRpb
+  25faWQiOiAidXJuOmV1ZGk6aXQ6b3JnYW5pemF0aW9uX2lkOmlwYV9jb2RlOm1faXQiL
+  CAiY291bnRyeV9jb2RlIjogIklUIn1d~WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3Iiwg
+  ImV2aWRlbmNlIiwgW3sidHlwZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQi
+  OiB7Il9zZCI6IFsiWk1IYkZIOVNlVDlDWlFhT01WclhETUdXSW91elhSS3NwS3A5ZkRo
+  dkozSSJdLCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LmNpZS5nb3YuaXQifX1d
+  XQ~WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4e
+  C14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ~WyJLWjhlNXdWRXREdmIxemlTUE
+  E0RHpBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJwWjVNUnlPeHBWV1p1SExvSi1
+  5alJnIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJqdFZ1S0NwbjdiVGNIckFnX3N
+  lVWJRIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJXRGtkNkpzTmhERnZMUD
+  RzMWhRZHlBIiwgImJpcnRoX3BsYWNlIiwgeyJjb3VudHJ5IjogIklUIiwgImxvY2FsaX
+  R5IjogIlJvbWUifV0~WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiwgInRheF9pZF9jb2
+  RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ~
 
 (Q)EAA Non-normative examples
 -----------------------------
@@ -385,7 +451,14 @@ In the following, we provide a non-normative example of (Q)EAA in JSON.
 .. code-block:: JSON
 
   {
-  "verified_claims": {
+    "iss": "https://issuer.example.org",
+    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+    "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
+    "iat": 1683000000,
+    "exp": 1883000000,
+    "status": "https://issuer.example.org/status",
+    "vct": "DisabilityCard",
+    "verified_claims": {
       "verification": {
         "trust_framework": "eidas",
         "assurance_level": "high",
@@ -395,8 +468,9 @@ In the following, we provide a non-normative example of (Q)EAA in JSON.
             "record": {
               "type": "https://eudi.wallet.pdnd.gov.it",
               "source": {
-                "organization_name": "Ragioneria Generale dello Stato",
-                "organization_id": "urn:eudi:it:organization_id:ipa_code:QLHCFC",
+                "organization_name": "Istituto Nazionale della Previdenza Sociale",
+                "organization_id":
+                  "urn:eudi:it:organization_id:ipa_code:inps",
                 "country_code": "IT"
               }
             }
@@ -404,14 +478,13 @@ In the following, we provide a non-normative example of (Q)EAA in JSON.
         ]
       },
       "claims": {
+        "document_number": "XXXXXXXXXX",
         "given_name": "Mario",
         "family_name": "Rossi",
-        "birthdate": "1980-01-10",
-        "place_of_birth": {
-          "country": "IT",
-          "locality": "Rome"
-        },
-        "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"
+        "birth_date": "1980-01-10",
+        "expiry_date": "2024-01-01",
+        "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX",
+        "constant_attendance_allowance": true
       }
     }
   }
@@ -434,106 +507,189 @@ The corresponding SD-JWT for the previous data is represented as follow, as deco
 .. code-block:: JSON
 
   {
+    "_sd": [
+      "7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc"
+    ],
     "iss": "https://issuer.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...",
+    "exp": 1883000000,
+    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
     "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
-    "iat": 1541493724,
-    "exp": 1541493724,
     "status": "https://issuer.example.org/status",
-    "cnf": {
-      "jwk": {
-        "kty": "RSA",
-        "e": "AQAB",
-        "use": "sig",
-        "kid": "d126a6a856f7724560484fa9dc59d195",
-        "alg": "RS256",
-        "n": "oians5wYCWk4wFtEStVYcn_xOw9edKMNGH33_q6_pBI0XaTY7P3apUgjO0ivk5c1NQAVY6PZmcPQ8P1Y0cBAC9STRmzvTvDQcOocLhVy2ZlcXTu39oOGLNra8_LQsaMA386lO_qMW4-uY6DbGZY4vHkScvAC9FIZYDPafqWBEQUNV2QOFMH5VPoihCTKHwMGXnZBatYObg57xSOUX-bvhO_sFMm3k4RvsXcr3MFojAhLfwutu_jK9k7N9KR_mNc5IpiOyhZw_sUmF6SamRqsSPp42KD10hPMW0YJTDMYxBdHrMFeSMHYIMY4oBBT43__a55zILI_CnIk4241wOvGvw"
-      }
-    },
-    "type": "HealthInsuranceData",
+    "vct": "DisabilityCard",
     "verified_claims": {
       "verification": {
         "_sd": [
-          "2jIR18gfeASHYGB27s7sS3S_iQ4xxFIxCRyiohrBfns"
+          "sTskq0yFy31ZH3YP2nN_nFnd7H9q18dU3oEa1DC5LRc"
         ],
         "trust_framework": "eidas",
         "assurance_level": "high"
       },
       "claims": {
         "_sd": [
-          "1iztq7bov64xTYbDkWFc44_VjWe029hZqXeUIloqUN4",
-          "ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E",
-          "FV2CDNWuTqTgOHaftvVaumBF0OlmnyxMswyf4uIxrhY",
-          "dZWjq7mJSSX-XTI_HWuE8B2x6IdM5lE-doD_yBpKJao",
-          "gHYi19frbD_i4BoaWENOjc3lCnMj4pbGNQcsBj_QM4Q"
+          "3humFjiCYHdHzjL-OEd1vKnQa10ivaYEd1dCCkfRuaA",
+          "EYgzJ1hTYWJjhBK2V3b8HV3e_fEf-Udffc5ymY77WtQ",
+          "F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s",
+          "IcYHQydT_C3U1IqaJlFicxLlaHTHvElyFZ6Jxia27qQ",
+          "dfrmUvonZDgealZCGwk3ufmc_4ept3y9N7xhWZlCyxo",
+          "ji86HS1v3D41tU5JqW4oWCwTJDuTUwp1ewqoCUzzEXk",
+          "lXgxEDAuPeUvmkcNGr9FZuqodwFqUT01gJj7xd4yEPA"
         ]
       }
     },
-    "_sd_alg": "sha-256"
+    "_sd_alg": "sha-256",
+    "cnf": {
+      "jwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+        "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+      }
+    }
   }
 
 In the following the disclosure list is given:
 
-Claim **evidence**:
+**Claim** ``iat``:
 
--  SHA-256 Hash: ``2jIR18gfeASHYGB27s7sS3S_iQ4xxFIxCRyiohrBfns``
+-  SHA-256 Hash: ``7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc``
 -  Disclosure:
-   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImV2aWRlbmNlIiwgW3sidHlw``
-   ``ZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQiOiB7InR5cGUiOiAi``
-   ``ZWlkYXMuaXQucGRuZCIsICJzb3VyY2UiOiB7Im9yZ2FuaXphdGlvbl9uYW1l``
-   ``IjogIlJhZ2lvbmVyaWEgR2VuZXJhbGUgZGVsbG8gU3RhdG8iLCAib3JnYW5p``
-   ``emF0aW9uX2lkIjogIlFMSENGQyIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19``
-   ``XV0``
--  Contents: ``["2GLC42sKQveCfGfryNRN9w", "evidence", [{"type":``
-   ``"electronic_record", "record": {"type": "https://eudi.wallet.pdnd.gov.it",``
-   ``"source": {"organization_name": "Ragioneria Generale dello Stato",``
-   ``"organization_id": "QLHCFC", "country_code":"IT"}}}]]``
+   ``WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
+-  Contents: ``["57mvycTh5yZCrKLZ5xnfUw", "iat", 1683000000]``
 
-Claim **given_name**:
+**Claim** ``source``:
 
--  SHA-256 Hash: ``gHYi19frbD_i4BoaWENOjc3lCnMj4pbGNQcsBj_QM4Q``
+-  SHA-256 Hash: ``qfuzrQuGcbBBKaE4Q9eqVCSznzJ2rNndLG8q606RLsM``
 -  Disclosure:
-   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ``
--  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "given_name", "Mario"]``
-
-Claim **family_name**:
-
--  SHA-256 Hash: ``dZWjq7mJSSX-XTI_HWuE8B2x6IdM5lE-doD_yBpKJao``
--  Disclosure:
-   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0``
--  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "family_name", "Rossi"]``
-
-Claim **birthdate**:
-
--  SHA-256 Hash: ``FV2CDNWuTqTgOHaftvVaumBF0OlmnyxMswyf4uIxrhY``
--  Disclosure:
-   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImJpcnRoZGF0ZSIsICIxOTgwLTAxLTEwIl0``
--  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "birthdate", "1980-01-10"]``
-
-Claim **place_of_birth**:
-
--  SHA-256 Hash: ``1iztq7bov64xTYbDkWFc44_VjWe029hZqXeUIloqUN4``
--  Disclosure:
-   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgInBsYWNlX29mX2JpcnRoIiwg``
-   ``eyJjb3VudHJ5IjogIklUIiwgImxvY2FsaXR5IjogIlJvbWUifV0``
+   ``WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsIHsib3JnYW5p``
+   ``emF0aW9uX25hbWUiOiAiSXN0aXR1dG8gTmF6aW9uYWxlIGRlbGxhIFByZXZp``
+   ``ZGVuemEgU29jaWFsZSIsICJvcmdhbml6YXRpb25faWQiOiAidXJuOmV1ZGk6``
+   ``aXQ6b3JnYW5pemF0aW9uX2lkOmlwYV9jb2RlOmlucHMiLCAiY291bnRyeV9j``
+   ``b2RlIjogIklUIn1d``
 -  Contents:
-   ``["Qg_O64zqAxe412a108iroA", "place_of_birth", {"country":``
-   ``"IT", "locality": "Rome"}]``
+   ``["kucrBmlo_hMaIFF585RzaQ", "source", {"organization_name":``
+   ``"Istituto Nazionale della Previdenza Sociale",``
+   ``"organization_id":``
+   ``"urn:eudi:it:organization_id:ipa_code:inps", "country_code":``
+   ``"IT"}]``
 
-Claim **tax_id_code**:
+**Claim** ``evidence``:
 
--  SHA-256 Hash: ``ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E``
+-  SHA-256 Hash: ``sTskq0yFy31ZH3YP2nN_nFnd7H9q18dU3oEa1DC5LRc``
 -  Disclosure:
-   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJ``
+   ``WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImV2aWRlbmNlIiwgW3sidHlw``
+   ``ZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQiOiB7Il9zZCI6IFsi``
+   ``cWZ1enJRdUdjYkJCS2FFNFE5ZXFWQ1N6bnpKMnJObmRMRzhxNjA2UkxzTSJd``
+   ``LCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LnBkbmQuZ292Lml0In19``
+   ``XV0``
+-  Contents: ``["NTNRoOiuVVRtF6CEztd9Zw", "evidence", [{"type":``
+   ``"electronic_record", "record": {"_sd":``
+   ``["qfuzrQuGcbBBKaE4Q9eqVCSznzJ2rNndLG8q606RLsM"], "type":``
+   ``"https://eudi.wallet.pdnd.gov.it"}}]]``
+
+**Claim** ``document_number``:
+
+-  SHA-256 Hash: ``3humFjiCYHdHzjL-OEd1vKnQa10ivaYEd1dCCkfRuaA``
+-  Disclosure:
+   ``WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImRvY3VtZW50X251bWJlciIs``
+   ``ICJYWFhYWFhYWFhYIl0``
+-  Contents:
+   ``["FDSSPggzGBUwQLHDSE6wQQ", "document_number", "XXXXXXXXXX"]``
+
+**Claim** ``given_name``:
+
+-  SHA-256 Hash: ``lXgxEDAuPeUvmkcNGr9FZuqodwFqUT01gJj7xd4yEPA``
+-  Disclosure:
+   ``WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImdpdmVuX25hbWUiLCAiTWFy``
+   ``aW8iXQ``
+-  Contents: ``["KZ8e5wVEtDvb1ziSPA4DzA", "given_name", "Mario"]``
+
+**Claim** ``family_name``:
+
+-  SHA-256 Hash: ``IcYHQydT_C3U1IqaJlFicxLlaHTHvElyFZ6Jxia27qQ``
+-  Disclosure:
+   ``WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImZhbWlseV9uYW1lIiwgIlJv``
+   ``c3NpIl0``
+-  Contents: ``["pZ5MRyOxpVWZuHLoJ-yjRg", "family_name", "Rossi"]``
+
+**Claim** ``birth_date``:
+
+-  SHA-256 Hash: ``EYgzJ1hTYWJjhBK2V3b8HV3e_fEf-Udffc5ymY77WtQ``
+-  Disclosure:
+   ``WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgImJpcnRoX2RhdGUiLCAiMTk4``
+   ``MC0wMS0xMCJd``
+-  Contents: ``["jtVuKCpn7bTcHrAg_seUbQ", "birth_date", "1980-01-10"]``
+
+**Claim** ``expiry_date``:
+
+-  SHA-256 Hash: ``dfrmUvonZDgealZCGwk3ufmc_4ept3y9N7xhWZlCyxo``
+-  Disclosure:
+   ``WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImV4cGlyeV9kYXRlIiwgIjIw``
+   ``MjQtMDEtMDEiXQ``
+-  Contents: ``["WDkd6JsNhDFvLP4s1hQdyA", "expiry_date", "2024-01-01"]``
+
+**Claim** ``tax_id_code``:
+
+-  SHA-256 Hash: ``F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s``
+-  Disclosure:
+   ``WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
    ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["AJx-095VPrpTtN4QMOqROA", "tax_id_code",``
+-  Contents: ``["4ksAz6bMUKy6ZvN1h8HDuQ", "tax_id_code",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
+
+**Claim** ``constant_attendance_allowance``:
+
+-  SHA-256 Hash: ``ji86HS1v3D41tU5JqW4oWCwTJDuTUwp1ewqoCUzzEXk``
+-  Disclosure:
+   ``WyJEZFdxS2g3d2RJNVZBeEtTdnhzWFZRIiwgImNvbnN0YW50X2F0dGVuZGFu``
+   ``Y2VfYWxsb3dhbmNlIiwgdHJ1ZV0``
+-  Contents:
+   ``["DdWqKh7wdI5VAxKSvxsXVQ", "constant_attendance_allowance",``
+   ``true]``
+
+
 
 The combined format for the PID issuance is represented below:
 
 .. code-block::
 
-  eyJhbGciOiJSUzI1NiIsImtpZCI6Iks2S2hpUDNrOC1XOWVHdk1SVTg0NVVwWVRTdEJsR0g4ejFKZl85czMtUWsifQ.eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsInN1YiI6Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcy4uLiIsImp0aSI6InVybjp1dWlkOjZjNWMwYTQ5LWI1ODktNDMxZC1iYWU3LTIxOTEyMmE5ZWMyYyIsImlhdCI6MTU0MTQ5MzcyNCwiZXhwIjoxNTQxNDkzNzI0LCJzdGF0dXMiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy9zdGF0dXMiLCJjbmYiOnsiandrIjp7Imt0eSI6IlJTQSIsImUiOiJBUUFCIiwidXNlIjoic2lnIiwia2lkIjoiZDEyNmE2YTg1NmY3NzI0NTYwNDg0ZmE5ZGM1OWQxOTUiLCJhbGciOiJSUzI1NiIsIm4iOiJvaWFuczV3WUNXazR3RnRFU3RWWWNuX3hPdzllZEtNTkdIMzNfcTZfcEJJMFhhVFk3UDNhcFVnak8waXZrNWMxTlFBVlk2UFptY1BROFAxWTBjQkFDOVNUUm16dlR2RFFjT29jTGhWeTJabGNYVHUzOW9PR0xOcmE4X0xRc2FNQTM4NmxPX3FNVzQtdVk2RGJHWlk0dkhrU2N2QUM5RklaWURQYWZxV0JFUVVOVjJRT0ZNSDVWUG9paENUS0h3TUdYblpCYXRZT2JnNTd4U09VWC1idmhPX3NGTW0zazRSdnNYY3IzTUZvakFoTGZ3dXR1X2pLOWs3TjlLUl9tTmM1SXBpT3loWndfc1VtRjZTYW1ScXNTUHA0MktEMTBoUE1XMFlKVERNWXhCZEhyTUZlU01IWUlNWTRvQkJUNDNfX2E1NXpJTElfQ25JazQyNDF3T3ZHdncifX0sInR5cGUiOiJIZWFsdGhJbnN1cmFuY2VEYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiMmpJUjE4Z2ZlQVNIWUdCMjdzN3NTM1NfaVE0eHhGSXhDUnlpb2hyQmZucyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhcyIsImFzc3VyYW5jZV9sZXZlbCI6ImhpZ2gifSwiY2xhaW1zIjp7Il9zZCI6WyIxaXp0cTdib3Y2NHhUWWJEa1dGYzQ0X1ZqV2UwMjloWnFYZVVJbG9xVU40IiwiRU5ObzMxamZ6RnA4WTJEVzBSLWZJTWVXd2U3RUxHdkdvSE13TUJwdTE0RSIsIkZWMkNETld1VHFUZ09IYWZ0dlZhdW1CRjBPbG1ueXhNc3d5ZjR1SXhyaFkiLCJkWldqcTdtSlNTWC1YVElfSFd1RThCMng2SWRNNWxFLWRvRF95QnBLSmFvIiwiZ0hZaTE5ZnJiRF9pNEJvYVdFTk9qYzNsQ25NajRwYkdOUWNzQmpfUU00USJdfX0sIl9zZF9hbGciOiJzaGEtMjU2In0.vl5ELdx9d7smuDHHDfBGaUySolBe7O3RROqpHDkM3txvXJxgZcCwZQhbWN3sSrBkJgSZ_kFEs2ddYIVKE4bglASlBbSizC8CASdJlyDD3T_dyimA1r2bwSfsHTyrcG_SpoU5Ee9KS-Lr2PCQ3LmTc8_nhaeBGtZCO4B8oZI9bpD6zqms1Zr-ymaE0pYnnQ3aWOclhiLavVudKxLxZvYXTdMStjyNbwBXekVVOnAZuCTuXMsD_jah7_MkmJP_buJgq3u6TthctsORHp4pKuZeI_43Y728-Qg7mIDeL5_-j_vgXdu7FWVa0OSTjZJM27GCDzr2M8LAhApk4aeDoF1Cmw
+  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
+  IjdXRzRuVDZLMjZfUjM5NzV6Y3duVndnb0hBN2I5ODhfMy12SnpiWmY2WWMiXSwgImlz
+  cyI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsICJleHAiOiAxODgzMDAwMDAw
+  LCAic3ViIjogIk56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJqdGki
+  OiAidXJuOnV1aWQ6NmM1YzBhNDktYjU4OS00MzFkLWJhZTctMjE5MTIyYTllYzJjIiwg
+  InN0YXR1cyI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy9zdGF0dXMiLCAidmN0
+  IjogIkRpc2FiaWxpdHlDYXJkIiwgInZlcmlmaWVkX2NsYWltcyI6IHsidmVyaWZpY2F0
+  aW9uIjogeyJfc2QiOiBbInNUc2txMHlGeTMxWkgzWVAybk5fbkZuZDdIOXExOGRVM29F
+  YTFEQzVMUmMiXSwgInRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIsICJhc3N1cmFuY2Vf
+  bGV2ZWwiOiAiaGlnaCJ9LCAiY2xhaW1zIjogeyJfc2QiOiBbIjNodW1GamlDWUhkSHpq
+  TC1PRWQxdktuUWExMGl2YVlFZDFkQ0NrZlJ1YUEiLCAiRVlnekoxaFRZV0pqaEJLMlYz
+  YjhIVjNlX2ZFZi1VZGZmYzV5bVk3N1d0USIsICJGOTBTS0s5bklRY0hJRWxrSFlfdWx0
+  XzlGR3FZZS1SeWR2WTNFMHFSOTZzIiwgIkljWUhReWRUX0MzVTFJcWFKbEZpY3hMbGFI
+  VEh2RWx5Rlo2SnhpYTI3cVEiLCAiZGZybVV2b25aRGdlYWxaQ0d3azN1Zm1jXzRlcHQz
+  eTlON3hoV1psQ3l4byIsICJqaTg2SFMxdjNENDF0VTVKcVc0b1dDd1RKRHVUVXdwMWV3
+  cW9DVXp6RVhrIiwgImxYZ3hFREF1UGVVdm1rY05HcjlGWnVxb2R3RnFVVDAxZ0pqN3hk
+  NHlFUEEiXX19LCAiX3NkX2FsZyI6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJr
+  dHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRX
+  NHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZR
+  NGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX19.hbgWxBoQtLVpTfygYVDhrgnoCkw
+  aw_hqY9GpxG4oXixejLEMvTOAwYFtqiNnYSuNaaGD6aemJW7jLSHDm9NOGA~WyI1N212
+  eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJrdWNyQm1sb19
+  oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsIHsib3JnYW5pemF0aW9uX25hbWUiOiAiSXN
+  0aXR1dG8gTmF6aW9uYWxlIGRlbGxhIFByZXZpZGVuemEgU29jaWFsZSIsICJvcmdhbml
+  6YXRpb25faWQiOiAidXJuOmV1ZGk6aXQ6b3JnYW5pemF0aW9uX2lkOmlwYV9jb2RlOml
+  ucHMiLCAiY291bnRyeV9jb2RlIjogIklUIn1d~WyJOVE5Sb09pdVZWUnRGNkNFenRkOV
+  p3IiwgImV2aWRlbmNlIiwgW3sidHlwZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZW
+  NvcmQiOiB7Il9zZCI6IFsicWZ1enJRdUdjYkJCS2FFNFE5ZXFWQ1N6bnpKMnJObmRMRz
+  hxNjA2UkxzTSJdLCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LnBkbmQuZ292Lm
+  l0In19XV0~WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImRvY3VtZW50X251bWJlci
+  IsICJYWFhYWFhYWFhYIl0~WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImdpdmVuX2
+  5hbWUiLCAiTWFyaW8iXQ~WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImZhbWlseV9
+  uYW1lIiwgIlJvc3NpIl0~WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgImJpcnRoX2R
+  hdGUiLCAiMTk4MC0wMS0xMCJd~WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImV4cG
+  lyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ~WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiw
+  gInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ~WyJEZFdxS2g3
+  d2RJNVZBeEtTdnhzWFZRIiwgImNvbnN0YW50X2F0dGVuZGFuY2VfYWxsb3dhbmNlIiwg
+  dHJ1ZV0~
 
 MDOC-CBOR
 =========
