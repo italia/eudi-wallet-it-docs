@@ -1118,7 +1118,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 </tbody>
 </table>
-<p>The following claims MUST be in the JWT payload and MUST NOT be included in the disclosures,  i.e. cannot be selectively disclosed.</p>
+<p>The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -1133,39 +1133,39 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>URL string representing the PID/(Q)EAA Issuer unique identifier.</p></td>
+<td><p>[NSD].URL string representing the PID/(Q)EAA Issuer unique identifier.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.1]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>Thumbprint of the JWK in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter.</p></td>
+<td><p>[NSD].Thumbprint of the JWK in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.2]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
-<td><p>Unique Token ID identifier of this JWT. It SHOULD be a String in <em>uuid4</em> format.</p></td>
+<td><p>[NSD].Unique Token ID identifier of this JWT. It SHOULD be a String in <em>uuid4</em> format.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.7]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[SD].UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.6]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
-<td><p>UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[NSD].UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.4]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>status</strong></p></td>
-<td><p>HTTPS URL where the credential validity status is available.</p></td>
+<td><p>[NSD].HTTPS URL where the credential validity status is available.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#section-4.2.2.2">[SD-JWT-VC. Section 4.2.2.2]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>cnf</strong></p></td>
-<td><p>JSON object containing the proof-of-possession key materials. By including a <strong>cnf</strong> (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the <strong>cnf</strong> parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.</p></td>
+<td><p>[NSD].JSON object containing the proof-of-possession key materials. By including a <strong>cnf</strong> (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the <strong>cnf</strong> parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7800">[RFC7800, Section 3.1]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vct</strong></p></td>
-<td><p>Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
+<td><p>[NSD].Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
 <td><p><a class="reference external" href="https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#type-claim">[draft-terbu-sd-jwt-vc-latest. Section Type Claim]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>verified_claims</strong></p></td>
-<td><p>JSON object containing the following sub-elements:</p>
+<td><p>[NSD].JSON object containing the following sub-elements:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>verification</strong>;</p></li>
@@ -1180,7 +1180,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </section>
 <section id="pid-q-eaa-verification-field">
 <span id="sec-pid-eaa-verification-field"></span><h3>PID/(Q)EAA Verification field<a class="headerlink" href="#pid-q-eaa-verification-field" title="Permalink to this heading">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">verification</span></code> claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User attributes (claims).  Some of these additional claims MAY be selectively disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable (SD) or not (NSD).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">verification</span></code> claim contains the information regarding the trust framework used by the PID/(Q)EAA Issuer to provide the User attributes (claims).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">verification</span></code> claim is a JSON structure with all the following mandatory sub-claims.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1275,35 +1275,42 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[SD]. Current Family Name.</p></td>
 <td><p><a class="reference external" href="http://openid.net/specs/openid-connect-core-1_0.html">[OpenID Connect Core 1.0, Section 5.1]</a></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>birthdate</strong></p></td>
+<tr class="row-even"><td><p><strong>birth_date</strong></p></td>
 <td><p>[SD]. Date of Birth.</p></td>
-<td><p><a class="reference external" href="http://openid.net/specs/openid-connect-core-1_0.html">[OpenID Connect Core 1.0, Section 5.1]</a></p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>place_of_birth</strong></p></td>
+<tr class="row-odd"><td><p><strong>birth_place</strong></p></td>
 <td><p>[SD]. Place of Birth. JSON Object with the following subclaims:</p>
 <ul class="simple">
 <li><p><strong>country</strong></p></li>
 <li><p><strong>locality</strong></p></li>
 </ul>
 </td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-13.html#section-4">[OpenID Connect for Identity Assurance 1.0, Section 4]</a></p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p><strong>unique_id</strong></p></td>
 <td><p>[SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to <a class="reference external" href="https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/">ANPR rules</a></p></td>
-<td><p>This specification</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p><strong>tax_id_code</strong></p></td>
 <td><p>[SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example <code class="docutils literal notranslate"><span class="pre">TINIT-&lt;ItalianTaxIdentificationNumber&gt;</span></code></p></td>
-<td><p>This specification</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="pid-non-normative-examples">
 <h3>PID Non-normative Examples<a class="headerlink" href="#pid-non-normative-examples" title="Permalink to this heading">¶</a></h3>
-<p>In the following, the non-normative example of a PID.</p>
+<p>In the following, the non-normative example of a PID in JSON format.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org/status&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PidIdentificationData&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;assurance_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
@@ -1314,7 +1321,8 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eudi.wallet.cie.gov.it&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">              </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ministero dell&#39;Interno&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m_it&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="s2">&quot;urn:eudi:it:organization_id:ipa_code:m_it&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">&quot;country_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">}</span>
@@ -1322,12 +1330,11 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;unique_id&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unique_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;birthdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;place_of_birth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;birth_place&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;locality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rome&quot;</span>
 <span class="w">      </span><span class="p">},</span>
@@ -1351,114 +1358,171 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1541493724</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1541493724</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org/status&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sig&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1Ta-sE ...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;e&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AQAB&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PidIdentificationData&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;OGm7ryXgt5Xzlevp-Hu-UTk0a-TxAaPAobqv1pIWMfw&quot;</span>
+<span class="w">        </span><span class="s2">&quot;gd8gRxKT1hg8ptnvR5fPGhae0VXllDblsiJT9adxiS8&quot;</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;assurance_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;CFLGzentGNRFngnLVVQVcoAFi05r6RJUX-rdbLdEfew&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;JU_sTaHCngS32X-0ajHrd1-HCLCkpT5YqgcfQme168w&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o&quot;</span>
+<span class="w">        </span><span class="s2">&quot;4g9lBt38U1EeTA1zlvvGfFgPPcoe3zmbQ_zSRDgHQaE&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;EYgzJ1hTYWJjhBK2V3b8HV3e_fEf-Udffc5ymY77WtQ&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;EfP5vho0dBdoObBbL45cOTmMsKo6LrSuN4My72y01SE&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;IcYHQydT_C3U1IqaJlFicxLlaHTHvElyFZ6Jxia27qQ&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;lXgxEDAuPeUvmkcNGr9FZuqodwFqUT01gJj7xd4yEPA&quot;</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
+<span class="w">  </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>In the following the disclosure list is given</p>
-<p>Claim <strong>evidence</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">iat</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">OGm7ryXgt5Xzlevp-Hu-UTk0a-TxAaPAobqv1pIWMfw</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImV2aWRlbmNlIiwgW3sidHlw</span></code>
-<code class="docutils literal notranslate"><span class="pre">ZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQiOiB7InR5cGUiOiAi</span></code>
-<code class="docutils literal notranslate"><span class="pre">ZWlkYXMuaXQuY2llIiwgInNvdXJjZSI6IHsib3JnYW5pemF0aW9uX25hbWUi</span></code>
-<code class="docutils literal notranslate"><span class="pre">OiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdhbml6YXRpb25faWQi</span></code>
-<code class="docutils literal notranslate"><span class="pre">OiAibV9pdCIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19XV0</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;2GLC42sKQveCfGfryNRN9w&quot;,</span> <span class="pre">&quot;evidence&quot;,</span> <span class="pre">[{&quot;type&quot;:</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;electronic_record&quot;,</span> <span class="pre">&quot;record&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;https://eudi.wallet.cie.gov.it&quot;,</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;source&quot;:</span> <span class="pre">{&quot;organization_name&quot;:</span> <span class="pre">&quot;Ministero</span> <span class="pre">dell'Interno&quot;,</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;organization_id&quot;:</span> <span class="pre">&quot;m_it&quot;,</span> <span class="pre">&quot;country_code&quot;:</span> <span class="pre">&quot;IT&quot;}}}]]</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;57mvycTh5yZCrKLZ5xnfUw&quot;,</span> <span class="pre">&quot;iat&quot;,</span> <span class="pre">1683000000]</span></code></p></li>
 </ul>
-<p>Claim <strong>unique_id</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">source</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">ZMHbFH9SeT9CZQaOMVrXDMGWIouzXRKspKp9fDhvJ3I</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4</span></code>
+<code class="docutils literal notranslate"><span class="pre">WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsIHsib3JnYW5p</span></code>
+<code class="docutils literal notranslate"><span class="pre">emF0aW9uX25hbWUiOiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdh</span></code>
+<code class="docutils literal notranslate"><span class="pre">bml6YXRpb25faWQiOiAidXJuOmV1ZGk6aXQ6b3JnYW5pemF0aW9uX2lkOmlw</span></code>
+<code class="docutils literal notranslate"><span class="pre">YV9jb2RlOm1faXQiLCAiY291bnRyeV9jb2RlIjogIklUIn1d</span></code></p></li>
+<li><p>Contents:
+<code class="docutils literal notranslate"><span class="pre">[&quot;kucrBmlo_hMaIFF585RzaQ&quot;,</span> <span class="pre">&quot;source&quot;,</span> <span class="pre">{&quot;organization_name&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;Ministero</span> <span class="pre">dell'Interno&quot;,</span> <span class="pre">&quot;organization_id&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;urn:eudi:it:organization_id:ipa_code:m_it&quot;,</span> <span class="pre">&quot;country_code&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;IT&quot;}]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">evidence</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">gd8gRxKT1hg8ptnvR5fPGhae0VXllDblsiJT9adxiS8</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImV2aWRlbmNlIiwgW3sidHlw</span></code>
+<code class="docutils literal notranslate"><span class="pre">ZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQiOiB7Il9zZCI6IFsi</span></code>
+<code class="docutils literal notranslate"><span class="pre">Wk1IYkZIOVNlVDlDWlFhT01WclhETUdXSW91elhSS3NwS3A5ZkRodkozSSJd</span></code>
+<code class="docutils literal notranslate"><span class="pre">LCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LmNpZS5nb3YuaXQifX1d</span></code>
+<code class="docutils literal notranslate"><span class="pre">XQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;NTNRoOiuVVRtF6CEztd9Zw&quot;,</span> <span class="pre">&quot;evidence&quot;,</span> <span class="pre">[{&quot;type&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;electronic_record&quot;,</span> <span class="pre">&quot;record&quot;:</span> <span class="pre">{&quot;_sd&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">[&quot;ZMHbFH9SeT9CZQaOMVrXDMGWIouzXRKspKp9fDhvJ3I&quot;],</span> <span class="pre">&quot;type&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;https://eudi.wallet.cie.gov.it&quot;}}]]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">unique_id</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">4g9lBt38U1EeTA1zlvvGfFgPPcoe3zmbQ_zSRDgHQaE</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgInVuaXF1ZV9pZCIsICJ4eHh4</span></code>
 <code class="docutils literal notranslate"><span class="pre">eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;eluV5Og3gSNII8EYnsxA_A&quot;,</span> <span class="pre">&quot;unique_id&quot;,</span></code>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;FDSSPggzGBUwQLHDSE6wQQ&quot;,</span> <span class="pre">&quot;unique_id&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;]</span></code></p></li>
 </ul>
-<p>Claim <strong>given_name</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">given_name</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">lXgxEDAuPeUvmkcNGr9FZuqodwFqUT01gJj7xd4yEPA</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFy</span></code>
+<code class="docutils literal notranslate"><span class="pre">WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImdpdmVuX25hbWUiLCAiTWFy</span></code>
 <code class="docutils literal notranslate"><span class="pre">aW8iXQ</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;6Ij7tM-a5iVPGboS5tmvVA&quot;,</span> <span class="pre">&quot;given_name&quot;,</span> <span class="pre">&quot;Mario&quot;]</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;KZ8e5wVEtDvb1ziSPA4DzA&quot;,</span> <span class="pre">&quot;given_name&quot;,</span> <span class="pre">&quot;Mario&quot;]</span></code></p></li>
 </ul>
-<p>Claim <strong>family_name</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">family_name</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">IcYHQydT_C3U1IqaJlFicxLlaHTHvElyFZ6Jxia27qQ</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJv</span></code>
+<code class="docutils literal notranslate"><span class="pre">WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImZhbWlseV9uYW1lIiwgIlJv</span></code>
 <code class="docutils literal notranslate"><span class="pre">c3NpIl0</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;eI8ZWm9QnKPpNPeNenHdhQ&quot;,</span> <span class="pre">&quot;family_name&quot;,</span> <span class="pre">&quot;Rossi&quot;]</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;pZ5MRyOxpVWZuHLoJ-yjRg&quot;,</span> <span class="pre">&quot;family_name&quot;,</span> <span class="pre">&quot;Rossi&quot;]</span></code></p></li>
 </ul>
-<p>Claim <strong>birthdate</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">birth_date</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">CFLGzentGNRFngnLVVQVcoAFi05r6RJUX-rdbLdEfew</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">EYgzJ1hTYWJjhBK2V3b8HV3e_fEf-Udffc5ymY77WtQ</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoZGF0ZSIsICIxOTgw</span></code>
-<code class="docutils literal notranslate"><span class="pre">LTAxLTEwIl0</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;Qg_O64zqAxe412a108iroA&quot;,</span> <span class="pre">&quot;birthdate&quot;,</span> <span class="pre">&quot;1980-01-10&quot;]</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgImJpcnRoX2RhdGUiLCAiMTk4</span></code>
+<code class="docutils literal notranslate"><span class="pre">MC0wMS0xMCJd</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;jtVuKCpn7bTcHrAg_seUbQ&quot;,</span> <span class="pre">&quot;birth_date&quot;,</span> <span class="pre">&quot;1980-01-10&quot;]</span></code></p></li>
 </ul>
-<p>Claim <strong>place_of_birth</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">birth_place</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">JU_sTaHCngS32X-0ajHrd1-HCLCkpT5YqgcfQme168w</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">EfP5vho0dBdoObBbL45cOTmMsKo6LrSuN4My72y01SE</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBsYWNlX29mX2JpcnRoIiwg</span></code>
-<code class="docutils literal notranslate"><span class="pre">eyJjb3VudHJ5IjogIklUIiwgImxvY2FsaXR5IjogIlJvbWUifV0</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImJpcnRoX3BsYWNlIiwgeyJj</span></code>
+<code class="docutils literal notranslate"><span class="pre">b3VudHJ5IjogIklUIiwgImxvY2FsaXR5IjogIlJvbWUifV0</span></code></p></li>
 <li><p>Contents:
-<code class="docutils literal notranslate"><span class="pre">[&quot;AJx-095VPrpTtN4QMOqROA&quot;,</span> <span class="pre">&quot;place_of_birth&quot;,</span> <span class="pre">{&quot;country&quot;:</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;IT&quot;,</span> <span class="pre">&quot;locality&quot;:</span> <span class="pre">&quot;Rome&quot;}]</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">[&quot;WDkd6JsNhDFvLP4s1hQdyA&quot;,</span> <span class="pre">&quot;birth_place&quot;,</span> <span class="pre">{&quot;country&quot;:</span> <span class="pre">&quot;IT&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;locality&quot;:</span> <span class="pre">&quot;Rome&quot;}]</span></code></p></li>
 </ul>
-<p>Claim <strong>tax_id_code</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
+<code class="docutils literal notranslate"><span class="pre">WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
 <code class="docutils literal notranslate"><span class="pre">TklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;Pc33JM2LchcU_lHggv_ufQ&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;4ksAz6bMUKy6ZvN1h8HDuQ&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;]</span></code></p></li>
 </ul>
 <p>The combined format for the PID issuance is given by</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJSUzUxMiIsImtpZCI6ImQxMjZhNmE4NTZmNzcyNDU2MDQ4NGZhOWRjNTlkMTk1IiwidHJ1c3RfY2hhaW4iOlsiTkVoUmRFUnBZbmxIWTNNNVdsZFdUV1oyYVVobSAuLi4iLCJleUpoYkdjaU9pSlNVekkxTmlJc0ltdHBaQ0k2IC4uLiIsIklrSllkbVp5Ykc1b1FVMTFTRkl3TjJGcVZXMUIgLi4uIl19</span><span class="o">.</span><span class="n">eyJpc3MiOiJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnIiwic3ViIjoiTnpiTHNYaDh1RENjZDdub1dYRlpBZkhreFpzUkdDOVhzLi4uIiwianRpIjoidXJuOnV1aWQ6NmM1YzBhNDktYjU4OS00MzFkLWJhZTctMjE5MTIyYTllYzJjIiwiaWF0IjoxNTQxNDkzNzI0LCJleHAiOjE1NDE0OTM3MjQsInN0YXR1cyI6Imh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmcvc3RhdHVzIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJSU0EiLCJ1c2UiOiJzaWciLCJuIjoiMVRhLXNFIOKApiIsImUiOiJBUUFCIiwia2lkIjoiWWhORlMzWW5DOXRqaUNhaXZoV0xWVUozQXh3R0d6Xzk4dVJGYXFNRUVzIn19LCJ0eXBlIjoiUGVyc29uSWRlbnRpZmljYXRpb25EYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiT0dtN3J5WGd0NVh6bGV2cC1IdS1VVGswYS1UeEFhUEFvYnF2MXBJV01mdyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhcyIsImFzc3VyYW5jZV9sZXZlbCI6ImhpZ2gifSwiY2xhaW1zIjp7Il9zZCI6WyI4SmpvekJmb3ZNTnZRM0hmbG1QV3k0TzE5R3B4czYxRldIalplYlU1ODlFIiwiQm9NR2t0VzFyYmlrbnR3OEZ6eF9CZUw0WWJBbmRyNkFIc2RncGF0RkNpZyIsIkNGTEd6ZW50R05SRm5nbkxWVlFWY29BRmkwNXI2UkpVWC1yZGJMZEVmZXciLCJKVV9zVGFIQ25nUzMyWC0wYWpIcmQxLUhDTENrcFQ1WXFnY2ZRbWUxNjh3IiwiVlFJLVMxbVQxS3hmcTJvOEo5aW83eE1NWDJNSXhhRzlNOVBlSlZxck1jQSIsInpWZGdoY21DbE1WV2xVZ0dzR3BTa0NQa0VIWjR1OW9XajFTbElCbENjMW8iXX19LCJfc2RfYWxnIjoic2hhLTI1NiJ9</span><span class="o">.</span><span class="n">WzEiFaOjnobQisjTQ92JtKEXRN</span><span class="o">-</span><span class="mi">2</span><span class="n">Sgvjklpu4IdC_cT2T6Tm8Z6sqbVy6n94AAEv</span><span class="o">-</span><span class="n">HFSv5JoSt6YjPDnGzOxN_W_131rILU8YaiNt8w31nRGIvHjJIC0w</span><span class="o">-</span><span class="n">hHIcG1LmvJshSMcT3RHeApRCmsO7xkHWmUsjt37dOzEagEti5i47hnZAbu7vWXsvUlBNNN8v7tJBLspO2Q0vnWhEDX1hQ7IH1b8oKh</span><span class="o">-</span><span class="n">_aQrhwVm9Bcs9CG8o6N9iqubCSpFI6Gty4ZZgHEb95knETVhw8IL10Z9P_Hr9twXZQaCCC8xrNh4afwR9TiDQzTr92m7luyvDfmzVgHCponI7VBhqmRqZVYQyDhq6EJbtRtIsYenla5NSKBjV8Etdlec94vJAHZNzue9aNUQeXae55V5m5O9wLoWhgV2vl4xV5C</span><span class="o">-</span><span class="n">N5s5Uzs08GAxo</span><span class="o">-</span><span class="n">CUaNOD3BQE9vfrT47IBCm4hUCnvDise_aWNCeKOQABV1J9_tV9lWZsECVuUuWWwELHCUXgdyiA3QtUtXz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0</span><span class="o">.</span><span class="n">eyJfc2QiOiBb</span>
+<span class="n">IjdXRzRuVDZLMjZfUjM5NzV6Y3duVndnb0hBN2I5ODhfMy12SnpiWmY2WWMiXSwgImlz</span>
+<span class="n">cyI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsICJleHAiOiAxODgzMDAwMDAw</span>
+<span class="n">LCAic3ViIjogIk56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJqdGki</span>
+<span class="n">OiAidXJuOnV1aWQ6NmM1YzBhNDktYjU4OS00MzFkLWJhZTctMjE5MTIyYTllYzJjIiwg</span>
+<span class="n">InN0YXR1cyI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnL3N0YXR1cyIs</span>
+<span class="n">ICJ2Y3QiOiAiUGlkSWRlbnRpZmljYXRpb25EYXRhIiwgInZlcmlmaWVkX2NsYWltcyI6</span>
+<span class="n">IHsidmVyaWZpY2F0aW9uIjogeyJfc2QiOiBbImdkOGdSeEtUMWhnOHB0bnZSNWZQR2hh</span>
+<span class="n">ZTBWWGxsRGJsc2lKVDlhZHhpUzgiXSwgInRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIs</span>
+<span class="n">ICJhc3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCJ9LCAiY2xhaW1zIjogeyJfc2QiOiBbIjRn</span>
+<span class="n">OWxCdDM4VTFFZVRBMXpsdnZHZkZnUFBjb2Uzem1iUV96U1JEZ0hRYUUiLCAiRVlnekox</span>
+<span class="n">aFRZV0pqaEJLMlYzYjhIVjNlX2ZFZi1VZGZmYzV5bVk3N1d0USIsICJFZlA1dmhvMGRC</span>
+<span class="n">ZG9PYkJiTDQ1Y09UbU1zS282THJTdU40TXk3MnkwMVNFIiwgIkY5MFNLSzluSVFjSElF</span>
+<span class="n">bGtIWV91bHRfOUZHcVllLVJ5ZHZZM0UwcVI5NnMiLCAiSWNZSFF5ZFRfQzNVMUlxYUps</span>
+<span class="n">RmljeExsYUhUSHZFbHlGWjZKeGlhMjdxUSIsICJsWGd4RURBdVBlVXZta2NOR3I5Rlp1</span>
+<span class="n">cW9kd0ZxVVQwMWdKajd4ZDR5RVBBIl19fSwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj</span>
+<span class="n">bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD</span>
+<span class="n">QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa</span>
+<span class="n">eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ</span><span class="o">.</span><span class="n">OjCk1</span>
+<span class="n">G0STMjlG1eSfQRQHEcMdWxRkEDk0yF5eVahuW7x2qymvv_iLqBOLwVb4R_kGHVc4w6ju</span>
+<span class="mi">5</span><span class="n">hs2Pmz4diW4w</span><span class="o">~</span><span class="n">WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMD</span>
+<span class="n">AwMDBd</span><span class="o">~</span><span class="n">WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsIHsib3JnYW5pe</span>
+<span class="n">mF0aW9uX25hbWUiOiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdhbml6YXRpb</span>
+<span class="mi">25</span><span class="n">faWQiOiAidXJuOmV1ZGk6aXQ6b3JnYW5pemF0aW9uX2lkOmlwYV9jb2RlOm1faXQiL</span>
+<span class="n">CAiY291bnRyeV9jb2RlIjogIklUIn1d</span><span class="o">~</span><span class="n">WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3Iiwg</span>
+<span class="n">ImV2aWRlbmNlIiwgW3sidHlwZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQi</span>
+<span class="n">OiB7Il9zZCI6IFsiWk1IYkZIOVNlVDlDWlFhT01WclhETUdXSW91elhSS3NwS3A5ZkRo</span>
+<span class="n">dkozSSJdLCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LmNpZS5nb3YuaXQifX1d</span>
+<span class="n">XQ</span><span class="o">~</span><span class="n">WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4e</span>
+<span class="n">C14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ</span><span class="o">~</span><span class="n">WyJLWjhlNXdWRXREdmIxemlTUE</span>
+<span class="n">E0RHpBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJwWjVNUnlPeHBWV1p1SExvSi1</span>
+<span class="mi">5</span><span class="n">alJnIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJqdFZ1S0NwbjdiVGNIckFnX3N</span>
+<span class="n">lVWJRIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJXRGtkNkpzTmhERnZMUD</span>
+<span class="n">RzMWhRZHlBIiwgImJpcnRoX3BsYWNlIiwgeyJjb3VudHJ5IjogIklUIiwgImxvY2FsaX</span>
+<span class="n">R5IjogIlJvbWUifV0</span><span class="o">~</span><span class="n">WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiwgInRheF9pZF9jb2</span>
+<span class="n">RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span><span class="o">~</span>
 </pre></div>
 </div>
 </section>
@@ -1466,7 +1530,14 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <h3>(Q)EAA Non-normative examples<a class="headerlink" href="#q-eaa-non-normative-examples" title="Permalink to this heading">¶</a></h3>
 <p>In the following, we provide a non-normative example of (Q)EAA in JSON.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/status&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;assurance_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
@@ -1476,8 +1547,9 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">          </span><span class="nt">&quot;record&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eudi.wallet.pdnd.gov.it&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ragioneria Generale dello Stato&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:it:organization_id:ipa_code:QLHCFC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Istituto Nazionale della Previdenza Sociale&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="s2">&quot;urn:eudi:it:organization_id:ipa_code:inps&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">&quot;country_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">}</span>
@@ -1485,14 +1557,13 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;document_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XXXXXXXXXX&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;birthdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;place_of_birth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;locality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rome&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
+<span class="w">      </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;constant_attendance_allowance&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -1512,103 +1583,184 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc&quot;</span>
+<span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1541493724</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1541493724</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/status&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;e&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AQAB&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sig&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d126a6a856f7724560484fa9dc59d195&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oians5wYCWk4wFtEStVYcn_xOw9edKMNGH33_q6_pBI0XaTY7P3apUgjO0ivk5c1NQAVY6PZmcPQ8P1Y0cBAC9STRmzvTvDQcOocLhVy2ZlcXTu39oOGLNra8_LQsaMA386lO_qMW4-uY6DbGZY4vHkScvAC9FIZYDPafqWBEQUNV2QOFMH5VPoihCTKHwMGXnZBatYObg57xSOUX-bvhO_sFMm3k4RvsXcr3MFojAhLfwutu_jK9k7N9KR_mNc5IpiOyhZw_sUmF6SamRqsSPp42KD10hPMW0YJTDMYxBdHrMFeSMHYIMY4oBBT43__a55zILI_CnIk4241wOvGvw&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HealthInsuranceData&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;verified_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;2jIR18gfeASHYGB27s7sS3S_iQ4xxFIxCRyiohrBfns&quot;</span>
+<span class="w">        </span><span class="s2">&quot;sTskq0yFy31ZH3YP2nN_nFnd7H9q18dU3oEa1DC5LRc&quot;</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eidas&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;assurance_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;1iztq7bov64xTYbDkWFc44_VjWe029hZqXeUIloqUN4&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;FV2CDNWuTqTgOHaftvVaumBF0OlmnyxMswyf4uIxrhY&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;dZWjq7mJSSX-XTI_HWuE8B2x6IdM5lE-doD_yBpKJao&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;gHYi19frbD_i4BoaWENOjc3lCnMj4pbGNQcsBj_QM4Q&quot;</span>
+<span class="w">        </span><span class="s2">&quot;3humFjiCYHdHzjL-OEd1vKnQa10ivaYEd1dCCkfRuaA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;EYgzJ1hTYWJjhBK2V3b8HV3e_fEf-Udffc5ymY77WtQ&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;IcYHQydT_C3U1IqaJlFicxLlaHTHvElyFZ6Jxia27qQ&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;dfrmUvonZDgealZCGwk3ufmc_4ept3y9N7xhWZlCyxo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ji86HS1v3D41tU5JqW4oWCwTJDuTUwp1ewqoCUzzEXk&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;lXgxEDAuPeUvmkcNGr9FZuqodwFqUT01gJj7xd4yEPA&quot;</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
+<span class="w">  </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>In the following the disclosure list is given:</p>
-<p>Claim <strong>evidence</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">iat</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">2jIR18gfeASHYGB27s7sS3S_iQ4xxFIxCRyiohrBfns</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImV2aWRlbmNlIiwgW3sidHlw</span></code>
-<code class="docutils literal notranslate"><span class="pre">ZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQiOiB7InR5cGUiOiAi</span></code>
-<code class="docutils literal notranslate"><span class="pre">ZWlkYXMuaXQucGRuZCIsICJzb3VyY2UiOiB7Im9yZ2FuaXphdGlvbl9uYW1l</span></code>
-<code class="docutils literal notranslate"><span class="pre">IjogIlJhZ2lvbmVyaWEgR2VuZXJhbGUgZGVsbG8gU3RhdG8iLCAib3JnYW5p</span></code>
-<code class="docutils literal notranslate"><span class="pre">emF0aW9uX2lkIjogIlFMSENGQyIsICJjb3VudHJ5X2NvZGUiOiAiSVQifX19</span></code>
-<code class="docutils literal notranslate"><span class="pre">XV0</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;2GLC42sKQveCfGfryNRN9w&quot;,</span> <span class="pre">&quot;evidence&quot;,</span> <span class="pre">[{&quot;type&quot;:</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;electronic_record&quot;,</span> <span class="pre">&quot;record&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;https://eudi.wallet.pdnd.gov.it&quot;,</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;source&quot;:</span> <span class="pre">{&quot;organization_name&quot;:</span> <span class="pre">&quot;Ragioneria</span> <span class="pre">Generale</span> <span class="pre">dello</span> <span class="pre">Stato&quot;,</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;organization_id&quot;:</span> <span class="pre">&quot;QLHCFC&quot;,</span> <span class="pre">&quot;country_code&quot;:&quot;IT&quot;}}}]]</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;57mvycTh5yZCrKLZ5xnfUw&quot;,</span> <span class="pre">&quot;iat&quot;,</span> <span class="pre">1683000000]</span></code></p></li>
 </ul>
-<p>Claim <strong>given_name</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">source</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">gHYi19frbD_i4BoaWENOjc3lCnMj4pbGNQcsBj_QM4Q</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">qfuzrQuGcbBBKaE4Q9eqVCSznzJ2rNndLG8q606RLsM</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;eluV5Og3gSNII8EYnsxA_A&quot;,</span> <span class="pre">&quot;given_name&quot;,</span> <span class="pre">&quot;Mario&quot;]</span></code></p></li>
-</ul>
-<p>Claim <strong>family_name</strong>:</p>
-<ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">dZWjq7mJSSX-XTI_HWuE8B2x6IdM5lE-doD_yBpKJao</span></code></p></li>
-<li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;6Ij7tM-a5iVPGboS5tmvVA&quot;,</span> <span class="pre">&quot;family_name&quot;,</span> <span class="pre">&quot;Rossi&quot;]</span></code></p></li>
-</ul>
-<p>Claim <strong>birthdate</strong>:</p>
-<ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">FV2CDNWuTqTgOHaftvVaumBF0OlmnyxMswyf4uIxrhY</span></code></p></li>
-<li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImJpcnRoZGF0ZSIsICIxOTgwLTAxLTEwIl0</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;eI8ZWm9QnKPpNPeNenHdhQ&quot;,</span> <span class="pre">&quot;birthdate&quot;,</span> <span class="pre">&quot;1980-01-10&quot;]</span></code></p></li>
-</ul>
-<p>Claim <strong>place_of_birth</strong>:</p>
-<ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">1iztq7bov64xTYbDkWFc44_VjWe029hZqXeUIloqUN4</span></code></p></li>
-<li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgInBsYWNlX29mX2JpcnRoIiwg</span></code>
-<code class="docutils literal notranslate"><span class="pre">eyJjb3VudHJ5IjogIklUIiwgImxvY2FsaXR5IjogIlJvbWUifV0</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsIHsib3JnYW5p</span></code>
+<code class="docutils literal notranslate"><span class="pre">emF0aW9uX25hbWUiOiAiSXN0aXR1dG8gTmF6aW9uYWxlIGRlbGxhIFByZXZp</span></code>
+<code class="docutils literal notranslate"><span class="pre">ZGVuemEgU29jaWFsZSIsICJvcmdhbml6YXRpb25faWQiOiAidXJuOmV1ZGk6</span></code>
+<code class="docutils literal notranslate"><span class="pre">aXQ6b3JnYW5pemF0aW9uX2lkOmlwYV9jb2RlOmlucHMiLCAiY291bnRyeV9j</span></code>
+<code class="docutils literal notranslate"><span class="pre">b2RlIjogIklUIn1d</span></code></p></li>
 <li><p>Contents:
-<code class="docutils literal notranslate"><span class="pre">[&quot;Qg_O64zqAxe412a108iroA&quot;,</span> <span class="pre">&quot;place_of_birth&quot;,</span> <span class="pre">{&quot;country&quot;:</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;IT&quot;,</span> <span class="pre">&quot;locality&quot;:</span> <span class="pre">&quot;Rome&quot;}]</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">[&quot;kucrBmlo_hMaIFF585RzaQ&quot;,</span> <span class="pre">&quot;source&quot;,</span> <span class="pre">{&quot;organization_name&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;Istituto</span> <span class="pre">Nazionale</span> <span class="pre">della</span> <span class="pre">Previdenza</span> <span class="pre">Sociale&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;organization_id&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;urn:eudi:it:organization_id:ipa_code:inps&quot;,</span> <span class="pre">&quot;country_code&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;IT&quot;}]</span></code></p></li>
 </ul>
-<p>Claim <strong>tax_id_code</strong>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">evidence</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">sTskq0yFy31ZH3YP2nN_nFnd7H9q18dU3oEa1DC5LRc</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
+<code class="docutils literal notranslate"><span class="pre">WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImV2aWRlbmNlIiwgW3sidHlw</span></code>
+<code class="docutils literal notranslate"><span class="pre">ZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQiOiB7Il9zZCI6IFsi</span></code>
+<code class="docutils literal notranslate"><span class="pre">cWZ1enJRdUdjYkJCS2FFNFE5ZXFWQ1N6bnpKMnJObmRMRzhxNjA2UkxzTSJd</span></code>
+<code class="docutils literal notranslate"><span class="pre">LCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LnBkbmQuZ292Lml0In19</span></code>
+<code class="docutils literal notranslate"><span class="pre">XV0</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;NTNRoOiuVVRtF6CEztd9Zw&quot;,</span> <span class="pre">&quot;evidence&quot;,</span> <span class="pre">[{&quot;type&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;electronic_record&quot;,</span> <span class="pre">&quot;record&quot;:</span> <span class="pre">{&quot;_sd&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">[&quot;qfuzrQuGcbBBKaE4Q9eqVCSznzJ2rNndLG8q606RLsM&quot;],</span> <span class="pre">&quot;type&quot;:</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;https://eudi.wallet.pdnd.gov.it&quot;}}]]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">document_number</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">3humFjiCYHdHzjL-OEd1vKnQa10ivaYEd1dCCkfRuaA</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImRvY3VtZW50X251bWJlciIs</span></code>
+<code class="docutils literal notranslate"><span class="pre">ICJYWFhYWFhYWFhYIl0</span></code></p></li>
+<li><p>Contents:
+<code class="docutils literal notranslate"><span class="pre">[&quot;FDSSPggzGBUwQLHDSE6wQQ&quot;,</span> <span class="pre">&quot;document_number&quot;,</span> <span class="pre">&quot;XXXXXXXXXX&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">given_name</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">lXgxEDAuPeUvmkcNGr9FZuqodwFqUT01gJj7xd4yEPA</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImdpdmVuX25hbWUiLCAiTWFy</span></code>
+<code class="docutils literal notranslate"><span class="pre">aW8iXQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;KZ8e5wVEtDvb1ziSPA4DzA&quot;,</span> <span class="pre">&quot;given_name&quot;,</span> <span class="pre">&quot;Mario&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">family_name</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">IcYHQydT_C3U1IqaJlFicxLlaHTHvElyFZ6Jxia27qQ</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImZhbWlseV9uYW1lIiwgIlJv</span></code>
+<code class="docutils literal notranslate"><span class="pre">c3NpIl0</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;pZ5MRyOxpVWZuHLoJ-yjRg&quot;,</span> <span class="pre">&quot;family_name&quot;,</span> <span class="pre">&quot;Rossi&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">birth_date</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">EYgzJ1hTYWJjhBK2V3b8HV3e_fEf-Udffc5ymY77WtQ</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgImJpcnRoX2RhdGUiLCAiMTk4</span></code>
+<code class="docutils literal notranslate"><span class="pre">MC0wMS0xMCJd</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;jtVuKCpn7bTcHrAg_seUbQ&quot;,</span> <span class="pre">&quot;birth_date&quot;,</span> <span class="pre">&quot;1980-01-10&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">dfrmUvonZDgealZCGwk3ufmc_4ept3y9N7xhWZlCyxo</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImV4cGlyeV9kYXRlIiwgIjIw</span></code>
+<code class="docutils literal notranslate"><span class="pre">MjQtMDEtMDEiXQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;WDkd6JsNhDFvLP4s1hQdyA&quot;,</span> <span class="pre">&quot;expiry_date&quot;,</span> <span class="pre">&quot;2024-01-01&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
 <code class="docutils literal notranslate"><span class="pre">TklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;AJx-095VPrpTtN4QMOqROA&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;4ksAz6bMUKy6ZvN1h8HDuQ&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;]</span></code></p></li>
 </ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">constant_attendance_allowance</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">ji86HS1v3D41tU5JqW4oWCwTJDuTUwp1ewqoCUzzEXk</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJEZFdxS2g3d2RJNVZBeEtTdnhzWFZRIiwgImNvbnN0YW50X2F0dGVuZGFu</span></code>
+<code class="docutils literal notranslate"><span class="pre">Y2VfYWxsb3dhbmNlIiwgdHJ1ZV0</span></code></p></li>
+<li><p>Contents:
+<code class="docutils literal notranslate"><span class="pre">[&quot;DdWqKh7wdI5VAxKSvxsXVQ&quot;,</span> <span class="pre">&quot;constant_attendance_allowance&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">true]</span></code></p></li>
+</ul>
 <p>The combined format for the PID issuance is represented below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiJSUzI1NiIsImtpZCI6Iks2S2hpUDNrOC1XOWVHdk1SVTg0NVVwWVRTdEJsR0g4ejFKZl85czMtUWsifQ</span><span class="o">.</span><span class="n">eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsInN1YiI6Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcy4uLiIsImp0aSI6InVybjp1dWlkOjZjNWMwYTQ5LWI1ODktNDMxZC1iYWU3LTIxOTEyMmE5ZWMyYyIsImlhdCI6MTU0MTQ5MzcyNCwiZXhwIjoxNTQxNDkzNzI0LCJzdGF0dXMiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy9zdGF0dXMiLCJjbmYiOnsiandrIjp7Imt0eSI6IlJTQSIsImUiOiJBUUFCIiwidXNlIjoic2lnIiwia2lkIjoiZDEyNmE2YTg1NmY3NzI0NTYwNDg0ZmE5ZGM1OWQxOTUiLCJhbGciOiJSUzI1NiIsIm4iOiJvaWFuczV3WUNXazR3RnRFU3RWWWNuX3hPdzllZEtNTkdIMzNfcTZfcEJJMFhhVFk3UDNhcFVnak8waXZrNWMxTlFBVlk2UFptY1BROFAxWTBjQkFDOVNUUm16dlR2RFFjT29jTGhWeTJabGNYVHUzOW9PR0xOcmE4X0xRc2FNQTM4NmxPX3FNVzQtdVk2RGJHWlk0dkhrU2N2QUM5RklaWURQYWZxV0JFUVVOVjJRT0ZNSDVWUG9paENUS0h3TUdYblpCYXRZT2JnNTd4U09VWC1idmhPX3NGTW0zazRSdnNYY3IzTUZvakFoTGZ3dXR1X2pLOWs3TjlLUl9tTmM1SXBpT3loWndfc1VtRjZTYW1ScXNTUHA0MktEMTBoUE1XMFlKVERNWXhCZEhyTUZlU01IWUlNWTRvQkJUNDNfX2E1NXpJTElfQ25JazQyNDF3T3ZHdncifX0sInR5cGUiOiJIZWFsdGhJbnN1cmFuY2VEYXRhIiwidmVyaWZpZWRfY2xhaW1zIjp7InZlcmlmaWNhdGlvbiI6eyJfc2QiOlsiMmpJUjE4Z2ZlQVNIWUdCMjdzN3NTM1NfaVE0eHhGSXhDUnlpb2hyQmZucyJdLCJ0cnVzdF9mcmFtZXdvcmsiOiJlaWRhcyIsImFzc3VyYW5jZV9sZXZlbCI6ImhpZ2gifSwiY2xhaW1zIjp7Il9zZCI6WyIxaXp0cTdib3Y2NHhUWWJEa1dGYzQ0X1ZqV2UwMjloWnFYZVVJbG9xVU40IiwiRU5ObzMxamZ6RnA4WTJEVzBSLWZJTWVXd2U3RUxHdkdvSE13TUJwdTE0RSIsIkZWMkNETld1VHFUZ09IYWZ0dlZhdW1CRjBPbG1ueXhNc3d5ZjR1SXhyaFkiLCJkWldqcTdtSlNTWC1YVElfSFd1RThCMng2SWRNNWxFLWRvRF95QnBLSmFvIiwiZ0hZaTE5ZnJiRF9pNEJvYVdFTk9qYzNsQ25NajRwYkdOUWNzQmpfUU00USJdfX0sIl9zZF9hbGciOiJzaGEtMjU2In0</span><span class="o">.</span><span class="n">vl5ELdx9d7smuDHHDfBGaUySolBe7O3RROqpHDkM3txvXJxgZcCwZQhbWN3sSrBkJgSZ_kFEs2ddYIVKE4bglASlBbSizC8CASdJlyDD3T_dyimA1r2bwSfsHTyrcG_SpoU5Ee9KS</span><span class="o">-</span><span class="n">Lr2PCQ3LmTc8_nhaeBGtZCO4B8oZI9bpD6zqms1Zr</span><span class="o">-</span><span class="n">ymaE0pYnnQ3aWOclhiLavVudKxLxZvYXTdMStjyNbwBXekVVOnAZuCTuXMsD_jah7_MkmJP_buJgq3u6TthctsORHp4pKuZeI_43Y728</span><span class="o">-</span><span class="n">Qg7mIDeL5_</span><span class="o">-</span><span class="n">j_vgXdu7FWVa0OSTjZJM27GCDzr2M8LAhApk4aeDoF1Cmw</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0</span><span class="o">.</span><span class="n">eyJfc2QiOiBb</span>
+<span class="n">IjdXRzRuVDZLMjZfUjM5NzV6Y3duVndnb0hBN2I5ODhfMy12SnpiWmY2WWMiXSwgImlz</span>
+<span class="n">cyI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsICJleHAiOiAxODgzMDAwMDAw</span>
+<span class="n">LCAic3ViIjogIk56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJqdGki</span>
+<span class="n">OiAidXJuOnV1aWQ6NmM1YzBhNDktYjU4OS00MzFkLWJhZTctMjE5MTIyYTllYzJjIiwg</span>
+<span class="n">InN0YXR1cyI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy9zdGF0dXMiLCAidmN0</span>
+<span class="n">IjogIkRpc2FiaWxpdHlDYXJkIiwgInZlcmlmaWVkX2NsYWltcyI6IHsidmVyaWZpY2F0</span>
+<span class="n">aW9uIjogeyJfc2QiOiBbInNUc2txMHlGeTMxWkgzWVAybk5fbkZuZDdIOXExOGRVM29F</span>
+<span class="n">YTFEQzVMUmMiXSwgInRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIsICJhc3N1cmFuY2Vf</span>
+<span class="n">bGV2ZWwiOiAiaGlnaCJ9LCAiY2xhaW1zIjogeyJfc2QiOiBbIjNodW1GamlDWUhkSHpq</span>
+<span class="n">TC1PRWQxdktuUWExMGl2YVlFZDFkQ0NrZlJ1YUEiLCAiRVlnekoxaFRZV0pqaEJLMlYz</span>
+<span class="n">YjhIVjNlX2ZFZi1VZGZmYzV5bVk3N1d0USIsICJGOTBTS0s5bklRY0hJRWxrSFlfdWx0</span>
+<span class="n">XzlGR3FZZS1SeWR2WTNFMHFSOTZzIiwgIkljWUhReWRUX0MzVTFJcWFKbEZpY3hMbGFI</span>
+<span class="n">VEh2RWx5Rlo2SnhpYTI3cVEiLCAiZGZybVV2b25aRGdlYWxaQ0d3azN1Zm1jXzRlcHQz</span>
+<span class="n">eTlON3hoV1psQ3l4byIsICJqaTg2SFMxdjNENDF0VTVKcVc0b1dDd1RKRHVUVXdwMWV3</span>
+<span class="n">cW9DVXp6RVhrIiwgImxYZ3hFREF1UGVVdm1rY05HcjlGWnVxb2R3RnFVVDAxZ0pqN3hk</span>
+<span class="n">NHlFUEEiXX19LCAiX3NkX2FsZyI6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJr</span>
+<span class="n">dHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRX</span>
+<span class="n">NHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZR</span>
+<span class="n">NGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX19</span><span class="o">.</span><span class="n">hbgWxBoQtLVpTfygYVDhrgnoCkw</span>
+<span class="n">aw_hqY9GpxG4oXixejLEMvTOAwYFtqiNnYSuNaaGD6aemJW7jLSHDm9NOGA</span><span class="o">~</span><span class="n">WyI1N212</span>
+<span class="n">eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span><span class="o">~</span><span class="n">WyJrdWNyQm1sb19</span>
+<span class="n">oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsIHsib3JnYW5pemF0aW9uX25hbWUiOiAiSXN</span>
+<span class="mi">0</span><span class="n">aXR1dG8gTmF6aW9uYWxlIGRlbGxhIFByZXZpZGVuemEgU29jaWFsZSIsICJvcmdhbml</span>
+<span class="mi">6</span><span class="n">YXRpb25faWQiOiAidXJuOmV1ZGk6aXQ6b3JnYW5pemF0aW9uX2lkOmlwYV9jb2RlOml</span>
+<span class="n">ucHMiLCAiY291bnRyeV9jb2RlIjogIklUIn1d</span><span class="o">~</span><span class="n">WyJOVE5Sb09pdVZWUnRGNkNFenRkOV</span>
+<span class="n">p3IiwgImV2aWRlbmNlIiwgW3sidHlwZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZW</span>
+<span class="n">NvcmQiOiB7Il9zZCI6IFsicWZ1enJRdUdjYkJCS2FFNFE5ZXFWQ1N6bnpKMnJObmRMRz</span>
+<span class="n">hxNjA2UkxzTSJdLCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LnBkbmQuZ292Lm</span>
+<span class="n">l0In19XV0</span><span class="o">~</span><span class="n">WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImRvY3VtZW50X251bWJlci</span>
+<span class="n">IsICJYWFhYWFhYWFhYIl0</span><span class="o">~</span><span class="n">WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImdpdmVuX2</span>
+<span class="mi">5</span><span class="n">hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImZhbWlseV9</span>
+<span class="n">uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgImJpcnRoX2R</span>
+<span class="n">hdGUiLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImV4cG</span>
+<span class="n">lyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ</span><span class="o">~</span><span class="n">WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiw</span>
+<span class="n">gInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span><span class="o">~</span><span class="n">WyJEZFdxS2g3</span>
+<span class="n">d2RJNVZBeEtTdnhzWFZRIiwgImNvbnN0YW50X2F0dGVuZGFuY2VfYWxsb3dhbmNlIiwg</span>
+<span class="n">dHJ1ZV0</span><span class="o">~</span>
 </pre></div>
 </div>
 </section>
