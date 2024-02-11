@@ -328,7 +328,7 @@ The JWS payload parameters are described herein:
                 ]
               }
             ],
-            "limit_discolusre": "preferred"
+            "limit_disclosure": "preferred"
           }
         }
       ]
