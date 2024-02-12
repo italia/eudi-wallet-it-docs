@@ -282,9 +282,9 @@ The ``client_assertion`` is signed using the private key that is created during 
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
-**Step 15 (Token Response):** The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) and a fresh ``c_nonce`` is provided to the Wallet Instance.
+**Step 15 (Token Response):** The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) and a fresh `c_nonce` are provided by the Issuer to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 18 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer provides the Wallet Instance with a new `c_nonce` value. 
 
-.. code-block:: http
+.. code-block:: 
 
     HTTP/1.1 200 OK
     Content-Type: application/json
@@ -308,7 +308,15 @@ The ``client_assertion`` is signed using the private key that is created during 
 
 **Steps 16-17 (DPoP Proof for Credential Endpoint):** The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 15** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
 
-**Step 18 (Credential Request):** The Wallet Instance requests the Digital Credential to the PID/(Q)EAA Credential endpoint. The request MUST contain the *Access Token*, the *DPoP Proof JWT*, the *credential type*, the ``proof`` (proof of possession of the key) and the ``format`` parameters.
+**Step 18 (Credential Request):** The Wallet Instance requests the Digital Credential to the PID/(Q)EAA Credential endpoint. The request MUST contain the *Access Token*, the *DPoP Proof JWT*, the *credential type*, the `proof` (proof of possession of the key), and the ``format`` parameters, where the *proof* is an object containing the proof of possession of the cryptographic key material the issued PID/(Q)EAA Digital Credential would be bound to. The PID/(Q)EAA Provider performs the following checks on the Credential endpoint to verify the *proof*:
+
+  1. all required claims for the *JWT proof* type are included as defined in the table of Section :ref:`Token Request <sec_token_request>`; 
+  2. the key proof is explicitly typed using header parameters as defined for that *proof* type; 
+  3. the header parameter indicates a registered asymmetric digital signature algorithm, alg parameter value MUST not be set to *none*; 
+  4. the signature on the key proof is verified with the public key contained in the header parameter;  
+  5. the header parameter does not contain a private key;
+  6. the *nonce* claim matches the server-provided *c_nonce* value, if the server had previously provided a *c_nonce*, the creation time of the JWT, as determined by either the issuance time (*iat*), or a server-managed timestamp via the *nonce* claim, is within an acceptable window. 
+
 
 .. note::
 
@@ -634,6 +642,8 @@ Token endpoint
 
 The token endpoint is used by the Wallet Instance to obtain an Access Token by presenting an authorization grant, as
 defined in :rfc:`6749`. The Token Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
+
+.. _sec_token_request:
 
 Token Request
 ^^^^^^^^^^^^^^^
