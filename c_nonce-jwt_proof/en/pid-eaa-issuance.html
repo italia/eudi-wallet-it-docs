@@ -1345,12 +1345,12 @@ grant_type=authorization_code
 <p><strong>Step 18 (Credential Request):</strong> The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key), and format parameters. The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>all required claims for the <em>JWT proof</em> type are included as defined in the table of Section <a class="reference internal" href="#sec-token-request"><span class="std std-ref">Token Request</span></a>;</p></li>
-<li><p>the key proof is explicitly typed using header parameters as defined for that <em>proof</em> type;</p></li>
-<li><p>the header parameter indicates a registered asymmetric digital signature algorithm, alg parameter value MUST not be set to <em>none</em>;</p></li>
-<li><p>the signature on the key proof is verified with the public key contained in the header parameter;</p></li>
-<li><p>the header parameter does not contain a private key;</p></li>
-<li><p>the <em>nonce</em> claim matches the server-provided <em>c_nonce</em> value, if the server had previously provided a <em>c_nonce</em>, the creation time of the JWT, as determined by either the issuance time (<em>iat</em>), or a server-managed timestamp via the <em>nonce</em> claim, is within an acceptable window.</p></li>
+<li><p>the JWT proof MUST include all required claims as specified in the table of Section <a class="reference internal" href="#sec-token-request"><span class="std std-ref">Token Request</span></a>;</p></li>
+<li><p>The key proof MUST be explicitly typed using header parameters as defined for the respective proof type;</p></li>
+<li><p>The header parameter alg MUST indicate a registered asymmetric digital signature algorithm, and MUST NOT be set to <cite>none</cite>;</p></li>
+<li><p>The signature on the key proof MUST be verified using the public key specified in the header parameter.</p></li>
+<li><p>The header parameter MUST NOT contain a private key.</p></li>
+<li><p>If a <cite>c_nonce</cite> value was previously provided by the server, the nonce claim in the JWT MUST match this <cite>c_nonce</cite> value. Furthermore, the creation time of the JWT, as indicated by the <cite>iat</cite> claim or a server-managed timestamp via the nonce claim, MUST be within an acceptable window of time as determined by the server.</p></li>
 </ol>
 </div></blockquote>
 <div class="admonition note">

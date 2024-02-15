@@ -310,12 +310,12 @@ The ``client_assertion`` is signed using the private key that is created during 
 
 **Step 18 (Credential Request):** The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key), and format parameters. The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
 
-  1. all required claims for the *JWT proof* type are included as defined in the table of Section :ref:`Token Request <sec_token_request>`; 
-  2. the key proof is explicitly typed using header parameters as defined for that *proof* type; 
-  3. the header parameter indicates a registered asymmetric digital signature algorithm, alg parameter value MUST not be set to *none*; 
-  4. the signature on the key proof is verified with the public key contained in the header parameter;  
-  5. the header parameter does not contain a private key;
-  6. the *nonce* claim matches the server-provided *c_nonce* value, if the server had previously provided a *c_nonce*, the creation time of the JWT, as determined by either the issuance time (*iat*), or a server-managed timestamp via the *nonce* claim, is within an acceptable window. 
+ 1. the JWT proof MUST include all required claims as specified in the table of Section :ref:`Token Request <sec_token_request>`;
+ 2. The key proof MUST be explicitly typed using header parameters as defined for the respective proof type;
+ 3. The header parameter alg MUST indicate a registered asymmetric digital signature algorithm, and MUST NOT be set to `none`;
+ 4. The signature on the key proof MUST be verified using the public key specified in the header parameter.
+ 5. The header parameter MUST NOT contain a private key.
+ 6. If a `c_nonce` value was previously provided by the server, the nonce claim in the JWT MUST match this `c_nonce` value. Furthermore, the creation time of the JWT, as indicated by the `iat` claim or a server-managed timestamp via the nonce claim, MUST be within an acceptable window of time as determined by the server.
 
 
 .. note::
