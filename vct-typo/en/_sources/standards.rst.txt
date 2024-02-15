@@ -1,0 +1,1 @@
+.. include:: ../common/standards.rst
