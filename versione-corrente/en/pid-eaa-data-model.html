@@ -1057,7 +1057,6 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <li><p>Current Family Name</p></li>
 <li><p>Current First Name</p></li>
 <li><p>Date of Birth</p></li>
-<li><p>Place of Birth</p></li>
 <li><p>Unique Identifier</p></li>
 <li><p>Taxpayer identification number</p></li>
 </ul>
@@ -1279,20 +1278,11 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[SD]. Date of Birth.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>birth_place</strong></p></td>
-<td><p>[SD]. Place of Birth. JSON Object with the following subclaims:</p>
-<ul class="simple">
-<li><p><strong>country</strong></p></li>
-<li><p><strong>locality</strong></p></li>
-</ul>
-</td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>unique_id</strong></p></td>
+<tr class="row-odd"><td><p><strong>unique_id</strong></p></td>
 <td><p>[SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to <a class="reference external" href="https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/">ANPR rules</a></p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>tax_id_code</strong></p></td>
+<tr class="row-even"><td><p><strong>tax_id_code</strong></p></td>
 <td><p>[SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example <code class="docutils literal notranslate"><span class="pre">TINIT-&lt;ItalianTaxIdentificationNumber&gt;</span></code></p></td>
 <td></td>
 </tr>
@@ -1334,10 +1324,6 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">      </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;birth_place&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;locality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rome&quot;</span>
-<span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -1379,9 +1365,8 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">      </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="s2">&quot;4g9lBt38U1EeTA1zlvvGfFgPPcoe3zmbQ_zSRDgHQaE&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;EYgzJ1hTYWJjhBK2V3b8HV3e_fEf-Udffc5ymY77WtQ&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;EfP5vho0dBdoObBbL45cOTmMsKo6LrSuN4My72y01SE&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;IcYHQydT_C3U1IqaJlFicxLlaHTHvElyFZ6Jxia27qQ&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;KxIG8rWXmtR884xTV7eXuHICfPYPw6gFvfr07v-d5oc&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;lXgxEDAuPeUvmkcNGr9FZuqodwFqUT01gJj7xd4yEPA&quot;</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1467,19 +1452,9 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <code class="docutils literal notranslate"><span class="pre">MC0wMS0xMCJd</span></code></p></li>
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;jtVuKCpn7bTcHrAg_seUbQ&quot;,</span> <span class="pre">&quot;birth_date&quot;,</span> <span class="pre">&quot;1980-01-10&quot;]</span></code></p></li>
 </ul>
-<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">birth_place</span></code>:</p>
-<ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">EfP5vho0dBdoObBbL45cOTmMsKo6LrSuN4My72y01SE</span></code></p></li>
-<li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImJpcnRoX3BsYWNlIiwgeyJj</span></code>
-<code class="docutils literal notranslate"><span class="pre">b3VudHJ5IjogIklUIiwgImxvY2FsaXR5IjogIlJvbWUifV0</span></code></p></li>
-<li><p>Contents:
-<code class="docutils literal notranslate"><span class="pre">[&quot;WDkd6JsNhDFvLP4s1hQdyA&quot;,</span> <span class="pre">&quot;birth_place&quot;,</span> <span class="pre">{&quot;country&quot;:</span> <span class="pre">&quot;IT&quot;,</span></code>
-<code class="docutils literal notranslate"><span class="pre">&quot;locality&quot;:</span> <span class="pre">&quot;Rome&quot;}]</span></code></p></li>
-</ul>
 <p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">F90SKK9nIQcHIElkHY_ult_9FGqYe-RydvY3E0qR96s</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">KxIG8rWXmtR884xTV7eXuHICfPYPw6gFvfr07v-d5oc</span></code></p></li>
 <li><p>Disclosure:
 <code class="docutils literal notranslate"><span class="pre">WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
 <code class="docutils literal notranslate"><span class="pre">TklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span></code></p></li>
@@ -1489,40 +1464,38 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <p>The combined format for the PID issuance is given by</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0</span><span class="o">.</span><span class="n">eyJfc2QiOiBb</span>
 <span class="n">IjdXRzRuVDZLMjZfUjM5NzV6Y3duVndnb0hBN2I5ODhfMy12SnpiWmY2WWMiXSwgImlz</span>
-<span class="n">cyI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsICJleHAiOiAxODgzMDAwMDAw</span>
-<span class="n">LCAic3ViIjogIk56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJqdGki</span>
-<span class="n">OiAidXJuOnV1aWQ6NmM1YzBhNDktYjU4OS00MzFkLWJhZTctMjE5MTIyYTllYzJjIiwg</span>
-<span class="n">InN0YXR1cyI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnL3N0YXR1cyIs</span>
-<span class="n">ICJ2Y3QiOiAiUGlkSWRlbnRpZmljYXRpb25EYXRhIiwgInZlcmlmaWVkX2NsYWltcyI6</span>
-<span class="n">IHsidmVyaWZpY2F0aW9uIjogeyJfc2QiOiBbImdkOGdSeEtUMWhnOHB0bnZSNWZQR2hh</span>
-<span class="n">ZTBWWGxsRGJsc2lKVDlhZHhpUzgiXSwgInRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIs</span>
-<span class="n">ICJhc3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCJ9LCAiY2xhaW1zIjogeyJfc2QiOiBbIjRn</span>
-<span class="n">OWxCdDM4VTFFZVRBMXpsdnZHZkZnUFBjb2Uzem1iUV96U1JEZ0hRYUUiLCAiRVlnekox</span>
-<span class="n">aFRZV0pqaEJLMlYzYjhIVjNlX2ZFZi1VZGZmYzV5bVk3N1d0USIsICJFZlA1dmhvMGRC</span>
-<span class="n">ZG9PYkJiTDQ1Y09UbU1zS282THJTdU40TXk3MnkwMVNFIiwgIkY5MFNLSzluSVFjSElF</span>
-<span class="n">bGtIWV91bHRfOUZHcVllLVJ5ZHZZM0UwcVI5NnMiLCAiSWNZSFF5ZFRfQzNVMUlxYUps</span>
-<span class="n">RmljeExsYUhUSHZFbHlGWjZKeGlhMjdxUSIsICJsWGd4RURBdVBlVXZta2NOR3I5Rlp1</span>
-<span class="n">cW9kd0ZxVVQwMWdKajd4ZDR5RVBBIl19fSwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj</span>
-<span class="n">bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD</span>
-<span class="n">QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa</span>
-<span class="n">eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ</span><span class="o">.</span><span class="n">OjCk1</span>
-<span class="n">G0STMjlG1eSfQRQHEcMdWxRkEDk0yF5eVahuW7x2qymvv_iLqBOLwVb4R_kGHVc4w6ju</span>
-<span class="mi">5</span><span class="n">hs2Pmz4diW4w</span><span class="o">~</span><span class="n">WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMD</span>
-<span class="n">AwMDBd</span><span class="o">~</span><span class="n">WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsIHsib3JnYW5pe</span>
-<span class="n">mF0aW9uX25hbWUiOiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvcmdhbml6YXRpb</span>
-<span class="mi">25</span><span class="n">faWQiOiAidXJuOmV1ZGk6aXQ6b3JnYW5pemF0aW9uX2lkOmlwYV9jb2RlOm1faXQiL</span>
-<span class="n">CAiY291bnRyeV9jb2RlIjogIklUIn1d</span><span class="o">~</span><span class="n">WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3Iiwg</span>
-<span class="n">ImV2aWRlbmNlIiwgW3sidHlwZSI6ICJlbGVjdHJvbmljX3JlY29yZCIsICJyZWNvcmQi</span>
-<span class="n">OiB7Il9zZCI6IFsiWk1IYkZIOVNlVDlDWlFhT01WclhETUdXSW91elhSS3NwS3A5ZkRo</span>
-<span class="n">dkozSSJdLCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LmNpZS5nb3YuaXQifX1d</span>
-<span class="n">XQ</span><span class="o">~</span><span class="n">WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4e</span>
-<span class="n">C14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ</span><span class="o">~</span><span class="n">WyJLWjhlNXdWRXREdmIxemlTUE</span>
-<span class="n">E0RHpBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJwWjVNUnlPeHBWV1p1SExvSi1</span>
-<span class="mi">5</span><span class="n">alJnIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJqdFZ1S0NwbjdiVGNIckFnX3N</span>
-<span class="n">lVWJRIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJXRGtkNkpzTmhERnZMUD</span>
-<span class="n">RzMWhRZHlBIiwgImJpcnRoX3BsYWNlIiwgeyJjb3VudHJ5IjogIklUIiwgImxvY2FsaX</span>
-<span class="n">R5IjogIlJvbWUifV0</span><span class="o">~</span><span class="n">WyI0a3NBejZiTVVLeTZadk4xaDhIRHVRIiwgInRheF9pZF9jb2</span>
-<span class="n">RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span><span class="o">~</span>
+<span class="n">cyI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnIiwgImV4cCI6IDE4ODMw</span>
+<span class="n">MDAwMDAsICJzdWIiOiAiTnpiTHNYaDh1RENjZDdub1dYRlpBZkhreFpzUkdDOVhzIiwg</span>
+<span class="n">Imp0aSI6ICJ1cm46dXVpZDo2YzVjMGE0OS1iNTg5LTQzMWQtYmFlNy0yMTkxMjJhOWVj</span>
+<span class="n">MmMiLCAic3RhdHVzIjogImh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmcvc3Rh</span>
+<span class="n">dHVzIiwgInZjdCI6ICJQaWRJZGVudGlmaWNhdGlvbkRhdGEiLCAidmVyaWZpZWRfY2xh</span>
+<span class="n">aW1zIjogeyJ2ZXJpZmljYXRpb24iOiB7Il9zZCI6IFsiZ2Q4Z1J4S1QxaGc4cHRudlI1</span>
+<span class="n">ZlBHaGFlMFZYbGxEYmxzaUpUOWFkeGlTOCJdLCAidHJ1c3RfZnJhbWV3b3JrIjogImVp</span>
+<span class="n">ZGFzIiwgImFzc3VyYW5jZV9sZXZlbCI6ICJoaWdoIn0sICJjbGFpbXMiOiB7Il9zZCI6</span>
+<span class="n">IFsiNGc5bEJ0MzhVMUVlVEExemx2dkdmRmdQUGNvZTN6bWJRX3pTUkRnSFFhRSIsICJF</span>
+<span class="n">WWd6SjFoVFlXSmpoQksyVjNiOEhWM2VfZkVmLVVkZmZjNXltWTc3V3RRIiwgIkljWUhR</span>
+<span class="n">eWRUX0MzVTFJcWFKbEZpY3hMbGFIVEh2RWx5Rlo2SnhpYTI3cVEiLCAiS3hJRzhyV1ht</span>
+<span class="n">dFI4ODR4VFY3ZVh1SElDZlBZUHc2Z0Z2ZnIwN3YtZDVvYyIsICJsWGd4RURBdVBlVXZt</span>
+<span class="n">a2NOR3I5Rlp1cW9kd0ZxVVQwMWdKajd4ZDR5RVBBIl19fSwgIl9zZF9hbGciOiAic2hh</span>
+<span class="n">LTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIs</span>
+<span class="n">ICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMi</span>
+<span class="n">LCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpR</span>
+<span class="n">In19fQ</span><span class="mf">.1</span><span class="n">xdAqLpgMM0bBDQrYv0thRwtgRikZq75JJVhGyfWAsu8SopmhumzsTA4ohJKC</span>
+<span class="n">le1MV3UB6DYMFkEnoal8R1Yrw</span><span class="o">~</span><span class="n">WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdC</span>
+<span class="n">IsIDE2ODMwMDAwMDBd</span><span class="o">~</span><span class="n">WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInNvdXJjZSIsI</span>
+<span class="n">Hsib3JnYW5pemF0aW9uX25hbWUiOiAiTWluaXN0ZXJvIGRlbGwnSW50ZXJubyIsICJvc</span>
+<span class="n">mdhbml6YXRpb25faWQiOiAidXJuOmV1ZGk6aXQ6b3JnYW5pemF0aW9uX2lkOmlwYV9jb</span>
+<span class="mi">2</span><span class="n">RlOm1faXQiLCAiY291bnRyeV9jb2RlIjogIklUIn1d</span><span class="o">~</span><span class="n">WyJOVE5Sb09pdVZWUnRGNkNF</span>
+<span class="n">enRkOVp3IiwgImV2aWRlbmNlIiwgW3sidHlwZSI6ICJlbGVjdHJvbmljX3JlY29yZCIs</span>
+<span class="n">ICJyZWNvcmQiOiB7Il9zZCI6IFsiWk1IYkZIOVNlVDlDWlFhT01WclhETUdXSW91elhS</span>
+<span class="n">S3NwS3A5ZkRodkozSSJdLCAidHlwZSI6ICJodHRwczovL2V1ZGkud2FsbGV0LmNpZS5n</span>
+<span class="n">b3YuaXQifX1dXQ</span><span class="o">~</span><span class="n">WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgInVuaXF1ZV9pZCIsI</span>
+<span class="n">CJ4eHh4eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ</span><span class="o">~</span><span class="n">WyJLWjhlNXdWRX</span>
+<span class="n">REdmIxemlTUEE0RHpBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJwWjVNUnlPeHB</span>
+<span class="n">WV1p1SExvSi15alJnIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJqdFZ1S0Nwbjd</span>
+<span class="n">iVGNIckFnX3NlVWJRIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJXRGtkNk</span>
+<span class="n">pzTmhERnZMUDRzMWhRZHlBIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWF</span>
+<span class="n">hYWFhYWFgiXQ</span><span class="o">~</span>
 </pre></div>
 </div>
 </section>
@@ -2015,14 +1988,6 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p><em>full-date (CBORTag 1004)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>birth_place</strong></p></td>
-<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>birth_country</strong></p></td>
-<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
 <td><p><strong>unique_id</strong></p></td>
 <td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
 </tr>
@@ -2155,7 +2120,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <section id="mdoc-cbor-examples">
 <h3>MDOC-CBOR Examples<a class="headerlink" href="#mdoc-cbor-examples" title="Permalink to this heading">¶</a></h3>
 <p>A non-normative example of a PID in MDOC-CBOR format is represented below using the AF Binary encoding:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>A366737461747573006776657273696F6E63312E3069646F63756D656E747381A267646F6354797065781865752E6575726F70612E65632E65756469772E7069642E316C6973737565725369676E6564A26A697373756572417574688443A10126A1182159021930820215308201BCA003020102021404AD06A30C1A6DC6E93BE0E2E8F78DCAFA7907C2300A06082A8648CE3D040302305B310B3009060355040613025A45312E302C060355040A0C25465053204D6F62696C69747920616E64205472616E73706F7274206F66205A65746F706961311C301A06035504030C1349414341205A65746573436F6E666964656E73301E170D3231303932393033333034355A170D3232313130333033333034345A3050311A301806035504030C114453205A65746573436F6E666964656E7331253023060355040A0C1C5A65746F70696120436974792044657074206F662054726166666963310B3009060355040613025A453059301306072A8648CE3D020106082A8648CE3D030107034200047C5545E9A0B15F4FF3CE5015121E8AD3257C28D541C1CD0D604FC9D1E352CCC38ADEF5F7902D44B7A6FC1F99F06EEDF7B0018FD9DA716AEC2F1FFAC173356C7DA3693067301F0603551D23041830168014BBA2A53201700D3C97542EF42889556D15B7AC4630150603551D250101FF040B3009060728818C5D050102301D0603551D0E04160414CE5FD758A8E88563E625CF056BFE9F692F4296FD300E0603551D0F0101FF040403020780300A06082A8648CE3D0403020347003044022012B06A3813FFEC5679F3B8CDDB51EAA4B95B0CBB1786B09405E2000E9C46618C02202C1F778AD252285ED05D9B55469F1CB78D773671F30FE7AB815371942328317C59032AD818590325A667646F6354797065781865752E6575726F70612E65632E65756469772E7069642E316776657273696F6E63312E306C76616C6964697479496E666FA3667369676E6564C074323032332D30322D32325430363A32333A35365A6976616C696446726F6DC074323032332D30322D32325430363A32333A35365A6A76616C6964556E74696CC074323032342D30322D32325430303A30303A30305A6C76616C756544696765737473A2781865752E6575726F70612E65632E65756469772E7069642E31AC015820A7FFC6F8BF1ED76651C14756A061D662F580FF4DE43B49FA82D80A4B80F8434A025820CD372FB85148700FA88095E3492D3F9F5BEB43E555E5FF26D95F5A6ADC36F8E6035820E67E72111B363D80C8124D28193926000980E1211C7986CACBD26AACC5528D48045820F7D062D662826ED95869851DB06BB539B402047BAEE53A00E0AA35BFBE98265D0658202A132DBFE4784627B86AA3807CD19CFEFF487AAB3DD7A60D0AB119A72E736936075820BDCA9E8DBCA354E824E67BFE1533FA4A238B9EA832F23FB4271EBEB3A5A8F7200858202C0EAEC2F05B6C7FE7982683E3773B5D8D7A01E33D04DFCB162ADD8BD99BEE9A095820BFE220D85657CCEC3C67E7DB1DF747E9148A152334BB6D4B65B273279BCC36EC0A582018E38144F5044301D6A0B4EC9D5F98D4CD950E6EA2C29B849CBD457DA29B6AD30B58203C71D2F0EFA09D9E3FBBDFFD29204F6B292C9F79570AEF72DD86C91F7A3AA5C50C582065743D58D89D45E52044758F546034FD13A4F994BC270CDFA7844F74EB3F4B6E0D5820B4A8EB5D523BFFA17B41BDA12DDC7DA32AE1E5F7FF3DCC394A35401F16919BBF781B65752E6575726F70612E65632E65756469772E7069642E69742E31A10E58209D6C11644651126C94ACDAF0803E86D4C71D15D3B2712A14295416734EFD514D6D6465766963654B6579496E666FA1696465766963654B6579A401022001215820BA01AEA44EEE1E338EB2F04E279DBD51B34655783EE185150838C9A7A7C4DB7122582025BA0044439A3871A7B975A0994A85E79B705A9AC263B3FE899B0A93412EE8C96F646967657374416C676F726974686D675348412D32353658400813C28FD62F2602CBC14724E5865733C44A0FCA589B55C085EC9D5C725D6CCE25BA0044439A3871A7B975A0994A85E79B705A9AC263B3FE899B0A93412EE8C96A6E616D65537061636573A2781865752E6575726F70612E65632E65756469772E7069642E318DD818586DA4686469676573744944016672616E646F6D5820156DF9227AD341EAA61AABD301106FD21BDC18820E01DFC16BCF5FECC447111B71656C656D656E744964656E7469666965726B6578706972795F646174656C656C656D656E7456616C7565D903EC6A323032342D30322D3232D818586FA4686469676573744944026672616E646F6D5820A3A1F13F05544D03A5B50B5FDB78465808393BCF3B7953A345FE28F820C7BE0D71656C656D656E744964656E7469666965726D69737375616E63655F646174656C656C656D656E7456616C7565D903EC6A323032332D30322D3232D8185866A4686469676573744944036672616E646F6D5820852591F90F2C9DED57A03632E2C1322AB52A082A431E71A4149A6830C8F1AD0C71656C656D656E744964656E7469666965726F69737375696E675F636F756E7472796C656C656D656E7456616C7565624954D818587CA4686469676573744944046672616E646F6D5820D1D587B3512ACCE15C4F6B20944CEB002A464E4A158389788563408873C3FCE571656C656D656E744964656E7469666965727169737375696E675F617574686F726974796C656C656D656E7456616C7565764D696E69737465726F2064656C6C27496E7465726E6FD8185864A4686469676573744944056672616E646F6D582094FDD7609C0E73DC8589B5CAB11E1D9058CF8BFF8A336DA5F81FCBA055396A0F71656C656D656E744964656E7469666965726A676976656E5F6E616D656C656C656D656E7456616C7565654D6172696FD8185865A4686469676573744944066672616E646F6D5820660C0A7BF79E0E0261CA1547A4294FB808AA70738F424B13AB1B9440B566AE1371656C656D656E744964656E7469666965726B66616D696C795F6E616D656C656C656D656E7456616C756565526F737369D818586BA4686469676573744944076672616E646F6D5820315C53491286488FA07F5C2CE67135EF5C9959C3469C99A14E9B6DC924F9EBA571656C656D656E744964656E746966696572696269727468646174656C656C656D656E7456616C7565D903EC6A313935362D30312D3132D818587AA4686469676573744944086672616E646F6D582081C5CC04FBDF78E0F84DF72FDB87028ADE08E66DC5F31084826EBAD7AE70D84671656C656D656E744964656E7469666965726B62697274685F706C6163656C656C656D656E7456616C756581A267636F756E747279624954686C6F63616C69747964526F6D65D818587DA4686469676573744944096672616E646F6D5820764EF39C9D01F3AA6A87F441603CFE853FBA3CEE3BC2C168BCC9E96271D6E06371656C656D656E744964656E74696669657269756E697175655F69646C656C656D656E7456616C7565781E78787878787878782D7878782D787878782D787878787878787878787878D81858E8A46864696765737449440A6672616E646F6D5820AD20B3B9C67AED8089FF33ECDC108781C3B49B81CD7A3F059D2FE236977037B271656C656D656E744964656E74696669657275766572696669636174696F6E2E65766964656E63656C656C656D656E7456616C756581A2647479706571656C656374726F6E69635F7265636F7264667265636F7264A264747970656C65696461732E69742E63696566736F75726365A3716F7267616E697A6174696F6E5F6E616D656C65696461732E69742E6369656F6F7267616E697A6174696F6E5F6964646D5F69746C636F756E7472795F636F6465626974D8185879A46864696765737449440B6672616E646F6D5820C12314B3695D1401505187E2113115E2F7B4A14B135DEE320F5E6DF81275F17671656C656D656E744964656E746966696572667374617475736C656C656D656E7456616C7565781D68747470733A2F2F70696470726F76696465722E69742F737461747573D8185877A46864696765737449440C6672616E646F6D5820A7B6A9027ED97F25DF96DD0EAB8093B264A3BD6A1D5B24228F3FC5B18EF835FB71656C656D656E744964656E746966696572781C766572696669636174696F6E2E74727573745F6672616D65776F726B6C656C656D656E7456616C7565656569646173D8185876A46864696765737449440D6672616E646F6D5820C76CE2AE4E9BE1DB07A5CB397B54ACE3ECCC786D3F85E4348B923DEE059783DB71656C656D656E744964656E746966696572781C766572696669636174696F6E2E6173737572616E63655F6C6576656C6C656C656D656E7456616C75656468696768781B65752E6575726F70612E65632E65756469772E7069642E69742E3181D8185877A46864696765737449440E6672616E646F6D5820717DF3F583B1484366C33A1F869F2B5D201D466A8B589C79AB1A2D85E595432571656C656D656E744964656E7469666965726D7461785F69645F6E756D6265726C656C656D656E7456616C75657554494E49542D585858585858585858585858585858
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a366737461747573006776657273696f6e63312e3069646f63756d656e747381a267646f6354797065781865752e6575726f70612e65632e65756469772e7069642e316c6973737565725369676e6564a26a697373756572417574688443a10126a1182159021930820215308201bca003020102021404ad06a30c1a6dc6e93be0e2e8f78dcafa7907c2300a06082a8648ce3d040302305b310b3009060355040613025a45312e302c060355040a0c25465053204d6f62696c69747920616e64205472616e73706f7274206f66205a65746f706961311c301a06035504030c1349414341205a65746573436f6e666964656e73301e170d3231303932393033333034355a170d3232313130333033333034345a3050311a301806035504030c114453205a65746573436f6e666964656e7331253023060355040a0c1c5a65746f70696120436974792044657074206f662054726166666963310b3009060355040613025a453059301306072a8648ce3d020106082a8648ce3d030107034200047c5545e9a0b15f4ff3ce5015121e8ad3257c28d541c1cd0d604fc9d1e352ccc38adef5f7902d44b7a6fc1f99f06eedf7b0018fd9da716aec2f1ffac173356c7da3693067301f0603551d23041830168014bba2a53201700d3c97542ef42889556d15b7ac4630150603551d250101ff040b3009060728818c5d050102301d0603551d0e04160414ce5fd758a8e88563e625cf056bfe9f692f4296fd300e0603551d0f0101ff040403020780300a06082a8648ce3d0403020347003044022012b06a3813ffec5679f3b8cddb51eaa4b95b0cbb1786b09405e2000e9c46618c02202c1f778ad252285ed05d9b55469f1cb78d773671f30fe7ab815371942328317c59032ad818590325a667646f6354797065781865752e6575726f70612e65632e65756469772e7069642e316776657273696f6e63312e306c76616c6964697479496e666fa3667369676e6564c074323032332d30322d32325430363a32333a35365a6976616c696446726f6dc074323032332d30322d32325430363a32333a35365a6a76616c6964556e74696cc074323032342d30322d32325430303a30303a30305a6c76616c756544696765737473a2781865752e6575726f70612e65632e65756469772e7069642e31ac015820a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a025820cd372fb85148700fa88095e3492d3f9f5beb43e555e5ff26d95f5a6adc36f8e6035820e67e72111b363d80c8124d28193926000980e1211c7986cacbd26aacc5528d48045820f7d062d662826ed95869851db06bb539b402047baee53a00e0aa35bfbe98265d0658202a132dbfe4784627b86aa3807cd19cfeff487aab3dd7a60d0ab119a72e736936075820bdca9e8dbca354e824e67bfe1533fa4a238b9ea832f23fb4271ebeb3a5a8f7200858202c0eaec2f05b6c7fe7982683e3773b5d8d7a01e33d04dfcb162add8bd99bee9a095820bfe220d85657ccec3c67e7db1df747e9148a152334bb6d4b65b273279bcc36ec0a582018e38144f5044301d6a0b4ec9d5f98d4cd950e6ea2c29b849cbd457da29b6ad30b58203c71d2f0efa09d9e3fbbdffd29204f6b292c9f79570aef72dd86c91f7a3aa5c50c582065743d58d89d45e52044758f546034fd13a4f994bc270cdfa7844f74eb3f4b6e0d5820b4a8eb5d523bffa17b41bda12ddc7da32ae1e5f7ff3dcc394a35401f16919bbf781b65752e6575726f70612e65632e65756469772e7069642e69742e31a10e58209d6c11644651126c94acdaf0803e86d4c71d15d3b2712a14295416734efd514d6d6465766963654b6579496e666fa1696465766963654b6579a401022001215820ba01aea44eee1e338eb2f04e279dbd51b34655783ee185150838c9a7a7c4db7122582025ba0044439a3871a7b975a0994a85e79b705a9ac263b3fe899b0a93412ee8c96f646967657374416c676f726974686d675348412d32353658400813c28fd62f2602cbc14724e5865733c44a0fca589b55c085ec9d5c725d6cce25ba0044439a3871a7b975a0994a85e79b705a9ac263b3fe899b0a93412ee8c96a6e616d65537061636573a2781865752e6575726f70612e65632e65756469772e7069642e318cd818586da4686469676573744944016672616e646f6d5820156df9227ad341eaa61aabd301106fd21bdc18820e01dfc16bcf5fecc447111b71656c656d656e744964656e7469666965726b6578706972795f646174656c656c656d656e7456616c7565d903ec6a323032342d30322d3232d818586fa4686469676573744944026672616e646f6d5820a3a1f13f05544d03a5b50b5fdb78465808393bcf3b7953a345fe28f820c7be0d71656c656d656e744964656e7469666965726d69737375616e63655f646174656c656c656d656e7456616c7565d903ec6a323032332d30322d3232d8185866a4686469676573744944036672616e646f6d5820852591f90f2c9ded57a03632e2c1322ab52a082a431e71a4149a6830c8f1ad0c71656c656d656e744964656e7469666965726f69737375696e675f636f756e7472796c656c656d656e7456616c7565624954d818587ca4686469676573744944046672616e646f6d5820d1d587b3512acce15c4f6b20944ceb002a464e4a158389788563408873c3fce571656c656d656e744964656e7469666965727169737375696e675f617574686f726974796c656c656d656e7456616c7565764d696e69737465726f2064656c6c27496e7465726e6fd8185864a4686469676573744944056672616e646f6d582094fdd7609c0e73dc8589b5cab11e1d9058cf8bff8a336da5f81fcba055396a0f71656c656d656e744964656e7469666965726a676976656e5f6e616d656c656c656d656e7456616c7565654d6172696fd8185865a4686469676573744944066672616e646f6d5820660c0a7bf79e0e0261ca1547a4294fb808aa70738f424b13ab1b9440b566ae1371656c656d656e744964656e7469666965726b66616d696c795f6e616d656c656c656d656e7456616c756565526f737369d818586ba4686469676573744944076672616e646f6d5820315c53491286488fa07f5c2ce67135ef5c9959c3469c99a14e9b6dc924f9eba571656c656d656e744964656e746966696572696269727468646174656c656c656d656e7456616c7565d903ec6a313935362d30312d3132d818587da4686469676573744944086672616e646f6d5820764ef39c9d01f3aa6a87f441603cfe853fba3cee3bc2c168bcc9e96271d6e06371656c656d656e744964656e74696669657269756e697175655f69646c656c656d656e7456616c7565781e78787878787878782d7878782d787878782d787878787878787878787878d81858e8a4686469676573744944096672616e646f6d5820ad20b3b9c67aed8089ff33ecdc108781c3b49b81cd7a3f059d2fe236977037b271656c656d656e744964656e74696669657275766572696669636174696f6e2e65766964656e63656c656c656d656e7456616c756581a2647479706571656c656374726f6e69635f7265636f7264667265636f7264a264747970656c65696461732e69742e63696566736f75726365a3716f7267616e697a6174696f6e5f6e616d656c65696461732e69742e6369656f6f7267616e697a6174696f6e5f6964646d5f69746c636f756e7472795f636f6465626974d8185879a46864696765737449440a6672616e646f6d5820c12314b3695d1401505187e2113115e2f7b4a14b135dee320f5e6df81275f17671656c656d656e744964656e746966696572667374617475736c656c656d656e7456616c7565781d68747470733a2f2f70696470726f76696465722e69742f737461747573d8185877a46864696765737449440b6672616e646f6d5820a7b6a9027ed97f25df96dd0eab8093b264a3bd6a1d5b24228f3fc5b18ef835fb71656c656d656e744964656e746966696572781c766572696669636174696f6e2e74727573745f6672616d65776f726b6c656c656d656e7456616c7565656569646173d8185876a46864696765737449440c6672616e646f6d5820c76ce2ae4e9be1db07a5cb397b54ace3eccc786d3f85e4348b923dee059783db71656c656d656e744964656e746966696572781c766572696669636174696f6e2e6173737572616e63655f6c6576656c6c656c656d656e7456616c75656468696768781b65752e6575726f70612e65632e65756469772e7069642e69742e3181d8185877a46864696765737449440d6672616e646f6d5820717df3f583b1484366c33a1f869f2b5d201d466a8b589c79ab1a2d85e595432571656c656d656e744964656e7469666965726d7461785f69645f6e756d6265726c656c656d656e7456616c75657554494e49542d585858585858585858585858585858
 </pre></div>
 </div>
 <p>The <cite>Diagnostic Notation</cite> of the above MDOC-CBOR is given below:</p>
@@ -2189,15 +2154,14 @@ The User attributes provided within the Italian PID are the ones listed below:</
                         4: h&#39;BBC77E6CCA981A3AD0C3E544EDF86…&#39;,
                         6: h&#39;BB6E6C68D1B4B4EC5A2AE9206F5t4…&#39;,
                         7: h&#39;F8A5966E6DAC9970E0334D8F75E25…&#39;,
-                        8: h&#39;EAD5E8B5E543BD31F3BE57DE4ED45…&#39;,
-                        9: h&#39;DEFDF1AA746718016EF1B94BFE5R6…&#39;
+                        8: h&#39;DEFDF1AA746718016EF1B94BFE5R6…&#39;
                     },
                     &quot;eu.europa.ec.eudiw.pid.it.1&quot;: {
-                        10: h&#39;AFC5A127BE44753172844B13491D8…&#39;,
-                        11: h&#39;AFC5A127BE44753172844B13492H4…&#39;,
-                        12: h&#39;DJA5A127BE44753172844B13492H4…&#39;,
-                        13: h&#39;KDL5A127BE44753172844B13492H4…&#39;,
-                        14: h&#39;F9EE4D36F67DBD75E23311AC1C29…&#39;
+                        9: h&#39;AFC5A127BE44753172844B13491D8…&#39;,
+                        10: h&#39;AFC5A127BE44753172844B13492H4…&#39;,
+                        11: h&#39;DJA5A127BE44753172844B13492H4…&#39;,
+                        12: h&#39;KDL5A127BE44753172844B13492H4…&#39;,
+                        13: h&#39;F9EE4D36F67DBD75E23311AC1C29…&#39;
                     }
                 },
                 &quot;deviceKeyInfo&quot;: {
@@ -2268,7 +2232,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
                 {
                 &quot;digestID&quot;: 7,
                 &quot;random&quot;: h&#39;6059FF1CE27B4997B4ADE1DE7B01DC60&#39;,
-                &quot;elementIdentifier&quot;: &quot;birthdate&quot;,
+                &quot;elementIdentifier&quot;: &quot;birth_date&quot;,
                 &quot;elementValue&quot;: 1004(&quot;1956-01-12&quot;)% the tag 1004 defines the value
                                                     is a full date
                 }
@@ -2276,19 +2240,6 @@ The User attributes provided within the Italian PID are the ones listed below:</
             24(&lt;&lt;
                 {
                 &quot;digestID&quot;: 8,
-                &quot;random&quot;: h&#39;CAD1F6A38F603451F1FA653F81FF309D&#39;,
-                &quot;elementIdentifier&quot;: &quot;birth_place&quot;,
-                &quot;elementValue&quot;: [
-                    {
-                        &quot;country&quot;: &quot;IT&quot; ,
-                        &quot;locality&quot;: &quot;Rome&quot;
-                    }
-                ]
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 9,
                 &quot;random&quot;: h&#39;53C15C57B3B076E788795829190220B4&#39;,
                 &quot;elementIdentifier&quot;: &quot;unique_id&quot;,
                 &quot;elementValue&quot;: &quot;xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx&quot;
@@ -2298,7 +2249,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
             &quot;eu.europa.ec.eudiw.pid.it.1&quot;: [
                 24(&lt;&lt;
                     {
-                    &quot;digestID&quot;: 10,
+                    &quot;digestID&quot;: 9,
                     &quot;random&quot;: h&#39;CAD1F6A38F603451F1FA653F81FF309D&#39;,
                     &quot;elementIdentifier&quot;: &quot;verification.evidence&quot;,
                     &quot;elementValue&quot;: [
@@ -2318,7 +2269,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
                 &gt;&gt;),
                 24(&lt;&lt;
                     {
-                    &quot;digestID&quot;: 11,
+                    &quot;digestID&quot;: 10,
                     &quot;random&quot;: h&#39;CAD1F6A38F603451F1FA653F81FF309D,
                     &quot;elementIdentifier&quot;: &quot;status&quot;,
                     &quot;elementValue&quot;: &quot;https://pidprovider.example.it/status&quot;
@@ -2326,7 +2277,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
                 &gt;&gt;),
                 24(&lt;&lt;
                     {
-                    &quot;digestID&quot;: 12,
+                    &quot;digestID&quot;: 11,
                     &quot;random&quot;: h&#39;564E3C65D46D06FEDEB0E7293A86GF&#39;,
                     &quot;elementIdentifier&quot;: &quot;verification.trust_framework&quot;,
                     &quot;elementValue&quot;: &quot;eidas&quot;
@@ -2334,7 +2285,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
                 &gt;&gt;),
                 24(&lt;&lt;
                     {
-                    &quot;digestID&quot;: 13,
+                    &quot;digestID&quot;: 12,
                     &quot;random&quot;: h&#39;D884E5D5EF4CFC93FDB1E4EE8F3923&#39;,
                     &quot;elementIdentifier&quot;: &quot;verification.assurance_level&quot;,
                     &quot;elementValue&quot;: &quot;high&quot;
@@ -2342,7 +2293,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
                 &gt;&gt;)
                 24(&lt;&lt;
                     {
-                    &quot;digestID&quot;: 14,
+                    &quot;digestID&quot;: 13,
                     &quot;random&quot;: h&#39;11aa7273a2d2daa973f5951f0c34c2fbae&#39;,
                     &quot;elementIdentifier&quot;: &quot;tax_id_number&quot;,
                     &quot;elementValue&quot;: &quot;TINIT-XXXXXXXXXXXXXXX&quot;
