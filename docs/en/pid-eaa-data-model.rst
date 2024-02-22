@@ -213,7 +213,7 @@ In the following, the non-normative example of a PID in JSON format.
     "iat": 1683000000,
     "exp": 1883000000,
     "status": "https://pidprovider.example.org/status",
-    "vct": "PidIdentificationData",
+    "vct": "PersonIdentificationData",
     "verified_claims": {
       "verification": {
         "trust_framework": "eidas",
@@ -269,7 +269,7 @@ The corresponding SD-JWT verson for PID is given by
     "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
     "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
     "status": "https://pidprovider.example.org/status",
-    "vct": "PidIdentificationData",
+    "vct": "PersonIdentificationData",
     "verified_claims": {
       "verification": {
         "_sd": [
