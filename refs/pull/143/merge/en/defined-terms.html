@@ -603,7 +603,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-attestation">Wallet Attestation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
@@ -631,23 +631,23 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#id1">Wallet Instance Attestation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-request">Wallet Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#id1">Wallet Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -698,16 +698,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-protocol-flow">Remote Protocol Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#dpop-http-header">DPoP HTTP Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-flow">Remote Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-with-http-post">Request URI with HTTP POST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#device-engagement">Device Engagement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-request">mDoc Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-response">mDoc Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Revocations</a><ul>
@@ -774,8 +782,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id45">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -873,7 +881,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-attestation">Wallet Attestation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
@@ -901,23 +909,23 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-attestation">Wallet Instance Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">Wallet Instance Attestation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#high-level-design">High-level Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#static-component-view">Static Component View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#high-level-design">High-level Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-attestation.html#detailed-design">Detailed Design</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#wallet-instance-attestation-request">Wallet Instance Attestation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-attestation.html#id1">Wallet Instance Attestation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#detailed-design">Detailed Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-request">Wallet Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#id1">Wallet Attestation</a></li>
 </ul>
 </li>
 </ul>
@@ -968,16 +976,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-protocol-flow">Remote Protocol Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#dpop-http-header">DPoP HTTP Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-flow">Remote Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-with-http-post">Request URI with HTTP POST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#device-engagement">Device Engagement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-request">mDoc Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-response">mDoc Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Revocations</a><ul>
@@ -1040,8 +1056,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id45">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1093,7 +1109,7 @@
 <td><p>Electronic attestation of attributes referring to master data already present in Italian digital identity systems.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Digital Credential</p></td>
-<td><p>Electronic Attestation of Identity.</p></td>
+<td><p>An signed Credential whose integrity can be cryptographically verified using the public keys of its Issuer. It is also known as Credential.</p></td>
 </tr>
 <tr class="row-even"><td><p>Federation Authority</p></td>
 <td><p>A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.</p></td>
@@ -1104,13 +1120,13 @@
 <tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Wallet Instance Attestation</p></td>
+<tr class="row-odd"><td><p>Wallet Attestation</p></td>
 <td><p>Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.</p></td>
 </tr>
-<tr class="row-even"><td><p>Non-Revocation Attestation</p></td>
+<tr class="row-even"><td><p>Credential Status Attestation</p></td>
 <td><p>Verifiable Attestation proving that a related Digital Credential is not revoked.</p></td>
 </tr>
-<tr class="row-odd"><td><p>App Attestation Service</p></td>
+<tr class="row-odd"><td><p>Wallet Attestation Service</p></td>
 <td><p>Device manufacturer service that allows you to certify the authenticity of the mobile app (Wallet Instance).</p></td>
 </tr>
 <tr class="row-even"><td><p>Qualified Electronic Attestation of Attributes (QEAA)</p></td>
@@ -1122,14 +1138,20 @@
 <tr class="row-even"><td><p>Relying Party</p></td>
 <td><p>A natural or legal person that implements an authentication system requiring electronic attribute attestation submissions as an authentication mechanism.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Trust Attestation</p></td>
+<tr class="row-odd"><td><p>Verifier</p></td>
+<td><p>See Relying Party.</p></td>
+</tr>
+<tr class="row-even"><td><p>Trust Attestation</p></td>
 <td><p>Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.</p></td>
 </tr>
-<tr class="row-even"><td><p>Trust Layer</p></td>
+<tr class="row-odd"><td><p>Trust Layer</p></td>
 <td><p>An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.</p></td>
 </tr>
+<tr class="row-even"><td><p>Trust Model</p></td>
+<td><p>System defining how the participants of the ecosystem establish and maintain trust in their interactions. The Trust Model outlines the rules and the procedures for the entities (like users, systems, or applications) should validate each other's identities, authenticate, and establish the level of trust before exchanging information.</p></td>
+</tr>
 <tr class="row-odd"><td><p>Level of Assurance</p></td>
-<td><p>The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the credential was issued.</p></td>
+<td><p>The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the Digital Credential was issued.</p></td>
 </tr>
 <tr class="row-even"><td><p>Holder Key Binding</p></td>
 <td><p>Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.</p></td>

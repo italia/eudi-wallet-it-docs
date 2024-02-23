@@ -31,19 +31,21 @@ Similar to the Wallet Instance Attestation, Non-Revocation Attestations do not n
 The attestations acquired by the Holder (Wallet Instance) for its proper functioning are procured via assessments 
 and Holder's authentication with the attestation providers, entirely in an automated fashion.
 
+
 All the attestations can only be acquired when the Wallet Instance has an internet connection and is actively executed by the User.
+
 
 A Credential Issuer, together with the owner of the Credential (User), 
 is in charge of the creation and the issuance of Credentials, 
 its lifecycle and its validity status. 
 
+
 Digital Credentials may be linked to a physical documents issued by an Authentic Source in a previous period.
-The Authentic Sources are National organizations that implements repositories of data containing attributes 
-related to the Users to be provided to the Issuers duringthe issuance phase.  
+
 
 When one or more Authentic Sources are involved in the issuance of a Digital Credential, 
 the information exchanged between the Authentic Source and the PID/(Q)EAA Provider is required for the 
-issuance of the Credential and, in some cases also for the the revocation of the Credential.
+issuance of the Credential and, in the cases where the revocation is requested by the Authentic Source, also for the the revocation of the Credential.
 
 Finally, it is assumed that, to facilitate the association between physical document and a digital Credential, 
 the identifier of the physical document should be always present as an attribute within the Digital Credential.
@@ -118,16 +120,16 @@ Security Requirements
 
 - The proof of non-revocation (Non-Revocation Attestation) MUST be cryptographically verifiable, so that it can be shown to have been issued by the Issuer and not to have been tampered with.
 - The Non-Revocation Attestation MUST be non-repudiable even beyond its expiration time and even in the face of any rotations of the cryptographic keys.
-- Granting of the proof of non-revocation (Non-Revocation Attestation) MUST be allowed only to authorized entities (e.g. by the Holder or by law).
+- Granting of the proof of non-revocation (Non-Revocation Attestation) MUST be allowed only to authorized entities (e.g. by the User or by law).
 
 
 Privacy Requirements
 ^^^^^^^^^^^^^^^^^^^^
 
 - The Authentic Source MUST store in local databases only the minimum information required to notify the Issuer of a change in attributes or a change in the validity status of a physical document associated with one or more Credentials.
-- Access to Credential status information by a Verifier MUST be authorized by the Holder, except for checks carried out by Law-Enforcement Bodies on a regulatory basis. 
-- The Issuer SHOULD not directly or indirectly have any information related to the Verifier, type of Credentials, and Holder such that it is impossible to track the Holder's usage of the Credentials.
-- A proof of non-revocation (Non-Revocation Attestation) provided by the Issuer, in whatever format it is, SHOULD NOT reveal any information about the Verifier nor the User's attributes contained in the Credential the attestation is related to.
+- Access to Credential status information by a Verifier MUST be authorized by the User, except for checks carried out by Law-Enforcement Bodies on a regulatory basis. 
+- The Issuer SHOULD not directly or indirectly have any information related to the interation between the Verifier and the User, such that it is impossible to track the usage of the issued Credential.
+- A proof of non-revocation (Non-Revocation Attestation) provided by the Issuer, in whatever format it is, SHOULD NOT reveal any information about the Verifier nor the User's attributes contained in the Credential, or the Credential type, the attestation is related to.
 
 
 .. _sec_revocation_entity_relationship:
@@ -146,7 +148,7 @@ The entities involved in the main revocation processes are depicted in the diagr
 
 The revocation scenarios involve two main flows:
 
-    - The Revocation Request flow: this flow describes how an entity requests for a Credential revocation to the Issuer of that Credential. 
+    - The Revocation Request flow: this flow describes how an entity requests for a non-Revocation Attestation to the Issuer of that Credential. 
     - The Non-Revocation Attestation Request flow: this flow defines the technical protocol for requesting and obtaining a Non-Revocation Attestation and how the Wallet Instance will provide it with a Verifier as a proof of validity of a Credential.
 
 
@@ -157,11 +159,11 @@ High Level Revocation Flow
 
 A Credential Revocation Flow can start under different scenarios:
 
-    - The Holders report the loss or theft of their own physical document to the Law-Enforcement Authorities: this implies that the Credentials, if any, shall be revoked.
-    - The Holders notify an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials SHALL be revoked, as they are no longer valid due to the change in attributes. 
-    - The Holders who no longer have access to their Wallet Instance (e.g. theft or loss of the device), may request the Issuer of the Credentials to revoke them.
+    - The User report the loss or theft of their own physical document to the Law-Enforcement Authorities: this implies that the Credentials, if any, shall be revoked.
+    - The User notify an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials SHALL be revoked, as they are no longer valid due to the change in attributes. 
+    - The Users who no longer have access to their Wallet Instance (e.g. theft or loss of the device), may request the Issuer of the Credentials to revoke them.
     - The Law-Enforcing Authorities, for the fulfillment of their functions and any other judicial reasons, may request the Authentic Source to revoke entitlements, licences, certificates, identification documents, etc., which in turn leads to the revocation of any linked Credentials.
-    - The Authentic Sources that for any administrative reasons update one or more attributes of a Holder, SHALL inform the Issuer of related Credentials. 
+    - The Authentic Sources that for any administrative reasons update one or more attributes of a User, SHALL inform the Issuer of related Credentials. 
     - The Issuers, for technical security reasons (e.g. in the case of compromised cryptographic keys), can decide to revoke the Credentials.
 
 The Figure below shows the main processes involved in the scenarios described above.
@@ -213,7 +215,7 @@ where a non-normative example of a Credential PoP is given by the following JWT 
     {
         "alg": "ES256",
         "typ": "revocation-request+jwt",
-        "kid": "$WIA-CNF-JWKID"
+        "kid": $WIA-CNF-JWKID
 
     }
     .
@@ -224,7 +226,7 @@ where a non-normative example of a Credential PoP is given by the following JWT 
         "exp": 1698744139, 
         "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
         "format": "vc+sd-jwt",
-        "credential": "$Issuer-Signed-JWT"
+        "credential": $Issuer-Signed-JWT
     }
 
 **Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Wallet Instance Attestation and the Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Wallet Instance Attestation and Credential, and therefore is entitled to request its revocation.
@@ -253,7 +255,7 @@ The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, 
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **Credential_proof**
+    * - **credential_proof**
       - It MUST contain a JWT proof of possession of the cryptographic key the Credential to be revoked shall be bound to. 
       - This specification
     * - **client_assertion_type**
@@ -264,6 +266,7 @@ The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, 
       - `oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_.
 
 The Revocation Endpoint MUST be provided by the Issuer within its Metadata. 
+
 
 The Credential Proof of Possession MUST be a JWT that MUST contain the paramters (JOSE Header and claims) in the following table.
 
@@ -306,11 +309,11 @@ The Credential Proof of Possession MUST be a JWT that MUST contain the paramters
     * - **jti**
       - Unique identifier for the PoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
       - [:rfc:`7519`. Section 4.1.7].
-    * - **Credential_format**
+    * - **credential_format**
       - The data format of the Credential to be revoked. It MUST be set to ``vc+sd-jwt`` or ``vc+mdoc``
       - This specification.
-    * - **Credential**
-      - It MUST contain the Credential to be revoked encoded according to the data format given in the ``Credential_format`` claim.
+    * - **credential**
+      - It MUST contain the Credential to be revoked encoded according to the data format given in the ``credential_format`` claim.
       - [:rfc:`7519`. Section 4.1.7].
 
 
@@ -332,7 +335,7 @@ The Non-Revocation Attestation MUST contain the expiration datetime after which 
 The Non-Revocation Attestation enables offline use cases as it MUST be statically validated using the cryptographic signature of the Issuer. 
 Relying Parties MUST reject an expired Non-Revocation Attestation and, in the case of valid Attestations, they MAY still reject them according to their own policies (e.g., if the issue date doesn't meet their security requirements). 
 
-The following diagram shows how the Wallet Instance MUST request a Non-Revocation Attestation to the Issuer.
+The following diagram shows how the Wallet Instance requests a Non-Revocation Attestation to the Issuer.
 
 .. _fig_Low-Level-Flow-Revocation-Attestation:
 .. figure:: ../../images/Low-Level-Flow-Revocation-Attestation.svg
@@ -350,11 +353,11 @@ The following diagram shows how the Wallet Instance MUST request a Non-Revocatio
     Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
-    Credential_proof=$CredentialPoPJWT
+    credential_proof=$CredentialPoPJWT
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
-For a non-normative example of Credential Proof of Possession see :ref:`the one provided in the prevoius section <Credential_pop_jwt_ex>`.
+For a non-normative example of Credential Proof of Possession see :ref:`the one provided in the prevoius section <credential_pop_jwt_ex>`.
 
 **Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Wallet Instance Attestation and the Credential, which is the proof that the Wallet Instance owns the private keys associated with the Wallet Instance Attestation and Credential. Therefore the Wallet Instance is entitled to request its Non-Revocation Attestation.
 
