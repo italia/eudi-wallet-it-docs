@@ -91,9 +91,6 @@ The following algorithms are RECOMMENDED to be supported:
     - Key Encryption
     - :rfc:`7518`.
 
-.. note::
-    It is importnat to highlight that For optimal security and compatibility in cryptographic operations, it is crucial that mobile devices support the reported algorithms.  
-
 The following algorithms MUST NOT be supported:
     
 .. list-table:: 
