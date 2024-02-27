@@ -1,17 +1,19 @@
+@ -1,512 +1,512 @@
+.. include:: ../common/common_definitions.rst
 
-
-
+.. _Wallet Instance Attestation: wallet-instance-attestation.html
+.. _Trust Model: trust.html
 
 .. _relying-party-solution:
 
 Relying Party Solution
 +++++++++++++++++++++++
 
-This section describes how a remote Relying Party or a Verifier App requests to a Wallet Instance the presentation of the PID/EAAs.
+This section describes how a Relying Party may request to a Wallet Instance the presentation of the PID and the (Q)EAAs, 
+according to `OpenID for Verifiable Presentations - draft 20 <https://openid.net/specs/openid-4-verifiable-presentations-1_0.html>`_.
 
 In this section the following flows are described:
 
-<<<
 - **Remote Same Device Flow**, where the user-agent and the Wallet Instance are used in the same device.
 - **Remote Cross Device Flow**, where the user-agent and the Wallet Instance are used in different devices.
 
@@ -505,19 +507,18 @@ Below is a non-normative response example:
 .. code-block:: text
 
     {
+        "alg": "RS256",
         "alg": "ES256",
         "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
         "typ": "entity-statement+jwt"
     }
-    .
-    {
-        "exp": 1649590602,
-        "iat": 1649417862,
-        "iss": "https://rp.example.it",
-        "sub": "https://rp.example.it",
+@ -519,9 +519,11 @@ Below is a non-normative response example:
         "jwks": {
             "keys": [
                 {
+                    "kty": "RSA",
+                    "n": "5s4qi …",
+                    "e": "AQAB",
                     "kty": "EC",
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
@@ -526,178 +527,38 @@ Below is a non-normative response example:
                     "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
                 }
             ]
-        },
-        "metadata": {
-            "wallet_relying_party": {
-                "application_type": "web",
-                "client_id": "https://rp.example.it",
-                "client_name": "Name of an example organization",
+@ -534,10 +536,11 @@ Below is a non-normative response example:
                 "jwks": {
                     "keys": [
                         {
+                            "kty": "RSA",
                             "kty": "EC",
                             "use": "sig",
+                            "n": "1Ta-sE …",
+                            "e": "AQAB",
                             "crv": "P-256",
                             "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                             "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
                             "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
                             "x5c": [ "..." ]
                         }
-                    ]
-                },
-                
-                "contacts": [
-                    "ops@relying-party.example.org"
-                ],
-                
-                "request_uris": [
-                    "https://relying-party.example.org/request_uri"
-                ],
-                "redirect_uris": [
-                    "https://relying-party.example.org/callback"
-                ],
-                
-                "default_acr_values": [
-                    "https://www.spid.gov.it/SpidL2",
-                    "https://www.spid.gov.it/SpidL3"
-                ],
-                "vp_formats": {
-                    "vc+sd-jwt": {
-                        "sd-jwt_alg_values": [
-                            "ES256",
-                            "ES384"
-                        ],
-                        "kb-jwt_alg_values": [
-                            "ES256",
-                            "ES384"
-                        ]
-                    }
-                },
-                  "presentation_definitions": [
-                      {
-                        "id": "eu.europa.ec.eudiw.pid.it.1",
-                        "input_descriptors": [
-                            {
-                                "id": "IdentityCredential",
-                                "format": {
-                                    "vc+sd-jwt": {}
-                                },
-                                "constraints": {
-                                    "limit_disclosure": "required",
-                                    "fields": [
-                                        {
-                                            "path": [
-                                                "$.type"
-                                            ],
-                                            "filter": {
-                                                "type": "string",
-                                                "const": "IdentityCredential"
-                                            }
-                                        },
-                                        {
-                                            "path": [
-                                                "$.family_name"
-                                            ]
-                                        },
-                                        {
-                                            "path": [
-                                                "$.given_name"
-                                            ]
-                                        },
-                                        {
-                                            "path": [
-                                                "$.unique_id"
-                                            ],
-                                            "intent_to_retain": "true"
-                                        }
-                                    ]
-                                }
-                            }
-                        ]
-                    },
-                      {
-                        "id": "mDL-sample-req",
-                        "input_descriptors": [
-                            {
-                                "id": "mDL",
-                                "format": {
-                                    "mso_mdoc": {
-                                        "alg": [
-                                            "EdDSA",
-                                            "ES256"
-                                        ]
-                                    },
-                                    "constraints": {
-                                        "limit_disclosure": "required",
-                                        "fields": [
-                                            {
-                                                "path": [
-                                                    "$.mdoc.doctype"
-                                                ],
-                                                "filter": {
-                                                    "type": "string",
-                                                    "const": "org.iso.18013.5.1.mDL"
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.namespace"
-                                                ],
-                                                "filter": {
-                                                    "type": "string",
-                                                    "const": "org.iso.18013.5.1"
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.family_name"
-                                                ],
-                                                "intent_to_retain": "false"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.portrait"
-                                                ],
-                                                "intent_to_retain": "false"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.driving_privileges"
-                                                ],
-                                                "intent_to_retain": "false"
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
-                    }
-                ],
-
-                "default_max_age": 1111,
+@ -676,8 +679,8 @@ Below is a non-normative response example:
                 
                 // JARM related
                 "authorization_signed_response_alg": [[
+                    "RS256",
+                    "ES256"
                     "ES256",
                     "ES384"
                 ],
                 "authorization_encrypted_response_alg": [
                     "RSA-OAEP",
-                    "RSA-OAEP-256"
-                ],
-                "authorization_encrypted_response_enc": [
-                    "A128CBC-HS256",
-                    "A192CBC-HS384",
-                    "A256CBC-HS512",
-                    "A128GCM",
-                    "A192GCM",
-                    "A256GCM"
-                ],
-
-                // SIOPv2 related
+@ -696,57 +699,57 @@
                 "subject_type": "pairwise",
                 "require_auth_time": true,
                 "id_token_signed_response_alg": [
+                    "RS256",
+                    "ES256"
                     "ES256",
                     "ES384"
                 ],
@@ -736,11 +597,18 @@ The Entity Configuration is a JWS, where its header parameters are defined below
 .. list-table::
   :widths: 25 50
   :header-rows: 1
-- :ref:`Remote Flow <remote_flow_sec>`, where the User presents a Credential to a remote Relying Party according to `OPENID4VP`_. In this scenario the user-agent and the Wallet Instance may be used in the same device (**Same Device Flow**), or in different devices (**Cross Device Flow**).
-- :ref:`Proximity Flow <proximity_flow_sec>`, where the User presents a Credential to a Verifier App according to ISO 18013-5. The User interacts with a Verifier using proximity connection technologies such as QR Code and Bluetooth Low Energy (BLE).
 
-.. include:: remote-flow.rst
+  * - **Name**
+    - **Description**
+  * - **alg**
+    - Algorithm used to sign the JWT
+  * - **typ**
+    - Media Type of the JWT
+  * - **kid**
+    - Key ID used identifying the key used to sign the JWS
 
-.. include:: proximity-flow.rst
 
+.. note:
+    The Relying Party specific metadata parameter are experimental 
+    and still under discussion `here <https://github.com/openid/OpenID4VP/issues/17>`_.
 
