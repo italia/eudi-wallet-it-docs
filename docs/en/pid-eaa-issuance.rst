@@ -282,9 +282,9 @@ The ``client_assertion`` is signed using the private key that is created during 
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
-**Step 15 (Token Response):** The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) and a fresh ``c_nonce`` is provided to the Wallet Instance.
+**Step 15 (Token Response):** The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) and a fresh `c_nonce` are provided by the Issuer to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 18 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer provides the Wallet Instance with a new `c_nonce` value. 
 
-.. code-block:: http
+.. code-block:: 
 
     HTTP/1.1 200 OK
     Content-Type: application/json
@@ -308,7 +308,15 @@ The ``client_assertion`` is signed using the private key that is created during 
 
 **Steps 16-17 (DPoP Proof for Credential Endpoint):** The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 15** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
 
-**Step 18 (Credential Request):** The Wallet Instance requests the Digital Credential to the PID/(Q)EAA Credential endpoint. The request MUST contain the *Access Token*, the *DPoP Proof JWT*, the *credential type*, the ``proof`` (proof of possession of the key) and the ``format`` parameters.
+**Step 18 (Credential Request):** The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key), and format parameters. The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
+
+ 1. the JWT proof MUST include all required claims as specified in the table of Section :ref:`Token Request <sec_token_request>`;
+ 2. The key proof MUST be explicitly typed using header parameters as defined for the respective proof type;
+ 3. The header parameter alg MUST indicate a registered asymmetric digital signature algorithm, and MUST NOT be set to `none`;
+ 4. The signature on the key proof MUST be verified using the public key specified in the header parameter.
+ 5. The header parameter MUST NOT contain a private key.
+ 6. If a `c_nonce` value was previously provided by the server, the nonce claim in the JWT MUST match this `c_nonce` value. Furthermore, the creation time of the JWT, as indicated by the `iat` claim or a server-managed timestamp via the nonce claim, MUST be within an acceptable window of time as determined by the server.
+
 
 .. note::
 
@@ -635,6 +643,8 @@ Token endpoint
 The token endpoint is used by the Wallet Instance to obtain an Access Token by presenting an authorization grant, as
 defined in :rfc:`6749`. The Token Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
+.. _sec_token_request:
+
 Token Request
 ^^^^^^^^^^^^^^^
 
@@ -943,38 +953,59 @@ Below is a non-normative example of an Entity Configuration containing an `openi
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
             "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
             "credential_endpoint": "https://pid-provider.example.org/credential",
-             "jwks": {
+            "display": [
+              {
+                "name": "PID Provider Italiano di esempio",
+                "locale": "it-IT"
+              },
+              {
+                "name": "Example PID Provider",
+                "locale": "en-US",
+                "logo": {
+                   "url": "https://pid-provider example.org/public/logo.svg",
+                   "alt_text": "logo di questo PID Provider"
+                },
+              }
+            ],
+            "jwks": {
                "keys": [
-               {
+                 {
                   "crv": "P-256",
                   "kty": "EC",
                   "x": "newK5qDYMekrCPPO-yEYTdJVWJMTzasMavt2vm1Mb-A",
                   "y": "VizXaLO6dzeesZPxfpGZabTK3cTXtBUbIiQpmiYRtSE",
                   "kid": "ff0bded045fe63fe5d1d64dd83b567e0"
-                }]
-              }
+                 }
+               ]
+            },
             "credential_configurations_supported": [
               {
                 "format": "vc+sd-jwt",
                 "cryptographic_binding_methods_supported": ["jwk"],
-                "cryptographic_suites_supported": ["RS256", "RS512", "ES256", "ES512"],
-                "proof_types": ["jwt"],
+                "credential_signing_alg_values_supported": ["ES256", "ES384", "ES512"],
+                "proof_types_supported": {
+                  "jwt": {
+                      "proof_signing_alg_values_supported": [
+                          "ES256"
+                      ]
+                  }
+                },
                 "display": [{
-                    "name": "PID Provider Italiano di esempio",
+                    "name": "PID Italiano di esempio",
                     "locale": "it-IT",
                     "logo": {
                       "url": "https://pid-provider example.org/public/logo.svg",
-                      "alt_text": "logo di questo PID Provider"
+                      "alt_text": "logo di questa Credenziale"
                     },
                     "background_color": "#12107c",
                     "text_color": "#FFFFFF"
                   },
                   {
-                    "name": "Example Italian PID Provider",
+                    "name": "Example Italian PID",
                     "locale": "en-US",
                     "logo": {
                       "url": "https://pid-provider.example.org/public/logo.svg",
-                      "alt_text": "The logo of this PID Provider"
+                      "alt_text": "The logo of this credential"
                     },
                     "background_color": "#12107c",
                     "text_color": "#FFFFFF"
