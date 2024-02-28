@@ -916,10 +916,10 @@ Entity Configuration Credential Issuer
 
 Below is a non-normative example of an Entity Configuration of a PID Provider containing a metadata for 
 
-  - `federation_entity`: it contains the administrative information of the Issuer as a federated Entity, including privacy policies, terms of service, logo, etc..
-  - `oauth_authorization_server`: .
-  - `openid_credential_issuer`: .
-  - `openid_relying_party`: .
+  - `federation_entity`
+  - `oauth_authorization_server`
+  - `openid_credential_issuer`
+  - `openid_relying_party`
 
 .. code-block:: http
 
