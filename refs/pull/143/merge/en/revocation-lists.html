@@ -1068,15 +1068,15 @@
 <span id="sec-revocation-intro"></span><h1>Credential Lifecycle<a class="headerlink" href="#credential-lifecycle" title="Permalink to this heading">¶</a></h1>
 <p>The value of a Digital Credential is conditional on its validity. A Credential that has been revoked, due to legal requirements, inaccuracy or compromise, is valueless and potentially harmful.
 For these reasons a robust mechanism for managing the life-cycle and the revocation of a Digital Credential is required.</p>
-<p>This section outlines the key technical requirements and processes related to the revocation of the Digital Credentials.
+<p>This section outlines the key technical requirements and processes related to the revocation of Digital Credentials.
 Furthermore, it provides the technical details that the Verifiers MUST implement to verify, in a secure and reliable manner, the validity of a Digital Credential during the presentation phase.</p>
 <p>The verification of the validity of a Digital Credential is based on the <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/">[OAuth Status Attestation draft 00]</a> specification.</p>
-<p>A Status Attestation is a signed object that is evidence of the validity status of a Digital Credential. These attestations are provided by the Issuer to Holders who can present them to Verifiers together with the corresponding Digital Credentials.</p>
+<p>A Status Attestation is a signed object that is evidence of the validity status of a Digital Credential. The Issuer provides these attestations to Holders who can present them to Verifiers together with the corresponding Digital Credentials.</p>
 <p>Generally, the Status Attestation enables:</p>
 <ul class="simple">
-<li><p>an entirely automated issuance flow, as the User authentication is not required;</p></li>
+<li><p>an entirely automated issuance flow, as the User authentication is not required for the provisioning of the Status Attestation;</p></li>
 <li><p>the verification of the digital Credential validity status when both the Wallet Instance and the Verifier are offline;</p></li>
-<li><p>a better privacy of the User since:</p>
+<li><p>better privacy of the User since:</p>
 <ol class="arabic simple">
 <li><p>the Verifier cannot check over time the validity of a given  Digital Credential related to the User;</p></li>
 <li><p>it prevents issuers to track when and where a Digital Credential is verified.</p></li>
@@ -1126,7 +1126,7 @@ Furthermore, it provides the technical details that the Verifiers MUST implement
 </ul>
 <p><strong>The Wallet Instance MUST:</strong></p>
 <ul class="simple">
-<li><p>check periodically the validity status of the Digital Credential that are stored in it, requesting a Status Attestation for each Digital Credential;</p></li>
+<li><p>check periodically the validity status of the Digital Credential that is stored in it, requesting a Status Attestation for each Digital Credential;</p></li>
 <li><p>be able to present a Status Attestation if required by a Verifier, along with the corresponding Digital Credential;</p></li>
 <li><p>request a revocation of a Digital Credential when the Users delete it from the storage.</p></li>
 </ul>
@@ -1167,7 +1167,7 @@ Furthermore, it provides the technical details that the Verifiers MUST implement
 <section id="revocation-flows">
 <span id="sec-revocation-high-level-flow"></span><h2>Revocation Flows<a class="headerlink" href="#revocation-flows" title="Permalink to this heading">¶</a></h2>
 <p>Depending on the different scenarios that may involve the revocation of a Digital Credential, different processes and technical flows may be implemented, according to national laws or Regulations of specific domains.
-The subsequent sections define the protocol interface between the Wallet Instances and the Issuers during the revocation request. The communication between the the Issuers and other Entities are out of scope of this technical implementation profile.</p>
+The subsequent sections define the protocol interface between the Wallet Instances and the Issuers during the revocation request. The communication between the the Issuers and other Entities is out-of-scope of this technical implementation profile.</p>
 <section id="revocation-request-by-wallet-instance">
 <span id="sec-revocation-wi-initiated-flow"></span><h3>Revocation Request by Wallet Instance<a class="headerlink" href="#revocation-request-by-wallet-instance" title="Permalink to this heading">¶</a></h3>
 <p>A Wallet Instance MUST request the revocation of a Digital Credential as defined below.</p>
@@ -1204,7 +1204,7 @@ credential_proof=$CredentialPoPJWT
 </pre></div>
 </div>
 <p><strong>Step 2 (PoP verification)</strong>: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the issued Digital Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Digital Credential, and therefore is entitled to request its revocation.</p>
-<p><strong>Step 3 (Credential Revocation)</strong>: The Issuer revokes the Credential provided in the Credential PoP JWT. After the revocation, the Issuer MAY also send a notification to the User (e.g. using a User's email address, or telephone number or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implemetation profile.</p>
+<p><strong>Step 3 (Credential Revocation)</strong>: The Issuer revokes the Credential provided in the Credential PoP JWT. After the revocation, the Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile.</p>
 <p><strong>Step 4 (Credential Revocation Response)</strong>: The Issuer sends a response back to the Wallet Instance with the result of the revocation request.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">http</span>
 
@@ -1237,7 +1237,7 @@ credential_proof=$CredentialPoPJWT
 </section>
 <section id="credential-revocation-http-response">
 <h4>Credential Revocation HTTP Response<a class="headerlink" href="#credential-revocation-http-response" title="Permalink to this heading">¶</a></h4>
-<p>The response MUST be an HTTP Response using the status code set to <em>204 (No-Content)</em> in the case of successful revocation. If the Digital Credential could not be found by the Issuer, an HTTP Response with status code <em>404 (Not Found)</em> MUST be returned. Otherwise an HTTP error response MUST be provided by the Issuer to the Wallet Instance. This response MUST use <em>application/json</em> as the content type, and MUST include the following parameters:</p>
+<p>The response MUST be an HTTP Response using the status code set to <em>204 (No-Content)</em> in the case of successful revocation. If the Digital Credential could not be found by the Issuer, an HTTP Response with status code <em>404 (Not Found)</em> MUST be returned. Otherwise an HTTP error response MUST be provided by the Issuer to the Wallet Instance. This response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>error</em>. The error code.</p></li>
@@ -1301,7 +1301,7 @@ credential_proof=$CredentialPoPJWT
 </figure>
 <section id="status-attestation-request-by-wallet-instance">
 <span id="sec-revocation-status-attestation-request"></span><h3>Status Attestation Request by Wallet Instance<a class="headerlink" href="#status-attestation-request-by-wallet-instance" title="Permalink to this heading">¶</a></h3>
-<p>The presentation of a Credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the Credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a <em>Status Attestation</em>. This Attestation is bound to a Credential so that the Wallet Instance can present it to a Verifier, along with the Credential itself, as a proof of non-revocation status of the Credential.</p>
+<p>The presentation of a Credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the Credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a <em>Status Attestation</em>. This Attestation is bound to a Credential so that the Wallet Instance can present it to a Verifier, along with the Credential itself, as proof of non-revocation status of the Credential.</p>
 <p>The following diagram shows how the Wallet Instance requests a Status Attestation to the Issuer.</p>
 <figure class="align-center" id="id12" style="width: 100%">
 <span id="fig-low-level-flow-status-attestation"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/NP11wzf04CNl-oaUqeE2shlGekZ57jfGfLw4iaacPccoa-xEAdxxpXAg_eLSPjxlJNx9EeeDalhEs2JiKrzIC8EkNEK6wmMJa-qw4kozahwY2Mp4pNrazZ4c2Zd2Mx99qfBN-UmFdCBOryUOcyFYAzmAnO_34P_rkgI8G7yJHPbMWUhSiztl8J0tNpvj7vk2Ys-duyoO_nT-sSxLLWXF1Wf1AMCyQy1N2d1p6rSujeJH5roATJwY2Tn3FV6mnIYBiy_hDEJhDQn8S6KIYh2-Hewk-TLExXZzjS1D3lAzmEdIAWbEik1cKUPIJrLhlOlzNDafBIzB9JEOMoXsttVO5Fk8U8z2_GpFhzosLFr1m-75u-n7j-ppS7cf1ChX8Rifkn6XxEdOZ_z6EGLlIlwaEB2Ff8Eq60juvzVawzHt_m00"><img alt="_images/Low-Level-Flow-Revocation-Attestation.svg" src="_images/Low-Level-Flow-Revocation-Attestation.svg" /></a>
@@ -1317,8 +1317,8 @@ Content-Type: application/x-www-form-urlencoded
 credential_proof=$CredentialPoPJWT
 </pre></div>
 </div>
-<p>For a non-normative example of Credential Proof of Possession see <a class="reference internal" href="#credential-pop-jwt-ex"><span class="std std-ref">the one provided in the prevoius section</span></a>.</p>
-<p><strong>Step 2 (PoP verification)</strong>: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Digital Credential, which is the proof that the Wallet Instance owns the private keys associated with the Digital Credential. Therefore the Wallet Instance is entitled to request its Status Attestation.</p>
+<p>For a non-normative example of Credential Proof of Possession see <a class="reference internal" href="#credential-pop-jwt-ex"><span class="std std-ref">the one provided in the previous section</span></a>.</p>
+<p><strong>Step 2 (PoP verification)</strong>: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Digital Credential, which is proof that the Wallet Instance owns the private keys associated with the Digital Credential. Therefore the Wallet Instance is entitled to request its Status Attestation.</p>
 <p><strong>Step 3 (Check for validity)</strong>: The Issuer checks that the user's attributes are not updated by the Authentic Source or that the latter has not revoked them. The technical mechanisms for obtaining this information are out-of-scope of this technical implementation profile.</p>
 <p><strong>Step 4 (Status Attestation Creation)</strong>: The Issuer creates the corresponding Status Attestation. A non-normative example of a Status Attestation is given below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
@@ -1452,13 +1452,13 @@ credential_proof=$CredentialPoPJWT
 </section>
 <section id="status-attestation-presentation-to-the-verifiers">
 <span id="sec-revocation-nra-presentation"></span><h3>Status Attestation Presentation to the Verifiers<a class="headerlink" href="#status-attestation-presentation-to-the-verifiers" title="Permalink to this heading">¶</a></h3>
-<p>During the presentation phase, a Verifier MAY request the Wallet Instance to provide a Non-Revocation Attestation along with the requested Credential. If a Verifier requests a Status Attestation for a requested Digital Credential, the Wallet Instance MUST provides the Status Attestations in the <em>vp_token</em> JSON array. If the Status Attestation is requested by the Verifier and the Wallet Instance is not able to provide it or it is expired or it is issued far back in time, the Verifier MAY decide to accept or reject the Credential according to its security policy.</p>
+<p>During the presentation phase, a Verifier MAY request the Wallet Instance to provide a Non-Revocation Attestation along with the requested Credential. If a Verifier requests a Status Attestation for a requested Digital Credential, the Wallet Instance MUST provide the Status Attestations in the <em>vp_token</em> JSON array. If the Status Attestation is requested by the Verifier and the Wallet Instance is not able to provide it or it is expired or it is issued far back in time, the Verifier MAY decide to accept or reject the Credential according to its security policy.</p>
 <p>Law-Enforcement Authorities or Third Parties authorized by national law, MAY require deferred non-revocation status verification but the definition of these protocols is currently out-of-scope for this technical implementation profile.</p>
 </section>
 </section>
 <section id="credential-proof-of-possession">
 <span id="sec-revocation-credential-pop"></span><h2>Credential Proof of Possession<a class="headerlink" href="#credential-proof-of-possession" title="Permalink to this heading">¶</a></h2>
-<p>The Credential Proof of Possession (<strong>credential_proof</strong>) MUST be a JWT that MUST contain the paramters (JOSE Header and claims) in the following table.</p>
+<p>The Credential Proof of Possession (<strong>credential_proof</strong>) MUST be a JWT that MUST contain the parameters (JOSE Header and claims) in the following table.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -1590,7 +1590,7 @@ credential_proof=$CredentialPoPJWT
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/">[OAuth Status Attestation draft 00]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_hash_alg</strong></p></td>
-<td><p>The Algorithm used of hashing the Credential to which the Status Attestation is bound. The value SHOULD be set to <code class="docutils literal notranslate"><span class="pre">S256</span></code>.</p></td>
+<td><p>The Algorithm used for hashing the Credential to which the Status Attestation is bound. The value SHOULD be set to <code class="docutils literal notranslate"><span class="pre">S256</span></code>.</p></td>
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/">[OAuth Status Attestation draft 00]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>cnf</strong></p></td>
