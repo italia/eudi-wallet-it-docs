@@ -2100,7 +2100,15 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
 </section>
 <section id="entity-configuration-credential-issuer">
 <span id="id38"></span><h3>Entity Configuration Credential Issuer<a class="headerlink" href="#entity-configuration-credential-issuer" title="Permalink to this heading">¶</a></h3>
-<p>Below is a non-normative example of an Entity Configuration containing an <cite>openid_credential_issuer</cite> metadata.</p>
+<p>Below is a non-normative example of an Entity Configuration of a PID Provider containing a metadata for</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>federation_entity</cite></p></li>
+<li><p><cite>oauth_authorization_server</cite></p></li>
+<li><p><cite>openid_credential_issuer</cite></p></li>
+<li><p><cite>openid_relying_party</cite></p></li>
+</ul>
+</div></blockquote>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/entity-statement+jwt</span>
 
@@ -2128,26 +2136,31 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
   },
   &quot;authority_hints&quot;: [&quot;https://superior-entity.example.org/federation&quot;],
   &quot;metadata&quot;: {
+    &quot;federation_entity&quot;: {
+      &quot;organization_name&quot;: &quot;PID Provider Organization Example&quot;,
+      &quot;homepage_uri&quot;: &quot;https://pid-provider.example.org&quot;,
+      &quot;policy_uri&quot;: &quot;https://pid-provider.example.org/privacy_policy&quot;,
+      &quot;tos_uri&quot;: &quot;https://pid-provider.example.org/info_policy&quot;,
+      &quot;logo_uri&quot;: &quot;https://pid-provider.example.org/logo.svg&quot;,
+      &quot;contacts&quot;: [&quot;ops@pid-provider.example.org&quot;],
+      &quot;federation_resolve_endpoint&quot;: &quot;https://pid-provider.example.org/resolve&quot;
+    },
     &quot;oauth_authorization_server&quot;: {
       &quot;authorization_endpoint&quot;: &quot;https://pid-provider.example.org/authorization&quot;,
       &quot;pushed_authorization_request_endpoint&quot;: &quot;https://pid-provider.example.org/connect/par&quot;,
       &quot;dpop_signing_alg_values_supported&quot;: [&quot;RS256&quot;, &quot;RS512&quot;, &quot;ES256&quot;, &quot;ES512&quot;],
-      &quot;revocation_endpoint&quot;: &quot;https://pid-provider.example.org/revocation&quot;,
-      &quot;id_token_encryption_alg_values_supported&quot;: [&quot;RSA-OAEP&quot;],
-      &quot;id_token_encryption_enc_values_supported&quot;: [&quot;A128CBC-HS256&quot;],
       &quot;token_endpoint&quot;: &quot;https://pid-provider.example.org/token&quot;,
-      &quot;userinfo_endpoint&quot;: &quot;https://pid-provider.example.org/userinfo&quot;,
       &quot;introspection_endpoint&quot;: &quot;https://pid-provider.example.org/introspection&quot;,
-      &quot;contacts&quot;: [&quot;ops@pid-provider.example.org&quot;],
       &quot;client_registration_types_supported&quot;: [&quot;automatic&quot;],
       &quot;code_challenge_methods_supported&quot;: [&quot;S256&quot;],
-      &quot;request_authentication_methods_supported&quot;: {&quot;ar&quot;: [&quot;request_object&quot;]},
+      &quot;authorization_details_types_supported&quot;:[
+        &quot;openid_credential&quot;,
+      ],
       &quot;acr_values_supported&quot;: [
           &quot;https://www.spid.gov.it/SpidL2&quot;,
           &quot;https://www.spid.gov.it/SpidL3&quot;
       ],
       &quot;grant_types_supported&quot;: [&quot;authorization_code&quot;],
-      &quot;id_token_signing_alg_values_supported&quot;: [&quot;ES256&quot;],
       &quot;issuer&quot;: &quot;https://pid-provider.example.org&quot;,
       &quot;jwks&quot;: {
           &quot;keys&quot;: [
@@ -2159,42 +2172,18 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
           ]
       },
       &quot;scopes_supported&quot;: [
-          &quot;openid&quot;,
-          &quot;offline_access&quot;,
           &quot;PersonIdentificationData&quot;
       ],
-      &quot;logo_uri&quot;: &quot;https://pid-provider.example.org/static/svg/spid-logo-c-lb.svg&quot;,
-      &quot;organization_name&quot;: &quot;Authorization Server&quot;,
-      &quot;op_policy_uri&quot;: &quot;https://pid-provider.example.org/legal-information/&quot;,
       &quot;request_parameter_supported&quot;:true,
-      &quot;request_uri_parameter_supported&quot;:true,
-      &quot;require_request_uri_registration&quot;:true,
+      &quot;request_uri_parameter_supported&quot;:false,
       &quot;response_types_supported&quot;: [&quot;code&quot;],
       &quot;subject_types_supported&quot;: [
           &quot;pairwise&quot;,
-          &quot;public&quot;
       ],
       &quot;token_endpoint_auth_methods_supported&quot;: [
           &quot;attest_jwt_client_auth&quot;
       ],
       &quot;token_endpoint_auth_signing_alg_values_supported&quot;: [
-          &quot;ES256&quot;,
-          &quot;ES384&quot;,
-          &quot;ES512&quot;
-      ],
-      &quot;userinfo_encryption_alg_values_supported&quot;: [
-          &quot;RSA-OAEP&quot;,
-          &quot;RSA-OAEP-256&quot;
-      ],
-      &quot;userinfo_encryption_enc_values_supported&quot;: [
-          &quot;A128CBC-HS256&quot;,
-          &quot;A192CBC-HS384&quot;,
-          &quot;A256CBC-HS512&quot;,
-          &quot;A128GCM&quot;,
-          &quot;A192GCM&quot;,
-          &quot;A256GCM&quot;
-      ],
-      &quot;userinfo_signing_alg_values_supported&quot;: [
           &quot;ES256&quot;,
           &quot;ES384&quot;,
           &quot;ES512&quot;
@@ -2207,8 +2196,10 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
     },
     &quot;openid_credential_issuer&quot;: {
       &quot;credential_issuer&quot;: &quot;https://pid-provider.example.org&quot;,
-      &quot;authorization_servers&quot;: [&quot;https://pid-provider.example.org&quot;],
       &quot;credential_endpoint&quot;: &quot;https://pid-provider.example.org/credential&quot;,
+      &quot;revocation_endpoint&quot;: &quot;https://pid-provider.example.org/revoke&quot;,
+      &quot;status_attestation_endpoint&quot;: &quot;https://pid-provider.example.org/status&quot;,
+      &quot;credential_hash_alg_supported&quot;: &quot;sha-256&quot;,
       &quot;display&quot;: [
         {
           &quot;name&quot;: &quot;PID Provider Italiano di esempio&quot;,
@@ -2269,6 +2260,24 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
           ],
           &quot;credential_definition&quot;: {
             &quot;type&quot;: [&quot;PersonIdentificationData&quot;],
+            &quot;verification&quot;: {
+              &quot;trust_framework&quot;: &quot;eidas&quot;,
+              &quot;assurance_level&quot;: &quot;high&quot;,
+              &quot;evidence&quot;: [
+                {
+                  &quot;type&quot;: &quot;electronic_record&quot;,
+                  &quot;record&quot;: {
+                    &quot;type&quot;: &quot;https://eudi.wallet.cie.gov.it&quot;,
+                    &quot;source&quot;: {
+                      &quot;organization_name&quot;: &quot;Ministero dell&#39;Interno&quot;,
+                      &quot;organization_id&quot;:
+                        &quot;urn:eudi:it:organization_id:ipa_code:m_it&quot;,
+                      &quot;country_code&quot;: &quot;IT&quot;
+                    }
+                  }
+                }
+              ]
+            },
             &quot;credentialSubject&quot;: {
               &quot;given_name&quot;: {
                 &quot;mandatory&quot;: true,
@@ -2294,7 +2303,7 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
                   }
                 ]
               },
-              &quot;birthdate&quot;: {
+              &quot;birth_date&quot;: {
                 &quot;mandatory&quot;: true,
                 &quot;display&quot;: [{
                     &quot;name&quot;: &quot;Date of Birth&quot;,
@@ -2302,18 +2311,6 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
                   },
                   {
                     &quot;name&quot;: &quot;Data di Nascita&quot;,
-                    &quot;locale&quot;: &quot;it-IT&quot;
-                  }
-                ]
-              },
-              &quot;place_of_birth&quot;: {
-                &quot;mandatory&quot;: true,
-                &quot;display&quot;: [{
-                    &quot;name&quot;: &quot;Place of Birth&quot;,
-                    &quot;locale&quot;: &quot;en-US&quot;
-                  },
-                  {
-                    &quot;name&quot;: &quot;Luogo di Nascita&quot;,
                     &quot;locale&quot;: &quot;it-IT&quot;
                   }
                 ]
@@ -2347,14 +2344,6 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
         }
       }
     },
-    &quot;federation_entity&quot;: {
-      &quot;organization_name&quot;: &quot;PID Provider Organization Example&quot;,
-      &quot;homepage_uri&quot;: &quot;https://pid-provider.example.org&quot;,
-      &quot;policy_uri&quot;: &quot;https://pid-provider.example.org/privacy_policy&quot;,
-      &quot;tos_uri&quot;: &quot;https://pid-provider.example.org/info_policy&quot;,
-      &quot;logo_uri&quot;: &quot;https://pid-provider.example.org/logo.svg&quot;
-    },
-
     &quot;openid_relying_party&quot;: {
       &lt;This is the metadata of the PID/EAA Provider acting as a Relying Party in the national digital identity systems (CIE/SPID). See spid-cie-oidc-docs for details.&gt;
     }
