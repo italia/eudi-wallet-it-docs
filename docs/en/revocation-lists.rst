@@ -17,7 +17,7 @@ A Status Attestation is a signed object that is evidence of the validity status 
 
 Generally, the Status Attestation enables:
 
-- an entirely automated issuance flow, as the User authentication is not required; 
+- an entirely automated issuance flow, as the User authentication is not required for the provisioning of the Status Attestation; 
 - the verification of the digital Credential validity status when both the Wallet Instance and the Verifier are offline;
 - better privacy of the User since:
 
