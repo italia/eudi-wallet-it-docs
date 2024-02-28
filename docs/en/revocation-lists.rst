@@ -11,18 +11,18 @@ For these reasons a robust mechanism for managing the life-cycle and the revocat
 This section outlines the key technical requirements and processes related to the revocation of Digital Credentials. 
 Furthermore, it provides the technical details that the Verifiers MUST implement to verify, in a secure and reliable manner, the validity of a Digital Credential during the presentation phase.
 
-The verification of the validity of a Digital Credential is based on the `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_ specification. 
+The verification of the validity of a Digital Credential is based on the `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_ specification. 
 
-A Status Attestation is a signed object that is evidence of the validity status of a Digital Credential. The Issuer provides these attestations to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
+A Status Attestation is a signed document serving as proof of a Digital Credential's current validity status. The Issuer provides these attestations to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
 
-Generally, the Status Attestation enables:
+The Status Attestations have the following features:
 
-- an entirely automated issuance flow, as the User authentication is not required for the provisioning of the Status Attestation; 
-- the verification of the digital Credential validity status when both the Wallet Instance and the Verifier are offline;
-- better privacy of the User since:
+- automated issuance, as the User authentication is not required for the provisioning of the Status Attestation; 
+- verification of the digital Credential validity status when both the Wallet Instance and the Verifier are offline;
+- improved privacy, according to the following evidences:
 
   1. the Verifier cannot check over time the validity of a given  Digital Credential related to the User;
-  2. it prevents issuers to track when and where a Digital Credential is verified.
+  2. the Issuers cannot track when and where a Digital Credential is verified.
   3. it doesn't reveal any information about the Users or the content of their Digital Credentials.
 
 .. _sec_revocation_assumption:
@@ -30,9 +30,9 @@ Generally, the Status Attestation enables:
 General Assumptions
 -------------------
 
-  - All the Status Attestations can only be acquired when the Wallet Instance has an internet connection and is actively executed by the User.
-  - A Credential Issuer, is in charge of the creation and the issuance of Credentials, its lifecycle and its validity status. 
-  - When one or more Authentic Sources are involved in the issuance of a Digital Credential, the information exchanged between the Authentic Source and the PID/(Q)EAA Provider is required for the issuance of the Credential and, in the cases where the revocation is requested by the Authentic Source, also for the the revocation of the Credential.
+- **Internet Connection for Status Attestations**: Status Attestations can be obtained only when the Wallet Instance is connected to the internet and actively operated by the User.
+- **Role of a Credential Issuer**: A Credential Issuer is responsible for creating and issuing Credentials, as well as managing their lifecycle and validity status.
+- **Involvement of Authentic Sources**: When one or more Authentic Sources are involved in the issuance of a Digital Credential, the information exchanged between the Authentic Source and the PID/(Q)EAA Provider is crucial for the credential's issuance. Furthermore, in cases where the Authentic Source initiates a revocation or data changes, revoking the Credential becomes necessary.
 
 
 .. _sec_revocation_requirements:
@@ -54,11 +54,11 @@ Requirements
 **The Issuer MUST:**
 
 - ensure that the data contained in a Digital Credential is kept up to date, including the status of validity of the data from the Authentic Source;
-- revoke a Digital Credential when 
+- revoke a Digital Credential when the following circumstances occur:
 
-  - it requires to be updated, whenever one or more attributes are changed; in this case the User will request a new issuance for that Digital Credential;
-  - the Wallet Instance to which it was issued is revoked;
-  - the User deletes it from the Wallet Instance;
+  - the Digital Credential requires to be updated, whenever one or more attributes are changed; in this case the User will request a new issuance for that Digital Credential;
+  - the Wallet Instance that holds the Digital Credential was issued is revoked;
+  - the User deletes the Digital Credential from the Wallet Instance;
 
 - provide a web service for allowing a Wallet Instance, with a proof of possession of a specific Digital Credential, to 
 
@@ -87,7 +87,7 @@ Revocation Use Cases
 The revocation of a Digital Credential MAY be triggered by: 
 
 - Users using their personal Wallet Instance or by some out-of-band touchpoints.
-- Revocation of the Wallet Instance
+- Revocation of the Wallet Instance.
 - Authentic Sources (e.g., for attribute updates) following administrative purposes. 
 - Law-Enforcing Bodies for the fulfillment of their functions and any other judicial reasons (e.g., Police).
 
@@ -95,16 +95,16 @@ Credential Revocation Flows can start under different scenarios, such as:
 
     - The User reports the loss or theft of their own physical document to the Law-Enforcement Authorities: this implies that the Credentials, if any, shall be revoked.
     - The User notifies an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials SHALL be revoked, as they are no longer valid due to the change in attributes. 
-    - The Users who no longer have access to their Wallet Instance (e.g. theft or loss of the device), may request the Issuer of the Credentials to revoke them or may request the Wallet Provider to revoke the Wallet Instance which in turn implies the revocation of all Digital Credentials stored in the Wallet Instance.
+    - Users who lose access to their Wallet Instance (e.g., due to theft or loss of the device) can request the Credential Issuer to revoke their Credentials or ask the Wallet Provider to revoke the Wallet Instance. If the Wallet Provider is authorized by the User and is aware of the types of Credentials and their issuers stored in the Wallet, it can then initiate the revocation of all Digital Credentials contained within the Wallet Instance on behalf of the User.
     - The Law-Enforcing Authorities, for the fulfillment of their functions and any other judicial reasons, may request the Authentic Source to revoke entitlements, licenses, certificates, identification documents, etc., which in turn leads to the revocation of any linked Credentials.
-    - The Authentic Sources that for any administrative reasons update one or more attributes of a User, SHALL inform the Issuer of related Credentials. 
+    - The Authentic Sources that for any administrative reasons update one or more attributes of a User, shall inform the Issuer of related Credentials. 
     - The Issuers, for technical security reasons (e.g. in the case of compromised cryptographic keys, death of the User, etc.), can decide to revoke the Credentials.
 
 
 The revocation scenarios involve two main flows:
 
     - The **Revocation flows**: these flows describe how an Entity requests for a Digital Credential revocation. 
-    - The **Status Attestation flows**: these flows define the technical protocols for requesting and obtaining a Status Attestation and how the Wallet Instance will provide it with a Verifier as a proof of validity of a corresponding Digital Credential.
+    - The **Status Attestation flows**: these flows define the technical protocols for requesting and obtaining a Status Attestation and how the Wallet Instance will provide it to a Verifier as a proof of validity of a corresponding Digital Credential.
 
 
 .. _sec_revocation_high_level_flow:
@@ -113,7 +113,7 @@ Revocation Flows
 ----------------
 
 Depending on the different scenarios that may involve the revocation of a Digital Credential, different processes and technical flows may be implemented, according to national laws or Regulations of specific domains.
-The subsequent sections define the protocol interface between the Wallet Instances and the Issuers during the revocation request. The communication between the the Issuers and other Entities is out-of-scope of this technical implementation profile.
+The subsequent sections define the protocol interface between the Wallet Instances and the Issuers during the revocation request. The communication between the Issuers and other Entities is out-of-scope of this technical implementation profile.
 
 
 .. _sec_revocation_wi_initiated_flow:
@@ -140,10 +140,10 @@ A Wallet Instance MUST request the revocation of a Digital Credential as defined
     Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
-    credential_proof=$CredentialPoPJWT
+    credential_pop=$CredentialPoPJWT
 
 
-where a non-normative example of a Credential PoP is given by the following JWT headers and payload
+Below, is given a non-normative example of a Credential PoP with decoded JWT headers and payload and without signature for better readability:
 
 .. _credential_pop_jwt_ex:
 .. code-block::
@@ -213,7 +213,7 @@ Below a non-normative example of an HTTP Response with an error.
   Content-Type: application/json;charset=UTF-8
 
   {
-    "error":"invalid_request"
+    "error": "invalid_request"
     "error_description": "The signature of credential_pop JWT is not valid"
   }
 
@@ -241,7 +241,7 @@ The following HTTP Status Codes and Error Codes MUST be supported:
 Status Attestation Flows
 ------------------------
 
-The Status Attestation flows are made up of two distinct phases in time
+The Status Attestation process is divided into the following phases:
 
   1. The Status Attestation Request by a Wallet Instance: it involves the Wallet Instance and the Issuer.
   2. The Status Attestation Presentation to a Verifier: it involves the Wallet Instance and the Verifier.
@@ -271,7 +271,7 @@ The following diagram shows how the Wallet Instance requests a Status Attestatio
     
     Status Attestation Request Flow
 
-**Step 1 (Status Attestation Request)**: The Wallet Instance sends the Status Attestation Request to the Issuer. The request MUST contain the Wallet Instance Attestation with its Proof of Possession and a Credential Proof of Possession JWT, signed  with the private key related to the public key contained within the Credential.
+**Step 1 (Status Attestation Request)**: The Wallet Instance sends the Status Attestation Request to the Issuer. The request MUST contain the Credential Proof of Possession JWT, signed  with the private key related to the public key contained within the Credential.
 
 .. code::
 
@@ -279,13 +279,13 @@ The following diagram shows how the Wallet Instance requests a Status Attestatio
     Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
-    credential_proof=$CredentialPoPJWT
+    credential_pop=$CredentialPoPJWT
 
-For a non-normative example of Credential Proof of Possession see :ref:`the one provided in the previous section <credential_pop_jwt_ex>`.
+A non-normative example of Credential Proof of Possession is provided :ref:`in the previous section <credential_pop_jwt_ex>`.
 
 **Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Digital Credential, which is proof that the Wallet Instance owns the private keys associated with the Digital Credential. Therefore the Wallet Instance is entitled to request its Status Attestation.
 
-**Step 3 (Check for validity)**: The Issuer checks that the user's attributes are not updated by the Authentic Source or that the latter has not revoked them. The technical mechanisms for obtaining this information are out-of-scope of this technical implementation profile. 
+**Step 3 (Check for validity)**: The Issuer checks that the User's attributes are not updated by the Authentic Source or that the latter has not revoked them. The technical mechanisms for obtaining this information are out-of-scope of this technical implementation profile. 
 
 
 **Step 4 (Status Attestation Creation)**: The Issuer creates the corresponding Status Attestation. A non-normative example of a Status Attestation is given below.
@@ -294,7 +294,7 @@ For a non-normative example of Credential Proof of Possession see :ref:`the one 
 
     {
         "alg": "ES256",
-        "typ": "non-revocation-attestation+jwt",
+        "typ": "status-attestation+jwt,
         "kid": $ISSUER-JWKID
     }
     .
@@ -339,7 +339,7 @@ The requests to the *Credential status endpoint* of the Issuers MUST be HTTP wit
 
 The *typ* value in the *credential_pop* JWT MUST be set to **status-attestation+jwt**
 
-The *Credential status endpoint* MUST be provided by the Issuers within their Metadata. The Issuers MUST include in the issued Digital Credentials the object *status* with the JSON member *status_attestation* set to a JSON Object containing the *credential_hash_alg* claim. It MUST contain the algorithm used for hashing the Digital Credential. Among the hash algorithms, sha-256 is RECOMMENDED.
+The *Credential status endpoint* MUST be provided by the Issuers within their Metadata. The Issuers MUST include in the issued Digital Credentials the object *status* with the JSON member *status_attestation* set to a JSON Object containing the *credential_hash_alg* claim. It MUST contain the algorithm used for hashing the Digital Credential. Among the hash algorithms, the value ``sha-256`` is RECOMMENDED .
 
 
 Status Attestation HTTP Response
@@ -372,7 +372,7 @@ Below a non-normative example of an HTTP Response with an error.
   Content-Type: application/json;charset=UTF-8
 
   {
-    "error":"invalid_request"
+    "error": "invalid_request"
     "error_description": "The signature of credential_pop JWT is not valid"
   }
 
