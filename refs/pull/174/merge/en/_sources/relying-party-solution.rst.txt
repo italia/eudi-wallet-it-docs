@@ -1,17 +1,19 @@
 
+.. include:: ../common/common_definitions.rst
 
-
+.. _Wallet Instance Attestation: wallet-instance-attestation.html
+.. _Trust Model: trust.html
 
 .. _relying-party-solution:
 
 Relying Party Solution
 +++++++++++++++++++++++
 
-This section describes how a remote Relying Party or a Verifier App requests to a Wallet Instance the presentation of the PID/EAAs.
+This section describes how a Relying Party may request to a Wallet Instance the presentation of the PID and the (Q)EAAs, 
+according to `OpenID for Verifiable Presentations - draft 20 <https://openid.net/specs/openid-4-verifiable-presentations-1_0.html>`_.
 
 In this section the following flows are described:
 
-<<<
 - **Remote Same Device Flow**, where the user-agent and the Wallet Instance are used in the same device.
 - **Remote Cross Device Flow**, where the user-agent and the Wallet Instance are used in different devices.
 
@@ -545,7 +547,7 @@ Below is a non-normative response example:
                         }
                     ]
                 },
-                
+
                 "contacts": [
                     "ops@relying-party.example.org"
                 ],
@@ -673,7 +675,6 @@ Below is a non-normative response example:
                         ]
                     }
                 ],
-
                 "default_max_age": 1111,
                 
                 // JARM related
@@ -682,19 +683,8 @@ Below is a non-normative response example:
                     "ES384"
                 ],
                 "authorization_encrypted_response_alg": [
-                    "RSA-OAEP",
-                    "RSA-OAEP-256"
+                    "RSA-OAEP-256",
                 ],
-                "authorization_encrypted_response_enc": [
-                    "A128CBC-HS256",
-                    "A192CBC-HS384",
-                    "A256CBC-HS512",
-                    "A128GCM",
-                    "A192GCM",
-                    "A256GCM"
-                ],
-
-                // SIOPv2 related
                 "subject_type": "pairwise",
                 "require_auth_time": true,
                 "id_token_signed_response_alg": [
@@ -702,7 +692,6 @@ Below is a non-normative response example:
                     "ES384"
                 ],
                 "id_token_encrypted_response_alg": [
-                    "RSA-OAEP",
                     "RSA-OAEP-256"
                 ],
                 "id_token_encrypted_response_enc": [
@@ -736,11 +725,18 @@ The Entity Configuration is a JWS, where its header parameters are defined below
 .. list-table::
   :widths: 25 50
   :header-rows: 1
-- :ref:`Remote Flow <remote_flow_sec>`, where the User presents a Credential to a remote Relying Party according to `OPENID4VP`_. In this scenario the user-agent and the Wallet Instance may be used in the same device (**Same Device Flow**), or in different devices (**Cross Device Flow**).
-- :ref:`Proximity Flow <proximity_flow_sec>`, where the User presents a Credential to a Verifier App according to ISO 18013-5. The User interacts with a Verifier using proximity connection technologies such as QR Code and Bluetooth Low Energy (BLE).
+  
+  * - **Name**
+    - **Description**
+  * - **alg**
+    - Algorithm used to sign the JWT
+  * - **typ**
+    - Media Type of the JWT
+  * - **kid**
+    - Key ID used identifying the key used to sign the JWS
 
-.. include:: remote-flow.rst
 
-.. include:: proximity-flow.rst
-
+.. note:
+    The Relying Party specific metadata parameter are experimental 
+    and still under discussion `here <https://github.com/openid/OpenID4VP/issues/17>`_.
 
