@@ -992,7 +992,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                 "public"
             ],
             "token_endpoint_auth_methods_supported": [
-                "private_key_jwt"
+                "attest_jwt_client_auth"
             ],
             "token_endpoint_auth_signing_alg_values_supported": [
                 "ES256",
@@ -1173,7 +1173,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
           },
 
           "openid_relying_party": {
-            <This is the metadata of the EAA Provider acting as a Relying Party in the national digital identity systems (CIE/SPID). See spid-cie-oidc-docs for details.>
+            <This is the metadata of the PID/EAA Provider acting as a Relying Party in the national digital identity systems (CIE/SPID). See spid-cie-oidc-docs for details.>
           }
         }
       }
