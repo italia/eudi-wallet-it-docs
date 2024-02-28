@@ -1,4 +1,4 @@
-@ -1,512 +1,512 @@
+
 .. include:: ../common/common_definitions.rst
 
 .. _Wallet Instance Attestation: wallet-instance-attestation.html
@@ -507,18 +507,19 @@ Below is a non-normative response example:
 .. code-block:: text
 
     {
-        "alg": "RS256",
         "alg": "ES256",
         "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
         "typ": "entity-statement+jwt"
     }
-@ -519,9 +519,11 @@ Below is a non-normative response example:
+    .
+    {
+        "exp": 1649590602,
+        "iat": 1649417862,
+        "iss": "https://rp.example.it",
+        "sub": "https://rp.example.it",
         "jwks": {
             "keys": [
                 {
-                    "kty": "RSA",
-                    "n": "5s4qi …",
-                    "e": "AQAB",
                     "kty": "EC",
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
@@ -527,43 +528,170 @@ Below is a non-normative response example:
                     "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
                 }
             ]
-@ -534,10 +536,11 @@ Below is a non-normative response example:
+        },
+        "metadata": {
+            "wallet_relying_party": {
+                "application_type": "web",
+                "client_id": "https://rp.example.it",
+                "client_name": "Name of an example organization",
                 "jwks": {
                     "keys": [
                         {
-                            "kty": "RSA",
                             "kty": "EC",
                             "use": "sig",
-                            "n": "1Ta-sE …",
-                            "e": "AQAB",
                             "crv": "P-256",
                             "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                             "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
                             "kid": "YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
                             "x5c": [ "..." ]
                         }
-@ -676,8 +679,8 @@ Below is a non-normative response example:
+                    ]
+                },
+
+                "contacts": [
+                    "ops@relying-party.example.org"
+                ],
+                
+                "request_uris": [
+                    "https://relying-party.example.org/request_uri"
+                ],
+                "redirect_uris": [
+                    "https://relying-party.example.org/callback"
+                ],
+                
+                "default_acr_values": [
+                    "https://www.spid.gov.it/SpidL2",
+                    "https://www.spid.gov.it/SpidL3"
+                ],
+                "vp_formats": {
+                    "vc+sd-jwt": {
+                        "sd-jwt_alg_values": [
+                            "ES256",
+                            "ES384"
+                        ],
+                        "kb-jwt_alg_values": [
+                            "ES256",
+                            "ES384"
+                        ]
+                    }
+                },
+                  "presentation_definitions": [
+                      {
+                        "id": "eu.europa.ec.eudiw.pid.it.1",
+                        "input_descriptors": [
+                            {
+                                "id": "IdentityCredential",
+                                "format": {
+                                    "vc+sd-jwt": {}
+                                },
+                                "constraints": {
+                                    "limit_disclosure": "required",
+                                    "fields": [
+                                        {
+                                            "path": [
+                                                "$.type"
+                                            ],
+                                            "filter": {
+                                                "type": "string",
+                                                "const": "IdentityCredential"
+                                            }
+                                        },
+                                        {
+                                            "path": [
+                                                "$.family_name"
+                                            ]
+                                        },
+                                        {
+                                            "path": [
+                                                "$.given_name"
+                                            ]
+                                        },
+                                        {
+                                            "path": [
+                                                "$.unique_id"
+                                            ],
+                                            "intent_to_retain": "true"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                      {
+                        "id": "mDL-sample-req",
+                        "input_descriptors": [
+                            {
+                                "id": "mDL",
+                                "format": {
+                                    "mso_mdoc": {
+                                        "alg": [
+                                            "EdDSA",
+                                            "ES256"
+                                        ]
+                                    },
+                                    "constraints": {
+                                        "limit_disclosure": "required",
+                                        "fields": [
+                                            {
+                                                "path": [
+                                                    "$.mdoc.doctype"
+                                                ],
+                                                "filter": {
+                                                    "type": "string",
+                                                    "const": "org.iso.18013.5.1.mDL"
+                                                }
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.mdoc.namespace"
+                                                ],
+                                                "filter": {
+                                                    "type": "string",
+                                                    "const": "org.iso.18013.5.1"
+                                                }
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.mdoc.family_name"
+                                                ],
+                                                "intent_to_retain": "false"
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.mdoc.portrait"
+                                                ],
+                                                "intent_to_retain": "false"
+                                            },
+                                            {
+                                                "path": [
+                                                    "$.mdoc.driving_privileges"
+                                                ],
+                                                "intent_to_retain": "false"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "default_max_age": 1111,
                 
                 // JARM related
                 "authorization_signed_response_alg": [[
-                    "RS256",
-                    "ES256"
                     "ES256",
                     "ES384"
                 ],
                 "authorization_encrypted_response_alg": [
-                    "RSA-OAEP",
-@ -696,57 +699,57 @@
+                    "RSA-OAEP-256",
+                ],
                 "subject_type": "pairwise",
                 "require_auth_time": true,
                 "id_token_signed_response_alg": [
-                    "RS256",
-                    "ES256"
                     "ES256",
                     "ES384"
                 ],
                 "id_token_encrypted_response_alg": [
-                    "RSA-OAEP",
                     "RSA-OAEP-256"
                 ],
                 "id_token_encrypted_response_enc": [
@@ -597,7 +725,7 @@ The Entity Configuration is a JWS, where its header parameters are defined below
 .. list-table::
   :widths: 25 50
   :header-rows: 1
-
+  
   * - **Name**
     - **Description**
   * - **alg**
