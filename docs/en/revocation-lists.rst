@@ -8,18 +8,18 @@ Credential Lifecycle
 The value of a Digital Credential is conditional on its validity. A Credential that has been revoked, due to legal requirements, inaccuracy or compromise, is valueless and potentially harmful. 
 For these reasons a robust mechanism for managing the life-cycle and the revocation of a Digital Credential is required.
 
-This section outlines the key technical requirements and processes related to the revocation of the Digital Credentials. 
+This section outlines the key technical requirements and processes related to the revocation of Digital Credentials. 
 Furthermore, it provides the technical details that the Verifiers MUST implement to verify, in a secure and reliable manner, the validity of a Digital Credential during the presentation phase.
 
 The verification of the validity of a Digital Credential is based on the `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_ specification. 
 
-A Status Attestation is a signed object that is evidence of the validity status of a Digital Credential. These attestations are provided by the Issuer to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
+A Status Attestation is a signed object that is evidence of the validity status of a Digital Credential. The Issuer provides these attestations to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
 
 Generally, the Status Attestation enables:
 
 - an entirely automated issuance flow, as the User authentication is not required; 
 - the verification of the digital Credential validity status when both the Wallet Instance and the Verifier are offline;
-- a better privacy of the User since:
+- better privacy of the User since:
 
   1. the Verifier cannot check over time the validity of a given  Digital Credential related to the User;
   2. it prevents issuers to track when and where a Digital Credential is verified.
@@ -70,7 +70,7 @@ Requirements
 
 **The Wallet Instance MUST:**
 
-- check periodically the validity status of the Digital Credential that are stored in it, requesting a Status Attestation for each Digital Credential;
+- check periodically the validity status of the Digital Credential that is stored in it, requesting a Status Attestation for each Digital Credential;
 - be able to present a Status Attestation if required by a Verifier, along with the corresponding Digital Credential;
 - request a revocation of a Digital Credential when the Users delete it from the storage. 
 
@@ -113,7 +113,7 @@ Revocation Flows
 ----------------
 
 Depending on the different scenarios that may involve the revocation of a Digital Credential, different processes and technical flows may be implemented, according to national laws or Regulations of specific domains.
-The subsequent sections define the protocol interface between the Wallet Instances and the Issuers during the revocation request. The communication between the the Issuers and other Entities are out of scope of this technical implementation profile.
+The subsequent sections define the protocol interface between the Wallet Instances and the Issuers during the revocation request. The communication between the the Issuers and other Entities is out-of-scope of this technical implementation profile.
 
 
 .. _sec_revocation_wi_initiated_flow:
@@ -166,7 +166,7 @@ where a non-normative example of a Credential PoP is given by the following JWT 
 
 **Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the issued Digital Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Digital Credential, and therefore is entitled to request its revocation.
 
-**Step 3 (Credential Revocation)**: The Issuer revokes the Credential provided in the Credential PoP JWT. After the revocation, the Issuer MAY also send a notification to the User (e.g. using a User's email address, or telephone number or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implemetation profile. 
+**Step 3 (Credential Revocation)**: The Issuer revokes the Credential provided in the Credential PoP JWT. After the revocation, the Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. 
 
 **Step 4 (Credential Revocation Response)**: The Issuer sends a response back to the Wallet Instance with the result of the revocation request.
 
@@ -200,7 +200,7 @@ The Revocation Endpoint MUST be provided by the Issuer within its Metadata.
 Credential Revocation HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The response MUST be an HTTP Response using the status code set to *204 (No-Content)* in the case of successful revocation. If the Digital Credential could not be found by the Issuer, an HTTP Response with status code *404 (Not Found)* MUST be returned. Otherwise an HTTP error response MUST be provided by the Issuer to the Wallet Instance. This response MUST use *application/json* as the content type, and MUST include the following parameters:
+The response MUST be an HTTP Response using the status code set to *204 (No-Content)* in the case of successful revocation. If the Digital Credential could not be found by the Issuer, an HTTP Response with status code *404 (Not Found)* MUST be returned. Otherwise an HTTP error response MUST be provided by the Issuer to the Wallet Instance. This response MUST use *application/json* as the content type and MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
@@ -259,7 +259,7 @@ The Status Attestation flows are made up of two distinct phases in time
 Status Attestation Request by Wallet Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The presentation of a Credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the Credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a *Status Attestation*. This Attestation is bound to a Credential so that the Wallet Instance can present it to a Verifier, along with the Credential itself, as a proof of non-revocation status of the Credential.
+The presentation of a Credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the Credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a *Status Attestation*. This Attestation is bound to a Credential so that the Wallet Instance can present it to a Verifier, along with the Credential itself, as proof of non-revocation status of the Credential.
 
 The following diagram shows how the Wallet Instance requests a Status Attestation to the Issuer.
 
@@ -281,9 +281,9 @@ The following diagram shows how the Wallet Instance requests a Status Attestatio
 
     credential_proof=$CredentialPoPJWT
 
-For a non-normative example of Credential Proof of Possession see :ref:`the one provided in the prevoius section <credential_pop_jwt_ex>`.
+For a non-normative example of Credential Proof of Possession see :ref:`the one provided in the previous section <credential_pop_jwt_ex>`.
 
-**Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Digital Credential, which is the proof that the Wallet Instance owns the private keys associated with the Digital Credential. Therefore the Wallet Instance is entitled to request its Status Attestation.
+**Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Digital Credential, which is proof that the Wallet Instance owns the private keys associated with the Digital Credential. Therefore the Wallet Instance is entitled to request its Status Attestation.
 
 **Step 3 (Check for validity)**: The Issuer checks that the user's attributes are not updated by the Authentic Source or that the latter has not revoked them. The technical mechanisms for obtaining this information are out-of-scope of this technical implementation profile. 
 
@@ -407,7 +407,7 @@ The following HTTP Status Codes and Error Codes MUST be supported:
 Status Attestation Presentation to the Verifiers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-During the presentation phase, a Verifier MAY request the Wallet Instance to provide a Non-Revocation Attestation along with the requested Credential. If a Verifier requests a Status Attestation for a requested Digital Credential, the Wallet Instance MUST provides the Status Attestations in the *vp_token* JSON array. If the Status Attestation is requested by the Verifier and the Wallet Instance is not able to provide it or it is expired or it is issued far back in time, the Verifier MAY decide to accept or reject the Credential according to its security policy.
+During the presentation phase, a Verifier MAY request the Wallet Instance to provide a Non-Revocation Attestation along with the requested Credential. If a Verifier requests a Status Attestation for a requested Digital Credential, the Wallet Instance MUST provide the Status Attestations in the *vp_token* JSON array. If the Status Attestation is requested by the Verifier and the Wallet Instance is not able to provide it or it is expired or it is issued far back in time, the Verifier MAY decide to accept or reject the Credential according to its security policy.
 
 Law-Enforcement Authorities or Third Parties authorized by national law, MAY require deferred non-revocation status verification but the definition of these protocols is currently out-of-scope for this technical implementation profile.
 
@@ -418,7 +418,7 @@ Law-Enforcement Authorities or Third Parties authorized by national law, MAY req
 Credential Proof of Possession
 ------------------------------
 
-The Credential Proof of Possession (**credential_proof**) MUST be a JWT that MUST contain the paramters (JOSE Header and claims) in the following table.
+The Credential Proof of Possession (**credential_proof**) MUST be a JWT that MUST contain the parameters (JOSE Header and claims) in the following table.
 
 .. list-table:: 
     :widths: 20 60 20
@@ -512,7 +512,7 @@ The Status Attestation MUST contain the following claims.
       - Hash value of the Credential the Status Attestation is bound to.
       - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_.
     * - **credential_hash_alg**
-      - The Algorithm used of hashing the Credential to which the Status Attestation is bound. The value SHOULD be set to ``S256``.
+      - The Algorithm used for hashing the Credential to which the Status Attestation is bound. The value SHOULD be set to ``S256``.
       - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_.
     * - **cnf**
       - JSON object containing the proof-of-possession key materials. The ``cnf`` jwk value MUST match with the one provided within the related Credential. 
