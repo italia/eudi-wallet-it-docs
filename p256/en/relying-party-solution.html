@@ -1032,9 +1032,7 @@
             </div>
           
           
-  <p>&#64; -1,512 +1,512 &#64;&#64;
-.. include:: ../common/common_definitions.rst</p>
-<section id="relying-party-solution">
+  <section id="relying-party-solution">
 <span id="id1"></span><h1>Relying Party Solution<a class="headerlink" href="#relying-party-solution" title="Permalink to this heading">¶</a></h1>
 <p>This section describes how a Relying Party may request to a Wallet Instance the presentation of the PID and the (Q)EAAs,
 according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentations - draft 20</a>.</p>
@@ -1344,7 +1342,7 @@ HOST: relying-party.example.org
 <td><p>Key ID of the public key needed to verify the JWS signature, as defined in [<span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. REQUIRED when <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> is used.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
-<td><p>Sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in <a href="#id2"><span class="problematic" id="id3">`OIDC-FED`_</span></a> Section <em>3.2.1. Trust Chain Header Parameter</em>.</p></td>
+<td><p>Sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> Section <em>3.2.1. Trust Chain Header Parameter</em>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1440,7 +1438,7 @@ HOST: relying-party.example.org
 </section>
 <section id="authorization-response-details">
 <h2>Authorization Response Details<a class="headerlink" href="#authorization-response-details" title="Permalink to this heading">¶</a></h2>
-<p>After getting the User authorization and consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a href="#id4"><span class="problematic" id="id5">`OPENID4VP`_</span></a> Section 6.3, using the Relying Party public key.</p>
+<p>After getting the User authorization and consent for the presentation of the credentials, the Wallet sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content should be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> Section 6.3, using the Relying Party public key.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong></p>
@@ -1556,134 +1554,219 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 </div>
 <p>Below is a non-normative response example:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;alg&quot;: &quot;RS256&quot;,
     &quot;alg&quot;: &quot;ES256&quot;,
     &quot;kid&quot;: &quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
     &quot;typ&quot;: &quot;entity-statement+jwt&quot;
 }
+.
+{
+    &quot;exp&quot;: 1649590602,
+    &quot;iat&quot;: 1649417862,
+    &quot;iss&quot;: &quot;https://rp.example.it&quot;,
+    &quot;sub&quot;: &quot;https://rp.example.it&quot;,
+    &quot;jwks&quot;: {
+        &quot;keys&quot;: [
+            {
+                &quot;kty&quot;: &quot;EC&quot;,
+                &quot;crv&quot;: &quot;P-256&quot;,
+                &quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
+                &quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;,
+                &quot;x5c&quot;: [ &lt;X.509 certificate&gt; ]
+                &quot;kid&quot;: &quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;
+            }
+        ]
+    },
+    &quot;metadata&quot;: {
+        &quot;wallet_relying_party&quot;: {
+            &quot;application_type&quot;: &quot;web&quot;,
+            &quot;client_id&quot;: &quot;https://rp.example.it&quot;,
+            &quot;client_name&quot;: &quot;Name of an example organization&quot;,
+            &quot;jwks&quot;: {
+                &quot;keys&quot;: [
+                    {
+                        &quot;kty&quot;: &quot;EC&quot;,
+                        &quot;use&quot;: &quot;sig&quot;,
+                        &quot;crv&quot;: &quot;P-256&quot;,
+                        &quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
+                        &quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;,
+                        &quot;kid&quot;: &quot;YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
+                        &quot;x5c&quot;: [ &quot;...&quot; ]
+                    }
+                ]
+            },
+
+            &quot;contacts&quot;: [
+                &quot;ops@relying-party.example.org&quot;
+            ],
+
+            &quot;request_uris&quot;: [
+                &quot;https://relying-party.example.org/request_uri&quot;
+            ],
+            &quot;redirect_uris&quot;: [
+                &quot;https://relying-party.example.org/callback&quot;
+            ],
+
+            &quot;default_acr_values&quot;: [
+                &quot;https://www.spid.gov.it/SpidL2&quot;,
+                &quot;https://www.spid.gov.it/SpidL3&quot;
+            ],
+            &quot;vp_formats&quot;: {
+                &quot;vc+sd-jwt&quot;: {
+                    &quot;sd-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
+                    ],
+                    &quot;kb-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
+                    ]
+                }
+            },
+              &quot;presentation_definitions&quot;: [
+                  {
+                    &quot;id&quot;: &quot;eu.europa.ec.eudiw.pid.it.1&quot;,
+                    &quot;input_descriptors&quot;: [
+                        {
+                            &quot;id&quot;: &quot;IdentityCredential&quot;,
+                            &quot;format&quot;: {
+                                &quot;vc+sd-jwt&quot;: {}
+                            },
+                            &quot;constraints&quot;: {
+                                &quot;limit_disclosure&quot;: &quot;required&quot;,
+                                &quot;fields&quot;: [
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.type&quot;
+                                        ],
+                                        &quot;filter&quot;: {
+                                            &quot;type&quot;: &quot;string&quot;,
+                                            &quot;const&quot;: &quot;IdentityCredential&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.family_name&quot;
+                                        ]
+                                    },
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.given_name&quot;
+                                        ]
+                                    },
+                                    {
+                                        &quot;path&quot;: [
+                                            &quot;$.unique_id&quot;
+                                        ],
+                                        &quot;intent_to_retain&quot;: &quot;true&quot;
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                  {
+                    &quot;id&quot;: &quot;mDL-sample-req&quot;,
+                    &quot;input_descriptors&quot;: [
+                        {
+                            &quot;id&quot;: &quot;mDL&quot;,
+                            &quot;format&quot;: {
+                                &quot;mso_mdoc&quot;: {
+                                    &quot;alg&quot;: [
+                                        &quot;EdDSA&quot;,
+                                        &quot;ES256&quot;
+                                    ]
+                                },
+                                &quot;constraints&quot;: {
+                                    &quot;limit_disclosure&quot;: &quot;required&quot;,
+                                    &quot;fields&quot;: [
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.doctype&quot;
+                                            ],
+                                            &quot;filter&quot;: {
+                                                &quot;type&quot;: &quot;string&quot;,
+                                                &quot;const&quot;: &quot;org.iso.18013.5.1.mDL&quot;
+                                            }
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.namespace&quot;
+                                            ],
+                                            &quot;filter&quot;: {
+                                                &quot;type&quot;: &quot;string&quot;,
+                                                &quot;const&quot;: &quot;org.iso.18013.5.1&quot;
+                                            }
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.family_name&quot;
+                                            ],
+                                            &quot;intent_to_retain&quot;: &quot;false&quot;
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.portrait&quot;
+                                            ],
+                                            &quot;intent_to_retain&quot;: &quot;false&quot;
+                                        },
+                                        {
+                                            &quot;path&quot;: [
+                                                &quot;$.mdoc.driving_privileges&quot;
+                                            ],
+                                            &quot;intent_to_retain&quot;: &quot;false&quot;
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            &quot;default_max_age&quot;: 1111,
+
+            // JARM related
+            &quot;authorization_signed_response_alg&quot;: [[
+                &quot;ES256&quot;,
+                &quot;ES384&quot;
+            ],
+            &quot;authorization_encrypted_response_alg&quot;: [
+                &quot;RSA-OAEP-256&quot;,
+            ],
+            &quot;subject_type&quot;: &quot;pairwise&quot;,
+            &quot;require_auth_time&quot;: true,
+            &quot;id_token_signed_response_alg&quot;: [
+                &quot;ES256&quot;,
+                &quot;ES384&quot;
+            ],
+            &quot;id_token_encrypted_response_alg&quot;: [
+                &quot;RSA-OAEP-256&quot;
+            ],
+            &quot;id_token_encrypted_response_enc&quot;: [
+                &quot;A128CBC-HS256&quot;,
+                &quot;A192CBC-HS384&quot;,
+                &quot;A256CBC-HS512&quot;,
+                &quot;A128GCM&quot;,
+                &quot;A192GCM&quot;,
+                &quot;A256GCM&quot;
+            ],
+        },
+        &quot;federation_entity&quot;: {
+            &quot;organization_name&quot;: &quot;OpenID Wallet Relying Party example&quot;,
+            &quot;homepage_uri&quot;: &quot;https://relying-party.example.org/home&quot;,
+            &quot;policy_uri&quot;: &quot;https://relying-party.example.org/policy&quot;,
+            &quot;logo_uri&quot;: &quot;https://relying-party.example.org/static/logo.svg&quot;,
+            &quot;contacts&quot;: [
+               &quot;tech@relying-party.example.org&quot;
+             ]
+        }
+    },
+    &quot;authority_hints&quot;: [
+        &quot;https://registry.eudi-wallet.example.it&quot;
+    ]
+  }
+}
 </pre></div>
 </div>
-<dl>
-<dt>&#64; -519,9 +519,11 &#64;&#64; Below is a non-normative response example:</dt><dd><dl>
-<dt>&quot;jwks&quot;: {</dt><dd><dl>
-<dt>&quot;keys&quot;: [</dt><dd><dl class="simple">
-<dt>{</dt><dd><p>&quot;kty&quot;: &quot;RSA&quot;,
-&quot;n&quot;: &quot;5s4qi …&quot;,
-&quot;e&quot;: &quot;AQAB&quot;,
-&quot;kty&quot;: &quot;EC&quot;,
-&quot;crv&quot;: &quot;P-256&quot;,
-&quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
-&quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;,
-&quot;x5c&quot;: [ &lt;X.509 certificate&gt; ]
-&quot;kid&quot;: &quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</p>
-</dd>
-</dl>
-<p>}</p>
-</dd>
-</dl>
-<p>]</p>
-</dd>
-</dl>
-</dd>
-<dt>&#64; -534,10 +536,11 &#64;&#64; Below is a non-normative response example:</dt><dd><dl>
-<dt>&quot;jwks&quot;: {</dt><dd><dl>
-<dt>&quot;keys&quot;: [</dt><dd><dl class="simple">
-<dt>{</dt><dd><p>&quot;kty&quot;: &quot;RSA&quot;,
-&quot;kty&quot;: &quot;EC&quot;,
-&quot;use&quot;: &quot;sig&quot;,
-&quot;n&quot;: &quot;1Ta-sE …&quot;,
-&quot;e&quot;: &quot;AQAB&quot;,
-&quot;crv&quot;: &quot;P-256&quot;,
-&quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
-&quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;,
-&quot;kid&quot;: &quot;YhNFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
-&quot;x5c&quot;: [ &quot;...&quot; ]</p>
-</dd>
-</dl>
-<p>}</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>&#64; -676,8 +679,8 &#64;&#64; Below is a non-normative response example:</p>
-<blockquote>
-<div><p>// JARM related
-&quot;authorization_signed_response_alg&quot;: [[</p>
-<blockquote>
-<div><p>&quot;RS256&quot;,
-&quot;ES256&quot;
-&quot;ES256&quot;,
-&quot;ES384&quot;</p>
-</div></blockquote>
-<p>],
-&quot;authorization_encrypted_response_alg&quot;: [</p>
-<blockquote>
-<div><p>&quot;RSA-OAEP&quot;,</p>
-</div></blockquote>
-</div></blockquote>
-<dl>
-<dt>&#64; -696,57 +699,57 &#64;&#64;</dt><dd><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>&quot;subject_type&quot;: &quot;pairwise&quot;,
-&quot;require_auth_time&quot;: true,
-&quot;id_token_signed_response_alg&quot;: [</p>
-<blockquote>
-<div><p>&quot;RS256&quot;,
-&quot;ES256&quot;
-&quot;ES256&quot;,
-&quot;ES384&quot;</p>
-</div></blockquote>
-<p>],
-&quot;id_token_encrypted_response_alg&quot;: [</p>
-<blockquote>
-<div><p>&quot;RSA-OAEP&quot;,
-&quot;RSA-OAEP-256&quot;</p>
-</div></blockquote>
-<p>],
-&quot;id_token_encrypted_response_enc&quot;: [</p>
-<blockquote>
-<div><p>&quot;A128CBC-HS256&quot;,
-&quot;A192CBC-HS384&quot;,
-&quot;A256CBC-HS512&quot;,
-&quot;A128GCM&quot;,
-&quot;A192GCM&quot;,
-&quot;A256GCM&quot;</p>
-</div></blockquote>
-<p>],</p>
-</div></blockquote>
-<p>},
-&quot;federation_entity&quot;: {</p>
-<blockquote>
-<div><p>&quot;organization_name&quot;: &quot;OpenID Wallet Relying Party example&quot;,
-&quot;homepage_uri&quot;: &quot;<a class="reference external" href="https://relying-party.example.org/home">https://relying-party.example.org/home</a>&quot;,
-&quot;policy_uri&quot;: &quot;<a class="reference external" href="https://relying-party.example.org/policy">https://relying-party.example.org/policy</a>&quot;,
-&quot;logo_uri&quot;: &quot;<a class="reference external" href="https://relying-party.example.org/static/logo.svg">https://relying-party.example.org/static/logo.svg</a>&quot;,
-&quot;contacts&quot;: [</p>
-<blockquote>
-<div><blockquote>
-<div><p>&quot;<a class="reference external" href="mailto:tech&#37;&#52;&#48;relying-party&#46;example&#46;org">tech<span>&#64;</span>relying-party<span>&#46;</span>example<span>&#46;</span>org</a>&quot;</p>
-</div></blockquote>
-<p>]</p>
-</div></blockquote>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>},
-&quot;authority_hints&quot;: [</p>
-<blockquote>
-<div><p>&quot;<a class="reference external" href="https://registry.eudi-wallet.example.it">https://registry.eudi-wallet.example.it</a>&quot;</p>
-</div></blockquote>
-<p>]</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-</dd>
-</dl>
 <p>The Entity Configuration is a JWS, where its header parameters are defined below:</p>
 <table class="docutils align-default">
 <colgroup>
