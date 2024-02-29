@@ -45,7 +45,7 @@ The Disclosures are sent to the Holder together with the SD-JWT in the *Combined
 See `[SD-JWT VC] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
 
 
-PID/(Q)EAA SD-JWT parameters:
+PID/(Q)EAA SD-JWT parameters
 ----------------------------
 
 The JOSE header contains the following mandatory parameters:
