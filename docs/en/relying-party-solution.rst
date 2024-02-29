@@ -18,4 +18,3 @@ In this section the following flows are described:
 
 .. include:: proximity-flow.rst
 
-

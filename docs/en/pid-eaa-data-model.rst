@@ -318,7 +318,7 @@ The corresponding SD-JWT for the previous data is represented as follow, as deco
 
   {
      "typ":"vc+sd-jwt",
-     "alg":"RS512",
+     "alg":"ES256",
      "kid":"d126a6a856f7724560484fa9dc59d195",
      "trust_chain" : [
       "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
