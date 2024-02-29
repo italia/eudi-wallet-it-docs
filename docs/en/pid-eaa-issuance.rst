@@ -940,15 +940,6 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
         "iss": "https://pid-provider.example.org",
         "sub": "https://pid-provider.example.org",
         "jwks": {
-          "keys": [
-            {
-                "crv": "P-256",
-                "kty": "EC",
-                "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
-                "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
-                "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY"
-            }
-          ]
           "keys": [{
             "kty": "RSA",
             "use": "sig",
@@ -1051,9 +1042,6 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
               {
                 "format": "vc+sd-jwt",
                 "cryptographic_binding_methods_supported": ["jwk"],
-
-                "cryptographic_suites_supported": ["ES256", "ES512"],
-
                 "credential_signing_alg_values_supported": ["ES256", "ES384", "ES512"],
                 "proof_types_supported": {
                   "jwt": {
@@ -1062,7 +1050,6 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
                       ]
                   }
                 },
-
                 "display": [{
                     "name": "PID Italiano di esempio",
                     "locale": "it-IT",
@@ -1174,3 +1161,4 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
           }
         }
       }
+    
