@@ -1292,7 +1292,7 @@ MUST keep it up-to-date. The federation configuration is the Trust Anchor's Enti
 public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (<strong>max_path_length</strong>).</p>
 <p>Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the <a class="reference external" href="OIDC-FED">OpenID Federation</a> specification:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;alg&quot;: &quot;RS256&quot;,
+    &quot;alg&quot;: &quot;ES256&quot;,
     &quot;kid&quot;: &quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;,
     &quot;typ&quot;: &quot;entity-statement+jwt&quot;
 }
@@ -1305,13 +1305,7 @@ public keys for signature operations and the maximum number of Intermediates all
     &quot;jwks&quot;: {
         &quot;keys&quot;: [
             {
-                &quot;kty&quot;: &quot;RSA&quot;,
-                &quot;n&quot;: &quot;3i5vV-_ ...&quot;,
-                &quot;e&quot;: &quot;AQAB&quot;,
-                &quot;kid&quot;: &quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;,
-                &quot;x5c&quot;: [ &lt;X.509 Root CA certificate&gt; ]
-            },
-            {
+
                 &quot;kty&quot;: &quot;EC&quot;,
                 &quot;kid&quot;: &quot;X2ZOMHNGSDc4ZlBrcXhMT3MzRmRZOG9Jd3o2QjZDam51cUhhUFRuOWd0WQ&quot;,
                 &quot;crv&quot;: &quot;P-256&quot;,
@@ -1529,7 +1523,7 @@ The Entity Statement MAY contain a metadata policy and the Trust Marks related t
 </div>
 <p>Below there is a non-normative example of an Entity Statement issued by an Accreditation Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;alg&quot;: &quot;RS256&quot;,
+    &quot;alg&quot;: &quot;ES256&quot;,
     &quot;kid&quot;: &quot;em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg&quot;,
     &quot;typ&quot;: &quot;entity-statement+jwt&quot;
 }

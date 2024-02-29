@@ -134,7 +134,7 @@ Below a non-normative example of the PAR.
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
     &code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
     &code_challenge_method=S256
-    &request=eyJhbGciOiJSUzI1NiIsImtpZCI6ImsyYmRjIn0.ew0KIC Jpc3MiOiAiczZCaGRSa3F0MyIsDQogImF1ZCI6ICJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbSIsDQo gInJlc3BvbnNlX3R5cGUiOiAiY29kZSBpZF90b2tlbiIsDQogImNsaWVudF9pZCI6ICJzNkJoZFJrcXQz IiwNCiAicmVkaXJlY3RfdXJpIjogImh0dHBzOi8vY2xpZW50LmV4YW1...
+    &request=$SIGNED-JWT
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
@@ -928,7 +928,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
 
       {
 
-        "alg": "RS256",
+        "alg": "ES256",
         "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
         "typ": "entity-statement+jwt"
 
@@ -1161,3 +1161,4 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
           }
         }
       }
+    

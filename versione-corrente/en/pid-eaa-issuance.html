@@ -1193,7 +1193,7 @@ response_type=code
 &amp;client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 &amp;code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
 &amp;code_challenge_method=S256
-&amp;request=eyJhbGciOiJSUzI1NiIsImtpZCI6ImsyYmRjIn0.ew0KIC Jpc3MiOiAiczZCaGRSa3F0MyIsDQogImF1ZCI6ICJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbSIsDQo gInJlc3BvbnNlX3R5cGUiOiAiY29kZSBpZF90b2tlbiIsDQogImNsaWVudF9pZCI6ICJzNkJoZFJrcXQz IiwNCiAicmVkaXJlY3RfdXJpIjogImh0dHBzOi8vY2xpZW50LmV4YW1...
+&amp;request=$SIGNED-JWT
 &amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
 &amp;client_assertion=$WIA~WIA-PoP
 </pre></div>
@@ -2128,7 +2128,7 @@ defined in <span class="target" id="index-65"></span><a class="rfc reference ext
 
 {
 
-  &quot;alg&quot;: &quot;RS256&quot;,
+  &quot;alg&quot;: &quot;ES256&quot;,
   &quot;kid&quot;: &quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
   &quot;typ&quot;: &quot;entity-statement+jwt&quot;
 
