@@ -347,7 +347,6 @@ The corresponding SD-JWT for the previous data is represented as follow, as deco
     "exp": 1883000000,
     "iss": "https://issuer.example.org",
     "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
     "status": {
       "status_attestation": {
         "credential_hash_alg": "sha-256"
