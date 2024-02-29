@@ -28,7 +28,7 @@ The Status Attestations have the following features:
 .. _sec_revocation_assumption:
 
 Operational Requirements
--------------------
+------------------------
 
 - **Internet Connection for Status Attestations**: Status Attestations can be obtained only when the Wallet Instance is connected to the internet and actively operated by the User.
 - **Role of a Credential Issuer**: A Credential Issuer is responsible for creating and issuing Credentials, as well as managing their lifecycle and validity status.
@@ -38,7 +38,7 @@ Operational Requirements
 .. _sec_revocation_requirements:
 
 Functional Requirements
-------------
+-----------------------
 
 **The Status Attestation MUST:**
 
@@ -127,7 +127,7 @@ A Wallet Instance MUST request the revocation of a Digital Credential as defined
 .. figure:: ../../images/Low-Level-Flow-Revocation.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/NP31IaD134Nt-OfGNEX2t0jAmLNTTD1YDuB4zoA6JfDnal7zlkE05eMixZqdWQmzg4OxPg0MfktuoXLAZsIIGXgusbFE7BZHJkh4AoJ7HVuo6_V6TLG2i0XUtg9SOze-xl2gygST62j_DFOudohFh26KNqerUxivk_jDagNx_Uu2u6V34sMPAHZZdV74FMlwLh5FCdTs5zEJzJ0k_dD6tVjb05vCdN5x05Ypplq1Nm00
+    :target: https://www.plantuml.com/plantuml/svg/LOz1IyKm383l_HNXuK4FubrG7dXwNbxHuIw2n2rYM9VK9dL_tpBHCUYb-RwFaACv5gzp2bXTfSxlL49k8nuuepWSUao974xIJ1de06YmyDuvcLKgA-8G5eRhU-1RYEVd3cuAVUj4KEYhaldbK6WaSSRqbZNVNJpy_wF6nxwx2k6lVy748pg1Vn9itgl4ele1xKKr8pDMsQgdtttxPiMDBwjWMSK8pbCuaepj-Xy0
     
     Wallet Instance Initiated Revocation Flow
 
@@ -267,7 +267,7 @@ The following diagram shows how the Wallet Instance requests a Status Attestatio
 .. figure:: ../../images/Low-Level-Flow-Revocation-Attestation.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/NP11wzf04CNl-oaUqeE2shlGekZ57jfGfLw4iaacPccoa-xEAdxxpXAg_eLSPjxlJNx9EeeDalhEs2JiKrzIC8EkNEK6wmMJa-qw4kozahwY2Mp4pNrazZ4c2Zd2Mx99qfBN-UmFdCBOryUOcyFYAzmAnO_34P_rkgI8G7yJHPbMWUhSiztl8J0tNpvj7vk2Ys-duyoO_nT-sSxLLWXF1Wf1AMCyQy1N2d1p6rSujeJH5roATJwY2Tn3FV6mnIYBiy_hDEJhDQn8S6KIYh2-Hewk-TLExXZzjS1D3lAzmEdIAWbEik1cKUPIJrLhlOlzNDafBIzB9JEOMoXsttVO5Fk8U8z2_GpFhzosLFr1m-75u-n7j-ppS7cf1ChX8Rifkn6XxEdOZ_z6EGLlIlwaEB2Ff8Eq60juvzVawzHt_m00
+    :target: https://www.plantuml.com/plantuml/svg/NP31Rk9038RlynGMsWD8mDwHTWM22tlOHWML2r8rIHmoQZ9EnnuGRryFeK0vsl_tErzcpcA3nBOnDWhvsEOOJAShLxZEUe71pZOD2gozahx00LY6a_l9h9aZXalqb2oYrEXrXWt5SArRDkRaOF8Nt0oobyqMVkjnYGm1FoEo38k0PQhPvhsZxi-lvMtEAFktsuwC-Uw_sSQLLX3k32W4IXdZIGCwOW0tjZo3ROtGomBbOfrdg0Are9Bmh0fxdzQnIzTBi2B1vL5G_NrvQHpJfvsSeRVN0bKfIFS2nKEj952K2LMJF9LQB6hh7RTZPOSuFKoLJE3bNBRwlu95jcRWCmks8xZ_vRB6uWCg2WyUUz-x9P-RoqCbO0etoKtPXGWcJqU-Vnlb53mf-OhSaMVKGUfh0PxvEVeojiqN
     
     Status Attestation Request Flow
 
