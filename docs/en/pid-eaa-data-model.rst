@@ -22,7 +22,7 @@ The PID/(Q)EAA data format and the mechanism through which a digital credential 
 SD-JWT
 ======
 
-The PID/(Q)EAA is issued in the form of a digital credential. The digital credential format is `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[SD-JWT-based Verifiable Credentials 02] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`__.
+The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[SD-JWT-based Verifiable Credentials 02] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`__.
 
 An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in `[SD-JWT]. Section 5.1.2. <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
@@ -45,7 +45,7 @@ The Disclosures are sent to the Holder together with the SD-JWT in the *Combined
 See `[SD-JWT VC] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
 
 
-PID/(Q)EAA SD-JWT parameters
+PID/(Q)EAA SD-JWT parameters:
 ----------------------------
 
 The JOSE header contains the following mandatory parameters:
