@@ -914,7 +914,12 @@ Credential Response to the Wallet Instance MUST be sent using `application/json`
 Entity Configuration Credential Issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Below is a non-normative example of an Entity Configuration containing an `openid_credential_issuer` metadata.
+Below is a non-normative example of an Entity Configuration of a PID Provider containing a metadata for 
+
+  - `federation_entity`
+  - `oauth_authorization_server`
+  - `openid_credential_issuer`
+  - `openid_relying_party`
 
 .. code-block:: http
 
@@ -945,14 +950,69 @@ Below is a non-normative example of an Entity Configuration containing an `openi
         },
         "authority_hints": ["https://superior-entity.example.org/federation"],
         "metadata": {
-          "openid_credential_issuer": {
-            "credential_issuer": "https://pid-provider.example.org",
-            "authorization_servers": ["https://pid-provider.example.org"],
-            "authorization_endpoint": "https://pid-provider.example.org/connect/authorize",
-            "token_endpoint": "https://pid-provider.example.org/connect/token",
+          "federation_entity": {
+            "organization_name": "PID Provider Organization Example",
+            "homepage_uri": "https://pid-provider.example.org",
+            "policy_uri": "https://pid-provider.example.org/privacy_policy",
+            "tos_uri": "https://pid-provider.example.org/info_policy",
+            "logo_uri": "https://pid-provider.example.org/logo.svg",
+            "contacts": ["ops@pid-provider.example.org"],
+            "federation_resolve_endpoint": "https://pid-provider.example.org/resolve"
+          },
+          "oauth_authorization_server": {
+            "authorization_endpoint": "https://pid-provider.example.org/authorization",
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
-            "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
+            "dpop_signing_alg_values_supported": ["ES256", "ES512"],
+            "token_endpoint": "https://pid-provider.example.org/token",
+            "introspection_endpoint": "https://pid-provider.example.org/introspection",
+            "client_registration_types_supported": ["automatic"],
+            "code_challenge_methods_supported": ["S256"],
+            "authorization_details_types_supported":[
+              "openid_credential",
+            ],
+            "acr_values_supported": [
+                "https://www.spid.gov.it/SpidL2",
+                "https://www.spid.gov.it/SpidL3"
+            ],
+            "grant_types_supported": ["authorization_code"],
+            "issuer": "https://pid-provider.example.org",
+            "jwks": {
+                "keys": [
+                    {
+                        "kty": "EC",
+                        "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
+                        // other claims ...
+                    }
+                ]
+            },
+            "scopes_supported": [
+                "PersonIdentificationData"
+            ],
+            "request_parameter_supported":true,
+            "request_uri_parameter_supported":false,
+            "response_types_supported": ["code"],
+            "subject_types_supported": [
+                "pairwise",
+            ],
+            "token_endpoint_auth_methods_supported": [
+                "attest_jwt_client_auth"
+            ],
+            "token_endpoint_auth_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "request_object_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ]
+          },
+          "openid_credential_issuer": {
+            "credential_issuer": "https://pid-provider.example.org",   
             "credential_endpoint": "https://pid-provider.example.org/credential",
+            "revocation_endpoint": "https://pid-provider.example.org/revoke",
+            "status_attestation_endpoint": "https://pid-provider.example.org/status",
             "display": [
               {
                 "name": "PID Provider Italiano di esempio",
@@ -962,7 +1022,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                 "name": "Example PID Provider",
                 "locale": "en-US",
                 "logo": {
-                   "url": "https://pid-provider example.org/public/logo.svg",
+                   "url": "https://pid-provider.example.org/public/logo.svg",
                    "alt_text": "logo di questo PID Provider"
                 },
               }
@@ -1013,6 +1073,23 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                 ],
                 "credential_definition": {
                   "type": ["PersonIdentificationData"],
+                  "verification": {
+                    "trust_framework": "eidas",
+                    "assurance_level": "high",
+                    "evidence": [
+                      {
+                        "type": "electronic_record",
+                        "record": {
+                          "type": "https://eudi.wallet.cie.gov.it",
+                          "source": {
+                            "organization_name": "Ministero dell'Interno",
+                            "organization_id": "urn:eudi:it:organization_id:ipa_code:m_it",
+                            "country_code": "IT"
+                          }
+                        }
+                      }
+                    ]
+                  },
                   "credentialSubject": {
                     "given_name": {
                       "mandatory": true,
@@ -1038,7 +1115,7 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                         }
                       ]
                     },
-                    "birthdate": {
+                    "birth_date": {
                       "mandatory": true,
                       "display": [{
                           "name": "Date of Birth",
@@ -1046,18 +1123,6 @@ Below is a non-normative example of an Entity Configuration containing an `openi
                         },
                         {
                           "name": "Data di Nascita",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "place_of_birth": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Place of Birth",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Luogo di Nascita",
                           "locale": "it-IT"
                         }
                       ]
@@ -1091,17 +1156,8 @@ Below is a non-normative example of an Entity Configuration containing an `openi
               }
             }
           },
-
-          "federation_entity": {
-            "organization_name": "PID Provider Organization Example",
-            "homepage_uri": "https://pid-provider.example.org",
-            "policy_uri": "https://pid-provider.example.org/privacy_policy",
-            "tos_uri": "https://pid-provider.example.org/info_policy",
-            "logo_uri": "https://pid-provider.example.org/logo.svg"
-          },
-
           "openid_relying_party": {
-            <This is the metadata of the PID Provider acting as a Relying Party in the national digital identity framework (CIE/SPID). See spid-cie-oidc-docs for details.>
+            <This is the metadata of the PID/EAA Provider acting as a Relying Party in the national digital identity systems (CIE/SPID). See spid-cie-oidc-docs for details.>
           }
         }
       }
