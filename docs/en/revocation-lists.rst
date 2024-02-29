@@ -192,7 +192,7 @@ The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, 
       - **Reference**
     * - **credential_pop**
       - It MUST contain a JWT proof of possession of the cryptographic key the Credential to be revoked shall be bound to. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
-      - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
 
 The Revocation Endpoint MUST be provided by the Issuer within its Metadata. 
 
@@ -335,7 +335,7 @@ The requests to the *Credential status endpoint* of the Issuers MUST be HTTP wit
       - **Reference**
     * - **credential_pop**
       - It MUST contain a signed JWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
-      - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
 
 The *typ* value in the *credential_pop* JWT MUST be set to **status-attestation+jwt**
 
@@ -357,7 +357,7 @@ The *Credential status endpoint* MUST return a response with a *HTTP status code
       - **Reference**
     * - **status_attestation**
       - It MUST contain the Status Attestation as a signed JWT. 
-      - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
 If the Digital Credential could not be found by the Issuer, an HTTP Response with status code 404 (Not Found) MUST be returned. In all other cases the Issuer MUST return an HTTP Response Error using *application/json* as the content type, and including the following parameters:
 
@@ -428,7 +428,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - **Description**
       - **Reference**
     * - **typ**
-      - In case of revocation request it MUST be set to ``revocation-request+jwt``. In case of Status Attestation request it MUST be set to ``status-attestation-request+jwt``, according to `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_.
+      - In case of revocation request it MUST be set to ``revocation-request+jwt``. In case of Status Attestation request it MUST be set to ``status-attestation-request+jwt``, according to `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
       - :rfc:`7516#section-4.1.1`.
     * - **alg**
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
@@ -461,10 +461,10 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - [:rfc:`7519`. Section 4.1.7].
     * - **credential_hash**
       - It MUST contain the hash value of a Digital Credential, derived by computing the base64url encoded hash of the Digital Credential.
-      - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **credential_hash_alg**
       - It MUST contain the Algorithm used for hashing the Digital Credential. The value SHOULD be set to `S256`.
-      - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
 
 
@@ -486,7 +486,7 @@ The Status Attestation MUST contain the following claims.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
     - It MUST be set to `status-attestation+jwt`.
-    - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_..
+    - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_..
   * - **kid**
     -  Unique identifier of the Issuer ``jwk`` as base64url-encoded JWK Thumbprint value.
     - :rfc:`7638#section_3`. 
@@ -510,10 +510,10 @@ The Status Attestation MUST contain the following claims.
       - :rfc:`9126` and :rfc:`7519`.
     * - **credential_hash**
       - Hash value of the Credential the Status Attestation is bound to.
-      - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **credential_hash_alg**
       - The Algorithm used for hashing the Credential to which the Status Attestation is bound. The value SHOULD be set to ``S256``.
-      - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **cnf**
       - JSON object containing the proof-of-possession key materials. The ``cnf`` jwk value MUST match with the one provided within the related Credential. 
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
