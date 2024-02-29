@@ -1084,8 +1084,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
                           "type": "https://eudi.wallet.cie.gov.it",
                           "source": {
                             "organization_name": "Ministero dell'Interno",
-                            "organization_id":
-                              "urn:eudi:it:organization_id:ipa_code:m_it",
+                            "organization_id": "urn:eudi:it:organization_id:ipa_code:m_it",
                             "country_code": "IT"
                           }
                         }
