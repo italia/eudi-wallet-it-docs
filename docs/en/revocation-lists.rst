@@ -190,7 +190,7 @@ The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, 
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **credential_proof**
+    * - **credential_pop**
       - It MUST contain a JWT proof of possession of the cryptographic key the Credential to be revoked shall be bound to. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
       - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_
 
@@ -333,7 +333,7 @@ The requests to the *Credential status endpoint* of the Issuers MUST be HTTP wit
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **credential_proof**
+    * - **credential_pop**
       - It MUST contain a signed JWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
       - `[OAuth Status Attestation draft 00] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-attestations/00/>`_
 
@@ -418,7 +418,7 @@ Law-Enforcement Authorities or Third Parties authorized by national law, MAY req
 Credential Proof of Possession
 ------------------------------
 
-The Credential Proof of Possession (**credential_proof**) MUST be a JWT that MUST contain the parameters (JOSE Header and claims) in the following table.
+The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST contain the parameters (JOSE Header and claims) in the following table.
 
 .. list-table:: 
     :widths: 20 60 20
