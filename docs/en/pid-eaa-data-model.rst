@@ -138,7 +138,7 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
       - 
 
 
-PID non-normative examples
+PID Non-Normative Examples
 --------------------------
 
 In the following, the non-normative example of a PID in JSON format.
@@ -148,7 +148,6 @@ In the following, the non-normative example of a PID in JSON format.
   {
     "iss": "https://issuer.example.org",
     "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
     "iat": 1683000000,
     "exp": 1883000000,
     "status": {
