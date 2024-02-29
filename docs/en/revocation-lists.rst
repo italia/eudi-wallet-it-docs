@@ -448,7 +448,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Instance Attestation.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
-      - It MUST be set to the identifier of the Issuer.
+      - It MUST be set to the Issuer endpoint at which the JWT is used.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
       - UNIX Timestamp with the expiry time of the JWT.
