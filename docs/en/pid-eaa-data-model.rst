@@ -350,7 +350,7 @@ The corresponding SD-JWT for the previous data is represented as follow, as deco
     "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
     "status": {
       "status_attestation": {
-        "credential_hash_alg": "S256"
+        "credential_hash_alg": "sha-256"
       }
     },
     "vct": "DisabilityCard",
