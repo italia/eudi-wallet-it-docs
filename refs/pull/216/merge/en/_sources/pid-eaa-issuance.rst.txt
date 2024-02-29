@@ -962,7 +962,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
           "oauth_authorization_server": {
             "authorization_endpoint": "https://pid-provider.example.org/authorization",
             "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
-            "dpop_signing_alg_values_supported": ["RS256", "RS512", "ES256", "ES512"],
+            "dpop_signing_alg_values_supported": ["ES256", "ES512"],
             "token_endpoint": "https://pid-provider.example.org/token",
             "introspection_endpoint": "https://pid-provider.example.org/introspection",
             "client_registration_types_supported": ["automatic"],
