@@ -716,13 +716,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#functional-requirements">Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-flows">Revocation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation-flows">Status Attestation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-request-by-wallet-instance">Status Attestation Request by Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-presentation-to-the-verifiers">Status Attestation Presentation to the Verifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-proof-of-possession">Credential Proof of Possession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation">Status Attestation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -978,13 +986,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#functional-requirements">Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-flows">Revocation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation-flows">Status Attestation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-request-by-wallet-instance">Status Attestation Request by Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-presentation-to-the-verifiers">Status Attestation Presentation to the Verifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-proof-of-possession">Credential Proof of Possession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation">Status Attestation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -1064,27 +1080,29 @@
 </li>
         <li><a href="standards.html#index-3">RFC 3986</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-57">RFC 4122</a>, <a href="pid-eaa-issuance.html#index-75">[1]</a>
+        <li><a href="pid-eaa-issuance.html#index-57">RFC 4122</a>, <a href="pid-eaa-issuance.html#index-75">[1]</a>, <a href="revocation-lists.html#index-17">[2]</a>
 </li>
         <li><a href="pid-eaa-issuance.html#index-102">RFC 6749</a>, <a href="pid-eaa-issuance.html#index-22">[1]</a>, <a href="pid-eaa-issuance.html#index-26">[2]</a>, <a href="pid-eaa-issuance.html#index-27">[3]</a>, <a href="pid-eaa-issuance.html#index-31">[4]</a>, <a href="pid-eaa-issuance.html#index-32">[5]</a>, <a href="pid-eaa-issuance.html#index-65">[6]</a>, <a href="pid-eaa-issuance.html#index-67">[7]</a>, <a href="pid-eaa-issuance.html#index-81">[8]</a>, <a href="pid-eaa-issuance.html#index-82">[9]</a>, <a href="pid-eaa-issuance.html#index-83">[10]</a>, <a href="standards.html#index-15">[11]</a>
 </li>
         <li><a href="pid-eaa-issuance.html#index-63">RFC 6749#section-4.1.2</a>, <a href="pid-eaa-issuance.html#index-64">[1]</a>
 </li>
+        <li><a href="revocation-lists.html#index-0">RFC 6749#section-5.2</a>, <a href="revocation-lists.html#index-1">[1]</a>, <a href="revocation-lists.html#index-2">[2]</a>, <a href="revocation-lists.html#index-3">[3]</a>, <a href="revocation-lists.html#index-4">[4]</a>, <a href="revocation-lists.html#index-5">[5]</a>
+</li>
         <li><a href="standards.html#index-4">RFC 7009</a>
 </li>
         <li><a href="standards.html#index-5">RFC 7159</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-101">RFC 7515</a>, <a href="pid-eaa-issuance.html#index-103">[1]</a>, <a href="pid-eaa-issuance.html#index-105">[2]</a>, <a href="pid-eaa-issuance.html#index-108">[3]</a>, <a href="pid-eaa-issuance.html#index-109">[4]</a>, <a href="pid-eaa-issuance.html#index-68">[5]</a>, <a href="pid-eaa-issuance.html#index-70">[6]</a>, <a href="pid-eaa-issuance.html#index-72">[7]</a>, <a href="pid-eaa-issuance.html#index-74">[8]</a>, <a href="standards.html#index-6">[9]</a>
+        <li><a href="pid-eaa-issuance.html#index-101">RFC 7515</a>, <a href="pid-eaa-issuance.html#index-103">[1]</a>, <a href="pid-eaa-issuance.html#index-105">[2]</a>, <a href="pid-eaa-issuance.html#index-108">[3]</a>, <a href="pid-eaa-issuance.html#index-109">[4]</a>, <a href="pid-eaa-issuance.html#index-68">[5]</a>, <a href="pid-eaa-issuance.html#index-70">[6]</a>, <a href="pid-eaa-issuance.html#index-72">[7]</a>, <a href="pid-eaa-issuance.html#index-74">[8]</a>, <a href="revocation-lists.html#index-19">[9]</a>, <a href="revocation-lists.html#index-21">[10]</a>, <a href="standards.html#index-6">[11]</a>
 </li>
         <li><a href="algorithms.html#index-14">RFC 7516</a>, <a href="algorithms.html#index-3">[1]</a>, <a href="algorithms.html#index-4">[2]</a>, <a href="algorithms.html#index-5">[3]</a>, <a href="standards.html#index-7">[4]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-35">RFC 7516#section-4.1.1</a>, <a href="pid-eaa-issuance.html#index-47">[1]</a>, <a href="relying-party-solution.html#index-0">[2]</a>, <a href="remote-flow.html#index-0">[3]</a>
+        <li><a href="pid-eaa-issuance.html#index-35">RFC 7516#section-4.1.1</a>, <a href="pid-eaa-issuance.html#index-47">[1]</a>, <a href="relying-party-solution.html#index-0">[2]</a>, <a href="remote-flow.html#index-0">[3]</a>, <a href="revocation-lists.html#index-6">[4]</a>, <a href="revocation-lists.html#index-7">[5]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-104">RFC 7517</a>, <a href="pid-eaa-issuance.html#index-106">[1]</a>, <a href="pid-eaa-issuance.html#index-107">[2]</a>, <a href="pid-eaa-issuance.html#index-110">[3]</a>, <a href="pid-eaa-issuance.html#index-71">[4]</a>, <a href="pid-eaa-issuance.html#index-73">[5]</a>, <a href="relying-party-solution.html#index-2">[6]</a>, <a href="remote-flow.html#index-2">[7]</a>, <a href="standards.html#index-8">[8]</a>, <a href="trust.html#index-2">[9]</a>, <a href="trust.html#index-3">[10]</a>
+        <li><a href="pid-eaa-issuance.html#index-104">RFC 7517</a>, <a href="pid-eaa-issuance.html#index-106">[1]</a>, <a href="pid-eaa-issuance.html#index-107">[2]</a>, <a href="pid-eaa-issuance.html#index-110">[3]</a>, <a href="pid-eaa-issuance.html#index-71">[4]</a>, <a href="pid-eaa-issuance.html#index-73">[5]</a>, <a href="relying-party-solution.html#index-2">[6]</a>, <a href="remote-flow.html#index-2">[7]</a>, <a href="revocation-lists.html#index-20">[8]</a>, <a href="revocation-lists.html#index-22">[9]</a>, <a href="standards.html#index-8">[10]</a>, <a href="trust.html#index-2">[11]</a>, <a href="trust.html#index-3">[12]</a>
 </li>
         <li><a href="algorithms.html#index-0">RFC 7518</a>, <a href="algorithms.html#index-1">[1]</a>, <a href="algorithms.html#index-10">[2]</a>, <a href="algorithms.html#index-11">[3]</a>, <a href="algorithms.html#index-12">[4]</a>, <a href="algorithms.html#index-13">[5]</a>, <a href="algorithms.html#index-15">[6]</a>, <a href="algorithms.html#index-16">[7]</a>, <a href="algorithms.html#index-17">[8]</a>, <a href="algorithms.html#index-2">[9]</a>, <a href="algorithms.html#index-6">[10]</a>, <a href="algorithms.html#index-7">[11]</a>, <a href="algorithms.html#index-8">[12]</a>, <a href="algorithms.html#index-9">[13]</a>, <a href="standards.html#index-9">[14]</a>
 </li>
-        <li><a href="pid-eaa-data-model.html#index-0">RFC 7519</a>, <a href="pid-eaa-data-model.html#index-1">[1]</a>, <a href="pid-eaa-issuance.html#index-111">[2]</a>, <a href="pid-eaa-issuance.html#index-112">[3]</a>, <a href="pid-eaa-issuance.html#index-15">[4]</a>, <a href="pid-eaa-issuance.html#index-38">[5]</a>, <a href="pid-eaa-issuance.html#index-40">[6]</a>, <a href="pid-eaa-issuance.html#index-42">[7]</a>, <a href="pid-eaa-issuance.html#index-44">[8]</a>, <a href="pid-eaa-issuance.html#index-46">[9]</a>, <a href="pid-eaa-issuance.html#index-50">[10]</a>, <a href="pid-eaa-issuance.html#index-52">[11]</a>, <a href="pid-eaa-issuance.html#index-54">[12]</a>, <a href="pid-eaa-issuance.html#index-56">[13]</a>, <a href="pid-eaa-issuance.html#index-58">[14]</a>, <a href="pid-eaa-issuance.html#index-76">[15]</a>, <a href="pid-eaa-issuance.html#index-79">[16]</a>, <a href="pid-eaa-issuance.html#index-80">[17]</a>, <a href="pid-eaa-issuance.html#index-84">[18]</a>, <a href="pid-eaa-issuance.html#index-88">[19]</a>, <a href="pid-eaa-issuance.html#index-90">[20]</a>, <a href="pid-eaa-issuance.html#index-92">[21]</a>, <a href="pid-eaa-issuance.html#index-93">[22]</a>, <a href="pid-eaa-issuance.html#index-95">[23]</a>, <a href="pid-eaa-issuance.html#index-97">[24]</a>, <a href="relying-party-solution.html#index-1">[25]</a>, <a href="remote-flow.html#index-1">[26]</a>, <a href="standards.html#index-10">[27]</a>, <a href="trust.html#index-0">[28]</a>, <a href="trust.html#index-1">[29]</a>
+        <li><a href="pid-eaa-data-model.html#index-0">RFC 7519</a>, <a href="pid-eaa-data-model.html#index-1">[1]</a>, <a href="pid-eaa-issuance.html#index-111">[2]</a>, <a href="pid-eaa-issuance.html#index-112">[3]</a>, <a href="pid-eaa-issuance.html#index-15">[4]</a>, <a href="pid-eaa-issuance.html#index-38">[5]</a>, <a href="pid-eaa-issuance.html#index-40">[6]</a>, <a href="pid-eaa-issuance.html#index-42">[7]</a>, <a href="pid-eaa-issuance.html#index-44">[8]</a>, <a href="pid-eaa-issuance.html#index-46">[9]</a>, <a href="pid-eaa-issuance.html#index-50">[10]</a>, <a href="pid-eaa-issuance.html#index-52">[11]</a>, <a href="pid-eaa-issuance.html#index-54">[12]</a>, <a href="pid-eaa-issuance.html#index-56">[13]</a>, <a href="pid-eaa-issuance.html#index-58">[14]</a>, <a href="pid-eaa-issuance.html#index-76">[15]</a>, <a href="pid-eaa-issuance.html#index-79">[16]</a>, <a href="pid-eaa-issuance.html#index-80">[17]</a>, <a href="pid-eaa-issuance.html#index-84">[18]</a>, <a href="pid-eaa-issuance.html#index-88">[19]</a>, <a href="pid-eaa-issuance.html#index-90">[20]</a>, <a href="pid-eaa-issuance.html#index-92">[21]</a>, <a href="pid-eaa-issuance.html#index-93">[22]</a>, <a href="pid-eaa-issuance.html#index-95">[23]</a>, <a href="pid-eaa-issuance.html#index-97">[24]</a>, <a href="relying-party-solution.html#index-1">[25]</a>, <a href="remote-flow.html#index-1">[26]</a>, <a href="revocation-lists.html#index-10">[27]</a>, <a href="revocation-lists.html#index-12">[28]</a>, <a href="revocation-lists.html#index-14">[29]</a>, <a href="revocation-lists.html#index-16">[30]</a>, <a href="revocation-lists.html#index-18">[31]</a>, <a href="revocation-lists.html#index-25">[32]</a>, <a href="revocation-lists.html#index-27">[33]</a>, <a href="revocation-lists.html#index-29">[34]</a>, <a href="standards.html#index-10">[35]</a>, <a href="trust.html#index-0">[36]</a>, <a href="trust.html#index-1">[37]</a>
 </li>
         <li><a href="pid-eaa-issuance.html#index-1">RFC 7636</a>, <a href="pid-eaa-issuance.html#index-3">[1]</a>
 </li>
@@ -1094,7 +1112,7 @@
 </li>
         <li><a href="pid-eaa-issuance.html#index-99">RFC 7638</a>, <a href="standards.html#index-11">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-36">RFC 7638#section_3</a>, <a href="pid-eaa-issuance.html#index-48">[1]</a>
+        <li><a href="pid-eaa-issuance.html#index-36">RFC 7638#section_3</a>, <a href="pid-eaa-issuance.html#index-48">[1]</a>, <a href="revocation-lists.html#index-23">[2]</a>, <a href="revocation-lists.html#index-8">[3]</a>
 </li>
         <li><a href="standards.html#index-12">RFC 7800</a>
 </li>
@@ -1112,7 +1130,7 @@
 </li>
         <li><a href="pid-eaa-issuance.html#index-77">RFC 9110</a>, <a href="pid-eaa-issuance.html#index-78">[1]</a>
 </li>
-        <li><a href="pid-eaa-issuance.html#index-0">RFC 9126</a>, <a href="pid-eaa-issuance.html#index-11">[1]</a>, <a href="pid-eaa-issuance.html#index-12">[2]</a>, <a href="pid-eaa-issuance.html#index-13">[3]</a>, <a href="pid-eaa-issuance.html#index-14">[4]</a>, <a href="pid-eaa-issuance.html#index-18">[5]</a>, <a href="pid-eaa-issuance.html#index-19">[6]</a>, <a href="pid-eaa-issuance.html#index-2">[7]</a>, <a href="pid-eaa-issuance.html#index-20">[8]</a>, <a href="pid-eaa-issuance.html#index-21">[9]</a>, <a href="pid-eaa-issuance.html#index-37">[10]</a>, <a href="pid-eaa-issuance.html#index-39">[11]</a>, <a href="pid-eaa-issuance.html#index-41">[12]</a>, <a href="pid-eaa-issuance.html#index-43">[13]</a>, <a href="pid-eaa-issuance.html#index-49">[14]</a>, <a href="pid-eaa-issuance.html#index-5">[15]</a>, <a href="pid-eaa-issuance.html#index-51">[16]</a>, <a href="pid-eaa-issuance.html#index-53">[17]</a>, <a href="pid-eaa-issuance.html#index-55">[18]</a>, <a href="pid-eaa-issuance.html#index-60">[19]</a>, <a href="pid-eaa-issuance.html#index-61">[20]</a>, <a href="pid-eaa-issuance.html#index-62">[21]</a>, <a href="pid-eaa-issuance.html#index-7">[22]</a>, <a href="pid-eaa-issuance.html#index-9">[23]</a>
+        <li><a href="pid-eaa-issuance.html#index-0">RFC 9126</a>, <a href="pid-eaa-issuance.html#index-11">[1]</a>, <a href="pid-eaa-issuance.html#index-12">[2]</a>, <a href="pid-eaa-issuance.html#index-13">[3]</a>, <a href="pid-eaa-issuance.html#index-14">[4]</a>, <a href="pid-eaa-issuance.html#index-18">[5]</a>, <a href="pid-eaa-issuance.html#index-19">[6]</a>, <a href="pid-eaa-issuance.html#index-2">[7]</a>, <a href="pid-eaa-issuance.html#index-20">[8]</a>, <a href="pid-eaa-issuance.html#index-21">[9]</a>, <a href="pid-eaa-issuance.html#index-37">[10]</a>, <a href="pid-eaa-issuance.html#index-39">[11]</a>, <a href="pid-eaa-issuance.html#index-41">[12]</a>, <a href="pid-eaa-issuance.html#index-43">[13]</a>, <a href="pid-eaa-issuance.html#index-49">[14]</a>, <a href="pid-eaa-issuance.html#index-5">[15]</a>, <a href="pid-eaa-issuance.html#index-51">[16]</a>, <a href="pid-eaa-issuance.html#index-53">[17]</a>, <a href="pid-eaa-issuance.html#index-55">[18]</a>, <a href="pid-eaa-issuance.html#index-60">[19]</a>, <a href="pid-eaa-issuance.html#index-61">[20]</a>, <a href="pid-eaa-issuance.html#index-62">[21]</a>, <a href="pid-eaa-issuance.html#index-7">[22]</a>, <a href="pid-eaa-issuance.html#index-9">[23]</a>, <a href="revocation-lists.html#index-11">[24]</a>, <a href="revocation-lists.html#index-13">[25]</a>, <a href="revocation-lists.html#index-15">[26]</a>, <a href="revocation-lists.html#index-24">[27]</a>, <a href="revocation-lists.html#index-26">[28]</a>, <a href="revocation-lists.html#index-28">[29]</a>, <a href="revocation-lists.html#index-9">[30]</a>
 </li>
         <li><a href="pid-eaa-issuance.html#index-4">RFC 9396</a>, <a href="pid-eaa-issuance.html#index-45">[1]</a>
 </li>

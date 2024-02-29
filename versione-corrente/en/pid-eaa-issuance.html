@@ -718,13 +718,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#functional-requirements">Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-flows">Revocation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation-flows">Status Attestation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-request-by-wallet-instance">Status Attestation Request by Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-presentation-to-the-verifiers">Status Attestation Presentation to the Verifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-proof-of-possession">Credential Proof of Possession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation">Status Attestation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -980,13 +988,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#implementation-considerations">Implementation considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#external-references">External references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#functional-requirements">Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-flows">Revocation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation-flows">Status Attestation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-request-by-wallet-instance">Status Attestation Request by Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-presentation-to-the-verifiers">Status Attestation Presentation to the Verifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-proof-of-possession">Credential Proof of Possession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation">Status Attestation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
@@ -1277,7 +1293,7 @@ The (Q)EAA Provider performs the User authentication requesting a valid PID to t
 <p><strong>Steps 10-11 (Authorization Response):</strong> The PID/(Q)EAA Provider sends an authorization <code class="docutils literal notranslate"><span class="pre">code</span></code> together with <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>It MUST check the Authorization Response contains all the defined parameters according to <a class="reference internal" href="#table-http-response-claim"><span class="std std-ref">Table of the HTTP Response parameters</span></a>.</p></li>
+<li><p>It MUST check the Authorization Response contains all the defined parameters according to <a class="reference internal" href="revocation-lists.html#table-http-response-claim"><span class="std std-ref">Table of the HTTP Response parameters</span></a>.</p></li>
 <li><p>It MUST check the returned value by the PID/(Q)EAA Provider for <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter is equal to the value sent by Wallet Instance in the Request Object (<span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>).</p></li>
 <li><p>It MUST check that the URL of PID/(Q)EAA Provider in <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter is equal to the URL identifier of intended PID/(Q)EAA Provider that the Wallet Instance start the communication with (<span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9027.html"><strong>RFC 9027</strong></a>).</p></li>
 </ol>
@@ -1705,7 +1721,7 @@ The authorization server MUST first verify the identity of the User that own the
 <td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
-<td><p>It MUST be set to the same value as obtained by PAR Response. See <a class="reference internal" href="#table-http-response-claim"><span class="std std-ref">Table of the HTTP PAR Response parameters</span></a>.</p></td>
+<td><p>It MUST be set to the same value as obtained by PAR Response. See <a class="reference internal" href="revocation-lists.html#table-http-response-claim"><span class="std std-ref">Table of the HTTP PAR Response parameters</span></a>.</p></td>
 <td><p>[<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
 </tr>
 </tbody>
