@@ -1013,7 +1013,6 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
             "credential_endpoint": "https://pid-provider.example.org/credential",
             "revocation_endpoint": "https://pid-provider.example.org/revoke",
             "status_attestation_endpoint": "https://pid-provider.example.org/status",
-            "credential_hash_alg_supported": "sha-256",
             "display": [
               {
                 "name": "PID Provider Italiano di esempio",
