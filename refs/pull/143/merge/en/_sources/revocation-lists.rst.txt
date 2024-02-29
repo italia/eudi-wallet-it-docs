@@ -22,32 +22,32 @@ The Status Attestations have the following features:
 - improved privacy, according to the following evidences:
 
   1. the Verifier cannot check over time the validity of a given  Digital Credential related to the User;
-  2. the Issuers cannot track when and where a Digital Credential is verified.
+  2. the Issuers cannot track when and where a Digital Credential is verified;
   3. it doesn't reveal any information about the Users or the content of their Digital Credentials.
 
 .. _sec_revocation_assumption:
 
-General Assumptions
+Operational Requirements
 -------------------
 
 - **Internet Connection for Status Attestations**: Status Attestations can be obtained only when the Wallet Instance is connected to the internet and actively operated by the User.
 - **Role of a Credential Issuer**: A Credential Issuer is responsible for creating and issuing Credentials, as well as managing their lifecycle and validity status.
-- **Involvement of Authentic Sources**: When one or more Authentic Sources are involved in the issuance of a Digital Credential, the information exchanged between the Authentic Source and the PID/(Q)EAA Provider is crucial for the credential's issuance. Furthermore, in cases where the Authentic Source initiates a revocation or data changes, revoking the Credential becomes necessary.
+- **Involvement of Authentic Sources**: When one or more Authentic Sources are involved in the issuance of a Digital Credential, the information exchanged between the Authentic Source and the Credential Issuer is crucial for the Digital Credential's issuance. Furthermore, in cases where the Authentic Source initiates a revocation or data changes, revoking the Digital Credential becomes necessary.
 
 
 .. _sec_revocation_requirements:
 
-Requirements
+Functional Requirements
 ------------
 
 **The Status Attestation MUST:**
 
 - be presented in conjunction with the Digital Credential; 
 - be timestamped with the issuance datetime;
-- contain the expiration datetime after which it SHOULD NOT be considered valid anymore and it MUST NOT be greater the one contained in the digital Credential which it refers to;
+- contain the expiration datetime after which it SHOULD NOT be considered valid anymore and it MUST NOT be greater than the one contained in the Digital Credential which it refers to;
 - have a validity period not greater than 24 hours;
-- provides the proof about the non-revocation of the digital Credential which is related to and MUST be validated using the cryptographic signature of the Issuer;
-- not reveal any information about the Relying Party, the User's device or the User's data contained in the digital Credential the attestation is related to;
+- provide the proof about the non-revocation of the Digital Credential which is related to and MUST be validated using the cryptographic signature of the Issuer;
+- not reveal any information about the Relying Party, the User's device or the User's data contained in the Digital Credential the attestation is related to;
 - be non-repudiable even beyond its expiration time and even in the case of cryptographic keys rotation.
 
 
@@ -150,7 +150,7 @@ Below, is given a non-normative example of a Credential PoP with decoded JWT hea
 
     {
       "alg": "ES256",
-      "typ": "revocation-request+jwt",
+      "typ": "status-attestation-request+jwt",
       "kid": $CREDENTIAL-CNF-JWKID
     }
     .

@@ -719,8 +719,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Credential Lifecycle</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#general-assumptions">General Assumptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functional-requirements">Functional Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#revocation-use-cases">Revocation Use Cases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#revocation-flows">Revocation Flows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
@@ -989,8 +989,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Credential Lifecycle</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#general-assumptions">General Assumptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functional-requirements">Functional Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#revocation-use-cases">Revocation Use Cases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#revocation-flows">Revocation Flows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
@@ -1079,29 +1079,29 @@ Furthermore, it provides the technical details that the Verifiers MUST implement
 <li><p>improved privacy, according to the following evidences:</p>
 <ol class="arabic simple">
 <li><p>the Verifier cannot check over time the validity of a given  Digital Credential related to the User;</p></li>
-<li><p>the Issuers cannot track when and where a Digital Credential is verified.</p></li>
+<li><p>the Issuers cannot track when and where a Digital Credential is verified;</p></li>
 <li><p>it doesn't reveal any information about the Users or the content of their Digital Credentials.</p></li>
 </ol>
 </li>
 </ul>
-<section id="general-assumptions">
-<span id="sec-revocation-assumption"></span><h2>General Assumptions<a class="headerlink" href="#general-assumptions" title="Permalink to this heading">¶</a></h2>
+<section id="operational-requirements">
+<span id="sec-revocation-assumption"></span><h2>Operational Requirements<a class="headerlink" href="#operational-requirements" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Internet Connection for Status Attestations</strong>: Status Attestations can be obtained only when the Wallet Instance is connected to the internet and actively operated by the User.</p></li>
 <li><p><strong>Role of a Credential Issuer</strong>: A Credential Issuer is responsible for creating and issuing Credentials, as well as managing their lifecycle and validity status.</p></li>
-<li><p><strong>Involvement of Authentic Sources</strong>: When one or more Authentic Sources are involved in the issuance of a Digital Credential, the information exchanged between the Authentic Source and the PID/(Q)EAA Provider is crucial for the credential's issuance. Furthermore, in cases where the Authentic Source initiates a revocation or data changes, revoking the Credential becomes necessary.</p></li>
+<li><p><strong>Involvement of Authentic Sources</strong>: When one or more Authentic Sources are involved in the issuance of a Digital Credential, the information exchanged between the Authentic Source and the Credential Issuer is crucial for the Digital Credential's issuance. Furthermore, in cases where the Authentic Source initiates a revocation or data changes, revoking the Digital Credential becomes necessary.</p></li>
 </ul>
 </section>
-<section id="requirements">
-<span id="sec-revocation-requirements"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
+<section id="functional-requirements">
+<span id="sec-revocation-requirements"></span><h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Permalink to this heading">¶</a></h2>
 <p><strong>The Status Attestation MUST:</strong></p>
 <ul class="simple">
 <li><p>be presented in conjunction with the Digital Credential;</p></li>
 <li><p>be timestamped with the issuance datetime;</p></li>
-<li><p>contain the expiration datetime after which it SHOULD NOT be considered valid anymore and it MUST NOT be greater the one contained in the digital Credential which it refers to;</p></li>
+<li><p>contain the expiration datetime after which it SHOULD NOT be considered valid anymore and it MUST NOT be greater than the one contained in the Digital Credential which it refers to;</p></li>
 <li><p>have a validity period not greater than 24 hours;</p></li>
-<li><p>provides the proof about the non-revocation of the digital Credential which is related to and MUST be validated using the cryptographic signature of the Issuer;</p></li>
-<li><p>not reveal any information about the Relying Party, the User's device or the User's data contained in the digital Credential the attestation is related to;</p></li>
+<li><p>provide the proof about the non-revocation of the Digital Credential which is related to and MUST be validated using the cryptographic signature of the Issuer;</p></li>
+<li><p>not reveal any information about the Relying Party, the User's device or the User's data contained in the Digital Credential the attestation is related to;</p></li>
 <li><p>be non-repudiable even beyond its expiration time and even in the case of cryptographic keys rotation.</p></li>
 </ul>
 <p><strong>The Issuer MUST:</strong></p>
@@ -1186,7 +1186,7 @@ credential_pop=$CredentialPoPJWT
 <p>Below, is given a non-normative example of a Credential PoP with decoded JWT headers and payload and without signature for better readability:</p>
 <div class="highlight-default notranslate" id="credential-pop-jwt-ex"><div class="highlight"><pre><span></span>{
   &quot;alg&quot;: &quot;ES256&quot;,
-  &quot;typ&quot;: &quot;revocation-request+jwt&quot;,
+  &quot;typ&quot;: &quot;status-attestation-request+jwt&quot;,
   &quot;kid&quot;: $CREDENTIAL-CNF-JWKID
 }
 .
