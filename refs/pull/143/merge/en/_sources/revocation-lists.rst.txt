@@ -18,8 +18,8 @@ A Status Attestation is a signed document serving as proof of a Digital Credenti
 The Status Attestations have the following features:
 
 - automated issuance, as the User authentication is not required for the provisioning of the Status Attestation; 
-- verification of the digital Credential validity status when both the Wallet Instance and the Verifier are offline;
-- improved privacy, according to the following evidences:
+- verification of the Digital Credential validity status in both online and offline scenarios;
+- privacy-preserving, according to the following evidences:
 
   1. the Verifier cannot check over time the validity of a given  Digital Credential related to the User;
   2. the Issuers cannot track when and where a Digital Credential is verified;
