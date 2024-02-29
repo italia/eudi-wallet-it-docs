@@ -152,7 +152,7 @@ In the following, the non-normative example of a PID in JSON format.
     "exp": 1883000000,
     "status": {
       "status_attestation": {
-        "credential_hash_alg": "S256"
+        "credential_hash_alg": "sha-256"
       },
     "vct": "PersonIdentificationData",
     "unique_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -191,10 +191,9 @@ The corresponding SD-JWT verson for PID is given by
     "exp": 1883000000,
     "iss": "https://pidprovider.example.org",
     "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
     "status": {
       "status_attestation": {
-        "credential_hash_alg": "S256"
+        "credential_hash_alg": "sha-256"
       }
     },
     "vct": "PersonIdentificationData",
@@ -301,12 +300,11 @@ In the following, we provide a non-normative example of (Q)EAA in JSON.
   {
     "iss": "https://issuer.example.org",
     "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "jti": "urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c",
     "iat": 1683000000,
     "exp": 1883000000,
     "status": {
     "status_attestation": {
-      "credential_hash_alg": "S256"
+      "credential_hash_alg": "sha-256"
     }
     "vct": "DisabilityCard",
     "document_number": "XXXXXXXXXX",
