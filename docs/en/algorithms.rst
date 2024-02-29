@@ -16,7 +16,7 @@ The following algorithms MUST be supported:
     - **Operations**
     - **References**
   * - **ES256** 
-    - Elliptic Curve Digital Signature Algorithm (ECDSA) using one of the Agreed curves and SHA256.
+    - Elliptic Curve Digital Signature Algorithm (ECDSA) using one of the enabled curves listed in the section below and SHA256.
     - Signature
     - :rfc:`7518`, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_, `[ETSI] <https://www.etsi.org/deliver/etsi_ts/119300_119399/119312/01.04.03_60/ts_119312v010403p.pdf>`_ .
   * - **ES384** 
