@@ -305,7 +305,7 @@ In the following, we provide a non-normative example of (Q)EAA in JSON.
     "status": {
     "status_attestation": {
       "credential_hash_alg": "sha-256"
-    }
+    },
     "vct": "DisabilityCard",
     "document_number": "XXXXXXXXXX",
     "given_name": "Mario",
