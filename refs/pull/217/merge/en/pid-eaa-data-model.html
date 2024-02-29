@@ -656,7 +656,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id1">SD-JWT</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pid-claims">PID Claims</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pid-non-normative-examples">PID non-normative examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-non-normative-examples">PID Non-Normative Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q-eaa-non-normative-examples">(Q)EAA non-normative examples</a></li>
 </ul>
 </li>
@@ -925,7 +925,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id1">SD-JWT</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pid-claims">PID Claims</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pid-non-normative-examples">PID non-normative examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-non-normative-examples">PID Non-Normative Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q-eaa-non-normative-examples">(Q)EAA non-normative examples</a></li>
 </ul>
 </li>
@@ -1219,17 +1219,16 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </table>
 </section>
 <section id="pid-non-normative-examples">
-<h3>PID non-normative examples<a class="headerlink" href="#pid-non-normative-examples" title="Permalink to this heading">¶</a></h3>
+<h3>PID Non-Normative Examples<a class="headerlink" href="#pid-non-normative-examples" title="Permalink to this heading">¶</a></h3>
 <p>In the following, the non-normative example of a PID in JSON format.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;status_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;S256&quot;</span>
+<span class="w">      </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;unique_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
@@ -1265,10 +1264,9 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;status_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;S256&quot;</span>
+<span class="w">      </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
@@ -1368,12 +1366,11 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:uuid:6c5c0a49-b589-431d-bae7-219122a9ec2c&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;status_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;S256&quot;</span>
+<span class="w">    </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;document_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XXXXXXXXXX&quot;</span><span class="p">,</span>
