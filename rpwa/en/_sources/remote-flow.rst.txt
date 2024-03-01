@@ -18,21 +18,21 @@ Once the Wallet Instance establishes the trust with the Relying Party and evalua
 
 A High-Level description of the remote flow, from the User's perspective, is given below:
 
-  1. the Wallet Instance scans the QR Code and obtains the URL (Cross Device flow) or obtain directly an URL (Same Device flow);
-  2. the Wallet Instance extracts from the payload the following parameters: ``client_id``, ``request_uri``, ``request_uri_methods`` and ``client_id_scheme``;
+  1. the Wallet Instance scans the QR Code and obtains the URL (Cross Device flow) or obtains directly an URL (Same Device flow);
+  2. the Wallet Instance extracts from the payload the following parameters: ``client_id``, ``request_uri``, ``state``, ``request_uri_methods`` and ``client_id_scheme``;
   3. If the ``client_id_scheme`` is provided and set with the value ``entity_id``, the Wallet Instance MUST collect and validate the OpenID Federation Trust Chain related to the Relying Party. If the ``client_id_scheme`` is either not provided or is assigned a value different from ``entity_id``, the Wallet Instance MUST establish the trust by utilizing the ``client_id`` or an alternative ``client_id_scheme`` value. This alternative value MUST enable the Wallet Instance to establish trust with the Relying Party, ensuring compliance with the assurance levels mandated by the trust framework;
   4. If ``request_uri_methods`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the HTTP POST method and obtain the signed Request Object. If ``request_uri_methods`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter;
   5. the Wallet Instance verifies the signature of the signed Request Object, using the public key obtained with the trust chain, and that its issuer matches the ``client_id`` obtained at the step number 2;
-  6. The Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the trust chain;
+  6. the Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the trust chain;
   7. the Wallet Instance asks User disclosure and consent;
-  8. the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. the Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;
+  8. the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. The Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;
   9. the Wallet Instance informs the User about the successfull authentication with the Relying Party, the User continues the navigation.
 
 Below a sequence diagram that summarizes the interactions between all the involved parties.
 
 .. figure:: ../../images/cross_device_auth_seq_diagram.svg
     :align: center
-    :target: https://www.plantuml.com/plantuml/uml/ZLLRRnit4ttdhpZmz_3PXkCcwPi05t5SDvUqjMefoKCI61Ht9B6co2qlgxX5_tjdIN6zAbIqW21WoRcSSsQ6yo94wMFQ625JT3Pj5kI549SgEe-Zzu7y4MH04cBXlfQ3_mTyJvrM58xmln_rQXrVcaIYvJXQwLRQYAEFqXYAU6Cvl5MKOsptJHA7UY9NP6F980NP1fnbt-oMp8EsAqpvy25RTYH4mfFls6M2ZxJ0Z7mF1rPsUYMZTbOasHjqDC4j_POeH4ozYwGYDNmINFAAernSe2U4onJNP3bdTiRnr5FWx_8rNSj09xYu4595tSb8FOAEQe8hJ_sPnEbfO1SwFKKdJQBFTk4ICueEZrIXdBlN1znzWNcNl8Ql03kgD7-vlN8DuUOMh-VpALDej6SsEFxswVCJR7LSVxRAQCvmfvkpSRGpP5Hd-5GFDnJNhkdllk3Ju7GNr9esz4KqDEOf7bblXLXvbrg6x4Bj0JXh7dPofmbcQxS5Yra1jyowBnRVRYUuQSdcsx-r1sJRdi4u9GtaNYt45iLrfgJbeEYZ3eVNNwDdU3baAxraPkG3bjvjybcr9zk8mOdwwZ2VWEXJY5cyR3r8SKWL8Ks4NewLtGa97H1e5sTwCviB0DZM-hRUTRgXK3cpasnab8YEi-uNdd6sJjkO8zGM6I4UQnT9MTqBfcGh5zheg2a8Ce7-0ynNrtCu3-iYsjBhOeIvUfTyGQyiDVKCRl4hgLWrFeo_2DvHhVl14E9GIVQc7JzLhQHjq3gZ5NCSl3wGryk775p6v0bkEGPS1_-cP1kyfD4Sa-ezMtwO7eUJOf0cWz_IUIXdipZ33AJ7PhvoTgdzXfhnn2HHHSoja5yMv_NlkPavT6ZxYFXiInswzYwwUxB_yBHSxtJfQHMwMYuCOUzzAW6gquZWg5akOwHGxCyvUVaS6qnBbte6faC_Ix6g-GFnSVRaEwx3mVdL8VUIfux1DESZDBjKLvwQVggbmPiG4ddC--7RXHmWl_qunwpMSnI5uIaAeOpf44e8pra9hYFFPhoCthnwFNzrUttzipZiCH6uMfEwnsjdc1RUqGDUQjjmosKWxCMq-JTr8R0xisQN9qY1BSepanP6AzopOtdUjStd8uBHeSkjMSesBHKw5mBpDTczHwlHGHaNg86CqUj5YXGcK1cYNe9L7cPCSmAKOV04sKbj-bxeHosh84PolMzh0vJzjgE2ux9zaF9zSuBHZFPxvPjdvy_m_EbJtBpZolnnvCkQoSDzDC4wnZOWULEQr--w-KwvXl3dU0os-rkaBewPtD3UtjZM_SOm2zDHnfxQlwsSZeRT-7OssHLtVuMK_OVZdc1zWWg1eiP94Q7Wk3pakj8TsUAIW_HymnaIsna3-jhcsZYFa5JVTCjaClON_9SsvYy0
+    :target: https://www.plantuml.com/plantuml/uml/ZLLRRnit4ttdhpZGz_3PXkCcwPi05t5SDvUqjMefoKCI21Ht9B6co2qlgxX5_tjdIUo2SWIqXc5Or5pEd3apyo94wMFQ6I5JT3RjLkI545SgEe_9-q1-0XcGX5Yvh-NX_m4_KgSLXGd-zxFUREDBaqYq74ShtKeRCVaeZQ68DvR3MqKvnlxG976e9t93DfOCKf1jm5aEpUx8F6YxmOmV7x9bHq985NKd8p6mX2S_iFSK7sc5EVaU6Qpiz4P6xMnbAaL3jQFiFJkQuex-I1GYPjv5Kf4QVWakUSMPBY_vcGB3pE4msyf0kBmSu_PuEXf2NNlgtoJEpW9xqDaPEidqVBOhbxY-w30M7g6SkzT7t7q1j4nUmmzGEXeg_UtksZM4spkyNYnc3BRHdd7ZvFkdpq-nrt7xsIgZESDID-Trj7DaLEVuL3qkTnIthlc2JwFJCgWjxUXBnLZcdNystgMMWRemw03EceT29z8KywtR8svfWDbohGVCoqVjOxVz5BSjsUpsI3kGRNiEuvGqa8aDB8kZjBOEEiPadUrHGiwLj8m2FOpnyUPhz6oRKx7I91TFFc3jtIw_3VPa6p4wKTz43XuGVGenSvojHyQEaIUaYT1hVCirT42W4WUps_b20C1-a47hNQSR2WCNx2GR6IMYorbhVJ3ErcaRSuIwMG0mAgkgeE8uahAw9rR9LgwqqL5J46G2_GVOhsuMS1xMHRHbGaHLm-1TyWMziTGCRt2htqd5aVFZzUG6T3JeusY8n_eyqh231O9V1YQbRT0wenLNF7fz8A_N3pcLZCaJtBg2F-w9sv9xz996DzNOikM7sKauBGPfElgjdOToDbDrR0IkdLrhlwFcKDa3fLaek4hS2Q__BEk85rNRHyHdMxhIjSlexicEazvMssiPqcgdG-1_Z-ylt1JUA9UTwT1oPUXm1-O4erD5G2MjgyZa5_iB1bS-rWQped7Fm7L0l_C7jdyYViwU_1ttwUXMq24hprF7O9gB2ar9rQ_IXX5hQV0cX4GUYtvqIyWHCjv-N60-zBkAml0KXQ9UDOOImdDMWkl8indVlpUlNYzUtTtS_2gEUqm5hhUaxl7QcOQTtj43NchRi2Gp4FRYilbtvaAWt1fsUO8KsA8igRHYcUAU7SiDqNbFrWL6XovBjxHjLZfq8GGMMxAWQkKrEYZZ0ZMGCNgzIapM52f3r6imo-D4Qaw0CYoU83kf3MiXRyRCWgZeUj-E0dWVo2EKKd1IJXnI_huvHJNH_V7wxjd5Cpn_-XItxxWpVqrykMLv5KocsCRO1YHlYhWz5RKlbMi8Vul7urzkqrpkwE0qxOV3oT0on3fB7MClwYl5TVxRkUjelCPlvzFIwKTNgimXJlfgn-sLgodKd7upYGKihew5sUYER77F0NiYmZaIsnd3ZMvpqvn7IAfNupgPmzjxI5ckyGN_IJlp3m00
     Remote Protocol Flow
 
 The details of each step shown in the previous picture are described in the table below.
@@ -45,7 +45,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **Id**
     - **Description**
   * - **1**, **2**
-    - The User requests to access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the *Login with the Wallet* button. The Authorization flow starts.
+    - The User requests to access to a protected resource of the Relying Party.
   * - **3**, **4**,
     - The Relying Party provides the Wallet Instance with a URL where the information about the Relying Party are provided, along with the information about where the signed request is available for download.
   * - **5**, **6**, **7**, **8**, **9**
@@ -53,7 +53,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **10**, 
     - The Wallet Instance evaluates the trust with the Relying Party.
   * - **11**, **12**
-    - The Wallet Instance checks if the Relying Party has provided the ``request_uri_method`` within its signed Request Object. If true, the Wallet provides its metadata in the to the Relying Party. The Relying Party returns a signed Request Object compliant to the Wallet technical capabilities.
+    - The Wallet Instance checks if the Relying Party has provided the ``request_uri_method`` within its signed Request Object. If provided and it is equal to ``post``, the Wallet Instance provides its metadata to the Relying Party. The Relying Party returns a signed Request Object compliant to the Wallet technical capabilities.
   * - **13**
     - When the Wallet Instance capabilities discovery is not supported by RP, the Wallet Instance request the signed Request Object using the HTTP method GET.
   * - **14**
@@ -63,7 +63,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **18**, **19**
     - The Wallet Instance requests the User's consent for the release of the Credentials. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.
   * - **20**
-    - The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post").
+    - The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post.jwt").
   * - **21**, **22**, **23**, **24**, **25** 
     - The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials.
   * - **26**
@@ -148,8 +148,10 @@ response, containing the request URI, are described in the Table below.
     - REQUIRED. The HTTPs URL where the Relying Party provides the signed Request Object to the Wallet Instance.
   * - **client_id_scheme**
     - OPTIONAL. The scheme used by the Relying Party for the client_id, detailing the format and structure and the trust evaluation method. It SHOULD be set with ``entity_id``.
+  * - **state**
+    - OPTIONAL. A unique identifier for the current transaction generated by the Relying Party. The value SHOULD be opaque to the Wallet Instance.
   * - **request_uri_method**
-    - OPTIONAL. The HTTP method MUST be set with ``get`` or ``post``. The Wallet Instance should use this method obtain the signed Request Object from the request_uri. If not provided, the Wallet Instance SHOULD use the HTTP method ``get``. If provided, the Wallet Instance SHOULD provide its metadata within the HTTP POST body encoded in ``application/json``.    
+    - OPTIONAL. The HTTP method MUST be set with ``get`` or ``post``. The Wallet Instance should use this method to obtain the signed Request Object from the request_uri. If not provided or equal to ``get``, the Wallet Instance SHOULD use the HTTP method ``get``. Otherwise, the Wallet Instance SHOULD provide its metadata within the HTTP POST body encoded in ``application/json``.    
     
 Below a non-normative example of the response containing the required parameters previously described.
 
@@ -430,7 +432,7 @@ Where the following parameters are used:
     - **Description**
   * - **vp_token**
     - JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
-      - The Requested Digital Credential (one or more, if in format SD-JWT VC or MDOC CBOR)
+      - The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
       - The Wallet Instance Attestation
   * - **presentation_submission**
     - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_.
@@ -485,7 +487,7 @@ Redirect URI
 
 When the Relying Party provides the redirect URI, the Wallet Instance MUST send the user-agent to this redirect URI. The redirect URI allows the Relying Party to continue the interaction with the End-User on the device where the Wallet Instance resides after the Wallet Instance has sent the Authorization Response to the response URI.
 
-The Relying Party MUST include a response code withing the redirect URI. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.
+The Relying Party MUST include a response code within the redirect URI. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.
 
 The following is a non-normative example of the response from the Relying Party to the Wallet Instance upon receiving the Authorization Response at the Response Endpoint.
 

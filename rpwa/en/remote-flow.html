@@ -1068,14 +1068,14 @@
 <p>A High-Level description of the remote flow, from the User's perspective, is given below:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>the Wallet Instance scans the QR Code and obtains the URL (Cross Device flow) or obtain directly an URL (Same Device flow);</p></li>
-<li><p>the Wallet Instance extracts from the payload the following parameters: <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri_methods</span></code> and <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code>;</p></li>
+<li><p>the Wallet Instance scans the QR Code and obtains the URL (Cross Device flow) or obtains directly an URL (Same Device flow);</p></li>
+<li><p>the Wallet Instance extracts from the payload the following parameters: <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri_methods</span></code> and <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code>;</p></li>
 <li><p>If the <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is provided and set with the value <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, the Wallet Instance MUST collect and validate the OpenID Federation Trust Chain related to the Relying Party. If the <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is either not provided or is assigned a value different from <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, the Wallet Instance MUST establish the trust by utilizing the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> or an alternative <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> value. This alternative value MUST enable the Wallet Instance to establish trust with the Relying Party, ensuring compliance with the assurance levels mandated by the trust framework;</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">request_uri_methods</span></code> is provided and set with the value <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet Instance SHOULD transmit its metadata to the Relying Party's <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint using the HTTP POST method and obtain the signed Request Object. If <code class="docutils literal notranslate"><span class="pre">request_uri_methods</span></code> is set with the value <code class="docutils literal notranslate"><span class="pre">get</span></code> or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter;</p></li>
 <li><p>the Wallet Instance verifies the signature of the signed Request Object, using the public key obtained with the trust chain, and that its issuer matches the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> obtained at the step number 2;</p></li>
-<li><p>The Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the trust chain;</p></li>
+<li><p>the Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the trust chain;</p></li>
 <li><p>the Wallet Instance asks User disclosure and consent;</p></li>
-<li><p>the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. the Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;</p></li>
+<li><p>the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. The Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;</p></li>
 <li><p>the Wallet Instance informs the User about the successfull authentication with the Relying Party, the User continues the navigation.</p></li>
 </ol>
 </div></blockquote>
@@ -1093,7 +1093,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>1</strong>, <strong>2</strong></p></td>
-<td><p>The User requests to access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the <em>Login with the Wallet</em> button. The Authorization flow starts.</p></td>
+<td><p>The User requests to access to a protected resource of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>3</strong>, <strong>4</strong>,</p></td>
 <td><p>The Relying Party provides the Wallet Instance with a URL where the information about the Relying Party are provided, along with the information about where the signed request is available for download.</p></td>
@@ -1105,7 +1105,7 @@
 <td><p>The Wallet Instance evaluates the trust with the Relying Party.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>11</strong>, <strong>12</strong></p></td>
-<td><p>The Wallet Instance checks if the Relying Party has provided the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> within its signed Request Object. If true, the Wallet provides its metadata in the to the Relying Party. The Relying Party returns a signed Request Object compliant to the Wallet technical capabilities.</p></td>
+<td><p>The Wallet Instance checks if the Relying Party has provided the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> within its signed Request Object. If provided and it is equal to <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet Instance provides its metadata to the Relying Party. The Relying Party returns a signed Request Object compliant to the Wallet technical capabilities.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>13</strong></p></td>
 <td><p>When the Wallet Instance capabilities discovery is not supported by RP, the Wallet Instance request the signed Request Object using the HTTP method GET.</p></td>
@@ -1120,7 +1120,7 @@
 <td><p>The Wallet Instance requests the User's consent for the release of the Credentials. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>20</strong></p></td>
-<td><p>The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode &quot;direct_post&quot;).</p></td>
+<td><p>The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode &quot;direct_post.jwt&quot;).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>21</strong>, <strong>22</strong>, <strong>23</strong>, <strong>24</strong>, <strong>25</strong></p></td>
 <td><p>The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials.</p></td>
@@ -1209,8 +1209,11 @@ response, containing the request URI, are described in the Table below.</p>
 <tr class="row-even"><td><p><strong>client_id_scheme</strong></p></td>
 <td><p>OPTIONAL. The scheme used by the Relying Party for the client_id, detailing the format and structure and the trust evaluation method. It SHOULD be set with <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>request_uri_method</strong></p></td>
-<td><p>OPTIONAL. The HTTP method MUST be set with <code class="docutils literal notranslate"><span class="pre">get</span></code> or <code class="docutils literal notranslate"><span class="pre">post</span></code>. The Wallet Instance should use this method obtain the signed Request Object from the request_uri. If not provided, the Wallet Instance SHOULD use the HTTP method <code class="docutils literal notranslate"><span class="pre">get</span></code>. If provided, the Wallet Instance SHOULD provide its metadata within the HTTP POST body encoded in <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
+<tr class="row-odd"><td><p><strong>state</strong></p></td>
+<td><p>OPTIONAL. A unique identifier for the current transaction generated by the Relying Party. The value SHOULD be opaque to the Wallet Instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>request_uri_method</strong></p></td>
+<td><p>OPTIONAL. The HTTP method MUST be set with <code class="docutils literal notranslate"><span class="pre">get</span></code> or <code class="docutils literal notranslate"><span class="pre">post</span></code>. The Wallet Instance should use this method to obtain the signed Request Object from the request_uri. If not provided or equal to <code class="docutils literal notranslate"><span class="pre">get</span></code>, the Wallet Instance SHOULD use the HTTP method <code class="docutils literal notranslate"><span class="pre">get</span></code>. Otherwise, the Wallet Instance SHOULD provide its metadata within the HTTP POST body encoded in <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1490,7 +1493,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <tbody>
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
 <td><p>JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
-- The Requested Digital Credential (one or more, if in format SD-JWT VC or MDOC CBOR)
+- The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
 - The Wallet Instance Attestation</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>presentation_submission</strong></p></td>
@@ -1555,7 +1558,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <section id="redirect-uri">
 <h2>Redirect URI<a class="headerlink" href="#redirect-uri" title="Permalink to this heading">¶</a></h2>
 <p>When the Relying Party provides the redirect URI, the Wallet Instance MUST send the user-agent to this redirect URI. The redirect URI allows the Relying Party to continue the interaction with the End-User on the device where the Wallet Instance resides after the Wallet Instance has sent the Authorization Response to the response URI.</p>
-<p>The Relying Party MUST include a response code withing the redirect URI. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.</p>
+<p>The Relying Party MUST include a response code within the redirect URI. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.</p>
 <p>The following is a non-normative example of the response from the Relying Party to the Wallet Instance upon receiving the Authorization Response at the Response Endpoint.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json;charset=UTF-8</span>
