@@ -1215,7 +1215,7 @@ response, containing the request URI, are described in the Table below.</p>
 </tbody>
 </table>
 <p>Below a non-normative example of the response containing the required parameters previously described.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">https</span><span class="o">:</span><span class="c1">//wallet-solution.digital-strategy.europa.eu/authorization?client_id=...&amp;request_uri=...&amp;client_id_scheme=entity_id&amp;request_uri_method=get</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">https</span><span class="o">:</span><span class="c1">//wallet-solution.digital-strategy.europa.eu/authorization?client_id=...&amp;request_uri=...&amp;client_id_scheme=entity_id&amp;request_uri_method=post</span>
 </pre></div>
 </div>
 <p>The value corresponding to the <cite>request_uri</cite> endpoint SHOULD be randomized, according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1">RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)</a> Section 5.2.1.</p>
@@ -1225,7 +1225,7 @@ Location: https://wallet-solution.digital-strategy.europa.eu?
 client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 &amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri
 &amp;client_id_scheme=entity_id
-&amp;request_uri_method=get
+&amp;request_uri_method=post
 </pre></div>
 </div>
 <p>In the <strong>Cross Device Flow</strong>, a QR Code is shown by the Relying Party to the User in order to provide the Authorization Request. The User frames the QR Code using their Wallet Instance.</p>
@@ -1233,7 +1233,7 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 <figure class="align-center" style="width: 50%">
 <img alt="_images/verifier_qr_code.svg" src="_images/verifier_qr_code.svg" /></figure>
 <p>Below is represented a non-normative example of the QR Code raw payload:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=https%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org&amp;client_id_scheme=entity_id&amp;request_uri_method=get
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=https%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org&amp;client_id_scheme=entity_id&amp;request_uri_method=post
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1409,6 +1409,8 @@ HOST: relying-party.example.org
 <span class="w">            </span><span class="p">{</span>
 <span class="w">              </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;$.iss&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;$.exp&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;$.iat&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s2">&quot;$.cnf.jwk&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s2">&quot;$.aal&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="p">]</span>
