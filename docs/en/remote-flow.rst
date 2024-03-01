@@ -347,6 +347,8 @@ The JWS payload parameters are described herein:
               {
                 "path": [
                   "$.iss",
+                  "$.exp",
+                  "$.iat",
                   "$.cnf.jwk",
                   "$.aal",
                 ]
