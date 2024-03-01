@@ -39,6 +39,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
    * - Wallet Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
+   * - Credential Status Attestation
+     - Verifiable Attestation proving that a related Digital Credential is not revoked.
    * - Wallet Attestation Service
      - Device manufacturer service that allows you to certify the authenticity of the mobile app (Wallet Instance).
    * - Qualified Electronic Attestation of Attributes (QEAA)

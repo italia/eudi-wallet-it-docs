@@ -57,7 +57,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **13**, **14** and **15**
     - The Wallet Instance checks if the Relying Party has provided the ``request_uri_method`` within its signed Request Object. If true, the Wallet provides its metadata in the to the Relying Party. The Relying PArty produces a new signed Request Object compliant to the Wallet technical capabilities.
   * - **13**, **14**, **15**, **16**, **17**, **18**
-    - The Request Object JWS is verified by the Wallet Instance. The Wallet processes the Relying Party metadata and applies the policies related to the Relying Party, attesting whose Digital Credentials and User data the Relying Party is granted to request.
+    - The Request Object JWS is verified by the Wallet Instance. The Wallet processes the Relying Party metadata and applies the policies related to the Relying Party, attesting whose Digital Credentials and User data the Relying Party is granted to request.
   * - **19**, **20**
     - The Wallet Instance requests the User's consent for the release of the Credentials. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.
   * - **21**
