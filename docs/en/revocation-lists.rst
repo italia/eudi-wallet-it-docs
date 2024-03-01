@@ -233,6 +233,7 @@ For HTTP error responses that involve a body, the body MUST be encoded in ``appl
   - *error*. The error code, as registerd in the table below.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
+Error codes are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
 The following Error Codes MUST be supported:
 
 .. list-table:: 
@@ -410,6 +411,7 @@ For HTTP error responses that involve a body, the body MUST be encoded in ``appl
   - *error*. The error code, as registerd in the table below.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
+Error codes are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
 The following Error Codes MUST be supported:
 
 .. list-table:: 
