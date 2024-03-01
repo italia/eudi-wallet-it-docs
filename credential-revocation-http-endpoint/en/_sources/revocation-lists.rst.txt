@@ -203,8 +203,6 @@ Credential Revocation HTTP Response
 In case of successful revocation, the Issuer MUST return an HTTP Response with status code *204 No Content*.
 Otherwise, an HTTP error response MUST be provided by the Issuer using status codes according to the table below. 
 
-To revoke an already revoked Digital Credential will result in a successful response.
-
 The following HTTP Status Codes MUST be supported:
 
 .. list-table:: 
