@@ -155,7 +155,7 @@ Below a non-normative example of the response containing the required parameters
 
 .. code-block:: javascript
 
-  https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=...&request_uri=...&client_id_scheme=entity_id&request_uri_method=get  
+  https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=...&request_uri=...&client_id_scheme=entity_id&request_uri_method=post
 
 The value corresponding to the `request_uri` endpoint SHOULD be randomized, according to `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
 
@@ -169,7 +169,7 @@ In the **Same Device Flow** the Relying Party uses an HTTP response redirect (wi
     client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
     &request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri
     &client_id_scheme=entity_id
-    &request_uri_method=get
+    &request_uri_method=post
 
 
 In the **Cross Device Flow**, a QR Code is shown by the Relying Party to the User in order to provide the Authorization Request. The User frames the QR Code using their Wallet Instance.
@@ -185,7 +185,7 @@ Below is represented a non-normative example of the QR Code raw payload:
 
 .. code-block:: text
 
-  https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=https%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&client_id_scheme=entity_id&request_uri_method=get
+  https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=https%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&client_id_scheme=entity_id&request_uri_method=post
 
 .. note::
     The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured.
