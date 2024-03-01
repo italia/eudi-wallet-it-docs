@@ -1083,23 +1083,17 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>the Wallet Instance scans the QR Code and obtains the URL (Cross Device flow) or obtain directly an URL (Same Device flow);</p></li>
-<li><p>the Wallet Instance extracts from the payload the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> and the <cite>request_uri</cite> parameters;</p></li>
-<li><p>the Wallet fetches the signed Request Object using an HTTP request with method GET to the endpoint provided in the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter;</p></li>
-<li><p>the Wallet verifies the signature of the signed Request Object and that its issuer matches the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> obtained at the step number 2;</p></li>
-<li><p>the Wallet Instance MUST establish the Trust to the Relying Party  by building the Federation Trust Chain related to the Relying Party. The Wallet checks the presence in the signed Request Object of the parameter <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>, if this parameter is present and set with the <code class="docutils literal notranslate"><span class="pre">post</span></code> value, the Wallet transmits its metadata to the Relying Party's <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint, using an HTTP POST method and obtains an updated signed Request Object;</p></li>
-<li><p>The Wallet Instance evaluates the requested PID/EAAs and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party;</p></li>
+<li><p>the Wallet Instance extracts from the payload the following parameters: <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri_methods</span></code> and <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code>;</p></li>
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is provided and set with the value <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, the Wallet Instance MUST collect and validate the OpenID Federation Trust Chain related to the Relying Party. If the <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is either not provided or is assigned a value different from <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, the Wallet MUST establish the trust by utilizing the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> or an alternative <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> value. This alternative value MUST enable the Wallet Instance to establish trust with the Relying Party, ensuring compliance with the assurance levels mandated by the trust framework;</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">request_uri_methods</span></code> is provided and set with the value <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet SHOULD transmit its metadata to the Relying Party's <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint using the HTTP POST method and obtain the signed Request Object. If <code class="docutils literal notranslate"><span class="pre">request_uri_methods</span></code> is set with the value <code class="docutils literal notranslate"><span class="pre">get</span></code> or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter;</p></li>
+<li><p>the Wallet verifies the signature of the signed Request Object, using the public key obtained with the trust chain, and that its issuer matches the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> obtained at the step number 2;</p></li>
+<li><p>The Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the trust chain;</p></li>
 <li><p>the Wallet Instance asks User disclosure and consent;</p></li>
-<li><p>the Wallet Instance presents the requested disclosure of PID/EAAs to the Relying Party along with the Wallet Attestation. the Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;</p></li>
+<li><p>the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. the Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;</p></li>
 <li><p>the Wallet Instance informs the User about the successfull authentication with the Relying Party, the User continues the navigation.</p></li>
 </ol>
 </div></blockquote>
 <p>Below a sequence diagram that summarizes the interactions between all the involved parties.</p>
-<figure class="align-center" id="id3">
-<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/XLNTRkCs4xtdKnpuk_YI84cpspi3AJQRfflijergUpSt1W9Q6jjiQ5BbZvoqwBjtA5goN2GeO1WGEMVcdFaPVl11kX0tMiWOh8cR1JaXn5KPhCFegoStWlI8GYpiSpxulyUFrAYI_0Z_-rcjrk6ZZYHgzgDALKiJC7gGMbF0dM7tfgJMn_RG9BAhCxaY4t84ASXKu2Y7PXFIBygiKF3XIslPa10HPpymP8m7Mc1ABj61aOrQoQ2i4L4cWuR6cD0VaNn0uMoWCb359zv6LxANoqiaGRYAOKs6OxPW71MEF7_dhs8jFHtZybB8CgX61aeC6ke2N3jAPn8d9vuXT7A2Hkf8SxEmaHK5YxrKbDO-gLVWBjDyZ4x1TGGRwcJ-Dhcs5U5-WjlPh609bNAi1aVVNxm_nbQ5DKgjEC2Zgaw7paxHaX8L3TcBlPQj42jdOyr4hEyg2slqoow9SOpfscx1AUferAmbbO1ljsFSrsJQstyL7RAkJw5jAJNaGOR55XawBQLXfqXU-yERv-2OtjpqYkPce6XkfAcoghbPEhj9iNidP2hHUw9K2BRp22xwaFEKh7lFsPJhqENCj_TUhGnLtHdiulUKx3xOi5WSiBRAXBPOEUohQ4wv3b3B8VXnGs5jAoWFJpjwnVrq9WG0zDHgPnjLaUyIp2XPoI0HxDjqaeU-omQP61GgK6bKgaufQxbGMWL5lWTcBR7cI5IzfUcDT1yCBNxf-AR2rLQhakFqg6_arFAb3I13T0Ix7DIWdz_x7B57IQqIi-wUBRyLH_uu6yJzt2-jGsbDckTzqyTzzrvRirHkGzLmH6BV5sqzsWLXdVepRuG9-JfvnDpacZNrOx1FPDxO43Uxl2HPMQwI2qquM3FPGG_g1GuBTXK2-Mn_pi7pvz2Wo9tYc9ZoI7kqo-PFnCSjak-u3gyEB6EC3N3KC9dgVC0cXqhBgafZB3Nkl8_aC4k3bLtkANz-c67QrNFWXUcLv7qUmTwL48wZ4cn3ZituJRdxT3lxDBcv-LMyZXWBNA-fVCAjrImBN-W57vMfkELQ8enYsVmhhFSCPzKCEKFqRD7wgkD2gn9F3CnRMgMyyCrGOh1eskRCXIjoZSw5m6nDfjjJxMMbVAcjfmeo1ASMCP0VSuaoppJsdEf-M1N7G9u8Hv2DL3erH9gcDXLYaBElTTS5-QtQwS5HVacw0Jt6O06bD-AxT-VlyFxY0lTVcCPV8vUVZ7PBZCPOXr1xHATp1xjTIp-MjYByFPo5xU7RqJqNKxcXWzSY3vvanZxJ7KPCqlxheMceV-S-JyUxp1q-77djuoW9x7PH5f2pSPoJa7bSlGPTgOPCXhHEabv_YiXsMeEUwxOsri77CdNUCkgM-mV-Ynlz3m00"><img alt="_images/cross_device_auth_seq_diagram.svg" src="_images/cross_device_auth_seq_diagram.svg" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Remote Protocol Flow</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
 <p>The details of each step shown in the previous picture are described in the table below.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1116,33 +1110,39 @@
 <td><p>The User requests to access to a protected resource, the Relying Party redirects the User to a discovery page in which the User selects the <em>Login with the Wallet</em> button. The Authorization flow starts.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>3</strong>, <strong>4</strong>,</p></td>
-<td><p>The Relying Party provides the Wallet Instance with a URL where a generic signed Request Object can be downloaded.</p></td>
+<td><p>The Relying Party provides the Wallet Instance with a URL where the information about the Relying Party are provided, along with the information about where the signed request is available for download.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>5</strong>, <strong>6</strong>, <strong>7</strong>, <strong>8</strong>, <strong>9</strong></p></td>
-<td><p>In the <strong>Cross Device Flow</strong>: the Request URI is provided in the form of a QR Code that is shown to the User. The User frames the QRCode with the Wallet Instance and extracts  <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> and <code class="docutils literal notranslate"><span class="pre">state</span></code>. In the <strong>Same Device Flow</strong> the Relying Party provides the same information of the Cross-Device flow but in the form of HTTP Redirect Location (302).</p></td>
+<td><p>In the <strong>Cross Device Flow</strong>: the Request URI is provided in the form of a QR Code that is shown to the User. The User frames the QRCode with the Wallet Instance that extracts  <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> and <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>. In the <strong>Same Device Flow</strong> the Relying Party provides the same information of the Cross-Device flow but in the form of HTTP Redirect Location (302).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>10</strong>, <strong>11</strong>, <strong>12</strong></p></td>
+<tr class="row-odd"><td><p><strong>10</strong>,</p></td>
+<td><p>The Wallet Instance evaluates the trust with the Relying Party.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>11</strong>, <strong>12</strong></p></td>
+<td><p>The Wallet Instance checks if the Relying Party has provided the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> within its signed Request Object. If true, the Wallet provides its metadata in the to the Relying Party. The Relying Party returns a signed Request Object compliant to the Wallet technical capabilities.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>13</strong></p></td>
+<td><p>When the Wallet capabilities discovery is not supported by RP, the Wallet Instance request the signed Request Object using the HTTP method GET.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>14</strong></p></td>
 <td><p>The Wallet Instance obtains the signed Request Object.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>13</strong>, <strong>14</strong> and <strong>15</strong></p></td>
-<td><p>The Wallet Instance checks if the Relying Party has provided the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> within its signed Request Object. If true, the Wallet provides its metadata in the to the Relying Party. The Relying PArty produces a new signed Request Object compliant to the Wallet technical capabilities.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>13</strong>, <strong>14</strong>, <strong>15</strong>, <strong>16</strong>, <strong>17</strong>, <strong>18</strong></p></td>
+<tr class="row-odd"><td><p><strong>15</strong>, <strong>16</strong>, <strong>17</strong></p></td>
 <td><p>The Request Object JWS is verified by the Wallet Instance. The Wallet processes the Relying Party metadata and applies the policies related to the Relying Party, attesting whose Digital Credentials and User data the Relying Party is granted to request.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>19</strong>, <strong>20</strong></p></td>
+<tr class="row-even"><td><p><strong>18</strong>, <strong>19</strong></p></td>
 <td><p>The Wallet Instance requests the User's consent for the release of the Credentials. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>21</strong></p></td>
+<tr class="row-odd"><td><p><strong>20</strong></p></td>
 <td><p>The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode &quot;direct_post&quot;).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>22</strong>, <strong>23</strong>, <strong>24</strong>, <strong>25</strong> and <strong>26</strong></p></td>
+<tr class="row-even"><td><p><strong>21</strong>, <strong>22</strong>, <strong>23</strong>, <strong>24</strong>, <strong>25</strong></p></td>
 <td><p>The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>27</strong> and <strong>28</strong></p></td>
+<tr class="row-odd"><td><p><strong>26</strong></p></td>
 <td><p>The Relying Party provides to the Wallet a redirect URI with a response code to be used by the Wallet to finalize the authentication.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>29</strong></p></td>
+<tr class="row-even"><td><p><strong>27</strong>, <strong>28</strong> and <strong>29</strong></p></td>
 <td><p>The User is informed by the Wallet Instance that the Autentication succeded, then the protected resource is made available to the User.</p></td>
 </tr>
 </tbody>
@@ -1215,15 +1215,21 @@ response, containing the request URI, are described in the Table below.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>Unique identifier of the Relying Party.</p></td>
+<td><p>REQUIRED. Unique identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
-<td><p>The HTTPs URL where the Relying Party provides the signed Request Object to the Wallet Instance.</p></td>
+<td><p>REQUIRED. The HTTPs URL where the Relying Party provides the signed Request Object to the Wallet Instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>client_id_scheme</strong></p></td>
+<td><p>OPTIONAL. The scheme used by the Relying Party for the client_id, detailing the format and structure and the trust evaluation method. It SHOULD be set with <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>request_uri_method</strong></p></td>
+<td><p>OPTIONAL. The HTTP method MUST be set with <code class="docutils literal notranslate"><span class="pre">get</span></code> or <code class="docutils literal notranslate"><span class="pre">post</span></code>. The Wallet Instance should use this method obtain the signed Request Object from the request_uri. If not provided, the Wallet Instance SHOULD use the HTTP method <code class="docutils literal notranslate"><span class="pre">get</span></code>. If provided, the Wallet Instance SHOULD provide its metadata within the HTTP POST body encoded in <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Below a non-normative example of the response containing the required parameters previously described.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">https</span><span class="o">:</span><span class="c1">//wallet-solution.digital-strategy.europa.eu/authorization?client_id=...&amp;request_uri=...</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">https</span><span class="o">:</span><span class="c1">//wallet-solution.digital-strategy.europa.eu/authorization?client_id=...&amp;request_uri=...&amp;client_id_scheme=entity_id&amp;request_uri_method=get</span>
 </pre></div>
 </div>
 <p>The value corresponding to the <cite>request_uri</cite> endpoint SHOULD be randomized, according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1">RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)</a> Section 5.2.1.</p>
@@ -1232,6 +1238,8 @@ response, containing the request URI, are described in the Table below.</p>
 Location: https://wallet-solution.digital-strategy.europa.eu?
 client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 &amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri
+&amp;client_id_scheme=entity_id
+&amp;request_uri_method=get
 </pre></div>
 </div>
 <p>In the <strong>Cross Device Flow</strong>, a QR Code is shown by the Relying Party to the User in order to provide the Authorization Request. The User frames the QR Code using their Wallet Instance.</p>
@@ -1239,7 +1247,7 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 <figure class="align-center" style="width: 50%">
 <img alt="_images/verifier_qr_code.svg" src="_images/verifier_qr_code.svg" /></figure>
 <p>Below is represented a non-normative example of the QR Code raw payload:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=https%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=https%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org&amp;client_id_scheme=entity_id&amp;request_uri_method=get
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1925,10 +1933,10 @@ The established session MAY be terminated based on the conditions as detailed in
 During the communication subphase, the Verifier App has the option to request information from the Wallet using mDoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mDoc response using the session key and transmits it to the Verifier App via a session data message. This technical implementation profile only supports Bluetooth Low Energy (BLE) for the communication sub-phase.</p>
 </div></blockquote>
 <p>The following figure illustrates the flow diagram compliant with ISO 18013-5 for proximity flow.</p>
-<figure class="align-center" id="id4" style="width: 100%">
+<figure class="align-center" id="id3" style="width: 100%">
 <span id="fig-high-level-flow-itwallet-presentation-iso"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/bL9BZnCn3BxFhx3A0H3q3_ImMlOXXBJYqGguzE9ct2RQn0bvJDb_ZoSP3QFI2xab_Xx-xDocZ34NPpiisNDn1ufT1t9GPH_XUw88cA3KjuF_3QlnwNM2dHDYq9vf1Q-Up4ddErkeme9KZ381ESFg9rfB6JwnEB4IiAYTAuou7nN_Al-WQ8xcVzHd2dm8eKeFI-cMfApNDpVd3Nm9n90rmKLBa3s4I8b441dSWrTm7wcNkq7RD3xxJE07CIhlXmqyq624-CWdF94RYQaSWiP4iAweRzjr1vLvRkOVYIcYY32TWO8c9rSBp_GYWKoSe88LzPtsvx5HKO5xtnCSVVpNibA6ATjE8IyfKr7aBgptVDry0WlPXIBOH2aPpoEcbgzDOJTXIEPui2PfrqROZogki56OfNuvcxkdHv5N9H8eZSnaPLRJwUPU95JTn9P-5J60Tn2AcAZQjJ_MiCljxndUN6texN8Dr-ErSjd0roZrNEUjFDSVaJqaZP6gOMpDK0-61UHglkcJjJL75Cx4NHflAKT30xLGH_41wnLQIDb7FD6C7URSAOZCSfCjxyjSWcHEZBb4slCuTQL9FJVsWDRq9akuxfQuByx-0G00"><img alt="_images/High-Level-Flow-ITWallet-Presentation-ISO.svg" src="_images/High-Level-Flow-ITWallet-Presentation-ISO.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">High-Level Proximity Flow</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">High-Level Proximity Flow</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1-3</strong>: The Verifier requests the User to reveal certain attributes from their mDoc(s) stored in the Wallet Instance. The User initiates the Wallet Instance. The Wallet Instance MUST create a new temporary key pair (EDeviceKey.Priv, EDeviceKey.Pub), and incorporate the cipher suite identifier, the identifier of the elliptic curve for key agreement, and the EDeviceKey public point into the device engagement structure (refer to [ISO18013-5#9.1.1.4]). This key pair is temporary and MUST be invalidated immediately after the secure channel is established. Finally, the Wallet Instance displays the QR Code for Device Engagement.</p>
