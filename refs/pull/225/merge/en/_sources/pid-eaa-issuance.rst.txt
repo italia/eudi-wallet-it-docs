@@ -594,7 +594,6 @@ Below is a non-normative example of an error response.
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
-  Cache-Control: no-cache, no-store
 
   {
     "error": "invalid_request",
