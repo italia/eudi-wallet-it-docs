@@ -594,7 +594,6 @@ Below is a non-normative example of an error response.
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
-  Cache-Control: no-cache, no-store
 
   {
     "error": "invalid_request",
@@ -781,10 +780,7 @@ If the Token Request is successfully validated, the Authorization Server provide
       - JSON object, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued.
       - `[OIDC4VCI. Draft 13] <https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html>`_.
 
-If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use *application/json* as the content type and MUST include the following parameters:
-
-  - *error*. The error code.
-  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`.
 
 .. code::
 
