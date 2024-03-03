@@ -376,7 +376,7 @@ The JWS payload parameters are described herein:
 Request URI Endpoint Errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When the Reying Party encounters errors while issuing the Request Object from the ``request_uri`` endpoint, the following error responses are applicable:
+When the Relying Party encounters errors while issuing the Request Object from the ``request_uri`` endpoint, the following error responses are applicable:
 
 - **invalid_request**: The ``request_uri`` URL is missing in some part within its webpath or urlparams, therefore it does not point to a valid Request Object and then it cannot be retrieved. This error is returned when the Request Object is not well referenced in the ``request_uri``.
 
@@ -587,7 +587,7 @@ When the Wallet Instance sends the user-agent to the Redirect URI provided by th
 
 - **Mismatched Redirect URI**: This error occurs when the Redirect URI provided by the Relying Party does not match any of the URIs linked with the User session. This mismatch can lead to a HTTP status error code set to 403 (Forbidden), indicating that the request cannot be processed due session/URI mismatch.
 
-- **Redirect URI Security Issues**: If the Relying Party incours in security issues when evaluating te User session with the provided URI, the Relying Party MUST raise an error. In such cases, an HTTP status code set to 403 (Forbidden) MUST be returned, indicating that the request is valid but the server is refusing action due to security precautions.
+- **Redirect URI Security Issues**: If the Relying Party incurs in security issues when evaluating the User session with the provided URI, the Relying Party MUST raise an error. In such cases, an HTTP status code set to 403 (Forbidden) MUST be returned, indicating that the request is valid but the server is refusing action due to security precautions.
 
 Handling these errors requires clear communication to the User within the returned navigation web page. It is crucial for the Relying Party to implement robust error handling and validation mechanisms for Redirect URIs to ensure a secure implementation.
 
