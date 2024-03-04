@@ -7,15 +7,9 @@ The Italian EUDI Wallet implementation profile
 Introduction
 ------------
 
-The European Council requested the update of the 
-eIDAS Regulation on electronic identification and trust services by 
-implementing a new tool: the `European Digital Identity Wallet <https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-digital-identity_en>`_.
+The European Parliament `has adopted <https://www.europarl.europa.eu/doceo/document/A-9-2023-0038_EN.html#_section1>`_ the revision of the eIDAS Regulation concerning electronic identification and trust services, introducing a significant innovation: the `European Digital Identity Wallet <https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-digital-identity_en>`_. This update marks a pivotal advancement in the EU's digital strategy, aiming to enhance the security, interoperability, and usability of digital identities across Member States. For further details, resources, and notes on this legislative development, please refer to the official EU Commission and Parliament websites.
 
-Italy responded to the input received from the European community by creating the National digital identity Wallet solution, called IT Wallet, to be fully interoperable with all the other solutions made available by other European Member States and in full compliance to the European regulation.
-
-The current Italian scenario counts 3 coexisting digital identity tools that are partially overlapping, sometimes competing, and based on different technologies. This points to a highly fragmented system which yields difficulties for users and service providers. Therefore, the IT Wallet proposes to rationalise the digital identity ecosystem in Italy in order to simplify the experience of citizens, public administrations, and businesses in accessing digital services.
-
-To achieve these objectives and enhance the already active and eIDAS-notified digital identity schemes, the IT Wallet project entails a technological and governance evolution that envisages the progressive migration of the current threefold digital identification solution towards IT Wallet.
+Italy has launched the National digital identity Wallet solution, known as IT Wallet, in direct response to the European community's directives. This initiative ensures full interoperability with the digital identity solutions provided by other European Member States, aligning completely with European regulations.
 
 The purpose of the following technical rules is to define the technical architecture and reference framework to be used as a guideline by all the parties involved in the development of the IT Wallet project.
 
