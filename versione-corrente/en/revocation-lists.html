@@ -1235,13 +1235,69 @@ credential_pop=$CredentialPoPJWT
 </section>
 <section id="credential-revocation-http-response">
 <h4>Credential Revocation HTTP Response<a class="headerlink" href="#credential-revocation-http-response" title="Permalink to this heading">¶</a></h4>
-<p>The response MUST be an HTTP Response using the status code set to <em>204 (No-Content)</em> in the case of successful revocation. If the Digital Credential could not be found by the Issuer, an HTTP Response with status code <em>404 (Not Found)</em> MUST be returned. Otherwise an HTTP error response MUST be provided by the Issuer to the Wallet Instance. This response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
+<p>In case of successful revocation, the Issuer MUST return an HTTP Response with status code <em>204 No Content</em>.
+Otherwise, an HTTP error response MUST be provided by the Issuer using status codes according to the table below.</p>
+<p>The following HTTP Status Codes MUST be supported:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
+<th class="head"><p><strong>Body</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>204 No Content</em></p></td>
+<td></td>
+<td><p>The Digital Credential has been successfully revoked.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>400 Bad Request</em></p></td>
+<td><p>Error code and description</p></td>
+<td><p>The issuer cannot fulfill the request because of invalid parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>404 Not Found</em></p></td>
+<td></td>
+<td><p>The Digital Credential to be revoked can not be found by the Issuer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>500 Internal Server Error</em></p></td>
+<td></td>
+<td><p>The Issuer encountered an internal problem. (<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p><em>503 Service Unavailable</em></p></td>
+<td></td>
+<td><p>The Issuer is temporary unavailable. (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>For HTTP error responses that involve a body, the body MUST be encoded in <code class="docutils literal notranslate"><span class="pre">application/json</span></code> format and MUST contain the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><em>error</em>. The error code.</p></li>
+<li><p><em>error</em>. The error code, as registerd in the table below.</p></li>
 <li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
 </ul>
 </div></blockquote>
+<p>Error codes are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
+The following Error Codes MUST be supported:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The request is not valid due to the lack or incorrectness of one or more parameters. (<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
+</tr>
+</tbody>
+</table>
 <p>Below a non-normative example of an HTTP Response with an error.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="n">Bad</span> <span class="n">Request</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">;</span><span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
@@ -1252,34 +1308,6 @@ credential_pop=$CredentialPoPJWT
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The following HTTP Status Codes and Error Codes MUST be supported:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 60%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
-<th class="head"><p><strong>Error Code</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><em>400 Bad Request</em></p></td>
-<td><p><em>invalid_request</em></p></td>
-<td><p>The request is not valid due to the lack or incorrectness of one or more parameters. (<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>500 Internal Server Error</em></p></td>
-<td><p><em>server_error</em></p></td>
-<td><p>The Issuer encountered an internal problem. (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
-</tr>
-<tr class="row-even"><td><p><em>503 Service Unavailable</em></p></td>
-<td><p><em>temporarily_unavailable</em></p></td>
-<td><p>The Issuer is temporary unavailable. (<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
-</tr>
-</tbody>
-</table>
 </section>
 </section>
 </section>
@@ -1338,7 +1366,7 @@ credential_pop=$CredentialPoPJWT
 </pre></div>
 </div>
 <p><strong>Step 4 (Status Attestation Response)</strong>: The Issuer then returns the Status Attestation to the Wallet Instance, as in the following non-normative example.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">OK</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 
 <span class="p">{</span>
@@ -1373,7 +1401,7 @@ credential_pop=$CredentialPoPJWT
 </section>
 <section id="status-attestation-http-response">
 <h4>Status Attestation HTTP Response<a class="headerlink" href="#status-attestation-http-response" title="Permalink to this heading">¶</a></h4>
-<p>The <em>Credential status endpoint</em> MUST return a response with a <em>HTTP status code 201 OK</em> if the Credential is valid at the time of the request. The responses MUST be encoded in <code class="docutils literal notranslate"><span class="pre">application/json</span></code> format. It MUST contain the following mandatory claims.</p>
+<p>The <em>Credential status endpoint</em> MUST return a HTTP response with status code <em>201 Created</em> if the Credential is valid at the time of the request. The responses MUST be encoded in <code class="docutils literal notranslate"><span class="pre">application/json</span></code> format. It MUST contain the following mandatory claims.</p>
 <table class="docutils align-default" id="table-http-response-claim">
 <colgroup>
 <col style="width: 20%" />
@@ -1393,13 +1421,73 @@ credential_pop=$CredentialPoPJWT
 </tr>
 </tbody>
 </table>
-<p>If the Digital Credential could not be found by the Issuer, an HTTP Response with status code 404 (Not Found) MUST be returned. In all other cases the Issuer MUST return an HTTP Response Error using <em>application/json</em> as the content type, and including the following parameters:</p>
+<p>The following HTTP Status Codes MUST be supported:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
+<th class="head"><p><strong>Body</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>201 Created</em></p></td>
+<td><p>Status Attestation response</p></td>
+<td><p>The Status Attestation has been successfully created and it has been returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>400 Bad Request</em></p></td>
+<td><p>Error code and description</p></td>
+<td><p>The issuer cannot fulfill the request because of invalid parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>404 Not Found</em></p></td>
+<td></td>
+<td><p>The Digital Credential can not be found by the Issuer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>500 Internal Server Error</em></p></td>
+<td></td>
+<td><p>The Issuer encountered an internal problem. (<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p><em>503 Service Unavailable</em></p></td>
+<td></td>
+<td><p>The Issuer is temporary unavailable. (<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>For HTTP error responses that involve a body, the body MUST be encoded in <code class="docutils literal notranslate"><span class="pre">application/json</span></code> format and MUST contain the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><em>error</em>. The error code.</p></li>
-<li><p><em>error_description</em>. Text in human-readable form that offers more details to clarify the nature of the error encountered (for instance, changes in some attributes, reasons for revocation, other).</p></li>
+<li><p><em>error</em>. The error code, as registerd in the table below.</p></li>
+<li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
 </ul>
 </div></blockquote>
+<p>Error codes are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
+The following Error Codes MUST be supported:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The request is not valid due to the lack or incorrectness of one or more parameters. (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">credential_revoked</span></code></p></td>
+<td><p>The Digital Credential is revoked. The reason of revocation MUST be provided in the <em>error_description</em> field.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">credential_updated</span></code></p></td>
+<td><p>One or more attributes contained in the Digital Credential are changed. The <em>error_description</em> field MUST contain a list of updated attributes.</p></td>
+</tr>
+</tbody>
+</table>
 <p>Below a non-normative example of an HTTP Response with an error.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="n">Bad</span> <span class="n">Request</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">;</span><span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
@@ -1410,42 +1498,6 @@ credential_pop=$CredentialPoPJWT
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The following HTTP Status Codes and Error Codes MUST be supported:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 60%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
-<th class="head"><p><strong>Error Code</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><em>400 Bad Request</em></p></td>
-<td><p><em>invalid_request</em></p></td>
-<td><p>The request is not valid due to the lack or incorrectness of one or more parameters. (<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>500 Internal Server Error</em></p></td>
-<td><p><em>server_error</em></p></td>
-<td><p>The Issuer encountered an internal problem. (<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
-</tr>
-<tr class="row-even"><td><p><em>503 Service Unavailable</em></p></td>
-<td><p><em>temporarily_unavailable</em></p></td>
-<td><p>The Issuer is temporary unavailable. (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>400 Bad Request</em></p></td>
-<td><p><em>credential_revoked</em></p></td>
-<td><p>The Digital Credential is revoked. The reason of revocation MUST be provided in the <em>error_description</em> field.</p></td>
-</tr>
-<tr class="row-even"><td><p><em>400 Bad Request</em></p></td>
-<td><p><em>credential_updated</em></p></td>
-<td><p>One or more attributes contained in the Digital Credential are changed. The <em>error_description</em> field MUST contain a list of updated attributes.</p></td>
-</tr>
-</tbody>
-</table>
 </section>
 </section>
 <section id="status-attestation-presentation-to-the-verifiers">
