@@ -249,7 +249,7 @@ The Relying Party issues the signed Request Object, where a non-normative exampl
   }
   .
   {
-    "scope": "eu.europa.ec.eudiw.pid.it.1 WalletTrustEvidence",
+    "scope": "eu.europa.ec.eudiw.pid.it.1 WalletAttestation",
     "client_id_scheme": "entity_id",
     "client_id": "https://relying-party.example.org",
     "response_mode": "direct_post.jwt",
@@ -343,8 +343,8 @@ The JWS payload parameters are described herein:
           }
         },
         {
-          "id": "WalletTrustEvidence",
-          "name": "Wallet Trust Evidence",
+          "id": "WalletAttestation",
+          "name": "Wallet Attestation",
           "purpose": "Wallet Authentication",
           "format": "jwt",
           "constraints": {
@@ -462,7 +462,7 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
                 "format": "vc+sd-jwt"
             },
             {
-                "id": "WalletTrustEvidence",
+                "id": "WalletAttestation",
                 "path": "$",
                 "format": "jwt"
             }
@@ -481,7 +481,7 @@ Where the following parameters are used:
   * - **vp_token**
     - JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
       - The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
-      - The Wallet Instance Attestation
+      - The Wallet Attestation
   * - **presentation_submission**
     - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_.
   * - **state**
@@ -718,7 +718,7 @@ Below is a non-normative response example:
                                 }
                             },
                         {
-                            "id": "WalletTrustEvidence",
+                            "id": "WalletAttestation",
                             "format": {
                                 "jwt": {}
                             },

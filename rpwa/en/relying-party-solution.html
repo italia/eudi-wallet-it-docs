@@ -1307,7 +1307,7 @@ HOST: relying-party.example.org
 }
 .
 {
-  &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 WalletTrustEvidence&quot;,
+  &quot;scope&quot;: &quot;eu.europa.ec.eudiw.pid.it.1 WalletAttestation&quot;,
   &quot;client_id_scheme&quot;: &quot;entity_id&quot;,
   &quot;client_id&quot;: &quot;https://relying-party.example.org&quot;,
   &quot;response_mode&quot;: &quot;direct_post.jwt&quot;,
@@ -1425,8 +1425,8 @@ HOST: relying-party.example.org
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WalletTrustEvidence&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet Trust Evidence&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WalletAttestation&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet Attestation&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet Authentication&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1527,7 +1527,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
               &quot;format&quot;: &quot;vc+sd-jwt&quot;
           },
           {
-              &quot;id&quot;: &quot;WalletTrustEvidence&quot;,
+              &quot;id&quot;: &quot;WalletAttestation&quot;,
               &quot;path&quot;: &quot;$&quot;,
               &quot;format&quot;: &quot;jwt&quot;
           }
@@ -1551,7 +1551,7 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
 <td><p>JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
 - The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
-- The Wallet Instance Attestation</p></td>
+- The Wallet Attestation</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>presentation_submission</strong></p></td>
 <td><p>JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the <a class="reference external" href="https://identity.foundation/presentation-exchange/spec/v2.0.0/">Presentation Exchange</a>.</p></td>
@@ -1783,7 +1783,7 @@ Content-Type: application/json
                             }
                         },
                     {
-                        &quot;id&quot;: &quot;WalletTrustEvidence&quot;,
+                        &quot;id&quot;: &quot;WalletAttestation&quot;,
                         &quot;format&quot;: {
                             &quot;jwt&quot;: {}
                         },
