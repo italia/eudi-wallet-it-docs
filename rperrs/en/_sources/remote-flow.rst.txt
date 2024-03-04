@@ -31,12 +31,15 @@ A High-Level description of the remote flow, from the User's perspective, is giv
 Below a sequence diagram that summarizes the interactions between all the involved parties.
 
 .. figure:: ../../images/cross_device_auth_seq_diagram.svg
+    :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/uml/ZLLRRnit4ttdhpZGz_3PXkCcwPi05t5SDvUqjMefoKCI21Ht9B6co2qlgxX5_tjdIUo2SWIqXc5Or5pEd3apyo94wMFQ6I5JT3RjLkI545SgEe_9-q1-0XcGX5Yvh-NX_m4_KgSLXGd-zxFUREDBaqYq74ShtKeRCVaeZQ68DvR3MqKvnlxG976e9t93DfOCKf1jm5aEpUx8F6YxmOmV7x9bHq985NKd8p6mX2S_iFSK7sc5EVaU6Qpiz4P6xMnbAaL3jQFiFJkQuex-I1GYPjv5Kf4QVWakUSMPBY_vcGB3pE4msyf0kBmSu_PuEXf2NNlgtoJEpW9xqDaPEidqVBOhbxY-w30M7g6SkzT7t7q1j4nUmmzGEXeg_UtksZM4spkyNYnc3BRHdd7ZvFkdpq-nrt7xsIgZESDID-Trj7DaLEVuL3qkTnIthlc2JwFJCgWjxUXBnLZcdNystgMMWRemw03EceT29z8KywtR8svfWDbohGVCoqVjOxVz5BSjsUpsI3kGRNiEuvGqa8aDB8kZjBOEEiPadUrHGiwLj8m2FOpnyUPhz6oRKx7I91TFFc3jtIw_3VPa6p4wKTz43XuGVGenSvojHyQEaIUaYT1hVCirT42W4WUps_b20C1-a47hNQSR2WCNx2GR6IMYorbhVJ3ErcaRSuIwMG0mAgkgeE8uahAw9rR9LgwqqL5J46G2_GVOhsuMS1xMHRHbGaHLm-1TyWMziTGCRt2htqd5aVFZzUG6T3JeusY8n_eyqh231O9V1YQbRT0wenLNF7fz8A_N3pcLZCaJtBg2F-w9sv9xz996DzNOikM7sKauBGPfElgjdOToDbDrR0IkdLrhlwFcKDa3fLaek4hS2Q__BEk85rNRHyHdMxhIjSlexicEazvMssiPqcgdG-1_Z-ylt1JUA9UTwT1oPUXm1-O4erD5G2MjgyZa5_iB1bS-rWQped7Fm7L0l_C7jdyYViwU_1ttwUXMq24hprF7O9gB2ar9rQ_IXX5hQV0cX4GUYtvqIyWHCjv-N60-zBkAml0KXQ9UDOOImdDMWkl8indVlpUlNYzUtTtS_2gEUqm5hhUaxl7QcOQTtj43NchRi2Gp4FRYilbtvaAWt1fsUO8KsA8igRHYcUAU7SiDqNbFrWL6XovBjxHjLZfq8GGMMxAWQkKrEYZZ0ZMGCNgzIapM52f3r6imo-D4Qaw0CYoU83kf3MiXRyRCWgZeUj-E0dWVo2EKKd1IJXnI_huvHJNH_V7wxjd5Cpn_-XItxxWpVqrykMLv5KocsCRO1YHlYhWz5RKlbMi8Vul7urzkqrpkwE0qxOV3oT0on3fB7MClwYl5TVxRkUjelCPlvzFIwKTNgimXJlfgn-sLgodKd7upYGKihew5sUYER77F0NiYmZaIsnd3ZMvpqvn7IAfNupgPmzjxI5ckyGN_IJlp3m00
+    :target: https://www.plantuml.com/plantuml/svg/ZLLRRnit4ttdhpZGz_3PXkCcwPi05t5SDvUqjMefoKCI21Ht9B6co2qlgxX5_tjdIUo2SWIqXc5Or5pEd3apyo94wMFQ6I5JT3RjLkI545SgEe_9-q1-0XcGX5Yvh-NX_m4_KgSLXGd-zxFUREDBaqYq74ShtKeRCVaeZQ68DvR3MqKvnlxG976e9t93DfOCKf1jm5aEpUx8F6YxmOmV7x9bHq985NKd8p6mX2S_iFSK7sc5EVaU6Qpiz4P6xMnbAaL3jQFiFJkQuex-I1GYPjv5Kf4QVWakUSMPBY_vcGB3pE4msyf0kBmSu_PuEXf2NNlgtoJEpW9xqDaPEidqVBOhbxY-w30M7g6SkzT7t7q1j4nUmmzGEXeg_UtksZM4spkyNYnc3BRHdd7ZvFkdpq-nrt7xsIgZESDID-Trj7DaLEVuL3qkTnIthlc2JwFJCgWjxUXBnLZcdNystgMMWRemw03EceT29z8KywtR8svfWDbohGVCoqVjOxVz5BSjsUpsI3kGRNiEuvGqa8aDB8kZjBOEEiPadUrHGiwLj8m2FOpnyUPhz6oRKx7I91TFFc3jtIw_3VPa6p4wKTz43XuGVGenSvojHyQEaIUaYT1hVCirT42W4WUps_b20C1-a47hNQSR2WCNx2GR6IMYorbhVJ3ErcaRSuIwMG0mAgkgeE8uahAw9rR9LgwqqL5J46G2_GVOhsuMS1xMHRHbGaHLm-1TyWMziTGCRt2htqd5aVFZzUG6T3JeusY8n_eyqh231O9V1YQbRT0wenLNF7fz8A_N3pcLZCaJtBg2F-w9sv9xz996DzNOikM7sKauBGPfElgjdOToDbDrR0IkdLrhlwFcKDa3fLaek4hS2Q__BEk85rNRHyHdMxhIjSlexicEazvMssiPqcgdG-1_Z-ylt1JUA9UTwT1oPUXm1-O4erD5G2MjgyZa5_iB1bS-rWQped7Fm7L0l_C7jdyYViwU_1ttwUXMq24hprF7O9gB2ar9rQ_IXX5hQV0cX4GUYtvqIyWHCjv-N60-zBkAml0KXQ9UDOOImdDMWkl8indVlpUlNYzUtTtS_2gEUqm5hhUaxl7QcOQTtj43NchRi2Gp4FRYilbtvaAWt1fsUO8KsA8igRHYcUAU7SiDqNbFrWL6XovBjxHjLZfq8GGMMxAWQkKrEYZZ0ZMGCNgzIapM52f3r6imo-D4Qaw0CYoU83kf3MiXRyRCWgZeUj-E0dWVo2EKKd1IJXnI_huvHJNH_V7wxjd5Cpn_-XItxxWpVqrykMLv5KocsCRO1YHlYhWz5RKlbMi8Vul7urzkqrpkwE0qxOV3oT0on3fB7MClwYl5TVxRkUjelCPlvzFIwKTNgimXJlfgn-sLgodKd7upYGKihew5sUYER77F0NiYmZaIsnd3ZMvpqvn7IAfNupgPmzjxI5ckyGN_IJlp3m00
+
+
     Remote Protocol Flow
 
-The details of each step shown in the previous picture are described in the table below.
 
+The details of each step shown in the previous picture are described in the table below.
 
 .. list-table::
   :widths: 10 50
@@ -384,7 +387,8 @@ When the Relying Party encounters errors while issuing the Request Object from t
 
 The following is an example of an error response from ``request_uri`` endpoint:
 
-.. code-block:: JSON
+.. code-block:: 
+
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
 
@@ -396,7 +400,8 @@ The following is an example of an error response from ``request_uri`` endpoint:
 
 Another example:
 
-.. code-block:: JSON
+.. code-block:: 
+
   HTTP/1.1 500 Internal Server Error
   Content-Type: application/json
 
@@ -411,7 +416,7 @@ Upon receiving an error response, the Wallet Instance SHOULD inform the User of 
 
 It is crucial for Wallet Instances to implement robust error handling to maintain a secure and user-friendly experience. Adhering to the specified error responses ensures interoperability and helps in diagnosing issues during the interaction with the Relying Party's endpoints.
 
-.. warning:
+.. warning::
 
   The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests (OpenID4VP, Section 6.4. Error Response). For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather informations that could be exploited.
 
