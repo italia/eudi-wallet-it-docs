@@ -20,7 +20,7 @@ The Infrastructure of trust facilitates the application of a trust assessment me
     representation, both the Trust Anchor and the Intermediates MAY assume the role of Accreditation Body.
 
 Functional Requirements
-------------
+-----------------------
 
 This section includes the requirements necessary for the successful implementation and operation of the infrastructure of trust.
 
