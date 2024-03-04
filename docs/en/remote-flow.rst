@@ -416,7 +416,7 @@ Upon receiving an error response, the Wallet Instance SHOULD inform the User of 
 
 It is crucial for Wallet Instances to implement robust error handling to maintain a secure and user-friendly experience. Adhering to the specified error responses ensures interoperability and helps in diagnosing issues during the interaction with the Relying Party's endpoints.
 
-.. warning:
+.. warning::
 
   The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests (OpenID4VP, Section 6.4. Error Response). For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather informations that could be exploited.
 
