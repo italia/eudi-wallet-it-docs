@@ -31,12 +31,15 @@ A High-Level description of the remote flow, from the User's perspective, is giv
 Below a sequence diagram that summarizes the interactions between all the involved parties.
 
 .. figure:: ../../images/cross_device_auth_seq_diagram.svg
+    :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/uml/ZLLRRnit4ttdhpZGz_3PXkCcwPi05t5SDvUqjMefoKCI21Ht9B6co2qlgxX5_tjdIUo2SWIqXc5Or5pEd3apyo94wMFQ6I5JT3RjLkI545SgEe_9-q1-0XcGX5Yvh-NX_m4_KgSLXGd-zxFUREDBaqYq74ShtKeRCVaeZQ68DvR3MqKvnlxG976e9t93DfOCKf1jm5aEpUx8F6YxmOmV7x9bHq985NKd8p6mX2S_iFSK7sc5EVaU6Qpiz4P6xMnbAaL3jQFiFJkQuex-I1GYPjv5Kf4QVWakUSMPBY_vcGB3pE4msyf0kBmSu_PuEXf2NNlgtoJEpW9xqDaPEidqVBOhbxY-w30M7g6SkzT7t7q1j4nUmmzGEXeg_UtksZM4spkyNYnc3BRHdd7ZvFkdpq-nrt7xsIgZESDID-Trj7DaLEVuL3qkTnIthlc2JwFJCgWjxUXBnLZcdNystgMMWRemw03EceT29z8KywtR8svfWDbohGVCoqVjOxVz5BSjsUpsI3kGRNiEuvGqa8aDB8kZjBOEEiPadUrHGiwLj8m2FOpnyUPhz6oRKx7I91TFFc3jtIw_3VPa6p4wKTz43XuGVGenSvojHyQEaIUaYT1hVCirT42W4WUps_b20C1-a47hNQSR2WCNx2GR6IMYorbhVJ3ErcaRSuIwMG0mAgkgeE8uahAw9rR9LgwqqL5J46G2_GVOhsuMS1xMHRHbGaHLm-1TyWMziTGCRt2htqd5aVFZzUG6T3JeusY8n_eyqh231O9V1YQbRT0wenLNF7fz8A_N3pcLZCaJtBg2F-w9sv9xz996DzNOikM7sKauBGPfElgjdOToDbDrR0IkdLrhlwFcKDa3fLaek4hS2Q__BEk85rNRHyHdMxhIjSlexicEazvMssiPqcgdG-1_Z-ylt1JUA9UTwT1oPUXm1-O4erD5G2MjgyZa5_iB1bS-rWQped7Fm7L0l_C7jdyYViwU_1ttwUXMq24hprF7O9gB2ar9rQ_IXX5hQV0cX4GUYtvqIyWHCjv-N60-zBkAml0KXQ9UDOOImdDMWkl8indVlpUlNYzUtTtS_2gEUqm5hhUaxl7QcOQTtj43NchRi2Gp4FRYilbtvaAWt1fsUO8KsA8igRHYcUAU7SiDqNbFrWL6XovBjxHjLZfq8GGMMxAWQkKrEYZZ0ZMGCNgzIapM52f3r6imo-D4Qaw0CYoU83kf3MiXRyRCWgZeUj-E0dWVo2EKKd1IJXnI_huvHJNH_V7wxjd5Cpn_-XItxxWpVqrykMLv5KocsCRO1YHlYhWz5RKlbMi8Vul7urzkqrpkwE0qxOV3oT0on3fB7MClwYl5TVxRkUjelCPlvzFIwKTNgimXJlfgn-sLgodKd7upYGKihew5sUYER77F0NiYmZaIsnd3ZMvpqvn7IAfNupgPmzjxI5ckyGN_IJlp3m00
+    :target: https://www.plantuml.com/plantuml/svg/ZLLRRnit4ttdhpZGz_3PXkCcwPi05t5SDvUqjMefoKCI21Ht9B6co2qlgxX5_tjdIUo2SWIqXc5Or5pEd3apyo94wMFQ6I5JT3RjLkI545SgEe_9-q1-0XcGX5Yvh-NX_m4_KgSLXGd-zxFUREDBaqYq74ShtKeRCVaeZQ68DvR3MqKvnlxG976e9t93DfOCKf1jm5aEpUx8F6YxmOmV7x9bHq985NKd8p6mX2S_iFSK7sc5EVaU6Qpiz4P6xMnbAaL3jQFiFJkQuex-I1GYPjv5Kf4QVWakUSMPBY_vcGB3pE4msyf0kBmSu_PuEXf2NNlgtoJEpW9xqDaPEidqVBOhbxY-w30M7g6SkzT7t7q1j4nUmmzGEXeg_UtksZM4spkyNYnc3BRHdd7ZvFkdpq-nrt7xsIgZESDID-Trj7DaLEVuL3qkTnIthlc2JwFJCgWjxUXBnLZcdNystgMMWRemw03EceT29z8KywtR8svfWDbohGVCoqVjOxVz5BSjsUpsI3kGRNiEuvGqa8aDB8kZjBOEEiPadUrHGiwLj8m2FOpnyUPhz6oRKx7I91TFFc3jtIw_3VPa6p4wKTz43XuGVGenSvojHyQEaIUaYT1hVCirT42W4WUps_b20C1-a47hNQSR2WCNx2GR6IMYorbhVJ3ErcaRSuIwMG0mAgkgeE8uahAw9rR9LgwqqL5J46G2_GVOhsuMS1xMHRHbGaHLm-1TyWMziTGCRt2htqd5aVFZzUG6T3JeusY8n_eyqh231O9V1YQbRT0wenLNF7fz8A_N3pcLZCaJtBg2F-w9sv9xz996DzNOikM7sKauBGPfElgjdOToDbDrR0IkdLrhlwFcKDa3fLaek4hS2Q__BEk85rNRHyHdMxhIjSlexicEazvMssiPqcgdG-1_Z-ylt1JUA9UTwT1oPUXm1-O4erD5G2MjgyZa5_iB1bS-rWQped7Fm7L0l_C7jdyYViwU_1ttwUXMq24hprF7O9gB2ar9rQ_IXX5hQV0cX4GUYtvqIyWHCjv-N60-zBkAml0KXQ9UDOOImdDMWkl8indVlpUlNYzUtTtS_2gEUqm5hhUaxl7QcOQTtj43NchRi2Gp4FRYilbtvaAWt1fsUO8KsA8igRHYcUAU7SiDqNbFrWL6XovBjxHjLZfq8GGMMxAWQkKrEYZZ0ZMGCNgzIapM52f3r6imo-D4Qaw0CYoU83kf3MiXRyRCWgZeUj-E0dWVo2EKKd1IJXnI_huvHJNH_V7wxjd5Cpn_-XItxxWpVqrykMLv5KocsCRO1YHlYhWz5RKlbMi8Vul7urzkqrpkwE0qxOV3oT0on3fB7MClwYl5TVxRkUjelCPlvzFIwKTNgimXJlfgn-sLgodKd7upYGKihew5sUYER77F0NiYmZaIsnd3ZMvpqvn7IAfNupgPmzjxI5ckyGN_IJlp3m00
+
+
     Remote Protocol Flow
 
-The details of each step shown in the previous picture are described in the table below.
 
+The details of each step shown in the previous picture are described in the table below.
 
 .. list-table::
   :widths: 10 50
@@ -227,7 +230,7 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
   HOST: relying-party.example.org
 
 
-Request URI response
+Request URI Response
 --------------------
 
 The Relying Party issues the signed Request Object, where a non-normative example in the form of decoded header and payload is shown below:
@@ -373,6 +376,51 @@ The JWS payload parameters are described herein:
   - ``client_metadata_uri``: string containing an HTTPS URL pointing to a resource where a JSON object with the Relying Party metadata can be retrieved. The ``client_metadata_uri`` parameter MUST NOT be present when ``client_id_scheme`` is ``entity_id``. Since the ``client_metadata`` is taken from ``trust_chain``, this parameter is intended to not be used.
 
 
+Request URI Endpoint Errors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When the Relying Party encounters errors while issuing the Request Object from the ``request_uri`` endpoint, the following error responses are applicable:
+
+- **invalid_request**: The ``request_uri`` URL is missing in some part within its webpath or urlparams, therefore it does not point to a valid Request Object and then it cannot be retrieved. This error is returned when the Request Object is not well referenced in the ``request_uri``.
+
+- **server_error**: The server encountered an unexpected condition that prevented it from fulfilling the request. This error is returned when the Relying Party's server is unable to process the Request Object due to a server-side issue, such as a malfunction or maintenance. The Wallet Instance should advise the User to try again later.
+
+The following is an example of an error response from ``request_uri`` endpoint:
+
+.. code-block:: 
+
+  HTTP/1.1 400 Bad Request
+  Content-Type: application/json
+
+  {
+   "error": "invalid_request",
+   "error_description": "The request_uri is malformed or does not point to a valid Request Object."
+  }
+
+
+Another example:
+
+.. code-block:: 
+
+  HTTP/1.1 500 Internal Server Error
+  Content-Type: application/json
+
+  {
+   "error": "server_error",
+   "error_description": "The request_uri cannot be retrieved due to an internal server error."
+  }
+
+There are cases where the Wallet Instance cannot validate the Request Object or the Request Object results invalid. This error occurs if the Request Object is successfully fetched from the ``request_uri`` but fails validation checks by the Wallet Instance. This could be due to incorrect signatures, malformed claims, or other validation failures, such as the revocation of its issuer (Relying Party). 
+
+Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner. Additionally, the Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible. For example, if the error is ``server_error``, the Wallet Instance MAY prompt the User to re-enter or scan a new QR code, if applicable.
+
+It is crucial for Wallet Instances to implement robust error handling to maintain a secure and user-friendly experience. Adhering to the specified error responses ensures interoperability and helps in diagnosing issues during the interaction with the Relying Party's endpoints.
+
+.. warning::
+
+  The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests (OpenID4VP, Section 6.4. Error Response). For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather informations that could be exploited.
+
+
 Authorization Response Details
 ------------------------------
 
@@ -482,6 +530,40 @@ Where the following parameters are used:
     - The nonce value provided by the Relying Party within the Authorization Request.
 
 
+Authorization Response Errors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When the Wallet sends a response using ``direct_post.jwt`` to the Relying Party, several errors may occur, including:
+
+  - **Invalid Credential**: This error occurs when one or more Credentials or VPs, included in the ``vp_token``, fail validation because they are malformed. The correct HTTP status code for this error is 400 (Bad Request). The error should be set to ``invalid_request``, and the ``error_description`` SHOULD identify the malformed Credentials.
+  - **Issuer Credential Trust Failure**: This error arises when the Relying Party cannot establish trust with the issuer of a presented Credential, included in the ``vp_token``. The appropriate HTTP status code for this error is 403 (Forbidden). The ``error`` should be labeled as ``invalid_request``, and the ``error_description`` SHOULD specify the issuer for which trust could not be established.
+  - **Invalid Nonce**: This error happens when the nonce provided in the request is incorrect. The HTTP status code for this error should be 403 (Forbidden). The error SHOULD be labeled as ``invalid_request``, with an ``error_description`` indicating that the nonce is incorrect.
+  - **Invalid Wallet Attestation**: This error occours when it's not possible to establish trust with the Wallet Attestation's issuer (Wallet Provider), or if the Wallet Attestation is invalid or does not meet the Relying Party's minimum security criteria. The correct HTTP status code for this error is 403 (Forbidden). The ``error`` SHOULD be marked as ``invalid_request``, and the ``error_description`` should clarify that the issue stems from the Wallet Attestation's failure to establish trust with its issuer or its non-compliance with required security standards.
+  - **Invalid Presentation Submission**: This error occurs when the presentation submission is not valid. The appropriate HTTP status code for this error is 400 Bad Request. The ``error`` should be labeled as ``invalid_request``, and the ``error_description`` should specify the invalid aspects of the presentation submission.
+  
+  To enhance clarity and ensure proper error handling, it's crucial to provide detailed error responses. Below are two examples of HTTP responses using ``application/json`` that include both the ``error`` and ``error_description`` members:
+
+.. code-block:: text
+
+  HTTP/1.1 403 Forbidden
+  Content-Type: application/json
+
+  {
+    "error": "invalid_request",
+    "error_description": "Trust cannot be established with the issuer: https://issuer.example.com"
+  }
+
+
+.. code-block:: text
+
+  HTTP/1.1 400 Bad Request
+  Content-Type: application/json
+
+  {
+    "error": "invalid_request",
+    "error_description": "The following Credentials/VP are malformed: [CredentialX, vp_token[2]]"
+  }
+
 Redirect URI
 ------------
 
@@ -503,6 +585,16 @@ The following is a non-normative example of the response from the Relying Party 
 
 The ``redirect_uri`` value MUST be used with an HTTP method GET by either the Wallet Instance or the user-agent to redirect the User to the Relying Party in order to complete the process. The specific entity that performs this action depends on whether the flow is Same device or Cross device.
 
+Redirect URI Errors
+-------------------
+
+When the Wallet Instance sends the user-agent to the Redirect URI provided by the Relying Party, several errors may occur that prevent the successful completion of the process. These errors are critical as they directly impact the User experience by hindering the seamless flow of information between the Wallet Instance and the Relying Party. Below are potential errors related to the Redirect URI and their implications:
+
+- **Mismatched Redirect URI**: This error occurs when the Redirect URI provided by the Relying Party does not match any of the URIs linked with the User session. This mismatch can lead to a HTTP status error code set to 403 (Forbidden), indicating that the request cannot be processed due session/URI mismatch.
+
+- **Redirect URI Security Issues**: If the Relying Party incurs in security issues when evaluating the User session with the provided URI, the Relying Party MUST raise an error. In such cases, an HTTP status code set to 403 (Forbidden) MUST be returned, indicating that the request is valid but the server is refusing action due to security precautions.
+
+Handling these errors requires clear communication to the User within the returned navigation web page. It is crucial for the Relying Party to implement robust error handling and validation mechanisms for Redirect URIs to ensure a secure implementation.
 
 Relying Party Entity Configuration
 -----------------------------------
