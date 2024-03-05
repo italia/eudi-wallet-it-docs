@@ -18,7 +18,7 @@ Once the Wallet Instance establishes the trust with the Relying Party and evalua
 
 A High-Level description of the remote flow, from the User's perspective, is given below:
 
-  1. the Wallet Instance scans the QR Code and obtains the URL (Cross Device flow) or obtains directly an URL (Same Device flow);
+  1. the Wallet Instance obtains an URL in the Same Device flow or a QR Code containing the URL in Cross Device flow;
   2. the Wallet Instance extracts from the payload the following parameters: ``client_id``, ``request_uri``, ``state``, ``request_uri_methods`` and ``client_id_scheme``;
   3. If the ``client_id_scheme`` is provided and set with the value ``entity_id``, the Wallet Instance MUST collect and validate the OpenID Federation Trust Chain related to the Relying Party. If the ``client_id_scheme`` is either not provided or is assigned a value different from ``entity_id``, the Wallet Instance MUST establish the trust by utilizing the ``client_id`` or an alternative ``client_id_scheme`` value. This alternative value MUST enable the Wallet Instance to establish trust with the Relying Party, ensuring compliance with the assurance levels mandated by the trust framework;
   4. If ``request_uri_methods`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the HTTP POST method and obtain the signed Request Object. If ``request_uri_methods`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter;
@@ -52,7 +52,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **3**, **4**,
     - The Relying Party provides the Wallet Instance with a URL where the information about the Relying Party are provided, along with the information about where the signed request is available for download.
   * - **5**, **6**, **7**, **8**, **9**
-    - In the **Cross Device Flow**: the Request URI is provided in the form of a QR Code that is shown to the User. The User frames the QRCode with the Wallet Instance that extracts  ``client_id``, ``request_uri``, ``state``, ``client_id_scheme`` and ``request_uri_method``. In the **Same Device Flow** the Relying Party provides the same information of the Cross-Device flow but in the form of HTTP Redirect Location (302). 
+    - In the **Cross Device Flow**, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance, which retrieves a URL with the parameters ``client_id``, ``request_uri``, ``state``, ``client_id_scheme``, and ``request_uri_method``. Conversely, in the Same Device Flow, the Relying Party supplies identical information as in the Cross-Device flow, but directly through a URL.
   * - **10**, 
     - The Wallet Instance evaluates the trust with the Relying Party.
   * - **11**, **12**
