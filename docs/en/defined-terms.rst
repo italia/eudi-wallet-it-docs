@@ -39,8 +39,6 @@ Below are the description of acronyms and definitions which are useful for furth
      - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
    * - Wallet Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
-   * - Wallet Attestation Request
-     - Format of the request sent by the Wallet Instance to the backend Wallet Provider to obtain a Wallet Attestation.
    * - Wallet Secure Cryptographic Device
      - Hardware-backed secure environment for creating, storing, and/or managing cryptographic keys and data. Examples include Secure Elements (SE), Trusted Execution Environments (TEEs), and Strongbox.
    * - Credential Status Attestation

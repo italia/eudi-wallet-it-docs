@@ -96,7 +96,7 @@ Wallet Instance initialization and registration
 
 .. note::
 
-    **WSCD:** For key generation, the Wallet Instance will always rely on a local WSCD on devices that support it. For Android, Strongbox will be used or, if it is not available, a Trusted Execution Environment (TEE) while for iOS Secure Elements (SE). Since each OEM develops a different SDK for accessing the local WSCD, it will be treated in a generic manner below.
+    **WSCD:** The Wallet Instance MAY use a local WSCD for key generation on devices that support this feature. On Android devices, Strongbox is RECOMMENDED, Trusted Execution Environment (TEE) SHOULD be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) SHOULD be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.
 
 
 **Step 7**: The Wallet Instance uses the Device Integrity Service, providing a "challenge" and the Wallet Hardware Key Tag to acquire the Key Attestation.
@@ -117,7 +117,7 @@ Wallet Instance initialization and registration
 
 .. note::
 
-  The Key Attestation (``key_attestation``) must always be encoded in base64 as the format is different between the various operating systems.
+  The Key Attestation (``key_attestation``) MUST be encoded in base64.
 
 
 .. code-block:: http
