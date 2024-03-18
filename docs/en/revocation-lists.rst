@@ -200,10 +200,51 @@ The Revocation Endpoint MUST be provided by the Issuer within its Metadata.
 Credential Revocation HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The response MUST be an HTTP Response using the status code set to *204 (No-Content)* in the case of successful revocation. If the Digital Credential could not be found by the Issuer, an HTTP Response with status code *404 (Not Found)* MUST be returned. Otherwise an HTTP error response MUST be provided by the Issuer to the Wallet Instance. This response MUST use *application/json* as the content type and MUST include the following parameters:
+In case of successful revocation, the Issuer MUST return an HTTP Response with status code *204 No Content*.
+Otherwise, an HTTP error response MUST be provided by the Issuer using status codes according to the table below. 
 
-  - *error*. The error code.
+The following HTTP Status Codes MUST be supported:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **Body**
+      - **Description**
+    * - *204 No Content*
+      - 
+      - The Digital Credential has been successfully revoked.
+    * - *400 Bad Request*
+      - Error code and description
+      - The issuer cannot fulfill the request because of invalid parameters.
+    * - *404 Not Found*
+      - 
+      - The Digital Credential to be revoked can not be found by the Issuer.
+    * - *500 Internal Server Error*
+      - 
+      - The Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
+    * - *503 Service Unavailable*
+      - 
+      - The Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
+
+For HTTP error responses that involve a body, the body MUST be encoded in ``application/json`` format and MUST contain the following parameters:
+
+  - *error*. The error code, as registerd in the table below.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Error codes are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
+The following Error Codes MUST be supported:
+
+.. list-table:: 
+    :widths: 20 80
+    :header-rows: 1
+
+    * - **Error Code**
+      - **Description**
+    * - ``invalid_request``
+      - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
+
 
 Below a non-normative example of an HTTP Response with an error.
 
@@ -216,25 +257,6 @@ Below a non-normative example of an HTTP Response with an error.
     "error": "invalid_request"
     "error_description": "The signature of credential_pop JWT is not valid"
   }
-
-The following HTTP Status Codes and Error Codes MUST be supported:
-
-.. list-table:: 
-    :widths: 20 20 60
-    :header-rows: 1
-
-    * - **Status Code**
-      - **Error Code**
-      - **Description**
-    * - *400 Bad Request*
-      - *invalid_request*
-      - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
-    * - *500 Internal Server Error*
-      - *server_error*
-      - The Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
-    * - *503 Service Unavailable*
-      - *temporarily_unavailable*
-      - The Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
 
 
 
@@ -313,7 +335,7 @@ A non-normative example of Credential Proof of Possession is provided :ref:`in t
 
 .. code::
 
-    HTTP/1.1 201 OK
+    HTTP/1.1 201 Created
     Content-Type: application/json
     
     {
@@ -345,7 +367,7 @@ The *Credential status endpoint* MUST be provided by the Issuers within their Me
 Status Attestation HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *Credential status endpoint* MUST return a response with a *HTTP status code 201 OK* if the Credential is valid at the time of the request. The responses MUST be encoded in ``application/json`` format. It MUST contain the following mandatory claims.
+The *Credential status endpoint* MUST return a HTTP response with status code *201 Created* if the Credential is valid at the time of the request. The responses MUST be encoded in ``application/json`` format. It MUST contain the following mandatory claims.
 
 .. _table_http_response_claim:
 .. list-table:: 
@@ -359,10 +381,51 @@ The *Credential status endpoint* MUST return a response with a *HTTP status code
       - It MUST contain the Status Attestation as a signed JWT. 
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
-If the Digital Credential could not be found by the Issuer, an HTTP Response with status code 404 (Not Found) MUST be returned. In all other cases the Issuer MUST return an HTTP Response Error using *application/json* as the content type, and including the following parameters:
+The following HTTP Status Codes MUST be supported:
 
-  - *error*. The error code.
-  - *error_description*. Text in human-readable form that offers more details to clarify the nature of the error encountered (for instance, changes in some attributes, reasons for revocation, other).
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **Body**
+      - **Description**
+    * - *201 Created*
+      - Status Attestation response
+      - The Status Attestation has been successfully created and it has been returned.  
+    * - *400 Bad Request*
+      - Error code and description
+      - The issuer cannot fulfill the request because of invalid parameters.
+    * - *404 Not Found*
+      - 
+      - The Digital Credential can not be found by the Issuer.
+    * - *500 Internal Server Error*
+      - 
+      - The Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
+    * - *503 Service Unavailable*
+      - 
+      - The Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
+
+For HTTP error responses that involve a body, the body MUST be encoded in ``application/json`` format and MUST contain the following parameters:
+
+  - *error*. The error code, as registerd in the table below.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Error codes are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
+The following Error Codes MUST be supported:
+
+.. list-table:: 
+    :widths: 20 80
+    :header-rows: 1
+
+    * - **Error Code**
+      - **Description**
+    * - ``invalid_request``
+      - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
+    * - ``credential_revoked``
+      - The Digital Credential is revoked. The reason of revocation MUST be provided in the *error_description* field.
+    * - ``credential_updated``
+      - One or more attributes contained in the Digital Credential are changed. The *error_description* field MUST contain a list of updated attributes.
 
 Below a non-normative example of an HTTP Response with an error.
 
@@ -375,32 +438,6 @@ Below a non-normative example of an HTTP Response with an error.
     "error": "invalid_request"
     "error_description": "The signature of credential_pop JWT is not valid"
   }
-
-The following HTTP Status Codes and Error Codes MUST be supported:
-
-.. list-table:: 
-    :widths: 20 20 60
-    :header-rows: 1
-
-    * - **Status Code**
-      - **Error Code**
-      - **Description**
-    * - *400 Bad Request*
-      - *invalid_request*
-      - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
-    * - *500 Internal Server Error*
-      - *server_error*
-      - The Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
-    * - *503 Service Unavailable*
-      - *temporarily_unavailable*
-      - The Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
-    * - *400 Bad Request*
-      - *credential_revoked*
-      - The Digital Credential is revoked. The reason of revocation MUST be provided in the *error_description* field.
-    * - *400 Bad Request*
-      - *credential_updated*
-      - One or more attributes contained in the Digital Credential are changed. The *error_description* field MUST contain a list of updated attributes.
-
 
 .. _sec_revocation_nra_presentation:
 
@@ -445,7 +482,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - **Description**
       - **Reference**
     * - **iss**
-      - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Instance Attestation.
+      - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Attestation.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
       - It MUST be set to the Issuer endpoint at which the JWT is used.
