@@ -169,7 +169,7 @@ This section describes the Wallet Attestation format and how the Wallet Provider
    :alt: The figure illustrates the sequence diagram for issuing a Wallet Attestation, with the steps explained below.
    :target: https://www.plantuml.com/plantuml/uml/VLHFJzjE4BtlfnZ1uGTHVfTAxG6f5OXIe5GL0bekID7O7knfd5rtT-oKVlhEEdySXsqFbbZspNjltixaD0XwQHUrmLQSRHSPULDnGV3id6Jkb_clKG3dtA0LOp0Nv-7WMo1_01YW3OhVGS318zOr2LnRPROvzIXi6XYZFbB7EIbAgFGiBt1FlkCD72N0OMWysxBqH3QfSEjTfqOzP9ZFoHPzQPRFZJ7HrVyVLFK4xkXdIq40mT8IN4CUXPq5gL2UhDTRzgIIC9ciUSz4jA17JIQnOUvGAFPWz5lJdbUKpu6VXx8hzCKIFS4DlOJ915X9E-GQivhCJkKbsUWXQbgWfgA57ckOqmiqo5u9Fp_UgB3nrgciwyX7xQbs1eTVhY-l7YxlBYw-cfM3_InKDMO5xbax9FX4nQPXj0MuJ90ji0HOa621WaQJwvNCsgJgH9EYHl8gijkITdE82UlN0uTkm5a2uGN5YTWhZUXry-EBWaQi9XLJBAcPhCoYsrc5eT9mCS3zrTcRj--EjdnJQDgivdpsOpa_JZ6bdqh9RjtjapvrjVxlB71fKLfFUlSUukbety8KbZtLR5kaxpSJBBVAAE44ohNqTipFGY0lx5up7fjOCkJ4cv8PRchKJhAlrtExdVebI_KtiYcaUvwENsdwP9F1mGEMA_2GkpgCH5JqmiDqRuTwcB1xiiK_d8_dRLY5U4olGbp6lT-Uk0riMHXh_ar5lmAT_bsODh0j8TMLODdZqjaCspAimFV8Y9AQ-Z4W_H1fQ5e-ZTHeLrEySttkQNNvEkBnHgOGYTNSEMkPETKSsaNz1m00
 
-**Step 1:**: The user initiates a new operation that necessitates the acquisition of a Wallet Attestation.
+**Step 1:**: The User initiates a new operation that necessitates the acquisition of a Wallet Attestation.
 
 **Steps 2-3:**: The Wallet Instance check if a Wallet Hardware Key exist and generates an ephemeral asymmetric key pair.
 
