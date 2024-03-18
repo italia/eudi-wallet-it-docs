@@ -13,6 +13,7 @@ The mobile app serves as the primary interface for Users, allowing them to acces
 
 By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, since it is responsible for issuing the Wallet Attestation, that is a cryptographic proof that allow the evaluation of the authenticity and the integrity of the Wallet Instance.
 
+The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.
 
 Requirements
 ^^^^^^^^^^^^^^^^^^^^
@@ -21,6 +22,7 @@ Requirements
  - **Compliance with Provider specifications for obtaining PID and (Q)EAA**: the Wallet Instance MUST adhere to the specifications set by Providers for obtaining Personal Identification (PID) and (Q)EAAs.
  - **Support for Android and iOS operating systems**: the Wallet Instance MUST be compatible and functional at least on both Android and iOS operating systems, as well as available on the Play Store and App Store respectively.
  - **Verification of device ownership by the User**: the Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
+
 
 Wallet Instance
 ^^^^^^^^^^^^^^^
