@@ -1212,7 +1212,7 @@ This endpoint in inspired by <a class="reference external" href="https://datatra
 <figure class="align-default" id="sequence-diagram-for-wallet-attestation-acquisition">
 <a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/VLHFJzjE4BtlfnZ1uGTHVfTAxG6f5OXIe5GL0bekID7O7knfd5rtT-oKVlhEEdySXsqFbbZspNjltixaD0XwQHUrmLQSRHSPULDnGV3id6Jkb_clKG3dtA0LOp0Nv-7WMo1_01YW3OhVGS318zOr2LnRPROvzIXi6XYZFbB7EIbAgFGiBt1FlkCD72N0OMWysxBqH3QfSEjTfqOzP9ZFoHPzQPRFZJ7HrVyVLFK4xkXdIq40mT8IN4CUXPq5gL2UhDTRzgIIC9ciUSz4jA17JIQnOUvGAFPWz5lJdbUKpu6VXx8hzCKIFS4DlOJ915X9E-GQivhCJkKbsUWXQbgWfgA57ckOqmiqo5u9Fp_UgB3nrgciwyX7xQbs1eTVhY-l7YxlBYw-cfM3_InKDMO5xbax9FX4nQPXj0MuJ90ji0HOa621WaQJwvNCsgJgH9EYHl8gijkITdE82UlN0uTkm5a2uGN5YTWhZUXry-EBWaQi9XLJBAcPhCoYsrc5eT9mCS3zrTcRj--EjdnJQDgivdpsOpa_JZ6bdqh9RjtjapvrjVxlB71fKLfFUlSUukbety8KbZtLR5kaxpSJBBVAAE44ohNqTipFGY0lx5up7fjOCkJ4cv8PRchKJhAlrtExdVebI_KtiYcaUvwENsdwP9F1mGEMA_2GkpgCH5JqmiDqRuTwcB1xiiK_d8_dRLY5U4olGbp6lT-Uk0riMHXh_ar5lmAT_bsODh0j8TMLODdZqjaCspAimFV8Y9AQ-Z4W_H1fQ5e-ZTHeLrEySttkQNNvEkBnHgOGYTNSEMkPETKSsaNz1m00"><img alt="The figure illustrates the sequence diagram for issuing a Wallet Attestation, with the steps explained below." src="_images/wallet_instance_acquisition.svg" /></a>
 </figure>
-<p><strong>Step 1:</strong>: The user initiates a new operation that necessitates the acquisition of a Wallet Attestation.</p>
+<p><strong>Step 1:</strong>: The User initiates a new operation that necessitates the acquisition of a Wallet Attestation.</p>
 <p><strong>Steps 2-3:</strong>: The Wallet Instance check if a Wallet Hardware Key exist and generates an ephemeral asymmetric key pair.</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -1284,7 +1284,6 @@ This endpoint in inspired by <a class="reference external" href="https://datatra
   <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
   <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
   <span class="s2">&quot;challenge&quot;</span><span class="p">:</span> <span class="s2">&quot;6ec69324-60a8-4e5b-a697-a766d85790ea&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;WalletAttestationRequest&quot;</span><span class="p">,</span>
   <span class="s2">&quot;hardware_signature&quot;</span><span class="p">:</span> <span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...redacted&quot;</span><span class="p">,</span>
   <span class="s2">&quot;integrity_assertion&quot;</span><span class="p">:</span> <span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYX...redacted&quot;</span><span class="p">,</span>
   <span class="s2">&quot;hardware_key_tag&quot;</span><span class="p">:</span> <span class="s2">&quot;WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU=&quot;</span><span class="p">,</span>
@@ -1463,23 +1462,19 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 <td><p>Challenge data obtained from <code class="docutils literal notranslate"><span class="pre">nonce</span></code> endpoint</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>type</strong></p></td>
-<td><p>It MUST be set to string &quot;WalletAttestationRequest&quot;.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>hardware_signature</strong></p></td>
+<tr class="row-odd"><td><p><strong>hardware_signature</strong></p></td>
 <td><p>The signature of <code class="docutils literal notranslate"><span class="pre">client_data</span></code> obtained using Wallet Hardware Key base64 encoded.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>integrity_assertion</strong></p></td>
+<tr class="row-even"><td><p><strong>integrity_assertion</strong></p></td>
 <td><p>The integrity assertion obtained from the <strong>Device Integrity Service</strong> with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>hardware_key_tag</strong></p></td>
+<tr class="row-odd"><td><p><strong>hardware_key_tag</strong></p></td>
 <td><p>Unique identifier of the <strong>Wallet Hardware Keys</strong></p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
+<tr class="row-even"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
 <td><p><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
 </tr>
