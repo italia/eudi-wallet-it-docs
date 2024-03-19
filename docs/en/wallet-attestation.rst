@@ -240,7 +240,6 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
     "iss": "https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "sub": "https://wallet-provider.example.org/",
     "challenge": "6ec69324-60a8-4e5b-a697-a766d85790ea",
-    "type": "WalletAttestationRequest",
     "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...redacted",
     "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYX...redacted",
     "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU=",
@@ -407,9 +406,6 @@ The body of the Wallet Attestation Request JWT MUST contain:
       - :rfc:`9126` and :rfc:`7519`.
     * - **challenge**
       - Challenge data obtained from ``nonce`` endpoint
-      -
-    * - **type**
-      - It MUST be set to string "WalletAttestationRequest".
       -
     * - **hardware_signature**
       - The signature of ``client_data`` obtained using Wallet Hardware Key base64 encoded.
