@@ -1545,39 +1545,35 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 <td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
 <td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>type</strong></p></td>
-<td><p>It MUST be set to string &quot;WalletAttestation&quot;.</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
+<tr class="row-even"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
 <td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>aal</strong></p></td>
+<tr class="row-odd"><td><p><strong>aal</strong></p></td>
 <td><p>JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_endpoint</strong></p></td>
+<tr class="row-even"><td><p><strong>authorization_endpoint</strong></p></td>
 <td><p>URL of the SIOPv2 Authorization Endpoint.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_types_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>response_types_supported</strong></p></td>
 <td><p>JSON array containing a list of the OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>response_modes_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>response_modes_supported</strong></p></td>
 <td><p>JSON array containing a list of the OAuth 2.0 &quot;response_mode&quot; values that this authorization server supports.</p></td>
 <td><p><span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vp_formats_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>vp_formats_supported</strong></p></td>
 <td><p>JSON object with name/value pairs, identifying a Credential format supported by the Wallet.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
 <td><p>JSON array containing a list of the JWS signing algorithms (alg values) supported.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
 <td><p>Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.</p></td>
 <td></td>
 </tr>
