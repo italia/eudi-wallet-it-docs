@@ -1274,7 +1274,6 @@
   <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
   <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
   <span class="s2">&quot;challenge&quot;</span><span class="p">:</span> <span class="s2">&quot;6ec69324-60a8-4e5b-a697-a766d85790ea&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;WalletAttestationRequest&quot;</span><span class="p">,</span>
   <span class="s2">&quot;hardware_signature&quot;</span><span class="p">:</span> <span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...redacted&quot;</span><span class="p">,</span>
   <span class="s2">&quot;integrity_assertion&quot;</span><span class="p">:</span> <span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYX...redacted&quot;</span><span class="p">,</span>
   <span class="s2">&quot;hardware_key_tag&quot;</span><span class="p">:</span> <span class="s2">&quot;WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU=&quot;</span><span class="p">,</span>
@@ -1453,23 +1452,19 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 <td><p>Challenge data obtained from <code class="docutils literal notranslate"><span class="pre">nonce</span></code> endpoint</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>type</strong></p></td>
-<td><p>It MUST be set to string &quot;WalletAttestationRequest&quot;.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>hardware_signature</strong></p></td>
+<tr class="row-odd"><td><p><strong>hardware_signature</strong></p></td>
 <td><p>The signature of <code class="docutils literal notranslate"><span class="pre">client_data</span></code> obtained using Wallet Hardware Key base64 encoded.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>integrity_assertion</strong></p></td>
+<tr class="row-even"><td><p><strong>integrity_assertion</strong></p></td>
 <td><p>The integrity assertion obtained from the <strong>Device Integrity Service</strong> with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>hardware_key_tag</strong></p></td>
+<tr class="row-odd"><td><p><strong>hardware_key_tag</strong></p></td>
 <td><p>Unique identifier of the <strong>Wallet Hardware Keys</strong></p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
+<tr class="row-even"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
 <td><p><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
 </tr>
@@ -1540,39 +1535,35 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 <td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
 <td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>type</strong></p></td>
-<td><p>It MUST be set to string &quot;WalletAttestation&quot;.</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
+<tr class="row-even"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
 <td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>aal</strong></p></td>
+<tr class="row-odd"><td><p><strong>aal</strong></p></td>
 <td><p>JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_endpoint</strong></p></td>
+<tr class="row-even"><td><p><strong>authorization_endpoint</strong></p></td>
 <td><p>URL of the SIOPv2 Authorization Endpoint.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_types_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>response_types_supported</strong></p></td>
 <td><p>JSON array containing a list of the OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>response_modes_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>response_modes_supported</strong></p></td>
 <td><p>JSON array containing a list of the OAuth 2.0 &quot;response_mode&quot; values that this authorization server supports.</p></td>
 <td><p><span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vp_formats_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>vp_formats_supported</strong></p></td>
 <td><p>JSON object with name/value pairs, identifying a Credential format supported by the Wallet.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
 <td><p>JSON array containing a list of the JWS signing algorithms (alg values) supported.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
 <td><p>Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.</p></td>
 <td></td>
 </tr>
