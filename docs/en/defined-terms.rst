@@ -27,8 +27,6 @@ Below are the description of acronyms and definitions which are useful for furth
      - An entity accredited by the Federation Authority, responsible for managing the process of verification and certification of accreditation requirements for ecosystem roles.
    * - Digital Identity Provider
      - An entity, recognized and accredited by the State, responsible for identifying citizens for the issuance of an Electronic Identity Certificate.
-   * - Electronic Attestation of Identity
-     - Electronic attestation of attributes referring to master data already present in Italian digital identity systems.
    * - Digital Credential
      - An signed Credential whose integrity can be cryptographically verified using the public keys of its Issuer. It is also known as Credential.
    * - Federation Authority
