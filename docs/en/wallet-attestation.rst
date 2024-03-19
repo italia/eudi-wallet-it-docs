@@ -471,7 +471,7 @@ The body of the Wallet Attestation JWT MUST contain:
       - JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
       -
     * - **authorization_endpoint**
-      - URL of the SIOPv2 Authorization Endpoint.
+      - URL of the Wallet Authorization Endpoint (Universal Link).
       -
     * - **response_types_supported**
       - JSON array containing a list of the OAuth 2.0 ``response_type`` values.
