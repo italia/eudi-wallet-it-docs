@@ -468,9 +468,6 @@ The body of the Wallet Attestation JWT MUST contain:
     * - **iat**
       - UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
-    * - **type**
-      - It MUST be set to string "WalletAttestation".
-      -
     * - **cnf**
       - JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`
