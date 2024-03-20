@@ -41,6 +41,7 @@ implementation profile and to the initial set of implementations.
 - Michele Silletti
 - Nicola Saitto
 - Niels van Dijk
+- Oliver Terbu
 - Paul Bastien
 - Pasquale De Rose
 - Peter Altmann
