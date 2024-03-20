@@ -30,7 +30,7 @@ The Wallet Instance serves as a unique and secure device for authenticating the 
 
 The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, purpose to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.
 
-To guarantee the utmost security, these cryptographic keys MAY be securely stored within the device's Trusted Execution Environment (TEE)[3]. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information please refer to the `Wallet Attestation section`_ and the `Trust Model section`_ of this document.
+To guarantee the utmost security, these cryptographic keys MUST be securely stored within the WSCD which MAY be internal (device's Trusted Execution Environment (TEE)[3]), external, or hybrid. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information please refer to the `Wallet Attestation section`_ and the `Trust Model section`_ of this document.
 
 Wallet Instance Lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^
