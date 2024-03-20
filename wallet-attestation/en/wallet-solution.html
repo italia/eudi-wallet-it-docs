@@ -639,7 +639,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a><ul>
@@ -908,7 +907,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#general-properties">General Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a><ul>
@@ -1064,12 +1062,13 @@
           
   <section id="wallet-solution">
 <span id="wallet-solution-rst"></span><h1>Wallet Solution<a class="headerlink" href="#wallet-solution" title="Permalink to this heading">¶</a></h1>
-<p>The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of Users in managing their digital assets securely. Designed to provide a seamless User experience, this solution enables Users to leverage the capabilities of the Wallet effectively.</p>
-<p>The Wallet Solution is issued by the Wallet Provider in the form of a mobile app, it also consists of services and web interfaces for the exchange of data between the Wallet Provider and its Wallet Instances for the requirements of the trust model and in total respect of the user's privacy, in accordance with national and EU legislation.</p>
-<p>The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital assets conveniently. These digital assets, known as Attestations, include Personal Identification Data (PID[1]), a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.</p>
+<p>The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of Users in managing their digital assets securely. It is issued by the Wallet Provider in the form of a mobile app, it also consists of services and web interfaces for the exchange of data between the Wallet Provider and its Wallet Instances for the requirements of the trust model and in total respect of the User's privacy, in accordance with national and EU legislation.</p>
+<p>The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital Credentials conveniently. These are a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.</p>
 <p>By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, since it is responsible for issuing the Wallet Attestation, that is a cryptographic proof that allow the evaluation of the authenticity and the integrity of the Wallet Instance.</p>
+<p>The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
+<p>This section lists below the essential requirements that must be met by the Wallet Solution to ensure its functionality, security, and compliance with relevant standards and regulations.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Trustworthiness within the Wallet ecosystem</strong>: the Wallet Instance MUST establish trust and reliability within the Wallet ecosystem.</p></li>
@@ -1081,28 +1080,28 @@
 </section>
 <section id="wallet-instance">
 <h2>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Permalink to this heading">¶</a></h2>
-<p>The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem. It establishes a strong and reliable identity for the User, enabling them to engage in various digital transactions in a secure and privacy-preserving manner.</p>
-<p>The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, reference the public part of the asymmetric cryptographic key owned by the Wallet Instance. Their purpose is to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.</p>
-<p>To guarantee the utmost security, these cryptographic keys are securely stored within the device's Trusted Execution Environment (TEE)[3]. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the <a class="reference external" href="wallet-attestation.html">Wallet Attestation section</a> and the <a class="reference external" href="trust.html">Trust Model section</a> of this document.</p>
+<p>The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem. It establishes a strong and reliable mechanismm for the User to engage various digital transactions in a secure and privacy-preserving manner.</p>
+<p>The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, purpose to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.</p>
+<p>To guarantee the utmost security, these cryptographic keys MUST be securely stored within the WSCD which MAY be internal (device's Trusted Execution Environment (TEE)[3]), external, or hybrid. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information please refer to the <a class="reference external" href="wallet-attestation.html">Wallet Attestation section</a> and the <a class="reference external" href="trust.html">Trust Model section</a> of this document.</p>
 </section>
 <section id="wallet-instance-lifecycle">
 <h2>Wallet Instance Lifecycle<a class="headerlink" href="#wallet-instance-lifecycle" title="Permalink to this heading">¶</a></h2>
 <p>The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed[2].</p>
 <section id="initialization-process">
 <h3>Initialization Process<a class="headerlink" href="#initialization-process" title="Permalink to this heading">¶</a></h3>
-<p>To activate the Wallet Instance, the Users MUST install the mobile wallet application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.</p>
+<p>To activate the Wallet Instance, the Users MUST install the mobile Wallet application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.</p>
 <p>After completing these steps, the Wallet Instance sets the Operational state.</p>
 </section>
 <section id="transition-to-valid-state">
 <h3>Transition to Valid state<a class="headerlink" href="#transition-to-valid-state" title="Permalink to this heading">¶</a></h3>
 <p>To transition from the Operational state to the Valid state, the Wallet Instance MUST obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes Valid.</p>
-<p>In order to securely and unambiguously identify Users, the Wallet Instance adopts a Level of Assurance (LoA) 3 authentication, which guarantees a high level of confidence in the User's identity. The authentication method is chosen by the PID Provider from among the notified eID solutions at the national level.</p>
+<p>In order to securely and unambiguously identify Users, the Wallet Instance requires a Level of Assurance (LoA) 3, which guarantees both the User's identity and the device security. The authentication method is chosen by the PID Provider from among the notified eID solutions at the national level.</p>
 <p>Once the Wallet Instance is in the Operational state, Users can:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers[1];</p></li>
 <li><p>Authenticate to Relying Parties[1];</p></li>
-<li><p>Authorize the presentation of their digital credentials with Relying Parties.</p></li>
+<li><p>Authorize the presentation of their digital Credentials with Relying Parties.</p></li>
 </ul>
 </div></blockquote>
 <p>Please refer to the relative sections for further information about PID and (Q)EAAs issuance and presentation.</p>
