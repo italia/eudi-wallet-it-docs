@@ -12,19 +12,17 @@ Requirements
 
 The following requirements for the Wallet Attestation are met:
 
-- The Wallet Attestation MUST be issued and MUST be signed by Wallet Provider;
 - The Wallet Attestation MUST use the signed JSON Web Token (JWT) format;
 - The Wallet Attestation MUST give all the relevant information to attests the **integrity** and **security** of the device where the Wallet Instance is installed.
 - The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
-- The Wallet Attestation MUST ensure the integrity and authenticity of the Wallet Instance, verifying that it was accurately created and provided by the Wallet Provider.
-- The Wallet Attestation MUST ensure that the Wallet Instance is genuine, preventing any attempts at manipulation or falsification by unauthorized third parties.
+- The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties.
 - The Wallet Attestation MUST ensure that private keys have been generated and securely stored within a trusted execution environment.
 - The Wallet Attestation MUST have a mechanism in place for revoking the Wallet Instance, allowing the Wallet Provider to terminate service for a specific instance at any time.
-- The Wallet Attestation MUST be securely bound to the Wallet Instance public key.
+- The Wallet Attestation MUST be securely bound to the Wallet Instance ephemeral public key.
 - The Wallet Attestation MAY be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
-- The Wallet Attestation SHOULD have an expiration date time, after which it will no longer be considered valid.
-- The Wallet Attestation MUST NOT be issued by the Wallet Provider if the Wallet Instance has been revoked.
-- Each Wallet Instance SHOULD be able to request multiple attestations with different public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point number 10, listed below).
+- The Wallet Attestation MUST be short-lived and MUST have an expiration date time, after which SHOULD no longer be considered valid.
+- The Wallet Attestation MUST NOT be issued by the Wallet Provider if the authenticity, integrity, and genuineness are not guaranteed. In this case, the Wallet Instance MUST be revoked.
+- Each Wallet Instance SHOULD be able to request multiple attestations with different ephemeral public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point listed below).
 - The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.
 - The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by `ARF`_.
 - When the private key associated with the Wallet Instance is lost or deleted, the Wallet Attestation MUST become invalid to prevent unauthorized use of the Wallet Instance.
