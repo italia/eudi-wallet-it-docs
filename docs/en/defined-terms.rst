@@ -89,5 +89,7 @@ Acronyms
     - Application Programming Interface
   * - **LoA**
     - Level of Assurance
+  * - **AAL**
+    - Authenticator Assurance Level as defined in `<https://csrc.nist.gov/glossary/term/authenticator_assurance_level>`_
   * - **WSCD**
     - Wallet Secure Cryptographic Device
