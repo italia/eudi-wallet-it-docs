@@ -16,7 +16,7 @@ The following requirements for the Wallet Attestation are met:
 - The Wallet Attestation MUST give all the relevant information to attests the **integrity** and **security** of the device where the Wallet Instance is installed.
 - The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
 - The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties.
-- The Wallet Attestation MUST ensure that private keys have been generated and securely stored within a trusted execution environment.
+- The private keys MUST be generated and securely stored in the WSCD. It MAY be internal, external, or hybrid depending on the AAL required.
 - The Wallet Attestation MUST have a mechanism in place for revoking the Wallet Instance, allowing the Wallet Provider to terminate service for a specific instance at any time.
 - The Wallet Attestation MUST be securely bound to the Wallet Instance ephemeral public key.
 - The Wallet Attestation MAY be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
