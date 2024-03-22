@@ -480,7 +480,7 @@ The body of the Wallet Attestation JWT MUST contain:
       - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
 
 Wallet Instance Lifecycle
-------------
+-----------------------------
 
 The ability of the Wallet Instance to obtain a Wallet Attestation is bound to its current state. 
 The Wallet Instance calculates its current state based on its local credentials storage and its revocation state on the Wallet Provider's backend, if present.
