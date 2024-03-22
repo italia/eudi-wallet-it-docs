@@ -506,7 +506,7 @@ States
 +---------------+--------------------------------------------------------------------------------------------------------------------------------+
 | `Valid`       | A valid PID is present in the storage                                                                                          |
 +---------------+--------------------------------------------------------------------------------------------------------------------------------+
-| `Deactivated` | The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usabel                                 |
+| `Deactivated` | The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usable                                 |
 +---------------+--------------------------------------------------------------------------------------------------------------------------------+
 
 Transitions
