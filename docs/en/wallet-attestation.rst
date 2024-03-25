@@ -483,13 +483,13 @@ Wallet Instance Lifecycle
 -----------------------------
 
 The ability of the Wallet Instance to obtain a Wallet Attestation is bound to its current state. 
-The Wallet Instance calculates its current state based on its local credentials storage and its revocation state on the Wallet Provider's backend, if present.
+The Wallet Instance assesses its current state based on the Credentials stored locally and the Wallet Attestation issued by the Wallet Provider.
 
-The Wallet Instance lifecycle defines all possible states a Wallet Instance can be in, as well as the transitions between them. The Wallet Instance lifecycle is illustrated in the following diagram:
+The lifecycle of a Wallet Instance encompasses all the potential states it can configure, along with the transitions from one state to another. This lifecycle is depicted in the diagram below:
 
 .. figure:: ../../images/wallet_instance_lifecycle.svg
    :name: Wallet Instance Lifecycle
-   :alt: The image illustrates the Wallet Instance lifecycle, with the states explained below.
+   :alt: Illustration representing the Wallet Instance lifecycle, with the states explained below.
    :target: https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuOhMYbNGrRLJyCm32kNafAPOAMH2c5mAG00N1YloBqWjIYp9pCzBpB5IA4ijoaoh1Ab25WUh2qlCoKm1gW1HYIMf83KGCKnJClDmg799JKmkoIm3IW1DAaejoyzEHRSBfpfCbmEzQQLGceVaDOH6x4emxS9KWd0mfgH3QbuAC801
 
 
@@ -511,21 +511,24 @@ States
 
 Transitions
 ~~~~~~~~~~~~~~~~~~
-+--------------+--------------------------------------------------------------------------------------------------------------+
-| Transition   | Description                                                                                                  |
-+==============+==============================================================================================================+
-| `install`    | The Holder performs a fresh installation or restore the initial state of the Wallet Instance on the device   |
-+--------------+--------------------------------------------------------------------------------------------------------------+
-| `verify`     | The Wallet Instance has been verified by the Wallet Provider and its Wallet Hardware Key has been registered |
-+--------------+--------------------------------------------------------------------------------------------------------------+
-| `validate`   | The Wallet Instance obtains a valid PID                                                                      |
-+--------------+--------------------------------------------------------------------------------------------------------------+
-| `invalidate` | The PID expires or gets revoked                                                                              |
-+--------------+--------------------------------------------------------------------------------------------------------------+
-| `revoke`     | The Wallet Provider marks the Wallet Instance as not usable                                                  |
-+--------------+--------------------------------------------------------------------------------------------------------------+
-| `uninstall`  | The Holder removes the Wallet Instance from the device                                                       |
-+--------------+--------------------------------------------------------------------------------------------------------------+
+.. list-table::
+   :widths: 20 60
+   :header-rows: 1
+
+   * - **Transition**
+     - **Description**
+   * - `install`
+     - The User performs a fresh installation or restores the initial state of the Wallet Instance on the device.
+   * - `verify`
+     - The Wallet Instance has been verified by the Wallet Provider and its Wallet Hardware Key has been registered.
+   * - `validate`
+     - The Wallet Instance obtains a valid PID.
+   * - `invalidate`
+     - The PID expires or gets revoked.
+   * - `revoke`
+     - The Wallet Provider marks the Wallet Instance as not usable.
+   * - `uninstall`
+     - The User removes the Wallet Instance from the device.
 
 Revocations
 ~~~~~~~~~~~~~~~~~~
@@ -534,8 +537,8 @@ The Wallet Provider, which holds the Wallet Hardware Keys, can mark them as *rev
 
 The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.
 
-During the *Wallet Instance initialization and registration* phase the Wallet Provider may associate the Wallet Instance with a specific Holder uniquely identified within the Wallet Provider's systems as well as with metadata regarding the device the Wallet Instance is running on such as operative system version, chipset capabilities and the Wallet Solution version. 
-These informations can allow the Wallet Provider to selectively revoke Wallet Instances based on specific criteria.
+During the *Wallet Instance initialization and registration* phase the Wallet Provider MAY associate the Wallet Instance with a specific User. The User SHOULD be uniquely identified as well as with metadata regarding the device the Wallet Instance is running on, the metadata MAY include data related to the operative system and general technical capabilities of the device. 
+These information allow the User to request the Wallet revocation directly interacting with the Wallet Provider as well as enabling the Wallet Provider to revoke a specific Wallet Instance.
 
 The choice of which data need to be stored is left to the Wallet Provider.
 
