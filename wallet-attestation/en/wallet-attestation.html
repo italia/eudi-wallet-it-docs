@@ -1071,7 +1071,6 @@
 <li><p>The Wallet Attestation MUST give all the relevant information to attests the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed.</p></li>
 <li><p>The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.</p></li>
 <li><p>The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties.</p></li>
-<li><p>The private keys MUST be generated and securely stored in the WSCD. It MAY be internal, external, or hybrid depending on the AAL required.</p></li>
 <li><p>The Wallet Attestation MUST have a mechanism in place for revoking the Wallet Instance, allowing the Wallet Provider to terminate service for a specific instance at any time.</p></li>
 <li><p>The Wallet Attestation MUST be securely bound to the Wallet Instance ephemeral public key.</p></li>
 <li><p>The Wallet Attestation MAY be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.</p></li>
@@ -1079,8 +1078,19 @@
 <li><p>The Wallet Attestation MUST NOT be issued by the Wallet Provider if the authenticity, integrity, and genuineness are not guaranteed. In this case, the Wallet Instance MUST be revoked.</p></li>
 <li><p>Each Wallet Instance SHOULD be able to request multiple attestations with different ephemeral public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point listed below).</p></li>
 <li><p>The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.</p></li>
-<li><p>The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by <a href="#id5"><span class="problematic" id="id6">`ARF`_</span></a>.</p></li>
+<li><p>The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework">ARF</a>.</p></li>
+<li><p>The private keys MUST be generated and stored in the WSCD following different approaches:</p>
+<ul>
+<li><p><strong>Internal WSCD</strong>: The WSCD here is solely based on the native cryptographic hardware of the User device, for instance the (iOS) Secure Enclave or the (Android) Hardware Backed Keystore or Strongbox.</p></li>
+<li><p><strong>External WSCD</strong>: The WSCD here is based on a remote Hardware Security Module (HSM) hosted by (or on behalf of) the Wallet Provider or is a chip external to the User device, e.g., a smart card based on GlobalPlatform, and supporting JavaCard.</p></li>
+<li><p><strong>Hybrid WSCD</strong>: The WSCD here is based on a dedicated, internal chip integrated in the User device, e.g. an eUICC based on GlobalPlatform, and supporting JavaCard.</p></li>
 </ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The implementation profile specification, that will be given below, MUST support only the <strong>Internal WSCD</strong>. Future versions of this specification MAY include other approaches depending on the <cite>AAL</cite> required.</p>
+</div>
 </section>
 <section id="static-component-view">
 <h2>Static Component View<a class="headerlink" href="#static-component-view" title="Permalink to this heading">¶</a></h2>
@@ -1165,6 +1175,12 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It is not necessary to send the Wallet Hardware public key because it is already included in the <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate it with a specific user
+uniquely identifiable by the Wallet Provider. This association is at the discretion of the Wallet PRovider and will not be addressed
+within these guidelines as each Wallet Provider may or may not have a user identification system already implemented.</p>
 </div>
 <p><strong>Steps 10-12</strong>: The Wallet Provider validates the <code class="docutils literal notranslate"><span class="pre">challenge</span></code> and <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> signature, therefore:</p>
 <blockquote>

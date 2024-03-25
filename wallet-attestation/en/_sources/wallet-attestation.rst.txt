@@ -16,7 +16,6 @@ The following requirements for the Wallet Attestation are met:
 - The Wallet Attestation MUST give all the relevant information to attests the **integrity** and **security** of the device where the Wallet Instance is installed.
 - The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
 - The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties.
-- The private keys MUST be generated and securely stored in the WSCD. It MAY be internal, external, or hybrid depending on the AAL required.
 - The Wallet Attestation MUST have a mechanism in place for revoking the Wallet Instance, allowing the Wallet Provider to terminate service for a specific instance at any time.
 - The Wallet Attestation MUST be securely bound to the Wallet Instance ephemeral public key.
 - The Wallet Attestation MAY be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
@@ -25,6 +24,14 @@ The following requirements for the Wallet Attestation are met:
 - Each Wallet Instance SHOULD be able to request multiple attestations with different ephemeral public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point listed below).
 - The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.
 - The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by `ARF`_.
+- The private keys MUST be generated and stored in the WSCD following different approaches:
+
+  - **Internal WSCD**: The WSCD here is solely based on the native cryptographic hardware of the User device, for instance the (iOS) Secure Enclave or the (Android) Hardware Backed Keystore or Strongbox.
+  - **External WSCD**: The WSCD here is based on a remote Hardware Security Module (HSM) hosted by (or on behalf of) the Wallet Provider or is a chip external to the User device, e.g., a smart card based on GlobalPlatform, and supporting JavaCard.
+  - **Hybrid WSCD**: The WSCD here is based on a dedicated, internal chip integrated in the User device, e.g. an eUICC based on GlobalPlatform, and supporting JavaCard.
+
+.. warning::
+  The implementation profile specification, that will be given below, MUST support only the **Internal WSCD**. Future versions of this specification MAY include other approaches depending on the `AAL` required.
 
 Static Component View
 ---------------------
@@ -122,6 +129,12 @@ Wallet Instance initialization and registration
 
 .. note::
   It is not necessary to send the Wallet Hardware public key because it is already included in the ``key_attestation``.
+
+.. warning::
+  During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate it with a specific user
+  uniquely identifiable by the Wallet Provider. This association is at the discretion of the Wallet PRovider and will not be addressed
+  within these guidelines as each Wallet Provider may or may not have a user identification system already implemented.
+
 
 **Steps 10-12**: The Wallet Provider validates the ``challenge`` and ``key_attestation`` signature, therefore:
 
@@ -490,4 +503,4 @@ The body of the Wallet Attestation JWT MUST contain:
 .. _Play Integrity API: https://developer.android.com/google/play/integrity?hl=it
 .. _DeviceCheck: https://developer.apple.com/documentation/devicecheck
 .. _OAuth 2.0 Nonce Endpoint: https://datatracker.ietf.org/doc/draft-demarco-oauth-nonce-endpoint/
-
+.. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
