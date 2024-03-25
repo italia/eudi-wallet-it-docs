@@ -25,11 +25,13 @@ The following requirements for the Wallet Attestation are met:
 - The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.
 - The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by `ARF`_.
 - The private keys MUST be generated and stored in the WSCD following different approaches:
-  - internal
-  - external
+
+  - **Internal WSCD**: The WSCD here is solely based on the native cryptographic hardware of the User device, for instance the (iOS) Secure Enclave or the (Android) Hardware Backed Keystore or Strongbox.
+  - **External WSCD**: The WSCD here is based on a remote Hardware Security Module (HSM) hosted by (or on behalf of) the Wallet Provider or is a chip external to the User device, e.g., a smart card based on GlobalPlatform, and supporting JavaCard.
+  - **Hybrid WSCD**: The WSCD here is based on a dedicated, internal chip integrated in the User device, e.g. an eUICC based on GlobalPlatform, and supporting JavaCard.
 
 .. warning::
-  The implementation profile specification, that will be given below, MUST support only the Internal WSCD. Future versions of this specification MAY include other approaches depending on the AAL required.
+  The implementation profile specification, that will be given below, MUST support only the **Internal WSCD**. Future versions of this specification MAY include other approaches depending on the `AAL` required.
 
 Static Component View
 ---------------------
