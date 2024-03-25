@@ -16,7 +16,6 @@ The following requirements for the Wallet Attestation are met:
 - The Wallet Attestation MUST give all the relevant information to attests the **integrity** and **security** of the device where the Wallet Instance is installed.
 - The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
 - The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties.
-- The private keys MUST be generated and securely stored in the WSCD. It MAY be internal, external, or hybrid depending on the AAL required.
 - The Wallet Attestation MUST have a mechanism in place for revoking the Wallet Instance, allowing the Wallet Provider to terminate service for a specific instance at any time.
 - The Wallet Attestation MUST be securely bound to the Wallet Instance ephemeral public key.
 - The Wallet Attestation MAY be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
@@ -25,6 +24,9 @@ The following requirements for the Wallet Attestation are met:
 - Each Wallet Instance SHOULD be able to request multiple attestations with different ephemeral public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point listed below).
 - The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.
 - The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by `ARF`_.
+- The private keys MUST be generated and stored in the WSCD following different approaches:
+  - internal
+  - external
 
 .. warning::
   The implementation profile specification, that will be given below, MUST support only the Internal WSCD. Future versions of this specification MAY include other approaches depending on the AAL required.
