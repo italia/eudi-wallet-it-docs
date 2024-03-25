@@ -38,7 +38,7 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Wallet Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
    * - Wallet Secure Cryptographic Device
-     - Hardware-backed secure environment for creating, storing, and/or managing cryptographic keys and data. Examples include Secure Elements (SE), Trusted Execution Environments (TEEs), and Strongbox.
+     - Hardware-backed secure environment for creating, storing, and/or managing cryptographic keys and data. A WSCD MAY implement an association proof in different ways. This largely depends on the implementation of the WSCD for example: remote HSM, external smart card, internal UICC, internal native cryptographic hardware, such as the iOS Secure Enclave or the Android Hardware Backed Keystore or StrongBox
    * - Credential Status Attestation
      - Verifiable Attestation proving that a related Digital Credential is not revoked.
    * - Device Integrity Service
