@@ -25,7 +25,6 @@ The following requirements for the Wallet Attestation are met:
 - Each Wallet Instance SHOULD be able to request multiple attestations with different ephemeral public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point listed below).
 - The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.
 - The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by `ARF`_.
-- When the private key associated with the Wallet Instance is lost or deleted, the Wallet Attestation MUST become invalid to prevent unauthorized use of the Wallet Instance.
 
 Static Component View
 ---------------------
