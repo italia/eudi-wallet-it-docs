@@ -26,6 +26,9 @@ The following requirements for the Wallet Attestation are met:
 - The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.
 - The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by `ARF`_.
 
+.. warning::
+  The implementation profile specification, that will be given below, MUST support only the Internal WSCD. Future versions of this specification MAY include other approaches depending on the AAL required.
+
 Static Component View
 ---------------------
 
@@ -122,6 +125,12 @@ Wallet Instance initialization and registration
 
 .. note::
   It is not necessary to send the Wallet Hardware public key because it is already included in the ``key_attestation``.
+
+.. warning::
+  During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate it with a specific user
+  uniquely identifiable by the Wallet Provider. This association is at the discretion of the Wallet PRovider and will not be addressed
+  within these guidelines as each Wallet Provider may or may not have a user identification system already implemented.
+
 
 **Steps 10-12**: The Wallet Provider validates the ``challenge`` and ``key_attestation`` signature, therefore:
 
@@ -490,4 +499,4 @@ The body of the Wallet Attestation JWT MUST contain:
 .. _Play Integrity API: https://developer.android.com/google/play/integrity?hl=it
 .. _DeviceCheck: https://developer.apple.com/documentation/devicecheck
 .. _OAuth 2.0 Nonce Endpoint: https://datatracker.ietf.org/doc/draft-demarco-oauth-nonce-endpoint/
-
+.. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
