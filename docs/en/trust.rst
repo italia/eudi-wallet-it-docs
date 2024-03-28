@@ -70,42 +70,40 @@ except for Wallet Instances which are End-User's personal devices certified by t
 
 Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles, as defined in the `EIDAS-ARF`_.
 
-+-----------------------------------------+----------------+-----------------------------------+
-|  EUDI Role                              | Federation Role| Notes                             |
-+=========================================+================+===================================+
-|  Public Key Infrastructure (PKI)        | Trust Anchor   | The Federation has PKI            |
-|                                         |                | capabilities. The                 |
-|                                         | Intermediates  | Entity that configures            |
-|                                         |                | the entire infrastructure         |
-|                                         |                | is the Trust Anchor.              |
-|                                         |                |                                   |
-+-----------------------------------------+----------------+-----------------------------------+
-|  Qualified Trust Service Provider (QTSP)| Leaf           |                                   |
-+-----------------------------------------+----------------+-----------------------------------+
-|  Person Identification Data Provider    | Leaf           |                                   |
-+-----------------------------------------+----------------+-----------------------------------+
-|  Qualified Electronic Attestations      | Leaf           |                                   |
-|  of Attributes Provider                 |                |                                   |
-+-----------------------------------------+----------------+-----------------------------------+
-|  Electronic Attestations of             | Leaf           |                                   |
-|  Attributes Provider                    |                |                                   |
-+-----------------------------------------+----------------+-----------------------------------+
-|  Relying Party                          | Leaf           |                                   |
-+-----------------------------------------+----------------+-----------------------------------+
-|  Trust Service Provider (TSP)           | Leaf           |                                   |
-+-----------------------------------------+----------------+-----------------------------------+
-|  Trusted List                           | Trust Anchor   | The listing endpoint, the         |
-|                                         |                | trust mark status endpoint        |
-|                                         | Intermediates  | and the fetch endpoint must       |
-|                                         |                | be exposed by both Trust Anchors  |
-|                                         |                | and Intermediates, making         |
-|                                         |                | the Trusted List distributed      |
-|                                         |                | over multiple Federation Entities,|
-|                                         |                | where each of these is responsible|
-|                                         |                | for their accredited subordinates.|
-+-----------------------------------------+----------------+-----------------------------------+
-|  Wallet Provider                        | Leaf           |                                   |
-+-----------------------------------------+----------------+-----------------------------------+
+.. list-table::
+   :widths: 20 20 60
+   :header-rows: 1
+
+   * - EUDI Role
+     - Federation Role
+     - Notes
+   * - Public Key Infrastructure (PKI)
+     - Trust Anchor
+     - The Federation has PKI capabilities. The Entity that configures the entire infrastructure is the Trust Anchor.
+   * - Qualified Trust Service Provider (QTSP)
+     - Leaf
+     - 
+   * - Person Identification Data Provider
+     - Leaf
+     - 
+   * - Qualified Electronic Attestations of Attributes Provider
+     - Leaf
+     - 
+   * - Electronic Attestations of Attributes Provider
+     - Leaf
+     - 
+   * - Relying Party
+     - Leaf
+     - 
+   * - Trust Service Provider (TSP)
+     - Leaf
+     - 
+   * - Trusted List
+     - Trust Anchor
+     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their accredited subordinates.
+   * - Wallet Provider
+     - Leaf
+     - 
 
 
 General Properties
@@ -128,38 +126,28 @@ Trust Model Requirements
 
 In the table below is provided the map of the components that the ARF defines within the Trust Model, in the same table is provided their coverage in `OIDC-FED`_.
 
-+----------------------------------------------------+--------------+----------------+
-|  Component                                         |  Satisfied   | how            |
-+====================================================+==============+================+
-|  Issuers identification                            | |check-icon| | Trust Chain    |
-+----------------------------------------------------+--------------+----------------+
-|  Issuers registration                              | |check-icon| | Trust Anchor   |
-|                                                    |              |                |
-|                                                    |              | Intermediates  |
-|                                                    |              | accreditation  |
-|                                                    |              | system         |
-|                                                    |              |                |
-+----------------------------------------------------+--------------+----------------+
-|  Recognised data models and schemas                | |check-icon| | Entity         |
-|                                                    |              | Configuration  |
-|                                                    |              |                |
-|                                                    |              | Entity         |
-|                                                    |              | Statements     |
-+----------------------------------------------------+--------------+----------------+
-|  Relying Parties' registration and authentication  | |check-icon| |                |
-|                                                    |              | Trust Chains   |
-|                                                    |              |                |
-|                                                    |              | Federation     |
-|                                                    |              | Entity         |
-|                                                    |              | Discovery      |
-+----------------------------------------------------+--------------+----------------+
-|  Trust mechanisms in a cross-domain scenario       | |check-icon| |                |
-|                                                    |              | Trust Chains   |
-|                                                    |              |                |
-|                                                    |              | Federation     |
-|                                                    |              | Entity         |
-|                                                    |              | Discovery      |
-+----------------------------------------------------+--------------+----------------+
+.. list-table::
+   :widths: 20 20 60
+   :header-rows: 1
+
+   * - Component
+     - Satisfied
+     - How
+   * - Issuers identification
+     - |check-icon|
+     - Trust Chain
+   * - Issuers registration
+     - |check-icon|
+     - Trust Anchor, Intermediates accreditation system
+   * - Recognised data models and schemas
+     - |check-icon|
+     - Entity Configuration, Entity Statements
+   * - Relying Parties' registration and authentication
+     - |check-icon|
+     - Trust Chains, Federation Entity Discovery
+   * - Trust mechanisms in a cross-domain scenario
+     - |check-icon|
+     - Trust Chains, Federation Entity Discovery
 
 
 Federation API endpoints
@@ -171,43 +159,34 @@ publicly available. The table below summarises the endpoints and their scopes.
 
 All the endpoints listed below are defined in the `OIDC-FED`_ specs.
 
-+---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| endpoint name             | http request                                 |          scope                 |  required for   |
-+===========================+==============================================+================================+=================+
-|                           |                                              |                                |  Trust Anchor   |
-|                           |                                              |                                |                 |
-| federation metadata       | **GET** .well-known/openid-federation        |Metadata that an Entity         |  Intermediate   |
-|                           |                                              |publishes about itself,         |                 |
-|                           |                                              |verifiable with a trusted third |  Wallet Provider|
-|                           |                                              |party (Superior Entity). It's   |                 |
-|                           |                                              |called Entity Configuration.    |  Relying Party  |
-|                           |                                              |                                |                 |
-|                           |                                              |                                |  Credential     |
-|                           |                                              |                                |  Issuer         |
-+---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| subordinate list endpoint | **GET** /list                                |Lists the Subordinates.         |  Trust Anchor   |
-|                           |                                              |                                |                 |
-|                           |                                              |                                |  Intermediate   |
-+---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| fetch endpoint            | **GET** /fetch?sub=https://rp.example.org    |                                |  Trust Anchor   |
-|                           |                                              |Returns a signed document (JWS) |                 |
-|                           |                                              |about a specific subject, its   |  Intermediate   |
-|                           |                                              |Subordinate. It's called Entity |                 |
-|                           |                                              |Statement.                      |                 |
-+---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| trust mark status         | **POST** /status?sub=...&trust_mark_id=...   |                                |  Trust Anchor   |
-|                           |                                              |Returns the status of the       |                 |
-|                           |                                              |issuance (validity) of a Trust  |  Intermediate   |
-|                           |                                              |Mark related to a specific      |                 |
-|                           |                                              |subject.                        |                 |
-+---------------------------+----------------------------------------------+--------------------------------+-----------------+
-| historical keys           | **GET**                                      |                                |  Trust Anchor   |
-|                           |                                              |Lists the expired and revoked   |                 |
-|                           |                                              |keys, with the motivation of the|  Intermediate   |
-|                           | /historical-jwks                             |revocation.                     |                 |
-|                           |                                              |                                |                 |
-+---------------------------+----------------------------------------------+--------------------------------+-----------------+
+.. list-table::
+   :widths: 20 20 20 20
+   :header-rows: 1
 
+   * - endpoint name
+     - http request
+     - scope
+     - required for
+   * - federation metadata
+     - **GET** .well-known/openid-federation
+     - Metadata that an Entity publishes about itself, verifiable with a trusted third party (Superior Entity). It's called Entity Configuration.
+     - Trust Anchor, Intermediate, Wallet Provider, Relying Party, Credential Issuer
+   * - subordinate list endpoint
+     - **GET** /list
+     - Lists the Subordinates.
+     - Trust Anchor, Intermediate
+   * - fetch endpoint
+     - **GET** /fetch?sub=https://rp.example.org
+     - Returns a signed document (JWS) about a specific subject, its Subordinate. It's called Entity Statement.
+     - Trust Anchor, Intermediate
+   * - trust mark status
+     - **POST** /status?sub=...&trust_mark_id=...
+     - Returns the status of the issuance (validity) of a Trust Mark related to a specific subject.
+     - Trust Anchor, Intermediate
+   * - historical keys
+     - **GET** /historical-jwks
+     - Lists the expired and revoked keys, with the motivation of the revocation.
+     - Trust Anchor, Intermediate
 All the responses of the federation endpoints are in the form of JWS, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default.
 
 
@@ -381,38 +360,45 @@ giving the references of the metadata protocol for each of these.
     
     The entries that don't have any reference to a known draft or standard are intended to be defined in this technical reference.
 
-+------------------+-----------------------------+--------------+
-| Entity           | metadata type               | references   |
-+==================+=============================+==============+
-| Trust Anchor     | ``federation_entity``       | `OIDC-FED`_  |
-+------------------+-----------------------------+--------------+
-| Intermediate     | ``federation_entity``       | `OIDC-FED`_  |
-+------------------+-----------------------------+--------------+
-|                  |                             |              |
-| Wallet Provider  | ``federation_entity``       | --           |
-|                  |                             |              |
-|                  | ``wallet_provider``         |              |
-|                  |                             |              |
-|                  |                             |              |
-+------------------+-----------------------------+--------------+
-|                  |                             |              |
-| Credential Issuer| ``federation_entity``       |              |
-|                  |                             |              |
-|                  | ``openid_credential_issuer``| `OPENID4VCI`_|
-+------------------+-----------------------------+--------------+
-|                  |                             |              |
-| Relying Party    | ``federation_entity``       |              |
-|                  |                             |              |
-|                  | ``wallet_relying_party``    | `OIDC-FED`_  |
-|                  |                             |              |
-|                  |                             | `OpenID4VP`_ |
-+------------------+-----------------------------+--------------+
+.. list-table::
+   :widths: 20 20 60
+   :header-rows: 1
+
+   * - Entity
+     - Metadata type
+     - References
+   * - Trust Anchor
+     - ``federation_entity``
+     - `OIDC-FED`_
+   * - Intermediate
+     - ``federation_entity``
+     - `OIDC-FED`_
+   * - Wallet Provider
+     - ``federation_entity``, ``wallet_provider``
+     - --
+   * - Authorization Server
+     - ``federation_entity``, ``oauth_authorization_server``
+     - `OPENID4VCI`_
+   * - Credential Issuer
+     - ``federation_entity``, ``openid_credential_issuer``, [``oauth_authorization_server``]
+     - `OPENID4VCI`_
+   * - Relying Party
+     - ``federation_entity``, ``wallet_relying_party``
+     - `OIDC-FED`_, `OpenID4VP`_
 
 .. note::
     Wallet Provider metadata is defined in the section below.
 
     `Wallet Solution section <wallet-solution.html>`_. 
 
+.. note::
+    In instances where a Credential Issuer also functions as an Authorization Server, 
+    it is imperative for the Entity to incorporate both 
+    ``oauth_authorization_server`` and ``openid_credential_issuer`` within its metadata types.
+    Other implementations may divide the Credential Issuer from the Authorization Server.
+    Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
+    it is mandatory to include the relevant metadata type, either ``openid_relying_party`` 
+    or ``wallet_relying_party``.
 
 Entity Statements
 -----------------
