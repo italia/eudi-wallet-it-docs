@@ -187,6 +187,8 @@ All the endpoints listed below are defined in the `OIDC-FED`_ specs.
      - **GET** /historical-jwks
      - Lists the expired and revoked keys, with the motivation of the revocation.
      - Trust Anchor, Intermediate
+
+
 All the responses of the federation endpoints are in the form of JWS, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default.
 
 
@@ -386,10 +388,12 @@ giving the references of the metadata protocol for each of these.
      - ``federation_entity``, ``wallet_relying_party``
      - `OIDC-FED`_, `OpenID4VP`_
 
+
 .. note::
     Wallet Provider metadata is defined in the section below.
 
     `Wallet Solution section <wallet-solution.html>`_. 
+
 
 .. note::
     In instances where a Credential Issuer also functions as an Authorization Server, 
