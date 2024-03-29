@@ -1526,7 +1526,7 @@ The Wallet Instance assesses its current state based on the Credentials stored l
 <figure class="align-default" id="id3">
 <a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuOhMYbNGrRLJyCm32kNafAPOAMH2c5mAG00N1YloBqWjIYp9pCzBpB5IA4ijoaoh1Ab25WUh2qlCoKm1gW1HYIMf83KGCKnJClDmg799JKmkoIm3IW1DAaejoyzEHRSBfpfCbmEzQQLGceVaDOH6x4emxS9KWd0mfgH3QbuAC801"><img alt="Illustration representing the Wallet Instance lifecycle, with the states explained below." src="../../images/wallet_instance_lifecycle.svg" /></a>
 </figure>
-<p>A Wallet Instance can obtain a Wallet Attestation if it's in either <cite>Installed</cite>, <cite>Operational</cite> or <cite>Valid</cite> state; that implies that a <cite>Deactivated</cite> Wallet Instance cannot obtain a Wallet Attestation hence it cannot interact with other entities such as PID/(Q)EAA Providers and Relying Parties.</p>
+<p>A Wallet Instance SHOULD obtain a Wallet Attestation if it's in either <cite>Installed</cite>, <cite>Operational</cite> or <cite>Valid</cite> state; that implies that a <cite>Deactivated</cite> Wallet Instance cannot obtain a Wallet Attestation hence it cannot interact with other entities of the ecosystem, such as PID/(Q)EAA Providers and Relying Parties.</p>
 <section id="states">
 <h3>States<a class="headerlink" href="#states" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
