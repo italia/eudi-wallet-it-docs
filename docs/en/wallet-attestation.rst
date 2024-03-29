@@ -493,7 +493,7 @@ The lifecycle of a Wallet Instance encompasses all the potential states it can c
    :target: https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuOhMYbNGrRLJyCm32kNafAPOAMH2c5mAG00N1YloBqWjIYp9pCzBpB5IA4ijoaoh1Ab25WUh2qlCoKm1gW1HYIMf83KGCKnJClDmg799JKmkoIm3IW1DAaejoyzEHRSBfpfCbmEzQQLGceVaDOH6x4emxS9KWd0mfgH3QbuAC801
 
 
-A Wallet Instance can obtain a Wallet Attestation if it's in either `Installed`, `Operational` or `Valid` state; that implies that a `Deactivated` Wallet Instance cannot obtain a Wallet Attestation hence it cannot interact with other entities such as PID/(Q)EAA Providers and Relying Parties.
+A Wallet Instance SHOULD obtain a Wallet Attestation if it's in either `Installed`, `Operational` or `Valid` state; that implies that a `Deactivated` Wallet Instance cannot obtain a Wallet Attestation hence it cannot interact with other entities of the ecosystem, such as PID/(Q)EAA Providers and Relying Parties.
 
 States
 ~~~~~~~~~~~~~~~~~~
