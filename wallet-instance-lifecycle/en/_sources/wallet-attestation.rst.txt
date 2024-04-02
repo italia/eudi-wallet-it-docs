@@ -534,6 +534,7 @@ Revocations
 ~~~~~~~~~~~~~~~~~~
 As mentioned in the *Wallet Instance initialization and registration* section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it. 
 The Wallet Provider, which holds the Wallet Hardware Keys, can mark them as *revoked* so to make the related Wallet Instance unusable.
+Please note that the Wallet Instance shares the its Wallet Hardware Key only with the Wallet Provider, thus the Wallet Provider is the only entity identify a Wallet Instance by it.
 
 The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.
 
@@ -541,6 +542,8 @@ During the *Wallet Instance initialization and registration* phase the Wallet Pr
 These information allow the User to request the Wallet revocation directly interacting with the Wallet Provider as well as enabling the Wallet Provider to revoke a specific Wallet Instance.
 
 The choice of which data need to be stored is left to the Wallet Provider.
+
+
 
 
 .. _token endpoint: wallet-solution.html#wallet-attestation
