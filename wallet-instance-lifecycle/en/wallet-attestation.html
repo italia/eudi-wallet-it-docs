@@ -1588,8 +1588,9 @@ The Wallet Instance assesses its current state based on the Credentials stored l
 <section id="revocations">
 <h3>Revocations<a class="headerlink" href="#revocations" title="Permalink to this heading">¶</a></h3>
 <p>As mentioned in the <em>Wallet Instance initialization and registration</em> section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it.
-The Wallet Provider, which holds the Wallet Hardware Keys, can mark them as <em>revoked</em> so to make the related Wallet Instance unusable.
-Please note that the Wallet Instance shares the its Wallet Hardware Key only with the Wallet Provider, thus the Wallet Provider is the only entity identify a Wallet Instance by it.</p>
+The Wallet Instance shares its Wallet Hardware Key only with the Wallet Provider, thus the Wallet Provider is the only entity that can identify a Wallet Instance by its  Wallet Hardware Key.</p>
+<p>When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the <cite>Operational</cite> or <cite>Valid</cite> state.
+A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.</p>
 <p>The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.</p>
 <p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User. The User SHOULD be uniquely identified as well as with metadata regarding the device the Wallet Instance is running on, the metadata MAY include data related to the operative system and general technical capabilities of the device.
 These information allow the User to request the Wallet revocation directly interacting with the Wallet Provider as well as enabling the Wallet Provider to revoke a specific Wallet Instance.</p>

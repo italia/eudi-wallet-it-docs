@@ -533,8 +533,10 @@ Transitions
 Revocations
 ~~~~~~~~~~~~~~~~~~
 As mentioned in the *Wallet Instance initialization and registration* section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it. 
-The Wallet Provider, which holds the Wallet Hardware Keys, can mark them as *revoked* so to make the related Wallet Instance unusable.
-Please note that the Wallet Instance shares the its Wallet Hardware Key only with the Wallet Provider, thus the Wallet Provider is the only entity identify a Wallet Instance by it.
+The Wallet Instance shares its Wallet Hardware Key only with the Wallet Provider, thus the Wallet Provider is the only entity that can identify a Wallet Instance by its  Wallet Hardware Key.
+
+When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the `Operational` or `Valid` state.
+A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.
 
 The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.
 
