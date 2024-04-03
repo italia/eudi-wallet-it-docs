@@ -24,14 +24,14 @@ The following requirements for the Wallet Attestation are met:
 - Each Wallet Instance SHOULD be able to request multiple attestations with different ephemeral public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point listed below).
 - The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.
 - The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by `ARF`_.
-- The private keys MUST be generated and stored in the WSCD following different approaches:
+- Private keys MUST be generated and stored in the WSCD using at least one of the approaches listed below:
 
-  - **Internal WSCD**: The WSCD here is solely based on the native cryptographic hardware of the User device, for instance the (iOS) Secure Enclave or the (Android) Hardware Backed Keystore or Strongbox.
-  - **External WSCD**: The WSCD here is based on a remote Hardware Security Module (HSM) hosted by (or on behalf of) the Wallet Provider or is a chip external to the User device, e.g., a smart card based on GlobalPlatform, and supporting JavaCard.
-  - **Hybrid WSCD**: The WSCD here is based on a dedicated, internal chip integrated in the User device, e.g. an eUICC based on GlobalPlatform, and supporting JavaCard.
+  - **Internal WSCD**: In this approach, the WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS devices or the Hardware Backed Keystore or Strongbox on Android devices.
+  - **External WSCD**: Here, the WSCD utilizes a remote Hardware Security Module (HSM) managed by (or on behalf of) the Wallet Provider, or it could be an hardware external to the User's device, such as a smart card compliant with _GlobalPlatform_ and supporting _JavaCard_.
+  - **Hybrid WSCD**: In this case, the WSCD involves a pluggable internal hardware component within the User's device, such as an _eUICC_ that adheres to _GlobalPlatform_ standards and supports _JavaCard_.
 
 .. warning::
-  The implementation profile specification, that will be given below, MUST support only the **Internal WSCD**. Future versions of this specification MAY include other approaches depending on the `AAL` required.
+  At the current stage, the current implementation profile defined in this document supports only the **Internal WSCD**. Future versions of this specification MAY include other approaches depending on the required `AAL` .
 
 Static Component View
 ---------------------
