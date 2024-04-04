@@ -26,12 +26,15 @@ The following requirements for the Wallet Attestation are met:
 - The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by `ARF`_.
 - Private keys MUST be generated and stored in the WSCD using at least one of the approaches listed below:
 
-  - **Internal WSCD**: In this approach, the WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS devices or the Hardware Backed Keystore or Strongbox on Android devices.
-  - **External WSCD**: Here, the WSCD utilizes a remote Hardware Security Module (HSM) managed by (or on behalf of) the Wallet Provider, or it could be an hardware external to the User's device, such as a smart card compliant with _GlobalPlatform_ and supporting _JavaCard_.
-  - **Hybrid WSCD**: In this case, the WSCD involves a pluggable internal hardware component within the User's device, such as an _eUICC_ that adheres to _GlobalPlatform_ standards and supports _JavaCard_.
+  - **Local Internal WSCD**: in this approach, the WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS devices or the Hardware Backed Keystore or Strongbox on Android devices.
+  - **Local External WSCD**: the WSCD is an hardware external to the User's device, such as a smart card compliant with _GlobalPlatform_ and supporting _JavaCard_.
+  - **Remote WSCD**: Here, the WSCD utilizes a remote Hardware Security Module (HSM).
+
+  - **Local Hybrid WSCD**: the WSCD involves a pluggable internal hardware component within the User's device, such as an _eUICC_ that adheres to _GlobalPlatform_ standards and supports _JavaCard_.
+  - **Remote Hybrid WSCD**: the WSCD involves a local component mixed with a remote service.
 
 .. warning::
-  At the current stage, the current implementation profile defined in this document supports only the **Internal WSCD**. Future versions of this specification MAY include other approaches depending on the required `AAL` .
+  At the current stage, the current implementation profile defined in this document supports only the **Local Internal WSCD**. Future versions of this specification MAY include other approaches depending on the required `AAL`.
 
 Static Component View
 ---------------------
