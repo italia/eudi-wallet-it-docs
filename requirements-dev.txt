@@ -6,7 +6,7 @@ commonmark==0.9.1
 doc8==0.11.1
 docs-italia-theme @ git+https://github.com/italia/docs-italia-theme.git@3209d99db00ef965c528fd2932ae7da7dcee26b0
 docutils==0.18.1
-idna==3.3
+idna==3.7
 imagesize==1.3.0
 Jinja2==3.1.3
 MarkupSafe==2.1.1
