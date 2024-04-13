@@ -36,13 +36,15 @@ Each digest value ensures the integrity of, and maps to, the respective Disclosu
   - the claim name (only when the claim is an object property), 
   - the claim value. 
   
-The Disclosures are sent to the Holder together with the SD-JWT in the *Combined Format for Issuance* that MUST be an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
+The Disclosures are provided to the Holder together with the SD-JWT in the *Combined Format for Issuance* that MUST be an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
 
 .. code-block::
 
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
-See `[SD-JWT VC] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
+See `[SD-JWT VC] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`_ and
+`[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__
+for additional details. 
 
 
 PID/(Q)EAA SD-JWT parameters
@@ -60,16 +62,16 @@ The JOSE header contains the following mandatory parameters:
     - **Description**
     - **Reference**
   * - **typ**
-    - MUST be set to ``vc+sd-jwt`` as defined in `[draft-terbu-sd-jwt-vc-latest] <https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html>`__. 
+    - REQUIRED. It MUST be set to ``vc+sd-jwt`` as defined in `[draft-terbu-sd-jwt-vc-latest] <https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html>`__. 
     - `[RFC7515, Section 4.1.9] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9>`_.
   * - **alg**
-    - Signature Algorithm. 
+    - REQUIRED. Signature Algorithm. 
     - `[RFC7515, Section 4.1.1] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1>`_.
   * - **kid**
-    - Unique identifier of the public key. 
+    - REQUIRED. Unique identifier of the public key. 
     - `[RFC7515, Section 4.1.8] <https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.8>`_.
   * - **trust_chain**
-    - JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
+    - Optional. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
     - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-connect-federation-1_0.html#name-trust-chain-header-paramete>`_.
 
 The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
@@ -138,7 +140,7 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
 PID Non-Normative Examples
 --------------------------
 
-In the following, the non-normative example of a PID in JSON format.
+In the following, the non-normative example of the payload of a PID represented in JSON format.
 
 .. code-block:: JSON
 
