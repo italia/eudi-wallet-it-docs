@@ -1530,23 +1530,27 @@ The Wallet Instance assesses its current state based on the Credentials stored l
 <section id="states">
 <h3>States<a class="headerlink" href="#states" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>State</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>State</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><cite>Installed</cite></p></td>
-<td><p>The Holder has installed the Wallet Solution on the device</p></td>
+<td><p>The User has installed the Wallet Solution on the device.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>Operational</cite></p></td>
 <td><p>The Wallet Instance has been verified and the Wallet Hardware Key has been registered; no valid PID is present in the storage.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>Valid</cite></p></td>
-<td><p>A valid PID is present in the storage</p></td>
+<td><p>A valid PID is present in the storage.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>Deactivated</cite></p></td>
-<td><p>The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usable</p></td>
+<td><p>The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usable.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1588,13 +1592,12 @@ The Wallet Instance assesses its current state based on the Credentials stored l
 <section id="revocations">
 <h3>Revocations<a class="headerlink" href="#revocations" title="Permalink to this heading">¶</a></h3>
 <p>As mentioned in the <em>Wallet Instance initialization and registration</em> section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it.
-The Wallet Instance shares its Wallet Hardware Key only with the Wallet Provider, thus the Wallet Provider is the only entity that can identify a Wallet Instance by its  Wallet Hardware Key.</p>
+The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet Provider, thus the Wallet Provider MUST identify a Wallet Instance by its Wallet Hardware Key.</p>
 <p>When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the <cite>Operational</cite> or <cite>Valid</cite> state.
 A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.</p>
 <p>The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.</p>
-<p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User. The User SHOULD be uniquely identified as well as with metadata regarding the device the Wallet Instance is running on, the metadata MAY include data related to the operative system and general technical capabilities of the device.
-These information allow the User to request the Wallet revocation directly interacting with the Wallet Provider as well as enabling the Wallet Provider to revoke a specific Wallet Instance.</p>
-<p>The choice of which data need to be stored is left to the Wallet Provider.</p>
+<p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
+When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.</p>
 </section>
 </section>
 </section>
