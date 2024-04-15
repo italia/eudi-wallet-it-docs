@@ -648,6 +648,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#table-wallet-attestation-claim">Wallet Attestation</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#states">States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transitions">Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#revocations">Revocations</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
@@ -914,6 +920,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wallet-attestation-request">Wallet Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#table-wallet-attestation-claim">Wallet Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#states">States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transitions">Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#revocations">Revocations</a></li>
 </ul>
 </li>
 </ul>
@@ -1521,69 +1533,88 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 </tbody>
 </table>
 <p>The body of the Wallet Attestation JWT MUST contain:</p>
+</section>
+</section>
+<section id="wallet-instance-lifecycle">
+<h2>Wallet Instance Lifecycle<a class="headerlink" href="#wallet-instance-lifecycle" title="Permalink to this heading">¶</a></h2>
+<p>The ability of the Wallet Instance to obtain a Wallet Attestation is bound to its current state.
+The Wallet Instance assesses its current state based on the Credentials stored locally and the Wallet Attestation issued by the Wallet Provider.</p>
+<p>The lifecycle of a Wallet Instance encompasses all the potential states it can configure, along with the transitions from one state to another. This lifecycle is depicted in the diagram below:</p>
+<figure class="align-default" id="id3">
+<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuOhMYbNGrRLJyCm32kNafAPOAMH2c5mAG00N1YloBqWjIYp9pCzBpB5IA4ijoaoh1Ab25WUh2qlCoKm1gW1HYIMf83KGCKnJClDmg799JKmkoIm3IW1DAaejoyzEHRSBfpfCbmEzQQLGceVaDOH6x4emxS9KWd0mfgH3QbuAC801"><img alt="Illustration representing the Wallet Instance lifecycle, with the states explained below." src="../../images/wallet_instance_lifecycle.svg" /></a>
+</figure>
+<p>A Wallet Instance SHOULD obtain a Wallet Attestation if it's in either <cite>Installed</cite>, <cite>Operational</cite> or <cite>Valid</cite> state; that implies that a <cite>Deactivated</cite> Wallet Instance cannot obtain a Wallet Attestation hence it cannot interact with other entities of the ecosystem, such as PID/(Q)EAA Providers and Relying Parties.</p>
+<section id="states">
+<h3>States<a class="headerlink" href="#states" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 60%" />
-<col style="width: 20%" />
+<col style="width: 25%" />
+<col style="width: 75%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<tr class="row-odd"><th class="head"><p><strong>State</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Reference</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>Identifier of the Wallet Provider</p></td>
-<td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<tr class="row-even"><td><p><cite>Installed</cite></p></td>
+<td><p>The User has installed the Wallet Solution on the device.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>Identifier of the Wallet Provider concatenated with thumbprint of the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<tr class="row-odd"><td><p><cite>Operational</cite></p></td>
+<td><p>The Wallet Instance has been verified and the Wallet Hardware Key has been registered; no valid PID is present in the storage.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>exp</strong></p></td>
-<td><p>UNIX Timestamp with the expiry time of the JWT.</p></td>
-<td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<tr class="row-even"><td><p><cite>Valid</cite></p></td>
+<td><p>A valid PID is present in the storage.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>cnf</strong></p></td>
-<td><p>JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>aal</strong></p></td>
-<td><p>JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>authorization_endpoint</strong></p></td>
-<td><p>URL of the Wallet Authorization Endpoint (Universal Link).</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>response_types_supported</strong></p></td>
-<td><p>JSON array containing a list of the OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>response_modes_supported</strong></p></td>
-<td><p>JSON array containing a list of the OAuth 2.0 &quot;response_mode&quot; values that this authorization server supports.</p></td>
-<td><p><span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>vp_formats_supported</strong></p></td>
-<td><p>JSON object with name/value pairs, identifying a Credential format supported by the Wallet.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
-<td><p>JSON array containing a list of the JWS signing algorithms (alg values) supported.</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
-<td><p>Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.</p></td>
-<td></td>
+<tr class="row-odd"><td><p><cite>Deactivated</cite></p></td>
+<td><p>The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usable.</p></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="transitions">
+<h3>Transitions<a class="headerlink" href="#transitions" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Transition</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>install</cite></p></td>
+<td><p>The User performs a fresh installation or restores the initial state of the Wallet Instance on the device.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>verify</cite></p></td>
+<td><p>The Wallet Instance has been verified by the Wallet Provider and its Wallet Hardware Key has been registered.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>validate</cite></p></td>
+<td><p>The Wallet Instance obtains a valid PID.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>invalidate</cite></p></td>
+<td><p>The PID expires or gets revoked.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>revoke</cite></p></td>
+<td><p>The Wallet Provider marks the Wallet Instance as not usable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>uninstall</cite></p></td>
+<td><p>The User removes the Wallet Instance from the device.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="revocations">
+<h3>Revocations<a class="headerlink" href="#revocations" title="Permalink to this heading">¶</a></h3>
+<p>As mentioned in the <em>Wallet Instance initialization and registration</em> section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it.
+The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet Provider, thus the Wallet Provider MUST identify a Wallet Instance by its Wallet Hardware Key.</p>
+<p>When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the <cite>Operational</cite> or <cite>Valid</cite> state.
+A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.</p>
+<p>The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.</p>
+<p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
+When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.</p>
 </section>
 </section>
 </section>
