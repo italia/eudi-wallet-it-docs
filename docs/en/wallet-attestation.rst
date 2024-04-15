@@ -497,17 +497,20 @@ A Wallet Instance SHOULD obtain a Wallet Attestation if it's in either `Installe
 
 States
 ~~~~~~~~~~~~~~~~~~
-+---------------+--------------------------------------------------------------------------------------------------------------------------------+
-| State         | Description                                                                                                                    |
-+===============+================================================================================================================================+
-| `Installed`   | The Holder has installed the Wallet Solution on the device                                                                     |
-+---------------+--------------------------------------------------------------------------------------------------------------------------------+
-| `Operational` | The Wallet Instance has been verified and the Wallet Hardware Key has been registered; no valid PID is present in the storage. |
-+---------------+--------------------------------------------------------------------------------------------------------------------------------+
-| `Valid`       | A valid PID is present in the storage                                                                                          |
-+---------------+--------------------------------------------------------------------------------------------------------------------------------+
-| `Deactivated` | The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usable                                 |
-+---------------+--------------------------------------------------------------------------------------------------------------------------------+
+.. list-table::
+   :widths: 20 60
+   :header-rows: 1
+
+   * - **State**
+     - **Description**
+   * - `Installed`
+     - The User has installed the Wallet Solution on the device.
+   * - `Operational`
+     - The Wallet Instance has been verified and the Wallet Hardware Key has been registered; no valid PID is present in the storage.
+   * - `Valid`
+     - A valid PID is present in the storage.
+   * - `Deactivated`
+     - The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usable.
 
 Transitions
 ~~~~~~~~~~~~~~~~~~
@@ -533,18 +536,15 @@ Transitions
 Revocations
 ~~~~~~~~~~~~~~~~~~
 As mentioned in the *Wallet Instance initialization and registration* section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it. 
-The Wallet Instance shares its Wallet Hardware Key only with the Wallet Provider, thus the Wallet Provider is the only entity that can identify a Wallet Instance by its  Wallet Hardware Key.
+The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet Provider, thus the Wallet Provider MUST identify a Wallet Instance by its Wallet Hardware Key.
 
 When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the `Operational` or `Valid` state.
 A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.
 
 The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.
 
-During the *Wallet Instance initialization and registration* phase the Wallet Provider MAY associate the Wallet Instance with a specific User. The User SHOULD be uniquely identified as well as with metadata regarding the device the Wallet Instance is running on, the metadata MAY include data related to the operative system and general technical capabilities of the device. 
-These information allow the User to request the Wallet revocation directly interacting with the Wallet Provider as well as enabling the Wallet Provider to revoke a specific Wallet Instance.
-
-The choice of which data need to be stored is left to the Wallet Provider.
-
+During the *Wallet Instance initialization and registration* phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
+When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.
 
 
 
