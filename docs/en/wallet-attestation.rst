@@ -497,7 +497,7 @@ The body of the Wallet Attestation JWT MUST contain:
 Wallet Instance Lifecycle
 -----------------------------
 
-The ability of the Wallet Instance to obtain a Wallet Attestation is bound to its current state. 
+The ability of the Wallet Instance to obtain a Wallet Attestation is bound to its current state.
 The Wallet Instance assesses its current state based on the Credentials stored locally and the Wallet Attestation issued by the Wallet Provider.
 
 The lifecycle of a Wallet Instance encompasses all the potential states it can configure, along with the transitions from one state to another. This lifecycle is depicted in the diagram below:
@@ -550,7 +550,7 @@ Transitions
 
 Revocations
 ~~~~~~~~~~~~~~~~~~
-As mentioned in the *Wallet Instance initialization and registration* section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it. 
+As mentioned in the *Wallet Instance initialization and registration* section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it.
 The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet Provider, thus the Wallet Provider MUST identify a Wallet Instance by its Wallet Hardware Key.
 
 When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the `Operational` or `Valid` state.
