@@ -642,7 +642,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#static-component-view">Static Component View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dynamic-component-view">Dynamic Component View</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#wallet-instance-initialization-and-registration">Wallet Instance initialization and registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wallet-attestation-request">Wallet Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#table-wallet-attestation-claim">Wallet Attestation</a></li>
@@ -916,7 +916,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#static-component-view">Static Component View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dynamic-component-view">Dynamic Component View</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#wallet-instance-initialization-and-registration">Wallet Instance initialization and registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wallet-attestation-request">Wallet Attestation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#table-wallet-attestation-claim">Wallet Attestation</a></li>
@@ -1091,17 +1091,19 @@
 <li><p>Each Wallet Instance SHOULD be able to request multiple attestations with different ephemeral public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point listed below).</p></li>
 <li><p>The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.</p></li>
 <li><p>The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework">ARF</a>.</p></li>
-<li><p>The private keys MUST be generated and stored in the WSCD following different approaches:</p>
+<li><p>Private keys MUST be generated and stored in the WSCD using at least one of the approaches listed below:</p>
 <ul>
-<li><p><strong>Internal WSCD</strong>: The WSCD here is solely based on the native cryptographic hardware of the User device, for instance the (iOS) Secure Enclave or the (Android) Hardware Backed Keystore or Strongbox.</p></li>
-<li><p><strong>External WSCD</strong>: The WSCD here is based on a remote Hardware Security Module (HSM) hosted by (or on behalf of) the Wallet Provider or is a chip external to the User device, e.g., a smart card based on GlobalPlatform, and supporting JavaCard.</p></li>
-<li><p><strong>Hybrid WSCD</strong>: The WSCD here is based on a dedicated, internal chip integrated in the User device, e.g. an eUICC based on GlobalPlatform, and supporting JavaCard.</p></li>
+<li><p><strong>Local Internal WSCD</strong>: in this approach, the WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS devices or the Hardware Backed Keystore or Strongbox on Android devices.</p></li>
+<li><p><strong>Local External WSCD</strong>: the WSCD is an hardware external to the User's device, such as a smart card compliant with _GlobalPlatform_ and supporting _JavaCard_.</p></li>
+<li><p><strong>Remote WSCD</strong>: Here, the WSCD utilizes a remote Hardware Security Module (HSM).</p></li>
+<li><p><strong>Local Hybrid WSCD</strong>: the WSCD involves a pluggable internal hardware component within the User's device, such as an _eUICC_ that adheres to _GlobalPlatform_ standards and supports _JavaCard_.</p></li>
+<li><p><strong>Remote Hybrid WSCD</strong>: the WSCD involves a local component mixed with a remote service.</p></li>
 </ul>
 </li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The implementation profile specification, that will be given below, MUST support only the <strong>Internal WSCD</strong>. Future versions of this specification MAY include other approaches depending on the <cite>AAL</cite> required.</p>
+<p>At the current stage, the current implementation profile defined in this document supports only the <strong>Local Internal WSCD</strong>. Future versions of this specification MAY include other approaches depending on the required <cite>AAL</cite>.</p>
 </div>
 </section>
 <section id="static-component-view">
@@ -1114,7 +1116,7 @@
 <h2>Dynamic Component View<a class="headerlink" href="#dynamic-component-view" title="Permalink to this heading">¶</a></h2>
 <p>The Wallet Attestation acquisition flow can be divided into two main phases. The first phase involves device initialization and registration, which occurs only during the initial launch of the Wallet Instance (after installation). The second phase pertains to the actual acquisition of the Wallet Attestation.</p>
 <section id="wallet-instance-initialization-and-registration">
-<h3>Wallet Instance initialization and registration<a class="headerlink" href="#wallet-instance-initialization-and-registration" title="Permalink to this heading">¶</a></h3>
+<h3>Wallet Instance Initialization and Registration<a class="headerlink" href="#wallet-instance-initialization-and-registration" title="Permalink to this heading">¶</a></h3>
 <figure class="align-default" id="sequence-diagram-for-wallet-instance-initialization">
 <a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/ZLFHRjD047o_hrYb3xHM-84yeA8Iqgf04IdmlBOtpYhEdRMt3eIlPy-cQMoPmeCZQszcTcOklewAeks-TjXgyEq-9t5RBWas8MWUVhfNZG6uu0QzEeU51e7PrqWo0upGseixGy3iEzOrATnvK_O5TIXi6XYYtj612pAKKYMiHrYJf4aFHurm4HjXNrL2v2StV9PmCAC2EHOxycL7pOkTSvM4je7WwoEqJV2mOOaAR8wCYSes2XlGBILZBaLu_SRU5j2L4PzEuB8d6k0g1US3Qa-nvm_ZPal53dW3Vmi4R7aEo3NcDJadFfX6E90aeRdPXOiFTwlRnzMNvVAJw-N60KqY5V1a-ZtPi8-1leIGAx87DkDxKYnHqLaTtIRdUg-sPm4hqyooOflKVKLPzXmgrMRF2UX9qZXu0kKzfGf6r8JkEnWTb3HGFLLrKZNyZHmR3PLWi-K2Rb7A7oW4ztICMMPPMRfaKOEy38T7h6ndlmGrBW1LAQeTNPvCpU5bWIkNgCzfqlXj9zELR8uYLvvAo8_miFnurkZQUXx6dq_oBSn_nPY-ZczOSuawke59m7Zt0BR-PvrnUB4FznEtQOVfYrd0w4Et5rOs9x-eFASP9VqTtRNzjFlwDm00"><img alt="The figure illustrates the sequence diagram for initializa a Wallet Instance, with the steps explained below." src="_images/wallet_instance_initialization.svg" /></a>
 </figure>
@@ -1337,7 +1339,7 @@ encoded in <code class="docutils literal notranslate"><span class="pre">applicat
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
-&amp;assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...redacted
+&amp;assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...
 </pre></div>
 </div>
 <p><strong>Steps 13-17</strong>: The Wallet Provider's backend assesses the Wallet Attestation Request and issues a Wallet Attestation, if the requirements described below are satisfied:</p>
@@ -1545,23 +1547,27 @@ The Wallet Instance assesses its current state based on the Credentials stored l
 <section id="states">
 <h3>States<a class="headerlink" href="#states" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>State</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p><strong>State</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><cite>Installed</cite></p></td>
-<td><p>The Holder has installed the Wallet Solution on the device</p></td>
+<td><p>The User has installed the Wallet Solution on the device.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>Operational</cite></p></td>
 <td><p>The Wallet Instance has been verified and the Wallet Hardware Key has been registered; no valid PID is present in the storage.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>Valid</cite></p></td>
-<td><p>A valid PID is present in the storage</p></td>
+<td><p>A valid PID is present in the storage.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>Deactivated</cite></p></td>
-<td><p>The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usable</p></td>
+<td><p>The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usable.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1603,13 +1609,12 @@ The Wallet Instance assesses its current state based on the Credentials stored l
 <section id="revocations">
 <h3>Revocations<a class="headerlink" href="#revocations" title="Permalink to this heading">¶</a></h3>
 <p>As mentioned in the <em>Wallet Instance initialization and registration</em> section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it.
-The Wallet Instance shares its Wallet Hardware Key only with the Wallet Provider, thus the Wallet Provider is the only entity that can identify a Wallet Instance by its  Wallet Hardware Key.</p>
+The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet Provider, thus the Wallet Provider MUST identify a Wallet Instance by its Wallet Hardware Key.</p>
 <p>When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the <cite>Operational</cite> or <cite>Valid</cite> state.
 A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.</p>
 <p>The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.</p>
-<p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User. The User SHOULD be uniquely identified as well as with metadata regarding the device the Wallet Instance is running on, the metadata MAY include data related to the operative system and general technical capabilities of the device.
-These information allow the User to request the Wallet revocation directly interacting with the Wallet Provider as well as enabling the Wallet Provider to revoke a specific Wallet Instance.</p>
-<p>The choice of which data need to be stored is left to the Wallet Provider.</p>
+<p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
+When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.</p>
 </section>
 </section>
 </section>
