@@ -475,24 +475,26 @@ The body of the Wallet Attestation JWT MUST contain:
       - :rfc:`7800`
     * - **aal**
       - JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
-      -
+      - 
     * - **authorization_endpoint**
       - URL of the Wallet Authorization Endpoint (Universal Link).
-      -
+      - 
     * - **response_types_supported**
       - JSON array containing a list of the OAuth 2.0 ``response_type`` values.
-      -
+      - 
     * - **response_modes_supported**
       - JSON array containing a list of the OAuth 2.0 "response_mode" values that this authorization server supports.
       - :rfc:`8414`
     * - **vp_formats_supported**
       - JSON object with name/value pairs, identifying a Credential format supported by the Wallet.
-      -
+      - 
     * - **request_object_signing_alg_values_supported**
       - JSON array containing a list of the JWS signing algorithms (alg values) supported.
-      -
+      - 
     * - **presentation_definition_uri_supported**
       - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
+      -
+
 
 Wallet Instance Lifecycle
 -----------------------------
