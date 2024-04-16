@@ -322,6 +322,7 @@ The ``client_assertion`` is signed using the private key that is created during 
 
     **PID/(Q)EAA Credential Schema and Status registration:** The PID/(Q)EAA Provider MUST register all the issued Credentials for their later revocation, if needed.
 
+
 .. note::
 
     It is RECOMMENDED that the public key contained in the ``jwt_proof`` be specifically generated for the requested Credential (fresh cryptographic key) to ensure that different issued Credentials do not share the same public key, thereby remaining unlinkable to each other.
