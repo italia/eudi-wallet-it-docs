@@ -363,28 +363,35 @@ giving the references of the metadata protocol for each of these.
     The entries that don't have any reference to a known draft or standard are intended to be defined in this technical reference.
 
 .. list-table::
-   :widths: 20 20 60
+   :widths: 20 20 20 60
    :header-rows: 1
 
-   * - Entity
-     - Metadata type
+   * - OpenID Entity
+     - EUDI Entity
+     - Metadata Type
      - References
    * - Trust Anchor
+     - Trust Anchor
      - ``federation_entity``
      - `OIDC-FED`_
    * - Intermediate
+     - Intermediate
      - ``federation_entity``
      - `OIDC-FED`_
    * - Wallet Provider
+     - Wallet Provider
      - ``federation_entity``, ``wallet_provider``
      - --
    * - Authorization Server
+     - 
      - ``federation_entity``, ``oauth_authorization_server``
      - `OPENID4VCI`_
    * - Credential Issuer
+     - PID Provider, (Q)EAA Provider
      - ``federation_entity``, ``openid_credential_issuer``, [``oauth_authorization_server``]
      - `OPENID4VCI`_
    * - Relying Party
+     - Relying Party
      - ``federation_entity``, ``wallet_relying_party``
      - `OIDC-FED`_, `OpenID4VP`_
 
