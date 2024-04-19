@@ -823,7 +823,7 @@ A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a resu
     - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **jti**
-    - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP MAY use to prevent reuse by rejecting the Token ID if already processed.
+    - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP SHOULD use to prevent reuse by rejecting the Token ID if already processed.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **jkt**
     - JWK SHA-256 Thumbprint Confirmation Method. The value of the jkt member MUST be the base64url encoding (as defined in [RFC7515]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.
