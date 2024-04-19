@@ -37,6 +37,7 @@ implementation profile and to the initial set of implementations.
 - Kristina Yasuda
 - Leif Johansson
 - Lorenzo Cerini
+- Mart Aarma
 - Marta Sciunnach
 - Michele Silletti
 - Nicola Saitto
