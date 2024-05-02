@@ -18,9 +18,9 @@
 
 ## Intro
 
-This repository hosts the sphinx project tree of EUDI Wallet Technical Specifications.
+This repository hosts the sphinx project tree of National Wallet Technical Specifications.
 
-> This repository may contain contents to be considered experimental until the publication of the first release.
+> This repository may contain contents to be considered experimental until the publication of the first stable release, v1.0.
 
 ## Preview
 
