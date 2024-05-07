@@ -253,15 +253,16 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
         "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
         "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg",
         "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-      },
-      "vp_formats_supported": {
-          "jwt_vc_json": {
-            "alg_values_supported": ["ES256K", "ES384"],
-          },
-          "jwt_vp_json": {
-            "alg_values_supported": ["ES256K", "EdDSA"],
-          },
+      }
+    },
+    "vp_formats_supported": {
+        "jwt_vc_json": {
+          "alg_values_supported": ["ES256K", "ES384"],
         },
+        "jwt_vp_json": {
+          "alg_values_supported": ["ES256K", "EdDSA"],
+        },
+      },
     },
     "iat": 1686645115,
     "exp": 1686652315
