@@ -408,7 +408,7 @@ giving the references of the metadata protocol for each of these.
     ``oauth_authorization_server`` and ``openid_credential_issuer`` within its metadata types.
     Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the `authorization_servers` parameters, including the Authorization Server unique identifier.
     Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
-    it is mandatory to include the relevant metadata type, either ``openid_relying_party`` 
+    it could be necessary to include the relevant metadata type, either ``openid_relying_party`` 
     or ``wallet_relying_party``.
 
 Entity Statements
