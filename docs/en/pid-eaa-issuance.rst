@@ -1077,7 +1077,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
                 "name": "Example PID Provider",
                 "locale": "en-US",
                 "logo": {
-                   "url": "https://pid-provider.example.org/public/logo.svg",
+                   "uri": "https://pid-provider.example.org/public/logo.svg",
                    "alt_text": "logo di questo PID Provider"
                 },
               }
@@ -1109,7 +1109,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
                     "name": "PID Italiano di esempio",
                     "locale": "it-IT",
                     "logo": {
-                      "url": "https://pid-provider example.org/public/logo.svg",
+                      "uri": "https://pid-provider example.org/public/logo.svg",
                       "alt_text": "logo di questa Credenziale"
                     },
                     "background_color": "#12107c",
@@ -1119,7 +1119,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
                     "name": "Example Italian PID",
                     "locale": "en-US",
                     "logo": {
-                      "url": "https://pid-provider.example.org/public/logo.svg",
+                      "uri": "https://pid-provider.example.org/public/logo.svg",
                       "alt_text": "The logo of this credential"
                     },
                     "background_color": "#12107c",
