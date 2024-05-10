@@ -1131,6 +1131,11 @@ except for Wallet Instances which are End-User's personal devices certified by t
 </div>
 <p>Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles, as defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>EUDI Role</p></th>
 <th class="head"><p>Federation Role</p></th>
@@ -1139,14 +1144,8 @@ except for Wallet Instances which are End-User's personal devices certified by t
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Public Key Infrastructure (PKI)</p></td>
-<td><p>Trust Anchor</p>
-<p>Intermediates</p>
-</td>
-<td><p>The Federation has PKI
-capabilities. The
-Entity that configures
-the entire infrastructure
-is the Trust Anchor.</p></td>
+<td><p>Trust Anchor</p></td>
+<td><p>The Federation has PKI capabilities. The Entity that configures the entire infrastructure is the Trust Anchor.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Qualified Trust Service Provider (QTSP)</p></td>
 <td><p>Leaf</p></td>
@@ -1156,13 +1155,11 @@ is the Trust Anchor.</p></td>
 <td><p>Leaf</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Qualified Electronic Attestations
-of Attributes Provider</p></td>
+<tr class="row-odd"><td><p>Qualified Electronic Attestations of Attributes Provider</p></td>
 <td><p>Leaf</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Electronic Attestations of
-Attributes Provider</p></td>
+<tr class="row-even"><td><p>Electronic Attestations of Attributes Provider</p></td>
 <td><p>Leaf</p></td>
 <td></td>
 </tr>
@@ -1175,18 +1172,8 @@ Attributes Provider</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>Trusted List</p></td>
-<td><p>Trust Anchor</p>
-<p>Intermediates</p>
-</td>
-<td><p>The listing endpoint, the
-trust mark status endpoint
-and the fetch endpoint must
-be exposed by both Trust Anchors
-and Intermediates, making
-the Trusted List distributed
-over multiple Federation Entities,
-where each of these is responsible
-for their accredited subordinates.</p></td>
+<td><p>Trust Anchor</p></td>
+<td><p>The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their accredited subordinates.</p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>Leaf</p></td>
@@ -1214,10 +1201,15 @@ for their accredited subordinates.</p></td>
 <h2>Trust Model Requirements<a class="headerlink" href="#trust-model-requirements" title="Permalink to this heading">¶</a></h2>
 <p>In the table below is provided the map of the components that the ARF defines within the Trust Model, in the same table is provided their coverage in <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>.</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Component</p></th>
 <th class="head"><p>Satisfied</p></th>
-<th class="head"><p>how</p></th>
+<th class="head"><p>How</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1227,35 +1219,19 @@ for their accredited subordinates.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Issuers registration</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
-<td><p>Trust Anchor</p>
-<p>Intermediates
-accreditation
-system</p>
-</td>
+<td><p>Trust Anchor, Intermediates accreditation system</p></td>
 </tr>
 <tr class="row-even"><td><p>Recognised data models and schemas</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
-<td><p>Entity
-Configuration</p>
-<p>Entity
-Statements</p>
-</td>
+<td><p>Entity Configuration, Entity Statements</p></td>
 </tr>
 <tr class="row-odd"><td><p>Relying Parties' registration and authentication</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
-<td><p>Trust Chains</p>
-<p>Federation
-Entity
-Discovery</p>
-</td>
+<td><p>Trust Chains, Federation Entity Discovery</p></td>
 </tr>
 <tr class="row-even"><td><p>Trust mechanisms in a cross-domain scenario</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
-<td><p>Trust Chains</p>
-<p>Federation
-Entity
-Discovery</p>
-</td>
+<td><p>Trust Chains, Federation Entity Discovery</p></td>
 </tr>
 </tbody>
 </table>
@@ -1267,6 +1243,12 @@ HTTPs. OpenID Federation 1.0 defines which are the web endpoints that the partic
 publicly available. The table below summarises the endpoints and their scopes.</p>
 <p>All the endpoints listed below are defined in the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> specs.</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>endpoint name</p></th>
 <th class="head"><p>http request</p></th>
@@ -1277,56 +1259,28 @@ publicly available. The table below summarises the endpoints and their scopes.</
 <tbody>
 <tr class="row-even"><td><p>federation metadata</p></td>
 <td><p><strong>GET</strong> .well-known/openid-federation</p></td>
-<td><p>Metadata that an Entity
-publishes about itself,
-verifiable with a trusted third
-party (Superior Entity). It's
-called Entity Configuration.</p></td>
-<td><p>Trust Anchor</p>
-<p>Intermediate</p>
-<p>Wallet Provider</p>
-<p>Relying Party</p>
-<p>Credential
-Issuer</p>
-</td>
+<td><p>Metadata that an Entity publishes about itself, verifiable with a trusted third party (Superior Entity). It's called Entity Configuration.</p></td>
+<td><p>Trust Anchor, Intermediate, Wallet Provider, Relying Party, Credential Issuer</p></td>
 </tr>
 <tr class="row-odd"><td><p>subordinate list endpoint</p></td>
 <td><p><strong>GET</strong> /list</p></td>
 <td><p>Lists the Subordinates.</p></td>
-<td><p>Trust Anchor</p>
-<p>Intermediate</p>
-</td>
+<td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-even"><td><p>fetch endpoint</p></td>
 <td><p><strong>GET</strong> /fetch?sub=https://rp.example.org</p></td>
-<td><p>Returns a signed document (JWS)
-about a specific subject, its
-Subordinate. It's called Entity
-Statement.</p></td>
-<td><p>Trust Anchor</p>
-<p>Intermediate</p>
-</td>
+<td><p>Returns a signed document (JWS) about a specific subject, its Subordinate. It's called Entity Statement.</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-odd"><td><p>trust mark status</p></td>
 <td><p><strong>POST</strong> /status?sub=...&amp;trust_mark_id=...</p></td>
-<td><p>Returns the status of the
-issuance (validity) of a Trust
-Mark related to a specific
-subject.</p></td>
-<td><p>Trust Anchor</p>
-<p>Intermediate</p>
-</td>
+<td><p>Returns the status of the issuance (validity) of a Trust Mark related to a specific subject.</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-even"><td><p>historical keys</p></td>
-<td><p><strong>GET</strong></p>
-<p>/historical-jwks</p>
-</td>
-<td><p>Lists the expired and revoked
-keys, with the motivation of the
-revocation.</p></td>
-<td><p>Trust Anchor</p>
-<p>Intermediate</p>
-</td>
+<td><p><strong>GET</strong> /historical-jwks</p></td>
+<td><p>Lists the expired and revoked keys, with the motivation of the revocation.</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 </tbody>
 </table>
@@ -1514,40 +1468,49 @@ giving the references of the metadata protocol for each of these.</p>
 <p>The entries that don't have any reference to a known draft or standard are intended to be defined in this technical reference.</p>
 </div>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 50%" />
+</colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Entity</p></th>
-<th class="head"><p>metadata type</p></th>
-<th class="head"><p>references</p></th>
+<tr class="row-odd"><th class="head"><p>OpenID Entity</p></th>
+<th class="head"><p>EUDI Entity</p></th>
+<th class="head"><p>Metadata Type</p></th>
+<th class="head"><p>References</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Trust Anchor</p></td>
+<td><p>Trust Anchor</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Intermediate</p></td>
+<td><p>Intermediate</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code></p>
-</td>
+<td><p>Wallet Provider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code></p></td>
 <td><p>--</p></td>
 </tr>
-<tr class="row-odd"><td><p>Credential Issuer</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code></p>
-</td>
+<tr class="row-odd"><td><p>Authorization Server</p></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code></p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OPENID4VCI</a></p></td>
 </tr>
-<tr class="row-even"><td><p>Relying Party</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">wallet_relying_party</span></code></p>
-</td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a></p>
-<p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p>
-</td>
+<tr class="row-even"><td><p>Credential Issuer</p></td>
+<td><p>PID Provider, (Q)EAA Provider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code>, [<code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code>]</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OPENID4VCI</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Relying Party</p></td>
+<td><p>Relying Party</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_relying_party</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1555,6 +1518,16 @@ giving the references of the metadata protocol for each of these.</p>
 <p class="admonition-title">Note</p>
 <p>Wallet Provider metadata is defined in the section below.</p>
 <p><a class="reference external" href="wallet-solution.html">Wallet Solution section</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server,
+it MUST incorporate both
+<code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code> and <code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code> within its metadata types.
+Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the <cite>authorization_servers</cite> parameters, including the Authorization Server unique identifier.
+Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
+it could be necessary to include the relevant metadata type, either <code class="docutils literal notranslate"><span class="pre">openid_relying_party</span></code>
+or <code class="docutils literal notranslate"><span class="pre">wallet_relying_party</span></code>.</p>
 </div>
 </section>
 </section>
