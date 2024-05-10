@@ -253,15 +253,16 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
         "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
         "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg",
         "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-      },
-      "vp_formats_supported": {
-          "jwt_vc_json": {
-            "alg_values_supported": ["ES256K", "ES384"],
-          },
-          "jwt_vp_json": {
-            "alg_values_supported": ["ES256K", "EdDSA"],
-          },
+      }
+    },
+    "vp_formats_supported": {
+        "jwt_vc_json": {
+          "alg_values_supported": ["ES256K", "ES384"],
         },
+        "jwt_vp_json": {
+          "alg_values_supported": ["ES256K", "EdDSA"],
+        },
+      },
     },
     "iat": 1686645115,
     "exp": 1686652315
@@ -475,24 +476,26 @@ The body of the Wallet Attestation JWT MUST contain:
       - :rfc:`7800`
     * - **aal**
       - JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
-      -
+      - 
     * - **authorization_endpoint**
       - URL of the Wallet Authorization Endpoint (Universal Link).
-      -
+      - 
     * - **response_types_supported**
       - JSON array containing a list of the OAuth 2.0 ``response_type`` values.
-      -
+      - 
     * - **response_modes_supported**
       - JSON array containing a list of the OAuth 2.0 "response_mode" values that this authorization server supports.
       - :rfc:`8414`
     * - **vp_formats_supported**
       - JSON object with name/value pairs, identifying a Credential format supported by the Wallet.
-      -
+      - 
     * - **request_object_signing_alg_values_supported**
       - JSON array containing a list of the JWS signing algorithms (alg values) supported.
-      -
+      - 
     * - **presentation_definition_uri_supported**
       - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
+      -
+
 
 Wallet Instance Lifecycle
 -----------------------------
