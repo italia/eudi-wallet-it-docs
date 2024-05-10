@@ -322,6 +322,11 @@ The ``client_assertion`` is signed using the private key that is created during 
 
     **PID/(Q)EAA Credential Schema and Status registration:** The PID/(Q)EAA Provider MUST register all the issued Credentials for their later revocation, if needed.
 
+
+.. note::
+
+    It is RECOMMENDED that the public key contained in the ``jwt_proof`` be specifically generated for the requested Credential (fresh cryptographic key) to ensure that different issued Credentials do not share the same public key, thereby remaining unlinkable to each other.
+
 .. code-block::
 
   POST /credential HTTP/1.1
@@ -892,7 +897,7 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - It MUST be set to `openid4vci-proof+jwt`.
     - `[OIDC4VCI. Draft 13] <https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * - **jwk**
-    - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`]. The ``jwk`` value MUST be equal to the same public key that is generated for the DPoP.
+    - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`].
     - `[OIDC4VCI. Draft 13] <https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
 
 .. list-table::
