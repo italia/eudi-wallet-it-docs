@@ -1515,12 +1515,12 @@ giving the references of the metadata protocol for each of these.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In instances where a Credential Issuer also functions as an Authorization Server,
-it is imperative for the Entity to incorporate both
+<p>In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server,
+it MUST incorporate both
 <code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code> and <code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code> within its metadata types.
-Other implementations may divide the Credential Issuer from the Authorization Server.
+Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the <cite>authorization_servers</cite> parameters, including the Authorization Server unique identifier.
 Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
-it is mandatory to include the relevant metadata type, either <code class="docutils literal notranslate"><span class="pre">openid_relying_party</span></code>
+it could be necessary to include the relevant metadata type, either <code class="docutils literal notranslate"><span class="pre">openid_relying_party</span></code>
 or <code class="docutils literal notranslate"><span class="pre">wallet_relying_party</span></code>.</p>
 </div>
 </section>
