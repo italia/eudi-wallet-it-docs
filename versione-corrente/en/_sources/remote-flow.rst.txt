@@ -240,7 +240,6 @@ The Relying Party issues the signed Request Object, where a non-normative exampl
   {
     "alg": "ES256",
     "typ": "JWT",
-    "kid": "e0bbf2f1-8c3a-4eab-a8ac-2e8f34db8a47",
     "trust_chain": [
       "MIICajCCAdOgAwIBAgIC...awz",
       "MIICajCCAdOgAwIBAgIC...2w3",
@@ -494,8 +493,7 @@ Below is a non-normative example of the ``vp_token`` decoded content, represente
 
    {
      "alg": "ES256",
-     "typ": "JWT",
-     "kid": "e0bbf2f1-8c3a-4eab-a8ac-2e8f34db8a47"
+     "typ": "JWT"
    }
    .
    {
