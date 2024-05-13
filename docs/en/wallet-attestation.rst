@@ -253,15 +253,16 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
         "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
         "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg",
         "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-      },
-      "vp_formats_supported": {
-          "jwt_vc_json": {
-            "alg_values_supported": ["ES256K", "ES384"],
-          },
-          "jwt_vp_json": {
-            "alg_values_supported": ["ES256K", "EdDSA"],
-          },
+      }
+    },
+    "vp_formats_supported": {
+        "jwt_vc_json": {
+          "alg_values_supported": ["ES256K", "ES384"],
         },
+        "jwt_vp_json": {
+          "alg_values_supported": ["ES256K", "EdDSA"],
+        },
+      },
     },
     "iat": 1686645115,
     "exp": 1686652315
@@ -475,25 +476,94 @@ The body of the Wallet Attestation JWT MUST contain:
       - :rfc:`7800`
     * - **aal**
       - JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
-      -
+      - 
     * - **authorization_endpoint**
       - URL of the Wallet Authorization Endpoint (Universal Link).
-      -
+      - 
     * - **response_types_supported**
       - JSON array containing a list of the OAuth 2.0 ``response_type`` values.
-      -
+      - 
     * - **response_modes_supported**
       - JSON array containing a list of the OAuth 2.0 "response_mode" values that this authorization server supports.
       - :rfc:`8414`
     * - **vp_formats_supported**
       - JSON object with name/value pairs, identifying a Credential format supported by the Wallet.
-      -
+      - 
     * - **request_object_signing_alg_values_supported**
       - JSON array containing a list of the JWS signing algorithms (alg values) supported.
-      -
+      - 
     * - **presentation_definition_uri_supported**
       - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
       -
+
+
+Wallet Instance Lifecycle
+-----------------------------
+
+The ability of the Wallet Instance to obtain a Wallet Attestation is bound to its current state.
+The Wallet Instance assesses its current state based on the Credentials stored locally and the Wallet Attestation issued by the Wallet Provider.
+
+The lifecycle of a Wallet Instance encompasses all the potential states it can configure, along with the transitions from one state to another. This lifecycle is depicted in the diagram below:
+
+.. figure:: ../../images/wallet_instance_lifecycle.svg
+   :name: Wallet Instance Lifecycle
+   :alt: Illustration representing the Wallet Instance lifecycle, with the states explained below.
+   :target: https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuOhMYbNGrRLJyCm32kNafAPOAMH2c5mAG00N1YloBqWjIYp9pCzBpB5IA4ijoaoh1Ab25WUh2qlCoKm1gW1HYIMf83KGCKnJClDmg799JKmkoIm3IW1DAaejoyzEHRSBfpfCbmEzQQLGceVaDOH6x4emxS9KWd0mfgH3QbuAC801
+
+
+A Wallet Instance SHOULD obtain a Wallet Attestation if it's in either `Installed`, `Operational` or `Valid` state; that implies that a `Deactivated` Wallet Instance cannot obtain a Wallet Attestation hence it cannot interact with other entities of the ecosystem, such as PID/(Q)EAA Providers and Relying Parties.
+
+States
+~~~~~~~~~~~~~~~~~~
+.. list-table::
+   :widths: 20 60
+   :header-rows: 1
+
+   * - **State**
+     - **Description**
+   * - `Installed`
+     - The User has installed the Wallet Solution on the device.
+   * - `Operational`
+     - The Wallet Instance has been verified and the Wallet Hardware Key has been registered; no valid PID is present in the storage.
+   * - `Valid`
+     - A valid PID is present in the storage.
+   * - `Deactivated`
+     - The Wallet Instance has been revoked and its Wallet Hardware Key has been marked as not usable.
+
+Transitions
+~~~~~~~~~~~~~~~~~~
+.. list-table::
+   :widths: 20 60
+   :header-rows: 1
+
+   * - **Transition**
+     - **Description**
+   * - `install`
+     - The User performs a fresh installation or restores the initial state of the Wallet Instance on the device.
+   * - `verify`
+     - The Wallet Instance has been verified by the Wallet Provider and its Wallet Hardware Key has been registered.
+   * - `validate`
+     - The Wallet Instance obtains a valid PID.
+   * - `invalidate`
+     - The PID expires or gets revoked.
+   * - `revoke`
+     - The Wallet Provider marks the Wallet Instance as not usable.
+   * - `uninstall`
+     - The User removes the Wallet Instance from the device.
+
+Revocations
+~~~~~~~~~~~~~~~~~~
+As mentioned in the *Wallet Instance initialization and registration* section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it.
+The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet Provider, thus the Wallet Provider MUST identify a Wallet Instance by its Wallet Hardware Key.
+
+When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the `Operational` or `Valid` state.
+A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.
+
+The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.
+
+During the *Wallet Instance initialization and registration* phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
+When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.
+
 
 
 .. _token endpoint: wallet-solution.html#wallet-attestation

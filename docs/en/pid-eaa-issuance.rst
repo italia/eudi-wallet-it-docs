@@ -322,6 +322,11 @@ The ``client_assertion`` is signed using the private key that is created during 
 
     **PID/(Q)EAA Credential Schema and Status registration:** The PID/(Q)EAA Provider MUST register all the issued Credentials for their later revocation, if needed.
 
+
+.. note::
+
+    It is RECOMMENDED that the public key contained in the ``jwt_proof`` be specifically generated for the requested Credential (fresh cryptographic key) to ensure that different issued Credentials do not share the same public key, thereby remaining unlinkable to each other.
+
 .. code-block::
 
   POST /credential HTTP/1.1
@@ -823,7 +828,7 @@ A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a resu
     - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **jti**
-    - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP MAY use to prevent reuse by rejecting the Token ID if already processed.
+    - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP SHOULD use to prevent reuse by rejecting the Token ID if already processed.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **jkt**
     - JWK SHA-256 Thumbprint Confirmation Method. The value of the jkt member MUST be the base64url encoding (as defined in [RFC7515]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.
@@ -892,7 +897,7 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - It MUST be set to `openid4vci-proof+jwt`.
     - `[OIDC4VCI. Draft 13] <https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * - **jwk**
-    - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`]. The ``jwk`` value MUST be equal to the same public key that is generated for the DPoP.
+    - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`].
     - `[OIDC4VCI. Draft 13] <https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
 
 .. list-table::
@@ -1077,7 +1082,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
                 "name": "Example PID Provider",
                 "locale": "en-US",
                 "logo": {
-                   "url": "https://pid-provider.example.org/public/logo.svg",
+                   "uri": "https://pid-provider.example.org/public/logo.svg",
                    "alt_text": "logo di questo PID Provider"
                 },
               }
@@ -1109,7 +1114,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
                     "name": "PID Italiano di esempio",
                     "locale": "it-IT",
                     "logo": {
-                      "url": "https://pid-provider example.org/public/logo.svg",
+                      "uri": "https://pid-provider example.org/public/logo.svg",
                       "alt_text": "logo di questa Credenziale"
                     },
                     "background_color": "#12107c",
@@ -1119,7 +1124,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
                     "name": "Example Italian PID",
                     "locale": "en-US",
                     "logo": {
-                      "url": "https://pid-provider.example.org/public/logo.svg",
+                      "uri": "https://pid-provider.example.org/public/logo.svg",
                       "alt_text": "The logo of this credential"
                     },
                     "background_color": "#12107c",
