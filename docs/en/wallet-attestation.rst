@@ -104,6 +104,7 @@ Wallet Instance Initialization and Registration
     **Device Integrity Service:** In this section the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers the verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this scope.
 
     The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android the service used is `Key Attestation`_ in addition to `Play Integrity API`_, while for iOS the `DeviceCheck`_ service.
+    This service, being custom made by the manufacturer, is already implemented within the Android or iOS SDKs therefore it is not necessary to have any hardcoded endpoint to reach it. Furthermore, being a custom service, it will not have to be part of the federation.
 
 **Step 8**: The Device Integrity Service performs the following actions:
 
@@ -476,22 +477,22 @@ The body of the Wallet Attestation JWT MUST contain:
       - :rfc:`7800`
     * - **aal**
       - JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
-      - 
+      -
     * - **authorization_endpoint**
       - URL of the Wallet Authorization Endpoint (Universal Link).
-      - 
+      -
     * - **response_types_supported**
       - JSON array containing a list of the OAuth 2.0 ``response_type`` values.
-      - 
+      -
     * - **response_modes_supported**
       - JSON array containing a list of the OAuth 2.0 "response_mode" values that this authorization server supports.
       - :rfc:`8414`
     * - **vp_formats_supported**
       - JSON object with name/value pairs, identifying a Credential format supported by the Wallet.
-      - 
+      -
     * - **request_object_signing_alg_values_supported**
       - JSON array containing a list of the JWS signing algorithms (alg values) supported.
-      - 
+      -
     * - **presentation_definition_uri_supported**
       - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
       -
