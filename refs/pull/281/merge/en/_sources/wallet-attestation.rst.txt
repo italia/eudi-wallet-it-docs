@@ -104,7 +104,7 @@ Wallet Instance Initialization and Registration
     **Device Integrity Service:** In this section the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers the verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this scope.
 
     The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android the service used is `Key Attestation`_ in addition to `Play Integrity API`_, while for iOS the `DeviceCheck`_ service.
-    This service, being custom made by the manufacturer, is already implemented within the Android or iOS SDKs therefore it is not necessary to have any hardcoded endpoint to reach it. Furthermore, being a custom service, it will not have to be part of the federation.
+    This service, specifically developed by the manufacturer, is already integrated within the Android or iOS SDKs, so there is no need for a predefined endpoint to access it. Moreover, as it is specifically developed in the mobile architecture, it does not need to be registered as a Federation Entity, though the national accreditation systems.
 
 **Step 8**: The Device Integrity Service performs the following actions:
 
