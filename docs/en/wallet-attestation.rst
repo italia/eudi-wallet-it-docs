@@ -103,8 +103,13 @@ Wallet Instance Initialization and Registration
 
     **Device Integrity Service:** In this section the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers the verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this scope.
 
-    The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android the service used is `Key Attestation`_ in addition to `Play Integrity API`_, while for iOS the `DeviceCheck`_ service.
-    This service, specifically developed by the manufacturer, is already integrated within the Android or iOS SDKs, so there is no need for a predefined endpoint to access it. Moreover, as it is specifically developed in the mobile architecture, it does not need to be registered as a Federation Entity, through the national accreditation systems.
+    The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android the DIS is represented by **StrongBox Keymaster** which is a physical HSM installed directly on the motherboard, it has various feature, the one we are interested to is named `Key Attestation`_, developer can leverage its functionality by the usage of `Play Integrity API`_. *Key attestation* aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage.
+    For Apple devices the DIS is represented by **Secure Enclave**, a dedicated secure subsystem integrated into Apple's SoCs. Apple iOS is more fragmented than Android, in this case exists a series of services named `DeviceCheck`_ which provide a framework and server interface to manage device-specific data securely, developer can leverage its functionality by the usage of the framework itself. *DeviceCheck* It can be used to attest to the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like Secure Enclave.
+
+    This services, specifically developed by the manufacturer, are already integrated within the Android or iOS SDKs, so there is no need for a predefined endpoint to access it. Moreover, as it is specifically developed in the mobile architecture, it does not need to be registered as a Federation Entity, through the national accreditation systems.
+
+    For Apple devices Secure Enclave is available since the iPhone 5s (2013).
+    Strongbox Keymaster is different in that, because each smartphone manufacturer must decide whether to include it or not.
 
 **Step 8**: The Device Integrity Service performs the following actions:
 
