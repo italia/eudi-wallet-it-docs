@@ -86,40 +86,40 @@ attributes listed below:
 Header
 ^^^^^^^
 .. list-table::
-    :widths: 20 60 20
+    :widths: 20 80
     :header-rows: 1
 
     * - **Key**
       - **Value**
-    * - **alg**
+    * - alg
       - Algorithm used to verify the token signature. It MUST be one of the possibile values indicated `here <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/algorithms.html>`_ (e.g., ES256).
-    * - **kid**
+    * - kid
       -  Thumbprint of the public key used for signing.
-    * - **typ**
+    * - typ
       -  Media type, set to ``entity-statement+jwt``.
 
 
 Payload
 ^^^^^^^
 .. list-table::
-    :widths: 20 60 20
+    :widths: 20 80
     :header-rows: 1
 
     * - **Key**
       - **Value**
-    * - **iss**
+    * - iss
       - Public URL of the Wallet Provider.
-    * - **sub**
+    * - sub
       -  Public URL of the Wallet Provider.
-    * - **iat**
+    * - iat
       -  Issuance datetime in Unix Timestamp format. 
-    * - **exp**
+    * - exp
       -  Expiration datetime in Unix Timestamp format.
-    * - **authority_hints**
+    * - authority_hints
       -   Array of URLs (String) containing the list of URLs of the immediate superior Entities, such as the Trust Anchor or an Intermediate, that MAY issue an Entity Statement related to this subject.  
-    * - **jwks**
+    * - jwks
       -  A JSON Web Key Set (JWKS) `RFC 7517 <http://tools.ietf.org/html  rfc7517.html>`_ that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid). 
-    * - **metadata**
+    * - metadata
       -  Contains the metadata ``wallet_provider`` and the ``federation_entity`` metadata. 
 
 
