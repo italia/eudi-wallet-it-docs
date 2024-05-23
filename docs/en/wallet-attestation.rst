@@ -121,7 +121,7 @@ Wallet Instance Initialization and Registration
 
 .. code-block:: http
 
-    PUT /wallet-instance HTTP/1.1
+    POST /wallet-instance HTTP/1.1
     Host: walletprovider.example.com
     Content-Type: application/json
 
@@ -150,8 +150,7 @@ Wallet Instance Initialization and Registration
 
 .. code-block:: http
 
-    HTTP/1.1 201 Created
-    Content-Type: application/json
+    HTTP/1.1 204 No content
 
 If any errors occur during the Wallet Instance registration, the Wallet Provider MUST return an error response. The response MUST use the content type set to *application/json* and MUST include the following parameters:
 
