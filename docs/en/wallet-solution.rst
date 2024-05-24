@@ -92,7 +92,7 @@ Header
     * - **Key**
       - **Value**
     * - alg
-      - Algorithm used to verify the token signature. It MUST be one of the possibile values indicated `here <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/algorithms.html>`_ (e.g., ES256).
+      - Algorithm used to verify the token signature. It MUST be one of the possibile values indicated in this `table <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/algorithms.html>`_ (e.g., ES256).
     * - kid
       -  Thumbprint of the public key used for signing.
     * - typ
