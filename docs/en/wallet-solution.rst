@@ -94,7 +94,7 @@ Header
     * - alg
       - Algorithm used to verify the token signature. It MUST be one of the possibile values indicated in this `table <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/algorithms.html>`_ (e.g., ES256).
     * - kid
-      -  Thumbprint of the public key used for signing.
+      -  Thumbprint of the public key used for signing, according to :ref:`rfc7638`.
     * - typ
       -  Media type, set to ``entity-statement+jwt``.
 
