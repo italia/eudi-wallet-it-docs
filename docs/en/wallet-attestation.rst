@@ -356,7 +356,7 @@ Below an non-normative example of the Wallet Attestation without encoding and si
 
 .. code-block:: http
 
-    HTTP/1.1 201 OK
+    HTTP/1.1 200 OK
     Content-Type: application/jwt
 
     eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
