@@ -457,9 +457,6 @@ The body of the Wallet Attestation JWT MUST contain:
     * - **iss**
       - Identifier of the Wallet Provider
       - :rfc:`9126` and :rfc:`7519`.
-    * - **aud**
-      - Identifier of the Wallet Provider concatenated with thumbprint of the Wallet Instance.
-      - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
       - UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
