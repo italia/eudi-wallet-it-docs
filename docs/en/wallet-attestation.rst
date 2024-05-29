@@ -375,7 +375,7 @@ The JOSE header of the Wallet Attestation Request JWT MUST contain:
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      -  Unique identifier of the ``jwk`` used by the Wallet Provider to sign the Wallet Attestation and required to match the Wallet Provider cryptographic public key.
+      -  Unique identifier of the ``jwk`` used by the Wallet Provider to sign the Wallet Attestation, essential for matching the Wallet Provider's cryptographic public key needed for signature verification..
       - :rfc:`7638#section_3`.
     * - **typ**
       -  It MUST be set to ``var+jwt``
