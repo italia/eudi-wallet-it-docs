@@ -84,56 +84,44 @@ The returning Entity Configuration of the Wallet Provider MUST contain the
 attributes listed below:
 
 Header
-^^^^^^
-+---------+-----------------------------------------------------------------+
-| **Key** | **Value**                                                       |
-+---------+-----------------------------------------------------------------+
-| alg     | Algorithm used to verify the token signature (e.g., ES256).     |
-+---------+-----------------------------------------------------------------+
-| kid     | Thumbprint of the public key used for signing.                  |
-+---------+-----------------------------------------------------------------+
-| typ     | Media type, set to ``entity-statement+jwt``.                    |
-+---------+-----------------------------------------------------------------+
+^^^^^^^
+.. list-table::
+    :widths: 20 80
+    :header-rows: 1
+
+    * - **Key**
+      - **Value**
+    * - alg
+      - Algorithm used to verify the token signature. It MUST be one of the possibile values indicated in this `table <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/algorithms.html>`_ (e.g., ES256).
+    * - kid
+      -  Thumbprint of the public key used for signing, according to :ref:`rfc7638`.
+    * - typ
+      -  Media type, set to ``entity-statement+jwt``.
+
 
 Payload
 ^^^^^^^
-+-----------------------------------+-----------------------------------+
-| **Key**                           | **Value**                         |
-+-----------------------------------+-----------------------------------+
-| iss                               | Public URL of the Wallet          |
-|                                   | Provider.                         |
-+-----------------------------------+-----------------------------------+
-| sub                               | Public URL of the Wallet          |
-|                                   | Provider.                         |
-+-----------------------------------+-----------------------------------+
-| iat                               | Issuance datetime in              |
-|                                   |  Unix Timestamp format.           |
-+-----------------------------------+-----------------------------------+
-| exp                               | Expiration datetime               |
-|                                   | in Unix Timestamp format.         |
-+-----------------------------------+-----------------------------------+
-| authority_hints                   | Array of URLs (String) containing |
-|                                   | the list of URLs of the           |
-|                                   | immediate superior Entities, such |
-|                                   | as the Trust Anchor or an         |
-|                                   | Intermediate, that MAY issue an   |
-|                                   | Entity Statement related to this  |
-|                                   | subject.                          |
-+-----------------------------------+-----------------------------------+
-| jwks                              | A JSON Web Key Set (JWKS) `RFC    |
-|                                   | 7517 <http://tools.ietf.org/html  |
-|                                   | rfc7517.html>`_                   |
-|                                   | that represents the public part   |
-|                                   | of the signing keys of the Entity |
-|                                   | at issue. Each JWK in the JWK set |
-|                                   | MUST have a key ID (claim kid).   |
-+-----------------------------------+-----------------------------------+
-| metadata                          | Contains the                      |
-|                                   | metadata                          |
-|                                   | ``wallet_provider``               |
-|                                   | and the                           |
-|                                   | ``federation_entity`` metadata.   |
-+-----------------------------------+-----------------------------------+
+.. list-table::
+    :widths: 20 80
+    :header-rows: 1
+
+    * - **Key**
+      - **Value**
+    * - iss
+      - Public URL of the Wallet Provider.
+    * - sub
+      -  Public URL of the Wallet Provider.
+    * - iat
+      -  Issuance datetime in Unix Timestamp format. 
+    * - exp
+      -  Expiration datetime in Unix Timestamp format.
+    * - authority_hints
+      -   Array of URLs (String) containing the list of URLs of the immediate superior Entities, such as the Trust Anchor or an Intermediate, that MAY issue an Entity Statement related to this subject.  
+    * - jwks
+      -  A JSON Web Key Set (JWKS) `RFC 7517 <http://tools.ietf.org/html  rfc7517.html>`_ that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid). 
+    * - metadata
+      -  Contains the metadata ``wallet_provider`` and the ``federation_entity`` metadata. 
+
 
 `wallet_provider` metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
