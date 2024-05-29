@@ -14,7 +14,7 @@ The following requirements for the Wallet Attestation are met:
 
 - The Wallet Attestation MUST use the signed JSON Web Token (JWT) format;
 - The Wallet Attestation MUST give all the relevant information to attests the **integrity** and **security** of the device where the Wallet Instance is installed.
-- The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.
+- The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and that is the owner of the Wallet Solution, as specified by the overseeing registration authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.
 - The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties.
 - The Wallet Attestation MUST have a mechanism in place for revoking the Wallet Instance, allowing the Wallet Provider to terminate service for a specific instance at any time.
 - The Wallet Attestation MUST be securely bound to the Wallet Instance ephemeral public key.
