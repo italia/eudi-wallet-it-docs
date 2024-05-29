@@ -1255,20 +1255,14 @@ within these guidelines as each Wallet Provider may or may not have a user ident
 <p><strong>Step 7</strong>: The Wallet Instance performs the following actions:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Creates a <code class="docutils literal notranslate"><span class="pre">client_data</span></code>, a JSON structure that includes the challenge and the ephemeral public <code class="docutils literal notranslate"><span class="pre">jwk</span></code>.</p></li>
+<li><p>Creates a <code class="docutils literal notranslate"><span class="pre">client_data</span></code>, a JSON structure that includes the challenge and the thumbprint of ephemeral public <code class="docutils literal notranslate"><span class="pre">jwk</span></code>.</p></li>
 <li><p>Computes a <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> by applying the SHA256 algorithm to the <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></li>
 </ul>
 </div></blockquote>
 <p>Below a non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;challenge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0fe3cbe0-646d-44b5-8808-917dd5391bd9&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;jwk_thumbprint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
