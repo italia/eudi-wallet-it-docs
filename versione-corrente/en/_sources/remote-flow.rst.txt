@@ -240,6 +240,7 @@ The Relying Party issues the signed Request Object, where a non-normative exampl
   {
     "alg": "ES256",
     "typ": "JWT",
+    "kid": "9tjiCaivhWLVUJ3AxwGGz_9",
     "trust_chain": [
       "MIICajCCAdOgAwIBAgIC...awz",
       "MIICajCCAdOgAwIBAgIC...2w3",
