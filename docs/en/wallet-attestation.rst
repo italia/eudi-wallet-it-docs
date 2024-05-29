@@ -200,7 +200,7 @@ This section describes the Wallet Attestation format and how the Wallet Provider
 
 **Step 7**: The Wallet Instance performs the following actions:
 
-  * Creates a ``client_data``, a JSON structure that includes the challenge and the ephemeral public ``jwk``.
+  * Creates a ``client_data``, a JSON structure that includes the challenge and the thumbprint of ephemeral public ``jwk``.
   * Computes a ``client_data_hash`` by applying the SHA256 algorithm to the ``client_data``.
 
 Below a non-normative example of the ``client_data``.
@@ -209,13 +209,7 @@ Below a non-normative example of the ``client_data``.
 
   {
     "challenge": "0fe3cbe0-646d-44b5-8808-917dd5391bd9",
-    "jwk": {
-        "crv": "P-256",
-        "kty": "EC",
-        "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
-        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg",
-        "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-      }
+    "jwk_thumbprint": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
   }
 
 **Steps 8-10**: The Wallet Instance takes the following steps:
