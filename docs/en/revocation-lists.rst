@@ -11,13 +11,13 @@ For these reasons a robust mechanism for managing the life-cycle and the revocat
 This section outlines the key technical requirements and processes related to the revocation of Digital Credentials. 
 Furthermore, it provides the technical details that the Verifiers MUST implement to verify, in a secure and reliable manner, the validity of a Digital Credential during the presentation phase.
 
-The verification of the validity of a Digital Credential is based on the `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_ specification. 
+The verification of the validity of a Digital Credential is based on the `[OAuth Status Assertion draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_ specification. 
 
-A Status Attestation is a signed document serving as proof of a Digital Credential's current validity status. The Issuer provides these attestations to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
+A Status Assertion is a signed document serving as proof of a Digital Credential's current validity status. The Issuer provides these assertions to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
 
-The Status Attestations have the following features:
+The Status Assertions have the following features:
 
-- automated issuance, as the User authentication is not required for the provisioning of the Status Attestation; 
+- automated issuance, as the User authentication is not required for the provisioning of the Status Assertion; 
 - verification of the Digital Credential validity status in both online and offline scenarios;
 - privacy-preserving, according to the following evidences:
 
@@ -30,7 +30,7 @@ The Status Attestations have the following features:
 Operational Requirements
 ------------------------
 
-- **Internet Connection for Status Attestations**: Status Attestations can be obtained only when the Wallet Instance is connected to the internet and actively operated by the User.
+- **Internet Connection for Status Assertions**: Status Assertions can be obtained only when the Wallet Instance is connected to the internet and actively operated by the User. 
 - **Role of a Credential Issuer**: A Credential Issuer is responsible for creating and issuing Credentials, as well as managing their lifecycle and validity status.
 - **Involvement of Authentic Sources**: When one or more Authentic Sources are involved in the issuance of a Digital Credential, the information exchanged between the Authentic Source and the Credential Issuer is crucial for the Digital Credential's issuance. Furthermore, in cases where the Authentic Source initiates a revocation or data changes, revoking the Digital Credential becomes necessary.
 
@@ -40,15 +40,16 @@ Operational Requirements
 Functional Requirements
 -----------------------
 
-**The Status Attestation MUST:**
+**The Status Assertion:**
 
-- be presented in conjunction with the Digital Credential; 
-- be timestamped with the issuance datetime;
-- contain the expiration datetime after which it SHOULD NOT be considered valid anymore and it MUST NOT be greater than the one contained in the Digital Credential which it refers to;
-- have a validity period not greater than 24 hours;
-- provide the proof about the non-revocation of the Digital Credential which is related to and MUST be validated using the cryptographic signature of the Issuer;
-- not reveal any information about the Relying Party, the User's device or the User's data contained in the Digital Credential the attestation is related to;
-- be non-repudiable even beyond its expiration time and even in the case of cryptographic keys rotation.
+- SHOULD be presented in conjunction with the Digital Credential; 
+- MUST include information that links it to the referenced Digital Credential;
+- MUST be timestamped with its issuance datetime, using a timestamp which is at or after the time of Digital Credential issuance which it refers;
+- MUST contain the expiration datetime after which both the Status Assertion and the Digital Credential it refers MUST NOT be considered valid anymore. The expiration datetime MUST be superior to the Status Assertion issuance datetime and it MUST end before the expiration datetime of the Digital Credential;
+- MUST have a validity period not greater than 24 hours;
+- MUST provide the proof about the non-revocation of the Digital Credential which is related to and MUST be validated using the cryptographic signature of the Issuer;
+- MUST NOT reveal any information about the Relying Party, the User's device or the User's data contained in the Digital Credential the assertion is related to;
+- MUST be non-repudiable even beyond its expiration time and even in the case of cryptographic keys rotation.
 
 
 **The Issuer MUST:**
@@ -63,15 +64,15 @@ Functional Requirements
 - provide a web service for allowing a Wallet Instance, with a proof of possession of a specific Digital Credential, to 
 
   - request a revocation of that Digital Credential;
-  - obtain a related Status Attestation;
+  - obtain a related Status Assertion;
 
 - provide out-of-band mechanisms through which the User can request the revocation of their Digital Credentials, using a robust procedure for identity proofing and User authentication, in particular when the User is unable to use the personal Wallet Instance. 
 
 
 **The Wallet Instance MUST:**
 
-- check periodically the validity status of the Digital Credential that is stored in it, requesting a Status Attestation for each Digital Credential;
-- be able to present a Status Attestation if required by a Verifier, along with the corresponding Digital Credential;
+- check periodically the validity status of the Digital Credential that is stored in it, requesting a Status Assertion for each Digital Credential;
+- be able to present a Status Assertion if required by a Verifier, along with the corresponding Digital Credential;
 - request a revocation of a Digital Credential when the Users delete it from the storage. 
 
 
@@ -104,7 +105,7 @@ Credential Revocation Flows can start under different scenarios, such as:
 The revocation scenarios involve two main flows:
 
     - The **Revocation flows**: these flows describe how an Entity requests for a Digital Credential revocation. 
-    - The **Status Attestation flows**: these flows define the technical protocols for requesting and obtaining a Status Attestation and how the Wallet Instance will provide it to a Verifier as a proof of validity of a corresponding Digital Credential.
+    - The **Status Assertion flows**: these flows define the technical protocols for requesting and obtaining a Status Assertion and how the Wallet Instance will provide it to a Verifier as a proof of validity of a corresponding Digital Credential.
 
 
 .. _sec_revocation_high_level_flow:
@@ -150,7 +151,7 @@ Below, is given a non-normative example of a Credential PoP with decoded JWT hea
 
     {
       "alg": "ES256",
-      "typ": "status-attestation-request+jwt",
+      "typ": "status-assertion-request+jwt",
       "kid": $CREDENTIAL-CNF-JWKID
     }
     .
@@ -192,7 +193,7 @@ The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, 
       - **Reference**
     * - **credential_pop**
       - It MUST contain a JWT proof of possession of the cryptographic key the Credential to be revoked shall be bound to. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
+      - `[OAuth Status Assertion draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
 
 The Revocation Endpoint MUST be provided by the Issuer within its Metadata. 
 
@@ -260,63 +261,77 @@ Below a non-normative example of an HTTP Response with an error.
 
 
 
-Status Attestation Flows
+Status Assertion Flows
 ------------------------
 
-The Status Attestation process is divided into the following phases:
+The Status Assertion process is divided into the following phases:
 
-  1. The Status Attestation Request by a Wallet Instance: it involves the Wallet Instance and the Issuer.
-  2. The Status Attestation Presentation to a Verifier: it involves the Wallet Instance and the Verifier.
+  1. The Status Assertion Request by a Wallet Instance: it involves the Wallet Instance and the Issuer.
+  2. The Status Assertion Presentation to a Verifier: it involves the Wallet Instance and the Verifier.
 
 
 .. figure:: ../../images/High-Level-Flow-Status-Attestation.svg
     :figwidth: 100%
     :align: center
     
-    High-Level Status Attestation Flows
+    High-Level Status Assertion Flows
 
 
-.. _sec_revocation_status_attestation_request:
+.. _sec_revocation_status_assertion_request:
 
-Status Attestation Request by Wallet Instance
+Status Assertion Request by Wallet Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The presentation of a Credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the Credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a *Status Attestation*. This Attestation is bound to a Credential so that the Wallet Instance can present it to a Verifier, along with the Credential itself, as proof of non-revocation status of the Credential.
+The presentation of a Credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the Credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a *Status Assertion*. This Assertion is bound to a Credential so that the Wallet Instance can present it to a Verifier, along with the Credential itself, as proof of non-revocation status of the Credential.
 
-The following diagram shows how the Wallet Instance requests a Status Attestation to the Issuer.
+The following diagram shows how the Wallet Instance requests a Status Assertion to the Issuer.
 
-.. _fig_Low-Level-Flow-Status-Attestation:
+.. _fig_Low-Level-Flow-Status-Assertion:
 .. figure:: ../../images/Low-Level-Flow-Revocation-Attestation.svg
     :figwidth: 100%
     :align: center
     :target: https://www.plantuml.com/plantuml/svg/NP31Rk9038RlynGMsWD8mDwHTWM22tlOHWML2r8rIHmoQZ9EnnuGRryFeK0vsl_tErzcpcA3nBOnDWhvsEOOJAShLxZEUe71pZOD2gozahx00LY6a_l9h9aZXalqb2oYrEXrXWt5SArRDkRaOF8Nt0oobyqMVkjnYGm1FoEo38k0PQhPvhsZxi-lvMtEAFktsuwC-Uw_sSQLLX3k32W4IXdZIGCwOW0tjZo3ROtGomBbOfrdg0Are9Bmh0fxdzQnIzTBi2B1vL5G_NrvQHpJfvsSeRVN0bKfIFS2nKEj952K2LMJF9LQB6hh7RTZPOSuFKoLJE3bNBRwlu95jcRWCmks8xZ_vRB6uWCg2WyUUz-x9P-RoqCbO0etoKtPXGWcJqU-Vnlb53mf-OhSaMVKGUfh0PxvEVeojiqN
     
-    Status Attestation Request Flow
+    Status Assertion Request Flow
 
-**Step 1 (Status Attestation Request)**: The Wallet Instance sends the Status Attestation Request to the Issuer. The request MUST contain the Credential Proof of Possession JWT, signed  with the private key related to the public key contained within the Credential.
+**Step 1 (Status Assertion Request)**: The Wallet Instance sends the Status Assertion Request to the Credential Issuer, where:
+
+- The request MUST contain the base64url encoded hash value of the Digital Credential, for which the Status Assertion is requested, and enveloped in a signed Status Assertion Request object.
+
+- The Status Assertion Request object MUST be signed with the private key corresponding to the confirmation claim assigned by the Issuer and contained within the Digital Credential.
+
+Below a non-normative example representing a Status Assertion Request array with a
+single Status Assertion Request object in JWT format.
 
 .. code::
 
     POST /status HTTP/1.1
-    Host: pid-provider.example.org
-    Content-Type: application/x-www-form-urlencoded
+	Host: issuer.example.org
+	Content-Type: application/json
 
-    credential_pop=$CredentialPoPJWT
+	{
+		"status_assertion_requests" : ["${base64url(json({typ: (some pop for status-assertion)+jwt, ...}))}.payload.signature", ... ]
+	}
+The Status Assertion HTTP request can be sent to a single Credential Issuer regarding multiple Digital Credentials, and MUST contain a JSON object with the member `status_assertion_requests`.
+The `status_assertion_requests` MUST be set with an array of strings, where each string within the array represents a Digital Credential Status Assertion Request object.
 
 A non-normative example of Credential Proof of Possession is provided :ref:`in the previous section <credential_pop_jwt_ex>`.
 
-**Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the Digital Credential, which is proof that the Wallet Instance owns the private keys associated with the Digital Credential. Therefore the Wallet Instance is entitled to request its Status Attestation.
+**Step 2 (PoP verification)**: The Credential Issuer that receives the Status Assertion Request object MUST validate that the Wallet Instance making the request is authorized to request Status Assertions. Therefore the following requirements MUST be satisfied:
 
-**Step 3 (Check for validity)**: The Issuer checks that the User's attributes are not updated by the Authentic Source or that the latter has not revoked them. The technical mechanisms for obtaining this information are out-of-scope of this technical implementation profile. 
+- The Credential Issuer MUST verify the compliance of all elements in the `status_assertion_requests` object using the confirmation method contained within the Digital Credential where the Status Assertion Request object is referred to;
 
+- The Credential Issuer MUST verify that it is the legitimate Issuer of the Digital Credential to which each Status Assertion Request object refers.
 
-**Step 4 (Status Attestation Creation)**: The Issuer creates the corresponding Status Attestation. A non-normative example of a Status Attestation is given below.
+**Step 3 (Check for validity)**: The Credential Issuer checks that the User's attributes are not updated by the Authentic Source or that the latter has not revoked them. The technical mechanisms for obtaining this information are out-of-scope of this technical implementation profile. 
+
+**Step 4 (Status Assertion Creation)**: The Credential Issuer creates the corresponding Status Assertion. A non-normative example of a Status Assertion is given below.
 
 .. code::
 
     {
         "alg": "ES256",
-        "typ": "status-attestation+jwt,
+        "typ": "status-assertion+jwt,
         "kid": $ISSUER-JWKID
     }
     .
@@ -331,19 +346,30 @@ A non-normative example of Credential Proof of Possession is provided :ref:`in t
             }
     }
 
-**Step 4 (Status Attestation Response)**: The Issuer then returns the Status Attestation to the Wallet Instance, as in the following non-normative example.
+**Step 4 (Status Assertion Response)**: The response MUST include a JSON object with a member named `status_assertion_responses`, which contains the Status Assertions and or the Status Assertion Errors related to the request made by the Wallet Instance, as in the following non-normative example.
 
 .. code::
 
-    HTTP/1.1 201 Created
-    Content-Type: application/json
-    
-    {
-        "status_attestation": "eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGxldC1...",
-    }
+    HTTP/1.1 200 Created
+	Content-Type: application/json
 
+	{
+		"status_assertion_responses": ["${base64url(json({typ: status-assertion+jwt, ...}))}.payload.signature", ... ]
+	}
+The member `status_assertion_responses` MUST be an array of strings, where each of them represent a Status Assertion Response object, as defined in [the section Status Assertion](#status-assertion) or a Status Assertion Error object, as defined in [the section Status Error](#status-assertion-error).
 
-Status Attestation HTTP Request
+For each entry in the `status_assertion_responses` array, the following requirements are met:
+
+- Each element in the array MUST match the corresponding element in the request array at
+the same position index to which it is related, eg: _[requestAboutA, requestAboutB]_ produces _[responseAboutA, responseErrorAboutB]_.
+
+- Each element MUST contain the error or the status of the assertion using the `typ` member.
+set to "status-assertion+{jwt,cwt}" or "status-assertion-error+{jwt,cwt}", depending by the object type.
+
+- The corresponding entry in the response MUST be of the same data format as requested. For example,
+if the entry in the request is "jwt", then the entry at the same position in the response MUST also be "jwt".
+
+Status Assertion HTTP Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The requests to the *Credential status endpoint* of the Issuers MUST be HTTP with method POST, using the same mandatory parameters as in the :ref:`Table of Credential Request parameters <table_revocation_request_params>`. These MUST be encoded in ``application/x-www-form-urlencoded`` format. 
@@ -359,12 +385,12 @@ The requests to the *Credential status endpoint* of the Issuers MUST be HTTP wit
       - It MUST contain a signed JWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
 
-The *typ* value in the *credential_pop* JWT MUST be set to **status-attestation+jwt**
+The *typ* value in the *credential_pop* JWT MUST be set to **status-assertion+jwt**
 
-The *Credential status endpoint* MUST be provided by the Issuers within their Metadata. The Issuers MUST include in the issued Digital Credentials the object *status* with the JSON member *status_attestation* set to a JSON Object containing the *credential_hash_alg* claim. It MUST contain the algorithm used for hashing the Digital Credential. Among the hash algorithms, the value ``sha-256`` is RECOMMENDED .
+The *Credential status endpoint* MUST be provided by the Issuers within their Metadata. The Issuers MUST include in the issued Digital Credentials the object *status* with the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim. It MUST contain the algorithm used for hashing the Digital Credential. Among the hash algorithms, the value ``sha-256`` is RECOMMENDED .
 
 
-Status Attestation HTTP Response
+Status Assertion HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *Credential status endpoint* MUST return a HTTP response with status code *201 Created* if the Credential is valid at the time of the request. The responses MUST be encoded in ``application/json`` format. It MUST contain the following mandatory claims.
@@ -377,8 +403,8 @@ The *Credential status endpoint* MUST return a HTTP response with status code *2
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **status_attestation**
-      - It MUST contain the Status Attestation as a signed JWT. 
+    * - **status_assertion**
+      - It MUST contain the Status Assertion as a signed JWT. 
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
 The following HTTP Status Codes MUST be supported:
@@ -391,8 +417,8 @@ The following HTTP Status Codes MUST be supported:
       - **Body**
       - **Description**
     * - *201 Created*
-      - Status Attestation response
-      - The Status Attestation has been successfully created and it has been returned.  
+      - Status Assertion response
+      - The Status Assertion has been successfully created and it has been returned.  
     * - *400 Bad Request*
       - Error code and description
       - The issuer cannot fulfill the request because of invalid parameters.
@@ -441,10 +467,10 @@ Below a non-normative example of an HTTP Response with an error.
 
 .. _sec_revocation_nra_presentation:
 
-Status Attestation Presentation to the Verifiers
+Status Assertion Presentation to the Verifiers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-During the presentation phase, a Verifier MAY request the Wallet Instance to provide a Non-Revocation Attestation along with the requested Credential. If a Verifier requests a Status Attestation for a requested Digital Credential, the Wallet Instance MUST provide the Status Attestations in the *vp_token* JSON array. If the Status Attestation is requested by the Verifier and the Wallet Instance is not able to provide it or it is expired or it is issued far back in time, the Verifier MAY decide to accept or reject the Credential according to its security policy.
+During the presentation phase, a Verifier MAY request the Wallet Instance to provide a Non-Revocation Assertion along with the requested Credential. If a Verifier requests a Status Assertion for a requested Digital Credential, the Wallet Instance MUST provide the Status Assertions in the *vp_token* JSON array. If the Status Assertion is requested by the Verifier and the Wallet Instance is not able to provide it or it is expired or it is issued far back in time, the Verifier MAY decide to accept or reject the Credential according to its security policy.
 
 Law-Enforcement Authorities or Third Parties authorized by national law, MAY require deferred non-revocation status verification but the definition of these protocols is currently out-of-scope for this technical implementation profile.
 
@@ -465,7 +491,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - **Description**
       - **Reference**
     * - **typ**
-      - In case of revocation request it MUST be set to ``revocation-request+jwt``. In case of Status Attestation request it MUST be set to ``status-attestation-request+jwt``, according to `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+      - In case of revocation request it MUST be set to ``revocation-request+jwt``. In case of Status Assertion request it MUST be set to ``status-assertion-request+jwt``, according to `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-assertions/01/>`_.
       - :rfc:`7516#section-4.1.1`.
     * - **alg**
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
@@ -482,7 +508,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - **Description**
       - **Reference**
     * - **iss**
-      - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Attestation.
+      - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Assertion.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
       - It MUST be set to the Issuer endpoint at which the JWT is used.
@@ -505,12 +531,12 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
 
 
 
-Status Attestation
+Status Assertion
 ------------------
 
-The Status Attestation MUST contain the following claims. 
+When the JWT or CWT format are used, the Status Assertion MUST contain the following claims. 
 
-.. _table_non_revocation_attestation_header: 
+.. _table_non_revocation_assertion_header: 
 .. list-table:: 
   :widths: 20 60 20
   :header-rows: 1
@@ -522,13 +548,13 @@ The Status Attestation MUST contain the following claims.
     - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
-    - It MUST be set to `status-attestation+jwt`.
+    - It MUST be set to `status-assertion-request+jwt` when JWT format is used. It MUST be set to `status-assertion-request+cwt` when CWT format is used.
     - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_..
   * - **kid**
     -  Unique identifier of the Issuer ``jwk`` as base64url-encoded JWK Thumbprint value.
     - :rfc:`7638#section_3`. 
 
-.. _table_non_revocation_attestation_claim:
+.. _table_non_revocation_assertion_claim:
 .. list-table:: 
     :widths: 20 60 20
     :header-rows: 1
@@ -546,10 +572,10 @@ The Status Attestation MUST contain the following claims.
       - UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
     * - **credential_hash**
-      - Hash value of the Credential the Status Attestation is bound to.
+      - Hash value of the Credential the Status Assertion is bound to.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **credential_hash_alg**
-      - The Algorithm used for hashing the Credential to which the Status Attestation is bound. The value SHOULD be set to ``S256``.
+      - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``S256``.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **cnf**
       - JSON object containing the proof-of-possession key materials. The ``cnf`` jwk value MUST match with the one provided within the related Credential. 
