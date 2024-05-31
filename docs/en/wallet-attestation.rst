@@ -559,7 +559,19 @@ The details of the revocation mechanism used by the Wallet Provider as well as t
 During the *Wallet Instance initialization and registration* phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
 When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.
 
+The following situations could occur:
 
+- The smartphone is lost;
+- The smartphone has been compromised (e.g., a malicious actor gains control of the smartphone);
+- The smartphone has been reset to factory settings;
+- Other scenarios where the owner can no longer access their Wallet Instance.
+
+If any of these situations occur, the owner **MUST** revoke the Wallet Instance.
+To achieve this the Wallet Provider (WP) **MUST** provide a Web Portal where the end user can access and request the revocation of the Wallet Instance.
+
+The suggested solution for a owner/end user is to establish a secure backup plan at the beginning of the registration process. The backup **MUST NOT** be stored in the same location as the private key. Instead, it should be saved to a different location, such as a cloud solution or a legacy storage solution. In this manner, the owner can effortlessly restore their Wallet Instance without generating a new one.
+
+The backup and restore specification are address in the *Backup and Restore* chapter.
 
 .. _token endpoint: wallet-solution.html#wallet-attestation
 .. _Wallet Attestation Request: wallet-attestation.html#format-of-the-wallet-attestation-request
