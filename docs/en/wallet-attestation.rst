@@ -59,6 +59,12 @@ Wallet Instance Initialization and Registration
 
 **Step 1:**: The User starts the Wallet Instance mobile app for the first time.
 
+.. note::
+
+  The WP MUST verify the WI by using the app store vendors API, for Android is Play Integrity API and for iOS is DeviceCheck, these services are defined in this specification as **Device Integrity Service (DIS)**.
+  The EUDIW Application MUST also implement the integrity services from the vendor's SDK, this service has already beed defined as **Device Integrity Service (DIS)** in this specification. The DIS helps by detecting potentially risky and fraudulent interactions, such as from tampered app versions and untrustworthy environments.
+The verification process to establish the trustworthiness of a WI for the WP begins with the initial app launch during which a GUID is generated, serving as the WI's identifier. During the *Initialization and Registration* process, the WI transmits this GUID to the WP, which in turn generates a key pair and signs the GUID with the private key. This signed GUID is then retained by the WI. Subsequently, when the WI requests WIA, it includes the signed GUID. To verify the request's reliability, the WP utilizes the public key generated before to authenticate the GUID.
+
 **Step 2:**: The Wallet Instance:
 
   * check if Device Integrity Service is available.
@@ -67,6 +73,10 @@ Wallet Instance Initialization and Registration
 .. note::
 
     **Federation Check:** The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Wallet Provider is represented within the section `Wallet Provider metadata`_.
+
+.. note::
+
+  The Trust Framework works in a way that the Wallet Providers though their Trust Chain Root Authorities are anchored in Trust List managed by appointed Supervisory Body or  by a delegated authority. This ensures the integrity and authenticity of wallet solutions are rigorously maintained. These layers of security and oversight create a trusted environment, allowing users to rely on the legitimacy and safety of their wallet instances. Consequently, this robust framework significantly mitigates the risk of fraudulent redirections, safeguarding users' transactions and data.
 
 **Steps 3-5:**: The Wallet Instance sends a request to the Wallet Provider Backend and receives a one-time ``challenge``. This "challenge" is a ``nonce``, which must be unpredictable to serve as the main defense against replay attacks. The backend must generate the ``nonce`` value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification `OAuth 2.0 Nonce Endpoint`_.
 
@@ -180,7 +190,6 @@ This section describes the Wallet Attestation format and how the Wallet Provider
   1. MUST ensure that Cryptographic Hardware Keys exist. If they do not exist, it is necessary to reinitialize the Wallet.
   2. MUST generates an ephemeral asymmetric key pair whose public key will be linked with the Wallet Attestation.
   3. MUST check if Wallet Provider is part of the federation and obtain its metadata.
-
 
 **Steps 4-6:**: The Wallet Instance solicits a one-time "challenge" from the Wallet Provider Backend. This "challenge" takes the form of a "nonce," which is required to be unpredictable and serves as the main defense against replay attacks. The backend MUST produce the "nonce" in a manner that ensures its single-use within a predetermined time frame.
 
