@@ -67,6 +67,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the Digital Credential was issued.
    * - Holder Key Binding
      - Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.
+   * - Holder
+     - User that has activated and has full control of an instance of the EUDI wallet and the related Private Keys.
 
 Acronyms
 --------
