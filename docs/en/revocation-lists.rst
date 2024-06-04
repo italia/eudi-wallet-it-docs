@@ -57,7 +57,7 @@ Functional Requirements
 - revoke a Digital Credential when the following circumstances occur:
 
   - the Digital Credential requires to be updated, whenever one or more attributes are changed; in this case the User will request a new issuance for that Digital Credential;
-  - the Wallet Instance that holds the Digital Credential was issued is revoked;
+  - the holder request such revocation due to loss or replacement of cryptographic key material which the issued Digital Credential is bound to;
   - the User deletes the Digital Credential from the Wallet Instance;
 
 - provide a web service for allowing a Wallet Instance, with a proof of possession of a specific Digital Credential, to 
