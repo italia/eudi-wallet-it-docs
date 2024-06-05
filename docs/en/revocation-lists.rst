@@ -325,26 +325,26 @@ A non-normative example of Credential Proof of Possession is provided :ref:`in t
 
 **Step 3 (Check for validity)**: The Credential Issuer checks that the User's attributes are not updated by the Authentic Source or that the latter has not revoked them. The technical mechanisms for obtaining this information are out-of-scope of this technical implementation profile. 
 
-**Step 4 (Status Assertion Creation)**: The Credential Issuer creates the corresponding Status Assertion. A non-normative example of a Status Assertion is given below.
+**Step 4 (Status Assertion Creation)**: The Credential Issuer creates the corresponding Status Assertion. When a Status Assertion is requested to a Credential Issuer, the Issuer checks the status of the Digital Credential and creates a Status Assertion bound to it. If the Digital Credential is valid, the Credential Issuer creates a new Status Assertion, which a non-normative example is given below where the format is JWT.
 
 .. code::
 
     {
-        "alg": "ES256",
-        "typ": "status-assertion+jwt,
-        "kid": $ISSUER-JWKID
-    }
-    .
-    {
-        "iss": "https://pid-provider.example.org",
-        "iat": 1504699136,
-        "exp": 1504700136,
-        "credential_hash": $CREDENTIAL-HASH,
-        "credential_hash_alg": "sha-256",
-        "cnf": {
-            "jwk": $CREDENTIAL-CNF-JWK
-            }
-    }
+    "alg": "ES256",
+    "typ": "status-assertion+jwt",
+    "kid": $ISSUER-JWKID
+	}
+	.
+	{
+		"iss": "https://issuer.example.org",
+		"iat": 1504699136,
+		"exp": 1504785536,
+		"credential_hash": $CREDENTIAL-HASH,
+		"credential_hash_alg": "sha-256",
+		"cnf": {
+			"jwk": {...}
+		}
+	}
 
 **Step 4 (Status Assertion Response)**: The response MUST include a JSON object with a member named `status_assertion_responses`, which contains the Status Assertions and or the Status Assertion Errors related to the request made by the Wallet Instance, as in the following non-normative example.
 
@@ -360,11 +360,9 @@ The member `status_assertion_responses` MUST be an array of strings, where each 
 
 For each entry in the `status_assertion_responses` array, the following requirements are met:
 
-- Each element in the array MUST match the corresponding element in the request array at
-the same position index to which it is related, eg: _[requestAboutA, requestAboutB]_ produces _[responseAboutA, responseErrorAboutB]_.
+- Each element in the array MUST match the corresponding element in the request array at the same position index to which it is related, eg: _[requestAboutA, requestAboutB]_ produces _[responseAboutA, responseErrorAboutB]_.
 
-- Each element MUST contain the error or the status of the assertion using the `typ` member.
-set to "status-assertion+{jwt,cwt}" or "status-assertion-error+{jwt,cwt}", depending by the object type.
+- Each element MUST contain the error or the status of the assertion using the `typ` member set to "status-assertion+{jwt,cwt}" or "status-assertion-error+{jwt,cwt}", depending by the object type.
 
 - The corresponding entry in the response MUST be of the same data format as requested. For example,
 if the entry in the request is "jwt", then the entry at the same position in the response MUST also be "jwt".
@@ -372,7 +370,7 @@ if the entry in the request is "jwt", then the entry at the same position in the
 Status Assertion HTTP Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The requests to the *Credential status endpoint* of the Issuers MUST be HTTP with method POST, using the same mandatory parameters as in the :ref:`Table of Credential Request parameters <table_revocation_request_params>`. These MUST be encoded in ``application/x-www-form-urlencoded`` format. 
+The requests to the *Credential status endpoint* of the Issuers MUST be HTTP with method POST, using the same mandatory parameters as in the :ref:`Table of Credential Request parameters <table_revocation_request_params>`. These MUST be encoded in ``application/json`` format. 
 
 .. list-table:: 
     :widths: 20 60 20
@@ -387,13 +385,21 @@ The requests to the *Credential status endpoint* of the Issuers MUST be HTTP wit
 
 The *typ* value in the *credential_pop* JWT MUST be set to **status-assertion+jwt**
 
-The *Credential status endpoint* MUST be provided by the Issuers within their Metadata. The Issuers MUST include in the issued Digital Credentials the object *status* with the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim. It MUST contain the algorithm used for hashing the Digital Credential. Among the hash algorithms, the value ``sha-256`` is RECOMMENDED .
+The *Credential status endpoint* MUST be provided by the Credential Issuers within their Metadata. The Credential Issuers MUST include in the issued Digital Credentials the object *status* with the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim. It MUST contain the algorithm used for hashing the Digital Credential. Among the hash algorithms, the value ``sha-256`` is RECOMMENDED .
 
 
 Status Assertion HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *Credential status endpoint* MUST return a HTTP response with status code *201 Created* if the Credential is valid at the time of the request. The responses MUST be encoded in ``application/json`` format. It MUST contain the following mandatory claims.
+The *the Credential Issuer* MUST return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Status Assertion Error object. The status code 200 MUST be returned if the Status Assertion is requested for a valid, non-existent, expired, revoked or invalid Digital Credential.
+
+The response MUST:
+
+- include a JSON object with a member named `status_assertion_responses`;
+
+- be encoded in ``application/json`` format. 
+
+It MUST contain the following mandatory claims.
 
 .. _table_http_response_claim:
 .. list-table:: 
@@ -403,9 +409,10 @@ The *Credential status endpoint* MUST return a HTTP response with status code *2
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **status_assertion**
-      - It MUST contain the Status Assertion as a signed JWT. 
+    * - **status_assertion_responses**
+      - the Status Assertions and or the Status Assertion Errors related to the request made by the Wallet Instance. 
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+
 
 The following HTTP Status Codes MUST be supported:
 
@@ -416,7 +423,7 @@ The following HTTP Status Codes MUST be supported:
     * - **Status Code**
       - **Body**
       - **Description**
-    * - *201 Created*
+    * - *200 Created*
       - Status Assertion response
       - The Status Assertion has been successfully created and it has been returned.  
     * - *400 Bad Request*
@@ -432,13 +439,13 @@ The following HTTP Status Codes MUST be supported:
       - 
       - The Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
 
-For HTTP error responses that involve a body, the body MUST be encoded in ``application/json`` format and MUST contain the following parameters:
+The Status Assertion Error object MUST contain the following parameters:
 
-  - *error*. The error code, as registerd in the table below.
+  - *error*. The error code, as registerd in the table below;
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
-Error codes are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
-The following Error Codes MUST be supported:
+Errors are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
+The `error` parameter for the Status Assertion Error object MUST be set with one of the values defined in the table below, in addition to the values specified in :rfc:`6749#section-5.2`:
 
 .. list-table:: 
     :widths: 20 80
@@ -450,20 +457,36 @@ The following Error Codes MUST be supported:
       - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
     * - ``credential_revoked``
       - The Digital Credential is revoked. The reason of revocation MUST be provided in the *error_description* field.
-    * - ``credential_updated``
-      - One or more attributes contained in the Digital Credential are changed. The *error_description* field MUST contain a list of updated attributes.
+	* - ``credential_updated``
+      - One or more information contained in the Digital Credential are changed. The `error_description` field SHOULD contain a human-readable text describing the general parameters updated without specifying each one.
+	* - ``credential_invalid``
+      - The Digital Credential is invalid. The `error_description` field SHOULD contain the reason of invalidation.  
+    * - ``invalid_request_signature``
+      - The Status Assertion Request signature validation has failed. This error type is used when the proof of possession of the Digital Credential is found not valid within the Status Assertion Request.
+	* - ``credential_not_found``
+      - The `credential_hash` value provided in the Status Assertion Request doesn't match with any active Digital Credential.
+	* - ``unsupported_hash_alg``
+      - The hash algorithm set in `credential_hash_alg` is not supported.
 
-Below a non-normative example of an HTTP Response with an error.
+Below a non-normative example of a Status Assertion Error object in JWT format, with the headers and payload represented in JSON and without applying the signature.
 
 .. code::
 
-  HTTP/1.1 400 Bad Request
-  Content-Type: application/json;charset=UTF-8
-
   {
-    "error": "invalid_request"
-    "error_description": "The signature of credential_pop JWT is not valid"
+    "alg": "ES256",
+    "typ": "status-assertion-error+jwt",
+    "kid": "Issuer-JWK-KID"
   }
+	.
+  {
+    "iss": "https://issuer.example.org",
+    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
+    "credential_hash": $CREDENTIAL-HASH,
+    "credential_hash_alg": "sha-256",
+    "error": "credential_revoked",
+    "error_description": "Credential is revoked."
+  }
+
 
 .. _sec_revocation_nra_presentation:
 
