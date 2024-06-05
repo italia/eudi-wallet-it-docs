@@ -451,7 +451,7 @@ The `error` parameter for the Status Assertion Error object MUST be set with one
     :widths: 20 80
     :header-rows: 1
 
-    * - **Error Code**
+    * - **Error**
       - **Description**
     * - ``invalid_request``
       - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
