@@ -132,26 +132,30 @@ A Wallet Instance MUST request the revocation of a Digital Credential as defined
     
     Wallet Instance Initiated Revocation Flow
 
-**Step 1 (Credential Revocation Request)**: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request includes a Digital Credential Proof of Possession as a JWT. It MUST be signed with the private key related to the public key contained within the Credential (such as the Issuer Signed JWT in the case of SD-JWT, or the MSO in the case of Mdoc CBOR). Then, the Wallet Instance sends the request to the Issuer as in the following non-normative example.
+**Step 1 (Credential Revocation Request)**: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request can be sent to a single Credential Issuer, regarding multiple Digital Credentials, and MUST contain a JSON object with the member `revocation_assertion_requests`.
+
+The `revocation_assertion_requests` MUST be set with an array of strings, where each string within the array represents a Credential Revocation Request object.
+
+It MUST be signed with the private key related to the public key contained within the Credential (such as the Issuer Signed JWT in the case of SD-JWT, or the MSO in the case of Mdoc CBOR). Then, the Wallet Instance sends the request to the Issuer as in the following non-normative example representing a Revocation Assertion Request array.
 
 .. _credential_revocation_request_ex:
 .. code-block::
     
     POST /revoke HTTP/1.1
     Host: pid-provider.example.org
-    Content-Type: application/x-www-form-urlencoded
+    Content-Type: application/json
 
-    credential_pop=$CredentialPoPJWT
+    revocation_assertion_requests : ["${base64url(json({typ: (some pop for revocation-assertion)+jwt, ...}))}.payload.signature", ... ]
 
 
-Below, is given a non-normative example of a Credential PoP with decoded JWT headers and payload and without signature for better readability:
+Below, is given a non-normative example of a single Revocation Assertion Request object with decoded JWT headers and payload and without signature for better readability:
 
 .. _credential_pop_jwt_ex:
 .. code-block::
 
     {
       "alg": "ES256",
-      "typ": "status-assertion-request+jwt",
+      "typ": "revocation-assertion-request+jwt",
       "kid": $CREDENTIAL-CNF-JWKID
     }
     .
@@ -165,23 +169,26 @@ Below, is given a non-normative example of a Credential PoP with decoded JWT hea
       "credential_hash_alg": "sha-256",
     }
 
-**Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the issued Digital Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Digital Credential, and therefore is entitled to request its revocation.
+**Step 2 (PoP verification)**: The Credential Issuer verifies the signature of the PoP using the the confirmation method that was attested in the issued Digital Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Digital Credential, and therefore is entitled to request its revocation.
 
-**Step 3 (Credential Revocation)**: The Issuer revokes the Credential provided in the Credential PoP JWT. After the revocation, the Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. 
+**Step 3 (Credential Revocation)**: The Credential Issuer revokes the Credential provided in the revocation_assertion_requests object. After the revocation, the Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. 
 
 **Step 4 (Credential Revocation Response)**: The Issuer sends a response back to the Wallet Instance with the result of the revocation request.
 
 .. code::
 
     .. code-block:: http
+		HTTP/1.1 200 Created
+		Content-Type: application/json
 
-    HTTP/1.1 204 No Content
-
-
+		{
+			"revocation_assertion_responses": ["${base64url(json({typ: revocation_assertion+jwt, ...}))}.payload.signature", ... ]
+		}
+ 
 Credential Revocation HTTP Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/x-www-form-urlencoded`` format.
+The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/JSON`` format.
 
 .. _table_revocation_request_params: 
 .. list-table:: 
@@ -191,8 +198,8 @@ The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, 
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **credential_pop**
-      - It MUST contain a JWT proof of possession of the cryptographic key the Credential to be revoked shall be bound to. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
+    * - **revocation_assertion_requests**
+      - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT/CWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
       - `[OAuth Status Assertion draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
 
 The Revocation Endpoint MUST be provided by the Issuer within its Metadata. 
@@ -201,8 +208,15 @@ The Revocation Endpoint MUST be provided by the Issuer within its Metadata.
 Credential Revocation HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In case of successful revocation, the Issuer MUST return an HTTP Response with status code *204 No Content*.
-Otherwise, an HTTP error response MUST be provided by the Issuer using status codes according to the table below. 
+The *Credential Issuer* SOULD return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Revocation Assertion Error object. The status code 200 MUST be returned if the Revocation Assertion is requested for a valid, non-existent, expired, already revoked or invalid Digital Credential.
+
+The response MUST:
+
+- include a JSON object with a member named `revocation_assertion_responses`;
+
+- be encoded in ``application/json`` format. 
+
+Otherwise, an HTTP error response MUST be provided by the Credential Issuer using status codes according to the table below. 
 
 The following HTTP Status Codes MUST be supported:
 
@@ -213,15 +227,12 @@ The following HTTP Status Codes MUST be supported:
     * - **Status Code**
       - **Body**
       - **Description**
-    * - *204 No Content*
-      - 
-      - The Digital Credential has been successfully revoked.
+    * - *200 Created*
+      - Revocation Assertion Response
+      - The Revocation Assertion Response has been successfully created.
     * - *400 Bad Request*
       - Error code and description
       - The issuer cannot fulfill the request because of invalid parameters.
-    * - *404 Not Found*
-      - 
-      - The Digital Credential to be revoked can not be found by the Issuer.
     * - *500 Internal Server Error*
       - 
       - The Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
@@ -229,13 +240,27 @@ The following HTTP Status Codes MUST be supported:
       - 
       - The Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
 
-For HTTP error responses that involve a body, the body MUST be encoded in ``application/json`` format and MUST contain the following parameters:
+The ``revocation_assertion_responses`` object MUST contain the following mandatory claims.
 
-  - *error*. The error code, as registerd in the table below.
+.. _table_http_response_claim:
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **revocation_assertion_responses**
+      - the Revocation Assertions and or the Revocation Assertion Errors related to the request made by the Wallet Instance. 
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+
+The Revocation Assertion Error object MUST contain the following parameters:
+
+  - *error*. The error code, as registerd in the table below;
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
-Error codes are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
-The following Error Codes MUST be supported:
+Errors are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
+The `error` parameter for the Revocation Assertion Error object MUST be set with one of the values defined in the table below, in addition to the values specified in :rfc:`6749#section-5.2`:
 
 .. list-table:: 
     :widths: 20 80
@@ -245,20 +270,37 @@ The following Error Codes MUST be supported:
       - **Description**
     * - ``invalid_request``
       - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
+    * - ``credential_already_revoked``
+      - The Digital Credential is already revoked.
+	* - ``credential_updated``
+      - One or more information contained in the Digital Credential are changed. The `error_description` field SHOULD contain a human-readable text describing the general parameters updated without specifying each one.
+	* - ``credential_invalid``
+      - The Digital Credential is invalid. The `error_description` field SHOULD contain the reason of invalidation.  
+    * - ``invalid_request_signature``
+      - The Revocation Assertion Request signature validation has failed. This error type is used when the proof of possession of the Digital Credential is found not valid within the Revocation Assertion Request.
+	* - ``credential_not_found``
+      - The `credential_hash` value provided in the Revocation Assertion Request doesn't match with any active Digital Credential.
+	* - ``unsupported_hash_alg``
+      - The hash algorithm set in `credential_hash_alg` is not supported.
 
-
-Below a non-normative example of an HTTP Response with an error.
+Below a non-normative example of a Revocation Assertion Error object in JWT format, with the headers and payload represented in JSON and without applying the signature.
 
 .. code::
 
-  HTTP/1.1 400 Bad Request
-  Content-Type: application/json;charset=UTF-8
-
   {
-    "error": "invalid_request"
-    "error_description": "The signature of credential_pop JWT is not valid"
+    "alg": "ES256",
+    "typ": "revocation-assertion-error+jwt",
+    "kid": "Issuer-JWK-KID"
   }
-
+	.
+  {
+    "iss": "https://issuer.example.org",
+    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
+    "credential_hash": $CREDENTIAL-HASH,
+    "credential_hash_alg": "sha-256",
+    "error": "unsupported_hash_alg",
+    "error_description": "The hash algorithm set is not supported"
+  }
 
 
 Status Assertion Flows
@@ -300,8 +342,7 @@ The following diagram shows how the Wallet Instance requests a Status Assertion 
 
 - The Status Assertion Request object MUST be signed with the private key corresponding to the confirmation claim assigned by the Issuer and contained within the Digital Credential.
 
-Below a non-normative example representing a Status Assertion Request array with a
-single Status Assertion Request object in JWT format.
+Below a non-normative example representing a Status Assertion Request array with a single Status Assertion Request object in JWT format.
 
 .. code::
 
@@ -356,16 +397,9 @@ A non-normative example of Credential Proof of Possession is provided :ref:`in t
 	{
 		"status_assertion_responses": ["${base64url(json({typ: status-assertion+jwt, ...}))}.payload.signature", ... ]
 	}
-The member `status_assertion_responses` MUST be an array of strings, where each of them represent a Status Assertion Response object, as defined in [the section Status Assertion](#status-assertion) or a Status Assertion Error object, as defined in [the section Status Error](#status-assertion-error).
 
-For each entry in the `status_assertion_responses` array, the following requirements are met:
+The member `status_assertion_responses` MUST be an array of strings, where each of them represent a Status Assertion Response object as defined in `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
-- Each element in the array MUST match the corresponding element in the request array at the same position index to which it is related, eg: _[requestAboutA, requestAboutB]_ produces _[responseAboutA, responseErrorAboutB]_.
-
-- Each element MUST contain the error or the status of the assertion using the `typ` member set to "status-assertion+{jwt,cwt}" or "status-assertion-error+{jwt,cwt}", depending by the object type.
-
-- The corresponding entry in the response MUST be of the same data format as requested. For example,
-if the entry in the request is "jwt", then the entry at the same position in the response MUST also be "jwt".
 
 Status Assertion HTTP Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -379,19 +413,19 @@ The requests to the *Credential status endpoint* of the Issuers MUST be HTTP wit
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **credential_pop**
-      - It MUST contain a signed JWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
+    * - **status_assertion_requests**
+      - It MUST be an array of strings, where each of them represent a Status Assertion Request object. Each element MUST contain a signed JWT/CWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
 
 The *typ* value in the *credential_pop* JWT MUST be set to **status-assertion+jwt**
 
-The *Credential status endpoint* MUST be provided by the Credential Issuers within their Metadata. The Credential Issuers MUST include in the issued Digital Credentials the object *status* with the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim. It MUST contain the algorithm used for hashing the Digital Credential. Among the hash algorithms, the value ``sha-256`` is RECOMMENDED .
+The *Credential status endpoint* MUST be provided by the Credential Issuers within their Metadata. The Credential Issuers MUST include in the issued Digital Credentials the object *status_assertion_requests* with the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim. It MUST contain the algorithm used for hashing the Digital Credential. Among the hash algorithms, the value ``sha-256`` is RECOMMENDED .
 
 
 Status Assertion HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *the Credential Issuer* MUST return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Status Assertion Error object. The status code 200 MUST be returned if the Status Assertion is requested for a valid, non-existent, expired, revoked or invalid Digital Credential.
+The *Credential Issuer* MUST return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Status Assertion Error object. The status code 200 MUST be returned if the Status Assertion is requested for a valid, non-existent, expired, revoked or invalid Digital Credential.
 
 The response MUST:
 
@@ -424,8 +458,8 @@ The following HTTP Status Codes MUST be supported:
       - **Body**
       - **Description**
     * - *200 Created*
-      - Status Assertion response
-      - The Status Assertion has been successfully created and it has been returned.  
+      - Status Assertion Response
+      - The Status Assertion Response has been successfully created and it has been returned.  
     * - *400 Bad Request*
       - Error code and description
       - The issuer cannot fulfill the request because of invalid parameters.
@@ -451,7 +485,7 @@ The `error` parameter for the Status Assertion Error object MUST be set with one
     :widths: 20 80
     :header-rows: 1
 
-    * - **Error**
+    * - **Error Code**
       - **Description**
     * - ``invalid_request``
       - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
