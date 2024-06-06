@@ -254,6 +254,25 @@ The ``revocation_assertion_responses`` object MUST contain the following mandato
       - the Revocation Assertions and or the Revocation Assertion Errors related to the request made by the Wallet Instance. 
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
+The Revocation Assertion object MUST contain the parameter ``msg`` with the value set to ``OK``.
+Below a non-normative example of a Revocation Assertion object in JWT format, with the headers and payload represented in JSON and without applying the signature.
+
+.. code::
+
+  {
+    "alg": "ES256",
+    "typ": "revocation-assertion-error+jwt",
+    "kid": "Issuer-JWK-KID"
+  }
+	.
+  {
+    "iss": "https://issuer.example.org",
+    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
+    "credential_hash": $CREDENTIAL-HASH,
+    "credential_hash_alg": "sha-256",
+    "msg": "Revoked"
+  }
+
 The Revocation Assertion Error object MUST contain the following parameters:
 
   - *error*. The error code, as registerd in the table below;
@@ -539,43 +558,43 @@ Law-Enforcement Authorities or Third Parties authorized by national law, MAY req
 Credential Proof of Possession
 ------------------------------
 
-The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST contain the parameters (JOSE Header and claims) in the following table.
+The Credential Proof of Possession (**credential_pop**) MUST be a JWT or a CWT that MUST contain the parameters (Header and Payload) in the following table.
 
 .. list-table:: 
     :widths: 20 60 20
     :header-rows: 1
 
-    * - **JOSE header**
+    * - **Header**
       - **Description**
       - **Reference**
     * - **typ**
-      - In case of revocation request it MUST be set to ``revocation-request+jwt``. In case of Status Assertion request it MUST be set to ``status-assertion-request+jwt``, according to `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-assertions/01/>`_.
+      - In case of revocation request it MUST be set to ``revocation-request+{jwt,cwt}``. In case of Status Assertion request it MUST be set to ``status-assertion-request+{jwt,cwt}``, according to `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-assertions/01/>`_.
       - :rfc:`7516#section-4.1.1`.
     * - **alg**
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      -  Unique identifier of the ``jwk`` inside the ``cnf`` claim of the Credential to be revoked, as base64url-encoded JWK Thumbprint value.
+      -  Unique identifier of the ``jwk`` or ``COSE_Key`` inside the ``cnf`` claim of the Credential to be revoked, as base64url-encoded JWK Thumbprint value, according to `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-assertions/01/>`_.
       - :rfc:`7638#section_3`. 
 
 .. list-table:: 
     :widths: 20 60 20
     :header-rows: 1
 
-    * - **Claim**
+    * - **Payload**
       - **Description**
       - **Reference**
     * - **iss**
       - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Assertion.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
-      - It MUST be set to the Credential Issuer endpoint at which the JWT is used.
+      - It MUST be set to the Credential Issuer endpoint at which the JWT/CWT is used.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT.
+      - UNIX Timestamp with the expiry time of the JWT/CWT. It MUST be greater than the value set for `iat`.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - UNIX Timestamp with the time of JWT issuance.
+      - UNIX Timestamp with the time of JWT/CWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **jti**
       - Unique identifier for the PoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
@@ -587,7 +606,45 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - It MUST contain the Algorithm used for hashing the Digital Credential. The value SHOULD be set to `S256`.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
+Revocation Assertion
+------------------
 
+When the JWT or CWT format are used, the Revocation Assertion MUST contain the following claims. 
+
+.. _table_non_revocation_assertion_header: 
+.. list-table:: 
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Header**
+    - **Description**
+    - **Reference**
+  * - **alg**
+    - Algorithm used to verify the cryptographic signature of the Revocation Assertion. Revocation Assertion that do not need to be signed SHOULD set the `alg` value to `none` in according with `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
+  * -  **typ** 
+    - It MUST be set to `revocation-assertion-respone+jwt` when JWT format is used. It MUST be set to `revocation-assertion-response+cwt` when CWT format is used.
+    - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_..
+
+
+.. _table_non_revocation_assertion_claim:
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Payload**
+      - **Description**
+      - **Reference**
+    * - **iss**
+      - It MUST be set to the identifier of the Credential Issuer.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **jti**
+      - Unique identifier for the JWT.
+      - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7800>`_.
+    * - **msg**
+      - Message returned from the Credential Issuer after revocation. It MUST be set with the value "OK".
+      - This specification.
+    
 
 Status Assertion
 ------------------
@@ -599,7 +656,7 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
   :widths: 20 60 20
   :header-rows: 1
 
-  * - **JOSE Header**
+  * - **Header**
     - **Description**
     - **Reference**
   * - **alg**
@@ -617,17 +674,17 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
     :widths: 20 60 20
     :header-rows: 1
 
-    * - **Claim**
+    * - **Payload**
       - **Description**
       - **Reference**
     * - **iss**
       - It MUST be set to the identifier of the Credential Issuer.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - UNIX Timestamp with the time of JWT issuance.
+      - UNIX Timestamp with the time of JWT/CWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT.
+      - UNIX Timestamp with the expiry time of the JWT/CWT. It MUST be greater than the value set for `iat`.
       - :rfc:`9126` and :rfc:`7519`.
     * - **credential_hash**
       - Hash value of the Credential the Status Assertion is bound to.
@@ -636,5 +693,50 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
       - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``S256``.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **cnf**
-      - JSON object containing the proof-of-possession key materials. The ``cnf`` jwk value MUST match with the one provided within the related Credential. 
-      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
+      - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT and `Cose_Key` for CWT, MUST match with the one provided within the related Digital 
+ Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards. 
+      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and `[RFC8747, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
+
+
+Error Assertion
+------------------
+
+When the JWT or CWT format are used, the Revocation or Status Assertion Error MUST contain the following claims. 
+
+.. _table_non_revocation_assertion_header: 
+.. list-table:: 
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Header**
+    - **Description**
+    - **Reference**
+  * - **alg**
+    - Algorithm used to verify the cryptographic signature of the Assertion Error. Assertion Error that do not need to be signed SHOULD set the `alg` value to `none` in according with `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+    - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
+  * -  **typ** 
+    - It MUST be set to `status-assertion-response+jwt` or `revocation-assertion-response+jwt`when JWT format is used. It MUST be set to `status-assertion-response+cwt` or `revocation-assertion-response+cwt`when CWT format is used.
+    - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+
+
+.. _table_non_revocation_assertion_claim:
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Payload**
+      - **Description**
+      - **Reference**
+    * - **iss**
+      - It MUST be set to the identifier of the Credential Issuer.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **jti**
+      - Unique identifier for the JWT.
+      - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7519>`_.
+    * - **error**
+      - Status code returned from the Credential Issuer after revocation. The value SHOULD be assigned with one of the error types defined in  {{RFC6749}}[Section 5.2]<https://tools.ietf.org/html/rfc6749#section-5.2> or defined in `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_ 
+      - `[RFC6749, Section 5.2] <https://tools.ietf.org/html/rfc6749#section-5.2>`_, `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
+	   * - **error_description**
+      - Text that clarifies the nature of the error, such as attribute changes, revocation reasons, in relation to the `error` value.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+
