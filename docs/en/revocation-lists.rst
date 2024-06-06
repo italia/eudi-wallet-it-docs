@@ -13,7 +13,7 @@ Furthermore, it provides the technical details that the Verifiers MUST implement
 
 The verification of the validity of a Digital Credential is based on the `[OAuth Status Assertion draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_ specification. 
 
-A Status Assertion is a signed document serving as proof of a Digital Credential's current validity status. The Issuer provides these assertions to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
+A Status Assertion is a signed document serving as proof of a Digital Credential's current validity status. The Credential Issuer provides these assertions to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
 
 The Status Assertions have the following features:
 
@@ -22,7 +22,7 @@ The Status Assertions have the following features:
 - privacy-preserving, according to the following evidences:
 
   1. the Verifier cannot check over time the validity of a given  Digital Credential related to the User;
-  2. the Issuers cannot track when and where a Digital Credential is verified;
+  2. the Credential Issuers cannot track when and where a Digital Credential is verified;
   3. it doesn't reveal any information about the Users or the content of their Digital Credentials.
 
 .. _sec_revocation_assumption:
@@ -47,12 +47,12 @@ Functional Requirements
 - MUST be timestamped with its issuance datetime, using a timestamp which is at or after the time of Digital Credential issuance which it refers;
 - MUST contain the expiration datetime after which both the Status Assertion and the Digital Credential it refers MUST NOT be considered valid anymore. The expiration datetime MUST be superior to the Status Assertion issuance datetime and it MUST end before the expiration datetime of the Digital Credential;
 - MUST have a validity period not greater than 24 hours;
-- MUST provide the proof about the non-revocation of the Digital Credential which is related to and MUST be validated using the cryptographic signature of the Issuer;
+- MUST provide the proof about the non-revocation of the Digital Credential which is related to and MUST be validated using the cryptographic signature of the Credential Issuer;
 - MUST NOT reveal any information about the Relying Party, the User's device or the User's data contained in the Digital Credential the assertion is related to;
 - MUST be non-repudiable even beyond its expiration time and even in the case of cryptographic keys rotation.
 
 
-**The Issuer MUST:**
+**The Credential Issuer MUST:**
 
 - ensure that the data contained in a Digital Credential is kept up to date, including the status of validity of the data from the Authentic Source;
 - revoke a Digital Credential when the following circumstances occur:
@@ -79,7 +79,7 @@ Functional Requirements
 **The Authentic Sources MUST:**
 
 - provide web services for the providing of updated User data and the validity status;
-- store in local databases only the minimum information required to provide the Issuer with the User data or a change in the validity status.
+- store in local databases only the minimum information required to provide the Credential Issuer with the User data or a change in the validity status.
 
 
 Revocation Use Cases
@@ -98,8 +98,8 @@ Credential Revocation Flows can start under different scenarios, such as:
     - The User notifies an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials SHALL be revoked, as they are no longer valid due to the change in attributes. 
     - Users who lose access to their Wallet Instance (e.g., due to theft or loss of the device) can request the Credential Issuer to revoke their Credentials or ask the Wallet Provider to revoke the Wallet Instance. If the Wallet Provider is authorized by the User and is aware of the types of Credentials and their issuers stored in the Wallet, it can then initiate the revocation of all Digital Credentials contained within the Wallet Instance on behalf of the User.
     - The Law-Enforcing Authorities, for the fulfillment of their functions and any other judicial reasons, may request the Authentic Source to revoke entitlements, licenses, certificates, identification documents, etc., which in turn leads to the revocation of any linked Credentials.
-    - The Authentic Sources that for any administrative reasons update one or more attributes of a User, shall inform the Issuer of related Credentials. 
-    - The Issuers, for technical security reasons (e.g. in the case of compromised cryptographic keys, death of the User, etc.), can decide to revoke the Credentials.
+    - The Authentic Sources that for any administrative reasons update one or more attributes of a User, shall inform the Credential Issuer of related Credentials. 
+    - The Credential Issuers, for technical security reasons (e.g. in the case of compromised cryptographic keys, death of the User, etc.), can decide to revoke the Credentials.
 
 
 The revocation scenarios involve two main flows:
@@ -114,7 +114,7 @@ Revocation Flows
 ----------------
 
 Depending on the different scenarios that may involve the revocation of a Digital Credential, different processes and technical flows may be implemented, according to national laws or Regulations of specific domains.
-The subsequent sections define the protocol interface between the Wallet Instances and the Issuers during the revocation request. The communication between the Issuers and other Entities is out-of-scope of this technical implementation profile.
+The subsequent sections define the protocol interface between the Wallet Instances and the Credential Issuers during the revocation request. The communication between the Credential Issuers and other Entities is out-of-scope of this technical implementation profile.
 
 
 .. _sec_revocation_wi_initiated_flow:
@@ -136,7 +136,7 @@ A Wallet Instance MUST request the revocation of a Digital Credential as defined
 
 The `revocation_assertion_requests` MUST be set with an array of strings, where each string within the array represents a Credential Revocation Request object.
 
-It MUST be signed with the private key related to the public key contained within the Credential (such as the Issuer Signed JWT in the case of SD-JWT, or the MSO in the case of Mdoc CBOR). Then, the Wallet Instance sends the request to the Issuer as in the following non-normative example representing a Revocation Assertion Request array.
+It MUST be signed with the private key related to the public key contained within the Credential (such as the Credential Issuer Signed JWT in the case of SD-JWT, or the MSO in the case of Mdoc CBOR). Then, the Wallet Instance sends the request to the Credential Issuer as in the following non-normative example representing a Revocation Assertion Request array.
 
 .. _credential_revocation_request_ex:
 .. code-block::
@@ -171,9 +171,9 @@ Below, is given a non-normative example of a single Revocation Assertion Request
 
 **Step 2 (PoP verification)**: The Credential Issuer verifies the signature of the PoP using the the confirmation method that was attested in the issued Digital Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Digital Credential, and therefore is entitled to request its revocation.
 
-**Step 3 (Credential Revocation)**: The Credential Issuer revokes the Credential provided in the revocation_assertion_requests object. After the revocation, the Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. 
+**Step 3 (Credential Revocation)**: The Credential Issuer revokes the Credential provided in the revocation_assertion_requests object. After the revocation, the Credential Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. 
 
-**Step 4 (Credential Revocation Response)**: The Issuer sends a response back to the Wallet Instance with the result of the revocation request.
+**Step 4 (Credential Revocation Response)**: The Credential Issuer sends a response back to the Wallet Instance with the result of the revocation request.
 
 .. code::
 
@@ -188,7 +188,7 @@ Below, is given a non-normative example of a single Revocation Assertion Request
 Credential Revocation HTTP Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/JSON`` format.
+The requests to the *Credential Issuer Revocation endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/JSON`` format.
 
 .. _table_revocation_request_params: 
 .. list-table:: 
@@ -202,13 +202,13 @@ The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, 
       - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT/CWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
       - `[OAuth Status Assertion draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
 
-The Revocation Endpoint MUST be provided by the Issuer within its Metadata. 
+The Revocation Endpoint MUST be provided by the Credential Issuer within its Metadata. 
 
 
 Credential Revocation HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *Credential Issuer* SOULD return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Revocation Assertion Error object. The status code 200 MUST be returned if the Revocation Assertion is requested for a valid, non-existent, expired, already revoked or invalid Digital Credential.
+The *Credential Issuer* MUST return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Revocation Assertion object. The status code 200 MUST be returned if the Revocation Assertion is requested for a valid, non-existent, expired, already revoked or invalid Digital Credential.
 
 The response MUST:
 
@@ -232,13 +232,13 @@ The following HTTP Status Codes MUST be supported:
       - The Revocation Assertion Response has been successfully created.
     * - *400 Bad Request*
       - Error code and description
-      - The issuer cannot fulfill the request because of invalid parameters.
+      - The Credential Issuer cannot fulfill the request because of invalid parameters.
     * - *500 Internal Server Error*
       - 
-      - The Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
+      - The Credential Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
     * - *503 Service Unavailable*
       - 
-      - The Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
+      - The Credential Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
 
 The ``revocation_assertion_responses`` object MUST contain the following mandatory claims.
 
@@ -308,7 +308,7 @@ Status Assertion Flows
 
 The Status Assertion process is divided into the following phases:
 
-  1. The Status Assertion Request by a Wallet Instance: it involves the Wallet Instance and the Issuer.
+  1. The Status Assertion Request by a Wallet Instance: it involves the Wallet Instance and the Credential Issuer.
   2. The Status Assertion Presentation to a Verifier: it involves the Wallet Instance and the Verifier.
 
 
@@ -324,9 +324,9 @@ The Status Assertion process is divided into the following phases:
 Status Assertion Request by Wallet Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The presentation of a Credential to a Verifier may occur long after it has been issued by the Issuer. During this time interval, the Credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Issuer provides the Wallet Instance with a *Status Assertion*. This Assertion is bound to a Credential so that the Wallet Instance can present it to a Verifier, along with the Credential itself, as proof of non-revocation status of the Credential.
+The presentation of a Credential to a Verifier may occur long after it has been issued by the Credential Issuer. During this time interval, the Credential can be invalidated for any reason and therefore the Verifier also needs to verify its revocation or suspension status. To address this scenario, the Credential Issuer provides the Wallet Instance with a *Status Assertion*. This Assertion is bound to a Credential so that the Wallet Instance can present it to a Verifier, along with the Credential itself, as proof of non-revocation status of the Credential.
 
-The following diagram shows how the Wallet Instance requests a Status Assertion to the Issuer.
+The following diagram shows how the Wallet Instance requests a Status Assertion to the Credential Issuer.
 
 .. _fig_Low-Level-Flow-Status-Assertion:
 .. figure:: ../../images/Low-Level-Flow-Revocation-Attestation.svg
@@ -353,6 +353,7 @@ Below a non-normative example representing a Status Assertion Request array with
 	{
 		"status_assertion_requests" : ["${base64url(json({typ: (some pop for status-assertion)+jwt, ...}))}.payload.signature", ... ]
 	}
+
 The Status Assertion HTTP request can be sent to a single Credential Issuer regarding multiple Digital Credentials, and MUST contain a JSON object with the member `status_assertion_requests`.
 The `status_assertion_requests` MUST be set with an array of strings, where each string within the array represents a Digital Credential Status Assertion Request object.
 
@@ -366,7 +367,7 @@ A non-normative example of Credential Proof of Possession is provided :ref:`in t
 
 **Step 3 (Check for validity)**: The Credential Issuer checks that the User's attributes are not updated by the Authentic Source or that the latter has not revoked them. The technical mechanisms for obtaining this information are out-of-scope of this technical implementation profile. 
 
-**Step 4 (Status Assertion Creation)**: The Credential Issuer creates the corresponding Status Assertion. When a Status Assertion is requested to a Credential Issuer, the Issuer checks the status of the Digital Credential and creates a Status Assertion bound to it. If the Digital Credential is valid, the Credential Issuer creates a new Status Assertion, which a non-normative example is given below where the format is JWT.
+**Step 4 (Status Assertion Creation)**: The Credential Issuer creates the corresponding Status Assertion. When a Status Assertion is requested to a Credential Issuer, the Credential Issuer checks the status of the Digital Credential and creates a Status Assertion bound to it. If the Digital Credential is valid, the Credential Issuer creates a new Status Assertion, which a non-normative example is given below where the format is JWT.
 
 .. code::
 
@@ -404,7 +405,7 @@ The member `status_assertion_responses` MUST be an array of strings, where each 
 Status Assertion HTTP Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The requests to the *Credential status endpoint* of the Issuers MUST be HTTP with method POST, using the same mandatory parameters as in the :ref:`Table of Credential Request parameters <table_revocation_request_params>`. These MUST be encoded in ``application/json`` format. 
+The requests to the *Credential status endpoint* of the Credential Issuers MUST be HTTP with method POST, using the same mandatory parameters as in the :ref:`Table of Credential Request parameters <table_revocation_request_params>`. These MUST be encoded in ``application/json`` format. 
 
 .. list-table:: 
     :widths: 20 60 20
@@ -425,7 +426,7 @@ The *Credential status endpoint* MUST be provided by the Credential Issuers with
 Status Assertion HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *Credential Issuer* MUST return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Status Assertion Error object. The status code 200 MUST be returned if the Status Assertion is requested for a valid, non-existent, expired, revoked or invalid Digital Credential.
+The *Credential Issuer* MUST return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Status Assertion object. The status code 200 MUST be returned if the Status Assertion is requested for a valid, non-existent, expired, revoked or invalid Digital Credential.
 
 The response MUST:
 
@@ -462,16 +463,16 @@ The following HTTP Status Codes MUST be supported:
       - The Status Assertion Response has been successfully created and it has been returned.  
     * - *400 Bad Request*
       - Error code and description
-      - The issuer cannot fulfill the request because of invalid parameters.
+      - The Credential Issuer cannot fulfill the request because of invalid parameters.
     * - *404 Not Found*
       - 
-      - The Digital Credential can not be found by the Issuer.
+      - The Digital Credential can not be found by the Credential Issuer.
     * - *500 Internal Server Error*
       - 
-      - The Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
+      - The Credential Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
     * - *503 Service Unavailable*
       - 
-      - The Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
+      - The Credential Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
 
 The Status Assertion Error object MUST contain the following parameters:
 
@@ -568,7 +569,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Assertion.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
-      - It MUST be set to the Issuer endpoint at which the JWT is used.
+      - It MUST be set to the Credential Issuer endpoint at which the JWT is used.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
       - UNIX Timestamp with the expiry time of the JWT.
@@ -608,7 +609,7 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
     - It MUST be set to `status-assertion-request+jwt` when JWT format is used. It MUST be set to `status-assertion-request+cwt` when CWT format is used.
     - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_..
   * - **kid**
-    -  Unique identifier of the Issuer ``jwk`` as base64url-encoded JWK Thumbprint value.
+    -  Unique identifier of the Credential Issuer ``jwk`` as base64url-encoded JWK Thumbprint value.
     - :rfc:`7638#section_3`. 
 
 .. _table_non_revocation_assertion_claim:
@@ -620,7 +621,7 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
       - **Description**
       - **Reference**
     * - **iss**
-      - It MUST be set to the identifier of the Issuer.
+      - It MUST be set to the identifier of the Credential Issuer.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
       - UNIX Timestamp with the time of JWT issuance.
@@ -637,4 +638,3 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
     * - **cnf**
       - JSON object containing the proof-of-possession key materials. The ``cnf`` jwk value MUST match with the one provided within the related Credential. 
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
-
