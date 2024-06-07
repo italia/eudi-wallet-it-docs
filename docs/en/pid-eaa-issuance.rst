@@ -93,7 +93,8 @@ In this section a *Wallet Initiated Flow* is outlined, where the User receives t
     PID/(Q)EAA Issuance - Detailed flow
 
 
-**Steps 1-4 (Discovery):** The User selects the PID/(Q)EAA Provider using the Wallet Instance, the Metadata for the selected PID/(Q)EAA Provider are processed by the Wallet Instance.
+**Steps 1-4 (Discovery):** The User selects the PID/(Q)EAA Provider using the Wallet Instance, the Metadata for the selected PID/(Q)EAA Provider are processed by the Wallet Instance as defined in 
+`Trust Evaluation Mechanism <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/trust.html#trust-evaluation-mechanism>`_ section of this specification.
 
 .. note::
 
