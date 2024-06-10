@@ -264,7 +264,7 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
     "typ": "revocation-assertion-error+jwt",
     "kid": "Issuer-JWK-KID"
   }
-	.
+.
   {
     "iss": "https://issuer.example.org",
     "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
