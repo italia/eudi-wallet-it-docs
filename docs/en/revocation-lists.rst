@@ -366,8 +366,8 @@ Below a non-normative example representing a Status Assertion Request array with
 .. code::
 
     POST /status HTTP/1.1
-	Host: issuer.example.org
-	Content-Type: application/json
+    Host: issuer.example.org
+    Content-Type: application/json
 
 	{
 		"status_assertion_requests" : ["${base64url(json({typ: (some pop for status-assertion)+jwt, ...}))}.payload.signature", ... ]
