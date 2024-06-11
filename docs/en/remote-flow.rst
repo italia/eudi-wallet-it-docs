@@ -328,43 +328,93 @@ The JWS payload parameters are described herein:
           "id": "eu.europa.ec.eudiw.pid.it.1",
           "name": "Person Identification Data",
           "purpose": "User authentication",
+          "group": ["group1"],
           "format": "vc+sd-jwt",
           "constraints": {
+            "limit_disclosure": "preferred",
             "fields": [
               {
-                "path": [
-                  "$.credentialSubject.unique_id",
-                  "$.credentialSubject.given_name",
-                  "$.credentialSubject.family_name",
-                ]
+                "path": ["$.credentialSubject.unique_id"],
+                "filter": {
+                  "type": "string",
+                  "const": "unique_id",
+                }
+              },
+              {
+                "path": ["$.credentialSubject.given_name"],
+                "filter":{
+                  "type": "string",
+                  "const": "given_name"
+              },
+              {
+                "path": ["$.credentialSubject.family_name"],
+                "filter":{
+                  "type": "string",
+                  "const": "family_name"
               }
-            ],
-            "limit_disclosure": "preferred"
+            }
           }
-        },
-        {
+        ]
+      }
+    },
+      {
           "id": "WalletAttestation",
           "name": "Wallet Attestation",
           "purpose": "Wallet Authentication",
+          "group": ["group2"],
           "format": "jwt",
           "constraints": {
             "fields": [
               {
-                "path": [
-                  "$.iss",
-                  "$.exp",
-                  "$.iat",
-                  "$.cnf.jwk",
-                  "$.aal",
-                ]
+                "path": ["$.iss"],
+                "filter": {
+                  "type": "string",
+                  "enum": [
+                    "https://issuer.example.org"
+                   ]
+                  }
+                },
+              {
+                "path": ["$.exp"],
+                "filter": {
+                  "type": "number",
+                  "minimum": 1504700136
+                }
+              },
+              {
+                "path": ["$.iat"],
+                "filter": {
+                  "type": "number",
+                  "minimum": 1504700136
+                }
+              },
+              {
+                "path": ["$.cnf.jwk"],
+                "filter": {
+                  "type": "object",
+                }
+              },
+              {
+                "path": ["$.aal"],
+                "filter": {
+                  "type": "string",
+                  "const": "aal"
+                }
               }
             ]
           }
         }
+      ],
+      "submission_requirements": [
+        {
+          "name": "Sample requirement",
+          "rule": "pick",
+          "count": 1,
+          "from": "group1"
+        }
       ]
     }
   }
-
 
 .. note::
 
@@ -682,6 +732,9 @@ Below is a non-normative response example:
                         "input_descriptors": [
                             {
                                 "id": "IdentityCredential",
+                                "name": "Identity Credential",
+                                "purpose": "Verify identity",
+                                "group": ["group1"],
                                 "format": {
                                     "vc+sd-jwt": {}
                                 },
@@ -689,44 +742,49 @@ Below is a non-normative response example:
                                     "limit_disclosure": "required",
                                     "fields": [
                                         {
-                                            "path": [
-                                                "$.type"
-                                            ],
+                                            "path": ["$.type"],
                                             "filter": {
                                                 "type": "string",
                                                 "const": "IdentityCredential"
                                             }
                                         },
                                         {
-                                            "path": [
-                                                "$.family_name"
-                                            ]
+                                            "path": ["$.family_name"],
+                                            "filter": {
+                                                "type": "string",
+                                                "const": "family_name"
+                                            }
                                         },
                                         {
-                                            "path": [
-                                                "$.given_name"
-                                            ]
+                                            "path": ["$.given_name"],
+                                            "filter": {
+                                                "type": "string",
+                                                "const": "given_name"
+                                            }
                                         },
                                         {
-                                            "path": [
-                                                "$.unique_id"
-                                            ],
-                                            "intent_to_retain": "true"
+                                            "path": ["$.unique_id"],
+                                            "filter": {
+                                                "type": "string",
+                                                "const": "unique_id"
+                                            },
+                                            "intent_to_retain": true
                                         }
                                     ]
                                 }
                             },
                         {
                             "id": "WalletAttestation",
+                            "name": "Wallet Attestation",
+                            "purpose": "Verify wallet",
+                            "group": ["group2"],
                             "format": {
                                 "jwt": {}
                             },
                             "constraints": {
                                 "fields": [
                                     {
-                                        "path": [
-                                            "$.iss"
-                                        ],
+                                        "path": ["$.iss"],
                                         "filter": {
                                             "type": "string",
                                             "enum": [
@@ -737,27 +795,21 @@ Below is a non-normative response example:
                                         }
                                     },
                                     {
-                                        "path": [
-                                            "$.iat"
-                                        ],
+                                        "path": ["$.iat"],
                                         "filter": {
                                             "type": "number",
                                             "minimum": 1504699136
                                         }
                                     },
                                     {
-                                        "path": [
-                                            "$.exp"
-                                        ],
+                                        "path": ["$.exp"],
                                         "filter": {
                                             "type": "number",
                                             "minimum": 1504700136
                                         }
                                     },
                                     {
-                                        "path": [
-                                            "$.cnf.jwk"
-                                        ],
+                                        "path": ["$.cnf.jwk"],
                                         "filter": {
                                             "type": "object"
                                         }
@@ -765,7 +817,15 @@ Below is a non-normative response example:
                                 ]
                             }
                         }
-                        ]
+                      ],
+                      "submission_requirements": [
+                        {
+                          "name": "Sample requirement",
+                          "rule": "pick",
+                          "count": 1,
+                          "from": "group1"
+                        }
+                      ]
                     },
                       {
                         "id": "mDL-sample-req",
