@@ -117,7 +117,7 @@ The PID/(Q)EAA Provider performs the following checks upon the receipt of the PA
     5. It MUST check that the ``aud`` claim in the Request Object is equal to the PID/(Q)EAA Provider authorization endpoint uri (:rfc:`9126`, :rfc:`9101`).
     6. It MUST reject the PAR request, if it contains the ``request_uri`` parameter (:rfc:`9126`).
     7. It MUST check that the Request Object contains all the mandatory parameters which values are validated according to :ref:`Table of the HTTP parameters <table_request_object_claim>` [derived from :rfc:`9126`].
-    8. It MUST check that the Request Object is not expired, checking the ``exp`` claim (:rfc:`9126`).
+    8. It MUST check that the Request Object is not expired, checking the ``exp`` claim.
     9. It MUST check that the Request Object was issued in a previous time than the value exposed in the ``iat`` claim. It SHOULD reject the request if the ``iat`` claim is far from the current time (:rfc:`9126`) of more than `5` minutes.
     10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the PID/(Q)EAA Provider to mitigate replay attacks (:rfc:`7519`).
     11. It MUST validate the ``client_assertion`` parameter based on Sections 4.1 and 4.2 of [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
@@ -483,7 +483,7 @@ The JWT payload is given by the following parameters:
       - It MUST be set to the identifier of the PID/(Q)EAA Provider.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT.
+      - UNIX Timestamp with the expiry time of the JWT. The claim value MUST be not greater than 300 seconds from the issuance time. 
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
       - UNIX Timestamp with the time of JWT issuance.
