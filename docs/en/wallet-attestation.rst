@@ -556,7 +556,7 @@ A Wallet Instance becomes unusable for several reasons, such as: the User reques
 
 The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.
 
-Taking as reference the ARF in `Section 6.5.4 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#654-wallet-instance-management>`_ and more specifically in the `Topic 38 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md#a2338-topic-38---wallet-instance-revocation>`_ the WI revocation can be requested by three entities:
+According to ARF, `Section 6.5.4 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#654-wallet-instance-management>`_ and more specifically in `Topic 38 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md#a2338-topic-38---wallet-instance-revocation>`_ the Wallet Instance can be revoked by the following entities:
 
   1. Holder
   2. Wallet Provider
