@@ -176,6 +176,7 @@ Below an non-normative example of the signed Request Object without encoding and
   "state":"fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
   "code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
   "code_challenge_method":"S256",
+  "response_mode":"post_form.jwt",
   "authorization_details":[
     {
       "type": "openid_credential",
