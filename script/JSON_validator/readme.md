@@ -80,7 +80,7 @@ This is just an example:
    ```bash
    python3 presentation_definition_validator.py schema.json example_to_test.json
 
-**Check the output:**
+2. **Check the output:**
 
 You can get different kind of errors, these are just some of them:
 
@@ -95,7 +95,7 @@ You can get different kind of errors, these are just some of them:
 ![Error 5](script/JSON_validator/err5.png)
 
 
-2.. **Final result:**
+3. **Final result:**
 
 After some modification i got a JSON like this:
 
