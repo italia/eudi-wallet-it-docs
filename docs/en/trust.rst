@@ -578,6 +578,8 @@ Trust Chain
 
 The Trust Chain is a sequence of verified statements that validates a participant's compliance with the Federation. It has an expiration date time, beyond which it MUST be renewed to obtain the fresh and updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration timestamp among all the expiration timestamp contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor.
 
+The Trust Framework establishes that Wallet Providers, through their Trust Chain Root Authorities, are anchored in a Trust List managed by an appointed Supervisory Body or a delegated authority. This multi-layered security and oversight system creates a reliable and secure environment, ensuring users can trust the legitimacy and safety of their wallet instances.
+
 Below is an abstract representation of a Trust Chain.
 
 .. code-block:: python
@@ -602,6 +604,13 @@ Below is a non-normative example of a Trust Chain in its original format (JSON A
 
     The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.
 
+**Trust List implementation**
+
+To ensure coherent and efficient management of trust lists across Europe, a structured approach has been proposed. This involves creating and governing a Superior Trust List at the European level and National Trust Lists at the member state level. The following sections provide the implementation details for each type of trust list.
+
+The **Superior Trust List** should be managed by a central entity at the European level, such as the European Commission. It will include direct references to each National Registry and each centrally managed Thematic Registry, unique for all member states. The governance is centralized under a single EU authority, authorized to add, remove, or update entries in the registry.
+
+The **National Trust List** should be managed by a national coordinating entity, ideally the National Supervisory Body or an entity delegated by it. This entity will receive requests from accredited and authoritative entities for the respective themes they manage. The Trust List will include direct references to each National List (Thematic, Wallet, TSP, and Devices Registries) and to the Superior Trust List for each centrally managed cross-border Thematic Trust List, unique to all member states.
 
 Offline Trust Attestation Mechanisms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
