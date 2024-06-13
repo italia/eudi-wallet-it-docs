@@ -19,7 +19,7 @@ To get started with this project, follow these steps:
 1. **Download the files:**
 
    ```bash
-   python script
+   presentation_definition_validation.py
    schema.json
 
 2. **Create a presentation_definition JSON file:**
