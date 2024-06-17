@@ -1672,6 +1672,15 @@ A Wallet Instance becomes unusable for several reasons, such as: the User reques
 <p>The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.</p>
 <p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
 When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.</p>
+<p>Regarding the reasons for revoking a Wallet Instance, the following scenarios may occur:</p>
+<ul class="simple">
+<li><p>The smartphone is lost;</p></li>
+<li><p>The smartphone has been compromised (e.g., a malicious actor gains control of the smartphone);</p></li>
+<li><p>The smartphone has been reset to factory settings;</p></li>
+<li><p>Any other scenarios where the User loses the control of the Wallet Instance.</p></li>
+</ul>
+<p>If any of the previous scenarios occur, the Wallet Instance <strong>MUST</strong> be revoked.
+To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) <strong>MUST</strong>  offer a remote service, such as a web page, where the User can authenticate and request the revocation of a previously activated Wallet Instance.</p>
 </section>
 </section>
 </section>
