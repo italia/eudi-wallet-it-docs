@@ -188,7 +188,7 @@ Below, is given a non-normative example of a single Revocation Assertion Request
 Credential Revocation HTTP Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The requests to the *Credential Issuer Revocation endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/JSON`` format.
+The requests to the *Credential Issuer Revocation endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/json`` format.
 
 .. _table_revocation_request_params: 
 .. list-table:: 
