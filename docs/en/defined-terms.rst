@@ -68,7 +68,7 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Holder Key Binding
      - Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.
    * - Holder
-     - Natural or Legal person that receives Verifiable Credentials and has control over them to present them to the Verifiers as Presentations, using the Wallet. The Holder is the User in control of the Wallet.
+     - Natural or Legal person that receives Verifiable Credentials from the Credential Issuers, manages the Verifiable Credentials within the Wallet, and presents them to Verifiers. The Holder is the User in control of the Wallet.
 
 Acronyms
 --------
