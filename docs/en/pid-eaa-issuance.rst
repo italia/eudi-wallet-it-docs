@@ -511,7 +511,7 @@ The JWT payload is given by the following parameters:
 
             - **type**: REQUIRED. It MUST be set to ``openid_credential``,
             - **credential_configuration_id**: REQUIRED when ``format`` parameter is not present. JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``. It MUST NOT be present if ``format`` parameter is present.
-            - **format**: REQUIRED when ``credential_configuration_id`` parameter is not present. String identifying the format of the Credential the Wallet needs. This Credential format identifier determines further claims in the authorization details object needed to identify the Credential type in the requested format. It MUST NOT be present if ``credential_configuration_id`` parameter is present.
+            - **format**: REQUIRED when ``credential_configuration_id`` parameter is not present. String identifying the format of the Credential requested by the Wallet. It MUST NOT be present if ``credential_configuration_id`` parameter is present.
       - See [RAR :rfc:`9396`] and `[OIDC4VCI. Draft 13] <https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html>`_.
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
