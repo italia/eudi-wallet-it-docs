@@ -155,7 +155,7 @@ Below, is given a non-normative example of a single Revocation Assertion Request
 
     {
       "alg": "ES256",
-      "typ": "revocation-assertion-request+jwt",
+      "typ": "credential-revocation-request+jwt",
       "kid": $CREDENTIAL-CNF-JWKID
     }
     .
