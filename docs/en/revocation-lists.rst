@@ -178,7 +178,7 @@ Below, is given a non-normative example of a single Revocation Assertion Request
 .. code::
 
     .. code-block:: http
-		HTTP/1.1 200 Created
+		HTTP/1.1 200 Ok
 		Content-Type: application/json
 
 		{
