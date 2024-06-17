@@ -15,7 +15,7 @@ The following requirements for the Wallet Attestation are met:
 - The Wallet Attestation MUST use the signed JSON Web Token (JWT) format;
 - The Wallet Attestation MUST give all the relevant information to attests the **integrity** and **security** of the device where the Wallet Instance is installed.
 - The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and that is the owner of the Wallet Solution, as specified by the overseeing registration authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.
-- The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties.
+- The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties. The Wallet Provider MUST also verify the Wallet Instance by using the App Store vendor's API, for Android is *Play Integrity API* and for iOS is *DeviceCheck*, these services are defined in this specification as **Device Integrity Service (DIS)**.
 - The Wallet Attestation MUST have a mechanism in place for revoking the Wallet Instance, allowing the Wallet Provider to terminate service for a specific instance at any time.
 - The Wallet Attestation MUST be securely bound to the Wallet Instance ephemeral public key.
 - The Wallet Attestation MAY be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.
@@ -61,7 +61,6 @@ Wallet Instance Initialization and Registration
 
 .. note::
 
-  The WP MUST verify the WI by using the app store vendors API, for Android is Play Integrity API and for iOS is DeviceCheck, these services are defined in this specification as **Device Integrity Service (DIS)**.
   The EUDIW Application MUST also implement the integrity services from the vendor's SDK, this service has already beed defined as **Device Integrity Service (DIS)** in this specification. The DIS helps by detecting potentially risky and fraudulent interactions, such as from tampered app versions and untrustworthy environments.
 The verification process to establish the trustworthiness of a WI for the WP begins with the initial app launch during which a GUID is generated, serving as the WI's identifier. During the *Initialization and Registration* process, the WI transmits this GUID to the WP, which in turn generates a key pair and signs the GUID with the private key. This signed GUID is then retained by the WI. Subsequently, when the WI requests WIA, it includes the signed GUID. To verify the request's reliability, the WP utilizes the public key generated before to authenticate the GUID.
 
