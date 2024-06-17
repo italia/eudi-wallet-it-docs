@@ -711,7 +711,7 @@ Below is a non-normative response example:
                                             "path": [
                                                 "$.unique_id"
                                             ],
-                                            "intent_to_retain": "true"
+                                            "intent_to_retain": true
                                         }
                                     ]
                                 }
@@ -804,19 +804,19 @@ Below is a non-normative response example:
                                                 "path": [
                                                     "$.mdoc.family_name"
                                                 ],
-                                                "intent_to_retain": "false"
+                                                "intent_to_retain": false
                                             },
                                             {
                                                 "path": [
                                                     "$.mdoc.portrait"
                                                 ],
-                                                "intent_to_retain": "false"
+                                                "intent_to_retain": false
                                             },
                                             {
                                                 "path": [
                                                     "$.mdoc.driving_privileges"
                                                 ],
-                                                "intent_to_retain": "false"
+                                                "intent_to_retain": false
                                             }
                                         ]
                                     }
