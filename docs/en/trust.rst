@@ -578,7 +578,7 @@ Trust Chain
 
 The Trust Chain is a sequence of verified statements that validates a participant's compliance with the Federation. It has an expiration date time, beyond which it MUST be renewed to obtain the fresh and updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration timestamp among all the expiration timestamp contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor.
 
-The Trust Framework establishes that Wallet Providers, through their Trust Chain Root Authorities, are anchored in a Trust List managed by an appointed Supervisory Body or a delegated authority. This multi-layered security and oversight system creates a reliable and secure environment, ensuring users can trust the legitimacy and safety of their wallet instances.
+The Wallet Providers MUST be published in a Trust List managed by the designed Federation authority. 
 
 Below is an abstract representation of a Trust Chain.
 
