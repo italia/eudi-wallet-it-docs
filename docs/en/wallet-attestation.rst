@@ -560,7 +560,7 @@ According to ARF, `Section 6.5.4 <https://github.com/eu-digital-identity-wallet/
 
   1. Its owner, the User
   2. Wallet Provider
-3. PID Provider
+  3. PID Provider
 
 During the *Wallet Instance initialization and registration* phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
 When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.
