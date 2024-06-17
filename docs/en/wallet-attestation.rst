@@ -569,8 +569,6 @@ Regarding the reasons for revoking a Wallet Instance, the following scenarios ma
 If any of the previous scenarios occur, the Wallet Instance **MUST** be revoked.
 To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) **MUST**  offer a remote service, such as a web page, where the User can authenticate and request the revocation of a previously activated Wallet Instance.
 
-The backup and restore specification are address in the *Backup and Restore* chapter.
-
 .. _token endpoint: wallet-solution.html#wallet-attestation
 .. _Wallet Attestation Request: wallet-attestation.html#format-of-the-wallet-attestation-request
 .. _Wallet Attestation: wallet-attestation.html#format-of-the-wallet-attestation
