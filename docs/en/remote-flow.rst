@@ -676,7 +676,7 @@ Below is a non-normative response example:
                         ]
                     }
                 },
-                  "presentation_definitions": [
+                  "presentation_definitions_supported": [
                       {
                         "id": "32f54163-7166-48f1-93d8-ff217bdb0653",
                         "input_descriptors": [
@@ -879,7 +879,10 @@ Below is a non-normative response example:
         ]
       }
     }
-    
+
+
+.. note::
+    The ``presentation_definitions_supported`` parameter in the ``metadata`` contains all the supported presentation definitions. These definitions are used to filter the ``presentation_definition`` included in the presentation request, based on the trust framework and compliance evaluation mechanisms.
 
 The Entity Configuration is a JWS, where its header and payload parameters are defined below, based on the provided OpenID Federation Entity Configuration example:
 
@@ -913,7 +916,7 @@ The Entity Configuration is a JWS, where its header and payload parameters are d
   * - **jwks**
     - JSON Web Key Set representing the cryptographic keys used for trust evaluation operations and for signing this Entity Configuration.
   * - **metadata**
-    - Metadata describing the entity, including information about the wallet relying party, client ID, client name, contacts, request URIs, response URIs, default ACR values, and VP formats.
+    - Metadata describing the entity, including information about the wallet relying party, client ID, client name, contacts, request URIs, response URIs, default ACR values, VP formats and presentation definition supported.
   * - **authority_hints**
     - URLs hinting at the authority or authorities that the entity trusts and which the public keys for verifieng this Entity Confgiuration are intended to be available within a Subordinate Statement.
   * - **exp**
