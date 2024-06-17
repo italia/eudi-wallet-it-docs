@@ -558,7 +558,7 @@ The details of the revocation mechanism used by the Wallet Provider as well as t
 
 According to ARF, `Section 6.5.4 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#654-wallet-instance-management>`_ and more specifically in `Topic 38 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md#a2338-topic-38---wallet-instance-revocation>`_ the Wallet Instance can be revoked by the following entities:
 
-  1. Holder
+  1. Its owner, the User
   2. Wallet Provider
   3. PID Provider
 
