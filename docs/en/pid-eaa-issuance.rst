@@ -117,7 +117,7 @@ The PID/(Q)EAA Provider performs the following checks upon the receipt of the PA
     5. It MUST check that the ``aud`` claim in the Request Object is equal to the PID/(Q)EAA Provider authorization endpoint uri (:rfc:`9126`, :rfc:`9101`).
     6. It MUST reject the PAR request, if it contains the ``request_uri`` parameter (:rfc:`9126`).
     7. It MUST check that the Request Object contains all the mandatory parameters which values are validated according to :ref:`Table of the HTTP parameters <table_request_object_claim>` [derived from :rfc:`9126`].
-    8. It MUST check that the Request Object is not expired, checking the ``exp`` claim (:rfc:`9126`).
+    8. It MUST check that the Request Object is not expired, checking the ``exp`` claim.
     9. It MUST check that the Request Object was issued in a previous time than the value exposed in the ``iat`` claim. It SHOULD reject the request if the ``iat`` claim is far from the current time (:rfc:`9126`) of more than `5` minutes.
     10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the PID/(Q)EAA Provider to mitigate replay attacks (:rfc:`7519`).
     11. It MUST validate the ``client_assertion`` parameter based on Sections 4.1 and 4.2 of [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
@@ -176,6 +176,7 @@ Below an non-normative example of the signed Request Object without encoding and
   "state":"fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
   "code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
   "code_challenge_method":"S256",
+  "response_mode":"post_form.jwt",
   "authorization_details":[
     {
       "type": "openid_credential",
@@ -482,7 +483,7 @@ The JWT payload is given by the following parameters:
       - It MUST be set to the identifier of the PID/(Q)EAA Provider.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT.
+      - UNIX Timestamp with the expiry time of the JWT. The claim value MUST be not greater than 300 seconds from the issuance time. 
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
       - UNIX Timestamp with the time of JWT issuance.
@@ -490,6 +491,9 @@ The JWT payload is given by the following parameters:
     * - **response_type**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+    * - **response_mode**
+      - It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of *HTTP 302 Redirect Response* the value MUST be *query*. In this mode, Authorization Response parameters are encoded in the query string added to the redirect_uri when redirecting back to the Wallet Instance. In case of *HTTP POST Response* the value MUST be *form_post.jwt* according to `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the User Agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the *application/x-www-form-urlencoded* format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.
+      - See `[OAuth 2.0 Multiple Response Type Encoding Practices] <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes>` and `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`.
     * - **client_id**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
@@ -1051,6 +1055,7 @@ Below is a non-normative example of an Entity Configuration of a PID Provider co
             "request_parameter_supported":true,
             "request_uri_parameter_supported":false,
             "response_types_supported": ["code"],
+            "response_modes_supported": ["query","form_post.jwt"],
             "subject_types_supported": [
                 "pairwise",
             ],
