@@ -62,7 +62,7 @@ Wallet Instance Initialization and Registration
 .. note::
 
   The EUDIW Application MUST also implement the integrity services from the vendor's SDK, this service has already beed defined as **Device Integrity Service (DIS)** in this specification. The DIS helps by detecting potentially risky and fraudulent interactions, such as from tampered app versions and untrustworthy environments.
-The verification process to establish the trustworthiness of a WI for the WP begins with the initial app launch during which a UUID is generated, serving as the WI's identifier. During the *Initialization and Registration* process, the WI transmits this UUID to the WP, which in turn generates a key pair and signs the UUID with the private key. This signed UUID is then retained by the WI. Subsequently, when the WI requests WIA, it includes the signed UUID. To verify the request's reliability, the WP utilizes the public key generated before to authenticate the UUID.
+The verification process to establish the trustworthiness of a WI for the WP begins with the initial app launch during which a Cryptographic Hardware Key Tag is generated, serving as the WI's identifier. During the *Initialization and Registration* process, the WI transmits this Cryptographic Hardware Key Tag to the WP, which in turn generates a key pair and signs the Cryptographic Hardware Key Tag with the private key. The signed Cryptographic Hardware Key Tag is then retained by the WI. Subsequently, when the WI requests WIA, it includes the signed Cryptographic Hardware Key Tag. To verify the request's reliability, the WP utilizes the public key generated before to authenticate the Cryptographic Hardware Key Tag.
 
 **Step 2:**: The Wallet Instance:
 
