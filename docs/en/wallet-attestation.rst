@@ -76,7 +76,7 @@ Wallet Instance Initialization and Registration
 
 .. note::
 
-    As explained in the chapter `Trust Infrastructure <https://github.com/cmarco0/eudi-wallet-it-docs-fork/blob/cmarco0-DynamicComponentViewProcess/docs/en/trust.rst#the-infrastructure-of-trust>`_  section `Trust Chain <https://github.com/cmarco0/eudi-wallet-it-docs-fork/blob/cmarco0-DynamicComponentViewProcess/docs/en/trust.rst#trust-chainit>`_ it ensures the integrity and authenticity of wallet solutions are rigorously maintained.
+    As explained in the chapter `Trust Infrastructure <https://github.com/italia/eudi-wallet-it-docs/blob/versione-corrente/docs/en/trust.rst#the-infrastructure-of-trust>`_  section `Trust Chain <https://github.com/italia/eudi-wallet-it-docs/blob/versione-corrente/docs/en/trust.rst#trust-chain>`_ it ensures the integrity and authenticity of wallet solutions are rigorously maintained.
 The Trust Framework helps prevent fraudulent redirections, protecting user transactions and data.
 
 **Steps 3-5:**: The Wallet Instance sends a request to the Wallet Provider Backend and receives a one-time ``challenge``. This "challenge" is a ``nonce``, which must be unpredictable to serve as the main defense against replay attacks. The backend must generate the ``nonce`` value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification `OAuth 2.0 Nonce Endpoint`_.
