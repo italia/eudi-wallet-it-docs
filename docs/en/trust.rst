@@ -604,8 +604,6 @@ Below is a non-normative example of a Trust Chain in its original format (JSON A
 
     The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.
 
-**Trust List implementation**
-
 To ensure coherent and efficient management of trust lists across Europe, a structured approach has been proposed. This involves creating and governing a Superior Trust List at the European level and National Trust Lists at the member state level. The following sections provide the implementation details for each type of trust list.
 
 The **Superior Trust List** should be managed by a central entity at the European level, such as the European Commission. It will include direct references to each National Registry and each centrally managed Thematic Registry, unique for all member states. The governance is centralized under a single EU authority, authorized to add, remove, or update entries in the registry.
