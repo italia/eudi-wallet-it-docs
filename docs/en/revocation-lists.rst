@@ -57,7 +57,7 @@ Functional Requirements
 - revoke a Digital Credential when the following circumstances occur:
 
   - the Digital Credential requires to be updated, whenever one or more attributes are changed; in this case the User will request a new issuance for that Digital Credential;
-  - the Holder requests such revocation due to the loss or replacement of cryptographic key material to which the issued Digital Credential is bound. In such case, the only way a Holder can request a revocation is to use an alternative authentication method with a High Level of Assurance (e.g., CIE level 3);
+  - the Holder requests such revocation due to the loss or replacement of cryptographic key material to which the issued Digital Credential is bound. In such case, the Holder should request a revocation using a web service provisioned by the Wallet Provider and an authentication method with a High Level of Assurance (e.g., CIE id level 3);
   - the User deletes the Digital Credential from the Wallet Instance;
 
 - provide a web service for allowing a Wallet Instance, with a proof of possession of a specific Digital Credential, to 
