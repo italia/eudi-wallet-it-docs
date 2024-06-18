@@ -33,6 +33,8 @@ The following requirements for the Wallet Attestation are met:
   - **Local Hybrid WSCD**: the WSCD involves a pluggable internal hardware component within the User's device, such as an *eUICC* that adheres to *GlobalPlatform* standards and supports *JavaCard*.
   - **Remote Hybrid WSCD**: the WSCD involves a local component mixed with a remote service.
 
+- The Wallet Provider MUST offer a set of services, exclusively available to its Wallet Solution instances, for the verification and issuance of Wallet Attestations.
+
 .. warning::
   At the current stage, the current implementation profile defined in this document supports only the **Local Internal WSCD**. Future versions of this specification MAY include other approaches depending on the required `AAL`.
 
