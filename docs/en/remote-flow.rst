@@ -883,6 +883,7 @@ Below is a non-normative response example:
 
 .. note::
     The ``presentation_definitions_supported`` parameter in the ``metadata`` contains all the supported presentation definitions. These definitions are used to filter the ``presentation_definition`` included in the presentation request, based on the trust framework and compliance evaluation mechanisms.
+    The ``presentation_definition`` obtained in the presentation request includes some or all of the IDs listed in the ``presentation_definitions_supported`` published in the metadata, such that the corresponding IDs lead to the use of the definitions contained in the metadata.
 
 The Entity Configuration is a JWS, where its header and payload parameters are defined below, based on the provided OpenID Federation Entity Configuration example:
 
