@@ -1,0 +1,666 @@
+{
+    "iat": 1718207217,
+    "exp": 1749743216,
+    "iss": "https://eaa-provider.example.org",
+    "sub": "https://eaa-provider.example.org",
+    "authority_hints": [
+        "https://trust-anchor.example.org"
+    ],
+    "jwks": {
+        "keys": [
+            {
+                "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
+                "kty": "EC",
+                "crv": "P-256",
+                "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+            }
+        ]
+    },
+    "metadata": {
+        "federation_entity": {
+            "homepage_uri": "https://eaa-provider.example.org/",
+            "organization_name": "Organization Name",
+            "contacts": [
+                "informazioni@example.it",
+                "protocollo@pec.example.it"
+            ],
+            "tos_uri": "https://eaa-provider.example.org/public/info_policy.html",
+            "policy_uri": "https://eaa-provider.example.org/public/privacy_policy.html",
+            "logo_uri": "https://eaa-provider.example.org/public/logo.svg"
+        },
+        "oauth_authorization_server": {
+            "issuer": "https://eaa-provider.example.org",
+            "pushed_authorization_request_endpoint": "https://eaa-provider.example.org/as/par",
+            "authorization_endpoint": "https://eaa-provider.example.org/authorize",
+            "token_endpoint": "https://eaa-provider.example.org/token",
+            "client_registration_types_supported": [
+                "automatic"
+            ],
+            "code_challenge_methods_supported": [
+                "S256"
+            ],
+            "acr_values_supported": [
+                "https://www.spid.gov.it/SpidL2",
+                "https://www.spid.gov.it/SpidL3"
+            ],
+            "scopes_supported": [
+                "EuropeanDisabilityCard",
+                "EuropeanHealthInsuranceCard",
+                "MDL"
+            ],
+            "response_modes_supported": [
+                "form_post.jwt",
+                "query"
+            ],
+            "authorization_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "grant_types_supported": [
+                "authorization_code"
+            ],
+            "token_endpoint_auth_methods_supported": [
+                "attest_jwt_client_auth"
+            ],
+            "token_endpoint_auth_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "request_object_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "jwks": {
+                "keys": [
+                    {
+                        "kid": "f10aca0992694b3581f6f699bfc8a2c6cc687725",
+                        "kty": "EC",
+                        "crv": "P-256",
+                        "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                        "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+                    }
+                ]
+            }
+        },
+        "openid_credential_issuer": {
+            "credential_issuer": "https://eaa-provider.example.org",
+            "credential_endpoint": "https://eaa-provider.example.org/credential",
+            "revocation_endpoint": "https://eaa-provider.example.org/revoke",
+            "status_attestation_endpoint": "https://eaa-provider.example.org/status",
+            "display": [
+                {
+                    "name": "EAA Provider",
+                    "locale": "it-IT"
+                },
+                {
+                    "name": "EAA Provider",
+                    "locale": "en-US"
+                }
+            ],
+            "credential_configurations_supported": {
+                "EuropeanDisabilityCard": {
+                    "format": "vc+sd-jwt",
+                    "scope": "EuropeanDisabilityCard",
+                    "cryptographic_binding_methods_supported": [
+                        "jwk"
+                    ],
+                    "credential_signing_alg_values_supported": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ],
+                    "proof_types_supported": {
+                        "jwt": {
+                            "proof_signing_alg_values_supported": [
+                                "ES256",
+                                "ES384",
+                                "ES512"
+                            ]
+                        }
+                    },
+                    "display": [
+                        {
+                            "name": "Carta della disabilità europea",
+                            "locale": "it-IT"
+                        },
+                        {
+                            "name": "European Disability Card",
+                            "locale": "en-US"
+                        }
+                    ],
+                    "vct": "EuropeanDisabilityCard",
+                    "claims": {
+                        "document_number": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Numero Documento",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Document Number",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "given_name": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Nome",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Name",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "family_name": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Cognome",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Family Name",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "birth_date": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Data di Nascita (YYYY-MM-GG)",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Date of Birth (YYYY-MM-GG)",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "tax_id_code": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Codice Fiscale",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Tax Id Number",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "expiry_date": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Data di Scadenza (YYYY-MM-GG)",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Expiration Date (YYYY-MM-GG)",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "constant_attendance_allowance": {
+                            "value_type": "boolean",
+                            "display": [
+                                {
+                                    "name": "Diritto accompagnatore",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Constant attendance allowance",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "portrait": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Foto codificata in base64",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Portrait base64 encoded",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "link_qr_code": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Link QR Code",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Link QR Code",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "EuropeanHealthInsuranceCard": {
+                    "format": "vc+sd-jwt",
+                    "scope": "EuropeanHealthInsuranceCard",
+                    "cryptographic_binding_methods_supported": [
+                        "jwk"
+                    ],
+                    "credential_signing_alg_values_supported": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ],
+                    "proof_types_supported": {
+                        "jwt": {
+                            "proof_signing_alg_values_supported": [
+                                "ES256",
+                                "ES384",
+                                "ES512"
+                            ]
+                        }
+                    },
+                    "display": [
+                        {
+                            "name": "Tessera sanitaria europea",
+                            "locale": "it-IT"
+                        },
+                        {
+                            "name": "European Health Insurance Card",
+                            "locale": "en-US"
+                        }
+                    ],
+                    "credential_definition": {
+                        "vct": "EuropeanHealthInsuranceCard",
+                        "claims": {
+                            "content": {
+                                "value_type": "string",
+                                "display": [
+                                    {
+                                        "name": "PDF della tessera sanitaria europea codificato in base64",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "European Health Insurance Card PDF base64 encoded",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "MDL": {
+                    "format": "vc+sd-jwt",
+                    "scope": "MDL",
+                    "cryptographic_binding_methods_supported": [
+                        "jwk"
+                    ],
+                    "credential_signing_alg_values_supported": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ],
+                    "proof_types_supported": {
+                        "jwt": {
+                            "proof_signing_alg_values_supported": [
+                                "ES256",
+                                "ES384",
+                                "ES512"
+                            ]
+                        }
+                    },
+                    "display": [
+                        {
+                            "name": "Patente di guida",
+                            "locale": "it-IT"
+                        },
+                        {
+                            "name": "Mobile Driver's License",
+                            "locale": "en-US"
+                        }
+                    ],
+                    "vct": "MDL",
+                    "claims": {
+                        "given_name": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Nome",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "First Name",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "family_name": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Cognome",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Family Name",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "birth_date": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Data di nascita (YYYY-MM-GG)",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Date of Birth (YYYY-MM-GG)",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "place_of_birth": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Luogo di Nascita",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Place of Birth",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "issue_date": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Data di rilascio (YYYY-MM-GG)",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Issue Date (YYYY-MM-GG)",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "expiry_date": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Data di scadenza (YYYY-MM-GG)",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Expiry Date (YYYY-MM-GG)",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "issuing_country": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Paese di rilascio",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Issuing Country",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "issuing_authority": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Autorità di rilascio",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Issuing Authority",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "document_number": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Numero di documento",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Document Number",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "portrait": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Foto codificata in base64",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Portrait base64 encoded",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "driving_privileges": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Elenco delle categorie di abilitazione separate da spazio",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Driving Privileges separated by space",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "restrictions_conditions": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Annotazioni/Restrizioni valide per tutte le categorie separate da spazio",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Restriction/Condition for all driving privileges separated by space ",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        },
+                        "driving_privileges_details": {
+                            "value_type": "string",
+                            "display": [
+                                {
+                                    "name": "Dettagli delle categorie di abilitazione",
+                                    "locale": "it-IT"
+                                },
+                                {
+                                    "name": "Driving privilege details",
+                                    "locale": "en-US"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "jwks": {
+                "keys": [
+                    {
+                        "kid": "f10aca0992694b3581f6f699bfc8a2c6cc687725",
+                        "kty": "EC",
+                        "crv": "P-256",
+                        "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                        "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+                    }
+                ]
+            }
+        },
+        "wallet_relying_party": {
+            "application_type": "web",
+            "client_id": "https://eaa-provider.example.org",
+            "client_name": "Organization Name",
+            "contacts": [
+                "informazioni@example.it",
+                "protocollo@pec.example.it"
+            ],
+            "request_uris": [
+                "https://eaa-provider.example.org/request_uri"
+            ],
+            "response_uris": [
+                "https://eaa-provider.example.org/response_uri"
+            ],
+            "default_acr_values": [
+                "https://www.spid.gov.it/SpidL2",
+                "https://www.spid.gov.it/SpidL3"
+            ],
+            "request_object_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "authorization_signed_response_alg": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "authorization_encrypted_response_alg": [
+                "RSA-OAEP-256"
+            ],
+            "authorization_encrypted_response_enc": [
+                "A128CBC-HS256",
+                "A192CBC-HS384",
+                "A256CBC-HS512",
+                "A128GCM",
+                "A192GCM",
+                "A256GCM"
+            ],
+            "vp_formats": {
+                "vc+sd-jwt": {
+                    "sd-jwt_alg_values": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ]
+                }
+            },
+            "presentation_definitions": [
+                {
+                    "id": "d76c51b7-ea90-49bb-8368-6b3d194fc131",
+                    "input_descriptors": [
+                        {
+                            "id": "PersonIdentificationData",
+                            "format": {
+                                "vc+sd-jwt": {
+                                    "alg": [
+                                        "ES256",
+                                        "ES384",
+                                        "ES512"
+                                    ]
+                                },
+                                "constraints": {
+                                    "limit_disclosure": "required",
+                                    "fields": [
+                                        {
+                                            "filter": {
+                                                "const": "PersonIdentificationData",
+                                                "type": "string"
+                                            },
+                                            "path": [
+                                                "$.vct"
+                                            ]
+                                        },
+                                        {
+                                            "filter": {
+                                                "type": "object"
+                                            },
+                                            "path": [
+                                                "$.cnf.jwk"
+                                            ]
+                                        },
+                                        {
+                                            "path": [
+                                                "$.unique_id"
+                                            ]
+                                        },
+                                        {
+                                            "path": [
+                                                "$.tax_id_code"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },      
+                        {
+                            "id": "WalletAttestation",
+                            "format": {
+                                "jwt": {
+                                    "alg": [
+                                        "ES256",
+                                        "ES384",
+                                        "ES512"
+                                    ]
+                                },
+                                "constraints": {
+                                    "limit_disclosure": "required",
+                                    "fields": [
+                                        {
+                                            "filter": {
+                                                "type": "string"
+                                            },
+                                            "path": [
+                                                "$.iss"
+                                            ]
+                                        },
+                                        {
+                                            "filter": {
+                                                "type": "object"
+                                            },
+                                            "path": [
+                                                "$.cnf.jwk"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                } 
+            ],
+            "jwks": {
+                "keys": [
+                    {
+                        "kid": "f10aca0992694b3581f6f699bfc8a2c6cc687725",
+                        "kty": "EC",
+                        "crv": "P-256",
+                        "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                        "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+                    }
+                ]
+            }
+        }
+    }
+}
