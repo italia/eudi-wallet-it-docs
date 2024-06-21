@@ -20,7 +20,7 @@ The *federation_entity* metadata MUST contain the claims as defined in Section :
 Metadata for wallet_relying_party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *wallet_relying_party* metadata MUST contain the following claims.
+The *wallet_relying_party* metadata MUST contain the following parameters.
 
 .. list-table:: 
   :widths: 20 60
