@@ -630,7 +630,7 @@ Furthermore, the Wallet Instance applies the metadata policy, if any.
 Trust Chain Fast Renewal
 ------------------------
 
-This Section outlines a Trust Chain fast renewal method. This approach offers a streamlined way to maintain the validity of a trust chain without undergoing the full discovery
+The Trust Chain fast renewal method offers a streamlined way to maintain the validity of a trust chain without undergoing the full discovery
 process again. It's particularly useful for quickly updating trust relationships when minor changes occur or when the
 Trust Chain is close to expiration but the overall structure of the federation hasn't changed significantly.
 
