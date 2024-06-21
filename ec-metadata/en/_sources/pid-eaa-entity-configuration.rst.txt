@@ -4,7 +4,7 @@
 Entity Configuration of PID/(Q)EAA Providers
 --------------------------------------------
 
-The PID/(Q)EAA Providers is a Federation Entity and, according to Section :ref:`Configuration of the Federation`, it MUST make a *well-known* endpoint available containing its Entity Configuration.
+The PID/(Q)EAA Providers, as a Federation Entity, are required to adhere to the guidelines outlined in Section :ref:`Configuration of the Federation`. Specifically, they MUST provide a well-known endpoint that hosts their Entity Configuration.
 The Entity Configuration of PID/(Q)EAA Providers MUST contain the claims as defined in Sections :ref:`Entity Configuration Leaves and Intermediates` and :ref:`Entity Configurations Common Parameters`. 
 
 The PID/(Q)EAA Providers MUST provide the following metadata types:
