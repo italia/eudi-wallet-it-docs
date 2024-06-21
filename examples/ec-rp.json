@@ -19,7 +19,7 @@
     },
     "metadata": {
         "federation_entity": {
-            "homepage_uri": "https://relying-party.example.org/",
+            "homepage_uri": "https://relying-party.example.org",
             "organization_name": "Organization Name",
             "contacts": [
                 "informazioni@example.it",
