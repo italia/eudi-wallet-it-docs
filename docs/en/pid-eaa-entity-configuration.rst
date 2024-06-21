@@ -19,7 +19,7 @@ In case the (Q)EAA Providers authenticate the Users using their Wallet Instance,
 Metadata for federation_entity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *federation_entity* metadata MUST contain the claims as defined in Section :ref:`Metadata of federation_entity Leaves`.
+The *federation_entity* metadata MUST contain the parameters as defined in Section :ref:`Metadata of federation_entity Leaves`.
 
 
 Metadata for oauth_authorization_server
