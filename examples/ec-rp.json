@@ -40,7 +40,7 @@
             "request_uris": [
                 "https://relying-party.example.org/request_uri"
             ],
-            "response_uris": [
+            "response_uris_supported": [
                 "https://relying-party.example.org/response_uri"
             ],
             "authorization_signed_response_alg": "ES256",
