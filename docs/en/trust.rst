@@ -634,7 +634,7 @@ This Section outlines a Trust Chain fast renewal method. This approach offers a 
 process again. It's particularly useful for quickly updating trust relationships when minor changes occur or when the
 Trust Chain is close to expiration but the overall structure of the federation hasn't changed significantly.
 
-The Trust Chain fast renewal process is initiated by fetching the leaf's (RP's or OP's) Entity Configuration anew. However, unlike the federation discovery process that may involve fetching Entity Configurations starting from the authority hints, the fast renewal focuses on directly obtaining the Subordinate Statements. These statements are requested using the `source_endpoint` provided within them, which points to the location where the statements can be fetched.
+The Trust Chain fast renewal process is initiated by fetching the leaf's Entity Configuration anew. However, unlike the federation discovery process that may involve fetching Entity Configurations starting from the authority hints, the fast renewal focuses on directly obtaining the Subordinate Statements. These statements are requested using the `source_endpoint` provided within them, which points to the location where the statements can be fetched.
 
 
 Non-repudiability of the Long Lived Attestations
