@@ -25,7 +25,7 @@ The *federation_entity* metadata MUST contain the parameters as defined in Secti
 Metadata for oauth_authorization_server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *oauth_authorization_server* metadata MUST contain the following claims.
+The *oauth_authorization_server* metadata MUST contain the following parameters.
 
 .. list-table:: 
   :widths: 20 60
