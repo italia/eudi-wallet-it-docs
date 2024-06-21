@@ -136,6 +136,6 @@ Below is a non-normative example of an Entity Configuration of a (Q)EAA Provider
   - `openid_credential_issuer`
   - `wallet_relying_party`
 
-.. literalinclude:: ..\..\examples\ec-eaa.json
+.. literalinclude:: ../../examples/ec-eaa.json
   :language: JSON
 

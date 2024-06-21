@@ -63,6 +63,6 @@ Below a non-normative example of the request made by the Wallet Instance to the 
 
 Below is a non-normative response example:
 
-.. literalinclude:: ..\..\examples\ec-rp.json
+.. literalinclude:: ../../examples/ec-rp.json
   :language: JSON
 
