@@ -318,7 +318,7 @@ The JWS payload parameters are described herein:
 
     Using the parameter ``scope`` requires that the Relying Party Metadata MUST contain the ``presentation_definition``, where a non-normative example of it is given below:
 
-.. literalinclude:: ..\..\examples\presentation-definition.json
+.. literalinclude:: ../../examples/presentation-definition.json
   :language: JSON
 
 .. note::
