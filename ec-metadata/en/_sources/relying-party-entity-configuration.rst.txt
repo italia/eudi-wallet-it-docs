@@ -36,7 +36,7 @@ The *wallet_relying_party* metadata MUST contain the following parameters.
     - String indicating the type of application. It MUST be set to "*web*" value. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2. 
   * - **request_uris**
     - JSON Array of *request_uri* values that are pre-registered by the RP. These URLs MUST use the *https* scheme. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2.
-  * - **response_uris**
+  * - **response_uris_supported**
     - JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode direct_post and direct_post.jwt (see `OpenID4VP`_ Draft 20 Sections 6.2 and 6.3).
   * - **authorization_signed_response_alg**
     - String representing the JWS [:rfc:`7515`] *alg* algorithm that MUST be used for signing authorization responses. The algorithm *none* MUST not to be used. See `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`_ Section 3.
