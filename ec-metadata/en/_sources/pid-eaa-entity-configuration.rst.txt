@@ -123,7 +123,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
 Metadata for wallet_relying_party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *wallet_relying_party* metadata MUST contain the claims as defined in Section :ref:`Metadata for wallet_relying_party`.
+The *wallet_relying_party* metadata MUST contain the parameters as defined in Section :ref:`Metadata for wallet_relying_party`.
 
 
 Example of a (Q)EAA Provider Entity Configuration
