@@ -1225,10 +1225,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <span class="na">Host</span><span class="o">:</span> <span class="l">pid-provider.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 
-response_type=code
 &amp;client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
-&amp;code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
-&amp;code_challenge_method=S256
 &amp;request=$SIGNED-JWT
 &amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
 &amp;client_assertion=$WIA~WIA-PoP
@@ -1504,31 +1501,19 @@ without encoding and signature. The JWS header:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>response_type</strong></p></td>
-<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">code</span></code>.</p></td>
+<tr class="row-even"><td><p><strong>client_id</strong></p></td>
+<td><p>MUST be set to the thumbprint of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation.</p></td>
 <td><p><span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>client_id</strong></p></td>
-<td><p>MUST be set to the thumbprint of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation.</p></td>
-<td><p><span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>code_challenge</strong></p></td>
-<td><p>A challenge derived from the <strong>code verifier</strong> that is sent in the authorization request.</p></td>
-<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.2"><strong>RFC 7636#section-4.2</strong></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>code_challenge_method</strong></p></td>
-<td><p>A method that was used to derive <strong>code challenge</strong>. It MUST be set to <code class="docutils literal notranslate"><span class="pre">S256</span></code>.</p></td>
-<td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>request</strong></p></td>
+<tr class="row-odd"><td><p><strong>request</strong></p></td>
 <td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation MUST be used for signing the Request Object.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests">OpenID Connect Core. Section 6</a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>client_assertion_type</strong></p></td>
+<tr class="row-even"><td><p><strong>client_assertion_type</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation</span></code>.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>client_assertion</strong></p></td>
+<tr class="row-odd"><td><p><strong>client_assertion</strong></p></td>
 <td><p>It MUST be set to a value containing the Wallet Attestation JWT and the Proof of Possession, separated with the <code class="docutils literal notranslate"><span class="pre">~</span></code> character.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
@@ -1550,11 +1535,11 @@ without encoding and signature. The JWS header:</p>
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.</p></td>
-<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1578,23 +1563,23 @@ without encoding and signature. The JWS header:</p>
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>It MUST be set to the <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
-<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>It MUST be set to the identifier of the PID/(Q)EAA Provider.</p></td>
-<td><p><span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX Timestamp with the expiry time of the JWT.</p></td>
-<td><p><span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_type</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">code</span></code>.</p></td>
+<td><p><span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_mode</strong></p></td>
 <td><p>It MUST be a string indicating the &quot;<em>response_mode</em>&quot;, as specified in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAuth 2.0 Multiple Response Type Encoding Practices</a>. It MUST be one of the supported values (<em>response_modes_supported</em>) provided in the metadata of the PID/(Q)EAA Provider. The supported values MAY be <em>query</em> and <em>form_post.jwt</em> (see <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt">[oauth-v2-jarm-03]</a>).</p></td>
@@ -1609,12 +1594,12 @@ without encoding and signature. The JWS header:</p>
 <td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">OpenID.Core#AuthRequest</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>code_challenge</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>A challenge derived from the <strong>code verifier</strong> that is sent in the authorization request.</p></td>
+<td><p><span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.2"><strong>RFC 7636#section-4.2</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code_challenge_method</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>A method that was used to derive <strong>code challenge</strong>. It MUST be set to <code class="docutils literal notranslate"><span class="pre">S256</span></code>.</p></td>
+<td><p><span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>authorization_details</strong></p></td>
 <td><p>Array of JSON Objects. Each JSON Object MUST include the following claims:</p>
@@ -1630,14 +1615,6 @@ without encoding and signature. The JWS header:</p>
 <tr class="row-odd"><td><p><strong>redirect_uri</strong></p></td>
 <td><p>Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.</p></td>
 <td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">OpenID.Core#AuthRequest</a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>client_assertion_type</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>client_assertion</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
 <td><p>Unique identifier of the JWT that, together with the value contained in the <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim,  prevents the reuse of the JWT (replay attack). Since the <cite>jti</cite> value alone is not collision resistant, it MUST be identified uniquely together with its issuer.</p></td>

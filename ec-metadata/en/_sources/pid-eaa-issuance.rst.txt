@@ -130,10 +130,7 @@ Below a non-normative example of the PAR.
     Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
-    response_type=code
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
-    &code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
-    &code_challenge_method=S256
     &request=$SIGNED-JWT
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
@@ -423,18 +420,9 @@ The requests to the PID/(Q)EAA authorization endpoint MUST use the HTTP POST met
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **response_type**
-      - MUST be set to ``code``.
-      - :rfc:`6749`
     * - **client_id**
       - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Attestation.
       - :rfc:`6749`
-    * - **code_challenge**
-      - A challenge derived from the **code verifier** that is sent in the authorization request.
-      - :rfc:`7636#section-4.2`.
-    * - **code_challenge_method**
-      - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
-      - :rfc:`7636#section-4.3`.
     * - **request**
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Attestation MUST be used for signing the Request Object.
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
@@ -489,8 +477,8 @@ The JWT payload is given by the following parameters:
       - UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **response_type**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - MUST be set to ``code``.
+      - :rfc:`6749`
     * - **response_mode**
       - It MUST be a string indicating the "*response_mode*", as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. It MUST be one of the supported values (*response_modes_supported*) provided in the metadata of the PID/(Q)EAA Provider. The supported values MAY be *query* and *form_post.jwt* (see `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`_).
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
@@ -501,11 +489,11 @@ The JWT payload is given by the following parameters:
       - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits.
       - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
     * - **code_challenge**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - A challenge derived from the **code verifier** that is sent in the authorization request.
+      - :rfc:`7636#section-4.2`.
     * - **code_challenge_method**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
+      - :rfc:`7636#section-4.3`.
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
 
@@ -515,12 +503,6 @@ The JWT payload is given by the following parameters:
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
       - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
-    * - **client_assertion_type**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-    * - **client_assertion**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **jti**
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
