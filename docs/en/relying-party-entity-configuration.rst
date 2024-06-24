@@ -3,7 +3,7 @@
 Entity Configuration of Relying Parties
 --------------------------------------------
 
-According to the Section :ref:`Configuration of the Federation`, the Relying Party is a Federation Entity and MUST provide a *well-known* endpoint containing its Entity Configuration. 
+Acording to Section :ref:`Configuration of the Federation`, the Relying Party, being a Federation Entity, is required to maintain a well-known endpoint that hosts its Entity Configuration.
 The Entity Configuration of Relying Parties MUST contain the claims as defined in Sections :ref:`Entity Configuration Leaves and Intermediates` and :ref:`Entity Configurations Common Parameters`. 
 
 The Relying Parties MUST provide the following metadata types:
