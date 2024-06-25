@@ -124,7 +124,7 @@ The PID/(Q)EAA Provider performs the following checks upon the receipt of the PA
 
 Below a non-normative example of the PAR.
 
-.. code-block:: http
+.. code-block:: 
 
     POST /as/par HTTP/1.1
     Host: pid-provider.example.org
@@ -481,11 +481,11 @@ The JWT payload is given by the following parameters:
       - MUST be set to ``code``.
       - :rfc:`6749`
     * - **response_mode**
-      - It MUST be a string indicating the "*response_mode*", as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. It MUST be one of the supported values (*response_modes_supported*) provided in the metadata of the PID/(Q)EAA Provider. The supported values MAY be *query* and *form_post.jwt* (see `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`_).
+      - It MUST be a string indicating the "*response_mode*", as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. It MUST be one of the supported values (*response_modes_supported*) provided in the metadata of the PID/(Q)EAA Provider. The supported values MAY be *query* and *form_post.jwt* (see `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`__).
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **response_mode**
-      - It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of *HTTP 302 Redirect Response* the value MUST be *query*. In this mode, Authorization Response parameters are encoded in the query string added to the redirect_uri when redirecting back to the Wallet Instance. In case of *HTTP POST Response* the value MUST be *form_post.jwt* according to `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`_. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the User Agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the *application/x-www-form-urlencoded* format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.
-      - See `[OAuth 2.0 Multiple Response Type Encoding Practices] <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes>`_ and `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`_.
+      - It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of *HTTP 302 Redirect Response* the value MUST be *query*. In this mode, Authorization Response parameters are encoded in the query string added to the redirect_uri when redirecting back to the Wallet Instance. In case of *HTTP POST Response* the value MUST be *form_post.jwt* according to `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`__. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the User Agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the *application/x-www-form-urlencoded* format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.
+      - See `[OAuth 2.0 Multiple Response Type Encoding Practices] <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes>`_ and `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`__.
     * - **client_id**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
