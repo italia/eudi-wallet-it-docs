@@ -398,7 +398,7 @@ The body of the Wallet Attestation Request JWT MUST contain:
       - **Description**
       - **Reference**
     * - **iss**
-      - MANDATORY. Identifier of the Wallet Provider concatenated with thumbprint of the JWK in the ``cnf`` parameter.
+      - REQUIRED. Identifier of the Wallet Provider concatenated with thumbprint of the JWK in the ``cnf`` parameter.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
       - OPTIONAL. It MUST be set to the identifier of the Wallet Provider.
