@@ -274,9 +274,12 @@ using the method `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.
 The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters
 encoded in ``application/x-www-form-urlencoded`` format:
 
-* ``OAuth-Client-Attestation`` A JWT that conforms to the structure and syntax as defined `here <https://github.com/oauth-wg/draft-ietf-oauth-attestation-based-client-auth/blob/main/draft-ietf-oauth-attestation-based-client-auth.md>`_;
+* ``OAuth-Client-Attestation`` A JWT that conforms to the structure and syntax as defined in the `OAuth 2.0 Attestation-Based Client Authentication` speficification;
+* ``OAuth-Client-Attestation-PoP`` A JWT that conforms to the structure and syntax as defined in the `OAuth 2.0 Attestation-Based Client Authentication` speficification;
 * ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
 * ``assertion`` containing the signed JWT of the Wallet Attestation Request.
+
+* ``OAuth-Client-Attestation and OAuth-Client-Attestation-PoP`` are both defined in this draft `specification <https://github.com/oauth-wg/draft-ietf-oauth-attestation-based-client-auth/blob/main/draft-ietf-oauth-attestation-based-client-auth.md>`_;
 
 .. code-block:: http
 
@@ -284,6 +287,7 @@ encoded in ``application/x-www-form-urlencoded`` format:
     Host: wallet-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     OAuth-Client-Attestation: eyJhbGciOiAiRVMyNTYiLCJraWQiOiAidmJlWEprc004NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInR5cCI6ICJ3YXIrand0In0.eyJpc3MiOiAiaHR0cHM6Ly93YWxsZXQtcHJvdmlkZXIuZXhhbXBsZS5vcmcvaW5zdGFuY2UvdmJlWEprc004NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsInN1YiI6ICJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy8iLCJjaGFsbGVuZ2UiOiAiNmVjNjkzMjQtNjBhOC00ZTViLWE2OTctYTc2NmQ4NTc5MGVhIiwiaGFyZHdhcmVfc2lnbmF0dXJlIjogIktvWklodmNOQVFjQ29JQXdnQUlCLnJlZGFjdGVkIiwiaW50ZWdyaXR5X2Fzc2VydGlvbiI6ICJvMk5tYlhSdlhCU2xZdEJwWVguLlJlZGFjdGVkIiwiaGFyZHdhcmVfa2V5X3RhZyI6ICJXUWh5RHltRktzUDk1aUZxcHpkRURXUzRsN2FWbmEyRm40SkNlV0hZdGJVPQ==",ImNuZiI6IHsiandrIjogeyJjcnYiOiAiUC0yNTYiLCJrdHkiOiAiRUMiLCJ1c2UiOiAic2lnIiwieCI6ICIxOE5wdEkteHIycGp5UkpLR01uejRXbWRuUURfdUpTcTRSOTVOajk4YjQ0IiwieSI6ICJMSVpud0IzOXZGSmpZZ1Mza3d4MUU0cjMtQ28HRlF3WnRQQklScW5ObHJnIiwia2lkIjogInZiZVhKa3NNTjV4cGh0QU5uQ2lHNm1DeXVVNGpmR05nWm9wR3VLdnVvZ2c5YyJ9fSwidmZfZm9ybWF0c19zdXBwb3J0ZWQiOiB7Imp3dF92Y19qc29uIjogeyJhbGdfdmFsdWVzX3N1cHBvcnRlZCI6IFsiRVMyNTZLIiwiRVMzODQiXX0sImp3dF92cF9qc29uIjogeyJhbGdfdmFsdWVzX3N1cHBvcnRlZCI6IFsi
+  	OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NsaWVudC5leGFtcGxlLmNvbSIsImF1ZCI6Imh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCJuYmYiOjEzMDA4MTU3ODAsImV4cCI6MTMwMDgxOTM4MH0.coB_mtdXwvi9RxSMzbIey8GVVQLv9qQrBUqmc1qj9Bs
 
     grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
     &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...
