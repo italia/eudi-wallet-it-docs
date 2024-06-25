@@ -407,7 +407,7 @@ The body of the Wallet Attestation Request JWT MUST contain:
       - MANDATORY. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - MANDATORY. UNIX Timestamp with the time of JWT issuance.
+      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **challenge**
       - OPTIONAL. Challenge data obtained from ``nonce`` endpoint
