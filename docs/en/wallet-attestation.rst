@@ -404,7 +404,7 @@ The body of the Wallet Attestation Request JWT MUST contain:
       - OPTIONAL. It MUST be set to the identifier of the Wallet Provider.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - MANDATORY. UNIX Timestamp with the expiry time of the JWT.
+      - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
       - REQUIRED. UNIX Timestamp with the time of JWT issuance.
