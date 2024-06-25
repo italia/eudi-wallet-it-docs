@@ -422,7 +422,7 @@ The body of the Wallet Attestation Request JWT MUST contain:
       - OPTIONAL. Unique identifier of the **Cryptographic Hardware Keys**
       -
     * - **cnf**
-      - MANDATORY. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
+      - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`
 
 .. _table_wallet_attestation_claim:
