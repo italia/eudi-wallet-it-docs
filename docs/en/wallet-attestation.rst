@@ -33,6 +33,8 @@ The following requirements for the Wallet Attestation are met:
   - **Local Hybrid WSCD**: the WSCD involves a pluggable internal hardware component within the User's device, such as an *eUICC* that adheres to *GlobalPlatform* standards and supports *JavaCard*.
   - **Remote Hybrid WSCD**: the WSCD involves a local component mixed with a remote service.
 
+- The Wallet Provider MUST offer a set of services, exclusively available to its Wallet Solution instances, for the verification and issuance of Wallet Attestations.
+
 .. warning::
   At the current stage, the current implementation profile defined in this document supports only the **Local Internal WSCD**. Future versions of this specification MAY include other approaches depending on the required `AAL`.
 
@@ -103,8 +105,10 @@ Wallet Instance Initialization and Registration
 
     **Device Integrity Service:** In this section the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers the verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this scope.
 
-    The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android the service used is `Key Attestation`_ in addition to `Play Integrity API`_, while for iOS the `DeviceCheck`_ service.
-    This service, specifically developed by the manufacturer, is already integrated within the Android or iOS SDKs, so there is no need for a predefined endpoint to access it. Moreover, as it is specifically developed in the mobile architecture, it does not need to be registered as a Federation Entity, through the national accreditation systems.
+    The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android, the DIS is represented by *Key Attestation*, a feature supported by *StrongBox Keymaster*, which is a physical HSM installed directly on the motherboard, and the *TEE* (Trusted Execution Environment), a secure area of the main processor. *Key Attestation* aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the *Play Integrity API*.For Apple devices, the DIS is represented by *DeviceCheck*, which provides a framework and server interface to manage device-specific data securely. *DeviceCheck* is used in combination with the *Secure Enclave*, a dedicated HSM integrated into Apple's SoCs. *DeviceCheck* can be used to attest the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like *Secure Enclave*. Developers can leverage *DeviceCheck* functionality by using the framework itself.
+    These services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. Additionally, as they are specifically developed for mobile architecture, they do not need to be registered as Federation Entities through national accreditation systems.
+    For Apple devices *Secure Enclave* is available since the iPhone 5s (2013).
+    For Android devices, the inclusion of **Strongbox Keymaster** may vary by each smartphone manufacturer, who decides whether to include it or not.
 
 **Step 8**: The Device Integrity Service performs the following actions:
 
@@ -375,7 +379,7 @@ The JOSE header of the Wallet Attestation Request JWT MUST contain:
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      -  Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Instance as base64url-encoded JWK Thumbprint value.
+      -  Unique identifier of the ``jwk`` used by the Wallet Provider to sign the Wallet Attestation, essential for matching the Wallet Provider's cryptographic public key needed for signature verification.
       - :rfc:`7638#section_3`.
     * - **typ**
       -  It MUST be set to ``var+jwt``
@@ -456,9 +460,6 @@ The body of the Wallet Attestation JWT MUST contain:
       - **Reference**
     * - **iss**
       - Identifier of the Wallet Provider
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **aud**
-      - Identifier of the Wallet Provider concatenated with thumbprint of the Wallet Instance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
       - UNIX Timestamp with the expiry time of the JWT.
@@ -556,10 +557,24 @@ A Wallet Instance becomes unusable for several reasons, such as: the User reques
 
 The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.
 
+According to ARF, `Section 6.5.4 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#654-wallet-instance-management>`_ and more specifically in `Topic 38 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md#a2338-topic-38---wallet-instance-revocation>`_ the Wallet Instance can be revoked by the following entities:
+
+  1. Its owner, the User
+  2. Wallet Provider
+  3. PID Provider
+
 During the *Wallet Instance initialization and registration* phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
 When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.
 
+Regarding the reasons for revoking a Wallet Instance, the following scenarios may occur:
 
+- The smartphone is lost;
+- The smartphone has been compromised (e.g., a malicious actor gains control of the smartphone);
+- The smartphone has been reset to factory settings;
+- Any other scenarios where the User loses the control of the Wallet Instance.
+
+If any of the previous scenarios occur, the Wallet Instance **MUST** be revoked.
+To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) **MUST**  offer a remote service, such as a web page, where the User can authenticate and request the revocation of a previously activated Wallet Instance.
 
 .. _token endpoint: wallet-solution.html#wallet-attestation
 .. _Wallet Attestation Request: wallet-attestation.html#format-of-the-wallet-attestation-request

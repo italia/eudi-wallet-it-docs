@@ -550,3 +550,4 @@ When the Wallet Instance sends the user-agent to the Redirect URI provided by th
 
 Handling these errors requires clear communication to the User within the returned navigation web page. It is crucial for the Relying Party to implement robust error handling and validation mechanisms for Redirect URIs to ensure a secure implementation.
 
+
