@@ -413,12 +413,12 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
         "descriptor_map": [
             {
                 "id": "PersonIdentificationData",
-                "path": "$.vp_token.verified_claims.claims._sd[0]",
+                "path": "$.vp_token[0]",
                 "format": "vc+sd-jwt"
             },
             {
                 "id": "WalletAttestation",
-                "path": "$",
+                "path": "$.vp_token[1]",
                 "format": "jwt"
             }
         ]
