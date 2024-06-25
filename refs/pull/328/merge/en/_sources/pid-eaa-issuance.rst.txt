@@ -629,7 +629,7 @@ The mandatory parameters in the HTTP authentication request are specified in the
 
 .. note::
 
-  In the case of PID issuance, optionally, the Wallet Instance MAY provide the additional **idphinting** parameter in URL-encoded String format, that conveys the HTTPS identifier of the Identity Provider authenticating the User. See `AARC-G061 - A specification for IdP hinting. <https://aarc-community.org/guidelines/aarc-g061/>`_ for more details. 
+  In the case of PID issuance, the Wallet Instance MAY provide the **idphinting** parameter in URL encoded String format, that conveys the HTTPS identifier of the Identity Provider authenticating the User. See `AARC-G061 - A specification for IdP hinting. <https://aarc-community.org/guidelines/aarc-g061/>`_ for more details. 
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^
