@@ -1565,12 +1565,12 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
       &quot;descriptor_map&quot;: [
           {
               &quot;id&quot;: &quot;PersonIdentificationData&quot;,
-              &quot;path&quot;: &quot;$.vp_token.verified_claims.claims._sd[0]&quot;,
+              &quot;path&quot;: &quot;$.vp_token[0]&quot;,
               &quot;format&quot;: &quot;vc+sd-jwt&quot;
           },
           {
               &quot;id&quot;: &quot;WalletAttestation&quot;,
-              &quot;path&quot;: &quot;$&quot;,
+              &quot;path&quot;: &quot;$.vp_token[1]&quot;,
               &quot;format&quot;: &quot;jwt&quot;
           }
       ]
