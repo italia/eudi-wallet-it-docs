@@ -383,13 +383,13 @@ The JOSE header of the Wallet Attestation Request JWT MUST contain:
       - **Description**
       - **Reference**
     * - **alg**
-      - OPTIONAL. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
+      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      -  OPTIONAL. Unique identifier of the ``jwk`` used by the Wallet Provider to sign the Wallet Attestation, essential for matching the Wallet Provider's cryptographic public key needed for signature verification.
+      -  Unique identifier of the ``jwk`` used by the Wallet Provider to sign the Wallet Attestation, essential for matching the Wallet Provider's cryptographic public key needed for signature verification.
       - :rfc:`7638#section_3`.
     * - **typ**
-      -  OPTIONAL. It MUST be set to ``var+jwt``
+      -  It MUST be set to ``var+jwt``
       -
 
 The body of the Wallet Attestation Request JWT MUST contain:
@@ -402,31 +402,31 @@ The body of the Wallet Attestation Request JWT MUST contain:
       - **Description**
       - **Reference**
     * - **iss**
-      - REQUIRED. Identifier of the Wallet Provider concatenated with thumbprint of the JWK in the ``cnf`` parameter.
+      - Identifier of the Wallet Provider concatenated with thumbprint of the JWK in the ``cnf`` parameter.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
-      - OPTIONAL. It MUST be set to the identifier of the Wallet Provider.
+      - It MUST be set to the identifier of the Wallet Provider.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
+      - UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
       - REQUIRED. UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **challenge**
-      - OPTIONAL. Challenge data obtained from ``nonce`` endpoint
+      - Challenge data obtained from ``nonce`` endpoint
       -
     * - **hardware_signature**
-      - OPTIONAL. The signature of ``client_data`` obtained using Cryptographic Hardware Key base64 encoded.
+      - The signature of ``client_data`` obtained using Cryptographic Hardware Key base64 encoded.
       -
     * - **integrity_assertion**
-      - OPTIONAL. The integrity assertion obtained from the **Device Integrity Service** with the holder binding of ``client_data``.
+      - The integrity assertion obtained from the **Device Integrity Service** with the holder binding of ``client_data``.
       -
     * - **hardware_key_tag**
-      - OPTIONAL. Unique identifier of the **Cryptographic Hardware Keys**
+      - Unique identifier of the **Cryptographic Hardware Keys**
       -
     * - **cnf**
-      - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
+      - JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`
 
 .. _table_wallet_attestation_claim:
