@@ -94,6 +94,7 @@ In this section a *Wallet Initiated Flow* is outlined, where the User receives t
 
 
 **Steps 1-4 (Discovery):** The User, using the Wallet Instance, selects the PID/(Q)EAA Provider from those listed in the list of trustworthy entities. The Wallet Instance then processes the Metadata for the selected PID/(Q)EAA Provider as defined in the `Trust Model section <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/trust.html#trust-evaluation-mechanism>`_ of this specification.
+
 .. note::
 
     **Federation Check:** The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section :ref:`Entity Configuration of PID/(Q)EAA Providers`.
@@ -126,7 +127,7 @@ Below a non-normative example of the PAR.
 .. code-block:: 
 
     POST /as/par HTTP/1.1
-    Host: pid-provider.example.org
+    Host: https://eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
@@ -134,54 +135,22 @@ Below a non-normative example of the PAR.
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
-Below an non-normative example of the Wallet Attestation Proof of Possession without encoding and signature applied:
+Below an non-normative example of the Wallet Attestation Proof of Possession (WIA-PoP) header and body:
 
-.. code-block::
+.. literalinclude:: ../../examples/wa-pop-header.json
+  :language: JSON
 
-  {
-    "alg": "ES256",
-    "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "typ": "jwt-client-attestation-pop",
-  }
-  .
-  {
-    "iss": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "aud": "https://pid-provider.example.org/par-endpoint",
-    "jti": "ad25868c-8377-479b-8094-46fb1e797625",
-    "iat": 1686645115,
-    "exp": 1686652315
-  }
+.. literalinclude:: ../../examples/wa-pop-payload.json
+  :language: JSON
+
 
 Below an non-normative example of the signed Request Object without encoding and signature applied:
 
-.. code-block::
+.. literalinclude:: ../../examples/request-object-header.json
+  :language: JSON
 
-  {
-    "alg": "ES256",
-    "kid": "FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc",
-  }
-  .
-  {
-  "iss":"$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
-  "aud":"https://pid-provider.example.org",
-  "exp":1672422065,
-  "iat": 1672418465,
-  "jti":"ac80df576e7109686717bf50b869e882",
-  "response_type":"code",
-  "response_mode":"form_post.jwt",
-  "client_id":"$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
-  "state":"fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
-  "code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
-  "code_challenge_method":"S256",
-  "response_mode":"post_form.jwt",
-  "authorization_details":[
-    {
-      "type": "openid_credential",
-      "credential_configuration_id": "PersonIdentificationData"
-    }
-  ],
-  "redirect_uri":"eudiw://start.wallet.example.org",
-  }
+.. literalinclude:: ../../examples/request-object-payload.json
+  :language: JSON
 
 
 .. note::
@@ -210,10 +179,8 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
     Cache-Control: no-cache, no-store
     Content-Type: application/json
 
-    {
-        "request_uri":"urn:ietf:params:oauth:request_uri:bwc4JK-ESC0w8acc191e-Y1LTC2",
-        "expires_in": 60
-    }
+.. literalinclude:: ../../examples/par-response.json
+  :language: JSON
 
 
 **Steps 8-9 (Authorization Request)**: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
@@ -226,7 +193,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 .. code-block:: http
 
     GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
-    Host: pid-provider.example.org
+    Host: https://eaa-provider.example.org
 
 
 .. note::
@@ -248,7 +215,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 .. code-block:: http
 
     HTTP/1.1 302 Found
-    Location: https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Fpid-provider.example.org
+    Location: https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Fhttps://eaa-provider.example.org
 
 **Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain Wallet Instance (:rfc:`9449`) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint.
 
@@ -263,7 +230,7 @@ The ``client_assertion`` is signed using the private key that is created during 
 .. code-block:: http
 
     POST /token HTTP/1.1
-    Host: pid-provider.example.org
+    Host: https://eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
         VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
@@ -282,26 +249,22 @@ The ``client_assertion`` is signed using the private key that is created during 
 
 **Step 15 (Token Response)**: The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) and a fresh `c_nonce` are provided by the Issuer to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 18 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer provides the Wallet Instance with a new `c_nonce` value. 
 
-.. code-block:: 
+.. code-block:: http
 
     HTTP/1.1 200 OK
     Content-Type: application/json
     Cache-Control: no-store
 
-    {
-        "access_token": "Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU ...",
-        "token_type": "DPoP",
-        "expires_in": 2677,
-        "c_nonce": "tZign[...]snFbp",
-        "c_nonce_expires_in": 86400,
-        "authorization_details": [
-          {
-              "type": "openid_credential",
-              "credential_configuration_id: "PersonIdentificationData"
-              }
-          }
-        ]
-    }
+.. literalinclude:: ../../examples/token-response.json
+  :language: JSON
+
+The non-normative example of the DPoP Access Token is given below.
+
+.. literalinclude:: ../../examples/at-dpop-header.json
+  :language: JSON
+
+.. literalinclude:: ../../examples/at-dpop-payload.json
+  :language: JSON
 
 
 **Steps 16-17 (DPoP Proof for Credential Endpoint)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 15** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
@@ -325,10 +288,14 @@ The ``client_assertion`` is signed using the private key that is created during 
 
     It is RECOMMENDED that the public key contained in the ``jwt_proof`` be specifically generated for the requested Credential (fresh cryptographic key) to ensure that different issued Credentials do not share the same public key, thereby remaining unlinkable to each other.
 
-.. code-block::
+
+A non-normative example of the Credential Request is provided below.
+
+
+.. code-block:: http
 
   POST /credential HTTP/1.1
-  Host: pid-provider.example.org
+  Host: https://eaa-provider.example.org
   Content-Type: application/json
   Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
   DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
@@ -339,46 +306,20 @@ The ``client_assertion`` is signed using the private key that is created during 
       WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
       c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
       OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
-  {
-    "format": "vc+sd-jwt"
-    "credential_definition":{
-      "type": ["PersonIdentificationData"]
-    },
-    "proof": {
-      "proof_type": "jwt",
-      "jwt": "eyJraWQiOiJkaWQ6ZXhhbXBsZTplYm"
-    }
-  }
+
+.. literalinclude:: ../../examples/credential-request.json
+  :language: JSON  
+  
 
 
 Where a non-normative example of the decoded content of the ``jwt`` parameter is represented below,
 without encoding and signature. The JWS header:
 
-.. code-block:: JSON
+.. literalinclude:: ../../examples/credential-jwt-proof-header.json
+  :language: JSON  
 
-  {
-    "alg": "ES256",
-    "typ": "openid4vci-proof+jwt",
-    "jwk": {
-      "kty": "EC",
-      "x": "l8tFrhx-34tV3hRICRDY9zCkDlpBhF42UQUfWVAWBFs",
-      "y": "9VE4jf_Ok_o64zbTTlcuNJajHmt6v9TDVrU0CdvGRDA",
-      "crv": "P-256"
-    }
-
-  }
-
-And the JWS payload:
-
-.. code-block:: JSON
-
-    {
-        "iss": "0b434530-e151-4c40-98b7-74c75a5ef760",
-        "aud": "https://pid-provider.example.org/credential",
-        "iat": 1504699136,
-        "nonce": "tZign...snFbp"
-    }
-
+.. literalinclude:: ../../examples/credential-jwt-proof-payload.json
+  :language: JSON  
 
 **Steps 19-21 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to `OPENID4VCI`_ Section 7.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
 
@@ -397,12 +338,9 @@ If the checks defined above are successful the Wallet Instance proceeds with the
     Cache-Control: no-store
     Pragma: no-cache
 
-    {
-        "format": "vc+sd-jwt"
-        "credential" : "LUpixVCWJk0eOt4CXQe1NXK[...]WZwmhmn9OQp6YxX0a2L",
-        "c_nonce": "fGFF7[...]UkhLa",
-        "c_nonce_expires_in": 86400
-    }
+.. literalinclude:: ../../examples/credential-response.json
+  :language: JSON  
+
 
 Pushed Authorization Request Endpoint
 -------------------------------------
@@ -584,16 +522,13 @@ If any errors occur during the PAR Request, the Authorization Server MUST return
 
 Below is a non-normative example of an error response.
 
-.. code::
+.. code:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
 
-  {
-    "error": "invalid_request",
-    "error_description":
-      "The redirect_uri is not valid for the given client"
-  }
+.. literalinclude:: ../../examples/par-error.json
+  :language: JSON  
 
 
 
@@ -780,17 +715,15 @@ If the Token Request is successfully validated, the Authorization Server provide
 
 If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`.
 
-.. code::
+.. code:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json;charset=UTF-8
   Cache-Control: no-store
   Pragma: no-cache
 
-  {
-    "error":"invalid_client"
-    "error_description":"Client authentication failed"
-  }
+.. literalinclude:: ../../examples/token-error.json
+  :language: JSON  
 
 
 Access Token
@@ -973,16 +906,15 @@ If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an err
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
-.. code::
+.. code:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
   Cache-Control: no-store
 
-  {
-    "error": "invalid_proof"
-    "error_description":"The proof field is not present or the provided key proof is invalid or not bound to a nonce provided by the Credential Issuer."
-  }
+.. literalinclude:: ../../examples/credential-error.json
+  :language: JSON  
+
 
 
 
