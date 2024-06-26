@@ -279,7 +279,7 @@ encoded in ``application/x-www-form-urlencoded`` format:
 * ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
 * ``assertion`` containing the signed JWT of the Wallet Attestation Request.
 
-* ``OAuth-Client-Attestation and OAuth-Client-Attestation-PoP`` are both defined in this draft `specification <https://github.com/oauth-wg/draft-ietf-oauth-attestation-based-client-auth/blob/main/draft-ietf-oauth-attestation-based-client-auth.md>`_;
+* ``OAuth-Client-Attestation and OAuth-Client-Attestation-PoP`` are both defined in this draft `specification <https://github.com/oauth-wg/draft-ietf-oauth-attestation-based-client-auth/blob/main/draft-ietf-oauth-attestation-based-client-auth.md>`_.
 
 .. code-block:: http
 
