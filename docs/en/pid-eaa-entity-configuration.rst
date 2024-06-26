@@ -66,7 +66,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **request_object_signing_alg_values_supported**
     - JSON array containing a list of the JWS signing algorithms ("*alg*" values) supported for Request Objects. See `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
   * - **jwks**
-    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the authorization server. See `OIDC-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
+    - JSON Web Key Set containing the cryptographic keys for the authorization server. See `OIDC-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
 
 Metadata for openid_credential_issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
