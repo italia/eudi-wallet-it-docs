@@ -15,7 +15,7 @@
   <link rel="index" title="Index" href="index.html">
   <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
   <link rel="next" title="pseudonyms.rst" href="pseudonyms.html">
-  <link rel="prev" title="Relying Party Solution" href="relying-party-solution.html">
+  <link rel="prev" title="Entity Configuration of Relying Parties" href="relying-party-entity-configuration.html">
 
   
   
@@ -598,6 +598,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
 </ul>
@@ -695,9 +696,16 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
@@ -710,7 +718,6 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
@@ -720,6 +727,12 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Credential Lifecycle</a><ul>
@@ -872,6 +885,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
 </ul>
@@ -969,9 +983,16 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
@@ -984,7 +1005,6 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
@@ -994,6 +1014,12 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Credential Lifecycle</a><ul>
@@ -1068,7 +1094,7 @@
           </div>-->
           
             <div class="footer-buttons footer-buttons--prev" role="navigation" aria-label="footer navigation">
-                <a href="relying-party-solution.html" class="" title="Relying Party Solution" accesskey="p" rel="prev"> Torna a Relying Party Solution</a>
+                <a href="relying-party-entity-configuration.html" class="" title="Entity Configuration of Relying Parties" accesskey="p" rel="prev"> Torna a Entity Configuration of Relying Parties</a>
             </div>
           
           

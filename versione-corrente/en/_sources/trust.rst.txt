@@ -411,6 +411,32 @@ giving the references of the metadata protocol for each of these.
     it could be necessary to include the relevant metadata type, either ``openid_relying_party`` 
     or ``wallet_relying_party``.
 
+
+Metadata of federation_entity Leaves
+-------------------------------------
+
+The *federation_entity* metadata for Leaves MUST contain the following claims.
+
+
+.. list-table:: 
+  :widths: 20 60
+  :header-rows: 1
+
+  * - **Claim**
+    - **Description**
+  * - **organization_name**
+    - See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **homepage_uri**
+    - See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **policy_uri**
+    - See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **logo_uri**
+    - URL of the entity's logo; it MUST be in SVG format. See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **contacts**
+    - Institutional certified email address (PEC) of the entity. See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **federation_resolve_endpoint**
+    - See `OIDC-FED`_ Draft 36 Section 5.1.1
+
 Entity Statements
 -----------------
 

@@ -97,7 +97,7 @@ In this section a *Wallet Initiated Flow* is outlined, where the User receives t
 
 .. note::
 
-    **Federation Check:** The Wallet Instance needs to check if the PID/(Q)EAA Provider is part of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section `Entity Configuration Credential Issuer`_.
+    **Federation Check:** The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section :ref:`Entity Configuration of PID/(Q)EAA Providers`.
 
 **Steps 5-6 (PAR Request):** The Wallet Instance:
 
@@ -124,16 +124,13 @@ The PID/(Q)EAA Provider performs the following checks upon the receipt of the PA
 
 Below a non-normative example of the PAR.
 
-.. code-block:: http
+.. code-block:: 
 
     POST /as/par HTTP/1.1
     Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
-    response_type=code
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
-    &code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
-    &code_challenge_method=S256
     &request=$SIGNED-JWT
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
@@ -172,6 +169,7 @@ Below an non-normative example of the signed Request Object without encoding and
   "iat": 1672418465,
   "jti":"ac80df576e7109686717bf50b869e882",
   "response_type":"code",
+  "response_mode":"form_post.jwt",
   "client_id":"$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
   "state":"fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
   "code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
@@ -423,18 +421,9 @@ The requests to the PID/(Q)EAA authorization endpoint MUST use the HTTP POST met
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **response_type**
-      - MUST be set to ``code``.
-      - :rfc:`6749`
     * - **client_id**
       - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Attestation.
       - :rfc:`6749`
-    * - **code_challenge**
-      - A challenge derived from the **code verifier** that is sent in the authorization request.
-      - :rfc:`7636#section-4.2`.
-    * - **code_challenge_method**
-      - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
-      - :rfc:`7636#section-4.3`.
     * - **request**
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Attestation MUST be used for signing the Request Object.
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
@@ -489,11 +478,14 @@ The JWT payload is given by the following parameters:
       - UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **response_type**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - MUST be set to ``code``.
+      - :rfc:`6749`
+    * - **response_mode**
+      - It MUST be a string indicating the "*response_mode*", as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. It MUST be one of the supported values (*response_modes_supported*) provided in the metadata of the PID/(Q)EAA Provider. The supported values MAY be *query* and or *form_post.jwt* (see `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`__).
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **response_mode**
-      - It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of *HTTP 302 Redirect Response* the value MUST be *query*. In this mode, Authorization Response parameters are encoded in the query string added to the redirect_uri when redirecting back to the Wallet Instance. In case of *HTTP POST Response* the value MUST be *form_post.jwt* according to `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the User Agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the *application/x-www-form-urlencoded* format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.
-      - See `[OAuth 2.0 Multiple Response Type Encoding Practices] <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes>` and `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`.
+      - It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of *HTTP 302 Redirect Response* the value MUST be *query*. In this mode, Authorization Response parameters are encoded in the query string added to the ``redirect_uri`` when redirecting back to the Wallet Instance. In case of *HTTP POST Response* the value MUST be *form_post.jwt* according to `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`__. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the user-agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the *application/x-www-form-urlencoded* format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.
+      - See `[OAuth 2.0 Multiple Response Type Encoding Practices] <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes>`_ and `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`__.
     * - **client_id**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
@@ -501,11 +493,11 @@ The JWT payload is given by the following parameters:
       - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits.
       - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
     * - **code_challenge**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - A challenge derived from the **code verifier** that is sent in the authorization request.
+      - :rfc:`7636#section-4.2`.
     * - **code_challenge_method**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
+      - :rfc:`7636#section-4.3`.
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
 
@@ -515,12 +507,6 @@ The JWT payload is given by the following parameters:
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
       - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
-    * - **client_assertion_type**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-    * - **client_assertion**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **jti**
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
@@ -640,6 +626,10 @@ The mandatory parameters in the HTTP authentication request are specified in the
       - It MUST be set to the same value as obtained by PAR Response. See :ref:`Table of the HTTP PAR Response parameters <table_http_response_claim>`.
       - [:rfc:`9126`].
 
+
+.. note::
+
+  In the case of PID issuance, the Wallet Instance MAY include the **idphinting** parameter as a URL encoded string. This parameter specifies the Identity Provider where the User wishes to authenticate.. See `AARC-G061 - A specification for IdP hinting. <https://aarc-community.org/guidelines/aarc-g061/>`_ for more details. 
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -996,257 +986,5 @@ If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an err
   }
 
 
-.. _Entity Configuration Credential Issuer:
 
-Entity Configuration Credential Issuer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Below is a non-normative example of an Entity Configuration of a PID Provider containing a metadata for 
-
-  - `federation_entity`
-  - `oauth_authorization_server`
-  - `openid_credential_issuer`
-  - `openid_relying_party`
-
-.. code-block:: http
-
-      HTTP/1.1 200 OK
-      Content-Type: application/entity-statement+jwt
-
-      {
-
-        "alg": "ES256",
-        "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
-        "typ": "entity-statement+jwt"
-
-      }
-      .
-      {
-        "exp": "1649610249",
-        "iat": "1649437449",
-        "iss": "https://pid-provider.example.org",
-        "sub": "https://pid-provider.example.org",
-        "jwks": {
-          "keys": [{
-            "kty": "RSA",
-            "use": "sig",
-            "n": "1Ta-sE ...",
-            "e": "AQAB",
-            "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-          }]
-        },
-        "authority_hints": ["https://superior-entity.example.org/federation"],
-        "metadata": {
-          "federation_entity": {
-            "organization_name": "PID Provider Organization Example",
-            "homepage_uri": "https://pid-provider.example.org",
-            "policy_uri": "https://pid-provider.example.org/privacy_policy",
-            "tos_uri": "https://pid-provider.example.org/info_policy",
-            "logo_uri": "https://pid-provider.example.org/logo.svg",
-            "contacts": ["ops@pid-provider.example.org"],
-            "federation_resolve_endpoint": "https://pid-provider.example.org/resolve"
-          },
-          "oauth_authorization_server": {
-            "authorization_endpoint": "https://pid-provider.example.org/authorization",
-            "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
-            "dpop_signing_alg_values_supported": ["ES256", "ES512"],
-            "token_endpoint": "https://pid-provider.example.org/token",
-            "introspection_endpoint": "https://pid-provider.example.org/introspection",
-            "client_registration_types_supported": ["automatic"],
-            "code_challenge_methods_supported": ["S256"],
-            "authorization_details_types_supported":[
-              "openid_credential",
-            ],
-            "acr_values_supported": [
-                "https://www.spid.gov.it/SpidL2",
-                "https://www.spid.gov.it/SpidL3"
-            ],
-            "grant_types_supported": ["authorization_code"],
-            "issuer": "https://pid-provider.example.org",
-            "jwks": {
-                "keys": [
-                    {
-                        "kty": "EC",
-                        "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-                        // other claims ...
-                    }
-                ]
-            },
-            "scopes_supported": [
-                "PersonIdentificationData"
-            ],
-            "request_parameter_supported":true,
-            "request_uri_parameter_supported":false,
-            "response_types_supported": ["code"],
-            "response_modes_supported": ["query","form_post.jwt"],
-            "subject_types_supported": [
-                "pairwise",
-            ],
-            "token_endpoint_auth_methods_supported": [
-                "attest_jwt_client_auth"
-            ],
-            "token_endpoint_auth_signing_alg_values_supported": [
-                "ES256",
-                "ES384",
-                "ES512"
-            ],
-            "request_object_signing_alg_values_supported": [
-                "ES256",
-                "ES384",
-                "ES512"
-            ]
-          },
-          "openid_credential_issuer": {
-            "credential_issuer": "https://pid-provider.example.org",   
-            "credential_endpoint": "https://pid-provider.example.org/credential",
-            "revocation_endpoint": "https://pid-provider.example.org/revoke",
-            "status_attestation_endpoint": "https://pid-provider.example.org/status",
-            "display": [
-              {
-                "name": "PID Provider Italiano di esempio",
-                "locale": "it-IT"
-              },
-              {
-                "name": "Example PID Provider",
-                "locale": "en-US",
-                "logo": {
-                   "uri": "https://pid-provider.example.org/public/logo.svg",
-                   "alt_text": "logo di questo PID Provider"
-                },
-              }
-            ],
-            "jwks": {
-               "keys": [
-                 {
-                  "crv": "P-256",
-                  "kty": "EC",
-                  "x": "newK5qDYMekrCPPO-yEYTdJVWJMTzasMavt2vm1Mb-A",
-                  "y": "VizXaLO6dzeesZPxfpGZabTK3cTXtBUbIiQpmiYRtSE",
-                  "kid": "ff0bded045fe63fe5d1d64dd83b567e0"
-                 }
-               ]
-            },
-            "credential_configurations_supported": [
-              {
-                "format": "vc+sd-jwt",
-                "cryptographic_binding_methods_supported": ["jwk"],
-                "credential_signing_alg_values_supported": ["ES256", "ES384", "ES512"],
-                "proof_types_supported": {
-                  "jwt": {
-                      "proof_signing_alg_values_supported": [
-                          "ES256"
-                      ]
-                  }
-                },
-                "display": [{
-                    "name": "PID Italiano di esempio",
-                    "locale": "it-IT",
-                    "logo": {
-                      "uri": "https://pid-provider example.org/public/logo.svg",
-                      "alt_text": "logo di questa Credenziale"
-                    },
-                    "background_color": "#12107c",
-                    "text_color": "#FFFFFF"
-                  },
-                  {
-                    "name": "Example Italian PID",
-                    "locale": "en-US",
-                    "logo": {
-                      "uri": "https://pid-provider.example.org/public/logo.svg",
-                      "alt_text": "The logo of this credential"
-                    },
-                    "background_color": "#12107c",
-                    "text_color": "#FFFFFF"
-                  }
-                ],
-                "credential_definition": {
-                  "type": ["PersonIdentificationData"],
-                  "verification": {
-                    "trust_framework": "eidas",
-                    "assurance_level": "high",
-                    "evidence": [
-                      {
-                        "type": "electronic_record",
-                        "record": {
-                          "type": "https://eudi.wallet.cie.gov.it",
-                          "source": {
-                            "organization_name": "Ministero dell'Interno",
-                            "organization_id": "urn:eudi:it:organization_id:ipa_code:m_it",
-                            "country_code": "IT"
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  "credentialSubject": {
-                    "given_name": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Current First Name",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Nome",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "family_name": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Current Family Name",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Cognome",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "birth_date": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Date of Birth",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Data di Nascita",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "unique_id": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Unique Identifier",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Identificativo univoco",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "tax_id_code": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Tax Id Number",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Codice Fiscale",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "openid_relying_party": {
-            <This is the metadata of the PID/EAA Provider acting as a Relying Party in the national digital identity systems (CIE/SPID). See spid-cie-oidc-docs for details.>
-          }
-        }
-      }
     

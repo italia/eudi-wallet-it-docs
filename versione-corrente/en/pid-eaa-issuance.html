@@ -14,7 +14,7 @@
   <!-- Relations -->
   <link rel="index" title="Index" href="index.html">
   <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
-  <link rel="next" title="Relying Party Solution" href="relying-party-solution.html">
+  <link rel="next" title="Entity Configuration of PID/(Q)EAA Providers" href="pid-eaa-entity-configuration.html">
   <link rel="prev" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html">
 
   
@@ -598,6 +598,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
 </ul>
@@ -695,9 +696,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#credential-endpoint">Credential endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#credential-request">Credential Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
@@ -710,7 +718,6 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
@@ -720,6 +727,12 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
@@ -872,6 +885,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
 </ul>
@@ -969,9 +983,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#credential-endpoint">Credential endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#credential-request">Credential Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
@@ -984,7 +1005,6 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
@@ -994,6 +1014,12 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
@@ -1165,7 +1191,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p><strong>Steps 1-4 (Discovery):</strong> The User selects the PID/(Q)EAA Provider using the Wallet Instance, the Metadata for the selected PID/(Q)EAA Provider are processed by the Wallet Instance.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Federation Check:</strong> The Wallet Instance needs to check if the PID/(Q)EAA Provider is part of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the PID/(Q)EAA Provider is represented within the section <a class="reference internal" href="#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a>.</p>
+<p><strong>Federation Check:</strong> The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the PID/(Q)EAA Provider is represented within the section <a class="reference internal" href="pid-eaa-entity-configuration.html#entity-configuration-of-pid-q-eaa-providers"><span class="std std-ref">Entity Configuration of PID/(Q)EAA Providers</span></a>.</p>
 </div>
 <p><strong>Steps 5-6 (PAR Request):</strong> The Wallet Instance:</p>
 <blockquote>
@@ -1195,14 +1221,11 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 </ol>
 </div></blockquote>
 <p>Below a non-normative example of the PAR.</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/as/par</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">pid-provider.example.org</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /as/par HTTP/1.1
+Host: pid-provider.example.org
+Content-Type: application/x-www-form-urlencoded
 
-response_type=code
 &amp;client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
-&amp;code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
-&amp;code_challenge_method=S256
 &amp;request=$SIGNED-JWT
 &amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
 &amp;client_assertion=$WIA~WIA-PoP
@@ -1237,6 +1260,7 @@ response_type=code
 <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1672418465</span><span class="p">,</span>
 <span class="s2">&quot;jti&quot;</span><span class="p">:</span><span class="s2">&quot;ac80df576e7109686717bf50b869e882&quot;</span><span class="p">,</span>
 <span class="s2">&quot;response_type&quot;</span><span class="p">:</span><span class="s2">&quot;code&quot;</span><span class="p">,</span>
+<span class="s2">&quot;response_mode&quot;</span><span class="p">:</span><span class="s2">&quot;form_post.jwt&quot;</span><span class="p">,</span>
 <span class="s2">&quot;client_id&quot;</span><span class="p">:</span><span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
 <span class="s2">&quot;state&quot;</span><span class="p">:</span><span class="s2">&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;</span><span class="p">,</span>
 <span class="s2">&quot;code_challenge&quot;</span><span class="p">:</span><span class="s2">&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;</span><span class="p">,</span>
@@ -1478,31 +1502,19 @@ without encoding and signature. The JWS header:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>response_type</strong></p></td>
-<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">code</span></code>.</p></td>
+<tr class="row-even"><td><p><strong>client_id</strong></p></td>
+<td><p>MUST be set to the thumbprint of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation.</p></td>
 <td><p><span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>client_id</strong></p></td>
-<td><p>MUST be set to the thumbprint of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation.</p></td>
-<td><p><span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>code_challenge</strong></p></td>
-<td><p>A challenge derived from the <strong>code verifier</strong> that is sent in the authorization request.</p></td>
-<td><p><span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.2"><strong>RFC 7636#section-4.2</strong></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>code_challenge_method</strong></p></td>
-<td><p>A method that was used to derive <strong>code challenge</strong>. It MUST be set to <code class="docutils literal notranslate"><span class="pre">S256</span></code>.</p></td>
-<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>request</strong></p></td>
+<tr class="row-odd"><td><p><strong>request</strong></p></td>
 <td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation MUST be used for signing the Request Object.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests">OpenID Connect Core. Section 6</a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>client_assertion_type</strong></p></td>
+<tr class="row-even"><td><p><strong>client_assertion_type</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation</span></code>.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>client_assertion</strong></p></td>
+<tr class="row-odd"><td><p><strong>client_assertion</strong></p></td>
 <td><p>It MUST be set to a value containing the Wallet Attestation JWT and the Proof of Possession, separated with the <code class="docutils literal notranslate"><span class="pre">~</span></code> character.</p></td>
 <td><p><a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>.</p></td>
 </tr>
@@ -1524,11 +1536,11 @@ without encoding and signature. The JWS header:</p>
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.</p></td>
-<td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1552,45 +1564,49 @@ without encoding and signature. The JWS header:</p>
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>It MUST be set to the <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
-<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>It MUST be set to the identifier of the PID/(Q)EAA Provider.</p></td>
-<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX Timestamp with the expiry time of the JWT. The claim value MUST be not greater than 300 seconds from the issuance time.</p></td>
-<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_type</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">code</span></code>.</p></td>
+<td><p><span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_mode</strong></p></td>
-<td><p>It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of <em>HTTP 302 Redirect Response</em> the value MUST be <em>query</em>. In this mode, Authorization Response parameters are encoded in the query string added to the redirect_uri when redirecting back to the Wallet Instance. In case of <em>HTTP POST Response</em> the value MUST be <em>form_post.jwt</em> according to <cite>[oauth-v2-jarm-03] &lt;https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt&gt;</cite>. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the User Agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the <em>application/x-www-form-urlencoded</em> format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.</p></td>
-<td><p>See <cite>[OAuth 2.0 Multiple Response Type Encoding Practices] &lt;https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes&gt;</cite> and <cite>[oauth-v2-jarm-03] &lt;https://openid.net/specs/oauth-v2-jarm-03.html&gt;</cite>.</p></td>
+<td><p>It MUST be a string indicating the &quot;<em>response_mode</em>&quot;, as specified in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAuth 2.0 Multiple Response Type Encoding Practices</a>. It MUST be one of the supported values (<em>response_modes_supported</em>) provided in the metadata of the PID/(Q)EAA Provider. The supported values MAY be <em>query</em> and or <em>form_post.jwt</em> (see <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt">[oauth-v2-jarm-03]</a>).</p></td>
+<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>client_id</strong></p></td>
+<tr class="row-even"><td><p><strong>response_mode</strong></p></td>
+<td><p>It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of <em>HTTP 302 Redirect Response</em> the value MUST be <em>query</em>. In this mode, Authorization Response parameters are encoded in the query string added to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> when redirecting back to the Wallet Instance. In case of <em>HTTP POST Response</em> the value MUST be <em>form_post.jwt</em> according to <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt">[oauth-v2-jarm-03]</a>. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the user-agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the <em>application/x-www-form-urlencoded</em> format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes">[OAuth 2.0 Multiple Response Type Encoding Practices]</a> and <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html">[oauth-v2-jarm-03]</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>client_id</strong></p></td>
 <td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 <td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>state</strong></p></td>
+<tr class="row-even"><td><p><strong>state</strong></p></td>
 <td><p>Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits.</p></td>
 <td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">OpenID.Core#AuthRequest</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>code_challenge</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<tr class="row-odd"><td><p><strong>code_challenge</strong></p></td>
+<td><p>A challenge derived from the <strong>code verifier</strong> that is sent in the authorization request.</p></td>
+<td><p><span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.2"><strong>RFC 7636#section-4.2</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>code_challenge_method</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<tr class="row-even"><td><p><strong>code_challenge_method</strong></p></td>
+<td><p>A method that was used to derive <strong>code challenge</strong>. It MUST be set to <code class="docutils literal notranslate"><span class="pre">S256</span></code>.</p></td>
+<td><p><span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>authorization_details</strong></p></td>
+<tr class="row-odd"><td><p><strong>authorization_details</strong></p></td>
 <td><p>Array of JSON Objects. Each JSON Object MUST include the following claims:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1601,19 +1617,11 @@ without encoding and signature. The JWS header:</p>
 </td>
 <td><p>See [RAR <span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] and <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">[OIDC4VCI. Draft 13]</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>redirect_uri</strong></p></td>
+<tr class="row-even"><td><p><strong>redirect_uri</strong></p></td>
 <td><p>Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.</p></td>
 <td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">OpenID.Core#AuthRequest</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>client_assertion_type</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>client_assertion</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>jti</strong></p></td>
+<tr class="row-odd"><td><p><strong>jti</strong></p></td>
 <td><p>Unique identifier of the JWT that, together with the value contained in the <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim,  prevents the reuse of the JWT (replay attack). Since the <cite>jti</cite> value alone is not collision resistant, it MUST be identified uniquely together with its issuer.</p></td>
 <td><p>[<span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
@@ -1761,6 +1769,10 @@ The authorization server MUST first verify the identity of the User that own the
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the case of PID issuance, the Wallet Instance MAY include the <strong>idphinting</strong> parameter as a URL encoded string. This parameter specifies the Identity Provider where the User wishes to authenticate.. See <a class="reference external" href="https://aarc-community.org/guidelines/aarc-g061/">AARC-G061 - A specification for IdP hinting.</a> for more details.</p>
+</div>
 </section>
 <section id="authorization-response">
 <h3>Authorization Response<a class="headerlink" href="#authorization-response" title="Permalink to this heading">¶</a></h3>
@@ -2217,266 +2229,13 @@ defined in <span class="target" id="index-66"></span><a class="rfc reference ext
 </pre></div>
 </div>
 </section>
-<section id="entity-configuration-credential-issuer">
-<span id="id39"></span><h3>Entity Configuration Credential Issuer<a class="headerlink" href="#entity-configuration-credential-issuer" title="Permalink to this heading">¶</a></h3>
-<p>Below is a non-normative example of an Entity Configuration of a PID Provider containing a metadata for</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><cite>federation_entity</cite></p></li>
-<li><p><cite>oauth_authorization_server</cite></p></li>
-<li><p><cite>openid_credential_issuer</cite></p></li>
-<li><p><cite>openid_relying_party</cite></p></li>
-</ul>
-</div></blockquote>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/entity-statement+jwt</span>
-
-{
-
-  &quot;alg&quot;: &quot;ES256&quot;,
-  &quot;kid&quot;: &quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
-  &quot;typ&quot;: &quot;entity-statement+jwt&quot;
-
-}
-.
-{
-  &quot;exp&quot;: &quot;1649610249&quot;,
-  &quot;iat&quot;: &quot;1649437449&quot;,
-  &quot;iss&quot;: &quot;https://pid-provider.example.org&quot;,
-  &quot;sub&quot;: &quot;https://pid-provider.example.org&quot;,
-  &quot;jwks&quot;: {
-    &quot;keys&quot;: [{
-      &quot;kty&quot;: &quot;RSA&quot;,
-      &quot;use&quot;: &quot;sig&quot;,
-      &quot;n&quot;: &quot;1Ta-sE ...&quot;,
-      &quot;e&quot;: &quot;AQAB&quot;,
-      &quot;kid&quot;: &quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;
-    }]
-  },
-  &quot;authority_hints&quot;: [&quot;https://superior-entity.example.org/federation&quot;],
-  &quot;metadata&quot;: {
-    &quot;federation_entity&quot;: {
-      &quot;organization_name&quot;: &quot;PID Provider Organization Example&quot;,
-      &quot;homepage_uri&quot;: &quot;https://pid-provider.example.org&quot;,
-      &quot;policy_uri&quot;: &quot;https://pid-provider.example.org/privacy_policy&quot;,
-      &quot;tos_uri&quot;: &quot;https://pid-provider.example.org/info_policy&quot;,
-      &quot;logo_uri&quot;: &quot;https://pid-provider.example.org/logo.svg&quot;,
-      &quot;contacts&quot;: [&quot;ops@pid-provider.example.org&quot;],
-      &quot;federation_resolve_endpoint&quot;: &quot;https://pid-provider.example.org/resolve&quot;
-    },
-    &quot;oauth_authorization_server&quot;: {
-      &quot;authorization_endpoint&quot;: &quot;https://pid-provider.example.org/authorization&quot;,
-      &quot;pushed_authorization_request_endpoint&quot;: &quot;https://pid-provider.example.org/connect/par&quot;,
-      &quot;dpop_signing_alg_values_supported&quot;: [&quot;ES256&quot;, &quot;ES512&quot;],
-      &quot;token_endpoint&quot;: &quot;https://pid-provider.example.org/token&quot;,
-      &quot;introspection_endpoint&quot;: &quot;https://pid-provider.example.org/introspection&quot;,
-      &quot;client_registration_types_supported&quot;: [&quot;automatic&quot;],
-      &quot;code_challenge_methods_supported&quot;: [&quot;S256&quot;],
-      &quot;authorization_details_types_supported&quot;:[
-        &quot;openid_credential&quot;,
-      ],
-      &quot;acr_values_supported&quot;: [
-          &quot;https://www.spid.gov.it/SpidL2&quot;,
-          &quot;https://www.spid.gov.it/SpidL3&quot;
-      ],
-      &quot;grant_types_supported&quot;: [&quot;authorization_code&quot;],
-      &quot;issuer&quot;: &quot;https://pid-provider.example.org&quot;,
-      &quot;jwks&quot;: {
-          &quot;keys&quot;: [
-              {
-                  &quot;kty&quot;: &quot;EC&quot;,
-                  &quot;kid&quot;: &quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;
-                  // other claims ...
-              }
-          ]
-      },
-      &quot;scopes_supported&quot;: [
-          &quot;PersonIdentificationData&quot;
-      ],
-      &quot;request_parameter_supported&quot;:true,
-      &quot;request_uri_parameter_supported&quot;:false,
-      &quot;response_types_supported&quot;: [&quot;code&quot;],
-      &quot;response_modes_supported&quot;: [&quot;query&quot;,&quot;form_post.jwt&quot;],
-      &quot;subject_types_supported&quot;: [
-          &quot;pairwise&quot;,
-      ],
-      &quot;token_endpoint_auth_methods_supported&quot;: [
-          &quot;attest_jwt_client_auth&quot;
-      ],
-      &quot;token_endpoint_auth_signing_alg_values_supported&quot;: [
-          &quot;ES256&quot;,
-          &quot;ES384&quot;,
-          &quot;ES512&quot;
-      ],
-      &quot;request_object_signing_alg_values_supported&quot;: [
-          &quot;ES256&quot;,
-          &quot;ES384&quot;,
-          &quot;ES512&quot;
-      ]
-    },
-    &quot;openid_credential_issuer&quot;: {
-      &quot;credential_issuer&quot;: &quot;https://pid-provider.example.org&quot;,
-      &quot;credential_endpoint&quot;: &quot;https://pid-provider.example.org/credential&quot;,
-      &quot;revocation_endpoint&quot;: &quot;https://pid-provider.example.org/revoke&quot;,
-      &quot;status_attestation_endpoint&quot;: &quot;https://pid-provider.example.org/status&quot;,
-      &quot;display&quot;: [
-        {
-          &quot;name&quot;: &quot;PID Provider Italiano di esempio&quot;,
-          &quot;locale&quot;: &quot;it-IT&quot;
-        },
-        {
-          &quot;name&quot;: &quot;Example PID Provider&quot;,
-          &quot;locale&quot;: &quot;en-US&quot;,
-          &quot;logo&quot;: {
-             &quot;uri&quot;: &quot;https://pid-provider.example.org/public/logo.svg&quot;,
-             &quot;alt_text&quot;: &quot;logo di questo PID Provider&quot;
-          },
-        }
-      ],
-      &quot;jwks&quot;: {
-         &quot;keys&quot;: [
-           {
-            &quot;crv&quot;: &quot;P-256&quot;,
-            &quot;kty&quot;: &quot;EC&quot;,
-            &quot;x&quot;: &quot;newK5qDYMekrCPPO-yEYTdJVWJMTzasMavt2vm1Mb-A&quot;,
-            &quot;y&quot;: &quot;VizXaLO6dzeesZPxfpGZabTK3cTXtBUbIiQpmiYRtSE&quot;,
-            &quot;kid&quot;: &quot;ff0bded045fe63fe5d1d64dd83b567e0&quot;
-           }
-         ]
-      },
-      &quot;credential_configurations_supported&quot;: [
-        {
-          &quot;format&quot;: &quot;vc+sd-jwt&quot;,
-          &quot;cryptographic_binding_methods_supported&quot;: [&quot;jwk&quot;],
-          &quot;credential_signing_alg_values_supported&quot;: [&quot;ES256&quot;, &quot;ES384&quot;, &quot;ES512&quot;],
-          &quot;proof_types_supported&quot;: {
-            &quot;jwt&quot;: {
-                &quot;proof_signing_alg_values_supported&quot;: [
-                    &quot;ES256&quot;
-                ]
-            }
-          },
-          &quot;display&quot;: [{
-              &quot;name&quot;: &quot;PID Italiano di esempio&quot;,
-              &quot;locale&quot;: &quot;it-IT&quot;,
-              &quot;logo&quot;: {
-                &quot;uri&quot;: &quot;https://pid-provider example.org/public/logo.svg&quot;,
-                &quot;alt_text&quot;: &quot;logo di questa Credenziale&quot;
-              },
-              &quot;background_color&quot;: &quot;#12107c&quot;,
-              &quot;text_color&quot;: &quot;#FFFFFF&quot;
-            },
-            {
-              &quot;name&quot;: &quot;Example Italian PID&quot;,
-              &quot;locale&quot;: &quot;en-US&quot;,
-              &quot;logo&quot;: {
-                &quot;uri&quot;: &quot;https://pid-provider.example.org/public/logo.svg&quot;,
-                &quot;alt_text&quot;: &quot;The logo of this credential&quot;
-              },
-              &quot;background_color&quot;: &quot;#12107c&quot;,
-              &quot;text_color&quot;: &quot;#FFFFFF&quot;
-            }
-          ],
-          &quot;credential_definition&quot;: {
-            &quot;type&quot;: [&quot;PersonIdentificationData&quot;],
-            &quot;verification&quot;: {
-              &quot;trust_framework&quot;: &quot;eidas&quot;,
-              &quot;assurance_level&quot;: &quot;high&quot;,
-              &quot;evidence&quot;: [
-                {
-                  &quot;type&quot;: &quot;electronic_record&quot;,
-                  &quot;record&quot;: {
-                    &quot;type&quot;: &quot;https://eudi.wallet.cie.gov.it&quot;,
-                    &quot;source&quot;: {
-                      &quot;organization_name&quot;: &quot;Ministero dell&#39;Interno&quot;,
-                      &quot;organization_id&quot;: &quot;urn:eudi:it:organization_id:ipa_code:m_it&quot;,
-                      &quot;country_code&quot;: &quot;IT&quot;
-                    }
-                  }
-                }
-              ]
-            },
-            &quot;credentialSubject&quot;: {
-              &quot;given_name&quot;: {
-                &quot;mandatory&quot;: true,
-                &quot;display&quot;: [{
-                    &quot;name&quot;: &quot;Current First Name&quot;,
-                    &quot;locale&quot;: &quot;en-US&quot;
-                  },
-                  {
-                    &quot;name&quot;: &quot;Nome&quot;,
-                    &quot;locale&quot;: &quot;it-IT&quot;
-                  }
-                ]
-              },
-              &quot;family_name&quot;: {
-                &quot;mandatory&quot;: true,
-                &quot;display&quot;: [{
-                    &quot;name&quot;: &quot;Current Family Name&quot;,
-                    &quot;locale&quot;: &quot;en-US&quot;
-                  },
-                  {
-                    &quot;name&quot;: &quot;Cognome&quot;,
-                    &quot;locale&quot;: &quot;it-IT&quot;
-                  }
-                ]
-              },
-              &quot;birth_date&quot;: {
-                &quot;mandatory&quot;: true,
-                &quot;display&quot;: [{
-                    &quot;name&quot;: &quot;Date of Birth&quot;,
-                    &quot;locale&quot;: &quot;en-US&quot;
-                  },
-                  {
-                    &quot;name&quot;: &quot;Data di Nascita&quot;,
-                    &quot;locale&quot;: &quot;it-IT&quot;
-                  }
-                ]
-              },
-              &quot;unique_id&quot;: {
-                &quot;mandatory&quot;: true,
-                &quot;display&quot;: [{
-                    &quot;name&quot;: &quot;Unique Identifier&quot;,
-                    &quot;locale&quot;: &quot;en-US&quot;
-                  },
-                  {
-                    &quot;name&quot;: &quot;Identificativo univoco&quot;,
-                    &quot;locale&quot;: &quot;it-IT&quot;
-                  }
-                ]
-              },
-              &quot;tax_id_code&quot;: {
-                &quot;mandatory&quot;: true,
-                &quot;display&quot;: [{
-                    &quot;name&quot;: &quot;Tax Id Number&quot;,
-                    &quot;locale&quot;: &quot;en-US&quot;
-                  },
-                  {
-                    &quot;name&quot;: &quot;Codice Fiscale&quot;,
-                    &quot;locale&quot;: &quot;it-IT&quot;
-                  }
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    &quot;openid_relying_party&quot;: {
-      &lt;This is the metadata of the PID/EAA Provider acting as a Relying Party in the national digital identity systems (CIE/SPID). See spid-cie-oidc-docs for details.&gt;
-    }
-  }
-}
-</pre></div>
-</div>
-</section>
 </section>
 </section>
 
 
           
             <div class="footer-buttons footer-buttons--next" role="navigation" aria-label="footer navigation">
-                  <a href="relying-party-solution.html" class="" title="Relying Party Solution" accesskey="n" rel="next">Relying Party Solution</a>
+                  <a href="pid-eaa-entity-configuration.html" class="" title="Entity Configuration of PID/(Q)EAA Providers" accesskey="n" rel="next">Entity Configuration of PID/(Q)EAA Providers</a>
               </div>
             
           </div>
