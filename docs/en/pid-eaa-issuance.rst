@@ -93,13 +93,12 @@ In this section a *Wallet Initiated Flow* is outlined, where the User receives t
     PID/(Q)EAA Issuance - Detailed flow
 
 
-**Steps 1-4 (Discovery):** The User selects the PID/(Q)EAA Provider using the Wallet Instance, the Metadata for the selected PID/(Q)EAA Provider are processed by the Wallet Instance.
-
+**Steps 1-4 (Discovery):** The User, using the Wallet Instance, selects the PID/(Q)EAA Provider from those listed in the list of trustworthy entities. The Wallet Instance then processes the Metadata for the selected PID/(Q)EAA Provider as defined in the `Trust Model section <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/trust.html#trust-evaluation-mechanism>`_ of this specification.
 .. note::
 
-    **Federation Check:** The Wallet Instance needs to check if the PID/(Q)EAA Provider is part of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section `Entity Configuration Credential Issuer`_.
+    **Federation Check:** The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section :ref:`Entity Configuration of PID/(Q)EAA Providers`.
 
-**Steps 5-6 (PAR Request):** The Wallet Instance:
+**Steps 5-6 (PAR Request)**: The Wallet Instance:
 
   * creates a fresh PKCE code verifier, Wallet Attestation Proof of Possession, and ``state`` parameter for the *Pushed Authorization Request*.
   * provides to the PID/(Q)EAA Provider PAR endpoint the parameters previously listed above, using the ``request`` parameter (hereafter Request Object) according to :rfc:`9126` Section 3 to prevent Request URI swapping attack.
@@ -124,16 +123,13 @@ The PID/(Q)EAA Provider performs the following checks upon the receipt of the PA
 
 Below a non-normative example of the PAR.
 
-.. code-block:: http
+.. code-block:: 
 
     POST /as/par HTTP/1.1
     Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
-    response_type=code
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
-    &code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
-    &code_challenge_method=S256
     &request=$SIGNED-JWT
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
@@ -172,6 +168,7 @@ Below an non-normative example of the signed Request Object without encoding and
   "iat": 1672418465,
   "jti":"ac80df576e7109686717bf50b869e882",
   "response_type":"code",
+  "response_mode":"form_post.jwt",
   "client_id":"$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$",
   "state":"fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
   "code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
@@ -189,14 +186,14 @@ Below an non-normative example of the signed Request Object without encoding and
 
 .. note::
 
-    **Federation Check:** The PID/(Q)EAA Provider MUST check that the Wallet Provider is part of the federation.
+    **Federation Check**: The PID/(Q)EAA Provider MUST check that the Wallet Provider is part of the federation.
 
 
 .. note::
    The PID/(Q)EAA Provider MUST validate the signature of the the Wallet Attestation and that it is not expired.
 
 
-**Step 7 (PAR Response):**  The PID/(Q)EAA Provider provides a one-time use ``request_uri`` value. The issued ``request_uri`` value must be bound to the client identifier (``client_id``) that was provided in the Request Object.
+**Step 7 (PAR Response)**:  The PID/(Q)EAA Provider provides a one-time use ``request_uri`` value. The issued ``request_uri`` value must be bound to the client identifier (``client_id``) that was provided in the Request Object.
 
 
 .. note::
@@ -219,7 +216,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
     }
 
 
-**Steps 8-9 (Authorization Request):** The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
+**Steps 8-9 (Authorization Request)**: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
 
     1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user-agent (derived from :rfc:`9126`).
     2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`9126`).
@@ -234,11 +231,11 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 
 .. note::
 
-   **User Authentication and Consent:** The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and requires the User consent for the PID issuance.
+   **User Authentication and Consent**: The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and requires the User consent for the PID issuance.
    The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to dynamically request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to start the transaction with the (Q)EAA Provider.
 
 
-**Steps 10-11 (Authorization Response):** The PID/(Q)EAA Provider sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
+**Steps 10-11 (Authorization Response)**: The PID/(Q)EAA Provider sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
 
     1. It MUST check the Authorization Response contains all the defined parameters according to :ref:`Table of the HTTP Response parameters <table_http_response_claim>`.
     2. It MUST check the returned value by the PID/(Q)EAA Provider for ``state`` parameter is equal to the value sent by Wallet Instance in the Request Object (:rfc:`6749`).
@@ -255,7 +252,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 
 **Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain Wallet Instance (:rfc:`9449`) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint.
 
-**Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a *DPoP Proof JWT*  and the parameters: ``code``, ``code_verifier``, and OAuth 2.0 Attestation based Client Authentication  (``client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation`` and ``client_assertion=WIA~WIA-PoP``). 
+**Step 14 (Token Request)**: The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a *DPoP Proof JWT*  and the parameters: ``code``, ``code_verifier``, and OAuth 2.0 Attestation based Client Authentication  (``client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation`` and ``client_assertion=WIA~WIA-PoP``). 
 The ``client_assertion`` is signed using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
 
    1. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`) and was not replied.
@@ -283,7 +280,7 @@ The ``client_assertion`` is signed using the private key that is created during 
     &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
     &client_assertion=$WIA~WIA-PoP
 
-**Step 15 (Token Response):** The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) and a fresh `c_nonce` are provided by the Issuer to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 18 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer provides the Wallet Instance with a new `c_nonce` value. 
+**Step 15 (Token Response)**: The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) and a fresh `c_nonce` are provided by the Issuer to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 18 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer provides the Wallet Instance with a new `c_nonce` value. 
 
 .. code-block:: 
 
@@ -307,9 +304,9 @@ The ``client_assertion`` is signed using the private key that is created during 
     }
 
 
-**Steps 16-17 (DPoP Proof for Credential Endpoint):** The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 15** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
+**Steps 16-17 (DPoP Proof for Credential Endpoint)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 15** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
 
-**Step 18 (Credential Request):** The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key), and format parameters. The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
+**Step 18 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key), and format parameters. The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
 
  1. the JWT proof MUST include all required claims as specified in the table of Section :ref:`Token Request <sec_token_request>`;
  2. The key proof MUST be explicitly typed using header parameters as defined for the respective proof type;
@@ -321,7 +318,7 @@ The ``client_assertion`` is signed using the private key that is created during 
 
 .. note::
 
-    **PID/(Q)EAA Credential Schema and Status registration:** The PID/(Q)EAA Provider MUST register all the issued Credentials for their later revocation, if needed.
+    **PID/(Q)EAA Credential Schema and Status registration**: The PID/(Q)EAA Provider MUST register all the issued Credentials for their later revocation, if needed.
 
 
 .. note::
@@ -383,7 +380,7 @@ And the JWS payload:
     }
 
 
-**Steps 19-21 (Credential Response):** The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to `OPENID4VCI`_ Section 7.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
+**Steps 19-21 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to `OPENID4VCI`_ Section 7.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
 
     1. It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using using the ``kid`` header of the SD-JWT.
@@ -423,18 +420,9 @@ The requests to the PID/(Q)EAA authorization endpoint MUST use the HTTP POST met
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **response_type**
-      - MUST be set to ``code``.
-      - :rfc:`6749`
     * - **client_id**
       - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Attestation.
       - :rfc:`6749`
-    * - **code_challenge**
-      - A challenge derived from the **code verifier** that is sent in the authorization request.
-      - :rfc:`7636#section-4.2`.
-    * - **code_challenge_method**
-      - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
-      - :rfc:`7636#section-4.3`.
     * - **request**
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Attestation MUST be used for signing the Request Object.
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
@@ -489,11 +477,14 @@ The JWT payload is given by the following parameters:
       - UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **response_type**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - MUST be set to ``code``.
+      - :rfc:`6749`
+    * - **response_mode**
+      - It MUST be a string indicating the "*response_mode*", as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. It MUST be one of the supported values (*response_modes_supported*) provided in the metadata of the PID/(Q)EAA Provider. The supported values MAY be *query* and or *form_post.jwt* (see `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`__).
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **response_mode**
-      - It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of *HTTP 302 Redirect Response* the value MUST be *query*. In this mode, Authorization Response parameters are encoded in the query string added to the redirect_uri when redirecting back to the Wallet Instance. In case of *HTTP POST Response* the value MUST be *form_post.jwt* according to `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the User Agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the *application/x-www-form-urlencoded* format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.
-      - See `[OAuth 2.0 Multiple Response Type Encoding Practices] <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes>` and `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`.
+      - It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of *HTTP 302 Redirect Response* the value MUST be *query*. In this mode, Authorization Response parameters are encoded in the query string added to the ``redirect_uri`` when redirecting back to the Wallet Instance. In case of *HTTP POST Response* the value MUST be *form_post.jwt* according to `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`__. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the user-agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the *application/x-www-form-urlencoded* format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.
+      - See `[OAuth 2.0 Multiple Response Type Encoding Practices] <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes>`_ and `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`__.
     * - **client_id**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
@@ -501,11 +492,11 @@ The JWT payload is given by the following parameters:
       - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits.
       - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
     * - **code_challenge**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - A challenge derived from the **code verifier** that is sent in the authorization request.
+      - :rfc:`7636#section-4.2`.
     * - **code_challenge_method**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
+      - :rfc:`7636#section-4.3`.
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
 
@@ -515,12 +506,6 @@ The JWT payload is given by the following parameters:
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
       - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
-    * - **client_assertion_type**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-    * - **client_assertion**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **jti**
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
@@ -640,6 +625,10 @@ The mandatory parameters in the HTTP authentication request are specified in the
       - It MUST be set to the same value as obtained by PAR Response. See :ref:`Table of the HTTP PAR Response parameters <table_http_response_claim>`.
       - [:rfc:`9126`].
 
+
+.. note::
+
+  In the case of PID issuance, the Wallet Instance MAY include the **idphinting** parameter as a URL encoded string. This parameter specifies the Identity Provider where the User wishes to authenticate.. See `AARC-G061 - A specification for IdP hinting. <https://aarc-community.org/guidelines/aarc-g061/>`_ for more details. 
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -996,257 +985,5 @@ If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an err
   }
 
 
-.. _Entity Configuration Credential Issuer:
 
-Entity Configuration Credential Issuer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Below is a non-normative example of an Entity Configuration of a PID Provider containing a metadata for 
-
-  - `federation_entity`
-  - `oauth_authorization_server`
-  - `openid_credential_issuer`
-  - `openid_relying_party`
-
-.. code-block:: http
-
-      HTTP/1.1 200 OK
-      Content-Type: application/entity-statement+jwt
-
-      {
-
-        "alg": "ES256",
-        "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
-        "typ": "entity-statement+jwt"
-
-      }
-      .
-      {
-        "exp": "1649610249",
-        "iat": "1649437449",
-        "iss": "https://pid-provider.example.org",
-        "sub": "https://pid-provider.example.org",
-        "jwks": {
-          "keys": [{
-            "kty": "RSA",
-            "use": "sig",
-            "n": "1Ta-sE ...",
-            "e": "AQAB",
-            "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-          }]
-        },
-        "authority_hints": ["https://superior-entity.example.org/federation"],
-        "metadata": {
-          "federation_entity": {
-            "organization_name": "PID Provider Organization Example",
-            "homepage_uri": "https://pid-provider.example.org",
-            "policy_uri": "https://pid-provider.example.org/privacy_policy",
-            "tos_uri": "https://pid-provider.example.org/info_policy",
-            "logo_uri": "https://pid-provider.example.org/logo.svg",
-            "contacts": ["ops@pid-provider.example.org"],
-            "federation_resolve_endpoint": "https://pid-provider.example.org/resolve"
-          },
-          "oauth_authorization_server": {
-            "authorization_endpoint": "https://pid-provider.example.org/authorization",
-            "pushed_authorization_request_endpoint": "https://pid-provider.example.org/connect/par",
-            "dpop_signing_alg_values_supported": ["ES256", "ES512"],
-            "token_endpoint": "https://pid-provider.example.org/token",
-            "introspection_endpoint": "https://pid-provider.example.org/introspection",
-            "client_registration_types_supported": ["automatic"],
-            "code_challenge_methods_supported": ["S256"],
-            "authorization_details_types_supported":[
-              "openid_credential",
-            ],
-            "acr_values_supported": [
-                "https://www.spid.gov.it/SpidL2",
-                "https://www.spid.gov.it/SpidL3"
-            ],
-            "grant_types_supported": ["authorization_code"],
-            "issuer": "https://pid-provider.example.org",
-            "jwks": {
-                "keys": [
-                    {
-                        "kty": "EC",
-                        "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs"
-                        // other claims ...
-                    }
-                ]
-            },
-            "scopes_supported": [
-                "PersonIdentificationData"
-            ],
-            "request_parameter_supported":true,
-            "request_uri_parameter_supported":false,
-            "response_types_supported": ["code"],
-            "response_modes_supported": ["query","form_post.jwt"],
-            "subject_types_supported": [
-                "pairwise",
-            ],
-            "token_endpoint_auth_methods_supported": [
-                "attest_jwt_client_auth"
-            ],
-            "token_endpoint_auth_signing_alg_values_supported": [
-                "ES256",
-                "ES384",
-                "ES512"
-            ],
-            "request_object_signing_alg_values_supported": [
-                "ES256",
-                "ES384",
-                "ES512"
-            ]
-          },
-          "openid_credential_issuer": {
-            "credential_issuer": "https://pid-provider.example.org",   
-            "credential_endpoint": "https://pid-provider.example.org/credential",
-            "revocation_endpoint": "https://pid-provider.example.org/revoke",
-            "status_attestation_endpoint": "https://pid-provider.example.org/status",
-            "display": [
-              {
-                "name": "PID Provider Italiano di esempio",
-                "locale": "it-IT"
-              },
-              {
-                "name": "Example PID Provider",
-                "locale": "en-US",
-                "logo": {
-                   "uri": "https://pid-provider.example.org/public/logo.svg",
-                   "alt_text": "logo di questo PID Provider"
-                },
-              }
-            ],
-            "jwks": {
-               "keys": [
-                 {
-                  "crv": "P-256",
-                  "kty": "EC",
-                  "x": "newK5qDYMekrCPPO-yEYTdJVWJMTzasMavt2vm1Mb-A",
-                  "y": "VizXaLO6dzeesZPxfpGZabTK3cTXtBUbIiQpmiYRtSE",
-                  "kid": "ff0bded045fe63fe5d1d64dd83b567e0"
-                 }
-               ]
-            },
-            "credential_configurations_supported": [
-              {
-                "format": "vc+sd-jwt",
-                "cryptographic_binding_methods_supported": ["jwk"],
-                "credential_signing_alg_values_supported": ["ES256", "ES384", "ES512"],
-                "proof_types_supported": {
-                  "jwt": {
-                      "proof_signing_alg_values_supported": [
-                          "ES256"
-                      ]
-                  }
-                },
-                "display": [{
-                    "name": "PID Italiano di esempio",
-                    "locale": "it-IT",
-                    "logo": {
-                      "uri": "https://pid-provider example.org/public/logo.svg",
-                      "alt_text": "logo di questa Credenziale"
-                    },
-                    "background_color": "#12107c",
-                    "text_color": "#FFFFFF"
-                  },
-                  {
-                    "name": "Example Italian PID",
-                    "locale": "en-US",
-                    "logo": {
-                      "uri": "https://pid-provider.example.org/public/logo.svg",
-                      "alt_text": "The logo of this credential"
-                    },
-                    "background_color": "#12107c",
-                    "text_color": "#FFFFFF"
-                  }
-                ],
-                "credential_definition": {
-                  "type": ["PersonIdentificationData"],
-                  "verification": {
-                    "trust_framework": "eidas",
-                    "assurance_level": "high",
-                    "evidence": [
-                      {
-                        "type": "electronic_record",
-                        "record": {
-                          "type": "https://eudi.wallet.cie.gov.it",
-                          "source": {
-                            "organization_name": "Ministero dell'Interno",
-                            "organization_id": "urn:eudi:it:organization_id:ipa_code:m_it",
-                            "country_code": "IT"
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  "credentialSubject": {
-                    "given_name": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Current First Name",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Nome",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "family_name": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Current Family Name",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Cognome",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "birth_date": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Date of Birth",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Data di Nascita",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "unique_id": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Unique Identifier",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Identificativo univoco",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    },
-                    "tax_id_code": {
-                      "mandatory": true,
-                      "display": [{
-                          "name": "Tax Id Number",
-                          "locale": "en-US"
-                        },
-                        {
-                          "name": "Codice Fiscale",
-                          "locale": "it-IT"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "openid_relying_party": {
-            <This is the metadata of the PID/EAA Provider acting as a Relying Party in the national digital identity systems (CIE/SPID). See spid-cie-oidc-docs for details.>
-          }
-        }
-      }
     
