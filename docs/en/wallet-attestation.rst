@@ -249,7 +249,6 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
       "jwk": {
         "crv": "P-256",
         "kty": "EC",
-        "use": "sig",
         "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
         "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg",
         "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
