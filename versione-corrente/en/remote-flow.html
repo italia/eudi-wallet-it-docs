@@ -1579,9 +1579,12 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
-<td><p>JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
-- The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
-- The Wallet Attestation</p></td>
+<td><p>JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:</p>
+<ul class="simple">
+<li><p>The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)</p></li>
+<li><p>The Wallet Attestation</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-odd"><td><p><strong>presentation_submission</strong></p></td>
 <td><p>JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the <a class="reference external" href="https://identity.foundation/presentation-exchange/spec/v2.0.0/">Presentation Exchange</a>.</p></td>
