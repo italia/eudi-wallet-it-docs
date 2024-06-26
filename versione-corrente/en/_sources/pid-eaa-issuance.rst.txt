@@ -93,8 +93,7 @@ In this section a *Wallet Initiated Flow* is outlined, where the User receives t
     PID/(Q)EAA Issuance - Detailed flow
 
 
-**Steps 1-4 (Discovery)**: The User selects the PID/(Q)EAA Provider using the Wallet Instance, the Metadata for the selected PID/(Q)EAA Provider are processed by the Wallet Instance.
-
+**Steps 1-4 (Discovery):** The User, using the Wallet Instance, selects the PID/(Q)EAA Provider from those listed in the list of trustworthy entities. The Wallet Instance then processes the Metadata for the selected PID/(Q)EAA Provider as defined in the `Trust Model section <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/trust.html#trust-evaluation-mechanism>`_ of this specification.
 .. note::
 
     **Federation Check:** The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section :ref:`Entity Configuration of PID/(Q)EAA Providers`.
