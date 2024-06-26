@@ -541,7 +541,7 @@ The JWT payload is given by the following parameters:
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
 
-The JOSE header of the Wallet Attestation proof of possession MUST contains:
+The JOSE header of the Wallet Attestation proof of possession MUST contain:
 
 .. _table_jwt_pop:
 .. list-table::
