@@ -282,7 +282,7 @@ The ``client_assertion`` is signed using the private key that is created during 
         QSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIj
         oiUE9TVCIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwia
         WF0IjoxNTYyMjYyNjE2fQ.2-GxA6T8lP4vfrg8v-FdWP0A0zdrj8igiMLvqRMUvwnQg
-        4PtFLbdLXiOSsX0x7NVY-FNyJK70nfbV37xRZT3Lg    
+        4PtFLbdLXiOSsX0x7NVY-FNyJK70nfbV37xRZT3Lg
 
     grant_type=authorization_code
     &code=SplxlOBeZQQYbYS6WxSbIA
