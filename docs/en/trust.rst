@@ -653,6 +653,15 @@ The Wallet Instance that verifies the request issued by the Relying Party MUST u
 
 Furthermore, the Wallet Instance applies the metadata policy, if any.
 
+Trust Chain Fast Renewal
+------------------------
+
+The Trust Chain fast renewal method offers a streamlined way to maintain the validity of a trust chain without undergoing the full discovery
+process again. It's particularly useful for quickly updating trust relationships when minor changes occur or when the
+Trust Chain is close to expiration but the overall structure of the federation hasn't changed significantly.
+
+The Trust Chain fast renewal process is initiated by fetching the leaf's Entity Configuration anew. However, unlike the federation discovery process that may involve fetching Entity Configurations starting from the authority hints, the fast renewal focuses on directly obtaining the Subordinate Statements. These statements are requested using the `source_endpoint` provided within them, which points to the location where the statements can be fetched.
+
 
 Non-repudiability of the Long Lived Attestations
 --------------------------------------------------
