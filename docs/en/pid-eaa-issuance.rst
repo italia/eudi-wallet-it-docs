@@ -230,7 +230,7 @@ The ``client_assertion`` is signed using the private key that is created during 
 .. code-block:: http
 
     POST /token HTTP/1.1
-    Host: https://eaa-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
         VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
