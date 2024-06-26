@@ -435,6 +435,7 @@ Where the following parameters are used:
     - **Description**
   * - **vp_token**
     - JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
+
       - The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
       - The Wallet Attestation
   * - **presentation_submission**
