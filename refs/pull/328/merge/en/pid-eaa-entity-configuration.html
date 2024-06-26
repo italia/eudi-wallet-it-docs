@@ -1133,7 +1133,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>It MUST contain an HTTPS URL that uniquely identifies the PID/(Q)EAA Provider.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>pushed_authorization_request_endpoint</strong></p></td>
-<td><p>The URL of the pushed authorization request endpoint at which a Wallet Instance MUST post an authorization request to exchange for a <em>request_uri</em> value usable at the authorization endpoint. See <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html#as_metadata"><strong>RFC 9126#as_metadata</strong></a>.</p></td>
+<td><p>The URL of the pushed authorization request endpoint is where a Wallet Instance MUST submit an authorization request to obtain a <em>request_uri</em> value, which can then be used at the authorization endpoint. See <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html#as_metadata"><strong>RFC 9126#as_metadata</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>authorization_endpoint</strong></p></td>
 <td><p>URL of the authorization server's authorization endpoint. See <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
@@ -1845,7 +1845,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;presentation_definitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;presentation_definitions_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d76c51b7-ea90-49bb-8368-6b3d194fc131&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
