@@ -295,7 +295,7 @@ A non-normative example of the Credential Request is provided below.
 .. code-block:: http
 
   POST /credential HTTP/1.1
-  Host: https://eaa-provider.example.org
+    Host: eaa-provider.example.org
   Content-Type: application/json
   Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
   DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
