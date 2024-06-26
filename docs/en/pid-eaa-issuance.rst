@@ -97,7 +97,7 @@ In this section a *Wallet Initiated Flow* is outlined, where the User receives t
 
 .. note::
 
-    **Federation Check:** The Wallet Instance needs to check if the PID/(Q)EAA Provider is part of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section :ref:`Entity Configuration of PID/(Q)EAA Providers`.
+    **Federation Check:** The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section :ref:`Entity Configuration of PID/(Q)EAA Providers`.
 
 **Steps 5-6 (PAR Request):** The Wallet Instance:
 
