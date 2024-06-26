@@ -58,7 +58,7 @@ Functional Requirements
 
   - the Digital Credential requires to be updated, whenever one or more attributes are changed; in this case the User will request a new issuance for that Digital Credential;
   - the Holder needs to address the loss or compromise of cryptographic key material associated with the issued Digital Credential. In such case, the End-User should request the revocation of the Digital Credential through a service provided by the Credential Issuer and using an authentication method that offers the same Level of Assurance obtained during the Credential Issuance;
-  - the User deletes the Digital Credential from the Wallet Instance;
+  - the User deletes the Digital Credential from the Wallet Instance. The Wallet Instance therefore should request the revocation of such Digital Credential to the Credential Issuer;
 
 - provide a web service for allowing a Wallet Instance, with a proof of possession of a specific Digital Credential, to 
 
