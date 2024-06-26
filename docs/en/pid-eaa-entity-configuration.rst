@@ -13,7 +13,7 @@ The PID/(Q)EAA Providers MUST provide the following metadata types:
   - `oauth_authorization_server`
   - `openid_credential_issuer`
 
-In case the (Q)EAA Providers authenticate the Users using their Wallet Instance, then the metadata for *wallet_relying_party* MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for *openid_relying_party* within their Entity Configuration. The *openid_relying_party* metadata MUST be compliant with the current version of `SPID/CIE id OIDC Technical Specification <https://github.com/italia/spid-cie-oidc-docs>`_.
+In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for *wallet_relying_party* MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for *openid_relying_party* within their Entity Configuration. The *openid_relying_party* metadata MUST be compliant with the current version of `SPID/CIE id OIDC Technical Specification <https://github.com/italia/spid-cie-oidc-docs>`_.
 
 
 Metadata for federation_entity
