@@ -193,7 +193,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 .. code-block:: http
 
     GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
-    Host: https://eaa-provider.example.org
+    Host: eaa-provider.example.org
 
 
 .. note::
