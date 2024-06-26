@@ -541,7 +541,7 @@ The JWT payload is given by the following parameters:
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
 
-The JOSE header of the Wallet Attestation proof of possession contains:
+The JOSE header of the Wallet Attestation proof of possession MUST contains:
 
 .. _table_jwt_pop:
 .. list-table::
@@ -552,16 +552,16 @@ The JOSE header of the Wallet Attestation proof of possession contains:
       - **Description**
       - **Reference**
     * - **alg**
-      - OPTIONAL. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
+      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      -  OPTIONAL. Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.
+      -  Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.
       - :rfc:`7638#section_3`.
     * - **typ**
-      -  OPTIONAL. It MUST be set to ``jwt-client-attestation-pop``
+      -  It MUST be set to ``jwt-client-attestation-pop``
       -  Currently under discussion in [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
-The body of the Wallet Attestation proof of possession JWT contains:
+The body of the Wallet Attestation proof of possession JWT MUST contains:
 
 .. list-table::
     :widths: 20 60 20
@@ -580,7 +580,7 @@ The body of the Wallet Attestation proof of possession JWT contains:
       - UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - OPTIONAL. UNIX Timestamp with the time of JWT issuance.
+      - UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **jti**
       - Unique identifier for the DPoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
