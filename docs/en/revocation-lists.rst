@@ -57,8 +57,8 @@ Functional Requirements
 - revoke a Digital Credential when the following circumstances occur:
 
   - the Digital Credential requires to be updated, whenever one or more attributes are changed; in this case the User will request a new issuance for that Digital Credential;
-  - the Wallet Instance that holds the Digital Credential was issued is revoked;
-  - the User deletes the Digital Credential from the Wallet Instance;
+  - the Holder needs to address the loss or compromise of cryptographic key material associated with the issued Digital Credential. In such case, the End-User should request the revocation of the Digital Credential through a service provided by the Credential Issuer and using an authentication method that offers the same Level of Assurance obtained during the Credential Issuance;
+  - the User deletes the Digital Credential from the Wallet Instance. The Wallet Instance therefore should request the revocation of such Digital Credential to the Credential Issuer;
 
 - provide a web service for allowing a Wallet Instance, with a proof of possession of a specific Digital Credential, to 
 
@@ -138,10 +138,10 @@ A Wallet Instance MUST request the revocation of a Digital Credential as defined
     
     POST /revoke HTTP/1.1
     Host: pid-provider.example.org
-    Content-Type: application/x-www-form-urlencoded
-
-    credential_pop=$CredentialPoPJWT
-
+    Content-Type: application/json
+    {
+      "credential_pop":"$CredentialPoPJWT"
+    }
 
 Below, is given a non-normative example of a Credential PoP with decoded JWT headers and payload and without signature for better readability:
 
@@ -180,7 +180,7 @@ Below, is given a non-normative example of a Credential PoP with decoded JWT hea
 Credential Revocation HTTP Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/x-www-form-urlencoded`` format.
+The requests to the *Issuer Revocation endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/json`` format.
 
 .. _table_revocation_request_params: 
 .. list-table:: 
@@ -251,7 +251,7 @@ Below a non-normative example of an HTTP Response with an error.
 .. code::
 
   HTTP/1.1 400 Bad Request
-  Content-Type: application/json;charset=UTF-8
+  Content-Type: application/json
 
   {
     "error": "invalid_request"
@@ -299,9 +299,10 @@ The following diagram shows how the Wallet Instance requests a Status Attestatio
 
     POST /status HTTP/1.1
     Host: pid-provider.example.org
-    Content-Type: application/x-www-form-urlencoded
-
-    credential_pop=$CredentialPoPJWT
+    Content-Type: application/json
+    {
+      "credential_pop":"$CredentialPoPJWT"
+    }
 
 A non-normative example of Credential Proof of Possession is provided :ref:`in the previous section <credential_pop_jwt_ex>`.
 
@@ -346,7 +347,7 @@ A non-normative example of Credential Proof of Possession is provided :ref:`in t
 Status Attestation HTTP Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The requests to the *Credential status endpoint* of the Issuers MUST be HTTP with method POST, using the same mandatory parameters as in the :ref:`Table of Credential Request parameters <table_revocation_request_params>`. These MUST be encoded in ``application/x-www-form-urlencoded`` format. 
+The requests to the *Credential status endpoint* of the Issuers MUST be HTTP with method POST, using the same mandatory parameters as in the :ref:`Table of Credential Request parameters <table_revocation_request_params>`. These MUST be encoded in ``application/json`` format. 
 
 .. list-table:: 
     :widths: 20 60 20
@@ -432,7 +433,7 @@ Below a non-normative example of an HTTP Response with an error.
 .. code::
 
   HTTP/1.1 400 Bad Request
-  Content-Type: application/json;charset=UTF-8
+  Content-Type: application/json
 
   {
     "error": "invalid_request"
