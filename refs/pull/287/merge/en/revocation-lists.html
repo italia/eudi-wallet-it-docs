@@ -15,7 +15,7 @@
   <link rel="index" title="Index" href="index.html">
   <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="index.html">
   <link rel="next" title="pseudonyms.rst" href="pseudonyms.html">
-  <link rel="prev" title="Relying Party Solution" href="relying-party-solution.html">
+  <link rel="prev" title="Entity Configuration of Relying Parties" href="relying-party-entity-configuration.html">
 
   
   
@@ -598,6 +598,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
 </ul>
@@ -609,6 +610,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
@@ -695,9 +697,16 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
@@ -710,7 +719,6 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
@@ -720,6 +728,12 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Credential Lifecycle</a><ul>
@@ -778,8 +792,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -872,6 +886,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
 </ul>
@@ -883,6 +898,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
@@ -969,9 +985,16 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
@@ -984,7 +1007,6 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
@@ -994,6 +1016,12 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Credential Lifecycle</a><ul>
@@ -1048,8 +1076,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1068,7 +1096,7 @@
           </div>-->
           
             <div class="footer-buttons footer-buttons--prev" role="navigation" aria-label="footer navigation">
-                <a href="relying-party-solution.html" class="" title="Relying Party Solution" accesskey="p" rel="prev"> Torna a Relying Party Solution</a>
+                <a href="relying-party-entity-configuration.html" class="" title="Entity Configuration of Relying Parties" accesskey="p" rel="prev"> Torna a Entity Configuration of Relying Parties</a>
             </div>
           
           
@@ -1118,8 +1146,8 @@ Furthermore, it provides the technical details that the Verifiers MUST implement
 <li><p>revoke a Digital Credential when the following circumstances occur:</p>
 <ul>
 <li><p>the Digital Credential requires to be updated, whenever one or more attributes are changed; in this case the User will request a new issuance for that Digital Credential;</p></li>
-<li><p>the Wallet Instance that holds the Digital Credential was issued is revoked;</p></li>
-<li><p>the User deletes the Digital Credential from the Wallet Instance;</p></li>
+<li><p>the Holder needs to address the loss or compromise of cryptographic key material associated with the issued Digital Credential. In such case, the End-User should request the revocation of the Digital Credential through a service provided by the Credential Issuer and using an authentication method that offers the same Level of Assurance obtained during the Credential Issuance;</p></li>
+<li><p>the User deletes the Digital Credential from the Wallet Instance. The Wallet Instance therefore should request the revocation of such Digital Credential to the Credential Issuer;</p></li>
 </ul>
 </li>
 <li><p>provide a web service for allowing a Wallet Instance, with a proof of possession of a specific Digital Credential, to</p>
@@ -1184,11 +1212,12 @@ The subsequent sections define the protocol interface between the Wallet Instanc
 </figcaption>
 </figure>
 <p><strong>Step 1 (Credential Revocation Request)</strong>: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request includes a Digital Credential Proof of Possession as a JWT. It MUST be signed with the private key related to the public key contained within the Credential (such as the Issuer Signed JWT in the case of SD-JWT, or the MSO in the case of Mdoc CBOR). Then, the Wallet Instance sends the request to the Issuer as in the following non-normative example.</p>
-<div class="highlight-default notranslate" id="credential-revocation-request-ex"><div class="highlight"><pre><span></span>POST /revoke HTTP/1.1
-Host: pid-provider.example.org
-Content-Type: application/x-www-form-urlencoded
-
-credential_pop=$CredentialPoPJWT
+<div class="highlight-default notranslate" id="credential-revocation-request-ex"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">revoke</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">pid</span><span class="o">-</span><span class="n">provider</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;credential_pop&quot;</span><span class="p">:</span><span class="s2">&quot;$CredentialPoPJWT&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Below, is given a non-normative example of a Credential PoP with decoded JWT headers and payload and without signature for better readability:</p>
@@ -1219,7 +1248,7 @@ credential_pop=$CredentialPoPJWT
 </div>
 <section id="credential-revocation-http-request">
 <h4>Credential Revocation HTTP Request<a class="headerlink" href="#credential-revocation-http-request" title="Permalink to this heading">¶</a></h4>
-<p>The requests to the <em>Issuer Revocation endpoint</em> MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format.</p>
+<p>The requests to the <em>Issuer Revocation endpoint</em> MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in <code class="docutils literal notranslate"><span class="pre">application/json</span></code> format.</p>
 <table class="docutils align-default" id="table-revocation-request-params">
 <colgroup>
 <col style="width: 20%" />
@@ -1308,7 +1337,7 @@ The following Error Codes MUST be supported:</p>
 </table>
 <p>Below a non-normative example of an HTTP Response with an error.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="n">Bad</span> <span class="n">Request</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">;</span><span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 
 <span class="p">{</span>
   <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;invalid_request&quot;</span>
@@ -1344,11 +1373,12 @@ The following Error Codes MUST be supported:</p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Status Attestation Request)</strong>: The Wallet Instance sends the Status Attestation Request to the Issuer. The request MUST contain the Credential Proof of Possession JWT, signed  with the private key related to the public key contained within the Credential.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /status HTTP/1.1
-Host: pid-provider.example.org
-Content-Type: application/x-www-form-urlencoded
-
-credential_pop=$CredentialPoPJWT
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">status</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">pid</span><span class="o">-</span><span class="n">provider</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;credential_pop&quot;</span><span class="p">:</span><span class="s2">&quot;$CredentialPoPJWT&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>A non-normative example of Credential Proof of Possession is provided <a class="reference internal" href="#credential-pop-jwt-ex"><span class="std std-ref">in the previous section</span></a>.</p>
@@ -1384,7 +1414,7 @@ credential_pop=$CredentialPoPJWT
 </div>
 <section id="status-attestation-http-request">
 <h4>Status Attestation HTTP Request<a class="headerlink" href="#status-attestation-http-request" title="Permalink to this heading">¶</a></h4>
-<p>The requests to the <em>Credential status endpoint</em> of the Issuers MUST be HTTP with method POST, using the same mandatory parameters as in the <a class="reference internal" href="#table-revocation-request-params"><span class="std std-ref">Table of Credential Request parameters</span></a>. These MUST be encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format.</p>
+<p>The requests to the <em>Credential status endpoint</em> of the Issuers MUST be HTTP with method POST, using the same mandatory parameters as in the <a class="reference internal" href="#table-revocation-request-params"><span class="std std-ref">Table of Credential Request parameters</span></a>. These MUST be encoded in <code class="docutils literal notranslate"><span class="pre">application/json</span></code> format.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -1498,7 +1528,7 @@ The following Error Codes MUST be supported:</p>
 </table>
 <p>Below a non-normative example of an HTTP Response with an error.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="n">Bad</span> <span class="n">Request</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">;</span><span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 
 <span class="p">{</span>
   <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;invalid_request&quot;</span>

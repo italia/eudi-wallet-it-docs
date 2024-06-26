@@ -598,6 +598,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
 </ul>
@@ -609,6 +610,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
@@ -695,9 +697,16 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
@@ -710,7 +719,6 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
@@ -720,6 +728,12 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
@@ -778,8 +792,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -872,6 +886,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
 </ul>
@@ -883,6 +898,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
@@ -969,9 +985,16 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-credential-issuer">Entity Configuration Credential Issuer</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
@@ -984,7 +1007,6 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-entity-configuration">Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
@@ -994,6 +1016,12 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
@@ -1048,8 +1076,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1081,7 +1109,7 @@
 <ul class="simple">
 <li><p>The Wallet Attestation MUST use the signed JSON Web Token (JWT) format;</p></li>
 <li><p>The Wallet Attestation MUST give all the relevant information to attests the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed.</p></li>
-<li><p>The Wallet Attestation MUST be issued and signed by an accredited and reliable Wallet Provider, thereby providing integrity and authenticity to the attestation.</p></li>
+<li><p>The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and that is the owner of the Wallet Solution, as specified by the overseeing registration authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.</p></li>
 <li><p>The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties.</p></li>
 <li><p>The Wallet Attestation MUST have a mechanism in place for revoking the Wallet Instance, allowing the Wallet Provider to terminate service for a specific instance at any time.</p></li>
 <li><p>The Wallet Attestation MUST be securely bound to the Wallet Instance ephemeral public key.</p></li>
@@ -1100,6 +1128,7 @@
 <li><p><strong>Remote Hybrid WSCD</strong>: the WSCD involves a local component mixed with a remote service.</p></li>
 </ul>
 </li>
+<li><p>The Wallet Provider MUST offer a set of services, exclusively available to its Wallet Solution instances, for the verification and issuance of Wallet Attestations.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1120,8 +1149,8 @@
 <figure class="align-default" id="sequence-diagram-for-wallet-instance-initialization">
 <a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/ZLFHRjD047o_hrYb3xHM-84yeA8Iqgf04IdmlBOtpYhEdRMt3eIlPy-cQMoPmeCZQszcTcOklewAeks-TjXgyEq-9t5RBWas8MWUVhfNZG6uu0QzEeU51e7PrqWo0upGseixGy3iEzOrATnvK_O5TIXi6XYYtj612pAKKYMiHrYJf4aFHurm4HjXNrL2v2StV9PmCAC2EHOxycL7pOkTSvM4je7WwoEqJV2mOOaAR8wCYSes2XlGBILZBaLu_SRU5j2L4PzEuB8d6k0g1US3Qa-nvm_ZPal53dW3Vmi4R7aEo3NcDJadFfX6E90aeRdPXOiFTwlRnzMNvVAJw-N60KqY5V1a-ZtPi8-1leIGAx87DkDxKYnHqLaTtIRdUg-sPm4hqyooOflKVKLPzXmgrMRF2UX9qZXu0kKzfGf6r8JkEnWTb3HGFLLrKZNyZHmR3PLWi-K2Rb7A7oW4ztICMMPPMRfaKOEy38T7h6ndlmGrBW1LAQeTNPvCpU5bWIkNgCzfqlXj9zELR8uYLvvAo8_miFnurkZQUXx6dq_oBSn_nPY-ZczOSuawke59m7Zt0BR-PvrnUB4FznEtQOVfYrd0w4Et5rOs9x-eFASP9VqTtRNzjFlwDm00"><img alt="The figure illustrates the sequence diagram for initializa a Wallet Instance, with the steps explained below." src="_images/wallet_instance_initialization.svg" /></a>
 </figure>
-<p><strong>Step 1:</strong>: The User starts the Wallet Instance mobile app for the first time.</p>
-<p><strong>Step 2:</strong>: The Wallet Instance:</p>
+<p><strong>Step 1</strong>: The User starts the Wallet Instance mobile app for the first time.</p>
+<p><strong>Step 2</strong>: The Wallet Instance:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>check if Device Integrity Service is available.</p></li>
@@ -1130,9 +1159,9 @@
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Federation Check:</strong> The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the Wallet Provider is represented within the section <a class="reference external" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider metadata</a>.</p>
+<p><strong>Federation Check</strong>: The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the Wallet Provider is represented within the section <a class="reference external" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider metadata</a>.</p>
 </div>
-<p><strong>Steps 3-5:</strong>: The Wallet Instance sends a request to the Wallet Provider Backend and receives a one-time <code class="docutils literal notranslate"><span class="pre">challenge</span></code>. This &quot;challenge&quot; is a <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, which must be unpredictable to serve as the main defense against replay attacks. The backend must generate the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-nonce-endpoint/">OAuth 2.0 Nonce Endpoint</a>.</p>
+<p><strong>Steps 3-5</strong>: The Wallet Instance sends a request to the Wallet Provider Backend and receives a one-time <code class="docutils literal notranslate"><span class="pre">challenge</span></code>. This &quot;challenge&quot; is a <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, which must be unpredictable to serve as the main defense against replay attacks. The backend must generate the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-nonce-endpoint/">OAuth 2.0 Nonce Endpoint</a>.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/nonce</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">walletprovider.example.com</span>
 </pre></div>
@@ -1156,14 +1185,16 @@
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>WSCD:</strong> The Wallet Instance MAY use a local WSCD for key generation on devices that support this feature. On Android devices, Strongbox is RECOMMENDED, Trusted Execution Environment (TEE) SHOULD be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) SHOULD be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.</p>
+<p><strong>WSCD</strong>: The Wallet Instance MAY use a local WSCD for key generation on devices that support this feature. On Android devices, Strongbox is RECOMMENDED, Trusted Execution Environment (TEE) SHOULD be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) SHOULD be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.</p>
 </div>
 <p><strong>Step 7</strong>: The Wallet Instance uses the Device Integrity Service, providing a &quot;challenge&quot; and the Cryptographic Hardware Key Tag to acquire the Key Attestation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Device Integrity Service:</strong> In this section the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers the verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this scope.</p>
-<p>The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android the service used is <a class="reference external" href="https://developer.android.com/privacy-and-security/security-key-attestation">Key Attestation</a> in addition to <a class="reference external" href="https://developer.android.com/google/play/integrity?hl=it">Play Integrity API</a>, while for iOS the <a class="reference external" href="https://developer.apple.com/documentation/devicecheck">DeviceCheck</a> service.
-This service, specifically developed by the manufacturer, is already integrated within the Android or iOS SDKs, so there is no need for a predefined endpoint to access it. Moreover, as it is specifically developed in the mobile architecture, it does not need to be registered as a Federation Entity, through the national accreditation systems.</p>
+<p><strong>Device Integrity Service</strong>: In this section the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers the verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this scope.</p>
+<p>The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android, the DIS is represented by <em>Key Attestation</em>, a feature supported by <em>StrongBox Keymaster</em>, which is a physical HSM installed directly on the motherboard, and the <em>TEE</em> (Trusted Execution Environment), a secure area of the main processor. <em>Key Attestation</em> aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the <em>Play Integrity API</em>.For Apple devices, the DIS is represented by <em>DeviceCheck</em>, which provides a framework and server interface to manage device-specific data securely. <em>DeviceCheck</em> is used in combination with the <em>Secure Enclave</em>, a dedicated HSM integrated into Apple's SoCs. <em>DeviceCheck</em> can be used to attest the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like <em>Secure Enclave</em>. Developers can leverage <em>DeviceCheck</em> functionality by using the framework itself.
+These services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. Additionally, as they are specifically developed for mobile architecture, they do not need to be registered as Federation Entities through national accreditation systems.
+For Apple devices <em>Secure Enclave</em> is available since the iPhone 5s (2013).
+For Android devices, the inclusion of <strong>Strongbox Keymaster</strong> may vary by each smartphone manufacturer, who decides whether to include it or not.</p>
 </div>
 <p><strong>Step 8</strong>: The Device Integrity Service performs the following actions:</p>
 <ul class="simple">
@@ -1229,8 +1260,8 @@ within these guidelines as each Wallet Provider may or may not have a user ident
 <figure class="align-default" id="sequence-diagram-for-wallet-attestation-acquisition">
 <a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/VLJ1Jjj04BtlLupWK8ZIIwNsWDGAH2bGgWe1BHSaQsmFzZJEhhixTff-VMTD4YV6pS4IoxvvyzxRcPm6GI_Dl3BOYBFDF2LlIiu9dfsJrFqnRse5SCOrMZ46Ct4U3du4yWU00PgW-2q473nYLP70jLLccr67mhg6NTHdQZaZHGaLdcK9z-HRNiDH0Xo6shCj2azaHplSUjUgK0yfPZEoULUQPZDZJ5JrzfDsFO4x-jrG442mj01NaqTXPq5Ab2VhzPOzQKkOJ5QyPo9QqA4casYOMnIA7en-Azhpah8PyBEMdVjbBQxmM9USmHNwV86Uu8QMOJ81LkuMkSAq8hD5S4asIecjBL1TqboF5Sne2JMoLzwlZpVQttZhXC2rvAE4gHg4ms_NbrSFbtSN5z_DYv1X9DerHWRkMOqIVA5yxHjj3YuLP0ii0UOacAEWqG2xJcObKlj4aQ92iZAosuAsuuX1wzS1UpVWB87mdE9W34eZUcL-zoAd7LOp5bCigPYi955jKc8eDLmCS7zrzkxzXwCDtnJg9gquItujPiVZJ7jUJ3bltUsJFdov-cyIkB0eZIUz-mZnT3HKCeL5bt-oAT9dJ0IBZG2KS0B5Ii5cwCz282_iNZCUcrZInyNhaWJNDIfdrDxhATxim8Ab_1_P5COzJtSVQ_faz-K73rYyrFIle48Z7-LT_txMDoFUpzizsNoFWTtfwnSZ7iSN8sxeu0SfxWPR5iQA_rBUBKIhV-Uc2MmBs6DEiEZWuqdrAzJlnSz8Z39OXH70-BECGyVRZoDZmjrCzzVga5ukNoSzMDDnn61VjyzQPaurXsPU_GC0"><img alt="The figure illustrates the sequence diagram for issuing a Wallet Attestation, with the steps explained below." src="_images/wallet_instance_acquisition.svg" /></a>
 </figure>
-<p><strong>Step 1:</strong>: The User initiates a new operation that necessitates the acquisition of a Wallet Attestation.</p>
-<p><strong>Steps 2-3:</strong>: The Wallet Instance checks if a Cryptographic Hardware Key exists and generates an ephemeral asymmetric key pair. The Wallet Instance also:</p>
+<p><strong>Step 1</strong>: The User initiates a new operation that necessitates the acquisition of a Wallet Attestation.</p>
+<p><strong>Steps 2-3</strong>: The Wallet Instance checks if a Cryptographic Hardware Key exists and generates an ephemeral asymmetric key pair. The Wallet Instance also:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>MUST ensure that Cryptographic Hardware Keys exist. If they do not exist, it is necessary to reinitialize the Wallet.</p></li>
@@ -1238,7 +1269,7 @@ within these guidelines as each Wallet Provider may or may not have a user ident
 <li><p>MUST check if Wallet Provider is part of the federation and obtain its metadata.</p></li>
 </ol>
 </div></blockquote>
-<p><strong>Steps 4-6:</strong>: The Wallet Instance solicits a one-time &quot;challenge&quot; from the Wallet Provider Backend. This &quot;challenge&quot; takes the form of a &quot;nonce,&quot; which is required to be unpredictable and serves as the main defense against replay attacks. The backend MUST produce the &quot;nonce&quot; in a manner that ensures its single-use within a predetermined time frame.</p>
+<p><strong>Steps 4-6</strong>: The Wallet Instance solicits a one-time &quot;challenge&quot; from the Wallet Provider Backend. This &quot;challenge&quot; takes the form of a &quot;nonce,&quot; which is required to be unpredictable and serves as the main defense against replay attacks. The backend MUST produce the &quot;nonce&quot; in a manner that ensures its single-use within a predetermined time frame.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/nonce</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">walletprovider.example.com</span>
 </pre></div>
@@ -1254,20 +1285,14 @@ within these guidelines as each Wallet Provider may or may not have a user ident
 <p><strong>Step 7</strong>: The Wallet Instance performs the following actions:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Creates a <code class="docutils literal notranslate"><span class="pre">client_data</span></code>, a JSON structure that includes the challenge and the ephemeral public <code class="docutils literal notranslate"><span class="pre">jwk</span></code>.</p></li>
+<li><p>Creates a <code class="docutils literal notranslate"><span class="pre">client_data</span></code>, a JSON structure that includes the challenge and the thumbprint of ephemeral public <code class="docutils literal notranslate"><span class="pre">jwk</span></code>.</p></li>
 <li><p>Computes a <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> by applying the SHA256 algorithm to the <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></li>
 </ul>
 </div></blockquote>
 <p>Below a non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;challenge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0fe3cbe0-646d-44b5-8808-917dd5391bd9&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;jwk_thumbprint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1437,7 +1462,7 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 <td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Instance as base64url-encoded JWK Thumbprint value.</p></td>
+<td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> used by the Wallet Provider to sign the Wallet Attestation, essential for matching the Wallet Provider's cryptographic public key needed for signature verification.</p></td>
 <td><p><span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
@@ -1525,11 +1550,11 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">wallet-attestation+jwt</span></code></p></td>
-<td><p><a class="reference external" href="https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html">OPENID4VC-HAIP</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html">OPENID4VC-HAIP</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>Sequence of Entity Statements that composes the Trust Chain related to the Relying Party.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OIDC-FED</a> Section <em>3.2.1. Trust Chain Header Parameter</em>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Section <em>3.2.1. Trust Chain Header Parameter</em>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1551,47 +1576,43 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 <td><p>Identifier of the Wallet Provider</p></td>
 <td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>Identifier of the Wallet Provider concatenated with thumbprint of the Wallet Instance.</p></td>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX Timestamp with the expiry time of the JWT.</p></td>
 <td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>exp</strong></p></td>
-<td><p>UNIX Timestamp with the expiry time of the JWT.</p></td>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
 <td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>cnf</strong></p></td>
+<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
+<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>aal</strong></p></td>
+<tr class="row-even"><td><p><strong>aal</strong></p></td>
 <td><p>JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>authorization_endpoint</strong></p></td>
+<tr class="row-odd"><td><p><strong>authorization_endpoint</strong></p></td>
 <td><p>URL of the Wallet Authorization Endpoint (Universal Link).</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>response_types_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>response_types_supported</strong></p></td>
 <td><p>JSON array containing a list of the OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_modes_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>response_modes_supported</strong></p></td>
 <td><p>JSON array containing a list of the OAuth 2.0 &quot;response_mode&quot; values that this authorization server supports.</p></td>
-<td><p><span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
+<td><p><span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vp_formats_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>vp_formats_supported</strong></p></td>
 <td><p>JSON object with name/value pairs, identifying a Credential format supported by the Wallet.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
 <td><p>JSON array containing a list of the JWS signing algorithms (alg values) supported.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
 <td><p>Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.</p></td>
 <td></td>
 </tr>
@@ -1677,8 +1698,25 @@ The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet P
 <p>When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the <cite>Operational</cite> or <cite>Valid</cite> state.
 A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.</p>
 <p>The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.</p>
+<p>According to ARF, <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#654-wallet-instance-management">Section 6.5.4</a> and more specifically in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md#a2338-topic-38---wallet-instance-revocation">Topic 38</a> the Wallet Instance can be revoked by the following entities:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Its owner, the User</p></li>
+<li><p>Wallet Provider</p></li>
+<li><p>PID Provider</p></li>
+</ol>
+</div></blockquote>
 <p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
 When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.</p>
+<p>Regarding the reasons for revoking a Wallet Instance, the following scenarios may occur:</p>
+<ul class="simple">
+<li><p>The smartphone is lost;</p></li>
+<li><p>The smartphone has been compromised (e.g., a malicious actor gains control of the smartphone);</p></li>
+<li><p>The smartphone has been reset to factory settings;</p></li>
+<li><p>Any other scenarios where the User loses the control of the Wallet Instance.</p></li>
+</ul>
+<p>If any of the previous scenarios occur, the Wallet Instance <strong>MUST</strong> be revoked.
+To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) <strong>MUST</strong>  offer a remote service, such as a web page, where the User can authenticate and request the revocation of a previously activated Wallet Instance.</p>
 </section>
 </section>
 </section>
