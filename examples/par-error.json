@@ -1,0 +1,4 @@
+{
+    "error": "invalid_request",
+    "error_description": "The redirect_uri is not valid for the given client"
+}
