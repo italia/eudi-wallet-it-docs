@@ -413,12 +413,12 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
         "descriptor_map": [
             {
                 "id": "PersonIdentificationData",
-                "path": "$.vp_token.verified_claims.claims._sd[0]",
+                "path": "$.vp_token[0].vp",
                 "format": "vc+sd-jwt"
             },
             {
                 "id": "WalletAttestation",
-                "path": "$",
+                "path": "$.vp_token[1].vp",
                 "format": "jwt"
             }
         ]
@@ -549,4 +549,5 @@ When the Wallet Instance sends the user-agent to the Redirect URI provided by th
 - **Redirect URI Security Issues**: If the Relying Party incurs in security issues when evaluating the User session with the provided URI, the Relying Party MUST raise an error. In such cases, an HTTP status code set to 403 (Forbidden) MUST be returned, indicating that the request is valid but the server is refusing action due to security precautions.
 
 Handling these errors requires clear communication to the User within the returned navigation web page. It is crucial for the Relying Party to implement robust error handling and validation mechanisms for Redirect URIs to ensure a secure implementation.
+
 

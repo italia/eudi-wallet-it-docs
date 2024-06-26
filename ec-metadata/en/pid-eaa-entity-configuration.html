@@ -791,8 +791,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id41">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -1074,8 +1074,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id41">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1100,8 +1100,8 @@
           
   <section id="entity-configuration-of-pid-q-eaa-providers">
 <span id="entity-configuration-credential-issuer"></span><h1>Entity Configuration of PID/(Q)EAA Providers<a class="headerlink" href="#entity-configuration-of-pid-q-eaa-providers" title="Permalink to this heading">¶</a></h1>
-<p>The PID/(Q)EAA Providers, as a Federation Entity, are required to adhere to the guidelines outlined in Section <a class="reference internal" href="trust.html#configuration-of-the-federation"><span class="std std-ref">Configuration of the Federation</span></a>. Specifically, they MUST provide a well-known endpoint that hosts their Entity Configuration.
-The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters as defined in the Sections <a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates"><span class="std std-ref">Entity Configuration Leaves and Intermediates</span></a> and <a class="reference internal" href="trust.html#entity-configurations-common-parameters"><span class="std std-ref">Entity Configurations Common Parameters</span></a>.</p>
+<p>The PID/(Q)EAA Providers, as Federation Entity, are required to adhere to the guidelines outlined in Section <a class="reference internal" href="trust.html#configuration-of-the-federation"><span class="std std-ref">Configuration of the Federation</span></a>. Specifically, they MUST provide a well-known endpoint that hosts their Entity Configuration.
+The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters defined in the Sections <a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates"><span class="std std-ref">Entity Configuration Leaves and Intermediates</span></a> and <a class="reference internal" href="trust.html#entity-configurations-common-parameters"><span class="std std-ref">Entity Configurations Common Parameters</span></a>.</p>
 <p>The PID/(Q)EAA Providers MUST provide the following metadata types:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1110,7 +1110,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters as 
 <li><p><cite>openid_credential_issuer</cite></p></li>
 </ul>
 </div></blockquote>
-<p>In case the (Q)EAA Providers authenticate the Users using their Wallet Instance, then the metadata for <em>wallet_relying_party</em> MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for <em>openid_relying_party</em> within their Entity Configuration. The <em>openid_relying_party</em> metadata MUST be compliant with the current version of <a class="reference external" href="https://github.com/italia/spid-cie-oidc-docs">SPID/CIE id OIDC Technical Specification</a>.</p>
+<p>In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for <em>wallet_relying_party</em> MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for <em>openid_relying_party</em> within their Entity Configuration. The <em>openid_relying_party</em> metadata MUST be compliant with the current version of <a class="reference external" href="https://github.com/italia/spid-cie-oidc-docs">SPID/CIE id OIDC Technical Specification</a>.</p>
 <section id="metadata-for-federation-entity">
 <h2>Metadata for federation_entity<a class="headerlink" href="#metadata-for-federation-entity" title="Permalink to this heading">¶</a></h2>
 <p>The <em>federation_entity</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves"><span class="std std-ref">Metadata of federation_entity Leaves</span></a>.</p>
@@ -1178,7 +1178,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters as 
 <td><p>JSON array containing a list of the JWS signing algorithms (&quot;<em>alg</em>&quot; values) supported for Request Objects. See <a class="reference external" href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata">[openid-connect-discovery-1_0]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the authorization server. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Draft 36 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
+<td><p>JSON Web Key Set containing the cryptographic keys for the authorization server. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Draft 36 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1220,7 +1220,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters as 
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_configurations_supported</strong></p></td>
-<td><p>JSON object that outlines the details of the credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported credential. This identifier is utilized to inform the Wallet Instance which credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <cite>OpenID4VCI</cite> Draft 13 Sections 11.2.3 and A.3.2.</p>
+<td><p>JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <cite>OpenID4VCI</cite> Draft 13 Sections 11.2.3 and A.3.2.</p>
 <blockquote>
 <div><ul>
 <li><p><strong>format</strong>:  String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>vc+sd-jwt</em>&quot;. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a> Draft 13 Section A.3.1.</p></li>

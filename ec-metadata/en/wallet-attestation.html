@@ -791,8 +791,8 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id41">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -1074,8 +1074,8 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id41">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id42">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 1 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 2 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1126,6 +1126,7 @@
 <li><p><strong>Remote Hybrid WSCD</strong>: the WSCD involves a local component mixed with a remote service.</p></li>
 </ul>
 </li>
+<li><p>The Wallet Provider MUST offer a set of services, exclusively available to its Wallet Solution instances, for the verification and issuance of Wallet Attestations.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1188,8 +1189,10 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Device Integrity Service:</strong> In this section the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers the verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this scope.</p>
-<p>The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android the service used is <a class="reference external" href="https://developer.android.com/privacy-and-security/security-key-attestation">Key Attestation</a> in addition to <a class="reference external" href="https://developer.android.com/google/play/integrity?hl=it">Play Integrity API</a>, while for iOS the <a class="reference external" href="https://developer.apple.com/documentation/devicecheck">DeviceCheck</a> service.
-This service, specifically developed by the manufacturer, is already integrated within the Android or iOS SDKs, so there is no need for a predefined endpoint to access it. Moreover, as it is specifically developed in the mobile architecture, it does not need to be registered as a Federation Entity, through the national accreditation systems.</p>
+<p>The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android, the DIS is represented by <em>Key Attestation</em>, a feature supported by <em>StrongBox Keymaster</em>, which is a physical HSM installed directly on the motherboard, and the <em>TEE</em> (Trusted Execution Environment), a secure area of the main processor. <em>Key Attestation</em> aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the <em>Play Integrity API</em>.For Apple devices, the DIS is represented by <em>DeviceCheck</em>, which provides a framework and server interface to manage device-specific data securely. <em>DeviceCheck</em> is used in combination with the <em>Secure Enclave</em>, a dedicated HSM integrated into Apple's SoCs. <em>DeviceCheck</em> can be used to attest the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like <em>Secure Enclave</em>. Developers can leverage <em>DeviceCheck</em> functionality by using the framework itself.
+These services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. Additionally, as they are specifically developed for mobile architecture, they do not need to be registered as Federation Entities through national accreditation systems.
+For Apple devices <em>Secure Enclave</em> is available since the iPhone 5s (2013).
+For Android devices, the inclusion of <strong>Strongbox Keymaster</strong> may vary by each smartphone manufacturer, who decides whether to include it or not.</p>
 </div>
 <p><strong>Step 8</strong>: The Device Integrity Service performs the following actions:</p>
 <ul class="simple">
@@ -1458,7 +1461,7 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 <td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Instance as base64url-encoded JWK Thumbprint value.</p></td>
+<td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> used by the Wallet Provider to sign the Wallet Attestation, essential for matching the Wallet Provider's cryptographic public key needed for signature verification.</p></td>
 <td><p><span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
@@ -1572,47 +1575,43 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
 <td><p>Identifier of the Wallet Provider</p></td>
 <td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>Identifier of the Wallet Provider concatenated with thumbprint of the Wallet Instance.</p></td>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX Timestamp with the expiry time of the JWT.</p></td>
 <td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>exp</strong></p></td>
-<td><p>UNIX Timestamp with the expiry time of the JWT.</p></td>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
 <td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>cnf</strong></p></td>
+<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
+<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>aal</strong></p></td>
+<tr class="row-even"><td><p><strong>aal</strong></p></td>
 <td><p>JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>authorization_endpoint</strong></p></td>
+<tr class="row-odd"><td><p><strong>authorization_endpoint</strong></p></td>
 <td><p>URL of the Wallet Authorization Endpoint (Universal Link).</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>response_types_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>response_types_supported</strong></p></td>
 <td><p>JSON array containing a list of the OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_modes_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>response_modes_supported</strong></p></td>
 <td><p>JSON array containing a list of the OAuth 2.0 &quot;response_mode&quot; values that this authorization server supports.</p></td>
-<td><p><span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
+<td><p><span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vp_formats_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>vp_formats_supported</strong></p></td>
 <td><p>JSON object with name/value pairs, identifying a Credential format supported by the Wallet.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
 <td><p>JSON array containing a list of the JWS signing algorithms (alg values) supported.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
 <td><p>Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.</p></td>
 <td></td>
 </tr>
@@ -1698,8 +1697,25 @@ The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet P
 <p>When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the <cite>Operational</cite> or <cite>Valid</cite> state.
 A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.</p>
 <p>The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.</p>
+<p>According to ARF, <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#654-wallet-instance-management">Section 6.5.4</a> and more specifically in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md#a2338-topic-38---wallet-instance-revocation">Topic 38</a> the Wallet Instance can be revoked by the following entities:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Its owner, the User</p></li>
+<li><p>Wallet Provider</p></li>
+<li><p>PID Provider</p></li>
+</ol>
+</div></blockquote>
 <p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
 When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.</p>
+<p>Regarding the reasons for revoking a Wallet Instance, the following scenarios may occur:</p>
+<ul class="simple">
+<li><p>The smartphone is lost;</p></li>
+<li><p>The smartphone has been compromised (e.g., a malicious actor gains control of the smartphone);</p></li>
+<li><p>The smartphone has been reset to factory settings;</p></li>
+<li><p>Any other scenarios where the User loses the control of the Wallet Instance.</p></li>
+</ul>
+<p>If any of the previous scenarios occur, the Wallet Instance <strong>MUST</strong> be revoked.
+To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) <strong>MUST</strong>  offer a remote service, such as a web page, where the User can authenticate and request the revocation of a previously activated Wallet Instance.</p>
 </section>
 </section>
 </section>

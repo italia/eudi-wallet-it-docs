@@ -4,8 +4,8 @@
 Entity Configuration of PID/(Q)EAA Providers
 --------------------------------------------
 
-The PID/(Q)EAA Providers, as a Federation Entity, are required to adhere to the guidelines outlined in Section :ref:`Configuration of the Federation`. Specifically, they MUST provide a well-known endpoint that hosts their Entity Configuration.
-The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters as defined in the Sections :ref:`Entity Configuration Leaves and Intermediates` and :ref:`Entity Configurations Common Parameters`. 
+The PID/(Q)EAA Providers, as Federation Entity, are required to adhere to the guidelines outlined in Section :ref:`Configuration of the Federation`. Specifically, they MUST provide a well-known endpoint that hosts their Entity Configuration.
+The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters defined in the Sections :ref:`Entity Configuration Leaves and Intermediates` and :ref:`Entity Configurations Common Parameters`. 
 
 The PID/(Q)EAA Providers MUST provide the following metadata types:
 
@@ -13,7 +13,7 @@ The PID/(Q)EAA Providers MUST provide the following metadata types:
   - `oauth_authorization_server`
   - `openid_credential_issuer`
 
-In case the (Q)EAA Providers authenticate the Users using their Wallet Instance, then the metadata for *wallet_relying_party* MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for *openid_relying_party* within their Entity Configuration. The *openid_relying_party* metadata MUST be compliant with the current version of `SPID/CIE id OIDC Technical Specification <https://github.com/italia/spid-cie-oidc-docs>`_.
+In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for *wallet_relying_party* MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for *openid_relying_party* within their Entity Configuration. The *openid_relying_party* metadata MUST be compliant with the current version of `SPID/CIE id OIDC Technical Specification <https://github.com/italia/spid-cie-oidc-docs>`_.
 
 
 Metadata for federation_entity
@@ -54,9 +54,9 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **scopes_supported**
     - JSON array containing a list of the supported *scope* values. See :rfc:`8414#section-2`.
   * - **response_modes_supported**
-    - JSON array containing a list of the supported "response_mode" values, as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. The supported values MAY be *query* and *form_post.jwt* (see `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`_).
+    - JSON array containing a list of the supported "response_mode" values, as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. The supported values MAY be *query* and *form_post.jwt* (see `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`__).
   * - **authorization_signing_alg_values_supported**
-    - JSON array containing a list of the JWS :rfc:`7515` supported signing algorithms (*alg* values). The values MUST be set according to Section :ref:`Cryptographic algorithms`. See Section 4 of `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`_.
+    - JSON array containing a list of the JWS :rfc:`7515` supported signing algorithms (*alg* values). The values MUST be set according to Section :ref:`Cryptographic algorithms`. See Section 4 of `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`__.
   * - **grant_types_supported**
     - JSON array containing a list of the supported grant type values. The authorization server MUST support *authorization_code*. 
   * - **token_endpoint_auth_methods_supported**
@@ -66,7 +66,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **request_object_signing_alg_values_supported**
     - JSON array containing a list of the JWS signing algorithms ("*alg*" values) supported for Request Objects. See `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
   * - **jwks**
-    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the authorization server. See `OIDC-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
+    - JSON Web Key Set containing the cryptographic keys for the authorization server. See `OIDC-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
 
 Metadata for openid_credential_issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -94,7 +94,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier. 
 
   * - **credential_configurations_supported**
-    - JSON object that outlines the details of the credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported credential. This identifier is utilized to inform the Wallet Instance which credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See `OpenID4VCI` Draft 13 Sections 11.2.3 and A.3.2.
+    - JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See `OpenID4VCI` Draft 13 Sections 11.2.3 and A.3.2.
 
         - **format**:  String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string "*vc+sd-jwt*". See `OpenID4VCI`_ Draft 13 Section A.3.1.
         - **scope**: String identifying the supported *scope* value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the *scope* values in the *scopes_supported* parameter of the Authorization Server.
