@@ -566,7 +566,7 @@
                     ]
                 }
             },
-            "presentation_definitions": [
+            "presentation_definitions_supported": [
                 {
                     "id": "d76c51b7-ea90-49bb-8368-6b3d194fc131",
                     "input_descriptors": [

@@ -36,7 +36,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **issuer**
     - It MUST contain an HTTPS URL that uniquely identifies the PID/(Q)EAA Provider.
   * - **pushed_authorization_request_endpoint**
-    - The URL of the pushed authorization request endpoint at which a Wallet Instance MUST post an authorization request to exchange for a *request_uri* value usable at the authorization endpoint. See :rfc:`9126#as_metadata`.
+    - The URL of the pushed authorization request endpoint is where a Wallet Instance MUST submit an authorization request to obtain a *request_uri* value, which can then be used at the authorization endpoint. See :rfc:`9126#as_metadata`.
   * - **authorization_endpoint**
     - URL of the authorization server's authorization endpoint. See :rfc:`8414#section-2`.
   * - **token_endpoint**
