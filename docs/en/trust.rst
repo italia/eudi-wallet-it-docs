@@ -411,6 +411,32 @@ giving the references of the metadata protocol for each of these.
     it could be necessary to include the relevant metadata type, either ``openid_relying_party`` 
     or ``wallet_relying_party``.
 
+
+Metadata of federation_entity Leaves
+-------------------------------------
+
+The *federation_entity* metadata for Leaves MUST contain the following claims.
+
+
+.. list-table:: 
+  :widths: 20 60
+  :header-rows: 1
+
+  * - **Claim**
+    - **Description**
+  * - **organization_name**
+    - See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **homepage_uri**
+    - See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **policy_uri**
+    - See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **logo_uri**
+    - URL of the entity's logo; it MUST be in SVG format. See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **contacts**
+    - Institutional certified email address (PEC) of the entity. See `OIDC-FED`_ Draft 36 Section 5.2.2
+  * - **federation_resolve_endpoint**
+    - See `OIDC-FED`_ Draft 36 Section 5.1.1
+
 Entity Statements
 -----------------
 
@@ -772,6 +798,15 @@ The Relying Party MUST sign the presentation request, the request SHOULD include
 The Wallet Instance that verifies the request issued by the Relying Party MUST use the Trust Anchor's public keys to validate the entire Trust Chain related to the Relying Party before attesting its reliability.
 
 Furthermore, the Wallet Instance applies the metadata policy, if any.
+
+Trust Chain Fast Renewal
+------------------------
+
+The Trust Chain fast renewal method offers a streamlined way to maintain the validity of a trust chain without undergoing the full discovery
+process again. It's particularly useful for quickly updating trust relationships when minor changes occur or when the
+Trust Chain is close to expiration but the overall structure of the federation hasn't changed significantly.
+
+The Trust Chain fast renewal process is initiated by fetching the leaf's Entity Configuration anew. However, unlike the federation discovery process that may involve fetching Entity Configurations starting from the authority hints, the fast renewal focuses on directly obtaining the Subordinate Statements. These statements are requested using the `source_endpoint` provided within them, which points to the location where the statements can be fetched.
 
 
 Non-repudiability of the Long Lived Attestations
