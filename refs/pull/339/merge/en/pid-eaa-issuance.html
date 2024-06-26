@@ -1224,7 +1224,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 </div></blockquote>
 <p>Below a non-normative example of the PAR.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /as/par HTTP/1.1
-Host: https://eaa-provider.example.org
+Host: eaa-provider.example.org
 Content-Type: application/x-www-form-urlencoded
 
 &amp;client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
@@ -1320,7 +1320,7 @@ Content-Type: application/x-www-form-urlencoded
 </ol>
 </div></blockquote>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&amp;request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">https://eaa-provider.example.org</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">eaa-provider.example.org</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1341,7 +1341,7 @@ The (Q)EAA Provider performs the User authentication requesting a valid PID to t
 <p>The Wallet Instance redirect URI is a universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.</p>
 </div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
-<span class="na">Location</span><span class="o">:</span> <span class="l">https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&amp;iss=https%3A%2F%2Fhttps://eaa-provider.example.org</span>
+<span class="na">Location</span><span class="o">:</span> <span class="l">https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&amp;iss=https%3A%2F%2Feaa-provider.example.org</span>
 </pre></div>
 </div>
 <p><strong>Steps 12-13 (DPoP Proof for Token Endpoint)</strong>: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (<span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain Wallet Instance (<span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint.</p>
@@ -1356,7 +1356,7 @@ The <code class="docutils literal notranslate"><span class="pre">client_assertio
 </ol>
 </div></blockquote>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">https://eaa-provider.example.org</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">eaa-provider.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 <span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>
     <span class="l">VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR</span>
@@ -1439,7 +1439,7 @@ grant_type=authorization_code
 </div>
 <p>A non-normative example of the Credential Request is provided below.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/credential</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">https://eaa-provider.example.org</span>
+  <span class="l">Host: eaa-provider.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU</span>
 <span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>

@@ -127,7 +127,7 @@ Below a non-normative example of the PAR.
 .. code-block:: 
 
     POST /as/par HTTP/1.1
-    Host: https://eaa-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
@@ -193,7 +193,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 .. code-block:: http
 
     GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
-    Host: https://eaa-provider.example.org
+    Host: eaa-provider.example.org
 
 
 .. note::
@@ -215,7 +215,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 .. code-block:: http
 
     HTTP/1.1 302 Found
-    Location: https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Fhttps://eaa-provider.example.org
+    Location: https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Feaa-provider.example.org
 
 **Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain Wallet Instance (:rfc:`9449`) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint.
 
@@ -230,7 +230,7 @@ The ``client_assertion`` is signed using the private key that is created during 
 .. code-block:: http
 
     POST /token HTTP/1.1
-    Host: https://eaa-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
         VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
@@ -295,7 +295,7 @@ A non-normative example of the Credential Request is provided below.
 .. code-block:: http
 
   POST /credential HTTP/1.1
-  Host: https://eaa-provider.example.org
+    Host: eaa-provider.example.org
   Content-Type: application/json
   Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
   DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
