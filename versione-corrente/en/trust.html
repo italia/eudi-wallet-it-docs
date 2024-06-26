@@ -610,6 +610,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
@@ -897,6 +898,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
@@ -1781,6 +1783,13 @@ it MUST obtain a Wallet Attestation issued by its Wallet Provider. The Wallet At
 <p>Furthermore, the Wallet Instance applies the metadata policy, if any.</p>
 </section>
 </section>
+</section>
+<section id="trust-chain-fast-renewal">
+<h2>Trust Chain Fast Renewal<a class="headerlink" href="#trust-chain-fast-renewal" title="Permalink to this heading">¶</a></h2>
+<p>The Trust Chain fast renewal method offers a streamlined way to maintain the validity of a trust chain without undergoing the full discovery
+process again. It's particularly useful for quickly updating trust relationships when minor changes occur or when the
+Trust Chain is close to expiration but the overall structure of the federation hasn't changed significantly.</p>
+<p>The Trust Chain fast renewal process is initiated by fetching the leaf's Entity Configuration anew. However, unlike the federation discovery process that may involve fetching Entity Configurations starting from the authority hints, the fast renewal focuses on directly obtaining the Subordinate Statements. These statements are requested using the <cite>source_endpoint</cite> provided within them, which points to the location where the statements can be fetched.</p>
 </section>
 <section id="non-repudiability-of-the-long-lived-attestations">
 <h2>Non-repudiability of the Long Lived Attestations<a class="headerlink" href="#non-repudiability-of-the-long-lived-attestations" title="Permalink to this heading">¶</a></h2>

@@ -610,6 +610,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
@@ -897,6 +898,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
@@ -1188,12 +1190,12 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">PID/(Q)EAA Issuance - Detailed flow</span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-<p><strong>Steps 1-4 (Discovery):</strong> The User selects the PID/(Q)EAA Provider using the Wallet Instance, the Metadata for the selected PID/(Q)EAA Provider are processed by the Wallet Instance.</p>
+<p><strong>Steps 1-4 (Discovery)</strong>: The User selects the PID/(Q)EAA Provider using the Wallet Instance, the Metadata for the selected PID/(Q)EAA Provider are processed by the Wallet Instance.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Federation Check:</strong> The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the PID/(Q)EAA Provider is represented within the section <a class="reference internal" href="pid-eaa-entity-configuration.html#entity-configuration-of-pid-q-eaa-providers"><span class="std std-ref">Entity Configuration of PID/(Q)EAA Providers</span></a>.</p>
 </div>
-<p><strong>Steps 5-6 (PAR Request):</strong> The Wallet Instance:</p>
+<p><strong>Steps 5-6 (PAR Request)</strong>: The Wallet Instance:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>creates a fresh PKCE code verifier, Wallet Attestation Proof of Possession, and <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter for the <em>Pushed Authorization Request</em>.</p></li>
@@ -1278,13 +1280,13 @@ Content-Type: application/x-www-form-urlencoded
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Federation Check:</strong> The PID/(Q)EAA Provider MUST check that the Wallet Provider is part of the federation.</p>
+<p><strong>Federation Check</strong>: The PID/(Q)EAA Provider MUST check that the Wallet Provider is part of the federation.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The PID/(Q)EAA Provider MUST validate the signature of the the Wallet Attestation and that it is not expired.</p>
 </div>
-<p><strong>Step 7 (PAR Response):</strong>  The PID/(Q)EAA Provider provides a one-time use <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> value. The issued <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> value must be bound to the client identifier (<code class="docutils literal notranslate"><span class="pre">client_id</span></code>) that was provided in the Request Object.</p>
+<p><strong>Step 7 (PAR Response)</strong>:  The PID/(Q)EAA Provider provides a one-time use <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> value. The issued <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> value must be bound to the client identifier (<code class="docutils literal notranslate"><span class="pre">client_id</span></code>) that was provided in the Request Object.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The entropy of the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> MUST be sufficiently large. The adequate shortness of the validity and the entropy of the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> depends on the risk calculation based on the value of the resource being protected. The validity time SHOULD be less than a minute, and the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> MUST include a cryptographic random value of 128 bits or more (<span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>). The entire <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> SHOULD NOT exceed 512 ASCII characters due to the following two main reasons (<span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>):</p>
@@ -1306,7 +1308,7 @@ Content-Type: application/x-www-form-urlencoded
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Steps 8-9 (Authorization Request):</strong> The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the <code class="docutils literal notranslate"><span class="pre">code_challenge</span></code> parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> value once (<span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:</p>
+<p><strong>Steps 8-9 (Authorization Request)</strong>: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the <code class="docutils literal notranslate"><span class="pre">code_challenge</span></code> parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> value once (<span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>It MUST treat <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user-agent (derived from <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>).</p></li>
@@ -1320,10 +1322,10 @@ Content-Type: application/x-www-form-urlencoded
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>User Authentication and Consent:</strong> The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and requires the User consent for the PID issuance.
+<p><strong>User Authentication and Consent</strong>: The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and requires the User consent for the PID issuance.
 The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>] to dynamically request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to start the transaction with the (Q)EAA Provider.</p>
 </div>
-<p><strong>Steps 10-11 (Authorization Response):</strong> The PID/(Q)EAA Provider sends an authorization <code class="docutils literal notranslate"><span class="pre">code</span></code> together with <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:</p>
+<p><strong>Steps 10-11 (Authorization Response)</strong>: The PID/(Q)EAA Provider sends an authorization <code class="docutils literal notranslate"><span class="pre">code</span></code> together with <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>It MUST check the Authorization Response contains all the defined parameters according to <a class="reference internal" href="revocation-lists.html#table-http-response-claim"><span class="std std-ref">Table of the HTTP Response parameters</span></a>.</p></li>
@@ -1340,7 +1342,7 @@ The (Q)EAA Provider performs the User authentication requesting a valid PID to t
 </pre></div>
 </div>
 <p><strong>Steps 12-13 (DPoP Proof for Token Endpoint)</strong>: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (<span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain Wallet Instance (<span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint.</p>
-<p><strong>Step 14 (Token Request):</strong> The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a <em>DPoP Proof JWT</em>  and the parameters: <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code>, and OAuth 2.0 Attestation based Client Authentication  (<code class="docutils literal notranslate"><span class="pre">client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation</span></code> and <code class="docutils literal notranslate"><span class="pre">client_assertion=WIA~WIA-PoP</span></code>).
+<p><strong>Step 14 (Token Request)</strong>: The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a <em>DPoP Proof JWT</em>  and the parameters: <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code>, and OAuth 2.0 Attestation based Client Authentication  (<code class="docutils literal notranslate"><span class="pre">client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation</span></code> and <code class="docutils literal notranslate"><span class="pre">client_assertion=WIA~WIA-PoP</span></code>).
 The <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> is signed using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -1369,7 +1371,7 @@ grant_type=authorization_code
 &amp;client_assertion=$WIA~WIA-PoP
 </pre></div>
 </div>
-<p><strong>Step 15 (Token Response):</strong> The PID/(Q)EAA Provider validates the request, if successful an <em>Access Token</em> (bound to the DPoP key) and a fresh <cite>c_nonce</cite> are provided by the Issuer to the Wallet Instance. The parameter <cite>c_nonce</cite> is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 18 to create the proof of possession of the key (<em>proof</em> claim) and it is the primary countermeasure against key proof replay attack. Note that, the received <cite>c_nonce</cite> value can be used to create the proof as long as the Issuer provides the Wallet Instance with a new <cite>c_nonce</cite> value.</p>
+<p><strong>Step 15 (Token Response)</strong>: The PID/(Q)EAA Provider validates the request, if successful an <em>Access Token</em> (bound to the DPoP key) and a fresh <cite>c_nonce</cite> are provided by the Issuer to the Wallet Instance. The parameter <cite>c_nonce</cite> is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 18 to create the proof of possession of the key (<em>proof</em> claim) and it is the primary countermeasure against key proof replay attack. Note that, the received <cite>c_nonce</cite> value can be used to create the proof as long as the Issuer provides the Wallet Instance with a new <cite>c_nonce</cite> value.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 <span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
@@ -1390,8 +1392,8 @@ grant_type=authorization_code
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Steps 16-17 (DPoP Proof for Credential Endpoint):</strong> The Wallet Instance for requesting the Digital Credential creates a proof of possession with <code class="docutils literal notranslate"><span class="pre">c_nonce</span></code> obtained in <strong>Step 15</strong> and using the private key used for the DPoP, signing a DPoP Proof JWT according to (<span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) Section 4. The <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">proof</span></code> parameter MUST be equal to the public key referenced in the DPoP.</p>
-<p><strong>Step 18 (Credential Request):</strong> The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key), and format parameters. The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:</p>
+<p><strong>Steps 16-17 (DPoP Proof for Credential Endpoint)</strong>: The Wallet Instance for requesting the Digital Credential creates a proof of possession with <code class="docutils literal notranslate"><span class="pre">c_nonce</span></code> obtained in <strong>Step 15</strong> and using the private key used for the DPoP, signing a DPoP Proof JWT according to (<span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) Section 4. The <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">proof</span></code> parameter MUST be equal to the public key referenced in the DPoP.</p>
+<p><strong>Step 18 (Credential Request)</strong>: The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key), and format parameters. The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>the JWT proof MUST include all required claims as specified in the table of Section <a class="reference internal" href="#sec-token-request"><span class="std std-ref">Token Request</span></a>;</p></li>
@@ -1404,7 +1406,7 @@ grant_type=authorization_code
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>PID/(Q)EAA Credential Schema and Status registration:</strong> The PID/(Q)EAA Provider MUST register all the issued Credentials for their later revocation, if needed.</p>
+<p><strong>PID/(Q)EAA Credential Schema and Status registration</strong>: The PID/(Q)EAA Provider MUST register all the issued Credentials for their later revocation, if needed.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1458,7 +1460,7 @@ without encoding and signature. The JWS header:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Steps 19-21 (Credential Response):</strong> The PID/(Q)EAA Provider MUST validate the <em>DPoP JWT Proof</em> based on the steps defined in Section 4.3 of (<span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) and whether the <em>Access Token</em> is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OPENID4VCI</a> Section 7.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:</p>
+<p><strong>Steps 19-21 (Credential Response)</strong>: The PID/(Q)EAA Provider MUST validate the <em>DPoP JWT Proof</em> based on the steps defined in Section 4.3 of (<span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) and whether the <em>Access Token</em> is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OPENID4VCI</a> Section 7.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to <a class="reference internal" href="#table-credential-response-claim"><span class="std std-ref">Table of the credential response parameters</span></a>.</p></li>
