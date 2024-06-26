@@ -1220,7 +1220,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_configurations_supported</strong></p></td>
-<td><p>JSON object that outlines the details of the credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported credential. This identifier is utilized to inform the Wallet Instance which credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <cite>OpenID4VCI</cite> Draft 13 Sections 11.2.3 and A.3.2.</p>
+<td><p>JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <cite>OpenID4VCI</cite> Draft 13 Sections 11.2.3 and A.3.2.</p>
 <blockquote>
 <div><ul>
 <li><p><strong>format</strong>:  String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>vc+sd-jwt</em>&quot;. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a> Draft 13 Section A.3.1.</p></li>
