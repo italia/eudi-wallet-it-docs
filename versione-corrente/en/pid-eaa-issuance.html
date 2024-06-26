@@ -1190,10 +1190,10 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">PID/(Q)EAA Issuance - Detailed flow</span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-<p><strong>Steps 1-4 (Discovery):</strong> The User, using the Wallet Instance, selects the PID/(Q)EAA Provider from those listed in the list of trustworthy entities. The Wallet Instance then processes the Metadata for the selected PID/(Q)EAA Provider as defined in the <a class="reference external" href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/trust.html#trust-evaluation-mechanism">Trust Model section</a> of this specification.
-.. note:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>**Federation Check:** The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section :ref:`Entity Configuration of PID/(Q)EAA Providers`.
-</pre></div>
+<p><strong>Steps 1-4 (Discovery):</strong> The User, using the Wallet Instance, selects the PID/(Q)EAA Provider from those listed in the list of trustworthy entities. The Wallet Instance then processes the Metadata for the selected PID/(Q)EAA Provider as defined in the <a class="reference external" href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/trust.html#trust-evaluation-mechanism">Trust Model section</a> of this specification.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Federation Check:</strong> The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the PID/(Q)EAA Provider is represented within the section <a class="reference internal" href="pid-eaa-entity-configuration.html#entity-configuration-of-pid-q-eaa-providers"><span class="std std-ref">Entity Configuration of PID/(Q)EAA Providers</span></a>.</p>
 </div>
 <p><strong>Steps 5-6 (PAR Request)</strong>: The Wallet Instance:</p>
 <blockquote>
@@ -1224,7 +1224,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 </div></blockquote>
 <p>Below a non-normative example of the PAR.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /as/par HTTP/1.1
-Host: pid-provider.example.org
+Host: eaa-provider.example.org
 Content-Type: application/x-www-form-urlencoded
 
 &amp;client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
@@ -1233,48 +1233,50 @@ Content-Type: application/x-www-form-urlencoded
 &amp;client_assertion=$WIA~WIA-PoP
 </pre></div>
 </div>
-<p>Below an non-normative example of the Wallet Attestation Proof of Possession without encoding and signature applied:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;jwt-client-attestation-pop&quot;</span><span class="p">,</span>
+<p>Below an non-normative example of the Wallet Attestation Proof of Possession (WIA-PoP) header and body:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt-client-attestation-pop&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;47b982369791d08003a7283f059cb0d1&quot;</span>
 <span class="p">}</span>
-<span class="o">.</span>
-<span class="p">{</span>
-  <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://pid-provider.example.org/par-endpoint&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;ad25868c-8377-479b-8094-46fb1e797625&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1686645115</span><span class="p">,</span>
-  <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1686652315</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;47b982369791d08003a7283f059cb0d1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/as/par&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1715842560</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1778914560</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f8555ceb-c65c-4025-9378-b6672b6149af&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Below an non-normative example of the signed Request Object without encoding and signature applied:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b01b8208d9e6cc834d87dc356ab50170&quot;</span>
 <span class="p">}</span>
-<span class="o">.</span>
-<span class="p">{</span>
-<span class="s2">&quot;iss&quot;</span><span class="p">:</span><span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
-<span class="s2">&quot;aud&quot;</span><span class="p">:</span><span class="s2">&quot;https://pid-provider.example.org&quot;</span><span class="p">,</span>
-<span class="s2">&quot;exp&quot;</span><span class="p">:</span><span class="mi">1672422065</span><span class="p">,</span>
-<span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1672418465</span><span class="p">,</span>
-<span class="s2">&quot;jti&quot;</span><span class="p">:</span><span class="s2">&quot;ac80df576e7109686717bf50b869e882&quot;</span><span class="p">,</span>
-<span class="s2">&quot;response_type&quot;</span><span class="p">:</span><span class="s2">&quot;code&quot;</span><span class="p">,</span>
-<span class="s2">&quot;response_mode&quot;</span><span class="p">:</span><span class="s2">&quot;form_post.jwt&quot;</span><span class="p">,</span>
-<span class="s2">&quot;client_id&quot;</span><span class="p">:</span><span class="s2">&quot;$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&quot;</span><span class="p">,</span>
-<span class="s2">&quot;state&quot;</span><span class="p">:</span><span class="s2">&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;</span><span class="p">,</span>
-<span class="s2">&quot;code_challenge&quot;</span><span class="p">:</span><span class="s2">&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;</span><span class="p">,</span>
-<span class="s2">&quot;code_challenge_method&quot;</span><span class="p">:</span><span class="s2">&quot;S256&quot;</span><span class="p">,</span>
-<span class="s2">&quot;response_mode&quot;</span><span class="p">:</span><span class="s2">&quot;post_form.jwt&quot;</span><span class="p">,</span>
-<span class="s2">&quot;authorization_details&quot;</span><span class="p">:[</span>
-  <span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;credential_configuration_id&quot;</span><span class="p">:</span> <span class="s2">&quot;PersonIdentificationData&quot;</span>
-  <span class="p">}</span>
-<span class="p">],</span>
-<span class="s2">&quot;redirect_uri&quot;</span><span class="p">:</span><span class="s2">&quot;eudiw://start.wallet.example.org&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f8555ceb-c65c-4025-9378-b6672b6149af&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/as/par&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1715842560</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1715842860</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;code&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;form_post.jwt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;47b982369791d08003a7283f059cb0d1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;47b982369791d08003a7283f059cb0d1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;code_challenge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;code_challenge_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;S256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;authorization_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;credential_configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;redirect_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://client.example.com/cb&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1301,9 +1303,10 @@ Content-Type: application/x-www-form-urlencoded
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-cache, no-store</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;request_uri&quot;</span><span class="p">:</span><span class="s2">&quot;urn:ietf:params:oauth:request_uri:bwc4JK-ESC0w8acc191e-Y1LTC2&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;request_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:ietf:params:oauth:request_uri:bwc4JK-ESC0w8acc191e-Y1LTC2&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
 <span class="p">}</span>
 </pre></div>
@@ -1317,7 +1320,7 @@ Content-Type: application/x-www-form-urlencoded
 </ol>
 </div></blockquote>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&amp;request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">pid-provider.example.org</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">eaa-provider.example.org</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1338,7 +1341,7 @@ The (Q)EAA Provider performs the User authentication requesting a valid PID to t
 <p>The Wallet Instance redirect URI is a universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.</p>
 </div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
-<span class="na">Location</span><span class="o">:</span> <span class="l">https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&amp;iss=https%3A%2F%2Fpid-provider.example.org</span>
+<span class="na">Location</span><span class="o">:</span> <span class="l">https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&amp;iss=https%3A%2F%2Feaa-provider.example.org</span>
 </pre></div>
 </div>
 <p><strong>Steps 12-13 (DPoP Proof for Token Endpoint)</strong>: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in Section 4 of (<span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain Wallet Instance (<span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint.</p>
@@ -1353,7 +1356,7 @@ The <code class="docutils literal notranslate"><span class="pre">client_assertio
 </ol>
 </div></blockquote>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">pid-provider.example.org</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">eaa-provider.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 <span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>
     <span class="l">VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR</span>
@@ -1372,23 +1375,45 @@ grant_type=authorization_code
 </pre></div>
 </div>
 <p><strong>Step 15 (Token Response)</strong>: The PID/(Q)EAA Provider validates the request, if successful an <em>Access Token</em> (bound to the DPoP key) and a fresh <cite>c_nonce</cite> are provided by the Issuer to the Wallet Instance. The parameter <cite>c_nonce</cite> is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 18 to create the proof of possession of the key (<em>proof</em> claim) and it is the primary countermeasure against key proof replay attack. Note that, the received <cite>c_nonce</cite> value can be used to create the proof as long as the Issuer provides the Wallet Instance with a new <cite>c_nonce</cite> value.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
-
-<span class="p">{</span>
-    <span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU ...&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;DPoP&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">2677</span><span class="p">,</span>
-    <span class="s2">&quot;c_nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;tZign[...]snFbp&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span> <span class="mi">86400</span><span class="p">,</span>
-    <span class="s2">&quot;authorization_details&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;credential_configuration_id: &quot;</span><span class="n">PersonIdentificationData</span><span class="s2">&quot;</span>
-          <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImM5NTBjMGU2ZmRlYjVkZTUwYTUwMDk2YjI0N2FmMDNjIn0.eyJpc3MiOiJodHRwczovL2VhYS1wcm92aWRlci53YWxsZXQuaXB6cy5pdCIsInN1YiI6ImQ0ZTBiYjM4N2FhMjU1NmZmMzA2OTI1ZmRmYjlhNzY1IiwiYXVkIjoiaHR0cHM6Ly9lYWEtcHJvdmlkZXIud2FsbGV0LmlwenMuaXQvY3JlZGVudGlhbCIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzc4OTE0NTYwLCJqdGkiOiJmOTY1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YmciLCJjbGllbnRfaWQiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsImNuZiI6eyJqa3QiOiI5NTE1NzRhZWUxYmI3OTA3YWUxZWMzMTA5ZGIyYjIyNSJ9fQ.3ZfQN6KuNtJHjbGiYxHYqXIe0WrFIqYXNUio2a0bFy4eWystd7ZNCcmfoRojmmHQwccjNADqBKG7beYwbQ4jPg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DPoP&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ts_EtUQs0ieiIS1NYNBHEQSoy3ct4gpy-4FZKwHilkY&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;authorization_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;credential_configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The non-normative example of the DPoP Access Token is given below.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;at+jwt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c950c0e6fdeb5de50a50096b247af03c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d4e0bb387aa2556ff306925fdfb9a765&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/credential&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1715842560</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1778914560</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f9655ceb-c65c-4025-9378-b6672b6149bg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;47b982369791d08003a7283f059cb0d1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;jkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;951574aee1bb7907ae1ec3109db2b225&quot;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1412,51 +1437,54 @@ grant_type=authorization_code
 <p class="admonition-title">Note</p>
 <p>It is RECOMMENDED that the public key contained in the <code class="docutils literal notranslate"><span class="pre">jwt_proof</span></code> be specifically generated for the requested Credential (fresh cryptographic key) to ensure that different issued Credentials do not share the same public key, thereby remaining unlinkable to each other.</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">credential</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="n">Host</span><span class="p">:</span> <span class="n">pid</span><span class="o">-</span><span class="n">provider</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="n">Authorization</span><span class="p">:</span> <span class="n">DPoP</span> <span class="n">Kz</span><span class="o">~</span><span class="mi">8</span><span class="n">mXK1EalYznwH</span><span class="o">-</span><span class="n">LC</span><span class="o">-</span><span class="mi">1</span><span class="n">fBAo</span><span class="mf">.4</span><span class="n">Ljp</span><span class="o">~</span><span class="n">zsPE_NeO</span><span class="o">.</span><span class="n">gxU</span>
-<span class="n">DPoP</span><span class="p">:</span> <span class="n">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>
-    <span class="n">VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR</span>
-    <span class="n">nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R</span>
-    <span class="mi">1</span><span class="n">JEQSIsImNydiI6IlAtMjU2In19</span><span class="o">.</span><span class="n">eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj</span>
-    <span class="n">oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z</span>
-    <span class="n">WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF</span>
-    <span class="n">c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9</span><span class="mf">.2</span><span class="n">oW9RP35yRqzhrtNP86L</span><span class="o">-</span><span class="n">Ey71E</span>
-    <span class="n">OptxRimPPToA1plemAgR6pxHF8y6</span><span class="o">-</span><span class="n">yqyVnmcw6Fy1dqd</span><span class="o">-</span><span class="n">jfxSYoMxhAJpLjA</span>
-<span class="p">{</span>
-  <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;vc+sd-jwt&quot;</span>
-  <span class="s2">&quot;credential_definition&quot;</span><span class="p">:{</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">]</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;proof&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;proof_type&quot;</span><span class="p">:</span> <span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;jwt&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJraWQiOiJkaWQ6ZXhhbXBsZTplYm&quot;</span>
-  <span class="p">}</span>
+<p>A non-normative example of the Credential Request is provided below.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/credential</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+  <span class="l">Host: eaa-provider.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU</span>
+<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>
+    <span class="l">VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR</span>
+    <span class="l">nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R</span>
+    <span class="l">1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj</span>
+    <span class="l">oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z</span>
+    <span class="l">WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF</span>
+    <span class="l">c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E</span>
+    <span class="l">OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;credential_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;DisabilityCard&quot;</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;proof&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;proof_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJvcGVuaWQ0dmNpLXByb29mK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwiY3J2IjoiUC0yNTYiLCJ4IjoicFZVM2phdHU0YTN0azljOWFvd1ZnTHlCQl9ySjdNLTNXbGprMWVqVXoyRSIsInkiOiJUTDVPTnZSLUlnYXJuZ3J6NWpkdnNwb2ZmekZ3Y2pQUnRGVWtlbmVIRUkwIn19.eyJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsImF1ZCI6Imh0dHBzOi8vZWFhLXByb3ZpZGVyLndhbGxldC5pcHpzLml0L2NyZWRlbnRpYWwiLCJpYXQiOjE3MDU1NzAwNTUsImV4cCI6MTc3ODkxNDU2MCwibm9uY2UiOiJ0c19FdFVRczBpZWlJUzFOWU5CSEVRU295M2N0NGdweS00RlpLd0hpbGtZIn0.ILIEIk_mBJp8BHyngsPHIUyM3WGaOkt9hsdref3Qek4kYAtAfRRER6DgTeRURNAWKBem8m1mILYhBTNFfZcJjg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Where a non-normative example of the decoded content of the <code class="docutils literal notranslate"><span class="pre">jwt</span></code> parameter is represented below,
 without encoding and signature. The JWS header:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid4vci-proof+jwt&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l8tFrhx-34tV3hRICRDY9zCkDlpBhF42UQUfWVAWBFs&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9VE4jf_Ok_o64zbTTlcuNJajHmt6v9TDVrU0CdvGRDA&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid4vci-proof+jwt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pVU3jatu4a3tk9c9aowVgLyBB_rJ7M-3Wljk1ejUz2E&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TL5ONvR-Igarngrz5jdvspoffzFwcjPRtFUkeneHEI0&quot;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>And the JWS payload:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0b434530-e151-4c40-98b7-74c75a5ef760&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pid-provider.example.org/credential&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1504699136</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tZign...snFbp&quot;</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;47b982369791d08003a7283f059cb0d1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/credential&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1705570055</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ts_EtUQs0ieiIS1NYNBHEQSoy3ct4gpy-4FZKwHilkY&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1475,11 +1503,12 @@ without encoding and signature. The JWS header:</p>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
 <span class="na">Pragma</span><span class="o">:</span> <span class="l">no-cache</span>
-
-<span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;vc+sd-jwt&quot;</span>
-<span class="w">    </span><span class="nt">&quot;credential&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LUpixVCWJk0eOt4CXQe1NXK[...]WZwmhmn9OQp6YxX0a2L&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fGFF7[...]UkhLa&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;credential&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImM5NTBjMGU2ZmRlYjVkZTUwYTUwMDk2YjI0N2FmMDNjIn0.eyJfc2QiOlsiQ1JJQkdpbWhhbE1TSzhLZUxmNzg2N0w4cHV6MEZnRTVaS1VXLW12N0hiYyIsIlhhZjVJZFVGc0UzYWtabEszT0E5d3dHcjJKcVAwUU01M3BBY2hiempRZmMiLCJjR2FuQVdySG9WQVoyalBhNXk0SzE3U0xpYWFKcGRNUF9PdnBmTGx0VWJjIiwiNEFuZU1ZVVAxRWh3emRHdkRQOEhobnRaRGN1ejZrOHhHWVJ0NXo0SHh0SSIsIjRuYTVXSHRMYzdrYnNxdHFVaHd6WXdVdUQtY3hKVmdENmRaLTl0ZUdhZ3MiLCJiZS10a2U3YVU0WmhDNWUxcGZqRjcxUWpFRzRsZG1IaFRoUFl1TnQyOHo0IiwiSnNkaHhTMWRVTTJaN29MUmZYWVJvOFFEaDJ4M1dQNkdILUJnY21DdzJGayIsIlVobXBRSy1HS3hzaHJwXzZwYVpfZzROVG5fX29aeVdOb01zTGNaMUhlMjgiLCJOdDdQU3RxMkEyWkliUHBHdTJpdmVSek9rbWpYUEN1V0RBdy0tdktSQTBjIiwiV3Rtck5JVzFTVkN0UnZNUF9UM2YtRGlhRUdHNS1iVk5rWGJRckowRnpzRSJdLCJleHAiOjE3NDY1MTU5NzIsImlzcyI6Imh0dHBzOi8vZWFhLXByb3ZpZGVyLmlwenMuaXQiLCJzdWIiOiJOemJMc1hoOHVEQ2NkN25vV1hGWkFmSGt4WnNSR0M5WHMiLCJzdGF0dXMiOnsic3RhdHVzX2F0dGVzdGF0aW9uIjp7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiJzaGEtMjU2In19LCJ2Y3QiOiJEaXNhYmlsaXR5Q2FyZCIsIl9zZF9hbGciOiJzaGEtMjU2IiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6InBWVTNqYXR1NGEzdGs5Yzlhb3dWZ0x5QkJfcko3TS0zV2xqazFlalV6MkUiLCJ5IjoiVEw1T052Ui1JZ2FybmdyejVqZHZzcG9mZnpGd2NqUFJ0RlVrZW5lSEVJMCJ9fX0.v9ynFXhKXPOhQSMmuLvIBKRWfPEPDf4QwDoNmDOjMROxr5J4Hshh9mBEM5qohH_PDE62i1TLc36C65jFYa7x3A~WyIwQUx5SzRfUi1aVUpTekVKdW5HTFdRIiwiaWF0IiwiMTc0NzExOTU5NSJd~WyItT25uM29FcGh6TDNncHJUcVF0YUd3IiwiZG9jdW1lbnRfbnVtYmVyIiwiMDAwMDAwMDIiXQ~WyJ2bmtVX2tJV2RSa1dPZzBoNlRYcDd3IiwiZ2l2ZW5fbmFtZSIsIk1hcmlvIl~WyJvRUdnaVZQaXV1dEJVby1wcTd6WURBIiwiZmFtaWx5X25hbWUiLCJSb3NzaSJd~WyJGVU1iQm5hLWhlLUlaWTZkOVZ1UkNBIiwiYmlydGhfZGF0ZSIsIjE5ODAtMDEtMTAiXQ~WyJjQ0ZDeXljV1J4alZINkZURVR5OTd3IiwidGF4X2lkX2NvZGUiLCJSU1NNUkE4MFIwMUg1MDFCIl0~WyJVSEFhaWZ1bzloTW9pbkVDU0loOG9RIiwiZXhwaXJ5X2RhdGUiLCIyMDMwLTAxLTEwIl~WyJ3TW1xYkkzTFRPMDVLajFoLXNpWWhRIiwiY29uc3RhbnRfYXR0ZW5kYW5jZV9hbGxvd2FuY2UiLCIwIl0~WyJBODVjeFI1REZyOElfaFZFQTZqZGNBIiwibGlua19xcl9jb2RlIiwiaHR0cHM6Ly9xci5leGFtcGxlLmNvbSJd~WyJHWHRYNXNueTctVEVpblhZajNMdGdBIiwicG9ydHJhaXQiLCIvOWovNEFBUVNrWkpSZ0FCQVFFQkxBRXNBQUQvNFFCV1JYaHBaZ0FBVFUwQUtnQUFBQWdBQkFFYUFBVUFBQUFCQUFBQVBnRWJBQVVBQUFBQkFBQUFSZ0VvQUFNQUFBQUJBQUlBQUFJVEFBTUFBQUFCQUFFQUFBQUFBQUFBQUFFc0FBQUFBUUFBQVN3QUFBQUIvKzBBTEZCb2IzUnZjMmh2Y0NBekxqQUFPRUpKVFFRRUFBQUFBQUFQSEFGYUFBTWJKVWNjQVFBQUFnQUVBUC9oRElGb2RIUndPaTh2Ym5NdVlXUnZZbVV1WTI5dEwzaGhjQzh4TGpBdkFEdy9lSEJoWTJ0bGRDQmlaV2RwYmowbjc3dS9KeUJwWkQwblZ6Vk5NRTF3UTJWb2FVaDZjbVZUZWs1VVkzcHJZemxrSno4K0NqeDRPbmh0Y0cxbGRHRWdlRzFzYm5NNmVEMG5ZV1J2WW1VNmJuTTZiV1YwWVM4bklIZzZlRzF3ZEdzOUowbHRZV2RsT2pwRmVHbG1WRzl2YkNBeE1DNHhNQ2MrQ2p4eVpHWTZVa1JHSUhodGJHNXpPbkprWmowbmFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1UazVPUzh3TWk4eU1pMXlaR1l0YzNsdWRHRjRMVzV6SXljK0Nnb2dQSEprWmpwRVpYTmpjbWx3ZEdsdmJpQnlaR1k2WVdKdmRYUTlKeWNLSUNCNGJXeHVjenAwYVdabVBTZG9kSFJ3T2k4dmJuTXVZV1J2WW1VdVkyOXRMM1JwWm1Zdk1TNHdMeWMrQ2lBZ1BIUnBabVk2VW1WemIyeDFkR2x2YmxWdWFYUStNand2ZEdsbVpqcFNaWE52YkhWMGFXOXVWVzVwZEQ0S0lDQThkR2xtWmpwWVVtVnpiMngxZEdsdmJqNHpNREF2TVR3dmRHbG1aanBZVW1WemIyeDFkR2x2Ymo0S0lDQThkR2xtWmpwWlVtVnpiMngxZEdsdmJqNHpNREF2TVR3dmRHbG1aanBaVW1WemIyeDFkR2x2Ymo0S0lEd3ZjbVJtT2tSbGMyTnlhWEIwYVc5dVBnb0tJRHh5WkdZNlJHVnpZM0pwY0hScGIyNGdjbVJtT21GaWIzVjBQU2NuQ2lBZ2VHMXNibk02ZUcxd1RVMDlKMmgwZEhBNkx5OXVjeTVoWkc5aVpTNWpiMjB2ZUdGd0x6RXVNQzl0YlM4blBnb2dJRHg0YlhCTlRUcEViMk4xYldWdWRFbEVQbUZrYjJKbE9tUnZZMmxrT25OMGIyTnJPamxqTmpabVpUZGxMVFkzWTJRdE5ETTRZeTA1WlRobUxUSXdPREE1TkRObU9UWTJaVHd2ZUcxd1RVMDZSRzlqZFcxbGJuUkpSRDRLSUNBOGVHMXdUVTA2U1c1emRHRnVZMlZKUkQ1NGJYQXVhV2xrT2pSaE16ZzBZVFUxTFdJek1UZ3ROR05rWVMwNE4yVXpMVE14TVRZd00yTmhaVEUzT0R3dmVHMXdUVTA2U1c1emRHRnVZMlZKUkQ0S0lEd3ZjbVJtT2tSbGMyTnlhWEIwYVc5dVBnbzhMM0prWmpwU1JFWStDand2ZURwNGJYQnRaWFJoUGdvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lBb2dJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FLSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUFvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lBb2dJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FLSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUFvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lBbzhQM2h3WVdOclpYUWdaVzVrUFNkM0p6OCsvOXNBUXdBRkF3UUVCQU1GQkFRRUJRVUZCZ2NNQ0FjSEJ3Y1BDd3NKREJFUEVoSVJEeEVSRXhZY0Z4TVVHaFVSRVJnaEdCb2RIUjhmSHhNWElpUWlIaVFjSGg4ZS85c0FRd0VGQlFVSEJnY09DQWdPSGhRUkZCNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlLzhBQUVRZ0JhQUZvQXdFUkFBSVJBUU1SQWYvRUFCMEFBUUFCQlFFQkFRQUFBQUFBQUFBQUFBQUdBUVVIQ0FrRUFnUC94QUJDRUFFQUFRTUNBZ01OQlFVSEJRQUFBQUFBQVFJREJBVUdCeEVoTVZFSUVoTVVGeUpCVm1GeG9hVFNRb0dSa3NFak1rT0NvaFVXWW5LRHNzSVlObEoxcy8vRUFCWUJBUUVCQUFBQUFBQUFBQUFBQUFBQUFBQUJBdi9FQUJZUkFRRUJBQUFBQUFBQUFBQUFBQUFBQUFBUkFmL2FBQXdEQVFBQ0VRTVJBRDhBM0xBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCNXRTejhMVE1HN25hamwyTVRGczA5OWN2WHJrVVVVUjJ6TTlFQXdudmZ1bHRwNlZjcnh0dDRPVHIxNm5uSGh1ZmdNZm43S3FvbXFyN3FlWHRJTVY2MTNTWEVQTnVUT0JScEdsMGVpTFdOTjJxUHZybVkrQ3dXWHk5Y1ZlLzc3KzgxUHU4UXNjdjloQmV0RjdwTGlIaFhJblBvMGpWS1BURjNHbTFWUDMwVEVmQWd5cHNqdWx0cDZyY294dHlZT1RvTjZybEhodWZoOGZuN2FxWWlxbjc2ZVh0U0RObW01K0ZxZUZhenRPeTdHWGkzcWUrdDNyTnlLNks0N1ltT2lRZWtBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFFTTRyOFJkQzRlYUY0OXFkVTM4dTl6cHc4SzNWRVhMOVVmN2FZOU5VOUVlMmVVQTB2NGs4UXR6YisxT2NyWE15ZkZxS3BuSHdiVXpGaXhIc3A5TlgrS2VjKzdxVVJKUUFBQUJMZUczRUxjMndkVGpLMFBNbnhhdXFKeU1HN016WXZ4N2FmUlYvaWpsUHY2a0c2SENqaUxvWEVQUXZIdE1xbXhsMmVWT1poWEtvbTVZcW4vZFRQb3Fqb24yVHpoQk13QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVdQZm01OU4yZHRYTzNEcXRmTEh4YU9jVVJQblhhNTZLYUtmYlZQS1BqNkFhRWI4M1ZxKzg5elpXdjZ6ZTcvSXZ6eW90MHo1bGkzSDd0dWlQUlRIeG5uTTlNcUxFb0FBQUFBQXZ1dzkxYXZzemMyTHIralh1OHlMRThxN2RVK1pmdHorOWJyajAwejhKNVRIVENEZmZZZTU5TjNqdFhCM0RwVmZQSHlxT2MwVFBuV3E0NktxS3ZiVFBPUGo2VUY4QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQnFSM1l1OHE5VDNkajdReGJzK0o2VFRGM0ppSjZLOGl1bm5IUC9MUk1mZlhLNE1ES0FBQUFBQUFBTTg5eDF2S3ZUTjNaRzBNcTdQaWVxMHpkeG9tZWlqSW9wNXp5L3pVUlAzMFFtamJkQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCK2VUZHQyTWU1ZnUxZDdidDB6WFZQWkVSemtIT1RjK3JYdGUzSHFXdDVGVXpkejhxNWtWZnpWVE1SOTBjbys1UmJsQUFBQUFBQUFGeDJ4cTE3UWR4NmJyZVBWTVhjREt0NUZQOHRVVE1mZkhPUHZRZEc4YTdidjQ5dS9hcTc2M2NwaXVtZTJKam5DRDlBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVI3aVhmcXh1SFc1TWlpZVZWdlNzcXFtZmJGcW9ITytpT1ZGTWRrUkRRcUFBQUFBQUFBQ2xjYzZLbzdZbUFkRU9HbCtySjRkYmJ5SzU1MVhOS3hhcXA5czJxV1JJUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFXWGZtSlZxR3lOZHdhSTUxNUdtNUZxbVBiVmJxaUFjNktPbWltWjdJYUZRQUFBQUFBQUFVcjZLS3Bqc2tIUmZZZUpWcCt5TkN3YTQ1VjQrbTQ5cXFQYlRicGlXUmVnQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVVxaUppWW1PY0E1NThUZHYzTnJjUU5iMEt1aWFhY1hNcjhEempydFZUMzF1ZnkxUW9qaWdBQUFBQUFBQ1I4TXR2M04wY1FORTBLaWlhcWNyTW84TnlqcXRVejMxeWZ5MHlnNkdVeEVSRVJIS0VGUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBYTNkMlRzV3UvalltKzlQc3pWT1BUR0xxVVV4L0Q1L3M3ays2Wm1tWi94VTlpNE5ZRkFBQUFBQUFBR3ovY2JiRnJzWTJYdnZVTE0wemtVemk2YkZVZncrZjdTNUh2bUlwai9BQzFkcWFOa1VBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFIbjFIQ3hkUndMK0JuV0tNakZ5TGRWcTlhcmpuVFhSVkhLWW4yVEFOSGVPWEREUDRkN2hud1ZGM0kwSExybWNIS21PZmUrbndWYytpdU8zN1VkUGJFVVk1VUFBQUFBQVpHNEc4TU0vaUp1R1BDMFhjZlFjU3VKenNxSTVkOTZmQlVUL3dDYzl2Mlk2ZXlKZzNpMDdDeGRPd0xHQmcyS01mRng3ZE5xemFvamxUUlJUSEtJajJSQ0QwQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUE4RzRORzB2WDlJeU5KMWpDczV1RmtVOTdkczNZNXhWSDZUSFhFeDB4UFVEVTdpMzNQbXZiZXUzdFMyalRlMXZTZWMxZUx4MDVWaU96bC9FajJ4NTNiSHBXakNOeWl1M2NydDNLYXFLNko1VjAxUnlxcG5zbUo2WWxSOGdBQStyZEZkeTVSYnQwMVYxMXp5b3Bwam5WVlBaRVIweklNM2NKTzU4MTdjTjJ6cVc3cWIyaWFUemlyeGVlakt2eDJjdjRjZTJmTzdJOUtVYlk3ZjBiUzlBMGpIMG5SOEt6aFlXUFQzdHF6YWpsRk1mck05Y3pQVE05YUQzZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBY3dlRFU5WjBqVEtacTFMVk1IQ3Bqcm5JeUtMY2YxVEFJSnJPQndlNGxabHpGeWIyM2RYejZQTjhKajVWRk9SSHVyb21LcCtNQWhldGR5OXRYSXJtdlNkd2F4cDhUOWk3RkYrbVB4aUorSzBXYi9wV283Ly9BTDVxNzMvMWtjLy9BS0ZGNTBYdVh0cTQ5Y1Y2dHVEV05RaVBzV29vc1V6K0VWVDhTaWFhTmdjSHVHdVpieGNhOXQzU00rdnpmQ1pHVlJWa1Q3NjY1bXFQaENDZDZack9rYW5URldtNnBnNXRNOVU0K1JSY2orbVpCNytZQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFMSnZEZG0zZG82ZC9hRzR0V3h0UHNUUEtqd2xYT3E1UFpSVEhuVlQ3SWlRWWIxM3VvdHM0OTJxalJ0dTZycU1SMVhMMWRHUFRWN284NnJsNzRoWUlacTNkUmJvdmQ5R21iYjBqRXBucW0vZHVYNm8vRHZZSUlocTNIdmlobnhWVFRyOXJDb243T0poMjZPWDMxUlZQeElJanErK041NnZFeHFXNjlieXFaNjZhczJ1S2Z5eE1SOEFSKzVNM0s1cnVmdEtwKzFYNTAvaktpbnBpZlRIVlBZQ1JhUHZuZW1rVVJiMHpkbXQ0dHVPcWlqTnJtbVA1Wm1ZUVhmeXZjVGU4NzMrK3VxOHZmUnovQUI3MGd0R3NiNTNwcTlFMjlUM1pyZVZibnJvcnphNHBuK1dKaUFSMzB6UHBucm50VVZ0ek51dUs3ZjdPcVB0VWViUDR3Q1FhUnZqZWVrUkVhYnV2VzhXbU9xbW5Ocm1uOHN6TWZCQkx0SjQ5OFVNQ0thYXRmdFp0RWVqTHc3ZGZQNzZZcG40a0V2MG51b3QwV2U5alU5dDZSbDB4MXpZdTNMRlUvajMwRUV6MEx1b3RzNUYybWpXZHZhcnAwVDEzTE5kR1JUSDNlYlZ5OTBTUVprMmZ1emJ1N3RPL3REYnVyWTJvV0lubFg0T3JsVmJuc3JwbnpxWjlreENDOWdBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWhuR0hmdUR3OTJmZDFqSW9wdjVkeXJ3T0ZqVFZ5OE5kbU9jUlBaVEVkTXoyUjJ6QU5HTjI3ajFuZFd1WHRaMTdPdVptWmRuOTZyb3BvcDlGRkZQVlRUSG9pUGpQU290S2dBQUFBQUFBQUFBQUFBQzdiUzNIck8xZGNzNnpvV2Rjdzh5MVA3MVBUVFhUNmFLNmVxcW1leWZoUFNnM240UGI5d2VJV3o3V3NZOUZOakx0MWVCemNhS3VmZ2JzUnptSTdhWmpwaWV5ZTJKUVRNQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUdtZmRkN2l2YXR4VHEwZUxremk2TmowV2FLWW5vOEpjaUs2NnZmeW1pUDVWd1liVUFBQUFBQUFBQUFBQUFBQUFabDdrVGNWN1NlS2RPanpjbU1YV2NldXpYVE05SGhMY1RYUlY3K1VWeC9NbWpjdEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFucUJvRnh5ditNY1lkMTNPZlZxZHlqOHNSVC94WEJERkFBQUFBQUFBQUFBQUFBQUFFejRHMy9GK01PMUxuUHIxTzNSK2FKcC81Sm8zOWpxUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUpCenM0aDVIamUvOEFjV1Z6NStGMVhLcWlmOVdwUllsQUFBQUFBQUFBQUFBQUFBQUY5NGVaSGltLzl1NVhQbDRMVmNXcVovMWFVSFJPRUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUZLcGlLWm1laUk2UWMyZFV2VGthbmw1RTlNM2NpNWMvTlhNL3FvOHlnQUFBQUFBQUFBQUFBQUFBRDA2WGVuSDFQRXlJNkp0WkZ1NStXdUovUkIwbXBtSnBpWTZZbnBRVkFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQjRkd1gvRmRDejhtWjVSYXhydGY0VVRQNkE1dVVUem9wcW5ybUlsb1ZBQUFBQUFBQUFBQUFBQUFBQlN1ZVZGVlVkY1JNZzZSN2Z2K05hRmdaTVR6aTdqV3EveG9pZjFaSHVBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJIT0tHUkdKdzMzTGs4K1hnOUp5WmlmYjRLb0hQR21PVk1SMlJFTkNvQUFBQUFBQUFBQUFBQUFBQUtWUnpwbU8ySmdIUTdoZmtSbDhOOXRaUFBuNFRTY2FabjIrQ3BaRWpBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJCTzZDeVBGdURHNnJrVHk1NmZYYi9OTVUvcURRdWV1V2hRQUFBQUFBQUFBQUFBQUFBQUZZNjRCdnAzUHVSNHp3WTJyY21lZkxUNkxmNVptbjlHUk93QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFZLzdvckN5Yy9ndHViSHhLS3E3bE9MRjJhYVk1ek5OdXVtdXIrbW1RYUh0QUFBQUFBQUFBQUFBQUFBQUFBRGZEdWRjTEp3T0MyMmNmTG9xb3UxWXMzWXBxamxNVTNLNnE2ZjZhb1pHUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWZOeWlpN2JxdDNLS2E2S29tS3FhbzV4TVQxeE1BMWI0cGR6ZHFsR3FYdFEySGN4NytGZXFtcU5PdjNmQjEySm43TkZjK2JWVDJSTXhNZFhPVm9nUGtINHErcS93QTlZK3NvZVFmaXI2ci9BRDFqNnloNUIrS3ZxdjhBUFdQcktIa0g0cStxL3dBOVkrc29lUWZpcjZyL0FEMWo2eWg1QitLdnF2OEFQV1ByS0hrSDRxK3Evd0E5WStzb2VRZmlyNnIvQUQxajZ5aDVCK0t2cXY4QVBXUHJLSGtINHErcS93QTlZK3NvZVFmaXI2ci9BRDFqNnloNUIrS3ZxdjhBUFdQcktIa0g0cStxL3dBOVkrc29lUWZpcjZyL0FEMWo2eWg1QitLdnF2OEFQV1ByS0hrSDRxK3Evd0E5WStzb2VRZmlyNnIvQUQxajZ5aWZjTGU1dTFTdlZMT29iOHVZOWpDczFSVk9uV0x2aEs3OHg5bXV1UE5wcDdZaVptZXJuQlJ0SmJvb3RXNmJkdWltaWltSWltbW1PVVJFZFVSQ0Q2QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCLy9aIl0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ff_EtUQs0ieiIS1NYNBHEQSoy3ct4gpy-89JKwHilrT&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span>
 <span class="p">}</span>
 </pre></div>
@@ -1597,7 +1626,7 @@ without encoding and signature. The JWS header:</p>
 <td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
-<td><p>Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits.</p></td>
+<td><p>Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits. Special characters MUST be considered non-alphanumeric characters as defined in <a class="reference external" href="https://csrc.nist.gov/glossary/term/special_character">[NIST]</a>.</p></td>
 <td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">OpenID.Core#AuthRequest</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code_challenge</strong></p></td>
@@ -1728,13 +1757,13 @@ without encoding and signature. The JWS header:</p>
 </ul>
 </div></blockquote>
 <p>Below is a non-normative example of an error response.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="n">Bad</span> <span class="n">Request</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-
-<span class="p">{</span>
-  <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;invalid_request&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;error_description&quot;</span><span class="p">:</span>
-    <span class="s2">&quot;The redirect_uri is not valid for the given client&quot;</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;invalid_request&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The redirect_uri is not valid for the given client&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1969,14 +1998,15 @@ defined in <span class="target" id="index-66"></span><a class="rfc reference ext
 </tbody>
 </table>
 <p>If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="n">Bad</span> <span class="n">Request</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">;</span><span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
-<span class="n">Pragma</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">cache</span>
-
-<span class="p">{</span>
-  <span class="s2">&quot;error&quot;</span><span class="p">:</span><span class="s2">&quot;invalid_client&quot;</span>
-  <span class="s2">&quot;error_description&quot;</span><span class="p">:</span><span class="s2">&quot;Client authentication failed&quot;</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json;charset=UTF-8</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+<span class="na">Pragma</span><span class="o">:</span> <span class="l">no-cache</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;invalid_client&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Client authentication failed&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -2220,13 +2250,14 @@ defined in <span class="target" id="index-66"></span><a class="rfc reference ext
 <li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
 </ul>
 </div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="n">Bad</span> <span class="n">Request</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
-
-<span class="p">{</span>
-  <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;invalid_proof&quot;</span>
-  <span class="s2">&quot;error_description&quot;</span><span class="p">:</span><span class="s2">&quot;The proof field is not present or the provided key proof is invalid or not bound to a nonce provided by the Credential Issuer.&quot;</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;invalid_proof&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The proof field is not present or the provided key proof is invalid or not bound to a nonce provided by the Credential Issuer.&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
