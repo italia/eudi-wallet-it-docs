@@ -273,7 +273,7 @@ using the method `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.
 The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters
 encoded in ``application/x-www-form-urlencoded`` format:
 
-* ``OAuth-Client-Attestation`` A JWT that conforms to the structure and syntax as defined in the `OAuth 2.0 Attestation-Based Client Authentication` speficification;
+* ``OAuth-Client-Attestation`` A JWT that conforms to the structure and syntax defined in the `OAuth 2.0 Attestation-Based Client Authentication` speficification;
 * ``OAuth-Client-Attestation-PoP`` A JWT that conforms to the structure and syntax defined in the `OAuth 2.0 Attestation-Based Client Authentication` speficification;
 * ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
 * ``assertion`` containing the signed JWT of the Wallet Attestation Request.
