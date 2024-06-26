@@ -1266,6 +1266,8 @@ within these guidelines as each Wallet Provider may or may not have a user ident
 <li><p>It SHOULD associate the Wallet Instance with a specific User uniquely identified within the Wallet Provider's systems. This will be useful for the lifecycle of the Wallet Instance and for a future revocation.</p></li>
 </ol>
 </div></blockquote>
+<p>The response, in case of success, from the Wallet Provider must necessarily be a 204 No content.
+Below is a non-normative example of the response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
 </pre></div>
 </div>
@@ -1461,7 +1463,10 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Step 18</strong>: The Wallet Instance receives the Wallet Attestation signed by the Wallet Provider and performs security and integrity verifications.</p>
+<p><strong>Step 18</strong>: The Wallet Instance receives the Wallet Attestation signed by the Wallet Provider and performs security and integrity verifications.
+The response is returned by the Wallet Provider at the end of the issuance flow.
+If the authentication is successful the http response code MUST be 200 OK.</p>
+<p>Below is a non-normative example of the response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/jwt</span>
 
