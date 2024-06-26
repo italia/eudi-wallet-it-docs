@@ -561,7 +561,7 @@ The JOSE header of the Wallet Attestation proof of possession MUST contain:
       -  It MUST be set to ``jwt-client-attestation-pop``
       -  Currently under discussion in [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
-The body of the Wallet Attestation proof of possession JWT MUST contains:
+The body of the Wallet Attestation proof of possession JWT MUST contain:
 
 .. list-table::
     :widths: 20 60 20
