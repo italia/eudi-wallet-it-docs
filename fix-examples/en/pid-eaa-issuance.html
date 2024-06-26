@@ -1626,7 +1626,7 @@ without encoding and signature. The JWS header:</p>
 <td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
-<td><p>Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits.</p></td>
+<td><p>Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits. Special characters MUST be considered non-alphanumeric characters as defined in <a class="reference external" href="https://csrc.nist.gov/glossary/term/special_character">[NIST]</a>.</p></td>
 <td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">OpenID.Core#AuthRequest</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code_challenge</strong></p></td>
