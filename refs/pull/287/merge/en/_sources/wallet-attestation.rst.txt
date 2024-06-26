@@ -118,10 +118,27 @@ Wallet Instance Initialization and Registration
 
 **Step 9**: The Wallet Instance sends the ``challenge`` with Key Attestation and Cryptographic Hardware Key Tag to the Wallet Provider Backend in order to register the Wallet Instance identified with the Cryptographic Hardware Key public key.
 
-.. note::
+The request to the Wallet Provider endpoint in order to register the Wallet Instance MUST use the HTTP POST method with the parameters in the message body encoded in ``application/json`` format and the following parameters MUST be provided:
 
-  The Key Attestation (``key_attestation``) MUST be encoded in base64.
+.. _table_http_request_claim:
+.. list-table:: Wallet Instance registration http request parameters
+    :widths: 20 60 20
+    :header-rows: 1
 
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **challenge**
+      - MUST be set to the challenge obtained from the Wallet Provider throught the ``nonce`` endpoint.
+      - `OAuth 2.0 Nonce Endpoint`_
+    * - **key_attestation**
+      - It MUST be a ``base64url`` encoded Key Attestation obtained from the **Device Integrity Service**.
+      -
+    * - **hardware_key_tag**
+      - It MUST be set to the unique identifier of the **Cryptographic Hardware Keys** in ``base64url`` encoded
+      -
+
+Below is a non-normative example of the request.
 
 .. code-block:: http
 
