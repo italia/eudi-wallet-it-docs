@@ -169,6 +169,9 @@ Below is a non-normative example of the request.
   4. If these checks are passed, it MUST register the Wallet Instance, keeping the Cryptographic Hardware Key Tag and all useful information related to the device.
   5. It SHOULD associate the Wallet Instance with a specific User uniquely identified within the Wallet Provider's systems. This will be useful for the lifecycle of the Wallet Instance and for a future revocation.
 
+The response, in case of success, from the Wallet Provider must necessarily be a 204 No content.
+Below is a non-normative example of the response.
+
 .. code-block:: http
 
     HTTP/1.1 204 No content
@@ -368,6 +371,11 @@ Below an non-normative example of the Wallet Attestation without encoding and si
   }
 
 **Step 18**: The Wallet Instance receives the Wallet Attestation signed by the Wallet Provider and performs security and integrity verifications.
+The response is returned by the Wallet Provider at the end of the issuance flow.
+If the authentication is successful the http response code MUST be 200 OK.
+
+
+Below is a non-normative example of the response.
 
 .. code-block:: http
 
