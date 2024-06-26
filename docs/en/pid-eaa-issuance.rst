@@ -127,7 +127,7 @@ Below a non-normative example of the PAR.
 .. code-block:: 
 
     POST /as/par HTTP/1.1
-    Host: https://eaa-provider.example.org
+    Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
 
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
