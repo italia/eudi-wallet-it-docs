@@ -120,7 +120,7 @@ The PID/(Q)EAA Provider performs the following checks upon the receipt of the PA
     8. It MUST check that the Request Object is not expired, checking the ``exp`` claim.
     9. It MUST check that the Request Object was issued in a previous time than the value exposed in the ``iat`` claim. It SHOULD reject the request if the ``iat`` claim is far from the current time (:rfc:`9126`) of more than `5` minutes.
     10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the PID/(Q)EAA Provider to mitigate replay attacks (:rfc:`7519`).
-    11. It MUST validate the ``client_assertion`` parameter based on Sections 4.1 and 4.2 of [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
+    11. It MUST validate the ``OAuth-Client-Attestation`` parameter based on Section 4 of [`oauth-attestation-draft <https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/>`_].
 
 Below a non-normative example of the PAR.
 
@@ -129,14 +129,14 @@ Below a non-normative example of the PAR.
     POST /as/par HTTP/1.1
     Host: pid-provider.example.org
     Content-Type: application/x-www-form-urlencoded
+    OAuth-Client-Attestation: ewogICJhbGciOiAiRVMyNTYiLAogICJraWQiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIKICAidHlwIjogImp3dC1jbGllbnQtYXR0ZXN0YXRpb24tcG9wIiwKfQ.ewogICJpc3MiOiAiYmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIiwKICAic3ViIjogImh0dHBzOi8vcGlkLXByb3ZpZGVyLmV4YW1wbGUub3JnL3Bhci1lbmRwb2ludCIsCiAgImlhdCI6MTY4NjY0NTExNSwKICAiZXhwIjoxNjg2NjQ1MTE1LAogICJjbmYiOiB7CiAgICAiandrIjogewogICAgICAia3R5IjogIkVDIiwKICAgICAgInVzZSI6ICJzaWciLAogICAgICAiY3J2IjogIlAtMjU2IiwKICAgICAgIngiOiAiMTh3SExlSWdXOXdWTjZWRDFUeGdwcXkyTHN6WWtNZjZKOG5qVkFpYnZoTSIsCiAgICAgICJ5IjogIi1WNGRTNFVhTE1nUF80Zlk0ajhpcjdjbDFUWGxGZEFnY3g1NW83VGtjU0EiCiAgICB9CiAgfQp9
+    OAuth-Client-Attestation-PoP: ewogICJhbGciOiAiRVMyNTYiLAogICJraWQiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsCiAgInR5cCI6ICJqd3QtY2xpZW50LWF0dGVzdGF0aW9uLXBvcCIsCn0.ewogICJpc3MiOiAidmJlWEprc000NXhwaHRBTm5DaUc2bUN5dVU0amZHTnpvcEd1S3ZvZ2c5YyIsCiAgImF1ZCI6ICJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZy9wYXItZW5kcG9pbnQiLAogICJqdGkiOiAiYWQyNTg2OGMtODM3Ny00NzliLTgwOTQtNDZmYjFlNzk3NjI1IiwKICAiaWF0IjogMTY4NjY0NTExNSwKICAiZXhwIjogMTY4NjY1MjMxNQp9
 
     response_type=code
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
     &code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
     &code_challenge_method=S256
     &request=$SIGNED-JWT
-    &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation
-    &client_assertion=$WIA~WIA-PoP
 
 Below an non-normative example of the Wallet Attestation Proof of Possession without encoding and signature applied:
 
