@@ -118,7 +118,7 @@ Wallet Instance Initialization and Registration
 
 **Step 9**: The Wallet Instance sends the ``challenge`` with Key Attestation and Cryptographic Hardware Key Tag to the Wallet Provider Backend in order to register the Wallet Instance identified with the Cryptographic Hardware Key public key.
 
-The request to the Wallet Provider endpoint in order to register the Wallet Instance MUST use the HTTP POST method with the parameters in the message body encoded in ``application/json`` format and the following parameters MUST be provided:
+In order to register the Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method. The parameters MUST be encoded using the `application/json` format and included in the message body. The following parameters MUST be provided:
 
 .. _table_http_request_claim:
 .. list-table:: Wallet Instance registration http request parameters
