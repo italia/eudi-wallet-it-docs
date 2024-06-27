@@ -135,7 +135,7 @@ In order to register the Wallet Instance, the request to the Wallet Provider MUS
       - It MUST be a ``base64url`` encoded Key Attestation obtained from the **Device Integrity Service**.
       -
     * - **hardware_key_tag**
-      - It MUST be set to the unique identifier of the **Cryptographic Hardware Keys** in ``base64url`` encoded
+      - It MUST be set with the unique identifier of the **Cryptographic Hardware Keys** and encoded in ``base64url``.
       -
 
 Below is a non-normative example of the request.
