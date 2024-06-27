@@ -792,8 +792,9 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="#id43">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="#id44">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
+<li><a class="reference internal" href="#id43">Tab. 2 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="#id44">Tab. 3 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -1076,8 +1077,9 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="#id43">Tab. 1 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="#id44">Tab. 2 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
+<li><a class="reference internal" href="#id43">Tab. 2 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="#id44">Tab. 3 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1520,7 +1522,7 @@ without encoding and signature. The JWS header:</p>
 <h3>Pushed Authorization Request (PAR) Request<a class="headerlink" href="#pushed-authorization-request-par-request" title="Permalink to this heading">¶</a></h3>
 <p>The requests to the PID/(Q)EAA authorization endpoint MUST use the HTTP POST method with the parameters in the message body encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format. The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html">oauth-attestation-draft</a>] and the following parameters MUST be provided:</p>
 <span id="table-http-request-claim"></span><table class="docutils align-default" id="id43">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id43" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id43" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 60%" />
@@ -1615,15 +1617,15 @@ without encoding and signature. The JWS header:</p>
 </tr>
 <tr class="row-odd"><td><p><strong>response_mode</strong></p></td>
 <td><p>It MUST be a string indicating the &quot;<em>response_mode</em>&quot;, as specified in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAuth 2.0 Multiple Response Type Encoding Practices</a>. It MUST be one of the supported values (<em>response_modes_supported</em>) provided in the metadata of the PID/(Q)EAA Provider. The supported values MAY be <em>query</em> and or <em>form_post.jwt</em> (see <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt">[oauth-v2-jarm-03]</a>).</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>See <a class="reference internal" href="wallet-attestation.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_mode</strong></p></td>
 <td><p>It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of <em>HTTP 302 Redirect Response</em> the value MUST be <em>query</em>. In this mode, Authorization Response parameters are encoded in the query string added to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> when redirecting back to the Wallet Instance. In case of <em>HTTP POST Response</em> the value MUST be <em>form_post.jwt</em> according to <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt">[oauth-v2-jarm-03]</a>. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the user-agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the <em>application/x-www-form-urlencoded</em> format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.</p></td>
 <td><p>See <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes">[OAuth 2.0 Multiple Response Type Encoding Practices]</a> and <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html">[oauth-v2-jarm-03]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_id</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>It MUST be set as in the <a class="reference internal" href="wallet-attestation.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>See <a class="reference internal" href="wallet-attestation.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
 <td><p>Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits. Special characters MUST be considered non-alphanumeric characters as defined in <a class="reference external" href="https://csrc.nist.gov/glossary/term/special_character">[NIST]</a>.</p></td>
@@ -1791,8 +1793,8 @@ The authorization server MUST first verify the identity of the User that own the
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>It MUST be set as in the <a class="reference internal" href="wallet-attestation.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>See <a class="reference internal" href="wallet-attestation.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
 <td><p>It MUST be set to the same value as obtained by PAR Response. See <a class="reference internal" href="revocation-lists.html#table-http-response-claim"><span class="std std-ref">Table of the HTTP PAR Response parameters</span></a>.</p></td>
@@ -2208,7 +2210,7 @@ defined in <span class="target" id="index-66"></span><a class="rfc reference ext
 <h3>Credential Response<a class="headerlink" href="#credential-response" title="Permalink to this heading">¶</a></h3>
 <p>Credential Response to the Wallet Instance MUST be sent using <cite>application/json</cite> media type. If the Credential Request is successfully validated, the PID/(Q)EAA Provider MUST return HTTP response with a <em>200 (OK)</em> status code and MUST contain the following mandatory claims:</p>
 <span id="table-credential-response-claim"></span><table class="docutils align-default" id="id44">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Credential http response parameters</span><a class="headerlink" href="#id44" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Credential http response parameters</span><a class="headerlink" href="#id44" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 60%" />

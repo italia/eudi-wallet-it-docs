@@ -118,14 +118,31 @@ Wallet Instance Initialization and Registration
 
 **Step 9**: The Wallet Instance sends the ``challenge`` with Key Attestation and Cryptographic Hardware Key Tag to the Wallet Provider Backend in order to register the Wallet Instance identified with the Cryptographic Hardware Key public key.
 
-.. note::
+In order to register the Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method. The parameters MUST be encoded using the `application/json` format and included in the message body. The following parameters MUST be provided:
 
-  The Key Attestation (``key_attestation``) MUST be encoded in base64.
+.. _table_http_request_claim:
+.. list-table:: Wallet Instance registration http request parameters
+    :widths: 20 60 20
+    :header-rows: 1
 
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **challenge**
+      - MUST be set to the challenge obtained from the Wallet Provider throught the ``nonce`` endpoint.
+      - `OAuth 2.0 Nonce Endpoint`_
+    * - **key_attestation**
+      - It MUST be a ``base64url`` encoded Key Attestation obtained from the **Device Integrity Service**.
+      -
+    * - **hardware_key_tag**
+      - It MUST be set with the unique identifier of the **Cryptographic Hardware Keys** and encoded in ``base64url``.
+      -
+
+Below is a non-normative example of the request.
 
 .. code-block:: http
 
-    PUT /wallet-instance HTTP/1.1
+    POST /wallet-instance HTTP/1.1
     Host: walletprovider.example.com
     Content-Type: application/json
 
@@ -152,10 +169,12 @@ Wallet Instance Initialization and Registration
   4. If these checks are passed, it MUST register the Wallet Instance, keeping the Cryptographic Hardware Key Tag and all useful information related to the device.
   5. It SHOULD associate the Wallet Instance with a specific User uniquely identified within the Wallet Provider's systems. This will be useful for the lifecycle of the Wallet Instance and for a future revocation.
 
+Upon successful registration of the Wallet Instance, the Wallet Provider MUST respond with a status code set to 204 (No Content).
+Below is a non-normative example of the response.
+
 .. code-block:: http
 
-    HTTP/1.1 201 Created
-    Content-Type: application/json
+    HTTP/1.1 204 No content
 
 If any errors occur during the Wallet Instance registration, the Wallet Provider MUST return an error response. The response MUST use the content type set to *application/json* and MUST include the following parameters:
 
@@ -351,14 +370,17 @@ Below an non-normative example of the Wallet Attestation without encoding and si
     "exp": 1687288395
   }
 
-**Step 18**: The Wallet Instance receives the Wallet Attestation signed by the Wallet Provider and performs security and integrity verifications.
+**Step 18**: The response is returned by the Wallet Provider. If successful, the HTTP response code MUST be set to 200 OK and contain the Wallet Attestation signed by the Wallet Provider. The Wallet Instance therefore performs security and integrity verification about the Wallet Attestation. 
+
+
+Below is a non-normative example of the response.
 
 .. code-block:: http
 
-    HTTP/1.1 201 OK
+    HTTP/1.1 200 OK
     Content-Type: application/jwt
 
-    eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx... redacted
+    eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ... 
 
 
 .. _table_wallet_attestation_request_claim:
