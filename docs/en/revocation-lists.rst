@@ -45,7 +45,7 @@ Functional Requirements
 - SHOULD be presented in conjunction with the Digital Credential; 
 - MUST include information that links it to the referenced Digital Credential;
 - MUST be timestamped with its issuance datetime, using a timestamp which is at or after the time of Digital Credential issuance which it refers;
-- MUST contain the expiration datetime after which both the Status Assertion and the Digital Credential referred to SHOULD NOT be considered as having a valid status,since it appears without verification against any revocation.
+- MUST contain the expiration datetime after which both the Status Assertion and the Digital Credential referred to SHOULD NOT be considered as having a valid status, since it appears without verification against any revocation.
 - MUST have the expiration datetime greater than the Status Assertion issuance datetime and it MUST end before the expiration datetime of the Digital Credential;
 - MUST have a validity period not greater than 24 hours;
 - MUST provide the proof about the non-revocation of the Digital Credential which is related to and MUST be validated using the cryptographic signature of the Credential Issuer;
@@ -265,7 +265,7 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
     "typ": "revocation-error+jwt",
     "kid": "Issuer-JWK-KID"
   }
-.
+ .
   {
     "iss": "https://issuer.example.org",
     "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
@@ -325,7 +325,7 @@ Below a non-normative example of a Revocation Assertion Error object in JWT form
     "typ": "revocation-assertion-error+jwt",
     "kid": "Issuer-JWK-KID"
   }
-.
+  .
   {
     "iss": "https://issuer.example.org",
     "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
