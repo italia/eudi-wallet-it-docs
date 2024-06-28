@@ -45,7 +45,8 @@ Functional Requirements
 - SHOULD be presented in conjunction with the Digital Credential; 
 - MUST include information that links it to the referenced Digital Credential;
 - MUST be timestamped with its issuance datetime, using a timestamp which is at or after the time of Digital Credential issuance which it refers;
-- MUST contain the expiration datetime after which both the Status Assertion and the Digital Credential it refers MUST NOT be considered valid anymore. The expiration datetime MUST be superior to the Status Assertion issuance datetime and it MUST end before the expiration datetime of the Digital Credential;
+- MUST contain the expiration datetime after which both the Status Assertion and the Digital Credential referred to SHOULD NOT be considered as having a valid status,since it appears without verification against any revocation.
+- MUST have the expiration datetime greater than the Status Assertion issuance datetime and it MUST end before the expiration datetime of the Digital Credential;
 - MUST have a validity period not greater than 24 hours;
 - MUST provide the proof about the non-revocation of the Digital Credential which is related to and MUST be validated using the cryptographic signature of the Credential Issuer;
 - MUST NOT reveal any information about the Relying Party, the User's device or the User's data contained in the Digital Credential the assertion is related to;
@@ -132,9 +133,9 @@ A Wallet Instance MUST request the revocation of a Digital Credential as defined
     
     Wallet Instance Initiated Revocation Flow
 
-**Step 1 (Credential Revocation Request)**: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request can be sent to a single Credential Issuer, regarding multiple Digital Credentials, and MUST contain a JSON object with the member `revocation_assertion_requests`.
+**Step 1 (Credential Revocation Request)**: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request can be sent to a single Credential Issuer, regarding multiple Digital Credentials, and MUST contain a JSON object with the member `revocation_requests`.
 
-The `revocation_assertion_requests` MUST be set with an array of strings, where each string within the array represents a Credential Revocation Request object.
+The `revocation_requests` MUST be set with an array of strings, where each string within the array represents a Credential Revocation Request object.
 
 It MUST be signed with the private key related to the public key contained within the Credential (such as the Credential Issuer Signed JWT in the case of SD-JWT, or the MSO in the case of Mdoc CBOR). Then, the Wallet Instance sends the request to the Credential Issuer as in the following non-normative example representing a Revocation Assertion Request array.
 
@@ -145,7 +146,7 @@ It MUST be signed with the private key related to the public key contained withi
     Host: pid-provider.example.org
     Content-Type: application/json
 
-    revocation_assertion_requests : ["${base64url(json({typ: (some pop for revocation-assertion)+jwt, ...}))}.payload.signature", ... ]
+    revocation_requests : ["${base64url(json({typ: (some pop for revocation-assertion)+jwt, ...}))}.payload.signature", ... ]
 
 
 Below, is given a non-normative example of a single Revocation Assertion Request object with decoded JWT headers and payload and without signature for better readability:
@@ -165,13 +166,13 @@ Below, is given a non-normative example of a single Revocation Assertion Request
       "iat": 1698744039,
       "exp": 1698744139, 
       "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
-      "credential_hash": $Issuer-Signed-JWT-Hash
-      "credential_hash_alg": "sha-256",
+      "credential_hash": $Issuer-Signed-JWT-Hash,
+      "credential_hash_alg": "sha-256"
     }
 
 **Step 2 (PoP verification)**: The Credential Issuer verifies the signature of the PoP using the the confirmation method that was attested in the issued Digital Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Digital Credential, and therefore is entitled to request its revocation.
 
-**Step 3 (Credential Revocation)**: The Credential Issuer revokes the Credential provided in the revocation_assertion_requests object. After the revocation, the Credential Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. 
+**Step 3 (Credential Revocation)**: The Credential Issuer revokes the Credential provided in the revocation_requests object. After the revocation, the Credential Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. 
 
 **Step 4 (Credential Revocation Response)**: The Credential Issuer sends a response back to the Wallet Instance with the result of the revocation request.
 
@@ -198,7 +199,7 @@ The requests to the *Credential Issuer Revocation endpoint* MUST be HTTP with me
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **revocation_assertion_requests**
+    * - **revocation_requests**
       - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT/CWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
       - `[OAuth Status Assertion draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-assertions/01/>`_
 
@@ -254,14 +255,14 @@ The ``revocation_assertion_responses`` object MUST contain the following mandato
       - the Revocation Assertions and or the Revocation Assertion Errors related to the request made by the Wallet Instance. 
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
-The Revocation Assertion object MUST contain the parameter ``msg`` with the value set to ``OK``.
+The Revocation Assertion object MUST contain the parameter ``credential_status_validity`` with the value set to ``false`` and the parameter ``revoked`` set to ``true``.
 Below a non-normative example of a Revocation Assertion object in JWT format, with the headers and payload represented in JSON and without applying the signature.
 
 .. code::
 
   {
     "alg": "ES256",
-    "typ": "revocation-assertion-error+jwt",
+    "typ": "revocation-error+jwt",
     "kid": "Issuer-JWK-KID"
   }
 .
@@ -270,7 +271,20 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
     "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
     "credential_hash": $CREDENTIAL-HASH,
     "credential_hash_alg": "sha-256",
-    "msg": "Revoked"
+    "credential_status_validity": false,
+    "credential_status": {
+      "revoked": true,
+      "suspended": false
+    },
+    "cnf": {
+      "jwk": {
+        "alg": "ES256",
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "_2ySUmWFjwmraNlo15r6dIBXerVdy_NpJuwAKJMFdoc",
+        "y": "MV3C88MhhEMba6oyMBWuGeB3dKHP4YADJmGyJwwILsk"
+      }
+    }
   }
 
 The Revocation Assertion Error object MUST contain the following parameters:
@@ -402,6 +416,7 @@ A non-normative example of Credential Proof of Possession is provided :ref:`in t
 		"exp": 1504785536,
 		"credential_hash": $CREDENTIAL-HASH,
 		"credential_hash_alg": "sha-256",
+		"credential_status_validity": true,
 		"cnf": {
 			"jwk": {...}
 		}
@@ -641,9 +656,15 @@ When the JWT or CWT format are used, the Revocation Assertion MUST contain the f
     * - **jti**
       - Unique identifier for the JWT.
       - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7800>`_.
-    * - **msg**
-      - Message returned from the Credential Issuer after revocation. It MUST be set with the value "OK".
-      - This specification.
+    * - **credential_status_validity**
+      - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It MUST be set with the value `false`.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+	* - **revoked**
+      - Boolean value indicating the status of Credential revocation. It MUST be set with the value `true` in revocation scenario.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+	* - **suspended**
+      -  Boolean value indicating the status of Credential suspension. It MUST be set with the value `false` in revocation scenario.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     
 
 Status Assertion
@@ -692,6 +713,15 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
     * - **credential_hash_alg**
       - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``S256``.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+	  * - **credential_status_validity**
+      - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It is REQUIRED and it MUST be set with the value "false" or "true".
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+	* - **revoked**
+      - Boolean value indicating the status of Credential revocation when the `credential_status_validity` is set to `false`. It MAY be set with the value `false` or `true`.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+	* - **suspended**
+      -  Boolean value indicating the status of Credential suspension. It MAY be set with the value `false` or `true`.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **cnf**
       - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT and `Cose_Key` for CWT, MUST match with the one provided within the related Digital 
  Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards. 
@@ -739,4 +769,3 @@ When the JWT or CWT format are used, the Revocation or Status Assertion Error MU
 	   * - **error_description**
       - Text that clarifies the nature of the error, such as attribute changes, revocation reasons, in relation to the `error` value.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
-
