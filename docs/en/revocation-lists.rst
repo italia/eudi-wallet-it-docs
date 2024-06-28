@@ -102,7 +102,11 @@ Credential Revocation Flows can start under different scenarios, such as:
 
 The Credential in some cases MUST be considered valid (thus is still accurate, useful and valid) for the period before the revocation: a driving license, revoked due expiration or other reasons, is still valid for the period before the revocation.
  
-Revocation MUST therefore include a flag indicating whether it is retroactive or not. It SHOULD not invalidate further use of the credential, as it MAY be used to attest activity outside the revocation interval. If the "retroactive flag" is activated, the credential MUST be invalid  also for the period prior to the revocation date. If the "retroactive flag" is not activated, the credential MUST be considered valid up to revocation date and could be used to demonstrate that, before revocation, the holder was entitled to perform related activities.
+Revocation MUST therefore include a parameter indicating whether it is retroactive or not. It SHOULD not invalidate further use of the credential, as it MAY be used to attest activity outside the revocation interval. This parameter name is **credential_status_validity** and contains two additional parameters to handle the Credential retroactivity: **suspended** and **revoked**.
+
+If ``revoked`` parameter is set to ``true``, the credential MUST be invalid  also for the period prior to the revocation date. 
+
+If ``suspended`` parameter is set to ``true``, the credential MUST be considered valid up to revocation date and could be used to demonstrate that, before revocation, the holder was entitled to perform related activities.
 
 The revocation scenarios involve two main flows:
 
