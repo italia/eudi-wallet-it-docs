@@ -160,8 +160,11 @@ Below, is given a non-normative example of a Credential PoP with decoded JWT hea
       "iat": 1698744039,
       "exp": 1698744139, 
       "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
-      "credential_hash": $Issuer-Signed-JWT-Hash
+      "credential_hash": $Issuer-Signed-JWT-Hash,
       "credential_hash_alg": "sha-256",
+      "credential_type": "PersonalIdentificationData",
+      "user_identifier": "001",
+      "document_id": "PID-98765"
     }
 
 **Step 2 (PoP verification)**: The Issuer verifies the signature of the PoP JWTs using the public key that was attested in the issued Digital Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Digital Credential, and therefore is entitled to request its revocation.
@@ -503,8 +506,15 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
     * - **credential_hash_alg**
       - It MUST contain the Algorithm used for hashing the Digital Credential. The value SHOULD be set to `S256`.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
-
-
+    * - **credential_type**
+      - Type of credential (e.g., Personal Identification Data, European Disability Card, European Health Insurance Card, Driver's License, etc.)
+      -
+    * - **user_identifier**
+      - 	Identifier used to avoid direct linking between the credential hash and the owner.
+      -
+    * - **document_id**
+      - 	Unique identifier of the document to which the attestation refers.
+      -
 
 Status Attestation
 ------------------
