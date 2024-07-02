@@ -694,7 +694,7 @@ Below is a non-normative example of a Superior Trust List in XML format:
         </SchemeInformation>
         </TrustServiceStatusList>
 
-The **National Trust List** ia managed by a National Accreditation Body (NAB). This entity will receive requests from accredited and authoritative entities for the respective themes they manage. The Trust List will include direct references to each National List and to the Superior Trust List for each centrally managed cross-border thematic Trust List, unique to all member states.
+The **National Trust List** ia managed by a Supervisory Body. This entity will receive requests from accredited and authoritative entities for the respective themes they manage. The Trust List will include direct references to each National List and to the Superior Trust List for each centrally managed cross-border thematic Trust List, unique to all member states.
 
 The Trusted Lists exist for the following entities:
 
