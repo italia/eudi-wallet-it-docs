@@ -36,7 +36,7 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Wallet Provider
      - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
    * - Wallet Provider Backend
-     - Refers to the underlying technical infrastructure and server-side components managed by a Wallet Provider.
+     - Is the technical infrastructure and server-side components, including a set of endpoints, managed by a Wallet Provider.
    * - Wallet Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
    * - Wallet Secure Cryptographic Device
