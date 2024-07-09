@@ -245,7 +245,7 @@ Below a non-normative example of the ``client_data``.
 
 **Steps 11-12**: The Wallet Instance:
   * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``wallet_hardware_key_tag``, and ``public_jwk``, and is signed using the private key from the initially generated ephemeral key pair.
-  * Submits the Wallet Attestation Request to the Wallet Provider backend through the token endpoint.
+  * Submits the Wallet Attestation Request to the token endpoint of the Wallet Provider Backend.
 
 Below an non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
 
