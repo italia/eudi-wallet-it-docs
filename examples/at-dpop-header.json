@@ -1,0 +1,5 @@
+{
+    "typ": "at+jwt",
+    "alg": "ES256",
+    "kid": "c950c0e6fdeb5de50a50096b247af03c"
+}
