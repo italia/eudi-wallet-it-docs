@@ -304,7 +304,7 @@ encoded in ``application/x-www-form-urlencoded`` format:
     grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
     &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...
 
-**Steps 13-17**: The Wallet Provider backend assesses the Wallet Attestation Request and issues a Wallet Attestation, if the requirements described below are satisfied:
+**Steps 13-17**: The Wallet Provider Backend assesses the Wallet Attestation Request and issues a Wallet Attestation, if the requirements described below are satisfied:
 
     1. It MUST check the Wallet Attestation Request contains all the defined parameters according to :ref:`Table of the Wallet Attestation Request parameters <table_wallet_attestation_request_claim>`.
     2. It MUST verify that the signature of the received Wallet Attestation Request is valid and associated with public ``jwk``.
