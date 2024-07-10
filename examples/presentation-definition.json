@@ -1,0 +1,52 @@
+        {
+            "id": "d76c51b7-ea90-49bb-8368-6b3d194fc131",
+            "input_descriptors": [
+                {
+                    "id": "PersonIdentificationData",
+                    "name": "Person Identification Data",
+                    "purpose": "User Authentication",
+                    "format": {
+                        "vc+sd-jwt": {
+                            "alg": [
+                                "ES256",
+                                "ES384",
+                                "ES512"
+                            ]
+                        }
+                    },
+                    "constraints": {
+                        "limit_disclosure": "required",
+                        "fields": [
+                            {
+                                "filter": {
+                                    "const": "PersonIdentificationData",
+                                    "type": "string"
+                                },
+                                "path": [
+                                    "$.vct"
+                                ]
+                            },
+                            {
+                                "filter": {
+                                    "type": "object"
+                                },
+                                "path": [
+                                    "$.cnf.jwk"
+                                ]
+                            },
+                            {
+                                "path": [
+                                    "$.unique_id"
+                                ]
+                            },
+                            {
+                                "path": [
+                                    "$.tax_id_code"
+                                ]
+                            }
+                        ]
+                    }
+                  
+                }
+            ]
+        }

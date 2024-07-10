@@ -18,9 +18,9 @@
 
 ## Intro
 
-This repository hosts the sphinx project tree of EUDI Wallet Technical Specifications.
+This repository hosts the sphinx project tree of National Wallet Technical Specifications.
 
-> This repository may contain contents to be considered experimental until the publication of the first release.
+> This repository may contain contents to be considered experimental until the publication of the first stable release, v1.0.
 
 ## Preview
 
@@ -38,6 +38,10 @@ Preview of other branches can be navigated by adding the branch name in the webp
 
 Released versions can be navigated by adding the tag in the webpath leaded by a _v_, as follows:
 
+
+
+ - [https://italia.github.io/eudi-wallet-it-docs/v0.7.1/en/](https://italia.github.io/eudi-wallet-it-docs/v0.7.1/en/)
+ - [https://italia.github.io/eudi-wallet-it-docs/v0.7.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.7.0/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.6.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.6.0/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.5.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.5.0/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.4.1/en/](https://italia.github.io/eudi-wallet-it-docs/v0.4.1/en/)

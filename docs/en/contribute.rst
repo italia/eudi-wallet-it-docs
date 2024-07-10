@@ -25,18 +25,22 @@ implementation profile and to the initial set of implementations.
 
 - Alen Horvat
 - Amir Sharif
+- Andrea Moro
 - Andrea Prosseda
+- Elisa Nicolussi Paolaz
 - Emanuele De Cupis
 - Emiliano Vernini
 - Francesco Grauso
 - Francesco Marino
 - Francesco Ventola
+- Gabriella Cefalù
 - Giada Sciarretta
 - Giuseppe De Marco
 - Klaas Wierenga
 - Kristina Yasuda
 - Leif Johansson
 - Lorenzo Cerini
+- Mart Aarma
 - Marta Sciunnach
 - Michele Silletti
 - Nicola Saitto
@@ -51,6 +55,7 @@ implementation profile and to the initial set of implementations.
 - Salvatore Manfredi
 - Stefano Alifuoco
 - Takahiko Kawasaki
+- Thomas Chiozzi
 - Torsten Lodderstedt
 - Vladimir Duzhinov
 

@@ -87,7 +87,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [NSD].URL string representing the PID/(Q)EAA Issuer unique identifier.
       - `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
     * - **sub**
-      - [NSD].Thumbprint of the JWK in the ``cnf`` parameter.
+      - [NSD]. The identifier of the subject of the Digital Credential, the User, MUST be opaque and MUST NOT correspond to any anagraphic data or be derived from the User's anagraphic data via pseudonymization. Additionally, it is required that two different Credentials issued MUST NOT use the same ``sub`` value.
       - `[RFC7519, Section 4.1.2] <https://www.iana.org/go/rfc7519>`_.
     * - **iat**
       - [SD].UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
@@ -135,6 +135,8 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
     * - **tax_id_code**
       - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
       - 
+
+The PID attribute schema, which encompasses all potential User data, is defined in `ARF v1.4 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#21-identification-and-authentication-to-access-online-services>`_, and furthermore detailed in the `PID Rulebook <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md#23-pid-attributes>`_.
 
 
 PID Non-Normative Examples

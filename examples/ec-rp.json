@@ -1,0 +1,159 @@
+{
+    "iat": 1718207217,
+    "exp": 1749743216,
+    "iss": "https://relying-party.example.org",
+    "sub": "https://relying-party.example.org",
+    "authority_hints": [
+        "https://trust-anchor.example.org"
+    ],
+    "jwks": {
+        "keys": [
+            {
+                "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
+                "kty": "EC",
+                "crv": "P-256",
+                "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+            }
+        ]
+    },
+    "metadata": {
+        "federation_entity": {
+            "homepage_uri": "https://relying-party.example.org",
+            "organization_name": "Organization Name",
+            "contacts": [
+                "informazioni@example.it",
+                "protocollo@pec.example.it"
+            ],
+            "tos_uri": "https://relying-party.example.org/public/info_policy.html",
+            "policy_uri": "https://relying-party.example.org/public/privacy_policy.html",
+            "logo_uri": "https://relying-party.example.org/public/logo.svg"
+        },
+        "wallet_relying_party": {
+            "application_type": "web",
+            "client_id": "https://relying-party.example.org",
+            "client_name": "Organization Name",
+            "contacts": [
+                "informazioni@example.it",
+                "protocollo@pec.example.it"
+            ],
+            "request_uris": [
+                "https://relying-party.example.org/request_uri"
+            ],
+            "response_uris_supported": [
+                "https://relying-party.example.org/response_uri"
+            ],
+            "authorization_signed_response_alg": "ES256",
+            "vp_formats": {
+                "vc+sd-jwt": {
+                    "sd-jwt_alg_values": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ]
+                }
+            },
+            "presentation_definitions_supported": [
+                {
+                    "id": "d76c51b7-ea90-49bb-8368-6b3d194fc131",
+                    "input_descriptors": [
+                        {
+                            "id": "PersonIdentificationData",
+                            "name": "Person Identification Data",
+                            "purpose": "User Authentication",
+                            "format": {
+                                "vc+sd-jwt": {
+                                    "alg": [
+                                        "ES256",
+                                        "ES384",
+                                        "ES512"
+                                    ]
+                                }
+                            },
+                            "constraints": {
+                                "limit_disclosure": "required",
+                                "fields": [
+                                    {
+                                        "filter": {
+                                            "const": "PersonIdentificationData",
+                                            "type": "string"
+                                        },
+                                        "path": [
+                                            "$.vct"
+                                        ]
+                                    },
+                                    {
+                                        "filter": {
+                                            "type": "object"
+                                        },
+                                        "path": [
+                                            "$.cnf.jwk"
+                                        ]
+                                    },
+                                    {
+                                        "path": [
+                                            "$.unique_id"
+                                        ]
+                                    },
+                                    {
+                                        "path": [
+                                            "$.tax_id_code"
+                                        ]
+                                    }
+                                ]
+                            }
+                        
+                        },      
+                        {
+                            "id": "WalletAttestation",
+                            "name": "Wallet Attestation",
+                            "purpose": "Wallet Authentication",
+                            "format": {
+                                "jwt": {
+                                    "alg": [
+                                        "ES256",
+                                        "ES384",
+                                        "ES512"
+                                    ]
+                                }
+                            },
+                            "constraints": {
+                                "limit_disclosure": "required",
+                                "fields": [
+                                    {
+                                        "filter": {
+                                            "type": "string"
+                                        },
+                                        "path": [
+                                            "$.iss"
+                                        ]
+                                    },
+                                    {
+                                        "filter": {
+                                            "type": "object"
+                                        },
+                                        "path": [
+                                            "$.cnf.jwk"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    
+                    ]
+                } 
+            ],
+            "jwks": {
+                "keys": [
+                    {
+                        "kid": "f10aca0992694b3581f6f699bfc8a2c6cc687725",
+                        "kty": "EC",
+                        "crv": "P-256",
+                        "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                        "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+                    }
+                ]
+            }
+        }
+    }
+}
