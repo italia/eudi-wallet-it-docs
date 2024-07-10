@@ -31,6 +31,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - An signed Credential whose integrity can be cryptographically verified using the public keys of its Issuer. It is also known as Credential.
    * - Federation Authority
      - A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.
+   * - Wallet Solution
+     - System designed to store and manage digital assets and identity information.
    * - Wallet Instance
      - An instance of the Wallet Solution, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.
    * - Wallet Provider
