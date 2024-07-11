@@ -636,7 +636,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT or a CWT t
       -
 
 Revocation Assertion
-------------------
+--------------------
 
 When the JWT or CWT format are used, the Revocation Assertion MUST contain the following claims. 
 
@@ -779,6 +779,6 @@ When the JWT or CWT format are used, the Revocation or Status Assertion Error MU
     * - **error**
       - Status code returned from the Credential Issuer after revocation. The value SHOULD be assigned with one of the error types defined in  {{RFC6749}}[Section 5.2]<https://tools.ietf.org/html/rfc6749#section-5.2> or defined in `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_ 
       - `[RFC6749, Section 5.2] <https://tools.ietf.org/html/rfc6749#section-5.2>`_, `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
-	   * - **error_description**
+    * - **error_description**
       - Text that clarifies the nature of the error, such as attribute changes, revocation reasons, in relation to the `error` value.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
