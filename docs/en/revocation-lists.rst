@@ -106,7 +106,7 @@ Credential Revocation Flows can start under different scenarios, such as:
 The revocation scenarios involve two main flows:
 
     - The **Revocation flows**: these flows describe how an Entity requests for a Digital Credential revocation. 
-    - The **Status Assertion flows**: these flows define the technical protocols for requesting and obtaining a Status Assertion and how the Wallet Instance will provide it to a Verifier as a proof of validity of a corresponding Digital Credential.
+    - The **Status Assertion flows**: these flows define the technical protocols for requesting and obtaining a Status Assertion and how the Wallet Instance SHOULD provide it to a Verifier as a proof of validity of a corresponding Digital Credential.
 
 
 .. _sec_revocation_high_level_flow:
