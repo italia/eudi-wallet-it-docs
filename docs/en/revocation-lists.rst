@@ -475,7 +475,7 @@ The response MUST:
 
 It MUST contain the following mandatory claims.
 
-.. _table_http_response_claim:
+.. _table_http_status_assertion_response_claim:
 .. list-table:: 
     :widths: 20 60 20
     :header-rows: 1
