@@ -43,7 +43,7 @@ The Disclosures are provided to the Holder together with the SD-JWT in the *Comb
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
 See `[SD-JWT VC] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`_ and
-`[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-07>`__
+`[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10>`__
 for additional details. 
 
 
