@@ -11,7 +11,7 @@ For these reasons a robust mechanism for managing the life-cycle and the revocat
 This section outlines the key technical requirements and processes related to the revocation of Digital Credentials. 
 Furthermore, it provides the technical details that the Verifiers MUST implement to verify, in a secure and reliable manner, the validity of a Digital Credential during the presentation phase.
 
-The verification of the validity of a Digital Credential is based on the `[OAuth Status Assertion draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_ specification. 
+The verification of the validity of a Digital Credential is based on the `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_ specification.
 
 A Status Assertion is a signed document serving as proof of a Digital Credential's current validity status. The Credential Issuer provides these assertions to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
 
@@ -203,8 +203,8 @@ The requests to the *Credential Issuer Revocation endpoint* MUST be HTTP with me
       - **Description**
       - **Reference**
     * - **revocation_requests**
-      - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT/CWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
-      - `[OAuth Status Assertion draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-assertions/01/>`_
+      - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT/CWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details.
+      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-assertions/01/>`_
 
 The Revocation Endpoint MUST be provided by the Credential Issuer within its Metadata. 
 
@@ -737,8 +737,7 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
       -  Boolean value indicating the status of Credential suspension. It MAY be set with the value `false` or `true`.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **cnf**
-      - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT and `Cose_Key` for CWT, MUST match with the one provided within the related Digital 
- Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards. 
+      - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT and `Cose_Key` for CWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and `[RFC8747, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
 
 
