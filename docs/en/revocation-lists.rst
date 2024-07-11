@@ -298,7 +298,9 @@ The Revocation Assertion Error object MUST contain the following parameters:
 Errors are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
 The `error` parameter for the Revocation Assertion Error object MUST be set with one of the values defined in the table below, in addition to the values specified in :rfc:`6749#section-5.2`:
 
-.. list-table:: 
+Here's the fixed table in reStructuredText (reST) format:
+
+.. list-table::
     :widths: 20 80
     :header-rows: 1
 
@@ -310,14 +312,14 @@ The `error` parameter for the Revocation Assertion Error object MUST be set with
       - The Digital Credential is already revoked.
     * - ``credential_updated``
       - One or more information contained in the Digital Credential are changed. The `error_description` field SHOULD contain a human-readable text describing the general parameters updated without specifying each one.
-   * - ``credential_invalid``
-     - The Digital Credential is invalid. The `error_description` field SHOULD contain the reason of invalidation.  
-   * - ``invalid_request_signature``
-     - The Revocation Assertion Request signature validation has failed. This error type is used when the proof of possession of the Digital Credential is found not valid within the Revocation Assertion Request.
-   * - ``credential_not_found``
-     - The `credential_hash` value provided in the Revocation Assertion Request doesn't match with any active Digital Credential.
-   * - ``unsupported_hash_alg``
-     - The hash algorithm set in `credential_hash_alg` is not supported.
+    * - ``credential_invalid``
+      - The Digital Credential is invalid. The `error_description` field SHOULD contain the reason of invalidation.
+    * - ``invalid_request_signature``
+      - The Revocation Assertion Request signature validation has failed. This error type is used when the proof of possession of the Digital Credential is found not valid within the Revocation Assertion Request.
+    * - ``credential_not_found``
+      - The `credential_hash` value provided in the Revocation Assertion Request doesn't match with any active Digital Credential.
+    * - ``unsupported_hash_alg``
+      - The hash algorithm set in `credential_hash_alg` is not supported.
 
 Below a non-normative example of a Revocation Assertion Error object in JWT format, with the headers and payload represented in JSON and without applying the signature.
 
@@ -638,7 +640,7 @@ Revocation Assertion
 
 When the JWT or CWT format are used, the Revocation Assertion MUST contain the following claims. 
 
-.. _table_non_revocation_assertion_header: 
+.. _table_revocation_assertion_header: 
 .. list-table:: 
   :widths: 20 60 20
   :header-rows: 1
@@ -654,7 +656,7 @@ When the JWT or CWT format are used, the Revocation Assertion MUST contain the f
     - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_..
 
 
-.. _table_non_revocation_assertion_claim:
+.. _table_revocation_assertion_claim:
 .. list-table:: 
     :widths: 20 60 20
     :header-rows: 1
@@ -745,7 +747,7 @@ Error Assertion
 
 When the JWT or CWT format are used, the Revocation or Status Assertion Error MUST contain the following claims. 
 
-.. _table_non_revocation_assertion_header: 
+.. _table_non_revocation_assertion_error_header: 
 .. list-table:: 
   :widths: 20 60 20
   :header-rows: 1
@@ -761,7 +763,7 @@ When the JWT or CWT format are used, the Revocation or Status Assertion Error MU
     - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
 
-.. _table_non_revocation_assertion_claim:
+.. _table_non_revocation_assertion_error_claim:
 .. list-table:: 
     :widths: 20 60 20
     :header-rows: 1
