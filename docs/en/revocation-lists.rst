@@ -727,13 +727,13 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
     * - **credential_hash_alg**
       - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``S256``.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
-	  * - **credential_status_validity**
+    * - **credential_status_validity**
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It is REQUIRED and it MUST be set with the value "false" or "true".
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
-	* - **revoked**
+    * - **revoked**
       - Boolean value indicating the status of Credential revocation when the `credential_status_validity` is set to `false`. It MAY be set with the value `false` or `true`.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
-	* - **suspended**
+    * - **suspended**
       -  Boolean value indicating the status of Credential suspension. It MAY be set with the value `false` or `true`.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **cnf**
@@ -759,7 +759,7 @@ When the JWT or CWT format are used, the Revocation or Status Assertion Error MU
     - Algorithm used to verify the cryptographic signature of the Assertion Error. Assertion Error that do not need to be signed SHOULD set the `alg` value to `none` in according with `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
-    - It MUST be set to `status-assertion-response+jwt` or `revocation-assertion-response+jwt`when JWT format is used. It MUST be set to `status-assertion-response+cwt` or `revocation-assertion-response+cwt`when CWT format is used.
+    - It MUST be set to `status-assertion-response+jwt` or `revocation-assertion-response+jwt` when JWT format is used. It MUST be set to `status-assertion-response+cwt` or `revocation-assertion-response+cwt` when CWT format is used.
     - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
 
 
