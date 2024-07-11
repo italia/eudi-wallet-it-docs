@@ -2,7 +2,7 @@
 .. _Wallet Attestation: wallet-attestation.html
 .. _Trust Model: trust.html
 
-.. _remote_flow_sec:
+
 
 Remote Flow
 ===========
@@ -249,7 +249,7 @@ The Relying Party issues the signed Request Object, where a non-normative exampl
   }
   .
   {
-    "scope": "eu.europa.ec.eudiw.pid.it.1 WalletAttestation",
+    "scope": "PersonIdentificationData WalletAttestation",
     "client_id_scheme": "entity_id",
     "client_id": "https://relying-party.example.org",
     "response_mode": "direct_post.jwt",
@@ -318,53 +318,8 @@ The JWS payload parameters are described herein:
 
     Using the parameter ``scope`` requires that the Relying Party Metadata MUST contain the ``presentation_definition``, where a non-normative example of it is given below:
 
-.. code-block:: JSON
-
-  {
-    "presentation_definition": {
-      "id": "presentation definitions",
-      "input_descriptors": [
-        {
-          "id": "eu.europa.ec.eudiw.pid.it.1",
-          "name": "Person Identification Data",
-          "purpose": "User authentication",
-          "format": "vc+sd-jwt",
-          "constraints": {
-            "fields": [
-              {
-                "path": [
-                  "$.credentialSubject.unique_id",
-                  "$.credentialSubject.given_name",
-                  "$.credentialSubject.family_name",
-                ]
-              }
-            ],
-            "limit_disclosure": "preferred"
-          }
-        },
-        {
-          "id": "WalletAttestation",
-          "name": "Wallet Attestation",
-          "purpose": "Wallet Authentication",
-          "format": "jwt",
-          "constraints": {
-            "fields": [
-              {
-                "path": [
-                  "$.iss",
-                  "$.exp",
-                  "$.iat",
-                  "$.cnf.jwk",
-                  "$.aal",
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    }
-  }
-
+.. literalinclude:: ../../examples/presentation-definition.json
+  :language: JSON
 
 .. note::
 
@@ -457,13 +412,13 @@ Below is a non-normative example of the decrypted JSON ``response`` content:
         "id": "04a98be3-7fb0-4cf5-af9a-31579c8b0e7d",
         "descriptor_map": [
             {
-                "id": "eu.europa.ec.eudiw.pid.it.1",
-                "path": "$.vp_token.verified_claims.claims._sd[0]",
+                "id": "PersonIdentificationData",
+                "path": "$.vp_token[0].vp",
                 "format": "vc+sd-jwt"
             },
             {
                 "id": "WalletAttestation",
-                "path": "$",
+                "path": "$.vp_token[1].vp",
                 "format": "jwt"
             }
         ]
@@ -480,6 +435,7 @@ Where the following parameters are used:
     - **Description**
   * - **vp_token**
     - JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
+
       - The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
       - The Wallet Attestation
   * - **presentation_submission**
@@ -595,329 +551,4 @@ When the Wallet Instance sends the user-agent to the Redirect URI provided by th
 
 Handling these errors requires clear communication to the User within the returned navigation web page. It is crucial for the Relying Party to implement robust error handling and validation mechanisms for Redirect URIs to ensure a secure implementation.
 
-Relying Party Entity Configuration
------------------------------------
-According to the `Trust Model`_ section, the Relying Party is a Federation Entity and MUST expose a *well-known* endpoint containing its Entity Configuration. 
-
-Below a non-normative example of the request made by the Wallet Instance to the *openid-federation* well-known endpoint to obtain the Relying Party Entity Configuration:
-
-.. code-block:: http
-
-  GET /.well-known/openid-federation HTTP/1.1
-  HOST: relying-party.example.org
-
-
-Below is a non-normative response example:
-
-.. code-block:: text
-
-    {
-        "alg": "ES256",
-        "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
-        "typ": "entity-statement+jwt"
-    }
-    .
-    {
-        "exp": 1649590602,
-        "iat": 1649417862,
-        "iss": "https://rp.example.it",
-        "sub": "https://rp.example.it",
-        "jwks": {
-            "keys": [
-                {
-                    "kty": "EC",
-                    "crv": "P-256",
-                    "x": "5s4qi ...",
-                    "y": "AQAB",
-                    "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs", 
-                }
-            ]
-        },
-        "metadata": {
-            "wallet_relying_party": {
-                "application_type": "web",
-                "client_id": "https://rp.example.it",
-                "client_name": "Name of an example organization",
-                "jwks": {
-                    "keys": [
-                        {
-                            "kty": "EC",
-                            "crv": "P-256",
-                            "x": "5s4qi ...",
-                            "y": "AQAB",
-                            "kid": "9tjiCaivhWLVUJ3AxwGGz_9", 
-                        }
-                    ]
-                },
-                
-                "contacts": [
-                    "ops@relying-party.example.org"
-                ],
-                
-                "request_uris": [
-                    "https://relying-party.example.org/request_uri"
-                ],
-                "response_uris": [
-                    "https://relying-party.example.org/response_uri"
-                ],
-                "default_acr_values": [
-                    "https://www.spid.gov.it/SpidL2",
-                    "https://www.spid.gov.it/SpidL3"
-                ],
-                "vp_formats": {
-                    "vc+sd-jwt": {
-                        "sd-jwt_alg_values": [
-                            "ES256",
-                            "ES384"
-                        ],
-                        "kb-jwt_alg_values": [
-                            "ES256",
-                            "ES384"
-                        ]
-                    }
-                },
-                  "presentation_definitions": [
-                      {
-                        "id": "32f54163-7166-48f1-93d8-ff217bdb0653",
-                        "input_descriptors": [
-                            {
-                                "id": "IdentityCredential",
-                                "format": {
-                                    "vc+sd-jwt": {}
-                                },
-                                "constraints": {
-                                    "limit_disclosure": "required",
-                                    "fields": [
-                                        {
-                                            "path": [
-                                                "$.type"
-                                            ],
-                                            "filter": {
-                                                "type": "string",
-                                                "const": "IdentityCredential"
-                                            }
-                                        },
-                                        {
-                                            "path": [
-                                                "$.family_name"
-                                            ]
-                                        },
-                                        {
-                                            "path": [
-                                                "$.given_name"
-                                            ]
-                                        },
-                                        {
-                                            "path": [
-                                                "$.unique_id"
-                                            ],
-                                            "intent_to_retain": "true"
-                                        }
-                                    ]
-                                }
-                            },
-                        {
-                            "id": "WalletAttestation",
-                            "format": {
-                                "jwt": {}
-                            },
-                            "constraints": {
-                                "fields": [
-                                    {
-                                        "path": [
-                                            "$.iss"
-                                        ],
-                                        "filter": {
-                                            "type": "string",
-                                            "enum": [
-                                                "https://issuer.example.org", 
-                                                "https://issuer2.example.org", 
-                                                "https://issuer3.example.org"
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "path": [
-                                            "$.iat"
-                                        ],
-                                        "filter": {
-                                            "type": "number",
-                                            "minimum": 1504699136
-                                        }
-                                    },
-                                    {
-                                        "path": [
-                                            "$.exp"
-                                        ],
-                                        "filter": {
-                                            "type": "number",
-                                            "minimum": 1504700136
-                                        }
-                                    },
-                                    {
-                                        "path": [
-                                            "$.cnf.jwk"
-                                        ],
-                                        "filter": {
-                                            "type": "object"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                        ]
-                    },
-                      {
-                        "id": "mDL-sample-req",
-                        "input_descriptors": [
-                            {
-                                "id": "mDL",
-                                "format": {
-                                    "mso_mdoc": {
-                                        "alg": [
-                                            "EdDSA",
-                                            "ES256"
-                                        ]
-                                    },
-                                    "constraints": {
-                                        "limit_disclosure": "required",
-                                        "fields": [
-                                            {
-                                                "path": [
-                                                    "$.mdoc.doctype"
-                                                ],
-                                                "filter": {
-                                                    "type": "string",
-                                                    "const": "org.iso.18013.5.1.mDL"
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.namespace"
-                                                ],
-                                                "filter": {
-                                                    "type": "string",
-                                                    "const": "org.iso.18013.5.1"
-                                                }
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.family_name"
-                                                ],
-                                                "intent_to_retain": "false"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.portrait"
-                                                ],
-                                                "intent_to_retain": "false"
-                                            },
-                                            {
-                                                "path": [
-                                                    "$.mdoc.driving_privileges"
-                                                ],
-                                                "intent_to_retain": "false"
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
-                    }
-                ],
-
-                "default_max_age": 1111,
-                
-                // JARM related
-                "authorization_signed_response_alg": [[
-                    "ES256"
-                ],
-                "authorization_encrypted_response_alg": [
-                    "RSA-OAEP",
-                    "RSA-OAEP-256"
-                ],
-                "authorization_encrypted_response_enc": [
-                    "A128CBC-HS256",
-                    "A192CBC-HS384",
-                    "A256CBC-HS512",
-                    "A128GCM",
-                    "A192GCM",
-                    "A256GCM"
-                ],
-
-                // SIOPv2 related
-                "subject_type": "pairwise",
-                "require_auth_time": true,
-                "id_token_signed_response_alg": [
-                    "ES256"
-                ],
-                "id_token_encrypted_response_alg": [
-                    "RSA-OAEP",
-                    "RSA-OAEP-256"
-                ],
-                "id_token_encrypted_response_enc": [
-                    "A128CBC-HS256",
-                    "A192CBC-HS384",
-                    "A256CBC-HS512",
-                    "A128GCM",
-                    "A192GCM",
-                    "A256GCM"
-                ],
-            },
-            "federation_entity": {
-                "organization_name": "OpenID Wallet Relying Party example",
-                "homepage_uri": "https://relying-party.example.org/home",
-                "policy_uri": "https://relying-party.example.org/policy",
-                "logo_uri": "https://relying-party.example.org/static/logo.svg",
-                "contacts": [
-                   "tech@relying-party.example.org"
-                 ]
-            }
-        },
-        "authority_hints": [
-            "https://registry.eudi-wallet.example.it"
-        ]
-      }
-    }
-    
-
-The Entity Configuration is a JWS, where its header and payload parameters are defined below, based on the provided OpenID Federation Entity Configuration example:
-
-**JWT Header Parameters**
-
-.. list-table::
-  :widths: 25 50
-  :header-rows: 1
-
-  * - **Name**
-    - **Description**
-  * - **alg**
-    - The digital signature algorithm used to sign the JWT. For example, "ES256" for ECDSA using P-256 and SHA-256.
-  * - **typ**
-    - The Media Type of the JWT, it MUST be set to "entity-statement+jwt".
-  * - **kid**
-    - The Key ID used for identifying the key used to sign the JWS.
-
-**JWT Payload Parameters**
-
-.. list-table::
-  :widths: 25 50
-  :header-rows: 1
-
-  * - **Name**
-    - **Description**
-  * - **iss**
-    - The issuer of the Entity Configuration, identifying the entity that issued the Entity Configuration.
-  * - **sub**
-    - The subject of the Entity Configuration, identifying the principal that is the subject of the Entity Configuration.
-  * - **jwks**
-    - JSON Web Key Set representing the cryptographic keys used for trust evaluation operations and for signing this Entity Configuration.
-  * - **metadata**
-    - Metadata describing the entity, including information about the wallet relying party, client ID, client name, contacts, request URIs, response URIs, default ACR values, and VP formats.
-  * - **authority_hints**
-    - URLs hinting at the authority or authorities that the entity trusts and which the public keys for verifieng this Entity Confgiuration are intended to be available within a Subordinate Statement.
-  * - **exp**
-    - Unix Timestamp representing the expiration time of the Entity Configuration, after which the Entity Configuration MUST NOT be accepted for processing.
-  * - **iat**
-    - Unix Timestamp representing the issued at time of the Entity Configuration, representing the time at which the Entity Configuration was issued.
 

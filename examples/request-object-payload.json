@@ -1,0 +1,20 @@
+{
+    "jti": "f8555ceb-c65c-4025-9378-b6672b6149af",
+    "aud": "https://eaa-provider.example.org/as/par",
+    "iat": 1715842560,
+    "exp": 1715842860,
+    "response_type": "code",
+    "response_mode": "form_post.jwt",
+    "client_id": "47b982369791d08003a7283f059cb0d1",
+    "iss": "47b982369791d08003a7283f059cb0d1",
+    "state": "fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
+    "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+    "code_challenge_method": "S256",
+    "authorization_details": [
+      {
+        "type": "openid_credential",
+        "credential_configuration_id": "DisabilityCard"
+      }
+    ],
+    "redirect_uri": "https://client.example.com/cb"
+}
