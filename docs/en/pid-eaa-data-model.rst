@@ -43,7 +43,7 @@ The Disclosures are provided to the Holder together with the SD-JWT in the *Comb
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
 See `[SD-JWT VC] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`_ and
-`[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__
+`[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-07>`__
 for additional details. 
 
 
@@ -72,7 +72,7 @@ The JOSE header contains the following mandatory parameters:
     - `[RFC7515, Section 4.1.8] <https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.8>`_.
   * - **trust_chain**
     - OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
-    - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-connect-federation-1_0.html#name-trust-chain-header-paramete>`_.
+    - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-federation-1_0.html#name-trust-chain-header-paramete>`_.
 
 The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
 
