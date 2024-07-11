@@ -503,7 +503,7 @@ The following HTTP Status Codes MUST be supported:
       - The Credential Issuer cannot fulfill the request because of invalid parameters.
     * - *404 Not Found*
       - 
-      - The Digital Credential can not be found by the Credential Issuer.
+      - The Digital Credential may not be found by the Issuer, or the Status Attestation cannot be issued because the Credential has been revoked or updated.
     * - *500 Internal Server Error*
       - 
       - The Credential Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
