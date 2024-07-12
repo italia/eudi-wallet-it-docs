@@ -594,7 +594,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT or a CWT t
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      -  Unique identifier of the ``jwk`` or ``COSE_Key`` inside the ``cnf`` claim of the Credential to be revoked, as base64url-encoded JWK Thumbprint value, according to `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-assertions/01/>`_.
+      -  Unique identifier of the ``jwk`` or ``COSE_Key`` inside the ``cnf`` claim of the Credential to be revoked, as base64url-encoded JWK Thumbprint value, according to `[OAuth Status Assertions] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions>`_.
       - :rfc:`7638#section_3`. 
 
 .. list-table:: 
