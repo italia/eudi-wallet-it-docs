@@ -337,7 +337,7 @@ Below a non-normative example of a Revocation Assertion Error object in JWT form
     "credential_hash": $CREDENTIAL-HASH,
     "credential_hash_alg": "sha-256",
     "error": "unsupported_hash_alg",
-    "error_description": "The hash algorithm set is not supported"
+    "error_description": "The hash algorithm is not supported"
   }
 
 
