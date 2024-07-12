@@ -133,7 +133,7 @@ A Wallet Instance MUST request the revocation of a Digital Credential as defined
     
     Wallet Instance Initiated Revocation Flow
 
-**Step 1 (Credential Revocation Request)**: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request can be sent to a single Credential Issuer, regarding multiple Digital Credentials, and MUST contain a JSON object with the member `revocation_requests`.
+**Step 1 (Credential Revocation Request)**: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request MUST be sent to the Credential Issuer who has previously issued that Credential. The Credential Revocation Request MUST contain a JSON object with the member `revocation_requests`.
 
 The `revocation_requests` MUST be set with an array of strings, where each string within the array represents a Credential Revocation Request object.
 
