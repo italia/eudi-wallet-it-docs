@@ -398,6 +398,7 @@ Below a non-normative example of the request:
   
 
 Below is a non-normative example of the decrypted payload of the JWT contained in the ``response``, before base64url encoding and signing:
+
 .. code-block:: 
 
   {
