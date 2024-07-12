@@ -256,7 +256,7 @@ The ``revocation_assertion_responses`` object MUST contain the following mandato
       - **Reference**
     * - **revocation_assertion_responses**
       - the Revocation Assertions and or the Revocation Assertion Errors related to the request made by the Wallet Instance. 
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+      - `[OAuth Status Attestation] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions>`_.
 
 The Revocation Assertion object MUST contain the parameter ``credential_status_validity`` with the value set to ``false`` and the parameter ``revoked`` set to ``true``.
 Below a non-normative example of a Revocation Assertion object in JWT format, with the headers and payload represented in JSON and without applying the signature.
