@@ -204,7 +204,7 @@ The requests to the *Credential Issuer Revocation endpoint* MUST be HTTP with me
       - **Reference**
     * - **revocation_requests**
       - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT/CWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-assertions/01/>`_
+      - `[OAuth Status Assertions] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions>`_
 
 The Revocation Endpoint MUST be provided by the Credential Issuer within its Metadata. 
 
