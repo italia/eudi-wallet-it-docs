@@ -245,7 +245,7 @@ Below a non-normative example of the ``client_data``.
 
 **Steps 11-12**: The Wallet Instance:
   * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``wallet_hardware_key_tag``, and ``public_jwk``, and is signed using the private key from the initially generated ephemeral key pair.
-  * Submits the Wallet Attestation Request to the Wallet Provider's backend through the token endpoint.
+  * Submits the Wallet Attestation Request to the token endpoint of the Wallet Provider Backend.
 
 Below an non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
 
@@ -304,7 +304,7 @@ encoded in ``application/x-www-form-urlencoded`` format:
     grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
     &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...
 
-**Steps 13-17**: The Wallet Provider's backend assesses the Wallet Attestation Request and issues a Wallet Attestation, if the requirements described below are satisfied:
+**Steps 13-17**: The Wallet Provider Backend assesses the Wallet Attestation Request and issues a Wallet Attestation, if the requirements described below are satisfied:
 
     1. It MUST check the Wallet Attestation Request contains all the defined parameters according to :ref:`Table of the Wallet Attestation Request parameters <table_wallet_attestation_request_claim>`.
     2. It MUST verify that the signature of the received Wallet Attestation Request is valid and associated with public ``jwk``.
