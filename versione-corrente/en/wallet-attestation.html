@@ -1341,7 +1341,7 @@ Below is a non-normative example of the response.</p>
 <dl class="simple">
 <dt><strong>Steps 11-12</strong>: The Wallet Instance:</dt><dd><ul class="simple">
 <li><p>Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">challenge</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_hardware_key_tag</span></code>, and <code class="docutils literal notranslate"><span class="pre">public_jwk</span></code>, and is signed using the private key from the initially generated ephemeral key pair.</p></li>
-<li><p>Submits the Wallet Attestation Request to the Wallet Provider's backend through the token endpoint.</p></li>
+<li><p>Submits the Wallet Attestation Request to the token endpoint of the Wallet Provider Backend.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1398,7 +1398,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &amp;assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...
 </pre></div>
 </div>
-<p><strong>Steps 13-17</strong>: The Wallet Provider's backend assesses the Wallet Attestation Request and issues a Wallet Attestation, if the requirements described below are satisfied:</p>
+<p><strong>Steps 13-17</strong>: The Wallet Provider Backend assesses the Wallet Attestation Request and issues a Wallet Attestation, if the requirements described below are satisfied:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>It MUST check the Wallet Attestation Request contains all the defined parameters according to <a class="reference internal" href="#table-wallet-attestation-request-claim"><span class="std std-ref">Table of the Wallet Attestation Request parameters</span></a>.</p></li>
