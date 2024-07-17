@@ -602,7 +602,7 @@ The Wallet Instance provides its Wallet Attestation within the signed request du
 Trust Chain
 ^^^^^^^^^^^^^^^
 
-The Trust Chain is a sequence of verified statements that validates a participant's compliance with the Federation. It has an expiration date time, beyond which it MUST be renewed to obtain the fresh and updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration timestamp among all the expiration timestamp contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor.
+The Trust Chain is a sequence of verified statements that validates a participant's compliance with the Federation. It has an expiration date time, beyond which it MUST be renewed to obtain the fresh and updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration timestamp among all the expiration timestamp contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor. 
 
 Below is an abstract representation of a Trust Chain.
 
@@ -627,6 +627,152 @@ Below is a non-normative example of a Trust Chain in its original format (JSON A
 .. note::
 
     The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.
+
+Trust List
+^^^^^^^^^^^^^^^
+
+The Wallet Providers MUST be published in a Trust List managed by the designed Federation authority.
+
+To ensure coherent and efficient management of trust lists across Europe, the following structured approach must be implemented. This includes the creation and governance of a Superior Trust List at the European level and National Trust Lists at the member state level. The sections below provide specific implementation details for each type of trust list, including formats and examples.
+
+The **Superior Trust List** must be managed by a central entity at the European level, such as the European Commission. It will include direct references to each National Registry and each centrally managed thematic Registry, unique for all member states. The governance is centralized under a single EU authority, authorized to add, remove, or update entries in the registry.
+
+Below is a non-normative example of a Superior Trust List in XML format:
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <TrustServiceStatusList xmlns="http://uri.etsi.org/02231/v2#" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="http://uri.etsi.org/02231/v2/additionaltypes#" xmlns:ns4="http://uri.etsi.org/01903/v1.3.2#" xmlns:ns5="http://uri.etsi.org/TrstSvc/SvcInfoExt/eSigDir-1999-93-EC-TrustedList/#" xmlns:ns6="http://uri.etsi.org/01903/v1.4.1#" Id="ID0001" TSLTag="http://uri.etsi.org/19612/TSLTag">
+        <SchemeInformation>
+            <TSLVersionIdentifier>5</TSLVersionIdentifier>
+            <TSLSequenceNumber>342</TSLSequenceNumber>
+            <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUlistofthelists</TSLType>
+            <SchemeOperatorName>
+                <Name xml:lang="en">European Commission</Name>
+                <Name xml:lang="fr">Commission européenne</Name>
+                <Name xml:lang="it">Commissione europea</Name>
+            </SchemeOperatorName>
+            <SchemeOperatorAddress>
+                <PostalAddresses>
+                    <PostalAddress xml:lang="en">
+                        <StreetAddress>Rue de la Loi/Wetstraat 200</StreetAddress>
+                        <Locality>Brussels</Locality>
+                        <PostalCode>1049</PostalCode>
+                        <CountryName>BE</CountryName>
+                    </PostalAddress>
+                    <PostalAddress xml:lang="fr">
+                        <StreetAddress>Rue de la Loi 200</StreetAddress>
+                        <Locality>Bruxelles</Locality>
+                        <PostalCode>1049</PostalCode>
+                        <CountryName>BE</CountryName>
+                    </PostalAddress>
+                </PostalAddresses>
+                <ElectronicAddress>
+                    <URI xml:lang="en">mailto:EC-TL-Service@ec.europa.eu</URI>
+                    <URI xml:lang="en">https://ec.europa.eu/digital-agenda/en/eu-trusted-lists-certification-service-providers</URI>
+                </ElectronicAddress>
+            </SchemeOperatorAddress>
+            <SchemeName>
+                <Name xml:lang="en">EU: List of trusted service providers</Name>
+                <Name xml:lang="fr">UE : Liste des prestataires de services de confiance</Name>
+                <Name xml:lang="it">UE: Elenco dei prestatori di servizi fiduciari</Name>
+            </SchemeName>
+            <SchemeInformationURI>
+                <URI xml:lang="en">https://ec.europa.eu/tools/lotl/eu-lotl-pivot-341.xml</URI>
+                <URI xml:lang="en">https://ec.europa.eu/tools/lotl/eu-lotl-legalnotice.html#en</URI>
+            </SchemeInformationURI>
+            <StatusDeterminationApproach>http://uri.etsi.org/TrstSvc/TrustedList/StatusDetn/EUlistofthelists</StatusDeterminationApproach>
+            <SchemeTypeCommunityRules>
+                <URI xml:lang="en">http://uri.etsi.org/TrstSvc/TrustedList/schemerules/EUlistofthelists</URI>
+            </SchemeTypeCommunityRules>
+            <SchemeTerritory>EU</SchemeTerritory>
+            <PolicyOrLegalNotice>
+                <TSLLegalNotice xml:lang="en">This list is maintained by the European Commission and contains information provided by Member States.</TSLLegalNotice>
+                <TSLLegalNotice xml:lang="fr">Cette liste est maintenue par la Commission européenne et contient des informations fournies par les États membres.</TSLLegalNotice>
+                <TSLLegalNotice xml:lang="it">Questo elenco è mantenuto dalla Commissione europea e contiene informazioni fornite dagli Stati membri.</TSLLegalNotice>
+            </PolicyOrLegalNotice>
+        </SchemeInformation>
+        </TrustServiceStatusList>
+
+The **National Trust List** ia managed by a Supervisory Body. This entity will receive requests from accredited and authoritative entities for the respective themes they manage. The Trust List will include direct references to each National List and to the Superior Trust List for each centrally managed cross-border thematic Trust List, unique to all member states.
+
+The Trusted Lists exist for the following entities:
+
+* Wallet Providers
+* PID Providers
+* QEAA Providers
+* PuB-EAA Providers
+* Access Certificate Authorities for:
+    * Relying Parties
+    * PID Providers
+    * QEAA Providers
+
+Below is a non-normative example of a National Trust List in XML format:
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <TrustServiceStatusList xmlns="http://uri.etsi.org/02231/v2#" SchemeOperatorName="Italia">
+      <SchemeInformation>
+        <TSLVersionIdentifier>5</TSLVersionIdentifier>
+        <TSLSequenceNumber>1</TSLSequenceNumber>
+        <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/SchemeType/EUgeneric</TSLType>
+        <SchemeOperatorName>
+          <Name xml:lang="en">Agenzia per l'Italia Digitale</Name>
+        </SchemeOperatorName>
+        <SchemeTypeCommunityRules>
+         <URI>http://uri.etsi.org/TrstSvc/TrustedList/SchemeType/Community</URI>
+        </SchemeTypeCommunityRules>
+        <PointersToOtherTSL>
+          <OtherTSLPointer>
+            <TSLLocation>http://example.com/other-tsl.xml</TSLLocation>
+          </OtherTSLPointer>
+        </PointersToOtherTSL>
+      </SchemeInformation>
+      <TrustServiceProviderList>
+        <TrustServiceProvider>
+          <TSPInformation>
+            <TSPName>
+              <Name xml:lang="en">Example Service Italia S.p.A.</Name>
+            </TSPName>
+            <TSPAddress>
+              <PostalAddresses>
+                <PostalAddress>
+                  <StreetAddress>Via Nazionale, 50</StreetAddress>
+                  <Locality>Roma</Locality>
+                  <PostalCode>00184</PostalCode>
+                  <CountryName>IT</CountryName>
+                </PostalAddress>
+              </PostalAddresses>
+            </TSPAddress>
+            <TSPInformationURI>
+              <URI>http://www.exampleserviceitalia.it/info</URI>
+            </TSPInformationURI>
+          </TSPInformation>
+          <TSPServices>
+            <TSPService>
+              <ServiceInformation>
+                <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/QC</ServiceTypeIdentifier>
+                <ServiceName>
+                  <Name xml:lang="en">CN=XYZ Extended Validation SHA256 - CA 3, OU=Trust Service Provider, O=XYZ S.p.A., C=IT</Name>
+                </ServiceName>
+                <ServiceStatus>granted</ServiceStatus>
+                <StatusStartingTime>2023-06-01T00:00:00Z</StatusStartingTime>
+                <ServiceDigitalIdentity>
+                  <DigitalId>
+                    <X509Certificate>MIIBIjANBgkq...</X509Certificate>
+                  </DigitalId>
+                </ServiceDigitalIdentity>
+              </ServiceInformation>
+            </TSPService>
+          </TSPServices>
+        </TrustServiceProvider>
+      </TrustServiceProviderList>
+    </TrustServiceStatusList>
+
+.. note::
+
+    The National and Superior Trust List are in XML format, following the schema defined by the `the European Commission <https://eidas.ec.europa.eu/efda/tl-browser/#/screen/home>`_.
 
 
 Offline Trust Attestation Mechanisms
