@@ -721,7 +721,7 @@ When the JWT or CWT format are used, the Revocation or Status Assertion Error MU
     - **Description**
     - **Reference**
   * - **alg**
-    - Algorithm used to verify the cryptographic signature of the Assertion Error. Assertion Error that do not need to be signed SHOULD set the `alg` value to `none` in according with `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+    - Algorithm used to verify the cryptographic signature of the Assertion Error. Assertion Error that do not need to be signed SHOULD set the `alg` value to `none` in according with `OAUTH-STATUS-ASSERTION`_ draft 02.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
     - It MUST be set to `status-assertion-response+jwt` or `revocation-assertion-response+jwt` when JWT format is used. It MUST be set to `status-assertion-response+cwt` or `revocation-assertion-response+cwt` when CWT format is used.
