@@ -11,7 +11,7 @@ For these reasons a robust mechanism for managing the life-cycle and the revocat
 This section outlines the key technical requirements and processes related to the revocation of Digital Credentials. 
 Furthermore, it provides the technical details that the Verifiers MUST implement to verify, in a secure and reliable manner, the validity of a Digital Credential during the presentation phase.
 
-The verification of the validity of a Digital Credential is based on the `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions>`_ specification.
+The verification of the validity of a Digital Credential is based on the `OAUTH-STATUS-ASSERTION`_ draft 02.
 
 A Status Assertion is a signed document serving as proof of a Digital Credential's current validity status. The Credential Issuer provides these assertions to Holders who can present them to Verifiers together with the corresponding Digital Credentials. 
 
