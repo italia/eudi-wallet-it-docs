@@ -170,7 +170,7 @@ Below, is given a non-normative example of a single Revocation Assertion Request
       "credential_hash_alg": "sha-256",
     }
 
-**Step 2 (PoP verification)**: The Credential Issuer verifies the signature of the PoP using the the confirmation method that was attested in the issued Digital Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Digital Credential, and therefore is entitled to request its revocation.
+**Step 2 (PoP verification)**: The Credential Issuer verifies the proof of possession of the Credential requested to be revoked, using the the confirmation method that was attested in the Credential. If the verification is successful the revocation request is allowed.
 
 **Step 3 (Credential Revocation)**: The Credential Issuer revokes the Credential provided in the Revocation Request object. After the revocation, the Credential Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. 
 
