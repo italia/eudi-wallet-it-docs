@@ -747,4 +747,4 @@ When the JWT or CWT format are used, the Revocation or Status Assertion Error MU
       - `[RFC6749, Section 5.2] <https://tools.ietf.org/html/rfc6749#section-5.2>`_, `OAUTH-STATUS-ASSERTION`_ draft 02
     * - **error_description**
       - Text that clarifies the nature of the error, such as attribute changes, revocation reasons, in relation to the `error` value.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+      - `OAUTH-STATUS-ASSERTION`_ draft 02.
