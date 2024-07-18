@@ -36,7 +36,7 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Wallet Instance
      - An instance of the Wallet Solution, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.
    * - Wallet Provider
-     - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
+     - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an Wallet Instance.
    * - Wallet Provider Backend
      - Is the technical infrastructure and server-side components, including a set of endpoints, managed by a Wallet Provider.
    * - Wallet Attestation
@@ -64,7 +64,7 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Trust Attestation
      - Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.
    * - Trust Layer
-     - An architectural component that enables IT Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.
+     - Architectural component that enables IT-Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.
    * - Trust Model
      - System defining how the participants of the ecosystem establish and maintain trust in their interactions. The Trust Model outlines the rules and the procedures for the entities (like users, systems, or applications) should validate each other's identities, authenticate, and establish the level of trust before exchanging information.
    * - Level of Assurance

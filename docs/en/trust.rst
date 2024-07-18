@@ -635,7 +635,7 @@ Offline Trust Attestation Mechanisms
 The offline flows do not allow for real-time evaluation of an Entity's status, such as its revocation. At the same time, using short-lived Trust Chains enables the attainment of trust attestations compatible with the required revocation administrative protocols (e.g., a revocation must be propagated in less than 24 hours, thus the Trust Chain must not be valid for more than that period).
 
 
-Offline EUDI Wallet Trust Attestation
+Offline Wallet Trust Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Given that the Wallet Instance cannot publish its metadata online at the *.well-known/openid-federation* endpoint, 
