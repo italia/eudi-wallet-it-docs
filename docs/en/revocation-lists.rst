@@ -90,7 +90,7 @@ The revocation of a Digital Credential MAY be triggered by:
 Credential Revocation Flows can start under different scenarios, such as:
 
     - The User reports the loss or theft of their own physical document to the Law-Enforcement Authorities: this implies that the Credentials, if any, shall be revoked.
-    - The User notifies an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials SHALL be revoked, as they are no longer valid due to the change in attributes. 
+    - The User notifies an Authentic Source that one or more attributes are changed (e.g. the current resident address): in this case the Credentials MUST be revoked, as they are no longer valid due to the change in attributes. 
     - Users who lose access to their Wallet Instance (e.g., due to theft or loss of the device) can request the Credential Issuer to revoke their Credentials or ask the Wallet Provider to revoke the Wallet Instance. If the Wallet Provider is authorized by the User and is aware of the types of Credentials and their issuers stored in the Wallet, it can then initiate the revocation of all Digital Credentials contained within the Wallet Instance on behalf of the User.
     - The Law-Enforcing Authorities, for the fulfillment of their functions and any other judicial reasons, may request the Authentic Source to revoke entitlements, licenses, certificates, identification documents, etc., which in turn leads to the revocation of any linked Credentials.
     - The Authentic Sources that for any update of one or more User attributes, SHOULD inform the Credential Issuer that has previously requested those data for the issuance of a Credential about that User. 
