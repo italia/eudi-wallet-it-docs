@@ -650,12 +650,6 @@ When the JWT or CWT format are used, the Revocation Assertion MUST contain the f
     * - **credential_status_validity**
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It MUST be set with the value `false`.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
-    * - **revoked**
-      - Boolean value indicating the status of Credential revocation. It MUST be set with the value `true` in revocation scenario.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
-    * - **suspended**
-      -  Boolean value indicating the status of Credential suspension. It MUST be set with the value `false` in revocation scenario.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     
 
 Status Assertion
