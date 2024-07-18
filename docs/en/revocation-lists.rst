@@ -425,7 +425,7 @@ A non-normative example of Credential Proof of Possession is provided :ref:`in t
 		"status_assertion_responses": ["${base64url(json({typ: status-assertion+jwt, ...}))}.payload.signature", ... ]
 	}
 
-The member `status_assertion_responses` MUST be an array of strings, where each of them represent a Status Assertion Response object as defined in `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+The member `status_assertion_responses` MUST be an array of strings, where each of them represent a Status Assertion Response object as defined in `OAUTH-STATUS-ASSERTION`_ draft 02`_.
 
 
 Status Assertion HTTP Request
