@@ -574,7 +574,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT or a CWT t
       - **Description**
       - **Reference**
     * - **typ**
-      - In case of revocation request it MUST be set to ``revocation-request+{jwt,cwt}``. In case of Status Assertion request it MUST be set to ``status-assertion-request+{jwt,cwt}``, according to `[OAuth Status Assertions] <https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions>`_.
+      - In case of revocation request it MUST be set to ``revocation-request+{jwt,cwt}``. In case of Status Assertion request it MUST be set to ``status-assertion-request+{jwt,cwt}``, according to `OAUTH-STATUS-ASSERTION`_ draft 02.
       - :rfc:`7516#section-4.1.1`.
     * - **alg**
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
