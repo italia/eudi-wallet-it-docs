@@ -701,7 +701,7 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
     * - **credential_status_validity**
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It is REQUIRED and it MUST be set with the value "false" or "true".
       - `OAUTH-STATUS-ASSERTION`_ draft 02.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+      - `OAUTH-STATUS-ASSERTION`_ draft 02.
     * - **cnf**
       - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT and `Cose_Key` for CWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and `[RFC8747, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
