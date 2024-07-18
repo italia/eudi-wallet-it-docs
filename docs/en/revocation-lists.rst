@@ -697,7 +697,7 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
       - `OAUTH-STATUS-ASSERTION`_ draft 02.
     * - **credential_hash_alg**
       - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``S256``.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+      - `OAUTH-STATUS-ASSERTION`_ draft 02.
     * - **credential_status_validity**
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It is REQUIRED and it MUST be set with the value "false" or "true".
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
