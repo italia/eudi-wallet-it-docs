@@ -168,7 +168,6 @@ Below, is given a non-normative example of a single Revocation Assertion Request
       "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
       "credential_hash": $Issuer-Signed-JWT-Hash,
       "credential_hash_alg": "sha-256",
-      "credential_type": "PersonalIdentiticationData",
       "user_identifier": "001",
       "document_id": "PID-98765"
     }
