@@ -611,15 +611,6 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT or a CWT t
     * - **credential_hash_alg**
       - It MUST contain the Algorithm used for hashing the Digital Credential. The value SHOULD be set to `S256`.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
-    * - **credential_type**
-      - Type of credential (e.g., Personal Identification Data, European Disability Card, European Health Insurance Card, Driver's License, etc.)
-      -
-    * - **user_identifier**
-      - 	Identifier used to avoid direct linking between the credential hash and the owner.
-      -
-    * - **document_id**
-      - 	Unique identifier of the document to which the attestation refers.
-      -
 
 Revocation Assertion
 --------------------
