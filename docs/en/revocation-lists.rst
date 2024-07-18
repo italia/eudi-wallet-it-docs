@@ -285,7 +285,6 @@ The Revocation Assertion Error object MUST contain the following parameters:
 Errors are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
 The `error` parameter for the Revocation Assertion Error object MUST be set with one of the values defined in the table below, in addition to the values specified in :rfc:`6749#section-5.2`:
 
-Here's the fixed table in reStructuredText (reST) format:
 
 .. list-table::
     :widths: 20 80
