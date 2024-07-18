@@ -40,7 +40,7 @@ Operational Requirements
 Functional Requirements
 -----------------------
 
-**The Status Assertion:**
+In addition to the requirements in Section 5 of `OAUTH-STATUS-ASSERTION`_ draft 02, **The Status Assertion:**
 
 - SHOULD be presented in conjunction with the Digital Credential; 
 - MUST include information that links it to the referenced Digital Credential;
