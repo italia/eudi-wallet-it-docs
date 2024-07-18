@@ -744,7 +744,7 @@ When the JWT or CWT format are used, the Revocation or Status Assertion Error MU
       - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7519>`_.
     * - **error**
       - Status code returned from the Credential Issuer after revocation. The value SHOULD be assigned with one of the error types defined in  {{RFC6749}}[Section 5.2]<https://tools.ietf.org/html/rfc6749#section-5.2> or defined in `OAUTH-STATUS-ASSERTION`_ draft 02. 
-      - `[RFC6749, Section 5.2] <https://tools.ietf.org/html/rfc6749#section-5.2>`_, `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_
+      - `[RFC6749, Section 5.2] <https://tools.ietf.org/html/rfc6749#section-5.2>`_, `OAUTH-STATUS-ASSERTION`_ draft 02
     * - **error_description**
       - Text that clarifies the nature of the error, such as attribute changes, revocation reasons, in relation to the `error` value.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
