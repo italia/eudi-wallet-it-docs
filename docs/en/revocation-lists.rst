@@ -168,8 +168,6 @@ Below, is given a non-normative example of a single Revocation Assertion Request
       "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
       "credential_hash": $Issuer-Signed-JWT-Hash,
       "credential_hash_alg": "sha-256",
-      "user_identifier": "001",
-      "document_id": "PID-98765"
     }
 
 **Step 2 (PoP verification)**: The Credential Issuer verifies the signature of the PoP using the the confirmation method that was attested in the issued Digital Credential. If the verification is successful, it means that the Wallet Instance owns the private keys associated with the Digital Credential, and therefore is entitled to request its revocation.
