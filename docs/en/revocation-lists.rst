@@ -135,7 +135,7 @@ A Wallet Instance MUST request the revocation of a Digital Credential as defined
 
 **Step 1 (Credential Revocation Request)**: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request MUST be sent to the Credential Issuer who has previously issued that Credential. The Credential Revocation Request MUST contain a JSON object with the member `revocation_requests`.
 
-The `revocation_requests` MUST be set with an array of strings, where each string within the array represents a Credential Revocation Request object.
+The `revocation_requests` MUST be set with an array of strings, where each string within the array represents a Credential Revocation Request object, enabling the Wallet Instance to request multiple Credential Revocation Requests to a single Credential Issuer.
 
 It MUST be signed with the private key related to the public key contained within the Credential (such as the Credential Issuer Signed JWT in the case of SD-JWT, or the MSO in the case of Mdoc CBOR). Then, the Wallet Instance sends the request to the Credential Issuer as in the following non-normative example representing a Revocation Assertion Request array.
 
