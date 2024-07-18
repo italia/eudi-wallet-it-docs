@@ -62,10 +62,6 @@ HTML
 ````
 pip install -r requirements.txt
 
-# italian version
-sphinx-build -b html -d html/it/doctrees docs/it/  html/it
-
-# english version
 sphinx-build -b html -d html/en/doctrees docs/en/  html/en
 ````
 
