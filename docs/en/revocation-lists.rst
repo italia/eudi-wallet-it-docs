@@ -266,10 +266,6 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
     "credential_hash": $CREDENTIAL-HASH,
     "credential_hash_alg": "sha-256",
     "credential_status_validity": false,
-    "credential_status": {
-      "revoked": true,
-      "suspended": false
-    },
     "cnf": {
       "jwk": {
         "alg": "ES256",
