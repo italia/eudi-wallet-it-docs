@@ -42,13 +42,7 @@ Functional Requirements
 
 In addition to the requirements in Section 5 of `OAUTH-STATUS-ASSERTION`_ draft 02, **The Status Assertion:**
 
-- SHOULD be presented in conjunction with the Digital Credential; 
-- MUST include information that links it to the referenced Digital Credential;
-- MUST be timestamped with its issuance datetime, using a timestamp which is at or after the time of Digital Credential issuance which it refers;
-- MUST contain the expiration datetime after which both the Status Assertion and the Digital Credential referred to SHOULD NOT be considered as having a valid status, since it appears without verification against any revocation.
-- MUST have the expiration datetime greater than the Status Assertion issuance datetime and it MUST end before the expiration datetime of the Digital Credential;
 - MUST have a validity period not greater than 24 hours;
-- MUST provide the proof about the non-revocation of the Digital Credential which is related to and MUST be validated using the cryptographic signature of the Credential Issuer;
 - MUST NOT reveal any information about the Relying Party, the User's device or the User's data contained in the Digital Credential the assertion is related to;
 - MUST be non-repudiable even beyond its expiration time and even in the case of cryptographic keys rotation.
 
