@@ -31,10 +31,14 @@ Below are the description of acronyms and definitions which are useful for furth
      - An signed Credential whose integrity can be cryptographically verified using the public keys of its Issuer. It is also known as Credential.
    * - Federation Authority
      - A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.
+   * - Wallet Solution
+     - System designed to store and manage digital assets and identity information.
    * - Wallet Instance
      - An instance of the Wallet Solution, installed on a personal mobile device and controlled by a specific User who is its sole owner. It is the application that enables citizens to fully and autonomously manage their digital identity and EAAs.
    * - Wallet Provider
      - All public and/or private entities, conforming to a technical profile and accredited by the Federation Authority, that provide citizens with an IT Wallet Instance.
+   * - Wallet Provider Backend
+     - Is the technical infrastructure and server-side components, including a set of endpoints, managed by a Wallet Provider.
    * - Wallet Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
    * - Wallet Secure Cryptographic Device
@@ -67,6 +71,8 @@ Below are the description of acronyms and definitions which are useful for furth
      - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the Digital Credential was issued.
    * - Holder Key Binding
      - Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.
+   * - Holder
+     - Natural or Legal person that receives Verifiable Credentials from the Credential Issuers, manages the Verifiable Credentials within the Wallet, and presents them to Verifiers. The Holder is the User in control of the Wallet.
 
 Acronyms
 --------

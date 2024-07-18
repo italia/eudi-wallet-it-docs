@@ -41,7 +41,9 @@ Index of content
    wallet-attestation.rst
    pid-eaa-data-model.rst
    pid-eaa-issuance.rst
+   pid-eaa-entity-configuration.rst
    relying-party-solution.rst
+   relying-party-entity-configuration.rst
    revocation-lists.rst
    pseudonyms.rst
    backup-restore.rst
