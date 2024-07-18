@@ -17,7 +17,7 @@ The Infrastructure of trust facilitates the application of a trust assessment me
    
     The roles within the Federation, where the Trust Anchor oversees its subordinates,
     which include one or more Intermediates and Leaves. In this
-    representation, both the Trust Anchor and the Intermediates MAY assume the role of Accreditation Body.
+    representation, both the Trust Anchor and the Intermediates assume the role of Registration Authority.
 
 Functional Requirements
 -----------------------
@@ -45,9 +45,9 @@ This section includes the requirements necessary for the successful implementati
 - [FR #19] - **Adaptive Load Management**:  implement adaptive load management strategies to ensure the system remains responsive and efficient under varying loads, particularly during peak usage times or when processing complex tasks.
 - [FR #20] - **Cross-Federation Interoperability**:  ensure the system is capable of interoperating with other federations or trust frameworks, facilitating cross-federation transactions and trust establishment without compromising security or compliance.
 - [FR #21] - **Future-Proof Cryptography**:  the system should employ a flexible cryptographic framework that can be updated in response to new threats or advancements in cryptographic research, ensuring long-term security and integrity of federation operations.
-- [FR #23] - **Autonomous Accreditation Bodies**:  the system must facilitate the integration of autonomous accreditation bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and accrediting entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
-- [FR #24] - **Compliance Evaluation for Federation Entity Candidates**:  accreditation bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.
-- [FR #25] - **Periodic Auditing of Accreditation Bodies and Entities**:  implement mechanisms for the periodic auditing and monitoring of the compliance status of both accreditation bodies and their accredited entities. This ensures ongoing adherence to federation standards and policies.
+- [FR #23] - **Autonomous Registration Bodies**:  the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and accrediting entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
+- [FR #24] - **Compliance Evaluation for Federation Entity Candidates**:  registration bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.
+- [FR #25] - **Periodic Auditing of Accreditation Bodies and Entities**:  implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their accredited entities. This ensures ongoing adherence to federation standards and policies.
 - [FR #26] - **Certification of Compliance for Personal Devices**:  trusted bodies, in the form of federation entities, should issue certifications of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These certifications should be attested and periodically renewed to ensure the devices meet current security standards.
 - [FR #27] - **Certification of Compliance for Cryptographic Devices**:  similar to personal devices, personal cryptographic devices used within the federation must also receive certifications of compliance and signed proof thereof from trusted bodies. These certifications should be subject to periodic renewal to reflect the latest security and compliance standards.
 - [FR #28] - **Transparent Compliance Reporting**:  develop a system for transparent reporting and publication of compliance statuses, audit results, and certification renewals for all federation entities. This transparency fosters trust within the federation and with external stakeholders.
@@ -59,7 +59,7 @@ This section includes the requirements necessary for the successful implementati
 Federation Roles
 ------------------
 
-All the participants are Federation Entities that MUST be accredited by an Accreditation Body,
+All the participants are Federation Entities that MUST be accredited by an Registration Body,
 except for Wallet Instances which are End-User's personal devices certified by their Wallet Provider.
 
 .. note::
@@ -138,7 +138,7 @@ In the table below is provided the map of the components that the ARF defines wi
      - Trust Chain
    * - Issuers registration
      - |check-icon|
-     - Trust Anchor, Intermediates accreditation system
+     - Trust Anchor, Intermediates registration system
    * - Recognised data models and schemas
      - |check-icon|
      - Entity Configuration, Entity Statements
@@ -450,7 +450,7 @@ Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where
 .. note:: 
     The Federation Fetch endpoint MAY also publish X.509 certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 certificates via a RESTful service.
 
-Below there is a non-normative example of an Entity Statement issued by an Accreditation Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
+Below there is a non-normative example of an Entity Statement issued by an Registration Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
 
 .. code-block:: text
 
