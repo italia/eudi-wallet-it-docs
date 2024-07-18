@@ -694,7 +694,7 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
       - :rfc:`9126` and :rfc:`7519`.
     * - **credential_hash**
       - Hash value of the Credential the Status Assertion is bound to.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+      - `OAUTH-STATUS-ASSERTION`_ draft 02.
     * - **credential_hash_alg**
       - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``S256``.
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
