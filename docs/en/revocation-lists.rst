@@ -194,7 +194,7 @@ The requests to the *Credential Issuer Revocation endpoint* MUST be HTTP with me
       - **Description**
       - **Reference**
     * - **revocation_requests**
-      - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT/CWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>`_ for more details.
+      - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>`_ for more details.
       - `OAUTH-STATUS-ASSERTION`_ draft 02.
 
 The Revocation Endpoint MUST be provided by the Credential Issuer within its Metadata. 
@@ -440,7 +440,7 @@ The requests to the *Credential status endpoint* of the Credential Issuers MUST 
       - **Description**
       - **Reference**
     * - **status_assertion_requests**
-      - It MUST be an array of strings, where each of them represent a Status Assertion Request object. Each element MUST contain a signed JWT/CWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>`_ for more details. 
+      - It MUST be an array of strings, where each of them represent a Status Assertion Request object. Each element MUST contain a signed JWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>`_ for more details. 
       - `OAUTH-STATUS-ASSERTION`_ draft 02.
 
 The *typ* value in the *credential_pop* JWT MUST be set to **status-assertion+jwt**
@@ -564,7 +564,7 @@ Law-Enforcement Authorities or Third Parties authorized by national law, MAY req
 Credential Proof of Possession
 ------------------------------
 
-The Credential Proof of Possession (**credential_pop**) MUST be a JWT or a CWT that MUST contain the parameters (Header and Payload) in the following table.
+The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST contain the parameters (Header and Payload) in the following table.
 
 .. list-table:: 
     :widths: 20 60 20
@@ -574,7 +574,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT or a CWT t
       - **Description**
       - **Reference**
     * - **typ**
-      - In case of revocation request it MUST be set to ``revocation-request+{jwt,cwt}``. In case of Status Assertion request it MUST be set to ``status-assertion-request+{jwt,cwt}``, according to `OAUTH-STATUS-ASSERTION`_ draft 02.
+      - In case of revocation request it MUST be set to ``revocation-request+jwt``. In case of Status Assertion request it MUST be set to ``status-assertion-request+jwt``, according to `OAUTH-STATUS-ASSERTION`_ draft 02.
       - :rfc:`7516#section-4.1.1`.
     * - **alg**
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
@@ -594,13 +594,13 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT or a CWT t
       - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Assertion.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
-      - It MUST be set to the Credential Issuer endpoint at which the JWT/CWT is used.
+      - It MUST be set to the Credential Issuer endpoint at which the JWT is used.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT/CWT. It MUST be greater than the value set for `iat`.
+      - UNIX Timestamp with the expiry time of the JWT. It MUST be greater than the value set for `iat`.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - UNIX Timestamp with the time of JWT/CWT issuance.
+      - UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **jti**
       - Unique identifier for the PoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
@@ -615,7 +615,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT or a CWT t
 Revocation Assertion
 --------------------
 
-When the JWT or CWT format are used, the Revocation Assertion MUST contain the following claims. 
+When the JWT format is used, the Revocation Assertion MUST contain the following claims. 
 
 .. _table_revocation_assertion_header: 
 .. list-table:: 
@@ -629,7 +629,7 @@ When the JWT or CWT format are used, the Revocation Assertion MUST contain the f
     - Algorithm used to verify the cryptographic signature of the Revocation Assertion. Revocation Assertion that do not need to be signed SHOULD set the `alg` value to `none` in according with `OAUTH-STATUS-ASSERTION`_ draft 02.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
-    - It MUST be set to `revocation-assertion-response+jwt` when JWT format is used. It MUST be set to `revocation-assertion-response+cwt` when CWT format is used.
+    - It MUST be set to `revocation-assertion-response+jwt` when JWT format is used.
     - [:rfc:`7515`], [:rfc:`7517`], `OAUTH-STATUS-ASSERTION`_ draft 02.
 
 
@@ -655,7 +655,7 @@ When the JWT or CWT format are used, the Revocation Assertion MUST contain the f
 Status Assertion
 ------------------
 
-When the JWT or CWT format are used, the Status Assertion MUST contain the following claims. 
+When the JWT format is used, the Status Assertion MUST contain the following claims. 
 
 .. _table_non_revocation_assertion_header: 
 .. list-table:: 
@@ -669,7 +669,7 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
     - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
-    - It MUST be set to `status-assertion-request+jwt` when JWT format is used. It MUST be set to `status-assertion-request+cwt` when CWT format is used.
+    - It MUST be set to `status-assertion-request+jwt` when JWT format is used.
     - [:rfc:`7515`], [:rfc:`7517`], `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_..
   * - **kid**
     -  Unique identifier of the Credential Issuer ``jwk`` as base64url-encoded JWK Thumbprint value.
@@ -687,10 +687,10 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
       - It MUST be set to the identifier of the Credential Issuer.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - UNIX Timestamp with the time of JWT/CWT issuance.
+      - UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT/CWT. It MUST be greater than the value set for `iat`.
+      - UNIX Timestamp with the expiry time of the JWT. It MUST be greater than the value set for `iat`.
       - :rfc:`9126` and :rfc:`7519`.
     * - **credential_hash**
       - Hash value of the Credential the Status Assertion is bound to.
@@ -703,14 +703,14 @@ When the JWT or CWT format are used, the Status Assertion MUST contain the follo
       - `OAUTH-STATUS-ASSERTION`_ draft 02.
       - `OAUTH-STATUS-ASSERTION`_ draft 02.
     * - **cnf**
-      - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT and `Cose_Key` for CWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
+      - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and `[RFC8747, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
 
 
 Error Assertion
 ------------------
 
-When the JWT or CWT format are used, the Revocation or Status Assertion Error MUST contain the following claims. 
+When the JWT format is used, the Revocation or Status Assertion Error MUST contain the following claims. 
 
 .. _table_non_revocation_assertion_error_header: 
 .. list-table:: 
@@ -724,7 +724,7 @@ When the JWT or CWT format are used, the Revocation or Status Assertion Error MU
     - Algorithm used to verify the cryptographic signature of the Assertion Error. Assertion Error that do not need to be signed SHOULD set the `alg` value to `none` in according with `OAUTH-STATUS-ASSERTION`_ draft 02.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
-    - It MUST be set to `status-assertion-response+jwt` or `revocation-assertion-response+jwt` when JWT format is used. It MUST be set to `status-assertion-response+cwt` or `revocation-assertion-response+cwt` when CWT format is used.
+    - It MUST be set to `status-assertion-response+jwt` or `revocation-assertion-response+jwt` when JWT format is used.
     - [:rfc:`7515`], [:rfc:`7517`], `OAUTH-STATUS-ASSERTION`_ draft 02.
 
 
