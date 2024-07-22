@@ -136,6 +136,9 @@ Payload
 | token_endpoint                              | Endpoint for obtaining the Wallet                                   |
 |                                             | Instance Attestation.                                               |
 +---------------------------------------------+---------------------------------------------------------------------+
+| nonce_endpoint                              | HTTPs URL indicating the endpoint                                   |
+|                                             | where the client can request the nonce.                             |
++---------------------------------------------+---------------------------------------------------------------------+
 | aal_values_supported                        | List of supported values for the                                    |
 |                                             | certifiable security context. These                                 |
 |                                             | values specify the security level                                   |
@@ -212,6 +215,7 @@ Below a non-normative example of the Entity Configuration.
         ]
       },
       "token_endpoint": "https://wallet-provider.example.org/token",
+      "nonce_endpoint": "https://wallet-provider.example.org/nonce",
       "aal_values_supported": [
         "https://wallet-provider.example.org/LoA/basic",
         "https://wallet-provider.example.org/LoA/medium",
