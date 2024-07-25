@@ -610,7 +610,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
     * - **credential_hash_alg**
       - It MUST contain the Algorithm used for hashing the Digital Credential. The value SHOULD be set to `S256`.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+      - `OAUTH-STATUS-ASSERTION`_.
 
 Revocation Assertion
 --------------------
