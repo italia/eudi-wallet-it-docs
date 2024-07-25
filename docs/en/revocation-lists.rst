@@ -630,7 +630,7 @@ When the JWT format is used, the Revocation Assertion MUST contain the following
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
     - It MUST be set to `revocation-assertion-response+jwt` when JWT format is used.
-    - [:rfc:`7515`], [:rfc:`7517`], `OAUTH-STATUS-ASSERTION`_ draft 02.
+    - [:rfc:`7515`], [:rfc:`7517`], `OAUTH-STATUS-ASSERTION`_.
 
 
 .. _table_revocation_assertion_claim:
