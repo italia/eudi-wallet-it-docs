@@ -17,7 +17,7 @@ The relevant entities and interfaces involved in the issuance flow are:
         - National eID Relying Party: The component to authenticate the User with the national Digital Identity Providers, based on OpenID Connect Core 1.0 or SAML2.
         - National Identity Provider: It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (eg: the Italian SPID and CIE id schemes notified eIDAS with *LoA* **High**, see `SPID/CIE OpenID Connect Specifications <https://italia.github.io/spid-cie-oidc-docs/en/>`_).
 
-    - *(Q)EAA Provider*: It represents the Issuer of (Q)EAAs. It is composed of:
+    - *(Q)EAA Provider*: It represents the Issuer of (Q)EAAs. It is composed by:
 
       - OpenID4VCI Component: based on the "OpenID for Verifiable Credential Issuance" specification to release (Q)EAAs.
       - Relying Party: Component to authenticate the User with the PID. The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [`OpenID4VP`_]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.
@@ -105,7 +105,7 @@ In this section a *Wallet Initiated Flow* is outlined, where the User receives t
   * provides to the PID/(Q)EAA Provider PAR endpoint the parameters previously listed above, using the ``request`` parameter (hereafter Request Object) according to :rfc:`9126` Section 3 to prevent Request URI swapping attack.
   * MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`.
   * signs this request using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation ``cnf`` claim.
-  * MUST create the value of the ``OAuth-Client-Attestation`` and  ``OAuth-Client-Attestation-PoP`` parameter according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint. The first JWT is the Wallet Attestation JWT and the second JWT is the Wallet Attestation Proof of Possession.
+  * MUST the ``OAuth-Client-Attestation`` and  ``OAuth-Client-Attestation-PoP`` parameters according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint. The first JWT is the Wallet Attestation JWT and the second JWT is the Wallet Attestation Proof of Possession.
   * specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter.
 
 The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:
@@ -236,10 +236,6 @@ The ``OAuth-Client-Attestation`` is signed using the private key that is created
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9._v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9._v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
 
-        oiUE9TVCIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwia
-        WF0IjoxNTYyMjYyNjE2fQ.2-GxA6T8lP4vfrg8v-FdWP0A0zdrj8igiMLvqRMUvwnQg
-        4PtFLbdLXiOSsX0x7NVY-FNyJK70nfbV37xRZT3Lg
-
     grant_type=authorization_code
     &code=SplxlOBeZQQYbYS6WxSbIA
     &code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
@@ -346,7 +342,9 @@ Pushed Authorization Request Endpoint
 Pushed Authorization Request (PAR) Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The requests to the PID/(Q)EAA authorization endpoint MUST use the HTTP POST method with the parameters in the message body encoded in ``application/x-www-form-urlencoded`` format. The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_] and the following parameters MUST be provided:
+The request to the PID/(Q)EAA authorization endpoint MUST use HTTP Headers parameters and HTTP POST parameters.
+
+The HTTP POST method MUST use the parameters in the message body encoded in ``application/x-www-form-urlencoded`` format. 
 
 .. _table_http_request_claim:
 .. list-table:: PAR http request parameters
@@ -362,6 +360,16 @@ The requests to the PID/(Q)EAA authorization endpoint MUST use the HTTP POST met
     * - **request**
       - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Attestation MUST be used for signing the Request Object.
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
+
+The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], therefore
+the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters:
+
+
+.. _table_http_request_headers_claim:
+.. list-table:: http request header parameters
+    :widths: 20 60 20
+    :header-rows: 1
+
     * - **OAuth-Client-Attestation**
       - It MUST be set to a value containing the Wallet Attestation JWT.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
@@ -390,7 +398,7 @@ The JWT *Request Object* has the following JOSE header parameters:
   The parameter **typ**, if omitted, assumes the implicit value **JWT**.
 
 
-The JWT payload is given by the following parameters:
+The ``request`` JWT payload contained in the HTTP POST message is given with the following parameters:
 
 .. _table_jwt_request:
 .. list-table::
@@ -442,17 +450,13 @@ The JWT payload is given by the following parameters:
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
       - See `OpenID.Core#AuthRequest <https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest>`_.
-    * - **OAuth-Client-Attestation**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-    * - **OAuth-Client-Attestation-PoP**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **jti**
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
 
-The JOSE header of the Wallet Attestation proof of possession MUST contain:
+
+
+The JOSE header of the Wallet Attestation proof of possession, contained in the HTTP Request headers, MUST contain:
 
 .. _table_jwt_pop:
 .. list-table::
@@ -472,7 +476,7 @@ The JOSE header of the Wallet Attestation proof of possession MUST contain:
       -  It MUST be set to ``jwt-client-attestation-pop``
       -  Currently under discussion in [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
-The body of the Wallet Attestation proof of possession JWT MUST contain:
+The body of the Wallet Attestation proof of possession JWT, contained in the HTTP Request headers, MUST contain:
 
 .. list-table::
     :widths: 20 60 20
@@ -611,7 +615,12 @@ Token Request
 
 The request to the PID/(Q)EAA Token endpoint MUST be an HTTP request with method POST, with the body message encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with ``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP`` as header parameters according to `OAUTH-ATTESTATION-CLIENT-AUTH`_.
 
-The Token endpoint MUST accept and validate the DPoP proof sent in the DPoP HTTP header. The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (:rfc:`9449`). This mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter.
+The Token endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], therefore
+the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters **OAuth-Client-Attestation** as **OAuth-Client-Attestation-PoP**
+as defined in the "Pushed Authorization Request (PAR) Endpoint".
+
+The Token endpoint issues DPoP tokens, therefore it is REQUIRED that the request incluides in its HTTP header the DPoP proof parameter.
+The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (:rfc:`9449`). This mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter.
 
 All the parameters listed below are REQUIRED:
 
@@ -634,12 +643,6 @@ All the parameters listed below are REQUIRED:
     * - **code_verifier**
       - Verification code of the **code_challenge**.
       - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_.
-    * - **OAuth-Client-Attestation**
-      - It MUST be set to a value containing the Wallet Attestation JWT.
-      - `OAUTH-ATTESTATION-CLIENT-AUTH`_ draft 03.
-    * - **OAuth-Client-Attestation-PoP**
-      - It MUST be set to a value containing the Wallet Attestation JWT Proof of Possession JWT. The Wallet Attestation Proof of Possession MUST contain the claims as defined in :ref:`Table of the JWT Wallet Attestation PoP <table_jwt_pop>`, Section :ref:`Pushed Authorization Request (PAR) Response<sec_par>`.
-      - `OAUTH-ATTESTATION-CLIENT-AUTH`_ draft 03.
 
 A **DPoP Proof JWT** is included in the HTTP request using the ``DPoP`` header parameter containing a DPoP JWS.
 
@@ -663,7 +666,7 @@ The JOSE header of a **DPoP JWT** MUST contain at least the following parameters
       - [:rfc:`7517`] and [:rfc:`7515`].
 
 
-The payload of a **DPoP JWT Proof** MUST contain at least the following claims:
+The payload of a **DPoP JWT Proof** MUST contain the following claims:
 
 .. list-table::
     :widths: 20 60 20

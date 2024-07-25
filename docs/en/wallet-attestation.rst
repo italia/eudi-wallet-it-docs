@@ -224,7 +224,7 @@ This section describes the Wallet Attestation format and how the Wallet Provider
 **Step 7**: The Wallet Instance performs the following actions:
 
   * Creates a ``client_data``, a JSON structure that includes the challenge and the thumbprint of ephemeral public ``jwk``.
-  * Computes a ``client_data_hash`` by applying the SHA256 algorithm to the ``client_data``.
+  * Computes a ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
 
 Below a non-normative example of the ``client_data``.
 
@@ -270,16 +270,15 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
         "crv": "P-256",
         "kty": "EC",
         "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
-        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg",
-        "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
+        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
       }
     },
     "vp_formats_supported": {
         "jwt_vc_json": {
-          "alg_values_supported": ["ES256K", "ES384"],
+          "alg_values_supported": ["ES256K", "ES384"]
         },
         "jwt_vp_json": {
-          "alg_values_supported": ["ES256K", "EdDSA"],
+          "alg_values_supported": ["ES256K", "EdDSA"]
         },
       },
     },
@@ -293,20 +292,14 @@ using the method `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.
 The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters
 encoded in ``application/x-www-form-urlencoded`` format:
 
-* ``OAuth-Client-Attestation`` A JWT that conforms to the structure and syntax defined in the `OAuth 2.0 Attestation-Based Client Authentication` speficification;
-* ``OAuth-Client-Attestation-PoP`` A JWT that conforms to the structure and syntax defined in the `OAuth 2.0 Attestation-Based Client Authentication` speficification;
 * ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
 * ``assertion`` containing the signed JWT of the Wallet Attestation Request.
-
-* ``OAuth-Client-Attestation and OAuth-Client-Attestation-PoP`` are both defined in `OAuth Attestation Based Client Authentication <https://github.com/oauth-wg/draft-ietf-oauth-attestation-based-client-auth/blob/main/draft-ietf-oauth-attestation-based-client-auth.md>`_.
 
 .. code-block:: http
 
     POST /token HTTP/1.1
     Host: wallet-provider.example.org
     Content-Type: application/x-www-form-urlencoded
-    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9._v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
-    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9.wwwwwwwwith thddsdsd_v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
 
     grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
     &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...
@@ -350,8 +343,7 @@ Below an non-normative example of the Wallet Attestation without encoding and si
         "crv": "P-256",
         "kty": "EC",
         "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
-        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg",
-        "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
+        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
       }
     },
     "authorization_endpoint": "eudiw:",
