@@ -746,4 +746,4 @@ When the JWT format is used, the Revocation or Status Assertion Error MUST conta
       - `[RFC6749, Section 5.2] <https://tools.ietf.org/html/rfc6749#section-5.2>`_, `OAUTH-STATUS-ASSERTION`_
     * - **error_description**
       - Text that clarifies the nature of the error, such as attribute changes, revocation reasons, in relation to the `error` value.
-      - `OAUTH-STATUS-ASSERTION`_ draft 02.
+      - `OAUTH-STATUS-ASSERTION`_.
