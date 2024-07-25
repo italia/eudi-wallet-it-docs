@@ -626,7 +626,7 @@ When the JWT format is used, the Revocation Assertion MUST contain the following
     - **Description**
     - **Reference**
   * - **alg**
-    - Algorithm used to verify the cryptographic signature of the Revocation Assertion. Revocation Assertion that do not need to be signed SHOULD set the `alg` value to `none` in according with `OAUTH-STATUS-ASSERTION`_ draft 02.
+    - Algorithm used to verify the cryptographic signature of the Revocation Assertion. Revocation Assertion that do not need to be signed SHOULD set the `alg` value to `none` in according with `OAUTH-STATUS-ASSERTION`_.
     - `[OIDC4VCI. Draft 13] <https://openid.bitbucket.io/connect/openid-4-verifiable-credential-issuance-1_0.html>`_, [:rfc:`7515`], [:rfc:`7517`].
   * -  **typ** 
     - It MUST be set to `revocation-assertion-response+jwt` when JWT format is used.
