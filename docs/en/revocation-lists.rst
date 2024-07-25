@@ -700,7 +700,7 @@ When the JWT format is used, the Status Assertion MUST contain the following cla
       - `OAUTH-STATUS-ASSERTION`_.
     * - **credential_status_validity**
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It is REQUIRED and it MUST be set with the value "false" or "true".
-      - `OAUTH-STATUS-ASSERTION`_ draft 02.
+      - `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and `[RFC8747, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
