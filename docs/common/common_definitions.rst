@@ -58,5 +58,5 @@
 .. _OAUTH2: https://www.rfc-editor.org/rfc/rfc6749
 .. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html
 .. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html
--- _SELECTIVE-DISCLOSURE-JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10
+.. _SELECTIVE-DISCLOSURE-JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10
 
