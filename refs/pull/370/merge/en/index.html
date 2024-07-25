@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Italian EUDI Wallet implementation profile version: latest documentation | The Italian EUDI Wallet implementation profile</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css">
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css">
+
+  <!-- Relations -->
+  <link rel="index" title="Index" href="#">
+  <link rel="top" title="The Italian EUDI Wallet implementation profile version: latest documentation" href="#">
+  <link rel="next" title="Self Sovereign Identity" href="ssi-introduction.html">
+
+  
+  
+  <!-- No Index - keep if out of docs.italia.it -->
+  
+  <meta name="robots" content="noindex, nofollow">
+  
+</head>
+
+<body class="docs-italia">
+  <script>
+	if (document.location.href.indexOf('?payload=') >= 0)
+		document.body.className += ' loading';
+</script>
+  <header class="container-fluid container-fluid--desktop px-0 header">
+  <nav class="navbar navbar-expand-lg primary-bg-a7 navbar-dark slim-header justify-content-start p-0 pl-lg-4 pr-lg-5">
+    <span class="navbar-brand ml-4"><a class="text-white" href="https://www.agid.gov.it">AGID</a> + <a class="text-white" href="https://teamdigitale.governo.it">Team Digitale</a></span>
+    <button class="navbar-toggler collapsed text-white px-2 py-0 mr-3"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+    <span class="navbar__icon it-expand my-auto ml-1"></span></button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="http://pianotriennale-ict.italia.it">Piano Triennale</a>
+        </li>
+        <li role="separator" class="nav-item divider ml-lg-0 ml-3"></li>
+        <li class="nav-item nav-text px-lg-2 pl-3 d-lg-none ">
+          <span class="nav-text text-uppercase text-white">Communities</span>
+        </li>
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="https://developers.italia.it">Developers</a>
+        </li>
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="https://designers.italia.it">Designers</a>
+        </li>
+        <li role="separator" class="nav-item divider ml-lg-0 ml-3"></li>
+        <li class="nav-item nav-text px-lg-2 pl-3 d-lg-none ">
+          <span class="nav-text text-uppercase text-white">Tools</span>
+        </li>
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="https://forum.italia.it">Forum</a>
+        </li>
+        <li class="nav-item px-lg-2 pl-3 active">
+          <a class="nav-link" href="https://docs.italia.it">Docs</a>
+        </li>
+        <li class="nav-item px-lg-2 pl-3">
+          <a class="nav-link" href="https://github.com/italia">GitHub</a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="ml-auto">
+      
+    </div>
+  </nav>
+
+  <div class="row p-4 px-lg-5 m-0 bg-primary--dark align-items-center">
+    <div class="row w-100">
+      <div class="logo--header">
+        <a href="/" tabindex="-1" aria-hidden="true" class="d-block">
+          <svg class="svg--header align-bottom" xmlns="http://www.w3.org/2000/svg" height="78.187" width="97.387" viewBox="0 0 91.300002 73.300002"><g fill="#fff"><path d="M31.799 71.9V15.7h15.1V72h-15.1zM91.099 28.5h-13.8v23.1c0 2.3.1 3.8.2 4.8.1.9.5 1.7 1.2 2.4s1.8 1 3.3 1l8.6-.2.7 12c-5 1.1-8.9 1.7-11.5 1.7-6.8 0-11.4-1.5-13.8-4.6-2.5-3-3.7-8.6-3.7-16.8V0h15.1v15.6h13.8v12.9zM9.099 32.8c-2.6 0-4.8-.9-6.5-2.7s-2.6-4-2.6-6.6.9-4.8 2.5-6.6c1.7-1.8 3.9-2.6 6.5-2.6s4.8.9 6.5 2.7 2.5 4 2.5 6.7-.8 4.8-2.5 6.6c-1.6 1.6-3.7 2.5-6.4 2.5z"/></g></svg>
+        </a>
+      </div>
+      <div class="col pl-3 pl-sm-4">
+        <h1 class="h1--header mb-1">
+          <a href="/" class="site-title text-white">
+            Docs Italia
+            
+              <span class="badge badge-pill bg-primary--mid-dark align-middle">beta</span>
+            
+          </a>
+        </h1>
+        <h2 class="text-white mb-0 h2--header">Public documents, made digital.</h2>
+      </div>
+    </div>
+    <div class="row mt-4 w-100 docs__document-info">
+      <div class="col-md-6">
+        <i class="docs-icon-document docs__document-info__icon"></i>
+        <a href="#" class="text-white font-weight-normal">
+          The Italian EUDI Wallet implementation profile version: latest documentation
+        </a>
+      </div>
+      <div class="docs__document-info__ownership col-md-5 offset-md-1 mt-3 mt-md-0">
+        
+        <div class="w-100">
+          <i class="docs-icon-project docs__document-info__icon"></i>
+          <span class="docs__document-info__label ml-1">Project:</span>
+          <a href="/organizzazione-demo/progetto-demo" class="text-white font-weight-normal">
+            <u>Progetto demo</u>
+          </a>
+        </div>
+        
+        
+        <div class="w-100 mt-1">
+          <i class="docs-icon-publisher docs__document-info__icon"></i>
+          <span class="docs__document-info__label ml-1">Administration:</span>
+          <a href="/organizzazione-demo/" class="text-white font-weight-normal">
+            <u>Organizzazione demo</u>
+          </a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</header>
+<div class="doc-header container-fluid container-fluid--desktop bg-white">
+  <div class="row py-3 px-4 px-lg-5 align-items-center flex-nowrap justify-content-between">
+    <div class="col-auto d-md-none d-flex align-items-center order-1">
+      <a href="#" class="btn p-2" role="button" id="searchbox-toggle" data-toggle="collapse" data-target="#searchbox" aria-controls="searchbox" aria-expanded="false" aria-label="Toggle searchbox">
+        <span class="docs-icon-search d-inline-block">
+          <span class="sr-only">Search in Document</span>
+        </span>
+      </a>
+    </div>
+    <div class="col-3 d-none d-md-flex pl-0">
+      
+  <div class="w-100" role="search">
+    <form class="mr-md-3" id="rtd-search-form" action="search.html" method="get">
+      <div class="input-group" role="search">
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+        <input type="text" class="p-2 text-grey form-control" style="" required="" id="cerca" name="q" placeholder="Search in Document...">
+				<span class="input-group-append">
+					<button type="submit" class="btn btn-default text-primary px-3 py-2" role="search">
+            <span class="docs-icon-search d-block my-auto">
+							<span class="sr-only">Search in Document</span>
+						</span>
+					</button>
+				</span>
+			</div>
+    </form>
+  </div>
+    </div>
+    <div class="col-auto d-flex align-items-center justify-content-center flex-md-grow-1 order-0 order-md-1 pl-0">
+      
+      <a href="#" role="button" class="btn p-2" data-toggle="modal" data-target="#document-info">
+        <span class="docs-icon-info"></span>
+        <span class="d-none d-md-inline align-middle">About this document</span>
+      </a>
+      
+    </div>
+    <div class="col-4 col-sm-auto d-flex flex-md-grow-1 align-items-center justify-content-center order-1">
+      <div id="rst-menu" class="px-2">
+        <div class="dropdown" id="version-list">
+            <button class="btn btn-primary dropdown-toggle badge badge-pill bg-primary text-nowrap px-3 py-2" type="button" id="dropdownVersionButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="current-version">bozza</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownVersionButton">
+              <div class="version-list-wrapper"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto d-none d-md-flex flex-grow-1 align-items-center order-1">
+      <div class="document-actions d-flex flex-column flex-md-row justify-content-around w-100 p-2 p-md-0 text-blue">
+  <div class="dropdown p-3 px-md-2 py-md-0 d-flex flex-wrap">
+    <a class="btn dropdown-toggle p-2 flex-grow-1 text-left" href="#" id="downloads-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="docs-icon-download align-middle"></span>
+      <span class="align-middle">Download</span>
+    </a>
+    <div class="dropdown-menu w-100" aria-labelledby="downloads-dropdown" aria-disabled="false">
+      <div class="link-list-wrapper">
+        <ul class="link-list">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="p-3 px-md-2 py-md-0">
+    <a href="#" role="button" class="btn p-2 disabled" aria-disabled="true">
+        <span class="docs-icon-github"></span>
+        <span class="align-middle">Source</span>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="col-auto pr-0 d-md-none d-flex align-items-center justify-content-end order-1">
+      <a href="#" role="button" class="btn py-2 px-0" data-toggle="modal" data-target="#document-actions">
+        <span class="docs-icon-more"></span>
+        <span class="sr-only">Actions</span>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="progress-container">
+      <div class="progress-bar" id="scrollprogressBar"></div>
+    </div>
+  </div>
+</div>
+
+	<!--
+  Forum Italia comments templates
+-->
+
+<script id="forum-italia-comments" type="text/template">
+  <div class="block-comments" id="accordion-comments-{{ topicId }}" data-topic="{{ topicId }}">
+    <!-- Top header -->
+    <div class="block-comments__header d-flex border-top border-bottom border-width-2 pt-3 pb-3 align-items-center justify-content-between">
+      <h6 class="col-auto text-uppercase mb-0">{{ commentsCount }} Commenti</h6>
+      <button class="col-auto block-comments__toggle-btn rounded-circle border border-medium-blue border-width-2 collapsed" data-toggle="collapse" data-target="#comments-{{ topicId }}" aria-expanded="false">
+        <span class="docs-icon-plus"></span>
+        <span class="docs-icon-minus"></span>
+      </button>
+    </div>
+  </div>
+  <div class="block-comments__body collapse" data-parent="#accordion-comments-{{ topicId }}" id="comments-{{ topicId }}">
+    <!-- Input row -->
+    <div class="d-flex align-items-center mb-4 block-comments__input">
+      <div class="box-comment {{ canPost }}" data-topic="{{ topicId }}"></div>
+    </div>
+    <div class="row">
+      <div class="block-comments__container col">
+        <div class="row mt-4">
+          <ul class="block-comments__list col items mb-0" id="accordion-comment-item" data-topic="{{ topicId }}"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="block-comments__header d-flex border-bottom border-width-2 pt-3 pb-3 mb-4 align-items-center justify-content-end">
+      <button class="col-auto block-comments__toggle-btn rounded-circle border border-medium-blue border-width-2 collapsed" data-toggle="collapse" data-target="#comments-{{ topicId }}" aria-expanded="false">
+        <span class="docs-icon-plus"></span>
+        <span class="docs-icon-minus"></span>
+      </button>
+    </div>
+  </div>
+</script>
+
+<script id="forum-italia__comment" type="text/template">
+  <li id="comment-{{ post.id }}" class="row mb-4 block-comments__item {{ hidden }} {{ isNew }}"
+      data-topic="{{ post.topic_id }}" data-comment="{{ post.id }}">
+    <div id="reply-to-{{ post.id }}" class="block-comments__reply-anchor"></div>
+    <figure class="col-auto mb-0">
+      <img class="block-comments__img rounded-circle" src="{{ avatarUrl }}">
+    </figure>
+    <div class="col block-comments__content">
+      <div class="row align-items-center justify-content-between" id="comment-heading-1">
+        <div class="col-auto">
+          <span class="block-comments__name text-capitalize mb-0">{{ displayName }}</span>
+        </div>
+        <div class="col-auto">
+          <p class="d-inline-block mr-2 block-comments__date mb-0">{{ date }}</p>
+          <button class="block-comments__item-btn" data-toggle="collapse"
+                  data-target="#collapse-{{ post.id }}">
+            <i class="it-collapse"></i>
+            <i class="it-expand"></i>
+          </button>
+        </div>
+      </div>
+      <p class="text-uppercase block-comments__role">{{ publicUserField }}</p>
+      <div class="my-3">{{ replyLink }}</div>
+      <div id="collapse-{{ post.id }}" class="block-comments__paragraph pl-3 border-left collapse show"
+           aria-labelledby="comment-heading-1">
+        {{ post.cooked }}
+      </div>
+      <div class="block-comments__actions mb-2 mt-3">
+        {{ postActions }}
+      </div>
+    </div>
+  </li>
+</script>
+
+<script id="forum-italia__like-button" type="text/template">
+  <small>
+      <button id="{{ buttonAction }}-like-{{ post.id }}" type="button" class="btn btn-primary btn-sm mr-2 px-2 py-1">
+        {{ likeCount }}
+        <i class="it-favorite ml-1 mr-0"></i>
+      </button>
+      {{ likeDone }}
+    </small>
+</script>
+
+<script id="forum-italia__like-info" type="text/template">
+  <small>
+      <span id="like-{{ post.id }}" class="border rounded btn-sm mr-2 px-2 py-1">
+        {{ likeCount }}
+        <i class="it-favorite ml-1 mr-0"></i>
+      </span>
+      {{ likeDone }}
+    </small>
+</script>
+
+<script id="forum-italia__reply-link" type="text/template">
+  <div>
+    <small>In risposta al 
+      <a class="reply-to-post" href="#reply-to-{{ replyDest.id }}">
+        commento di {{ replyDest.name }}
+      </a>
+    </small>
+  </div>
+</script>
+
+<script id="forum__login" type="text/template">
+  <div class="box-comment__user-image box-comment__user-image--anon">
+    <i class="docs-icon-user"></i>
+  </div>
+  <div class="box-comment__login">
+    <div><button class="login-button btn-link p-0 border-0 align-baseline">Accedi al Forum</button> per commentare</div>
+  </div>
+</script>
+
+<script id="forum__comment" type="text/template">
+  <div class="form group">
+    <div class="box-comment__errors-box"></div>
+    <!-- Write -->
+    <div class="d-flex align-items-center mt-4 mb-4 block-comments__input box-comment__write">
+      <figure class="col-auto mb-0">
+        <img class="block-comments__img box-comment__figure rounded-circle" src="">
+          <figcaption>
+            <a href="#logout" class="block-comments__logout-link block-comments__logout-link--visible" data-toggle="modal" data-target="#logout-modal" title="Logout" alt="Logout">Logout</a>
+          </figcaption>
+      </figure>
+      <textarea class="form-control box-comment__body col ml-2 p-2" id="comments-input" placeholder="Scrivi qui un commento. Per formattare il testo puoi usare Markdown. Clicca sul bottone 'suggerimenti' per vedere alcuni esempi." rows="4"></textarea>
+    </div>
+    <!-- Buttons -->
+    <div class="box-comment__buttons">
+      <button type="button" class="btn btn-primary btn-sm box-comment__submit mr-2" disabled="true"><div>invia</div></button>
+      <button type="button" class="btn btn-sm btn-secondary new-comment__suggestions" data-container="body" data-toggle="popover" data-content="html">suggerimenti</button><span class="loading no-bg">&nbsp;</span>
+    </div>
+    <div class="box-comment__required">
+      <span>Scrivi almeno altri <span class="required-chars">20</span> caratteri</span>
+    </div>
+  </div>
+</script>
+
+<script id="forum-italia__missing_permission" type="text/template">
+	<div class="pl-2 block-comments__input missing_permission error error--{{ errorCode }} row">
+		<figure class="col-auto mb-0 mr-2">
+			<img class="block-comments__img new-comment__figure rounded-circle" src="">
+			<figcaption>
+				<a href="#logout" class="block-comments__logout-link block-comments__logout-link--visible" data-toggle="modal" data-target="#logout-modal" title="Logout" alt="Logout">Logout</a>
+			</figcaption>
+		</figure>
+
+		<div class="missing_permission__text col pt-2">{{ errorText }}</div>
+	</div>
+</script>
+
+<script id="forum__logout--modal" type="text/template">
+  <div class="modal logout-modal" id="logout-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Logout</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Dopo il logout non sarà possibile scrivere nuovi commenti. Sicuro di voler procedere?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="logout-modal__submit">Conferma</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="logout-modal__cancel">Annulla</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id="forum-italia__markup__tooltip" type="text/template">
+  <div class="tooltip tooltip--active doc-tooltip box-comment__suggestions__tooltip" role="tooltip">
+    <div class="tooltip__wrap">
+      Markdown per la formattazione del testo:
+      <ul class="tooltip__content">
+        <li><b>Grassetto:</b> __testo__ (o **testo**)</li>
+        <li><i>Corsivo</i>: _testo_</li>
+        <li>Link: [Testo](http://example.com)</li>
+        <li>Citazione: &gt; Testo citazione</li>
+      </ul>
+    </div>
+  </div>
+</script>
+
+<script id="forum-italia__silenced" type="text/template">
+  <div class="error error__silenced">
+    Il tuo account è stato temporaneamente sospeso, scopri di più leggendo
+    <a href="{{ notificationsUrl }}" target="_blank">le tue notifiche</a> su Forum Italia.
+    <br>
+  </div>
+</script>
+
+<script id="forum-italia__closedTopic" type="text/template">
+  <div class="error error__closed">
+    Questa discussione è in sola lettura.
+    <br>
+  </div>
+</script>
+
+<script id="section_navigation__comments" type="text/template">
+  <li class="chapter-nav__item">
+      <span class="it-comment mr-2 align-middle"></span>
+      <a href="#forum-italia-comments-{{ topicId }}" class="chapter-link chapter-link--expand">
+          {{ postsCount }} commenti
+      </a>
+  </li>
+</script>
+
+
+<!--
+  markup_modifier templates
+-->
+
+<script id="markup_modifier__chapter-header" type="text/template"> <div class="chapter-header clearfix"><div class="title-wrap"> </script>
+
+<script id="markup_modifier__icon" type="text/template">
+	<span class="docs-icon-{{ i }}"></span>
+</script>
+
+<script id="markup_modifier__note-action" type="text/template">
+	<div class='note-action'>
+		<button type='button' class='note-close-btn'>×</button>
+		<button type='button' class='note-back-btn'><i class='it-arrow-up'></i> {{ text }} </button>
+	</div>
+</script>
+
+<script id="markup_modifier__admonition" type="text/template">
+	<div class='admonition__toggle-wrap'>
+		<button type='button' class='admonition__toggle-btn'>
+			<span class='admonition__toggle-show-more'>
+				{{ more }} <span class='docs-icon-plus'></span>
+			</span>
+			<span class='admonition__toggle-show-less'>
+				{{ less }} <span class='docs-icon-minus'></span>
+			</span>
+		</button>
+	</div>
+</script>
+
+
+<!--
+  glossary_page templates
+-->
+
+<script id="glossary__btn" type="text/template">
+	<button class='glossary-page__btn collapsed border-top border-grey-light border-width-2 pt-3 pb-3' data-toggle='collapse' data-target='#glossary-{{ id }}' aria-expanded='true' aria-controls='glossary-{{ id }}'>
+		<span class='docs-icon-plus mr-3'> </span>
+		<span class='docs-icon-minus mr-3'> </span>
+		{{ text }}
+	</button>
+</script>
+
+<script id="glossary__copy-link" type="text/template">
+	<div class='glossary-page__copy-link-wrap mt-3'>
+		<i class='it-link mr-2 align-middle'></i>
+		<button type='button' class='glossary-page__copy-link'> {{ copyLink }} </button>
+	</div>
+</script>
+
+
+<!--
+  searchbox_collapse templates
+-->
+
+<script id="searchbox-collapse" type="text/template">
+	<div class="row p-2"><div class="col"></div></div>
+</script>
+
+
+<!--
+  section_navigation templates
+-->
+
+<script id="section_navigation__nav" type="text/template">
+    <div class="chapter-nav">
+        <div class="chapter-nav__wrap">
+            <ul class="chapter-nav__list chapter-nav__list--visible">
+                <li class="chapter-nav__item">
+                    <span class="it-more-items mr-2 align-middle"></span>
+                    <button type="button" data-toggle="modal"
+                        class="chapter-link chapter-link--expand">{{ seeActions }}</button>
+                </li>
+            </ul>
+            <div class="{{ modalClass }} chapter-nav__list--hidden" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="{{ modalContainerClass }}">
+                    <div class="{{ modalContentClass }} chapter-nav__list-wrap">
+                        <div class="chapter-nav__title"> {{ title }} </div>
+                        <ul class="chapter-nav__list">
+                            <li class="chapter-nav__item">
+                                <i class="it-link mr-2 align-middle"></i>
+                                <button type="button" class="chapter-link">{{ copyLink }}</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<!--
+  tooltip templates
+-->
+
+<script id="tooltip__main" type="text/template">
+	<div class='tooltip tooltip--active doc-tooltip' role='tooltip'>
+		<div class='tooltip__wrap'>
+			<button type='button' role='button' class='tooltip__close-btn' data-ref="{{ item.ref }}"></button>
+			<h2 class='tooltip__title'>{{ item.title }}</h2>
+			<p class='tooltip__content'>{{ item.body }}</p>
+		</div>
+	</div>
+</script>
+
+<script id="tooltip__glossary" type="text/template">
+	<div class='tooltip tooltip--active doc-tooltip' role='tooltip'>
+		<div class='tooltip__wrap'>
+			<button type='button' role='button' class='tooltip__close-btn' data-ref="{{ item.ref }}"></button>
+			<h2 class='tooltip__title'>{{ item.title }}</h2>
+			<p class='tooltip__content'>{{ trimmedSummary }}</p> {{ btnToGlossary }}
+		</div>
+	</div>
+</script>
+
+<script id="tooltip__note" type="text/template">
+	<div class='tooltip tooltip--active doc-tooltip doc-tooltip--note' role='tooltip'>
+		<div class='tooltip__wrap'>
+			<button type='button' role='button' class='tooltip__close-btn' data-ref="{{ item.ref }}"></button>
+			<h2 class='tooltip__title'>{{ item.title }}</h2>
+			<p class='tooltip__content'> {{ item.body }}</p>
+		</div>
+	</div>
+</script>
+
+
+  <div id="main" role="document">
+    <div class="container-fluid container-fluid--desktop main-container">
+      <div class="row">
+        <nav class="col--nav">
+          <section class="docs-menu">
+  <div id="desktop-menu" class="sidebar-nav">
+    <a class=""
+      aria-controls="desktop-menu" aria-label="exit navigation" title="exit navigation" href="#">
+      <span class="" aria-hidden="true"></span>
+    </a>
+
+    <button data-toggle="collapse" data-target="#content-index" aria-expanded="true" class="sidebar-btn p-3 sidebar-btn--desktop" type="button" aria-controls="content-index">
+      content index
+      <span class="it-collapse float-right"></span>
+      <span class="it-expand float-right"></span>
+    </button>
+    <div id="content-index" class="content-index--menu sidebar-list--wrapper sidebar-accordion-content collapse show">
+      <ul class="current">
+        <li class="toctree-l1 current">
+          <a href='#'>Summary</a>
+        </li>
+      </ul>
+      
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">Self Sovereign Identity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-infrastructure-functional-requirements">Trust Infrastructure Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-attestation">Wallet Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-request">Wallet Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#table-wallet-attestation-claim">Wallet Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#states">States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#transitions">Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#revocations">Revocations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id1">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims">PID Claims</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-Normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA non-normative examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#namespaces">nameSpaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mobile-security-object">Mobile Security Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-flow">Remote Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-with-http-post">Request URI with HTTP POST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#device-engagement">Device Engagement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-request">mDoc Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-response">mDoc Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#functional-requirements">Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-flows">Revocation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation-flows">Status Attestation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-request-by-wallet-instance">Status Attestation Request by Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-presentation-to-the-verifiers">Status Attestation Presentation to the Verifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-proof-of-possession">Credential Proof of Possession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation">Status Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    <button data-toggle="collapse" data-target="#table-index" aria-expanded="true" class="sidebar-btn p-3 sidebar-btn--desktop collapsed" type="button" aria-controls="table-index">
+      table index
+      <span class="it-collapse float-right"></span>
+      <span class="it-expand float-right"></span>
+    </button>
+    <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
+      <ul>
+<li><a class="reference internal" href="trust.html#id3">Tab. 1 - Functional Requirements</a></li>
+<li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 2 - Wallet Instance registration http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 3 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 4 - Credential http response parameters</a></li>
+</ul>
+
+    </div>
+    
+
+    
+  </div>
+</section>
+          <!-- Toggle -->
+<div class="navbar-toggler--wrap navbar-toggler--wrap--bottom p-3">
+  <div class="navbar-toggler navbar-toggler--open p-0 border-0 ml-auto">
+    <div class="navbar-toggler-bottom__chapter align-middle text-truncate">
+      <span class="it-list mr-2"></span>The Italian EUDI Wallet implementation profile
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-tabs">
+
+  <!-- Back button. -->
+  <div class="row">
+    <div class="col">
+      <button class="navbar-toggler navbar-toggler--back border-0 ml-auto" type="button" data-toggle="offcanvas">
+        <span class="it-arrow-left align-middle"></span>
+        <span class="navbar-toggler__chapter align-middle ml-2">
+          indices and glossary
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Tab -->
+  <ul class="row ml-3 mr-3 nav nav-tabs" role="tablist">
+    <li class="col text-center active">
+      <a id="content-index-mobile-tab" data-toggle="tab" href="#content-index-mobile" aria-controls="content-index-mobile" role="tab" aria-selected="true" class="sidebar-btn p-2 sidebar-btn--mobile active show">
+        contents
+      </a>
+    </li>
+    <li class="col text-center">
+      <a id="figures-index-mobile-tab" data-toggle="tab" href="#figures-index-mobile" aria-controls="figures-index-mobile" role="tab" aria-selected="false" class="col sidebar-btn p-2 sidebar-btn--mobile">
+        figures
+      </a>
+    </li>
+    <li class="col text-center">
+      <a id="table-index-mobile-tab" data-toggle="tab" href="#table-index-mobile" aria-controls="table-index-mobile" role="tab" aria-selected="false" class="col sidebar-btn p-2 sidebar-btn--mobile">
+        tables
+      </a>
+    </li>
+    <li class="col text-center">
+      <a id="glossary-index-mobile-tab" data-toggle="tab" href="#glossary-index-mobile" aria-controls="glossary-index-mobile" role="tab" aria-selected="false" class="col sidebar-btn p-2 sidebar-btn--mobile">
+        glossary
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+<!-- Off canvas -->
+<section class="docs-offcanvas-menu" id="sidebar-nav">
+  <div class="tab-content sidebar-nav">
+
+      <div id="content-index-mobile" class="content-index--menu tab-pane sidebar-list--wrapper fade show active" role="tabpanel" aria-labelledby="content-index-mobile-tab">
+        <ul class="current">
+          <li class="toctree-l1 current">
+            <a href='#'>Summary</a>
+          </li>
+        </ul>
+        
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">Self Sovereign Identity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-infrastructure-functional-requirements">Trust Infrastructure Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-attestation">Wallet Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-request">Wallet Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#table-wallet-attestation-claim">Wallet Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#states">States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#transitions">Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#revocations">Revocations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id1">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims">PID Claims</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-Normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA non-normative examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#namespaces">nameSpaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mobile-security-object">Mobile Security Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-flow">Remote Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-with-http-post">Request URI with HTTP POST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#device-engagement">Device Engagement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-request">mDoc Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-response">mDoc Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#functional-requirements">Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-flows">Revocation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation-flows">Status Attestation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-request-by-wallet-instance">Status Attestation Request by Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-presentation-to-the-verifiers">Status Attestation Presentation to the Verifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-proof-of-possession">Credential Proof of Possession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation">Status Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+</ul>
+
+        
+      </div>
+
+      <div id="figures-index-mobile" class="figures-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="figures-index-mobile-tab">
+        None
+      </div>
+
+      <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
+        <ul>
+<li><a class="reference internal" href="trust.html#id3">Tab. 1 - Functional Requirements</a></li>
+<li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 2 - Wallet Instance registration http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id43">Tab. 3 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id44">Tab. 4 - Credential http response parameters</a></li>
+</ul>
+
+      </div>
+
+      <div id="glossary-index-mobile" class="glossary-mobile--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="glossary-index-mobile-tab">
+        None
+      </div>
+
+  </div>
+</section>
+        </nav>
+        <div id="doc-content" class="col-content">
+          <!--<div class="doc-content__consultation">
+            <span class="it-icon-edit"></span>
+            in consultation
+          </div>-->
+          
+          
+  <section id="the-italian-eudi-wallet-implementation-profile">
+<h1>The Italian EUDI Wallet implementation profile<a class="headerlink" href="#the-italian-eudi-wallet-implementation-profile" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>The European Parliament <a class="reference external" href="https://www.europarl.europa.eu/doceo/document/A-9-2023-0038_EN.html#_section1">has adopted</a> the revision of the eIDAS Regulation concerning electronic identification and trust services, introducing a significant innovation: the <a class="reference external" href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-digital-identity_en">European Digital Identity Wallet</a>. This update marks a pivotal advancement in the EU's digital strategy, aiming to enhance the security, interoperability, and usability of digital identities across Member States. For further details, resources, and notes on this legislative development, please refer to the official EU Commission and Parliament websites.</p>
+<p>Italy has launched the National digital identity Wallet solution, known as IT Wallet, in direct response to the European community's directives. This initiative ensures full interoperability with the digital identity solutions provided by other European Member States, aligning completely with European regulations.</p>
+<p>The purpose of the following technical rules is to define the technical architecture and reference framework to be used as a guideline by all the parties involved in the development of the IT Wallet project.</p>
+<p>This documentation defines the national implementation profile of EUDI Wallet, containing the technical details about components of the Wallet ecosystem, as listed below:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Entities of the ecosystem according to <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p></li>
+<li><p>Infrastructure of trust attesting realiability and eligibility of the participants.</p></li>
+<li><p>PID and EAAs data schemes and attribute sets.</p></li>
+<li><p>PID/EAA in MDL CBOR format.</p></li>
+<li><p>PID/EAA in <a class="reference external" href="https://www.ietf.org/archive/id/draft-fett-oauth-selective-disclosure-jwt-02.html">SD-JWT</a> format.</p></li>
+<li><p>Wallet Solution general architecture.</p></li>
+<li><p>Wallet Attestation.</p></li>
+<li><p>Issuance of PID/EAA according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></li>
+<li><p>Presentation of PID/EAA according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></li>
+<li><p>Presentation of pseudonyms according to <a class="reference external" href="https://openid.net/specs/openid-connect-self-issued-v2-1_0.html">SIOPv2</a>.</p></li>
+<li><p>PID/EAA backup and restore mechanisms.</p></li>
+<li><p>PID/EAA revocation lists.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="index-of-content">
+<h2>Index of content<a class="headerlink" href="#index-of-content" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">Self Sovereign Identity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssi-introduction.html#introduction-to-ssi">Introduction to SSI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-infrastructure-functional-requirements">Trust Infrastructure Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-attestation">Relying Party Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-attestation">Wallet Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1"><cite>wallet_provider</cite> metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-request">Wallet Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#table-wallet-attestation-claim">Wallet Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#states">States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#transitions">Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#revocations">Revocations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#id1">SD-JWT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims">PID Claims</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-Normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA non-normative examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#namespaces">nameSpaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mobile-security-object">Mobile Security Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-flow">Remote Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-with-http-post">Request URI with HTTP POST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#device-engagement">Device Engagement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-request">mDoc Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-response">mDoc Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#functional-requirements">Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-flows">Revocation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation-flows">Status Attestation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-request-by-wallet-instance">Status Attestation Request by Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-attestation-presentation-to-the-verifiers">Status Attestation Presentation to the Verifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-proof-of-possession">Credential Proof of Possession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-attestation">Status Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          
+            <div class="footer-buttons footer-buttons--next" role="navigation" aria-label="footer navigation">
+                  <a href="ssi-introduction.html" class="" title="Self Sovereign Identity" accesskey="n" rel="next">Self Sovereign Identity</a>
+              </div>
+            
+          </div>
+
+        </div>
+      </div>
+  </div>
+  <footer class="footer container-fluid container-fluid--desktop">
+  <div class="px-3 pt-md-3 pb-md-2 mx-md-5 mb-4 mb-md-0">
+    <div class="row align-items-center d-flex">
+      <div class="col-xs-12 col-sm-6 col-lg-4 pt-4 pt-sm-5">
+        <a href="http://teamdigitale.governo.it/" target="_blank" class="d-inline-block" rel="noopener">
+          <div class="d-flex align-items-center">
+            <div class="px-2">
+              <img class="team-logo--icon" src="_static/images/team-digitale-logo.svg" alt="Team per la Trasformazione Digitale">
+            </div>
+            <div class="px-2 border-white border-left team-logo--text text-white">
+              Team per la Trasformazione Digitale
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4">
+        <span class="d-block m-2 in-collaboration">in collaboration with</span>
+        <a href="https://www.agid.gov.it/" target="_blank" class="d-inline-block" rel="noopener">
+          <div class="d-flex align-items-center">
+            <div class="px-2">
+              <img class="agid-logo--icon" src="_static/images/agid-logo.svg" alt="Agenzia per l'Italia Digitale">
+            </div>
+            <span class="agid-logo--separator border-white border-left"></span>
+            <div class="px-2 agid-logo--text text-white">
+              Agenzia per l'Italia Digitale
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-12 col-lg-4 pt-4 pt-sm-5">
+        <div class="text-center text-lg-right social d-flex align-items-center justify-content-center justify-content-lg-end flex-column flex-lg-row">
+          <div class="mr-lg-1 mb-2 mb-lg-0">Follow us on</div>
+          <div>
+            <a href="https://github.com/italia/" class="d-inline-flex small-prints mx-1 social__link"><i class="d-inline-block it-github"></i></a>
+            <a href="https://twitter.com/teamdigitaleIT" class="d-inline-flex small-prints mx-1 social__link"><i class="d-inline-block it-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/teamdigitale/" class="d-finline-lex small-prints mx-1 social__link"><i class="d-inline-block it-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/row-->
+
+    <div class="row pb-4 colophon mt-md-5 mt-sm-3 pt-3 pt-sm-2">
+      <ul class="col list-inline small">
+        
+        <li class="list-inline-item">
+          <strong><a class="footer-menu__link text-light-blue small-prints" href="/privacy-policy/">Privacy policy</a></strong>
+        </li>
+        
+        <li class="list-inline-item">
+          <strong><a class="footer-menu__link text-light-blue small-prints" href="/cookies-policy">Cookie policy</a></strong>
+        </li>
+        
+        <li class="list-inline-item">
+          <strong><a class="footer-menu__link text-light-blue small-prints" href="/note-legali">Legal notes</a></strong>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</footer>
+  <script type="text/javascript">
+var t = {
+  this : "en",
+  locale : "en_US",
+  about_these_documents : "About these Documents",
+  active_lang : "current language",
+  cookiebar_accept : "Accept",
+  cookiebar_msg : "We are using cookies to provide statistics that help us give you the best experience of our site. By continuing to use the site you are agreeing to our use of cookies.",
+  cookiebar_privacy_policy : "Cookie policy",
+  copyright : "Copyright",
+  documents : "Documents",
+  download : "Download",
+  footer_link_privacy_policy : "Privacy policy",
+  footer_link_cookies : "Cookie policy",
+  footer_link_legal_notes : "Legal notes",
+  go_to : "Go to",
+  index : "Index",
+  last_updated : "Last updated",
+  most_viewed_this_month : "Most viewed this month",
+  navigation_menu_label : "Navigation menu",
+  navigation_menu_esc : "exit navigation",
+  search : "Search",
+  search_form_label : "Search in Document",
+  search_form_off : "exit search form",
+  search_form_on : "enter search form",
+  search_form_start : "start searching",
+  search_results : "Search Results",
+  search_no_results : "Your search did not match any documents. Please make sure that all words are spelled correctly.",
+  site_subtitle : "Public documents, made digital.",
+  site_title : "Docs Italia",
+  share_msg : "share",
+  skiplinks_goto_content : "go to content",
+  skiplinks_goto_navigation : "go to site navigation",
+  toggle_menu_label : "go to navigation",
+  version : "version",
+  compare : "Compare",
+  copy_link : "copy link",
+  copied_link : "copied link",
+  see_actions : "see actions",
+  other_actions : "other actions",
+  comments : "comments",
+  back_to_text : "back to the text",
+  glossary_empty : "information not found",
+  glossary : "glossary",
+  go_to_glossary : "vai al glossario",
+  deepening : "deepening",
+  example : "example",
+  must : "must",
+  must_not : "must not",
+  should : "should",
+  should_not : "should not",
+  may : "may",
+  use : "use",
+  use_not : "don't use",
+  consultation : "consultation",
+  show_more : "show more",
+  show_less : "show less",
+  content_index : "content index",
+  table_index : "table index",
+  figures_index : "index of figures",
+  figures : "figures",
+  tables : "tables",
+  contents : "contents",
+  in_consultation : "in consultation",
+  indices_and_glossary : "indices and glossary",
+  note : "note",
+  no_description : "no description",
+  no_content : "no sections",
+  no_glossary : "no glossary",
+  no_figures : "no figures",
+  no_tables : "no tables",
+  summary : "summary",
+  project : "Project",
+  administration : "Administration",
+  info : "About this document",
+  related : "Related documents",
+  actions : "Actions",
+  tags : "Tags",
+  view_source : "Source",
+  previous : "previous",
+  next : "next",
+  in_collaboration_with : "in collaboration with",
+  follow_us : "follow us on",
+  header_link_trasformazione : "Piano Triennale",
+  header_link_piattaforme : "Platforms",
+  header_link_software : "Software",
+  header_link_api : "API",
+  header_link_community : "Communities",
+  header_link_developers : "Developers",
+  header_link_design : "Designers",
+  header_link_tools : "Tools",
+  header_link_forum : "Forum",
+  header_link_docs : "Docs",
+  header_link_github : "GitHub",
+  header_link_projects : "Projects",
+  header_link_documents : "Documents",
+  header_link_administrations : "Administrations",
+  header_link_whatis : "What is",
+}
+</script>
+  <a href="#" aria-hidden="true" data-attribute="return-to-top" class="return-to-top">
+  <i class="it-collapse"></i>
+</a>
+  
+  <script type="text/javascript">
+var PRODUCTION_DOMAIN = 'localhost';
+var DOCSITALIA_DATA = {
+  publisher_slug: 'organizzazione-demo',
+  publisher_project_slug: 'progetto-demo'
+}
+
+LOCAL = true;
+READTHEDOCS_DATA = {
+  project: 'demo-document',
+  version: 'bozza',
+  language: 'it',
+  api_host: '//' + PRODUCTION_DOMAIN
+}
+
+var DOCUMENTATION_OPTIONS = {
+    URL_ROOT: './',
+    VERSION: 'version: latest',
+    LANGUAGE: 'en',
+    COLLAPSE_INDEX: false,
+    FILE_SUFFIX: '.html',
+    HAS_SOURCE: true,
+    SOURCELINK_SUFFIX: '.txt'
+};
+</script>
+<script src="_static/js/theme.js"></script>
+<script type="text/javascript" src="_static/documentation_options.js"></script>
+<script type="text/javascript" src="_static/underscore.js"></script>
+<script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script type="text/javascript" src="_static/doctools.js"></script>
+  
+  <script type="text/javascript">
+  <!-- Google analytics -->
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  $(document).ready(function() {
+    var sendGaPageview = function() {
+      ga('create', '', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+      
+    };
+    if ($.fn['cookiebar'].Constructor._getCookieEU()) {
+      sendGaPageview();
+    } else {
+      $(document).on('close.bs.cookiebar', sendGaPageview);
+    }
+  });
+  <!-- End Google analytics -->
+  <!-- Matomo -->
+  /*
+  var _paq = _paq || [];
+  _paq.push(['setSiteId', '']);
+  (function () {
+    var u = '//italia.piwikpro.com/';
+    _paq.push(['setTrackerUrl', u + 'piwik.php']);
+    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+    g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
+  })();
+
+  $(document).ready(function() {
+    var sendMatomoPageview = function() {
+      _paq.push(['setDocumentTitle', document.domain + '/' + document.title]);
+      _paq.push(['enableLinkTracking']);
+      _paq.push(['setDoNotTrack', 1]);
+      _paq.push(['trackPageView']);
+    };
+    if ($.fn['cookiebar'].Constructor._getCookieEU()) {
+      sendMatomoPageview();
+    } else {
+      $(document).on('close.bs.cookiebar', sendMatomoPageview);
+    }
+  });*/
+  <!-- End Matomo -->
+</script>
+  
+    <div class="cookiebar bg-dark p-4 hide" aria-hidden="true">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col-12 col-md-7">
+        <span class="text-white">We are using cookies to provide statistics that help us give you the best experience of our site. By continuing to use the site you are agreeing to our use of cookies.</span>
+      </div>
+      <div class="col-12 col-md-5 mt-2 mt-md-0 text-right">
+        <a class="btn btn-link" href="/cookies-policy/">Cookie policy</a>
+        <button class="btn btn-sm btn-primary mr-2" data-accept="cookiebar">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+  <div class="modal fade modal-sm-full" id="document-info" tabindex="-1" role="dialog" aria-labelledby="document-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content rounded">
+      <div class="modal-header">
+        <h4 class="modal-title" id="document-title">Titolo del documento non impostato</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p></p>
+        <p class="text-sans-serif">
+          <i class="docs-icon-project font-weight-bold"></i>
+          <span class="font-weight-bold ml-1 align-middle">Project:</span>
+          <a href="/organizzazione-demo/progetto-demo" class="align-middle">
+            Progetto demo
+          </a>
+        </p>
+        <p class="text-sans-serif">
+          <i class="docs-icon-publisher font-weight-bold"></i>
+          <span class="font-weight-bold ml-1 align-middle">Administration:</span>
+          <a href="/organizzazione-demo/" class="align-middle">
+            Organizzazione demo
+          </a>
+        </p>
+        <div class="d-flex text-sans-serif my-4">
+          <div class="d-flex font-weight-bold align-items-center"><span class="mr-2">Tags:</span></div>
+          <div class="d-flex flex-wrap">
+            
+            <span class="border border-primary rounded m-1 py-1 px-2 tag"><a href="#">demo</a></span>
+            
+            <span class="border border-primary rounded m-1 py-1 px-2 tag"><a href="#">docs italia</a></span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="document-actions" aria-hidden="true">
+  <div class="modal-dialog mt-5" role="document">
+     <div class="modal-content rounded">
+        <div class="modal-body p-1">
+          <div class="document-actions d-flex flex-column flex-md-row justify-content-around w-100 p-2 p-md-0 text-blue">
+  <div class="dropdown p-3 px-md-2 py-md-0 d-flex flex-wrap">
+    <a class="btn dropdown-toggle p-2 flex-grow-1 text-left" href="#" id="downloads-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="docs-icon-download align-middle"></span>
+      <span class="align-middle">Download</span>
+    </a>
+    <div class="dropdown-menu w-100" aria-labelledby="downloads-dropdown" aria-disabled="false">
+      <div class="link-list-wrapper">
+        <ul class="link-list">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="p-3 px-md-2 py-md-0">
+    <a href="#" role="button" class="btn p-2 disabled" aria-disabled="true">
+        <span class="docs-icon-github"></span>
+        <span class="align-middle">Source</span>
+    </a>
+  </div>
+</div>
+        </div>
+     </div>
+  </div>
+</div>
+
+  
+</body>
+</html>
