@@ -742,7 +742,7 @@ When the JWT format is used, the Revocation or Status Assertion Error MUST conta
       - Unique identifier for the JWT.
       - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7519>`_.
     * - **error**
-      - Status code returned from the Credential Issuer after revocation. The value SHOULD be assigned with one of the error types defined in  {{RFC6749}}[Section 5.2]<https://tools.ietf.org/html/rfc6749#section-5.2> or defined in `OAUTH-STATUS-ASSERTION`_ draft 02. 
+      - Status code returned from the Credential Issuer after revocation. The value SHOULD be assigned with one of the error types defined in  {{RFC6749}}[Section 5.2]<https://tools.ietf.org/html/rfc6749#section-5.2> or defined in `OAUTH-STATUS-ASSERTION`_. 
       - `[RFC6749, Section 5.2] <https://tools.ietf.org/html/rfc6749#section-5.2>`_, `OAUTH-STATUS-ASSERTION`_ draft 02
     * - **error_description**
       - Text that clarifies the nature of the error, such as attribute changes, revocation reasons, in relation to the `error` value.
