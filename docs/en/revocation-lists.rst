@@ -471,7 +471,7 @@ It MUST contain the following mandatory claims.
       - **Reference**
     * - **status_assertion_responses**
       - the Status Assertions and or the Status Assertion Errors related to the request made by the Wallet Instance. 
-      - `OAUTH-STATUS-ASSERTION`_ draft 02.
+      - `OAUTH-STATUS-ASSERTION`_.
 
 
 The following HTTP Status Codes MUST be supported:
