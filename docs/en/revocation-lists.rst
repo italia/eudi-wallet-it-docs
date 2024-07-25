@@ -40,7 +40,7 @@ Operational Requirements
 Functional Requirements
 -----------------------
 
-In addition to the requirements in Section 5 of `OAUTH-STATUS-ASSERTION`_ draft 02, **The Status Assertion:**
+In addition to the requirements in Section 5 of `OAUTH-STATUS-ASSERTION`_, **The Status Assertion:**
 
 - MUST have a validity period not greater than 24 hours;
 - MUST NOT reveal any information about the Relying Party, the User's device or the User's data contained in the Digital Credential the assertion is related to;
