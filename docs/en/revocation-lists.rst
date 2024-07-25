@@ -441,7 +441,7 @@ The requests to the *Credential status endpoint* of the Credential Issuers MUST 
       - **Reference**
     * - **status_assertion_requests**
       - It MUST be an array of strings, where each of them represent a Status Assertion Request object. Each element MUST contain a signed JWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>`_ for more details. 
-      - `OAUTH-STATUS-ASSERTION`_ draft 02.
+      - `OAUTH-STATUS-ASSERTION`_ .
 
 The *typ* value in the *credential_pop* JWT MUST be set to **status-assertion+jwt**
 
