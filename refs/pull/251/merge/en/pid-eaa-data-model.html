@@ -1123,8 +1123,8 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <p>The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections.</p>
 <section id="id1">
 <h2>SD-JWT<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
-<p>The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">Selective Disclosure JWT format</a> as specified in <a class="reference external" href="https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html">[SD-JWT-based Verifiable Credentials 02]</a>.</p>
-<p>An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the <strong>_sd_alg</strong> claim described in <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">[SD-JWT]. Section 5.1.2.</a> and other claims specified in this section, some of them may be selectively disclosable claims.</p>
+<p>The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SELECTIVE-DISCLOSURE-JWT</a> as specified in <a class="reference external" href="https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html">[SD-JWT-based Verifiable Credentials 02]</a>.</p>
+<p>An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the <strong>_sd_alg</strong> claim described in the Section 5.1.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SELECTIVE-DISCLOSURE-JWT</a> and other claims specified in this section, some of them may be selectively disclosable claims.</p>
 <p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The <strong>_sd_alg</strong> claim MUST be set to one of the specified algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a>.</p>
 <p>Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, <strong>_sd</strong>.</p>
 <p>Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains</p>
@@ -1139,9 +1139,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Issuer</span><span class="o">-</span><span class="n">Signed</span><span class="o">-</span><span class="n">JWT</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">1</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">2</span><span class="o">&gt;~...~&lt;</span><span class="n">Disclosure</span> <span class="n">N</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html">[SD-JWT VC]</a> and
-<a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">[SD-JWT]</a>
-for additional details.</p>
+<p>See <a class="reference external" href="https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html">[SD-JWT VC]</a> and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SELECTIVE-DISCLOSURE-JWT</a> for additional details.</p>
 <section id="pid-q-eaa-sd-jwt-parameters">
 <h3>PID/(Q)EAA SD-JWT parameters<a class="headerlink" href="#pid-q-eaa-sd-jwt-parameters" title="Permalink to this heading">¶</a></h3>
 <p>The JOSE header contains the following mandatory parameters:</p>
