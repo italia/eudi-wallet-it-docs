@@ -22,7 +22,7 @@ The PID/(Q)EAA data format and the mechanism through which a digital credential 
 SD-JWT
 ======
 
-The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SELECTIVE-DISCLOSURE-JWT`_ as specified in `[SD-JWT-based Verifiable Credentials 02] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`__.
+The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SELECTIVE-DISCLOSURE-JWT`_ as specified in `SD-JWT-VC`_.
 
 An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SELECTIVE-DISCLOSURE-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
@@ -42,7 +42,7 @@ The Disclosures are provided to the Holder together with the SD-JWT in the *Comb
 
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
-See `[SD-JWT VC] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`_ and `SELECTIVE-DISCLOSURE-JWT`_ for additional details. 
+See `SD-JWT-VC`_ and `SELECTIVE-DISCLOSURE-JWT`_ for additional details. 
 
 
 PID/(Q)EAA SD-JWT parameters
@@ -95,13 +95,13 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **status**
       - [NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member *status_attestation* set to a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Attestation is bound. It is RECOMMENDED to use *sha-256*. 
-      - `[SD-JWT-VC. Section 3.2.2.2] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html#section-3.2.2.2>`_ and `[OAuth Status Attestations Draft 01] <https://www.ietf.org/archive/id/draft-demarco-status-attestations-01.html#section-9>`_.
+      - Section 3.2.2.2 `SD-JWT-VC`_ and `[OAuth Status Attestations Draft 01] <https://www.ietf.org/archive/id/draft-demarco-status-attestations-01.html#section-9>`_.
     * - **cnf**
       - [NSD].JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
-      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and `[SD-JWT-VC. Section 3.2.2.2] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html#section-3.2.2.2>`_.
+      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
       - [NSD].Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
-      - `[SD-JWT-VC. Section 3.2.2.2] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html#section-3.2.2.2>`_.
+      - Section 3.2.2.2 `SD-JWT-VC`_.
 
 
 .. _sec-pid-user-claims:   
