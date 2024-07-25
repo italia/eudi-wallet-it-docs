@@ -649,7 +649,7 @@ When the JWT format is used, the Revocation Assertion MUST contain the following
       - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7800>`_.
     * - **credential_status_validity**
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It MUST be set with the value `false`.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+      - `OAUTH-STATUS-ASSERTION`_.
     
 
 Status Assertion
