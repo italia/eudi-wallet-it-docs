@@ -694,7 +694,7 @@ When the JWT format is used, the Status Assertion MUST contain the following cla
       - :rfc:`9126` and :rfc:`7519`.
     * - **credential_hash**
       - Hash value of the Credential the Status Assertion is bound to.
-      - `OAUTH-STATUS-ASSERTION`_ draft 02.
+      - `OAUTH-STATUS-ASSERTION`_.
     * - **credential_hash_alg**
       - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``S256``.
       - `OAUTH-STATUS-ASSERTION`_ draft 02.
