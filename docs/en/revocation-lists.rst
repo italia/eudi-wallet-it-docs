@@ -203,17 +203,11 @@ The Revocation Endpoint MUST be provided by the Credential Issuer within its Met
 Credential Revocation HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *Credential Issuer* MUST return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Revocation Assertion object. The status code 200 MUST be returned if the Revocation Assertion is requested for a valid, non-existent, expired, already revoked or invalid Digital Credential.
+In case of succesfully Revocation Request validation, the *Credential Issuer* MUST return an HTTP response with the status code set to 200. If the *Credential Issuer* is able to provide a valid Status Assertion for a requested Credential, the response MUST contains a revocation Assertion object within a JSON Array. Otherwise, a Revocation Assertion Errors related to that Credential MUST be included in the Response JSON Array as an entry. 
 
-The response MUST:
+If the Revocation Request fails (e.g. invalid request, server unavailability, etc.), an HTTP Error Status Code MUST be provided within the Revocation Response.
 
-- include a JSON object with a member named `revocation_assertion_responses`;
-
-- be encoded in ``application/json`` format. 
-
-Otherwise, an HTTP error response MUST be provided by the Credential Issuer using status codes according to the table below. 
-
-The following HTTP Status Codes MUST be supported:
+In the following table are listed HTTP Status Codes that MUST be supported:
 
 .. list-table:: 
     :widths: 20 20 60
@@ -235,6 +229,13 @@ The following HTTP Status Codes MUST be supported:
       - 
       - The Credential Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
 
+The response MUST:
+
+- include a JSON object with a member named `revocation_assertion_responses`;
+
+- be encoded in ``application/json`` format. 
+
+
 The ``revocation_assertion_responses`` object MUST contain the following mandatory claims.
 
 .. _table_http_response_claim:
@@ -247,7 +248,7 @@ The ``revocation_assertion_responses`` object MUST contain the following mandato
       - **Reference**
     * - **revocation_assertion_responses**
       - the Revocation Assertions and or the Revocation Assertion Errors related to the request made by the Wallet Instance. 
-      - `OAUTH-STATUS-ASSERTION`_ draft 02`_.
+      - `OAUTH-STATUS-ASSERTION`_.
 
 The Revocation Assertion object MUST contain the parameter ``credential_status_validity`` with the value set to ``false``.
 Below a non-normative example of a Revocation Assertion object in JWT format, with the headers and payload represented in JSON and without applying the signature.
@@ -256,7 +257,7 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
 
   {
     "alg": "ES256",
-    "typ": "revocation-error+jwt",
+    "typ": "revocation-assertion+jwt",
     "kid": "Issuer-JWK-KID"
   }
  .
@@ -451,30 +452,11 @@ The *Credential status endpoint* MUST be provided by the Credential Issuers with
 Status Assertion HTTP Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *Credential Issuer* MUST return an HTTP response with the status code set to 200 and the `status_assertion_responses` array with the related Status Assertion object. The status code 200 MUST be returned if the Status Assertion is requested for a valid, non-existent, expired, revoked or invalid Digital Credential.
+In case of succesfully Status Assertion Request validation, the *Credential Issuer* MUST return an HTTP response with the status code set to 200. If the *Credential Issuer* is able to provide a valid Status Assertion for a requested Credential, the response MUST contains a Status Assertion object within a JSON Array. Otherwise, a Status Assertion Errors related to that Credential MUST be included in the Response JSON Array as an entry. 
 
-The response MUST:
+If the Status Request fails (e.g. invalid request, server unavailability, etc.), an HTTP Error Status Code MUST be provided within the Status Assertion Response.
 
-- include a JSON object with a member named `status_assertion_responses`;
-
-- be encoded in ``application/json`` format. 
-
-It MUST contain the following mandatory claims.
-
-.. _table_http_status_assertion_response_claim:
-.. list-table:: 
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Claim**
-      - **Description**
-      - **Reference**
-    * - **status_assertion_responses**
-      - the Status Assertions and or the Status Assertion Errors related to the request made by the Wallet Instance. 
-      - `OAUTH-STATUS-ASSERTION`_.
-
-
-The following HTTP Status Codes MUST be supported:
+In the following table are listed HTTP Status Codes that MUST be supported:
 
 .. list-table:: 
     :widths: 20 20 60
@@ -489,15 +471,32 @@ The following HTTP Status Codes MUST be supported:
     * - *400 Bad Request*
       - Error code and description
       - The Credential Issuer cannot fulfill the request because of invalid parameters.
-    * - *404 Not Found*
-      - 
-      - The Digital Credential may not be found by the Issuer, or the Status Attestation cannot be issued because the Credential has been revoked or updated.
     * - *500 Internal Server Error*
       - 
       - The Credential Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
     * - *503 Service Unavailable*
       - 
       - The Credential Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
+
+The response MUST:
+
+- include a JSON object with a member named `status_assertion_responses`;
+
+- be encoded in ``application/json`` format. 
+
+The status_assertion_responses object MUST contain the following mandatory claims.
+
+.. _table_http_status_assertion_response_claim:
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **status_assertion_responses**
+      - the Status Assertions and or the Status Assertion Errors related to the request made by the Wallet Instance. 
+      - `OAUTH-STATUS-ASSERTION`_.
 
 The Status Assertion Error object MUST contain the following parameters:
 
@@ -607,7 +606,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - [:rfc:`7519`. Section 4.1.7].
     * - **credential_hash**
       - It MUST contain the hash value of a Digital Credential, derived by computing the base64url encoded hash of the Digital Credential.
-      - `[OAuth Status Attestation draft 01] <https://datatracker.ietf.org/doc/draft-demarco-status-attestations/01/>`_.
+      - `OAUTH-STATUS-ASSERTION`_.
     * - **credential_hash_alg**
       - It MUST contain the Algorithm used for hashing the Digital Credential. The value SHOULD be set to `S256`.
       - `OAUTH-STATUS-ASSERTION`_.

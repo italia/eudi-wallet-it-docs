@@ -55,3 +55,5 @@ Technical References
       - D. Fett, B. Campbell, J. Bradley, T. Lodderstedt, M. Jones, D. Waite, "OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)".
     * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC".
+    * - `OAUTH-STATUS-ASSERTION`_
+      - De Marco, G., Steele, O., Marino, F., "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC", June 2024, Draft 2.
