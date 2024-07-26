@@ -469,9 +469,6 @@ The JOSE header of the Wallet Attestation proof of possession, contained in the 
     * - **alg**
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
-    * - **kid**
-      -  Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.
-      - :rfc:`7638#section_3`.
     * - **typ**
       -  It MUST be set to ``jwt-client-attestation-pop``
       -  Currently under discussion in [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
