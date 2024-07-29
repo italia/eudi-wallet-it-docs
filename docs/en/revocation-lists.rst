@@ -194,7 +194,7 @@ The requests to the *Credential Issuer Revocation endpoint* MUST be HTTP with me
       - **Description**
       - **Reference**
     * - **revocation_requests**
-      - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>`_ for more details.
+      - It MUST be an array of strings, where each represents a Revocation Assertion Request object. Each element MUST contain a signed JWT as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details.
       - `OAUTH-STATUS-ASSERTION`_ .
 
 The Revocation Endpoint MUST be provided by the Credential Issuer within its Metadata. 
@@ -441,7 +441,7 @@ The requests to the *Credential status endpoint* of the Credential Issuers MUST 
       - **Description**
       - **Reference**
     * - **status_assertion_requests**
-      - It MUST be an array of strings, where each of them represent a Status Assertion Request object. Each element MUST contain a signed JWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>`_ for more details. 
+      - It MUST be an array of strings, where each of them represent a Status Assertion Request object. Each element MUST contain a signed JWT as a cryptographic proof of possession of the Digital Credential. See Section :ref:`Credential Proof of Possession <sec_revocation_credential_pop>` for more details. 
       - `OAUTH-STATUS-ASSERTION`_ .
 
 The *typ* value in the *credential_pop* JWT MUST be set to **status-assertion+jwt**
