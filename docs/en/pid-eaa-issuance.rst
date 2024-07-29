@@ -130,7 +130,7 @@ Below a non-normative example of the PAR.
     Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9._v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
-    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9._v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
+    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCJhdWQiOiIgaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsImp0aSI6IjVlZmY5YzFiLWVkMGQtNDdlOC1hNTUzLWY3NGRmMWJiZWVkZCIsImlhdCI6MTcyMjI0OTQ0NywiZXhwIjoxNzIyMjQ5NzQ3fQ.aZpx7u7R-W8q7fJh9BEaRf8LM7RQRxAVc-okalAVqxHWqUMh3ehYukMLaCsiDQ33pyS41Y5PEsZ3HXwAXQ3nMg
 
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
     &request=$SIGNED-JWT
@@ -234,7 +234,7 @@ The ``OAuth-Client-Attestation`` is signed using the private key that is created
     Content-Type: application/x-www-form-urlencoded
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9._v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
-    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9._v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
+    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCJhdWQiOiIgaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsImp0aSI6IjVlZmY5YzFiLWVkMGQtNDdlOC1hNTUzLWY3NGRmMWJiZWVkZCIsImlhdCI6MTcyMjI0OTQ0NywiZXhwIjoxNzIyMjQ5NzQ3fQ.aZpx7u7R-W8q7fJh9BEaRf8LM7RQRxAVc-okalAVqxHWqUMh3ehYukMLaCsiDQ33pyS41Y5PEsZ3HXwAXQ3nMg
 
     grant_type=authorization_code
     &code=SplxlOBeZQQYbYS6WxSbIA
@@ -469,9 +469,6 @@ The JOSE header of the Wallet Attestation proof of possession, contained in the 
     * - **alg**
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
-    * - **typ**
-      -  It MUST be set to ``jwt-client-attestation-pop``
-      -  Currently under discussion in [`oauth-attestation-draft <https://vcstuff.github.io/draft-ietf-oauth-attestation-based-client-auth/draft-ietf-oauth-attestation-based-client-auth.html>`_].
 
 The body of the Wallet Attestation proof of possession JWT, contained in the HTTP Request headers, MUST contain:
 
