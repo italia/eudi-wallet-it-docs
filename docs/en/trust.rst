@@ -17,12 +17,12 @@ The Infrastructure of trust facilitates the application of a trust assessment me
    
     The roles within the Federation, where the Trust Anchor oversees its subordinates,
     which include one or more Intermediates and Leaves. In this
-    representation, both the Trust Anchor and the Intermediates MAY assume the role of Accreditation Body.
+    representation, both the Trust Anchor and the Intermediates assume the role of Registration Authority.
 
 Federation Roles
 ------------------
 
-All the participants are Federation Entities that MUST be accredited by an Accreditation Body,
+All the participants are Federation Entities that MUST be registered by an Registration Body,
 except for Wallet Instances which are End-User's personal devices certified by their Wallet Provider.
 
 .. note::
@@ -137,11 +137,11 @@ This section includes the requirements necessary for the successful implementati
    * - [FR #21]
      - **Future-Proof Cryptography**: the system should employ a flexible cryptographic framework that can be updated in response to new threats or advancements in cryptographic research, ensuring long-term security and integrity of federation operations.
    * - [FR #23]
-     - **Autonomous Accreditation Bodies**: the system must facilitate the integration of autonomous accreditation bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and accrediting entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
+     - **Autonomous Registration Bodies**: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and accrediting entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
    * - [FR #24]
-     - **Compliance Evaluation for Federation Entity Candidates**: accreditation bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.
+     - **Compliance Evaluation for Federation Entity Candidates**: registration bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.
    * - [FR #25]
-     - **Periodic Auditing of Accreditation Bodies and Entities**: implement mechanisms for the periodic auditing and monitoring of the compliance status of both accreditation bodies and their accredited entities. This ensures ongoing adherence to federation standards and policies.
+     - **Periodic Auditing of Registration Bodies and Entities**: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their accredited entities. This ensures ongoing adherence to federation standards and policies.
    * - [FR #26]
      - **Certification of Compliance for Personal Devices**: trusted bodies, in the form of federation entities, should issue certifications of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These certifications should be attested and periodically renewed to ensure the devices meet current security standards.
    * - [FR #27]
@@ -454,7 +454,7 @@ Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where
 .. note:: 
     The Federation Fetch endpoint MAY also publish X.509 certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 certificates via a RESTful service.
 
-Below there is a non-normative example of an Entity Statement issued by an Accreditation Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
+Below there is a non-normative example of an Entity Statement issued by an Registration Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
 
 .. code-block:: text
 
@@ -639,7 +639,7 @@ Offline Trust Attestation Mechanisms
 The offline flows do not allow for real-time evaluation of an Entity's status, such as its revocation. At the same time, using short-lived Trust Chains enables the attainment of trust attestations compatible with the required revocation administrative protocols (e.g., a revocation must be propagated in less than 24 hours, thus the Trust Chain must not be valid for more than that period).
 
 
-Offline EUDI Wallet Trust Attestation
+Offline Wallet Trust Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Given that the Wallet Instance cannot publish its metadata online at the *.well-known/openid-federation* endpoint, 
