@@ -2,7 +2,7 @@
   
 .. _supported_algs:
 
-Cryptographic algorithms
+Cryptographic Algorithms
 ++++++++++++++++++++++++
 
 The following algorithms MUST be supported:

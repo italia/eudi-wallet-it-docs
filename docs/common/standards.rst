@@ -12,7 +12,7 @@ Technical References
     * - `OPENID4VCI`_
       - T. Lodderstedt, K. Yasuda, T. Looker, "OpenID for Verifiable Credential Issuance", February 2023.
     * - `SD-JWT-VC`_
-      - O. Terbu, D.Fett, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
+      - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
     * - `EIDAS-ARF`_
       - EUDI Wallet - Architecture and Reference Framework.
     * - `OPENID4VP`_
@@ -57,5 +57,7 @@ Technical References
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC".
     * - `OAUTH-STATUS-ASSERTION`_
       - De Marco, G., Steele, O., Marino, F., "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC", June 2024, Draft 2.
+    * - `SELECTIVE-DISCLOSURE-JWT`_
+      - Fett, D., Yasuda, K., Campbell, B., "Selective Disclosure for JWTs (SD-JWT)".
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
       - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication".
