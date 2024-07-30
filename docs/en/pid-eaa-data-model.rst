@@ -22,9 +22,9 @@ The PID/(Q)EAA data format and the mechanism through which a digital credential 
 SD-JWT
 ======
 
-The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[SD-JWT-based Verifiable Credentials 02] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`__.
+The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SELECTIVE-DISCLOSURE-JWT`_ as specified in `SD-JWT-VC`_.
 
-An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in `[SD-JWT]. Section 5.1.2. <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
+An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SELECTIVE-DISCLOSURE-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
 The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
@@ -36,13 +36,13 @@ Each digest value ensures the integrity of, and maps to, the respective Disclosu
   - the claim name (only when the claim is an object property), 
   - the claim value. 
   
-The Disclosures are sent to the Holder together with the SD-JWT in the *Combined Format for Issuance* that MUST be an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
+The Disclosures are provided to the Holder together with the SD-JWT in the *Combined Format for Issuance* that MUST be an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
 
 .. code-block::
 
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
-See `[SD-JWT VC] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
+See `SD-JWT-VC`_ and `SELECTIVE-DISCLOSURE-JWT`_ for additional details. 
 
 
 PID/(Q)EAA SD-JWT parameters
@@ -60,17 +60,17 @@ The JOSE header contains the following mandatory parameters:
     - **Description**
     - **Reference**
   * - **typ**
-    - MUST be set to ``vc+sd-jwt`` as defined in `[draft-terbu-sd-jwt-vc-latest] <https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html>`__. 
+    - REQUIRED. It MUST be set to ``vc+sd-jwt`` as defined in `[draft-terbu-sd-jwt-vc-latest] <https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html>`__. 
     - `[RFC7515, Section 4.1.9] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9>`_.
   * - **alg**
-    - Signature Algorithm. 
+    - REQUIRED. Signature Algorithm. 
     - `[RFC7515, Section 4.1.1] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1>`_.
   * - **kid**
-    - Unique identifier of the public key. 
+    - REQUIRED. Unique identifier of the public key. 
     - `[RFC7515, Section 4.1.8] <https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.8>`_.
   * - **trust_chain**
-    - JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
-    - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-connect-federation-1_0.html#name-trust-chain-header-paramete>`_.
+    - OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
+    - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-federation-1_0.html#name-trust-chain-header-paramete>`_.
 
 The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
 
@@ -95,13 +95,13 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **status**
       - [NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member *status_attestation* set to a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Attestation is bound. It is RECOMMENDED to use *sha-256*. 
-      - `[SD-JWT-VC. Section 3.2.2.2] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html#section-3.2.2.2>`_ and `[OAuth Status Attestations Draft 01] <https://www.ietf.org/archive/id/draft-demarco-status-attestations-01.html#section-9>`_.
+      - Section 3.2.2.2 `SD-JWT-VC`_ and `[OAuth Status Attestations Draft 01] <https://www.ietf.org/archive/id/draft-demarco-status-attestations-01.html#section-9>`_.
     * - **cnf**
       - [NSD].JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
-      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and `[SD-JWT-VC. Section 3.2.2.2] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html#section-3.2.2.2>`_.
+      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
       - [NSD].Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
-      - `[SD-JWT-VC. Section 3.2.2.2] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html#section-3.2.2.2>`_.
+      - Section 3.2.2.2 `SD-JWT-VC`_.
 
 
 .. _sec-pid-user-claims:   
@@ -140,7 +140,7 @@ The PID attribute schema, which encompasses all potential User data, is defined 
 PID Non-Normative Examples
 --------------------------
 
-In the following, the non-normative example of a PID in JSON format.
+In the following, the non-normative example of the payload of a PID represented in JSON format.
 
 .. code-block:: JSON
 
