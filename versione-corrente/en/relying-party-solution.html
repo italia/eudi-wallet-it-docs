@@ -717,6 +717,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#request-object-details">Request Object Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#request-uri-response">Request URI Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sd-jwt-presentation">SD-JWT Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mdoc-cbor-presentation">MDOC-CBOR Presentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#redirect-uri-errors">Redirect URI Errors</a></li>
 </ul>
@@ -771,7 +773,7 @@
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
 </ul>
@@ -1007,6 +1009,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#request-object-details">Request Object Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#request-uri-response">Request URI Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sd-jwt-presentation">SD-JWT Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mdoc-cbor-presentation">MDOC-CBOR Presentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#redirect-uri-errors">Redirect URI Errors</a></li>
 </ul>
@@ -1061,7 +1065,7 @@
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
 </ul>
@@ -1309,8 +1313,8 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 <section id="cross-device-flow-status-checks-and-security">
 <h3>Cross Device Flow Status Checks and Security<a class="headerlink" href="#cross-device-flow-status-checks-and-security" title="Permalink to this heading">¶</a></h3>
 <p>When the flow is Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).</p>
-<p>Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under the Relying Party responsability the implementation details of this solution, since it is related to the Relying Party's internal API. However, the text below offers an implementation solution.</p>
-<p>The Relying Party MUST bind the request of the user-agent, with a session cookie marked as <code class="docutils literal notranslate"><span class="pre">Secure</span></code> and <code class="docutils literal notranslate"><span class="pre">HttpOnly</span></code> , with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:</p>
+<p>Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under the Relying Party responsability the implementation details of this solution, since it is related to the Relying Party's internal API. However, the text below describes an implementation example.</p>
+<p>The Relying Party binds the request of the user-agent, with a session cookie marked as <code class="docutils literal notranslate"><span class="pre">Secure</span></code> and <code class="docutils literal notranslate"><span class="pre">HttpOnly</span></code>, with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:</p>
 <ul class="simple">
 <li><p><strong>201 Created</strong>. The signed Request Object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
 <li><p><strong>202 Accepted</strong>. This response is given when the signed Request Object was obtained by the Wallet Instance.</p></li>
@@ -1612,55 +1616,73 @@ response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 </tr>
 </tbody>
 </table>
-<p>Below is a non-normative example of the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> decoded content, represented in the form of JWS header and payload, separated by a period:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-  &quot;alg&quot;: &quot;ES256&quot;,
-  &quot;typ&quot;: &quot;JWT&quot;
-}
-.
-{
-  &quot;iss&quot;: &quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;,
-  &quot;jti&quot;: &quot;3978344f-8596-4c3a-a978-8fcaba3903c5&quot;,
-  &quot;aud&quot;: &quot;https://relying-party.example.org/response_uri&quot;,
-  &quot;iat&quot;: 1541493724,
-  &quot;exp&quot;: 1573029723,
-  &quot;nonce&quot;: &quot;2c128e4d-fc91-4cd3-86b8-18bdea0988cb&quot;,
-  &quot;vp&quot;: &quot;&lt;Issuer-Signed-JWT&gt;~&lt;Disclosure 1&gt;~&lt;Disclosure 2&gt;~...~&lt;Disclosure N&gt;&quot;
-}
+<p>The items contained in the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> array are Verifiable Presentations of Credentials.
+Both SD-JWT and mdoc CBOR provide indications for the presentation, according to their specifications.</p>
+</section>
+<section id="sd-jwt-presentation">
+<h3>SD-JWT Presentation<a class="headerlink" href="#sd-jwt-presentation" title="Permalink to this heading">¶</a></h3>
+<p>SD-JWT defines how an Holder can present a Credential to a Verifier proving the legitimate possession
+of the Credential. For doing this the Holder MUST include the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> in the SD-JWT,
+by appending the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> at the end of the of the SD-JWT, as represented in the example below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Issuer</span><span class="o">-</span><span class="n">Signed</span><span class="o">-</span><span class="n">JWT</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">1</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">2</span><span class="o">&gt;~...~&lt;</span><span class="n">Disclosure</span> <span class="n">N</span><span class="o">&gt;~&lt;</span><span class="n">KB</span><span class="o">-</span><span class="n">JWT</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Where the following parameters are used:</p>
+<p>To validate the signature on the Key Binding JWT, the Verifier MUST use the key material included in the Issuer-Signed-JWT.
+The Key Binding JWT MUST specify which key material the Verifier needs to use to validate the Key Binding JWT signature,
+using JOSE header parameter <code class="docutils literal notranslate"><span class="pre">kid</span></code>.</p>
+<p>When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS header:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>vp</strong></p></td>
-<td><p>The Digital Credential in its original state. The public key contained in the Digital Credential MUST be used to verify the entire VP JWS as Proof of Possession of the private key which the public key is included in the Digital Credential. Eg: for SD-JWT VC the public key is provided within the <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> claim.</p></td>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>REQUIRED. MUST be <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code>, which explicitly types the Key Binding JWT as recommended in Section 3.11 of [RFC8725].</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>jti</strong></p></td>
-<td><p>JWS unique identifier.</p></td>
+<tr class="row-odd"><td><p><strong>alg</strong></p></td>
+<td><p>REQUIRED. Signature Algorithm using one of the specified in the section Cryptographic Algorithms.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>Unix timestamp of the time of issuance of this presentation.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>Unix timestamp beyond which this presentation will no longer be considered valid.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>aud</strong></p></td>
-<td><p>Audience of the VP, corresponding to the <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> within the Authorization request issued by the Relying Party.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>nonce</strong></p></td>
-<td><p>The nonce value provided by the Relying Party within the Authorization Request.</p></td>
+<tr class="row-even"><td><p><strong>kid</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the public key to be used to verify the signature.</p></td>
 </tr>
 </tbody>
 </table>
+<p>When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS payload:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>aud</strong></p></td>
+<td><p>REQUIRED. The intended receiver of the Key Binding JWT. How the value is represented is up to the protocol used and out of scope of this specification.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nonce</strong></p></td>
+<td><p>REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. How this value is obtained is up to the protocol used and out of scope of this specification.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sd_hash</strong></p></td>
+<td><p>REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures as defined below.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mdoc-cbor-presentation">
+<h3>MDOC-CBOR Presentation<a class="headerlink" href="#mdoc-cbor-presentation" title="Permalink to this heading">¶</a></h3>
+<p>TBD.</p>
 <section id="authorization-response-errors">
 <h4>Authorization Response Errors<a class="headerlink" href="#authorization-response-errors" title="Permalink to this heading">¶</a></h4>
 <p>When the Wallet sends a response using <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> to the Relying Party, several errors may occur, including:</p>
