@@ -603,7 +603,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - :rfc:`9126` and :rfc:`7519`.
     * - **jti**
       - Unique identifier for the PoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
-      - [:rfc:`7519`. Section 4.1.7].
+      - :rfc:`7519#section-4.1.7`.
     * - **credential_hash**
       - It MUST contain the hash value of a Digital Credential, derived by computing the base64url encoded hash of the Digital Credential.
       - `OAUTH-STATUS-ASSERTION`_.
@@ -645,7 +645,7 @@ When the JWT format is used, the Revocation Assertion MUST contain the following
       - :rfc:`9126` and :rfc:`7519`.
     * - **jti**
       - Unique identifier for the JWT.
-      - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7800>`_.
+      - :rfc:`7519#section-4.1.7`.
     * - **credential_status_validity**
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It MUST be set with the value `false`.
       - `OAUTH-STATUS-ASSERTION`_.
@@ -739,7 +739,7 @@ When the JWT format is used, the Revocation or Status Assertion Error MUST conta
       - :rfc:`9126` and :rfc:`7519`.
     * - **jti**
       - Unique identifier for the JWT.
-      - `[RFC7519, Section 4.1.7] <https://www.iana.org/go/rfc7519>`_.
+      - :rfc:`7519#section-4.1.7`.
     * - **error**
       - Status code returned from the Credential Issuer after revocation. The value SHOULD be assigned with one of the error types defined in  {{RFC6749}}[Section 5.2]<https://tools.ietf.org/html/rfc6749#section-5.2> or defined in `OAUTH-STATUS-ASSERTION`_. 
       - `[RFC6749, Section 5.2] <https://tools.ietf.org/html/rfc6749#section-5.2>`_, `OAUTH-STATUS-ASSERTION`_
