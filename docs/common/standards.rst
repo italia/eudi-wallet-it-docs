@@ -69,7 +69,7 @@ Technical References
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application. International Organization for Standardization.
     * - `OIDC`_
       - Sakimura, N., Bradley, J., Jones, M.,  de Medeiros, B., Mortimore, C., "OpenID Connect Core 1.0 incorporating errata set 2", December 2023.
-    * - `SELECTIVE-DISCLOSURE-JWT`_
+    * - `SD-JWT`_
       - Fett, D., Yasuda, K., Campbell, B., "Selective Disclosure for JWTs (SD-JWT)".
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
       - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication".

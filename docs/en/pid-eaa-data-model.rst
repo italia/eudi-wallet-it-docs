@@ -22,9 +22,9 @@ The PID/(Q)EAA data format and the mechanism through which a digital credential 
 SD-JWT
 ======
 
-The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SELECTIVE-DISCLOSURE-JWT`_ as specified in `SD-JWT-VC`_.
+The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SD-JWT`_ as specified in `SD-JWT-VC`_.
 
-An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SELECTIVE-DISCLOSURE-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
+An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
 The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
@@ -42,7 +42,7 @@ The Disclosures are provided to the Holder together with the SD-JWT in the *Comb
 
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
-See `SD-JWT-VC`_ and `SELECTIVE-DISCLOSURE-JWT`_ for additional details. 
+See `SD-JWT-VC`_ and `SD-JWT`_ for additional details. 
 
 
 PID/(Q)EAA SD-JWT parameters
@@ -60,7 +60,7 @@ The JOSE header contains the following mandatory parameters:
     - **Description**
     - **Reference**
   * - **typ**
-    - REQUIRED. It MUST be set to ``vc+sd-jwt`` as defined in `[draft-terbu-sd-jwt-vc-latest] <https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html>`__. 
+    - REQUIRED. It MUST be set to ``vc+sd-jwt`` as defined in `SD-JWT-VC`_. 
     - `[RFC7515, Section 4.1.9] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9>`_.
   * - **alg**
     - REQUIRED. Signature Algorithm. 
