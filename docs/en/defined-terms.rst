@@ -24,7 +24,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - Notes
    * - User
      - A natural or legal person using an EUDI Wallet. [ARF v1.3]
-     - -
+     -
    * - User Attribute
      - A feature, characteristic or quality of a natural or legal person or of an entity, in electronic form. [ARF v1.3]
      - Other alternative terms: User Claim
@@ -60,16 +60,16 @@ Below are the description of acronyms and definitions which are useful for furth
      - Differences with ARF: added a sentence on proximity supervised scenarios. Other alternative terms: Verifier App
    * - Verifier
      - A natural person or legal person using an RP Instance. [New]
-     - 
+     -
    * - Trust
      - Trust is the confidence in the security, reliability, and integrity of entities (such as systems, organizations, or individuals) and their actions, ensuring that they will operate as expected in a secure and predictable manner. It is often established through empirical proof, such as past performance, security certifications, or transparent operational practices, which demonstrate a track record of adherence to security standards and ethical conduct. [Revised from ARF v1.3]
-     - 
+     -
    * - Trust Framework
      - A legally enforceable set of operational and technical rules and agreements that govern a multi-party system designed for conducting specific types of transactions among a community of participants and bound by a common set of requirements. [ARF v1.3]
-     - 
+     -
    * - Trust Model
      - Collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem. [ARF v1.3]
-     - 
+     -
    * - Trusted List
      - Repository of information about authoritative entities in a particular legal or contractual context which provides information about their current and historical status. It serves as the bedrock of trust, acting as federative sources that publish the crucial information about root entities within the ecosystem. [Revised from ARF v1.3]
      - Differences with ARF: added the last sentence
@@ -78,7 +78,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - ARF: Registrar
    * - Conformity Assessment Body (CAB)
      - A conformity assessment body as defined in Article 2, point 13, of Regulation (EC) No 765/2008, which is accredited in accordance with that Regulation as competent to carry out conformity assessment of a qualified trust service provider and the qualified trust services it provides, or as competent to carry out certification of European Digital Identity Wallets or electronic identification means. [ARF v1.3]
-     - 
+     -
    * - National Accreditation Bodies (NAB)
      - A body that performs accreditation with authority derived from a Member State under Regulation (EC) No 765/2008. [ARF v1.3]
      - Other alternative terms: Accreditation Authority
@@ -90,16 +90,16 @@ Below are the description of acronyms and definitions which are useful for furth
      - Other alternative terms: Verifiable Attestation, Access Certificate
    * - Trust Relationship
      - Positive outcome of Trust Evaluation, which produces a reliable relationship between Organizational Entities, where one Organizational Entity trusts the other to securely handle data, execute transactions, or perform actions on its behalf.
-     - 
+     -
    * - Metadata
      - Digital artifact that contains all the required information about an Organizational Entity, e.g., protocol related endpoints and the Organizational Entity’s cryptographic public keys (for the complete list check requirement “Metadata Content”).
-     - 
+     -
    * - Policy Language
      - A formal language used to define security, privacy, and identity management policies that govern interactions and transactions within a Trust Framework. This language allows for the clear and unambiguous expression of rules and conditions, facilitating the automation of processes and interoperability among different systems and organizations.
-     - 
+     -
    * - Registration Process
      - Process performed by a Registration Authority verifying necessary information to ensure Organizational Entity eligibility and compliance with the relevant rules and standards. The main goal of the Registration Process is for the Organizational Entity to receive one or more Trust Assertions to be used for the Trust Evaluation processes.
-     - 
+     -
    * - Accreditation Process
      - Process performed by the National Accreditation Body to accreditate CABs. As a result of the Accreditation Process, a NAB issues an accreditation certificate to a CAB.
      - Currently, out of scope of the Trust Model requirements
@@ -108,7 +108,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - Currently, out of scope of the Trust Model requirements
    * - Notification Process
      - Process defining how information is transferred to the European Commission and the inclusion of an entity in the Trusted List.
-     - 
+     -
    * - Supervision Process
      - Process performed by a Supervisory Body to review and ensure proper functioning of the Wallet Provider and other relevant actors.
      - Currently, out of scope of the Trust Model requirements
@@ -118,7 +118,7 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Wallet Attestation
      - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
      -
-   * - Wallet Secure Cryptographic Device
+   * - Wallet Secure Cryptographic Device (WSCD)
      - Hardware-backed secure environment for creating, storing, and/or managing cryptographic keys and data. A WSCD MAY implement an association proof in different ways. This largely depends on the implementation of the WSCD for example: remote HSM, external smart card, internal UICC, internal native cryptographic hardware, such as the iOS Secure Enclave or the Android Hardware Backed Keystore or StrongBox
      -
    * - Credential Status Attestation
@@ -134,7 +134,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - A unique identifier created by the operating system for the Cryptographic Hardware Keys, utilized to gain access to the private key stored in the hardware.
      -
    * - Key Attestation
-     - An attestation from the device's OEM that enhances your confidence in the keys used in your Wallet Instance being securely stored within the device's hardware-backed keystore.
+     - An attestation from the device's OEM that enhances your confidence in the keys used in your Wallet Instance being securely stored within the device's hardware-backed keystore. Its content is therefore defined by the operating system manufacturer. For Android we are referring to the term Key Attestation as the Strongbox `Key Attestation`_ feature. For iOS instead we refer to the `Device Check`_ service and in particular to the `attestKey`_ feature.
      -
    * - Qualified Electronic Attestation of Attributes (QEAA)
      - A digitally verifiable attestation in electronic form, issued by a QTSP, that substantiates a person's possession of attributes.
@@ -193,3 +193,7 @@ Acronyms
     - Authenticator Assurance Level as defined in `<https://csrc.nist.gov/glossary/term/authenticator_assurance_level>`_
   * - **WSCD**
     - Wallet Secure Cryptographic Device
+
+.. _Key Attestation: https://developer.android.com/privacy-and-security/security-key-attestation#attestation-v4
+.. _Device Check: https://developer.apple.com/documentation/devicecheck
+.. _attestKey: https://developer.apple.com/documentation/devicecheck/dcappattestservice/attestkey:clientdatahash:completionhandler:
