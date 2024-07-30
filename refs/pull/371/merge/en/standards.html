@@ -716,6 +716,8 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#sd-jwt-presentation">SD-JWT Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-cbor-presentation">MDOC-CBOR Presentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
 </ul>
@@ -770,7 +772,7 @@
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
 </ul>
@@ -792,8 +794,9 @@
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
 <li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id14">Tab. 2 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id15">Tab. 3 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id6">Tab. 2 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id7">Tab. 3 - http request header parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id8">Tab. 4 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -1005,6 +1008,8 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#sd-jwt-presentation">SD-JWT Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-cbor-presentation">MDOC-CBOR Presentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
 </ul>
@@ -1059,7 +1064,7 @@
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
 </ul>
@@ -1077,8 +1082,9 @@
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
 <li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id14">Tab. 2 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id15">Tab. 3 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id6">Tab. 2 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id7">Tab. 3 - http request header parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id8">Tab. 4 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1115,8 +1121,11 @@
 <tr class="row-even"><td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a></p></td>
 <td><p>Lodderstedt, T., Yasuda, K., Looker, T., &quot;OpenID for Verifiable Credential Issuance&quot;, February 2024, Draft 13.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.ietf.org/id/draft-terbu-sd-jwt-vc-02.html">SD-JWT-VC</a></p></td>
-<td><p>Terbu, O., Fett, D., &quot;SD-JWT-based Verifiable Credentials (SD-JWT VC)&quot;.</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a></p></td>
+<td><ol class="upperalpha simple" start="15">
+<li><p>Terbu, D.Fett, B. Campbell, &quot;SD-JWT-based Verifiable Credentials (SD-JWT VC)&quot;.</p></li>
+</ol>
+</td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a></p></td>
 <td><p>EUDI Wallet - Architecture and Reference Framework.</p></td>
@@ -1204,6 +1213,12 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a></p></td>
 <td><p>Sakimura, N., Bradley, J., Jones, M.,  de Medeiros, B., Mortimore, C., &quot;OpenID Connect Core 1.0 incorporating errata set 2&quot;, December 2023.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SELECTIVE-DISCLOSURE-JWT</a></p></td>
+<td><p>Fett, D., Yasuda, K., Campbell, B., &quot;Selective Disclosure for JWTs (SD-JWT)&quot;.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a></p></td>
+<td><p>Looker, T., Bastian, P., &quot;OAuth 2.0 Attestation-Based Client Authentication&quot;.</p></td>
 </tr>
 </tbody>
 </table>
