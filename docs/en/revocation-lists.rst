@@ -21,7 +21,7 @@ The Status Assertions have the following features:
 - verification of the Digital Credential validity status in both online and offline scenarios;
 - privacy-preserving, according to the following evidences:
 
-  1. the Verifier cannot check over time the validity of a given  Digital Credential related to the User;
+  1. the Verifier can check the validity of the Credential during the presentation phase. It is not able to check the validity of a given Digital Credential related to the User over time and out of the scope of the User authentication;
   2. the Credential Issuers cannot track when and where a Digital Credential is verified;
   3. it doesn't reveal any information about the Users or the content of their Digital Credentials.
 
