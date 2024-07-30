@@ -22,7 +22,7 @@ The Status Assertions have the following features:
 - privacy-preserving, according to the following evidences:
 
   1. the Verifier can check the validity of the Credential during the presentation phase. It is not able to check the validity of a given Digital Credential related to the User over time and out of the scope of the User authentication;
-  2. the Credential Issuers cannot track when and where a Digital Credential is verified;
+  2. the Credential Issuers is not able to know to which Verifier the Digital Credential or the Status Assertion will be presented;
   3. it doesn't reveal any information about the Users or the content of their Digital Credentials.
 
 .. _sec_revocation_assumption:
