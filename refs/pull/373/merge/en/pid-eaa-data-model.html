@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PID/(Q)EAA Data Model &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
+    <script src="_static/documentation_options.js?v=edb75691"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PID/(Q)EAA Issuance" href="pid-eaa-issuance.html" />
+    <link rel="prev" title="Wallet Attestation" href="wallet-attestation.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">The Italian EUDI Wallet implementation profile version: latest documentation</a></h1>
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="pid-q-eaa-data-model">
+<span id="pid-eaa-data-model-rst"></span><h1>PID/(Q)EAA Data Model<a class="headerlink" href="#pid-q-eaa-data-model" title="Link to this heading">¶</a></h1>
+<p>The Person Identification Data (PID) is issued by the PID Provider according to national laws. The main scope of the PID is allowing natural persons to be authenticated for the access to a service or to a protected resource.
+The User attributes provided within the Italian PID are the ones listed below:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Current Family Name</p></li>
+<li><p>Current First Name</p></li>
+<li><p>Date of Birth</p></li>
+<li><p>Unique Identifier</p></li>
+<li><p>Taxpayer identification number</p></li>
+</ul>
+</div></blockquote>
+<p>The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or MDOC-CBOR data format.</p>
+<p>The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections.</p>
+<section id="id1">
+<h2>SD-JWT<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SELECTIVE-DISCLOSURE-JWT</a> as specified in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p>
+<p>An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the <strong>_sd_alg</strong> claim described in the Section 5.1.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SELECTIVE-DISCLOSURE-JWT</a> and other claims specified in this section, some of them may be selectively disclosable claims.</p>
+<p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The <strong>_sd_alg</strong> claim MUST be set to one of the specified algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a>.</p>
+<p>Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, <strong>_sd</strong>.</p>
+<p>Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>a random salt,</p></li>
+<li><p>the claim name (only when the claim is an object property),</p></li>
+<li><p>the claim value.</p></li>
+</ul>
+</div></blockquote>
+<p>The Disclosures are provided to the Holder together with the SD-JWT in the <em>Combined Format for Issuance</em> that MUST be an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Issuer</span><span class="o">-</span><span class="n">Signed</span><span class="o">-</span><span class="n">JWT</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">1</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">2</span><span class="o">&gt;~...~&lt;</span><span class="n">Disclosure</span> <span class="n">N</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SELECTIVE-DISCLOSURE-JWT</a> for additional details.</p>
+<section id="pid-q-eaa-sd-jwt-parameters">
+<h3>PID/(Q)EAA SD-JWT parameters<a class="headerlink" href="#pid-q-eaa-sd-jwt-parameters" title="Link to this heading">¶</a></h3>
+<p>The JOSE header contains the following mandatory parameters:</p>
+<table class="docutils align-default" id="pid-jose-header">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code> as defined in <a class="reference external" href="https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html">[draft-terbu-sd-jwt-vc-latest]</a>.</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9">[RFC7515, Section 4.1.9]</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>alg</strong></p></td>
+<td><p>REQUIRED. Signature Algorithm.</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1">[RFC7515, Section 4.1.1]</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>kid</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the public key.</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.8">[RFC7515, Section 4.1.8]</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
+<td><p>OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html#name-trust-chain-header-paramete">[OIDC-FED, Section 3.2.1]</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>[NSD].URL string representing the PID/(Q)EAA Issuer unique identifier.</p></td>
+<td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.1]</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>[NSD]. The identifier of the subject of the Digital Credential, the User, MUST be opaque and MUST NOT correspond to any anagraphic data or be derived from the User's anagraphic data via pseudonymization. Additionally, it is required that two different Credentials issued MUST NOT use the same <code class="docutils literal notranslate"><span class="pre">sub</span></code> value.</p></td>
+<td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.2]</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>[SD].UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.6]</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>[NSD].UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.4]</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>status</strong></p></td>
+<td><p>[NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member <em>status_attestation</em> set to a JSON Object containing the <em>credential_hash_alg</em> claim indicating the Algorithm used for hashing the Digital Credential to which the Status Attestation is bound. It is RECOMMENDED to use <em>sha-256</em>.</p></td>
+<td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> and <a class="reference external" href="https://www.ietf.org/archive/id/draft-demarco-status-attestations-01.html#section-9">[OAuth Status Attestations Draft 01]</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
+<td><p>[NSD].JSON object containing the proof-of-possession key materials. By including a <strong>cnf</strong> (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the <strong>cnf</strong> parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.</p></td>
+<td><p><a class="reference external" href="https://www.iana.org/go/rfc7800">[RFC7800, Section 3.1]</a> and Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>vct</strong></p></td>
+<td><p>[NSD].Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
+<td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pid-claims">
+<span id="sec-pid-user-claims"></span><h3>PID Claims<a class="headerlink" href="#pid-claims" title="Link to this heading">¶</a></h3>
+<p>Depending on the Digital Credential type <strong>vct</strong>, additional claims data MAY be added. The PID MUST support the following data:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>given_name</strong></p></td>
+<td><p>[SD]. Current First Name.</p></td>
+<td><p><a class="reference external" href="http://openid.net/specs/openid-connect-core-1_0.html">[OpenID Connect Core 1.0, Section 5.1]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>family_name</strong></p></td>
+<td><p>[SD]. Current Family Name.</p></td>
+<td><p><a class="reference external" href="http://openid.net/specs/openid-connect-core-1_0.html">[OpenID Connect Core 1.0, Section 5.1]</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>birth_date</strong></p></td>
+<td><p>[SD]. Date of Birth.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>unique_id</strong></p></td>
+<td><p>[SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to <a class="reference external" href="https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/">ANPR rules</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>tax_id_code</strong></p></td>
+<td><p>[SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example <code class="docutils literal notranslate"><span class="pre">TINIT-&lt;ItalianTaxIdentificationNumber&gt;</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The PID attribute schema, which encompasses all potential User data, is defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#21-identification-and-authentication-to-access-online-services">ARF v1.4</a>, and furthermore detailed in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md#23-pid-attributes">PID Rulebook</a>.</p>
+</section>
+<section id="pid-non-normative-examples">
+<h3>PID Non-Normative Examples<a class="headerlink" href="#pid-non-normative-examples" title="Link to this heading">¶</a></h3>
+<p>In the following, the non-normative example of the payload of a PID represented in JSON format.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;unique_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The corresponding SD-JWT verson for PID is given by</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;trust_chain&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;NEhRdERpYnlHY3M5WldWTWZ2aUhm ...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6 ...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;IkJYdmZybG5oQU11SFIwN2FqVW1B ...&quot;</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;NOxVzjUJg667iBdeDwmr6tZ46X-jchKwIVxMAfv43yc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;q6Tqnxau97tu-MqUDg0fSAmLGZdSuMUMk6a2s3bcsC0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the following the disclosure list is given</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">iat</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;57mvycTh5yZCrKLZ5xnfUw&quot;,</span> <span class="pre">&quot;iat&quot;,</span> <span class="pre">1683000000]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">unique_id</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">NOxVzjUJg667iBdeDwmr6tZ46X-jchKwIVxMAfv43yc</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInVuaXF1ZV9pZCIsICJ4eHh4</span></code>
+<code class="docutils literal notranslate"><span class="pre">eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;kucrBmlo_hMaIFF585RzaQ&quot;,</span> <span class="pre">&quot;unique_id&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">given_name</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFy</span></code>
+<code class="docutils literal notranslate"><span class="pre">aW8iXQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;NTNRoOiuVVRtF6CEztd9Zw&quot;,</span> <span class="pre">&quot;given_name&quot;,</span> <span class="pre">&quot;Mario&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">family_name</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJv</span></code>
+<code class="docutils literal notranslate"><span class="pre">c3NpIl0</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;FDSSPggzGBUwQLHDSE6wQQ&quot;,</span> <span class="pre">&quot;family_name&quot;,</span> <span class="pre">&quot;Rossi&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">birth_date</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4</span></code>
+<code class="docutils literal notranslate"><span class="pre">MC0wMS0xMCJd</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;KZ8e5wVEtDvb1ziSPA4DzA&quot;,</span> <span class="pre">&quot;birth_date&quot;,</span> <span class="pre">&quot;1980-01-10&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">q6Tqnxau97tu-MqUDg0fSAmLGZdSuMUMk6a2s3bcsC0</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
+<code class="docutils literal notranslate"><span class="pre">TklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;pZ5MRyOxpVWZuHLoJ-yjRg&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;]</span></code></p></li>
+</ul>
+<p>The combined format for the PID issuance is given by</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0</span><span class="o">.</span><span class="n">eyJfc2QiOiBb</span>
+<span class="n">IjdXRzRuVDZLMjZfUjM5NzV6Y3duVndnb0hBN2I5ODhfMy12SnpiWmY2WWMiLCAiTk94</span>
+<span class="n">VnpqVUpnNjY3aUJkZUR3bXI2dFo0NlgtamNoS3dJVnhNQWZ2NDN5YyIsICJUSzJSZ3VQ</span>
+<span class="n">WW9YekN4MHZ2NWhiTjl1NU0ybUhsV0J0NDFxR1dsTFhDTnU4IiwgIlVIQ2hwR3RORjJi</span>
+<span class="n">ajFGdkFmQmJ5MXJuZjdXWGt4ZWxGSjVhNHZTajJGTzQiLCAicTZUcW54YXU5N3R1LU1x</span>
+<span class="n">VURnMGZTQW1MR1pkU3VNVU1rNmEyczNiY3NDMCIsICJ3eWZ4VnFxOUJvc1BUN3RONFNI</span>
+<span class="n">T0k0RTQ4UDE5YVZBMWt0VzVaZjBFLWZjIl0sICJleHAiOiAxODgzMDAwMDAwLCAiaXNz</span>
+<span class="n">IjogImh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56Ykxz</span>
+<span class="n">WGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0YXR1c19h</span>
+<span class="n">dHRlc3RhdGlvbiI6IHsiY3JlZGVudGlhbF9oYXNoX2FsZyI6ICJzaGEtMjU2In19LCAi</span>
+<span class="n">dmN0IjogIlBlcnNvbklkZW50aWZpY2F0aW9uRGF0YSIsICJfc2RfYWxnIjogInNoYS0y</span>
+<span class="n">NTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAi</span>
+<span class="n">eCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwg</span>
+<span class="n">InkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9</span>
+<span class="n">fX0</span><span class="o">.</span><span class="n">A36ovweqpCpPkYHX75dg</span><span class="o">-</span><span class="n">HIib7zQKlfmMCaixlpOCmEl1CxlX</span><span class="o">-</span><span class="n">NtZbFn_kdN0nlJ</span>
+<span class="n">YMLay4xSeetmic_ScLTxdg</span><span class="o">~</span><span class="n">WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsI</span>
+<span class="n">DE2ODMwMDAwMDBd</span><span class="o">~</span><span class="n">WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInVuaXF1ZV9pZCIs</span>
+<span class="n">ICJ4eHh4eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ</span><span class="o">~</span><span class="n">WyJOVE5Sb09pd</span>
+<span class="n">VZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJGRFNTUGdnek</span>
+<span class="n">dCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJLWjhlNXdWRX</span>
+<span class="n">REdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJwWjVNU</span>
+<span class="n">nlPeHBWV1p1SExvSi15alJnIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYW</span>
+<span class="n">FhYWFhYWFgiXQ</span><span class="o">~</span>
+</pre></div>
+</div>
+</section>
+<section id="q-eaa-non-normative-examples">
+<h3>(Q)EAA non-normative examples<a class="headerlink" href="#q-eaa-non-normative-examples" title="Link to this heading">¶</a></h3>
+<p>In the following, we provide a non-normative example of (Q)EAA in JSON.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;document_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XXXXXXXXXX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;constant_attendance_allowance&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The corresponding SD-JWT for the previous data is represented as follow, as decoded JSON for both header and payload.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;d126a6a856f7724560484fa9dc59d195&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;trust_chain&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;NEhRdERpYnlHY3M5WldWTWZ2aUhm ...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6 ...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;IkJYdmZybG5oQU11SFIwN2FqVW1B ...&quot;</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;-LLA7MCh-YWWYNzFfwZsJBGGiE096fN8d60a-ml3sgo&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;AFRJaRPZTMaNxYu5IIWPifOAXJCnK-_h1eJt7MymcgM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;i9XHLePHyV8OM35l3nf1MKqfpWuD7OFpRamSAsX0-5g&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;rhPkItz7BGGpjnWX2SGVH_OV9VhRjz9Hx_INXwBbz6o&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the following the disclosure list is given:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">iat</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;57mvycTh5yZCrKLZ5xnfUw&quot;,</span> <span class="pre">&quot;iat&quot;,</span> <span class="pre">1683000000]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">document_number</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">AFRJaRPZTMaNxYu5IIWPifOAXJCnK-_h1eJt7MymcgM</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgImRvY3VtZW50X251bWJlciIs</span></code>
+<code class="docutils literal notranslate"><span class="pre">ICJYWFhYWFhYWFhYIl0</span></code></p></li>
+<li><p>Contents:
+<code class="docutils literal notranslate"><span class="pre">[&quot;kucrBmlo_hMaIFF585RzaQ&quot;,</span> <span class="pre">&quot;document_number&quot;,</span> <span class="pre">&quot;XXXXXXXXXX&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">given_name</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFy</span></code>
+<code class="docutils literal notranslate"><span class="pre">aW8iXQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;NTNRoOiuVVRtF6CEztd9Zw&quot;,</span> <span class="pre">&quot;given_name&quot;,</span> <span class="pre">&quot;Mario&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">family_name</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJv</span></code>
+<code class="docutils literal notranslate"><span class="pre">c3NpIl0</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;FDSSPggzGBUwQLHDSE6wQQ&quot;,</span> <span class="pre">&quot;family_name&quot;,</span> <span class="pre">&quot;Rossi&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">birth_date</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4</span></code>
+<code class="docutils literal notranslate"><span class="pre">MC0wMS0xMCJd</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;KZ8e5wVEtDvb1ziSPA4DzA&quot;,</span> <span class="pre">&quot;birth_date&quot;,</span> <span class="pre">&quot;1980-01-10&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">i9XHLePHyV8OM35l3nf1MKqfpWuD7OFpRamSAsX0-5g</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImV4cGlyeV9kYXRlIiwgIjIw</span></code>
+<code class="docutils literal notranslate"><span class="pre">MjQtMDEtMDEiXQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;pZ5MRyOxpVWZuHLoJ-yjRg&quot;,</span> <span class="pre">&quot;expiry_date&quot;,</span> <span class="pre">&quot;2024-01-01&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">-LLA7MCh-YWWYNzFfwZsJBGGiE096fN8d60a-ml3sgo</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
+<code class="docutils literal notranslate"><span class="pre">TklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;jtVuKCpn7bTcHrAg_seUbQ&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">constant_attendance_allowance</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">rhPkItz7BGGpjnWX2SGVH_OV9VhRjz9Hx_INXwBbz6o</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImNvbnN0YW50X2F0dGVuZGFu</span></code>
+<code class="docutils literal notranslate"><span class="pre">Y2VfYWxsb3dhbmNlIiwgdHJ1ZV0</span></code></p></li>
+<li><p>Contents:
+<code class="docutils literal notranslate"><span class="pre">[&quot;WDkd6JsNhDFvLP4s1hQdyA&quot;,</span> <span class="pre">&quot;constant_attendance_allowance&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">true]</span></code></p></li>
+</ul>
+<p>The combined format for the PID issuance is represented below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0</span><span class="o">.</span><span class="n">eyJfc2QiOiBb</span>
+<span class="n">Ii1MTEE3TUNoLVlXV1lOekZmd1pzSkJHR2lFMDk2Zk44ZDYwYS1tbDNzZ28iLCAiN1dH</span>
+<span class="n">NG5UNksyNl9SMzk3NXpjd25Wd2dvSEE3Yjk4OF8zLXZKemJaZjZZYyIsICJBRlJKYVJQ</span>
+<span class="n">WlRNYU54WXU1SUlXUGlmT0FYSkNuSy1faDFlSnQ3TXltY2dNIiwgIlRLMlJndVBZb1h6</span>
+<span class="n">Q3gwdnY1aGJOOXU1TTJtSGxXQnQ0MXFHV2xMWENOdTgiLCAiVUhDaHBHdE5GMmJqMUZ2</span>
+<span class="n">QWZCYnkxcm5mN1dYa3hlbEZKNWE0dlNqMkZPNCIsICJpOVhITGVQSHlWOE9NMzVsM25m</span>
+<span class="n">MU1LcWZwV3VEN09GcFJhbVNBc1gwLTVnIiwgInJoUGtJdHo3QkdHcGpuV1gyU0dWSF9P</span>
+<span class="n">VjlWaFJqejlIeF9JTlh3QmJ6Nm8iLCAid3lmeFZxcTlCb3NQVDd0TjRTSE9JNEU0OFAx</span>
+<span class="n">OWFWQTFrdFc1WmYwRS1mYyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRw</span>
+<span class="n">czovL2lzc3Vlci5leGFtcGxlLm9yZyIsICJzdWIiOiAiTnpiTHNYaDh1RENjZDdub1dY</span>
+<span class="n">RlpBZkhreFpzUkdDOVhzIiwgInN0YXR1cyI6IHsic3RhdHVzX2F0dGVzdGF0aW9uIjog</span>
+<span class="n">eyJjcmVkZW50aWFsX2hhc2hfYWxnIjogInNoYS0yNTYifX0sICJ2Y3QiOiAiRGlzYWJp</span>
+<span class="n">bGl0eUNhcmQiLCAiX3NkX2FsZyI6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJr</span>
+<span class="n">dHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRX</span>
+<span class="n">NHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZR</span>
+<span class="n">NGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX19</span><span class="mf">.1</span><span class="n">kOe6IgFxgbb_jtaLUhM_bgjmby</span>
+<span class="n">j6B63rm_WjaOwpOBsiPSKJY7hBHd2a83euSI8JqbSkVHJS3wcr0kd9ppZRw</span><span class="o">~</span><span class="n">WyI1N212</span>
+<span class="n">eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span><span class="o">~</span><span class="n">WyJrdWNyQm1sb19</span>
+<span class="n">oTWFJRkY1ODVSemFRIiwgImRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0</span><span class="o">~</span><span class="n">WyJ</span>
+<span class="n">OVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJG</span>
+<span class="n">RFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJL</span>
+<span class="n">WjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd</span>
+<span class="o">~</span><span class="n">WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDE</span>
+<span class="n">tMDEiXQ</span><span class="o">~</span><span class="n">WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgInRheF9pZF9jb2RlIiwgIlRJ</span>
+<span class="n">TklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span><span class="o">~</span><span class="n">WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgI</span>
+<span class="n">mNvbnN0YW50X2F0dGVuZGFuY2VfYWxsb3dhbmNlIiwgdHJ1ZV0</span><span class="o">~</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="mdoc-cbor">
+<h2>MDOC-CBOR<a class="headerlink" href="#mdoc-cbor" title="Link to this heading">¶</a></h2>
+<p>The PID/(Q)EAA MDOC-CBOR data model is defined in ISO/IEC 18013-5, the standard born for the the mobile driving license (mDL) use case.</p>
+<p>The MDOC data elements MUST be encoded as defined in <a class="reference external" href="RFC8949-ConciseBinaryObjectRepresentation(CBOR)">RFC 8949 - Concise Binary Object Representation (CBOR)</a>.</p>
+<p>The PID encoded in MDOC-CBOR format uses the document type set to <cite>eu.europa.ec.eudiw.pid.1</cite>, according to the reverse domain approach defined in the
+<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> and ISO/IEC 18013-5.</p>
+<p>The document's data elements utilize a consistent namespace for the mandatory Mobile Driving License attributes, while the national PID attributes use the domestic namespace <cite>eu.europa.ec.eudiw.pid.it.1</cite>, as outlined in this implementation profile.</p>
+<p>In compliance with ISO/IEC 18013-5, the MDOC data model in the domestic namespace <cite>eu.europa.ec.eudiw.pid.it.1</cite>, requires the following attributes:</p>
+<table class="docutils align-default" id="table-mdoc-attributes">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>version</strong></p></td>
+<td><p><em>tstr (text string)</em>. Version of the data structure being used. It's a way to track changes and updates to the standard or to a specific implementation profile. This allows for backward compatibility and understanding of the data if the standard or implementation evolves over time.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>status</strong></p></td>
+<td><p><em>uint (unsigned int)</em>. Status code. For example <code class="docutils literal notranslate"><span class="pre">&quot;status&quot;:0</span></code> means OK (normal processing).</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2.3]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>documents</strong></p></td>
+<td><p><em>bstr (byte string)</em>. The collection of digital documents. Each document in this collection represents a specific type of data or information related to the Digital Credential.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each document within the <strong>documents</strong> collection MUST have the following structure:</p>
+<table class="docutils align-default" id="table-mdoc-documents-attributes">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>docType</strong></p></td>
+<td><p><em>tstr (text string)</em>. Document type. For the PID, the value MUST be set to <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.eudiw.pid.1.</span></code> For an mDL, the value MUST be <code class="docutils literal notranslate"><span class="pre">org.iso.18013-5.1.mDL</span></code>.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>issuerSigned</strong></p></td>
+<td><p><em>bstr (byte string)</em>. It MUST contain the Mobile Security Object for Issuer data authentication and the data elements protected by Issuer data authentication.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>issuerSigned</strong> object MUST have the following structure:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>nameSpaces</strong></p></td>
+<td><p><em>bstr (byte string)</em> with <em>tag</em> 24 and <em>major type</em> 6. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. The <cite>nameSpaces</cite> MUST use the same value for the document type. However, it MAY have a domestic namespace to include attributes defined in this implementation profile. The value MUST be set to <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.eudiw.pid.it.1</span></code>.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>issuerAuth</strong></p></td>
+<td><p><em>bstr (byte string)</em>. Contains <em>Mobile Security Object</em> (MSO), a COSE Sign1 Document, issued by the Credential Issuer.</p></td>
+<td><p>[ISO 18013-5#9.1.2.4]</p></td>
+</tr>
+</tbody>
+</table>
+<p>During the presentation of the MDOC-CBOR credential, in addition to the objects in the table above, a <strong>deviceSigned</strong> object MUST also be added. <strong>deviceSigned</strong> MUST NOT be included in the issued credential provided by the PID/(Q)EAA Issuer.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>deviceSigned</strong></p></td>
+<td><p><em>bstr (byte string)</em>. Data elements signed by the Wallet Instance during the presentation phase.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
+</tr>
+</tbody>
+</table>
+<p>Where the <strong>deviceSigned</strong> MUST have the following structure:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>nameSpaces</strong></p></td>
+<td><p><em>tstr (text string)</em>. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. It MAY be used for self-attested claims.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>deviceAuth</strong></p></td>
+<td><p><em>bstr (byte string)</em>. It MUST contain either the <em>DeviceSignature</em> or the <em>DeviceMac</em> element.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A <strong>deviceSigned</strong> object given during the presentation phase has two purposes:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>It provides optional self-attested attributes in the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> object. If no self-attested attributes are provided by the Wallet Instance, the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> object MUST be included with an empty structure.</p></li>
+<li><p>Provide a cryptographic proof attesting that the Holder is the legitimate owner of the Credential, by means of a <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> object.</p></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">issuerSigned</span></code> and the <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> objects contain the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> object and the <em>Mobile Security Object</em>. The latter is the only signed object, while the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> object is not signed.</p>
+</div>
+<section id="namespaces">
+<h3>nameSpaces<a class="headerlink" href="#namespaces" title="Link to this heading">¶</a></h3>
+<p>The <strong>nameSpaces</strong> object contains one or more <em>IssuerSignedItemBytes</em> that are encoded using CBOR bitsring 24 tag (#6.24(bstr .cbor), marked with the CBOR Tag 24(&lt;&lt;... &gt;&gt;) and represented in the example using the diagnostic format). It represents the disclosure information for each digest within the <cite>Mobile Security Object</cite> and MUST contain the following attributes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><strong>Encoding</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>digestID</strong></p></td>
+<td><p><em>integer</em></p></td>
+<td><p>Reference value to one of the <code class="docutils literal notranslate"><span class="pre">ValueDigests</span></code> provided in the <em>Mobile Security Object</em> (<cite>issuerAuth</cite>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>random</strong></p></td>
+<td><p><em>bstr (byte string)</em></p></td>
+<td><p>Random byte value used as salt for the hash function. This value SHALL be different for each <em>IssuerSignedItem</em> and it SHALL have a minimum length of 16 bytes.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>elementIdentifier</strong></p></td>
+<td><p><em>tstr (text string)</em></p></td>
+<td><p>Data element identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>elementValue</strong></p></td>
+<td><p>depends by the value, see the next table.</p></td>
+<td><p>Data element value.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>elementIdentifier</strong> data that MUST be included in a PID/(Q)EAA are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Namespace</strong></p></th>
+<th class="head"><p><strong>Element identifier</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
+<td><p><strong>issue_date</strong></p></td>
+<td><p><em>full-date (CBORTag 1004)</em>. Date when the PID/(Q)EAA was issued.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
+<td><p><strong>expiry_date</strong></p></td>
+<td><p><em>full-date (CBORTag 1004)</em>. Date when the PID/(Q)EAA will expire.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
+<td><p><strong>issuing_authority</strong></p></td>
+<td><p><em>tstr (text string)</em>. Name of administrative authority that has issued the PID/(Q)EAA.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
+<td><p><strong>issuing_country</strong></p></td>
+<td><p><em>tstr (text string)</em>. Alpha-2 country code as defined in [ISO 3166].</p></td>
+</tr>
+</tbody>
+</table>
+<p>Depending on the Digital Credential type, additional <strong>elementIdentifier</strong> data MAY be added. The PID MUST support the following data:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Namespace</strong></p></th>
+<th class="head"><p><strong>Element identifier</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
+<td><p><strong>given_name</strong></p></td>
+<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
+<td><p><strong>family_name</strong></p></td>
+<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
+<td><p><strong>birth_date</strong></p></td>
+<td><p><em>full-date (CBORTag 1004)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
+<td><p><strong>unique_id</strong></p></td>
+<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.it.1</strong></p></td>
+<td><p><strong>tax_id_code</strong></p></td>
+<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mobile-security-object">
+<h3>Mobile Security Object<a class="headerlink" href="#mobile-security-object" title="Link to this heading">¶</a></h3>
+<p>The <strong>issuerAuth</strong> represents the <cite>Mobile Security Object</cite> which is a <cite>COSE Sign1 Document</cite> defined in <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9052.html">RFC 9052 - CBOR Object Signing and Encryption (COSE): Structures and Process</a>. It has the following data structure:</p>
+<ul class="simple">
+<li><p>protected header</p></li>
+<li><p>unprotected header</p></li>
+<li><p>payload</p></li>
+<li><p>signature.</p></li>
+</ul>
+<p>The <strong>protected header</strong> MUST contain the following parameter encoded in CBOR format:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Element</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Signature algorithm</strong></p></td>
+<td><p><cite>-7</cite> means ES256, SHA-256.</p></td>
+<td><p>RFC8152</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the Signature Algorithm MUST be present in the protected headers, other elements SHOULD not be present in the protected header.</p>
+</div>
+<p>The <strong>unprotected header</strong> MUST contain the following parameter:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Element</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>x5chain</strong></p></td>
+<td><p>Identified with the label 33</p></td>
+<td><p><a class="reference external" href="RFC9360CBORObjectSigningandEncryption(COSE)-HeaderParametersforCarryingandReferencingX.509Certificates">RFC 9360 CBOR Object Signing and Encryption (COSE) - Header Parameters for Carrying and Referencing X.509 Certificates</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>x5chain</cite> is included in the unprotected header with the aim to make the Holder able to update the X.509 certificate chain, related to the <cite>Mobile Security Object</cite> issuer, without invalidating the signature.</p>
+</div>
+<p>The <strong>payload</strong> MUST contain the <em>MobileSecurityObject</em>, without the <cite>content-type</cite> COSE Sign header parameter and encoded as a <em>byte string</em> (bstr) using the <em>CBOR Tag</em> 24.</p>
+<p>The <cite>MobileSecurityObjectBytes</cite> MUST have the following attributes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Element</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>docType</strong></p></td>
+<td><p>See <a class="reference internal" href="#table-mdoc-documents-attributes"><span class="std std-ref">Table</span></a>.</p></td>
+<td><p>[ISO 18013-5#9.1.2.4]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong></p></td>
+<td><p>See <a class="reference internal" href="#table-mdoc-attributes"><span class="std std-ref">Table</span></a>.</p></td>
+<td><p>[ISO 18013-5#9.1.2.4]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>validityInfo</strong>.</p></td>
+<td><p>Object containing issuance and expiration datetimes. It MUST contain the following sub-value:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>signed</em></p></li>
+<li><p><em>validFrom</em></p></li>
+<li><p><em>validUntil</em></p></li>
+</ul>
+</div></blockquote>
+</td>
+<td><p>[ISO 18013-5#9.1.2.4]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>digestAlgorithm</strong></p></td>
+<td><p>According to the algorithm defined in the protected header.</p></td>
+<td><p>[ISO 18013-5#9.1.2.4]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>valueDigests</strong></p></td>
+<td><p>Mapped digest by unique id, grouped by namespace.</p></td>
+<td><p>[ISO 18013-5#9.1.2.4]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>deviceKeyInfo</strong></p></td>
+<td><p>It MUST contain the Wallet Instance's public key containing the following sub-values.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>deviceKey</em> (REQUIRED).</p></li>
+<li><p><em>keyAuthorizations</em> (OPTIONAL).</p></li>
+<li><p><em>keyInfo</em> (OPTIONAL).</p></li>
+</ul>
+</div></blockquote>
+</td>
+<td><p>[ISO 18013-5#9.1.2.4]</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The private key related to the public key stored in the <cite>deviceKey</cite> object is used to sign the <cite>DeviceSignedItems</cite> object and proof the possession of the PID during the presentation phase (see the presentation phase with MDOC-CBOR).</p>
+</div>
+</section>
+<section id="mdoc-cbor-examples">
+<h3>MDOC-CBOR Examples<a class="headerlink" href="#mdoc-cbor-examples" title="Link to this heading">¶</a></h3>
+<p>A non-normative example of a PID in MDOC-CBOR format is represented below using the AF Binary encoding:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a366737461747573006776657273696f6e63312e3069646f63756d656e747381a267646f6354797065781865752e6575726f70612e65632e65756469772e7069642e316c6973737565725369676e6564a26a697373756572417574688443a10126a1182159021930820215308201bca003020102021404ad06a30c1a6dc6e93be0e2e8f78dcafa7907c2300a06082a8648ce3d040302305b310b3009060355040613025a45312e302c060355040a0c25465053204d6f62696c69747920616e64205472616e73706f7274206f66205a65746f706961311c301a06035504030c1349414341205a65746573436f6e666964656e73301e170d3231303932393033333034355a170d3232313130333033333034345a3050311a301806035504030c114453205a65746573436f6e666964656e7331253023060355040a0c1c5a65746f70696120436974792044657074206f662054726166666963310b3009060355040613025a453059301306072a8648ce3d020106082a8648ce3d030107034200047c5545e9a0b15f4ff3ce5015121e8ad3257c28d541c1cd0d604fc9d1e352ccc38adef5f7902d44b7a6fc1f99f06eedf7b0018fd9da716aec2f1ffac173356c7da3693067301f0603551d23041830168014bba2a53201700d3c97542ef42889556d15b7ac4630150603551d250101ff040b3009060728818c5d050102301d0603551d0e04160414ce5fd758a8e88563e625cf056bfe9f692f4296fd300e0603551d0f0101ff040403020780300a06082a8648ce3d0403020347003044022012b06a3813ffec5679f3b8cddb51eaa4b95b0cbb1786b09405e2000e9c46618c02202c1f778ad252285ed05d9b55469f1cb78d773671f30fe7ab815371942328317c59032ad818590325a667646f6354797065781865752e6575726f70612e65632e65756469772e7069642e316776657273696f6e63312e306c76616c6964697479496e666fa3667369676e6564c074323032332d30322d32325430363a32333a35365a6976616c696446726f6dc074323032332d30322d32325430363a32333a35365a6a76616c6964556e74696cc074323032342d30322d32325430303a30303a30305a6c76616c756544696765737473a2781865752e6575726f70612e65632e65756469772e7069642e31ac015820a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a025820cd372fb85148700fa88095e3492d3f9f5beb43e555e5ff26d95f5a6adc36f8e6035820e67e72111b363d80c8124d28193926000980e1211c7986cacbd26aacc5528d48045820f7d062d662826ed95869851db06bb539b402047baee53a00e0aa35bfbe98265d0658202a132dbfe4784627b86aa3807cd19cfeff487aab3dd7a60d0ab119a72e736936075820bdca9e8dbca354e824e67bfe1533fa4a238b9ea832f23fb4271ebeb3a5a8f7200858202c0eaec2f05b6c7fe7982683e3773b5d8d7a01e33d04dfcb162add8bd99bee9a095820bfe220d85657ccec3c67e7db1df747e9148a152334bb6d4b65b273279bcc36ec0a582018e38144f5044301d6a0b4ec9d5f98d4cd950e6ea2c29b849cbd457da29b6ad30b58203c71d2f0efa09d9e3fbbdffd29204f6b292c9f79570aef72dd86c91f7a3aa5c50c582065743d58d89d45e52044758f546034fd13a4f994bc270cdfa7844f74eb3f4b6e0d5820b4a8eb5d523bffa17b41bda12ddc7da32ae1e5f7ff3dcc394a35401f16919bbf781b65752e6575726f70612e65632e65756469772e7069642e69742e31a10e58209d6c11644651126c94acdaf0803e86d4c71d15d3b2712a14295416734efd514d6d6465766963654b6579496e666fa1696465766963654b6579a401022001215820ba01aea44eee1e338eb2f04e279dbd51b34655783ee185150838c9a7a7c4db7122582025ba0044439a3871a7b975a0994a85e79b705a9ac263b3fe899b0a93412ee8c96f646967657374416c676f726974686d675348412d32353658400813c28fd62f2602cbc14724e5865733c44a0fca589b55c085ec9d5c725d6cce25ba0044439a3871a7b975a0994a85e79b705a9ac263b3fe899b0a93412ee8c96a6e616d65537061636573a2781865752e6575726f70612e65632e65756469772e7069642e3188d818586da4686469676573744944016672616e646f6d5820156df9227ad341eaa61aabd301106fd21bdc18820e01dfc16bcf5fecc447111b71656c656d656e744964656e7469666965726b6578706972795f646174656c656c656d656e7456616c7565d903ec6a323032342d30322d3232d818586fa4686469676573744944026672616e646f6d5820a3a1f13f05544d03a5b50b5fdb78465808393bcf3b7953a345fe28f820c7be0d71656c656d656e744964656e7469666965726d69737375616e63655f646174656c656c656d656e7456616c7565d903ec6a323032332d30322d3232d8185866a4686469676573744944036672616e646f6d5820852591f90f2c9ded57a03632e2c1322ab52a082a431e71a4149a6830c8f1ad0c71656c656d656e744964656e7469666965726f69737375696e675f636f756e7472796c656c656d656e7456616c7565624954d818587ca4686469676573744944046672616e646f6d5820d1d587b3512acce15c4f6b20944ceb002a464e4a158389788563408873c3fce571656c656d656e744964656e7469666965727169737375696e675f617574686f726974796c656c656d656e7456616c7565764d696e69737465726f2064656c6c27496e7465726e6fd8185864a4686469676573744944056672616e646f6d582094fdd7609c0e73dc8589b5cab11e1d9058cf8bff8a336da5f81fcba055396a0f71656c656d656e744964656e7469666965726a676976656e5f6e616d656c656c656d656e7456616c7565654d6172696fd8185865a4686469676573744944066672616e646f6d5820660c0a7bf79e0e0261ca1547a4294fb808aa70738f424b13ab1b9440b566ae1371656c656d656e744964656e7469666965726b66616d696c795f6e616d656c656c656d656e7456616c756565526f737369d818586ba4686469676573744944076672616e646f6d5820315c53491286488fa07f5c2ce67135ef5c9959c3469c99a14e9b6dc924f9eba571656c656d656e744964656e746966696572696269727468646174656c656c656d656e7456616c7565d903ec6a313935362d30312d3132d818587da4686469676573744944086672616e646f6d5820764ef39c9d01f3aa6a87f441603cfe853fba3cee3bc2c168bcc9e96271d6e06371656c656d656e744964656e74696669657269756e697175655f69646c656c656d656e7456616c7565781e78787878787878782d7878782d787878782d787878787878787878787878781b65752e6575726f70612e65632e65756469772e7069642e69742e3181d8185877a46864696765737449440d6672616e646f6d5820717df3f583b1484366c33a1f869f2b5d201d466a8b589c79ab1a2d85e595432571656c656d656e744964656e7469666965726d7461785f69645f6e756d6265726c656c656d656e7456616c75657554494e49542d585858585858585858585858585858
+</pre></div>
+</div>
+<p>The <cite>Diagnostic Notation</cite> of the above MDOC-CBOR is given below:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  &quot;status&quot;: 0,
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;documents&quot;: [
+  {
+    &quot;docType&quot;: &quot;eu.europa.ec.eudiw.pid.1&quot;,
+    &quot;issuerSigned&quot;: {
+        &quot;issuerAuth&quot;: [
+        &lt;&lt; {1: -7} &gt;&gt;, % protected header with the value alg:ES256
+        {
+            33: h&#39;30820215308201BCA003020102021404AD30C…&#39;% 33-&gt;X5chain:COSE X_509
+        },
+        &lt;&lt;
+            24(&lt;&lt;
+                {
+                &quot;docType&quot;: &quot;eu.europa.ec.eudiw.pid.1&quot;,
+                &quot;version&quot;: &quot;1.0&quot;,
+                &quot;validityInfo&quot;: {
+                    &quot;signed&quot;: 0(&quot;2023-02-22T06:23:56Z&quot;),
+                    &quot;validFrom&quot;: 0(&quot;2023-02-22T06:23:56Z&quot;),
+                    &quot;validUntil&quot;: 0(&quot;2024-02-22T00:00:00Z&quot;)
+                },
+                &quot;valueDigests&quot;: {
+                    &quot;eu.europa.ec.eudiw.pid.1&quot;: {
+                        1: h&#39;0F1571A97FFB799CC8FCDF2BA4FC2909929…&#39;,
+                        2: h&#39;0CDFE077400432C055A2B69596C90…&#39;,
+                        3: h&#39;E2382149255AE8E955AF9B8984395…&#39;,
+                        4: h&#39;BBC77E6CCA981A3AD0C3E544EDF86…&#39;,
+                        6: h&#39;BB6E6C68D1B4B4EC5A2AE9206F5t4…&#39;,
+                        7: h&#39;F8A5966E6DAC9970E0334D8F75E25…&#39;,
+                        8: h&#39;DEFDF1AA746718016EF1B94BFE5R6…&#39;
+                    },
+                    &quot;eu.europa.ec.eudiw.pid.it.1&quot;: {
+                        9: h&#39;F9EE4D36F67DBD75E23311AC1C29…&#39;
+                    }
+                },
+                &quot;deviceKeyInfo&quot;: {
+                    &quot;deviceKey&quot;: {
+                        1: 2, % kty:EC2 (Eliptic curves with x and y coordinate pairs)
+                        -1: 1, % crv:p256
+                        -2: h&#39;B820963964E53AF064686DD9218303494A…&#39;, % x-coordiantes
+                        -3: h&#39;0A6DA0AF437E2943F1836F31C678D89298E9…&#39;% y-ccordiantes
+                    }
+                },
+                &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;
+                }
+            &gt;&gt;)
+        &gt;&gt;,
+        h&#39;1AD0D6A7313EFDC38FCD765852FA2BD43DEBF48BF5A580D&#39;
+        ],
+        &quot;nameSpaces&quot;: {
+            &quot;eu.europa.ec.eudiw.pid.1&quot;: [
+            24(&lt;&lt;
+                {
+                &quot;digestID&quot;: 1,
+                &quot;random&quot;: h&#39;E0B70BCEFBD43686F345C9ED429343AA&#39;,
+                &quot;elementIdentifier&quot;: &quot;expiry_date&quot;,
+                &quot;elementValue&quot;: 1004(&quot;2024-02-22&quot;)
+                }
+            &gt;&gt;),
+            24(&lt;&lt;
+                {
+                &quot;digestID&quot;: 2,
+                &quot;random&quot;: h&#39;AE84834F389EE69888665B90A3E4FCCE&#39;,
+                &quot;elementIdentifier&quot;: &quot;issue_date&quot;,
+                &quot;elementValue&quot;: 1004(&quot;2023-02-22&quot;)
+                }
+            &gt;&gt;),
+            24(&lt;&lt;
+                {
+                &quot;digestID&quot;: 3,
+                &quot;random&quot;: h&#39;960CB15A2EA9B68E5233CE902807AA95&#39;,
+                &quot;elementIdentifier&quot;: &quot;issuing_country&quot;,
+                &quot;elementValue&quot;: &quot;IT&quot;
+                }
+            &gt;&gt;),
+            24(&lt;&lt;
+                {
+                &quot;digestID&quot;: 4,
+                &quot;random&quot;: h&#39;9D3774BD5994CCFED248674B32A4F76A&#39;,
+                &quot;elementIdentifier&quot;: &quot;issuing_authority&quot;,
+                &quot;elementValue&quot;: &quot;Ministero dell&#39;Interno&quot;
+                }
+            &gt;&gt;),
+            24(&lt;&lt;
+                {
+                &quot;digestID&quot;: 5,
+                &quot;random&quot;: h&#39;EB12193DC66C6174530CDC29B274381F&#39;,
+                &quot;elementIdentifier&quot;: &quot;given_name&quot;,
+                &quot;elementValue&quot;: &quot;Mario&quot;
+                }
+            &gt;&gt;)),
+            24(&lt;&lt;
+                {
+                &quot;digestID&quot;: 6,
+                &quot;random&quot;: h&#39;DB143143538F3C8D41DC024F9CB25C9D&#39;,
+                &quot;elementIdentifier&quot;: &quot;family_name&quot;,
+                &quot;elementValue&quot;: &quot;Rossi&quot;
+                }
+            &gt;&gt;),
+            24(&lt;&lt;
+                {
+                &quot;digestID&quot;: 7,
+                &quot;random&quot;: h&#39;6059FF1CE27B4997B4ADE1DE7B01DC60&#39;,
+                &quot;elementIdentifier&quot;: &quot;birth_date&quot;,
+                &quot;elementValue&quot;: 1004(&quot;1956-01-12&quot;)% the tag 1004 defines the value
+                                                    is a full date
+                }
+            &gt;&gt;),
+            24(&lt;&lt;
+                {
+                &quot;digestID&quot;: 8,
+                &quot;random&quot;: h&#39;53C15C57B3B076E788795829190220B4&#39;,
+                &quot;elementIdentifier&quot;: &quot;unique_id&quot;,
+                &quot;elementValue&quot;: &quot;xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx&quot;
+                }
+            &gt;&gt;)
+            ],
+            &quot;eu.europa.ec.eudiw.pid.it.1&quot;: [
+                24(&lt;&lt;
+                    {
+                    &quot;digestID&quot;: 9,
+                    &quot;random&quot;: h&#39;11aa7273a2d2daa973f5951f0c34c2fbae&#39;,
+                    &quot;elementIdentifier&quot;: &quot;tax_id_number&quot;,
+                    &quot;elementValue&quot;: &quot;TINIT-XXXXXXXXXXXXXXX&quot;
+                    }
+                &gt;&gt;)
+            ]
+        }
+    }
+  }
+  ]
+}
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">PID/(Q)EAA Data Model</a><ul>
+<li><a class="reference internal" href="#id1">SD-JWT</a><ul>
+<li><a class="reference internal" href="#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li><a class="reference internal" href="#pid-claims">PID Claims</a></li>
+<li><a class="reference internal" href="#pid-non-normative-examples">PID Non-Normative Examples</a></li>
+<li><a class="reference internal" href="#q-eaa-non-normative-examples">(Q)EAA non-normative examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mdoc-cbor">MDOC-CBOR</a><ul>
+<li><a class="reference internal" href="#namespaces">nameSpaces</a></li>
+<li><a class="reference internal" href="#mobile-security-object">Mobile Security Object</a></li>
+<li><a class="reference internal" href="#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="wallet-attestation.html">
+                    <span class="icon">&lt;</span><span>Wallet Attestation</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="pid-eaa-issuance.html"><span>PID/(Q)EAA Issuance</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Dipartimento per la Trasformazione Digitale.
+      Last updated on 30/07/2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
+  </body>
+</html>
