@@ -397,7 +397,7 @@ Below a non-normative example of the request:
   response=eyJhbGciOiJFUzI1NiIs...9t2LQ
   
 
-Below is a non-normative example of the decrypted JSON ``response`` content:
+Below is a non-normative example of the decrypted payload of the JWT contained in the ``response``, before base64url encoding:
 
 .. code-block:: 
 
@@ -549,13 +549,13 @@ The following is a non-normative example of the response from the Relying Party 
 .. code-block:: http
 
   HTTP/1.1 200 OK
-  Content-Type: application/json;charset=UTF-8
+  Content-Type: application/json
 
   {
-    "redirect_uri": "https://relying-party.example.org/cb#response_code=091535f699ea575c7937fa5f0f454aee"
+    "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
   }
 
-The ``redirect_uri`` value MUST be used with an HTTP method GET by either the Wallet Instance or the user-agent to redirect the User to the Relying Party in order to complete the process. The specific entity that performs this action depends on whether the flow is Same device or Cross device.
+The ``redirect_uri`` value MUST be used with an HTTP method GET by either the Wallet Instance or the user-agent to redirect the User to the Relying Party in order to complete the process. The value can be added as a path component, as a fragment or as a parameter to the URL according to Section 6.2 of `OpenID4VP`_. The specific entity that performs this action depends on whether the flow is Same device or Cross device.
 
 Redirect URI Errors
 -------------------

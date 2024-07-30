@@ -57,3 +57,5 @@ Technical References
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC".
     * - `SELECTIVE-DISCLOSURE-JWT`_
       - Fett, D., Yasuda, K., Campbell, B., "Selective Disclosure for JWTs (SD-JWT)".
+    * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
+      - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication".
