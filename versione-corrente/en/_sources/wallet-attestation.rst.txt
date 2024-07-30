@@ -471,7 +471,7 @@ The JOSE header of the Wallet Attestation JWT MUST contain:
       -  `OPENID4VC-HAIP`_
     * - **trust_chain**
       - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party.
-      - `OIDC-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
+      - `OID-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
 
 The body of the Wallet Attestation JWT MUST contain:
 

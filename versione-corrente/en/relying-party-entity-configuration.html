@@ -795,9 +795,9 @@
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
 <li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id35">Tab. 2 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id36">Tab. 3 - http request header parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id37">Tab. 4 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id6">Tab. 2 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id7">Tab. 3 - http request header parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id8">Tab. 4 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -1083,9 +1083,9 @@
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
 <li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id35">Tab. 2 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id36">Tab. 3 - http request header parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id37">Tab. 4 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id6">Tab. 2 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id7">Tab. 3 - http request header parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id8">Tab. 4 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1150,19 +1150,19 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <td><p>JSON Array of <em>request_uri</em> values that are pre-registered by the RP. These URLs MUST use the <em>https</em> scheme. See <a class="reference external" href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration 1.0</a> Section 2.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_uris_supported</strong></p></td>
-<td><p>JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> and <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Draft 20 Sections 6.2 and 6.3).</p></td>
+<td><p>JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> and <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Draft 20 Sections 6.2 and 6.3).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>authorization_signed_response_alg</strong></p></td>
 <td><p>String representing the JWS [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> algorithm that MUST be used for signing authorization responses. The algorithm <em>none</em> MUST NOT be used. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html">[oauth-v2-jarm-03]</a> Section 3.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vp_formats</strong></p></td>
-<td><p>JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least &quot;<em>vc+sd-jwt</em>&quot; according to <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html">OPENID4VC-HAIP</a> Draft 00 Section 7.2.7. The value associated with each name/value pair MUST be a JSON object &quot;<strong>sd-jwt_alg_values</strong>&quot; that MUST contain a JSON array containing identifiers of cryptographic algorithms the RP supports for protection of a SD-JWT. The <em>alg</em> JOSE header (as defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) of the presented SD-JWT MUST match one of the array values. See also <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Draft 20 Section 9.1.</p></td>
+<td><p>JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least &quot;<em>vc+sd-jwt</em>&quot; according to <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html">OPENID4VC-HAIP</a> Draft 00 Section 7.2.7. The value associated with each name/value pair MUST be a JSON object &quot;<strong>sd-jwt_alg_values</strong>&quot; that MUST contain a JSON array containing identifiers of cryptographic algorithms the RP supports for protection of a SD-JWT. The <em>alg</em> JOSE header (as defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) of the presented SD-JWT MUST match one of the array values. See also <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Draft 20 Section 9.1.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>presentation_definitions_supported</strong></p></td>
-<td><p>JSON Array of supported <em>presentation_definition</em> objects that MUST be compliant to the syntax defined in Section 5 of <a class="reference external" href="https://identity.foundation/presentation-exchange/spec/v2.0.0/">[DIF.PresentationExchange]</a> and Section 7.2.8 of <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html">OPENID4VC-HAIP</a> Draft 00. For <em>presentation_definition</em> objects see also <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Section 5.1.</p></td>
+<td><p>JSON Array of supported <em>presentation_definition</em> objects that MUST be compliant to the syntax defined in Section 5 of <a class="reference external" href="https://identity.foundation/presentation-exchange/spec/v2.0.0/">[DIF.PresentationExchange]</a> and Section 7.2.8 of <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html">OPENID4VC-HAIP</a> Draft 00. For <em>presentation_definition</em> objects see also <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Section 5.1.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html">[oauth-v2-jarm-03]</a> Section 3,  <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Draft 36 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
+<td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html">[oauth-v2-jarm-03]</a> Section 3,  <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
 </tbody>
 </table>

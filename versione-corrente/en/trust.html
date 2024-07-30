@@ -795,9 +795,9 @@
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
 <li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id35">Tab. 2 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id36">Tab. 3 - http request header parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id37">Tab. 4 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id6">Tab. 2 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id7">Tab. 3 - http request header parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id8">Tab. 4 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -1083,9 +1083,9 @@
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
 <li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id35">Tab. 2 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id36">Tab. 3 - http request header parameters</a></li>
-<li><a class="reference internal" href="pid-eaa-issuance.html#id37">Tab. 4 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id6">Tab. 2 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id7">Tab. 3 - http request header parameters</a></li>
+<li><a class="reference internal" href="pid-eaa-issuance.html#id8">Tab. 4 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1111,7 +1111,7 @@
   <section id="the-infrastructure-of-trust">
 <span id="trust-rst"></span><h1>The Infrastructure of Trust<a class="headerlink" href="#the-infrastructure-of-trust" title="Permalink to this heading">¶</a></h1>
 <p>The EUDI Wallet Architecture Reference Framework (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>) describes the Trust Model as a <em>&quot;collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem&quot;</em>.</p>
-<p>This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a>. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants, also called Federation Entities.</p>
+<p>This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a>. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants, also called Federation Entities.</p>
 <p>The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/trust-roles.svg"><img alt="federation portrait" src="_images/trust-roles.svg" width="100%" /></a>
@@ -1235,7 +1235,7 @@ except for Wallet Instances which are End-User's personal devices certified by t
 </section>
 <section id="trust-model-requirements">
 <h2>Trust Model Requirements<a class="headerlink" href="#trust-model-requirements" title="Permalink to this heading">¶</a></h2>
-<p>In the table below is provided the map of the components that the ARF defines within the Trust Model, in the same table is provided their coverage in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a>.</p>
+<p>In the table below is provided the map of the components that the ARF defines within the Trust Model, in the same table is provided their coverage in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a>.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -1277,7 +1277,7 @@ except for Wallet Instances which are End-User's personal devices certified by t
 <p>OpenID Federation 1.0 uses RESTful Web Services secured over
 HTTPs. OpenID Federation 1.0 defines which are the web endpoints that the participants MUST make
 publicly available. The table below summarises the endpoints and their scopes.</p>
-<p>All the endpoints listed below are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> specs.</p>
+<p>All the endpoints listed below are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> specs.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
@@ -1521,12 +1521,12 @@ giving the references of the metadata protocol for each of these.</p>
 <tr class="row-even"><td><p>Trust Anchor</p></td>
 <td><p>Trust Anchor</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Intermediate</p></td>
 <td><p>Intermediate</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>Wallet Provider</p></td>
@@ -1536,17 +1536,17 @@ giving the references of the metadata protocol for each of these.</p>
 <tr class="row-odd"><td><p>Authorization Server</p></td>
 <td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OPENID4VCI</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OPENID4VCI</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Credential Issuer</p></td>
 <td><p>PID Provider, (Q)EAA Provider</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code>, [<code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code>]</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OPENID4VCI</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OPENID4VCI</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Relying Party</p></td>
 <td><p>Relying Party</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_relying_party</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1582,22 +1582,22 @@ or <code class="docutils literal notranslate"><span class="pre">wallet_relying_p
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>organization_name</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Draft 36 Section 5.2.2</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>homepage_uri</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Draft 36 Section 5.2.2</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.2.2</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>policy_uri</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Draft 36 Section 5.2.2</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>logo_uri</strong></p></td>
-<td><p>URL of the entity's logo; it MUST be in SVG format. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Draft 36 Section 5.2.2</p></td>
+<td><p>URL of the entity's logo; it MUST be in SVG format. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.2.2</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>contacts</strong></p></td>
-<td><p>Institutional certified email address (PEC) of the entity. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Draft 36 Section 5.2.2</p></td>
+<td><p>Institutional certified email address (PEC) of the entity. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>federation_resolve_endpoint</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Draft 36 Section 5.1.1</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.1.1</p></td>
 </tr>
 </tbody>
 </table>
@@ -1686,27 +1686,27 @@ and in relation to the signature mechanisms MUST be applied for the Entity State
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Section 3.1 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Section 3.1 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Section 3.1 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Section 3.1 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>Federation JWKS of the <em>sub</em> entity. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Section 3.1 for further details.</p></td>
+<td><p>Federation JWKS of the <em>sub</em> entity. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Section 3.1 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" width="25" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>metadata_policy</strong></p></td>
-<td><p>JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> specifications, Section-5.1, for the implementation details.</p></td>
+<td><p>JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> specifications, Section-5.1, for the implementation details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.svg"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.svg" width="25" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>trust_marks</strong></p></td>
@@ -1802,7 +1802,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <section id="non-repudiability-of-the-long-lived-attestations">
 <h2>Non-repudiability of the Long Lived Attestations<a class="headerlink" href="#non-repudiability-of-the-long-lived-attestations" title="Permalink to this heading">¶</a></h2>
 <p>The Trust Anchor and its Intermediate MUST expose the Federation Historical Keys endpoint, where are published all the public part of the Federation Entity Keys that are no longer used, whether expired or revoked.</p>
-<p>The details of this endpoint are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OIDC-FED</a> Section 7.6.</p>
+<p>The details of this endpoint are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Section 7.6.</p>
 <p>Each JWS containing a Trust Chain in the form of a JWS header parameter can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.</p>
 <p>Even if the Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.</p>
 </section>
