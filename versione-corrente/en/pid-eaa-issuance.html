@@ -585,10 +585,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#functional-requirements">Functional Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-infrastructure-functional-requirements">Trust Infrastructure Functional Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
@@ -794,10 +793,11 @@
     </button>
     <div id="table-index" class="table-index--menu collapse sidebar-list--wrapper sidebar-accordion-content collapse">
       <ul>
-<li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
-<li><a class="reference internal" href="#id6">Tab. 2 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="#id7">Tab. 3 - http request header parameters</a></li>
-<li><a class="reference internal" href="#id8">Tab. 4 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="trust.html#id3">Tab. 1 - Functional Requirements</a></li>
+<li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 2 - Wallet Instance registration http request parameters</a></li>
+<li><a class="reference internal" href="#id6">Tab. 3 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="#id7">Tab. 4 - http request header parameters</a></li>
+<li><a class="reference internal" href="#id8">Tab. 5 - Credential http response parameters</a></li>
 </ul>
 
     </div>
@@ -877,10 +877,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#functional-requirements">Functional Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-model-requirements">Trust Model Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-infrastructure-functional-requirements">Trust Infrastructure Functional Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
@@ -1082,10 +1081,11 @@
 
       <div id="table-index-mobile" class="table-index--menu tab-pane sidebar-list--wrapper fade" role="tabpanel" aria-labelledby="table-index-mobile-tab">
         <ul>
-<li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 1 - Wallet Instance registration http request parameters</a></li>
-<li><a class="reference internal" href="#id6">Tab. 2 - PAR http request parameters</a></li>
-<li><a class="reference internal" href="#id7">Tab. 3 - http request header parameters</a></li>
-<li><a class="reference internal" href="#id8">Tab. 4 - Credential http response parameters</a></li>
+<li><a class="reference internal" href="trust.html#id3">Tab. 1 - Functional Requirements</a></li>
+<li><a class="reference internal" href="wallet-attestation.html#id6">Tab. 2 - Wallet Instance registration http request parameters</a></li>
+<li><a class="reference internal" href="#id6">Tab. 3 - PAR http request parameters</a></li>
+<li><a class="reference internal" href="#id7">Tab. 4 - http request header parameters</a></li>
+<li><a class="reference internal" href="#id8">Tab. 5 - Credential http response parameters</a></li>
 </ul>
 
       </div>
@@ -1535,7 +1535,7 @@ without encoding and signature. The JWS header:</p>
 <p>The request to the PID/(Q)EAA authorization endpoint MUST use HTTP Headers parameters and HTTP POST parameters.</p>
 <p>The HTTP POST method MUST use the parameters in the message body encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format.</p>
 <span id="table-http-request-claim"></span><table class="docutils align-default" id="id6">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 60%" />
@@ -1561,7 +1561,7 @@ without encoding and signature. The JWS header:</p>
 <p>The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>], therefore
 the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters:</p>
 <span id="table-http-request-headers-claim"></span><table class="docutils align-default" id="id7">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 60%" />
@@ -2227,7 +2227,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <h3>Credential Response<a class="headerlink" href="#credential-response" title="Permalink to this heading">¶</a></h3>
 <p>Credential Response to the Wallet Instance MUST be sent using <cite>application/json</cite> media type. If the Credential Request is successfully validated, the PID/(Q)EAA Provider MUST return HTTP response with a <em>200 (OK)</em> status code and MUST contain the following mandatory claims:</p>
 <span id="table-credential-response-claim"></span><table class="docutils align-default" id="id8">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">Credential http response parameters</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Credential http response parameters</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 60%" />
