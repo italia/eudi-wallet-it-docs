@@ -7,7 +7,7 @@ The Infrastructure of Trust
 
 The EUDI Wallet Architecture Reference Framework (`EIDAS-ARF`_) describes the Trust Model as a *"collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem"*.
 
-This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OIDC-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants, also called Federation Entities.
+This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants, also called Federation Entities.
 
 The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the `EIDAS-ARF`_.
 
@@ -124,7 +124,7 @@ The architecture of the trust infrastructure based on OpenID Federation is built
 Trust Model Requirements
 ------------------------
 
-In the table below is provided the map of the components that the ARF defines within the Trust Model, in the same table is provided their coverage in `OIDC-FED`_.
+In the table below is provided the map of the components that the ARF defines within the Trust Model, in the same table is provided their coverage in `OID-FED`_.
 
 .. list-table::
    :widths: 20 20 60
@@ -157,7 +157,7 @@ OpenID Federation 1.0 uses RESTful Web Services secured over
 HTTPs. OpenID Federation 1.0 defines which are the web endpoints that the participants MUST make
 publicly available. The table below summarises the endpoints and their scopes.
 
-All the endpoints listed below are defined in the `OIDC-FED`_ specs.
+All the endpoints listed below are defined in the `OID-FED`_ specs.
 
 .. list-table::
    :widths: 20 20 20 20
@@ -373,11 +373,11 @@ giving the references of the metadata protocol for each of these.
    * - Trust Anchor
      - Trust Anchor
      - ``federation_entity``
-     - `OIDC-FED`_
+     - `OID-FED`_
    * - Intermediate
      - Intermediate
      - ``federation_entity``
-     - `OIDC-FED`_
+     - `OID-FED`_
    * - Wallet Provider
      - Wallet Provider
      - ``federation_entity``, ``wallet_provider``
@@ -393,7 +393,7 @@ giving the references of the metadata protocol for each of these.
    * - Relying Party
      - Relying Party
      - ``federation_entity``, ``wallet_relying_party``
-     - `OIDC-FED`_, `OpenID4VP`_
+     - `OID-FED`_, `OpenID4VP`_
 
 
 .. note::
@@ -425,17 +425,17 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
   * - **Claim**
     - **Description**
   * - **organization_name**
-    - See `OIDC-FED`_ Draft 36 Section 5.2.2
+    - See `OID-FED`_ Draft 36 Section 5.2.2
   * - **homepage_uri**
-    - See `OIDC-FED`_ Draft 36 Section 5.2.2
+    - See `OID-FED`_ Draft 36 Section 5.2.2
   * - **policy_uri**
-    - See `OIDC-FED`_ Draft 36 Section 5.2.2
+    - See `OID-FED`_ Draft 36 Section 5.2.2
   * - **logo_uri**
-    - URL of the entity's logo; it MUST be in SVG format. See `OIDC-FED`_ Draft 36 Section 5.2.2
+    - URL of the entity's logo; it MUST be in SVG format. See `OID-FED`_ Draft 36 Section 5.2.2
   * - **contacts**
-    - Institutional certified email address (PEC) of the entity. See `OIDC-FED`_ Draft 36 Section 5.2.2
+    - Institutional certified email address (PEC) of the entity. See `OID-FED`_ Draft 36 Section 5.2.2
   * - **federation_resolve_endpoint**
-    - See `OIDC-FED`_ Draft 36 Section 5.1.1
+    - See `OID-FED`_ Draft 36 Section 5.1.1
 
 Entity Statements
 -----------------
@@ -526,22 +526,22 @@ The Entity Statement issued by Trust Anchors and Intermediates contains the foll
      - **Description**
      - **Required**
    * - **iss**
-     - See `OIDC-FED`_ Section 3.1 for further details.
+     - See `OID-FED`_ Section 3.1 for further details.
      - |check-icon|
    * - **sub**
-     - See `OIDC-FED`_ Section 3.1 for further details.
+     - See `OID-FED`_ Section 3.1 for further details.
      - |check-icon|
    * - **iat**
-     - See `OIDC-FED`_ Section 3.1 for further details.
+     - See `OID-FED`_ Section 3.1 for further details.
      - |check-icon|
    * - **exp**
-     - See `OIDC-FED`_ Section 3.1 for further details.
+     - See `OID-FED`_ Section 3.1 for further details.
      - |check-icon|
    * - **jwks**
-     - Federation JWKS of the *sub* entity. See `OIDC-FED`_ Section 3.1 for further details.
+     - Federation JWKS of the *sub* entity. See `OID-FED`_ Section 3.1 for further details.
      - |check-icon|
    * - **metadata_policy**
-     - JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the `OIDC-FED`_ specifications, Section-5.1, for the implementation details.
+     - JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the `OID-FED`_ specifications, Section-5.1, for the implementation details.
      - |uncheck-icon|
    * - **trust_marks**
      - JSON Array containing the Trust Marks issued by itself for the subordinate subject.
@@ -668,7 +668,7 @@ Non-repudiability of the Long Lived Attestations
 
 The Trust Anchor and its Intermediate MUST expose the Federation Historical Keys endpoint, where are published all the public part of the Federation Entity Keys that are no longer used, whether expired or revoked.
 
-The details of this endpoint are defined in the `OIDC-FED`_ Section 7.6.
+The details of this endpoint are defined in the `OID-FED`_ Section 7.6.
 
 Each JWS containing a Trust Chain in the form of a JWS header parameter can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.
 
