@@ -45,7 +45,7 @@ The *wallet_relying_party* metadata MUST contain the following parameters.
   * - **presentation_definitions_supported**
     - JSON Array of supported *presentation_definition* objects that MUST be compliant to the syntax defined in Section 5 of `[DIF.PresentationExchange] <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_ and Section 7.2.8 of `OPENID4VC-HAIP`_ Draft 00. For *presentation_definition* objects see also `OpenID4VP`_ Section 5.1.
   * - **jwks**
-    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`_ Section 3,  `OIDC-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
+    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`_ Section 3,  `OID-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
 
 .. note::
     The claims **response_uris_supported** and **presentation_definitions_supported** are introduced in this Specification. 

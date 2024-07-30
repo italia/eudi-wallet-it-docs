@@ -42,7 +42,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **token_endpoint**
     - URL of the authorization server's token endpoint. See :rfc:`8414#section-2`.
   * - **client_registration_types_supported**
-    - Array specifying the registration types supported. The authorization server MUST support *automatic*. See  `OIDC-FED`_ Draft 36 Section 5.1.3.
+    - Array specifying the registration types supported. The authorization server MUST support *automatic*. See  `OID-FED`_ Draft 36 Section 5.1.3.
   * - **code_challenge_methods_supported**
     - JSON array containing a list of Proof Key for Code Exchange (PKCE) :rfc:`7636` code challenge methods supported by the authorization server. The authorization server MUST support *S256*.
   * - **acr_values_supported**
@@ -66,7 +66,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **request_object_signing_alg_values_supported**
     - JSON array containing a list of the JWS signing algorithms ("*alg*" values) supported for Request Objects. See `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
   * - **jwks**
-    - JSON Web Key Set containing the cryptographic keys for the authorization server. See `OIDC-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
+    - JSON Web Key Set containing the cryptographic keys for the authorization server. See `OID-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
 
 Metadata for openid_credential_issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -116,7 +116,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
 
   * - **jwks**
-    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OIDC-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
+    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
 
 
 
