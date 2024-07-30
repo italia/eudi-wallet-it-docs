@@ -161,7 +161,7 @@ Below, is given a non-normative example of a single Revocation Assertion Request
       "exp": 1698744139, 
       "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
       "credential_hash": $Issuer-Signed-JWT-Hash,
-      "credential_hash_alg": "sha-256",
+      "credential_hash_alg": "sha-256"
     }
 
 **Step 2 (PoP verification)**: The Credential Issuer verifies the proof of possession of the Credential requested to be revoked, using the the confirmation method that was attested in the Credential. If the verification is successful the revocation request is allowed.
