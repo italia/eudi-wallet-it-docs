@@ -106,7 +106,7 @@ Wallet Instance Initialization and Registration
     **Device Integrity Service**: In this section the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers the verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this scope.
 
     The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android, the DIS is represented by *Key Attestation*, a feature supported by *StrongBox Keymaster*, which is a physical HSM installed directly on the motherboard, and the *TEE* (Trusted Execution Environment), a secure area of the main processor. *Key Attestation* aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the *Play Integrity API*.For Apple devices, the DIS is represented by *DeviceCheck*, which provides a framework and server interface to manage device-specific data securely. *DeviceCheck* is used in combination with the *Secure Enclave*, a dedicated HSM integrated into Apple's SoCs. *DeviceCheck* can be used to attest the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like *Secure Enclave*. Developers can leverage *DeviceCheck* functionality by using the framework itself.
-    These services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. Additionally, as they are specifically developed for mobile architecture, they do not need to be registered as Federation Entities through national accreditation systems.
+    These services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. Additionally, as they are specifically developed for mobile architecture, they do not need to be registered as Federation Entities through national registration systems.
     For Apple devices *Secure Enclave* is available since the iPhone 5s (2013).
     For Android devices, the inclusion of **Strongbox Keymaster** may vary by each smartphone manufacturer, who decides whether to include it or not.
 
@@ -471,7 +471,7 @@ The JOSE header of the Wallet Attestation JWT MUST contain:
       -  `OPENID4VC-HAIP`_
     * - **trust_chain**
       - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party.
-      - `OIDC-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
+      - `OID-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
 
 The body of the Wallet Attestation JWT MUST contain:
 

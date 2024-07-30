@@ -7,16 +7,16 @@ Technical References
     :widths: 25 75
     :header-rows: 0
 
-    * - `OIDC-FED`_
-      - OpenID Connect Federation 1.0.
-    * - `OPENID4VCI`_
-      - T. Lodderstedt, K. Yasuda, T. Looker, "OpenID for Verifiable Credential Issuance", February 2023.
+    * - `OID-FED`_
+      - Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  "OpenID Federation 1.0", May 2024, Draft 36.
+    * - `OpenID4VCI`_
+      - Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Credential Issuance", February 2024, Draft 13.
     * - `SD-JWT-VC`_
       - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
     * - `EIDAS-ARF`_
       - EUDI Wallet - Architecture and Reference Framework.
-    * - `OPENID4VP`_
-      - OpenID for Verifiable Presentations.
+    * - `OpenID4VP`_
+      - Terbu, O., Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Presentations", November 2023, Draft 20.
     * - `PresentationExch`_
       - Presentation Exchange 2.0 for Presentation Definition.
     * - :rfc:`2119`
@@ -53,10 +53,24 @@ Technical References
       - The OAuth 2.0 Authorization Framework.
     * - :rfc:`9449`
       - D. Fett, B. Campbell, J. Bradley, T. Lodderstedt, M. Jones, D. Waite, "OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)".
+    * - :rfc:`9207`
+      - Meyer zu Selhausen, K., Fett, D., "OAuth 2.0 Authorization Server Issuer Identification", March 2022.
+    * - :rfc:`7521`
+      - Campbell, Mortimore, C., Jones, M., Goland, Y.,  "Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants", May 2015.       
     * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC".
     * - `OAUTH-STATUS-ASSERTION`_
       - De Marco, G., Steele, O., Marino, F., "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC", June 2024, Draft 2.
+    * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
+      - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication", May 2024, Draft 3.    
+    * - `OAUTH-V2-JARM-04`_
+      - Lodderstedt, T., Campbell, B., "JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)".
+    * - `OAUTH-MULT-RESP-TYPE`_
+      - de Medeiros, B., Scurtescu, M., Tarjan, P., Jones, M., "OAuth 2.0 Multiple Response Type Encoding Practices", February 2014.
+    * - ISO18013-5
+      - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application. International Organization for Standardization.
+    * - `OIDC`_
+      - Sakimura, N., Bradley, J., Jones, M.,  de Medeiros, B., Mortimore, C., "OpenID Connect Core 1.0 incorporating errata set 2", December 2023.
     * - `SELECTIVE-DISCLOSURE-JWT`_
       - Fett, D., Yasuda, K., Campbell, B., "Selective Disclosure for JWTs (SD-JWT)".
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
