@@ -193,7 +193,3 @@ Acronyms
     - Authenticator Assurance Level as defined in `<https://csrc.nist.gov/glossary/term/authenticator_assurance_level>`_
   * - **WSCD**
     - Wallet Secure Cryptographic Device
-
-.. _Key Attestation: https://developer.android.com/privacy-and-security/security-key-attestation#attestation-v4
-.. _Device Check: https://developer.apple.com/documentation/devicecheck
-.. _attestKey: https://developer.apple.com/documentation/devicecheck/dcappattestservice/attestkey:clientdatahash:completionhandler:
