@@ -165,7 +165,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <section id="id1">
 <h2>SD-JWT<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <p>The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> as specified in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p>
-<p>An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the <strong>_sd_alg</strong> claim described in the Section 5.1.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> and other claims specified in this section, some of them may be selectively disclosable claims.</p>
+<p>An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT header MUST contain a Type Metadata (<strong>vctm</strong>) related to the issued Digital Credential according to Sections 6 and 6.3 of [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>]. The payload MUST contain the <strong>_sd_alg</strong> claim described in the Section 5.1.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> and other claims specified in this section, some of them may be selectively disclosable claims.</p>
 <p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a>. The <strong>_sd_alg</strong> claim MUST be set to one of the specified algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a>.</p>
 <p>Claims that are not selectively disclosable MUST be included in the SD-JWT in plaintext.  The digests of the disclosures (and decoy digests, if any) related to an object element claim that is selectively disclosable MUST be contained in a new JWT claim, <strong>_sd</strong> as specified in Section 5.2.4.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a>.</p>
 <p>Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains:</p>
@@ -222,6 +222,10 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html#name-trust-chain-header-paramete">[OIDC-FED, Section 3.2.1]</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>vctm</strong></p></td>
+<td><p>REQUIRED. JSON array of base64url-encoded Type Metadata JSON documents.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.3.5.</p></td>
 </tr>
 </tbody>
 </table>
