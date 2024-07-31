@@ -81,7 +81,7 @@ The JOSE header contains the following mandatory parameters:
     - `[RFC7515, Section 4.1.8] <https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.8>`_.
   * - **trust_chain**
     - OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
-    - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-federation-1_0.html#name-trust-chain-header-paramete>`_.
+    - [`OID-FED`_] Section 3.2.1.
   * - **vctm**
     - REQUIRED. JSON array of base64url-encoded Type Metadata JSON documents. 
     - [`SD-JWT-VC`_] Section 6.3.5.
