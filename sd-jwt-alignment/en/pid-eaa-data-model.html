@@ -278,6 +278,54 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tbody>
 </table>
 </section>
+<section id="digital-credential-metadata-type">
+<h3>Digital Credential Metadata Type<a class="headerlink" href="#digital-credential-metadata-type" title="Link to this heading">¶</a></h3>
+<p>The Type Metadata document MUST be a JSON object and contains the following parameters.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>name</strong></p></td>
+<td><p>A human-readable name of the Digital Credential type.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>description</strong></p></td>
+<td><p>A human-readable description of the Digital Credential type.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>extends</strong></p></td>
+<td><p>String Identitifier of an exteded metadata type document.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>extends#integrity</strong></p></td>
+<td><p>CONDITIONAL. REQUIRED if <strong>extends</strong> is present.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>schema</strong></p></td>
+<td><p>CONDITIONAL. It MUST NOT be used if <strong>schema_uri</strong> is present.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>schema_uri</strong></p></td>
+<td><p>CONDITIONAL. It MUST NOT be used if <strong>schema</strong> is present.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>schema#integrity</strong></p></td>
+<td><p>CONDITIONAL. REQUIRED if <strong>schema_uri</strong> is present.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+</tr>
+</tbody>
+</table>
+<p>A non-normative Digital Credential metadata type is provided below.</p>
+</section>
 <section id="pid-claims">
 <span id="sec-pid-user-claims"></span><h3>PID Claims<a class="headerlink" href="#pid-claims" title="Link to this heading">¶</a></h3>
 <p>Depending on the Digital Credential type <strong>vct</strong>, additional claims data MAY be added. The PID MUST support the following data:</p>
@@ -1152,6 +1200,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <li><a class="reference internal" href="#">PID/(Q)EAA Data Model</a><ul>
 <li><a class="reference internal" href="#id1">SD-JWT</a><ul>
 <li><a class="reference internal" href="#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li><a class="reference internal" href="#digital-credential-metadata-type">Digital Credential Metadata Type</a></li>
 <li><a class="reference internal" href="#pid-claims">PID Claims</a></li>
 <li><a class="reference internal" href="#pid-non-normative-examples">PID Non-Normative Examples</a></li>
 <li><a class="reference internal" href="#q-eaa-non-normative-examples">(Q)EAA non-normative examples</a></li>
