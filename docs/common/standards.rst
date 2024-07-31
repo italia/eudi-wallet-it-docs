@@ -75,3 +75,5 @@ Technical References
       - Fett, D., Yasuda, K., Campbell, B., "Selective Disclosure for JWTs (SD-JWT)".
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
       - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication".
+    * - `W3C-SRI`_
+      - Akhawe, D., Braun, F., Marier, F., and J. Weinberger, "Subresource Integrity", 23 June 2016.

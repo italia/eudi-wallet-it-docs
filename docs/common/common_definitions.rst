@@ -63,4 +63,5 @@
 .. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/
 .. _Key Attestation: https://developer.android.com/privacy-and-security/security-key-attestation#attestation-v4
 .. _Device Check: https://developer.apple.com/documentation/devicecheck
-.. _attestKey: https://developer.apple.com/documentation/devicecheck/dcappattestservice/attestkey:clientdatahash:completionhandler:
+.. _attestKey: https://developer.apple.com/documentation/devicecheck/dcappattestservice/attestkey:clientdatahash:completionhandler
+.. _W3C-SRI: https://www.w3.org/TR/SRI/
