@@ -134,7 +134,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - A unique identifier created by the operating system for the Cryptographic Hardware Keys, utilized to gain access to the private key stored in the hardware.
      -
    * - Key Attestation
-     - An attestation from the device's OEM that enhances your confidence in the keys used in your Wallet Instance being securely stored within the device's hardware-backed keystore. Its content is therefore defined by the operating system manufacturer. For Android we are referring to the term Key Attestation as the Strongbox `Key Attestation`_ feature. For iOS instead we refer to the `Device Check`_ service and in particular to the `attestKey`_ feature.
+     - An attestation from the device's OEM that enhances your confidence in the keys used in your Wallet Instance being securely stored within the device's hardware-backed keystore. Its content is therefore defined by the operating system manufacturer. For Google Android, the term Key Attestation refers to the Strongbox Key Attestation_ feature. For Apple iOS, the reference is to the `Device Check`_ service, specifically the `attestKey`_ feature.
      -
    * - Qualified Electronic Attestation of Attributes (QEAA)
      - A digitally verifiable attestation in electronic form, issued by a QTSP, that substantiates a person's possession of attributes.
