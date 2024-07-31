@@ -26,16 +26,27 @@ The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Creden
 
 An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
-The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
+The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of `SD-JWT`_. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
-Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, **_sd**. 
+For each claim that is an object property the Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, **_sd** as specified in Section 5.2.4.1 of `SD-JWT`_. 
 
-Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains 
+Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains:
 
   - a random salt, 
   - the claim name (only when the claim is an object property), 
   - the claim value. 
-  
+
+In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore **_sd** claim containing digests MAY appear multiple times in the SD-JWT.
+
+For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 5.2.4.2 of `SD-JWT`_.
+
+Digest values are calculated using a hash function over the disclosures, each of which contains:
+
+  - a random salt, 
+  - the array element
+
+In case of multiple array elements, the Issuer may wish to conceal presence of any statement while also	allowing the holder to reveal each of those	elements individually (Section 5.2.6 `SD-JWT`_). Both the entire array and the individuals entries could be selective disclosure.
+
 The Disclosures are provided to the Holder together with the SD-JWT in the *Combined Format for Issuance* that MUST be an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
 
 .. code-block::
