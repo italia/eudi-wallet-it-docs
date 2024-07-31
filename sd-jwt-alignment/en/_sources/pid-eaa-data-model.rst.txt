@@ -28,19 +28,19 @@ An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JW
 
 The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of `SD-JWT`_. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
-For each claim that is an object property the Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, **_sd** as specified in Section 5.2.4.1 of `SD-JWT`_. 
+Claims that are not selectively disclosable MUST be included in the SD-JWT in plaintext.  The digests of the disclosures (and decoy digests, if any) related to an object element claim that is selectively disclosable MUST be contained in a new JWT claim, **_sd** as specified in Section 5.2.4.1 of `SD-JWT`_. 
 
 Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains:
 
   - a random salt, 
-  - the claim name (only when the claim is an object property), 
+  - the claim name (only when the claim is an object element), 
   - the claim value. 
 
 In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore **_sd** claim containing digests MAY appear multiple times in the SD-JWT.
 
 For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 5.2.4.2 of `SD-JWT`_.
 
-Digest values are calculated using a hash function over the disclosures, each of which contains:
+In case of array elements, digest values are calculated using a hash function over the disclosures, containing:
 
   - a random salt, 
   - the array element
