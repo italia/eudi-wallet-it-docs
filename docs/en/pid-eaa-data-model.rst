@@ -24,7 +24,7 @@ SD-JWT
 
 The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SD-JWT`_ as specified in `SD-JWT-VC`_.
 
-An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
+An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT header MUST contain a Type Metadata (**vctm**) related to the issued Digital Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
 The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of `SD-JWT`_. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
@@ -82,6 +82,9 @@ The JOSE header contains the following mandatory parameters:
   * - **trust_chain**
     - OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
     - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-federation-1_0.html#name-trust-chain-header-paramete>`_.
+  * - **vctm**
+    - REQUIRED. JSON array of base64url-encoded Type Metadata JSON documents. 
+    - [`SD-JWT-VC`_] Section 6.3.5.
 
 The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
 
