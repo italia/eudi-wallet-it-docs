@@ -121,6 +121,45 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
 
 
+Digital Credential Metadata Type
+--------------------------------
+
+The Type Metadata document MUST be a JSON object and contains the following parameters.
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **name**
+      - A human-readable name of the Digital Credential type.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **description**
+      - A human-readable description of the Digital Credential type.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **extends**
+      - String Identitifier of an exteded metadata type document.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **extends#integrity**
+      - CONDITIONAL. REQUIRED if **extends** is present.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **schema**
+      - CONDITIONAL. It MUST NOT be used if **schema_uri** is present.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **schema_uri**
+      - CONDITIONAL. It MUST NOT be used if **schema** is present.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **schema#integrity**
+      - CONDITIONAL. REQUIRED if **schema_uri** is present.
+      - [`SD-JWT-VC`_] Section 6.2.
+
+
+A non-normative Digital Credential metadata type is provided below.
+
+
+
 .. _sec-pid-user-claims:   
 
 PID Claims
