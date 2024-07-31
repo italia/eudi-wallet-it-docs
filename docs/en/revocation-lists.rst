@@ -269,7 +269,6 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
     "credential_status_validity": false,
     "cnf": {
       "jwk": {
-        "alg": "ES256",
         "kty": "EC",
         "crv": "P-256",
         "x": "_2ySUmWFjwmraNlo15r6dIBXerVdy_NpJuwAKJMFdoc",
