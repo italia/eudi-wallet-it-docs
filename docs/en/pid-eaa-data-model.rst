@@ -83,7 +83,7 @@ The JOSE header contains the following mandatory parameters:
     - OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
     - [`OID-FED`_] Section 3.2.1.
   * - **vctm**
-    - REQUIRED. JSON array of base64url-encoded Type Metadata JSON documents. 
+    - REQUIRED. JSON array of base64url-encoded Type Metadata JSON documents. In case of extended type metadata, this claim contains the entire chain of JSON documents. 
     - [`SD-JWT-VC`_] Section 6.3.5.
 
 The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
@@ -116,6 +116,9 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
     * - **vct**
       - [NSD].Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
       - Section 3.2.2.2 `SD-JWT-VC`_.
+    * - **vct#integrity**
+      - [NSD].The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
+      - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
 
 
 .. _sec-pid-user-claims:   
