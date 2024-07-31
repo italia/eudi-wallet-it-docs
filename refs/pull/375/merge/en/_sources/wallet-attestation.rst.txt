@@ -607,7 +607,6 @@ To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) **MUST
 .. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
 .. _RFC 8414 section 2: https://www.rfc-editor.org/rfc/rfc8414.html#section-2
 .. _Wallet Provider metadata: wallet-solution.html#wallet-provider-metadata
-.. _Key Attestation: https://developer.android.com/privacy-and-security/security-key-attestation
 .. _Play Integrity API: https://developer.android.com/google/play/integrity?hl=it
 .. _DeviceCheck: https://developer.apple.com/documentation/devicecheck
 .. _OAuth 2.0 Nonce Endpoint: https://datatracker.ietf.org/doc/draft-demarco-oauth-nonce-endpoint/
