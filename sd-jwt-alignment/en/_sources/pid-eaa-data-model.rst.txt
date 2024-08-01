@@ -19,12 +19,12 @@ The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provid
 
 The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections. 
 
-SD-JWT
-======
+SD-JWT-VC Credential Format
+===========================
 
 The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SD-JWT`_ as specified in `SD-JWT-VC`_.
 
-An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT header MUST contain a Type Metadata (**vctm**) related to the issued Digital Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
+An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
 
 The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of `SD-JWT`_. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
@@ -83,7 +83,7 @@ The JOSE header contains the following mandatory parameters:
     - OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
     - [`OID-FED`_] Section 3.2.1.
   * - **vctm**
-    - REQUIRED. JSON array of base64url-encoded Type Metadata JSON documents. In case of extended type metadata, this claim contains the entire chain of JSON documents. 
+    - OPTIONAL. JSON array of base64url-encoded Type Metadata JSON documents. In case of extended type metadata, this claim contains the entire chain of JSON documents. 
     - [`SD-JWT-VC`_] Section 6.3.5.
 
 The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
@@ -114,11 +114,22 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [NSD].JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD].Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
+      - [NSD].Credential type value MUST be a case-sensitive StringOrURI (see :rfc:`7519`) and MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. It serves as an identifier for the type of the SD-JWT VC and MUST be a Collision-Resistant Name as defined in Section 2 of :rfc:`7515`. It MUST contains also the number of version of the Credential type, for example, in the case of the PID, it is ``https://issuer.example.org/v1.0/personIdentificationData``.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD].The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
+    * - **verification**
+      - Object containing user authentication information. It MUST contain the following sub-value:
+
+          * ``auth_trust_framework``: trust framework used for user digital authetication.
+          * ``assurance_level``: level of identity assurance guarateed (LoA) during the authentication process.
+          * ``auth_method``: digital identity system used for the authentication.
+      -
+
+.. note::
+
+    Type Metadata JSON Document MAY be retrieved directly from URL contained in the claim **vct** using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not supported in the current implementation profile.
 
 
 Digital Credential Metadata Type
@@ -134,8 +145,11 @@ The Type Metadata document MUST be a JSON object and contains the following para
       - **Description**
       - **Reference**
     * - **name**
-      - A human-readable name of the Digital Credential type.
+      - A human-readable name of the Digital Credential type. In case of multiple language the language tags are added to member names, delimited by a #
       - [`SD-JWT-VC`_] Section 6.2.
+    * - **name#it-IT**
+      - A human-readable of the Digital Credential type rappresented in multiple language.
+      - [`OIDC`_] Section 5.2.
     * - **description**
       - A human-readable description of the Digital Credential type.
       - [`SD-JWT-VC`_] Section 6.2.
@@ -146,19 +160,32 @@ The Type Metadata document MUST be a JSON object and contains the following para
       - CONDITIONAL. REQUIRED if **extends** is present.
       - [`SD-JWT-VC`_] Section 6.2.
     * - **schema**
-      - CONDITIONAL. It MUST NOT be used if **schema_uri** is present.
+      - CONDITIONAL. REQUIRED if **schema_uri** is not present.
       - [`SD-JWT-VC`_] Section 6.2.
     * - **schema_uri**
-      - CONDITIONAL. It MUST NOT be used if **schema** is present.
+      - CONDITIONAL. REQUIRED if **schema** is not present.
       - [`SD-JWT-VC`_] Section 6.2.
     * - **schema#integrity**
-      - CONDITIONAL. REQUIRED if **schema_uri** is present.
+      - CONDITIONAL. REQUIRED if **schema_uri** is not present.
       - [`SD-JWT-VC`_] Section 6.2.
+    * - **data_source**
+      - Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
+
+          * ``trust_framework``: MUST cointain trust framework used for digital authetication towards authentic source system.
+          * ``authentic_source``: MUST contain ``organization_name`` and ``organization_code`` cliam related to name and code identifier of the authentic source.
+      - This specification
+    * - **vc_claims**
+      - Object containing useful information about the Digital credential graphical rappresentation. It MUST contain the for each credential claim the following objects:
+
+          * ``display``: MUST cointain name human-readable display name.
+          * ``graphics``: MUST contain position, font character, color, size.
+      - This specification
 
 
 A non-normative Digital Credential metadata type is provided below.
 
-
+.. literalinclude:: ../../examples/vc-metadata-type.json
+  :language: JSON  
 
 .. _sec-pid-user-claims:   
 
