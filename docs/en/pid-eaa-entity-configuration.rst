@@ -106,7 +106,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                 - **name**: String value of a display name for the Credential.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
 
-        - **vct**: String. Type of a Credential, as defined in [`SD-JWT-VC`]. See `OpenID4VCI`_ Draft 13 Section A.3.2.
+        - **vct**: As defined in [:ref:`SD-JWT-VC Credential Format`].
         - **claims**: JSON object comprising a collection of name/value pairs, where each name represents a claim related to the subject described in the credential. The value associated with each name MAY be either another nested object or an array of objects. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Draft 13 Section A.3.2.
             
             - **value_type**: String value determining the type of value of the claim. The values that MUST be supported by the PID/(Q)EAA Provider are *String* and *Boolean*.
