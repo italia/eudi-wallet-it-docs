@@ -120,7 +120,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [NSD].The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - Object containing user authentication information. It MUST contain the following sub-value:
+      - [NSD].Object containing user authentication information. It MUST contain the following sub-value:
 
           * ``auth_trust_framework``: trust framework used for user digital authetication.
           * ``assurance_level``: level of identity assurance guarateed (LoA) during the authentication process.
