@@ -1,0 +1,28 @@
+{
+  "_sd": [
+    "7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc",
+    "NOxVzjUJg667iBdeDwmr6tZ46X-jchKwIVxMAfv43yc",
+    "TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8",
+    "UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4",
+    "q6Tqnxau97tu-MqUDg0fSAmLGZdSuMUMk6a2s3bcsC0",
+    "wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc"
+  ],
+  "exp": 1883000000,
+  "iss": "https://pidprovider.example.org",
+  "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+  "status": {
+    "status_attestation": {
+      "credential_hash_alg": "sha-256"
+    }
+  },
+  "vct": "PersonIdentificationData",
+  "_sd_alg": "sha-256",
+  "cnf": {
+    "jwk": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+      "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+    }
+  }
+}

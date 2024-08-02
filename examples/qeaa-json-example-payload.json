@@ -1,0 +1,19 @@
+{
+  "iss": "https://issuer.example.org",
+  "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+  "iat": 1683000000,
+  "exp": 1883000000,
+  "status": {
+  "status_attestation": {
+    "credential_hash_alg": "sha-256"
+  },
+  "vct": "DisabilityCard",
+  "document_number": "XXXXXXXXXX",
+  "given_name": "Mario",
+  "family_name": "Rossi",
+  "birth_date": "1980-01-10",
+  "expiry_date": "2024-01-01",
+  "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX",
+  "constant_attendance_allowance": true
+  }
+}

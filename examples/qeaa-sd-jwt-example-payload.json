@@ -1,0 +1,30 @@
+{
+  "_sd": [
+    "-LLA7MCh-YWWYNzFfwZsJBGGiE096fN8d60a-ml3sgo",
+    "7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc",
+    "AFRJaRPZTMaNxYu5IIWPifOAXJCnK-_h1eJt7MymcgM",
+    "TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8",
+    "UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4",
+    "i9XHLePHyV8OM35l3nf1MKqfpWuD7OFpRamSAsX0-5g",
+    "rhPkItz7BGGpjnWX2SGVH_OV9VhRjz9Hx_INXwBbz6o",
+    "wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc"
+  ],
+  "exp": 1883000000,
+  "iss": "https://issuer.example.org",
+  "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+  "status": {
+    "status_attestation": {
+      "credential_hash_alg": "sha-256"
+    }
+  },
+  "vct": "DisabilityCard",
+  "_sd_alg": "sha-256",
+  "cnf": {
+    "jwk": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+      "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+    }
+  }
+}
