@@ -27,12 +27,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 20,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 10
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "family_name": {
@@ -49,12 +49,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 30,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 20
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "birth_date": {
@@ -71,13 +71,13 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 40,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
+                    "x": 10,
+                    "y": 30
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
                 }
-            }
         },
         "place_of_birth": {
             "value_type": "string",
@@ -93,12 +93,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 50,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 40
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "issue_date": {
@@ -115,12 +115,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 60,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 50
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "expiry_date": {
@@ -137,12 +137,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 70,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 60
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "issuing_country": {
@@ -159,12 +159,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 80,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 70
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "issuing_authority": {
@@ -181,12 +181,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 90,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 80
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "document_number": {
@@ -203,12 +203,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 100,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 90
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "portrait": {
@@ -225,12 +225,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 110,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 100
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "driving_privileges": {
@@ -247,12 +247,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 120,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 110
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "restrictions_conditions": {
@@ -269,12 +269,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 130,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 120
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         },
         "driving_privileges_details": {
@@ -291,12 +291,12 @@
             ],
             "graphics": {
                 "position": {
-                    "x": 10 ,
-                    "y": 140,
-                    "font": "arial",
-                    "color": "black",
-                    "size": "12pt"
-                }
+                    "x": 10,
+                    "y": 130
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
             }
         }
     }
