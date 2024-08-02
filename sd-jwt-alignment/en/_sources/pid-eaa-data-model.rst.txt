@@ -125,7 +125,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
           * ``auth_trust_framework``: trust framework used for user digital authetication.
           * ``assurance_level``: level of identity assurance guarateed (LoA) during the authentication process.
           * ``auth_method``: digital identity system used for the authentication.
-      -
+      - This specification
 
 .. note::
 
