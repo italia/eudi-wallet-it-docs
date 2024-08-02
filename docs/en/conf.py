@@ -112,17 +112,7 @@ def setup(app):
 # -- Options for HTML output ----------------------------------------------
 html_theme = 'piccolo_theme'
 
-# html_theme_path = [docs_italia_theme.get_html_theme_path()]
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-html_theme_options = {
-    # This option can be used with docs-italia-theme to customise how the versions "badge" is shown:
-    # 'False': default (alabaster) badge | 'True': custom (italia) badge
-    'custom_versions_badge': 'True',
-    'collapse_navigation': 'True',
-}
 # -- ReadTheDoc requirements and local template generation---------------------
 
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
