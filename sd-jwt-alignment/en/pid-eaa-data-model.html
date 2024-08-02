@@ -261,7 +261,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 <tr class="row-even"><td><p><strong>status</strong></p></td>
 <td><p>[NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member <em>status_attestation</em> set to a JSON Object containing the <em>credential_hash_alg</em> claim indicating the Algorithm used for hashing the Digital Credential to which the Status Attestation is bound. It is RECOMMENDED to use <em>sha-256</em>.</p></td>
-<td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> and <a class="reference external" href="https://www.ietf.org/archive/id/draft-demarco-status-attestations-01.html#section-9">[OAuth Status Attestations Draft 01]</a>.</p></td>
+<td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> and Section 11 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>cnf</strong></p></td>
 <td><p>[NSD].JSON object containing the proof-of-possession key materials. By including a <strong>cnf</strong> (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the <strong>cnf</strong> parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.</p></td>
@@ -291,7 +291,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Type Metadata JSON Document MAY be retrieved directly from URL contained in the claim <strong>vct</strong> using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> the <strong>.well-known</strong> endpoint is not supported in the current implementation profile.</p>
+<p>Credential Type Metadata JSON Document MAY be retrieved directly from URL contained in the claim <strong>vct</strong> using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> the <strong>.well-known</strong> endpoint is not supported in the current implementation profile.</p>
 </div>
 </section>
 <section id="digital-credential-metadata-type">
@@ -311,49 +311,45 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>name</strong></p></td>
-<td><p>A human-readable name of the Digital Credential type. In case of multiple language the language tags are added to member names, delimited by a #</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+<td><p>A human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :ref: <cite>RFC5646</cite>.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>name#it-IT</strong></p></td>
-<td><p>A human-readable of the Digital Credential type rappresented in multiple language.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
+<tr class="row-odd"><td><p><strong>description</strong></p></td>
+<td><p>A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :ref: <cite>RFC5646</cite>.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>description</strong></p></td>
-<td><p>A human-readable description of the Digital Credential type.</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>extends</strong></p></td>
+<tr class="row-even"><td><p><strong>extends</strong></p></td>
 <td><p>String Identitifier of an exteded metadata type document.</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>extends#integrity</strong></p></td>
+<tr class="row-odd"><td><p><strong>extends#integrity</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED if <strong>extends</strong> is present.</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>schema</strong></p></td>
+<tr class="row-even"><td><p><strong>schema</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED if <strong>schema_uri</strong> is not present.</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>schema_uri</strong></p></td>
+<tr class="row-odd"><td><p><strong>schema_uri</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED if <strong>schema</strong> is not present.</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>schema#integrity</strong></p></td>
+<tr class="row-even"><td><p><strong>schema#integrity</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED if <strong>schema_uri</strong> is not present.</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_source</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_source</strong></p></td>
 <td><p>Object containing information about the data origin. It MUST contain the object <code class="docutils literal notranslate"><span class="pre">verification</span></code> with this following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: MUST cointain trust framework used for digital authetication towards authentic source system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: MUST cointain trust framework used for digital authentication towards authentic source system.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">authentic_source</span></code>: MUST contain <code class="docutils literal notranslate"><span class="pre">organization_name</span></code> and <code class="docutils literal notranslate"><span class="pre">organization_code</span></code> cliam related to name and code identifier of the authentic source.</p></li>
 </ul>
 </div></blockquote>
 </td>
 <td><p>This specification</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vc_claims</strong></p></td>
+<tr class="row-even"><td><p><strong>vc_claims</strong></p></td>
 <td><p>Object containing useful information about the Digital credential graphical rappresentation. It MUST contain the for each credential claim the following objects:</p>
 <blockquote>
 <div><ul class="simple">
@@ -717,33 +713,34 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <h3>PID Non-Normative Examples<a class="headerlink" href="#pid-non-normative-examples" title="Link to this heading">¶</a></h3>
 <p>In the following, the non-normative example of the payload of a PID represented in JSON format.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;status_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;unique_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;status_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;credential_hash_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;unique_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The corresponding SD-JWT verson for PID is given by</p>
+<p>The corresponding SD-JWT version for PID is given by</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;trust_chain&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;NEhRdERpYnlHY3M5WldWTWZ2aUhm ...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6 ...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;IkJYdmZybG5oQU11SFIwN2FqVW1B ...&quot;</span>
-<span class="w">   </span><span class="p">]</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;trust_chain&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">   </span><span class="s2">&quot;NEhRdERpYnlHY3M5WldWTWZ2aUhm ...&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6 ...&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">&quot;IkJYdmZybG5oQU11SFIwN2FqVW1B ...&quot;</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -874,19 +871,20 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">  </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;constant_attendance_allowance&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>The corresponding SD-JWT for the previous data is represented as follow, as decoded JSON for both header and payload.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;d126a6a856f7724560484fa9dc59d195&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;trust_chain&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;NEhRdERpYnlHY3M5WldWTWZ2aUhm ...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6 ...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;IkJYdmZybG5oQU11SFIwN2FqVW1B ...&quot;</span>
-<span class="w">   </span><span class="p">]</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;d126a6a856f7724560484fa9dc59d195&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;trust_chain&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">   </span><span class="s2">&quot;NEhRdERpYnlHY3M5WldWTWZ2aUhm ...&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6 ...&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">&quot;IkJYdmZybG5oQU11SFIwN2FqVW1B ...&quot;</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1345,7 +1343,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>See <a class="reference internal" href="#table-mdoc-attributes"><span class="std std-ref">Table</span></a>.</p></td>
 <td><p>[ISO 18013-5#9.1.2.4]</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>validityInfo</strong>.</p></td>
+<tr class="row-even"><td><p><strong>validityInfo</strong></p></td>
 <td><p>Object containing issuance and expiration datetimes. It MUST contain the following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1391,139 +1389,139 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </pre></div>
 </div>
 <p>The <cite>Diagnostic Notation</cite> of the above MDOC-CBOR is given below:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-  &quot;status&quot;: 0,
-  &quot;version&quot;: &quot;1.0&quot;,
-  &quot;documents&quot;: [
-  {
-    &quot;docType&quot;: &quot;eu.europa.ec.eudiw.pid.1&quot;,
-    &quot;issuerSigned&quot;: {
-        &quot;issuerAuth&quot;: [
-        &lt;&lt; {1: -7} &gt;&gt;, % protected header with the value alg:ES256
-        {
-            33: h&#39;30820215308201BCA003020102021404AD30C…&#39;% 33-&gt;X5chain:COSE X_509
-        },
-        &lt;&lt;
-            24(&lt;&lt;
-                {
-                &quot;docType&quot;: &quot;eu.europa.ec.eudiw.pid.1&quot;,
-                &quot;version&quot;: &quot;1.0&quot;,
-                &quot;validityInfo&quot;: {
-                    &quot;signed&quot;: 0(&quot;2023-02-22T06:23:56Z&quot;),
-                    &quot;validFrom&quot;: 0(&quot;2023-02-22T06:23:56Z&quot;),
-                    &quot;validUntil&quot;: 0(&quot;2024-02-22T00:00:00Z&quot;)
-                },
-                &quot;valueDigests&quot;: {
-                    &quot;eu.europa.ec.eudiw.pid.1&quot;: {
-                        1: h&#39;0F1571A97FFB799CC8FCDF2BA4FC2909929…&#39;,
-                        2: h&#39;0CDFE077400432C055A2B69596C90…&#39;,
-                        3: h&#39;E2382149255AE8E955AF9B8984395…&#39;,
-                        4: h&#39;BBC77E6CCA981A3AD0C3E544EDF86…&#39;,
-                        6: h&#39;BB6E6C68D1B4B4EC5A2AE9206F5t4…&#39;,
-                        7: h&#39;F8A5966E6DAC9970E0334D8F75E25…&#39;,
-                        8: h&#39;DEFDF1AA746718016EF1B94BFE5R6…&#39;
-                    },
-                    &quot;eu.europa.ec.eudiw.pid.it.1&quot;: {
-                        9: h&#39;F9EE4D36F67DBD75E23311AC1C29…&#39;
-                    }
-                },
-                &quot;deviceKeyInfo&quot;: {
-                    &quot;deviceKey&quot;: {
-                        1: 2, % kty:EC2 (Eliptic curves with x and y coordinate pairs)
-                        -1: 1, % crv:p256
-                        -2: h&#39;B820963964E53AF064686DD9218303494A…&#39;, % x-coordiantes
-                        -3: h&#39;0A6DA0AF437E2943F1836F31C678D89298E9…&#39;% y-ccordiantes
-                    }
-                },
-                &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;
-                }
-            &gt;&gt;)
-        &gt;&gt;,
-        h&#39;1AD0D6A7313EFDC38FCD765852FA2BD43DEBF48BF5A580D&#39;
-        ],
-        &quot;nameSpaces&quot;: {
-            &quot;eu.europa.ec.eudiw.pid.1&quot;: [
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 1,
-                &quot;random&quot;: h&#39;E0B70BCEFBD43686F345C9ED429343AA&#39;,
-                &quot;elementIdentifier&quot;: &quot;expiry_date&quot;,
-                &quot;elementValue&quot;: 1004(&quot;2024-02-22&quot;)
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 2,
-                &quot;random&quot;: h&#39;AE84834F389EE69888665B90A3E4FCCE&#39;,
-                &quot;elementIdentifier&quot;: &quot;issue_date&quot;,
-                &quot;elementValue&quot;: 1004(&quot;2023-02-22&quot;)
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 3,
-                &quot;random&quot;: h&#39;960CB15A2EA9B68E5233CE902807AA95&#39;,
-                &quot;elementIdentifier&quot;: &quot;issuing_country&quot;,
-                &quot;elementValue&quot;: &quot;IT&quot;
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 4,
-                &quot;random&quot;: h&#39;9D3774BD5994CCFED248674B32A4F76A&#39;,
-                &quot;elementIdentifier&quot;: &quot;issuing_authority&quot;,
-                &quot;elementValue&quot;: &quot;Ministero dell&#39;Interno&quot;
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 5,
-                &quot;random&quot;: h&#39;EB12193DC66C6174530CDC29B274381F&#39;,
-                &quot;elementIdentifier&quot;: &quot;given_name&quot;,
-                &quot;elementValue&quot;: &quot;Mario&quot;
-                }
-            &gt;&gt;)),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 6,
-                &quot;random&quot;: h&#39;DB143143538F3C8D41DC024F9CB25C9D&#39;,
-                &quot;elementIdentifier&quot;: &quot;family_name&quot;,
-                &quot;elementValue&quot;: &quot;Rossi&quot;
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 7,
-                &quot;random&quot;: h&#39;6059FF1CE27B4997B4ADE1DE7B01DC60&#39;,
-                &quot;elementIdentifier&quot;: &quot;birth_date&quot;,
-                &quot;elementValue&quot;: 1004(&quot;1956-01-12&quot;)% the tag 1004 defines the value
-                                                    is a full date
-                }
-            &gt;&gt;),
-            24(&lt;&lt;
-                {
-                &quot;digestID&quot;: 8,
-                &quot;random&quot;: h&#39;53C15C57B3B076E788795829190220B4&#39;,
-                &quot;elementIdentifier&quot;: &quot;unique_id&quot;,
-                &quot;elementValue&quot;: &quot;xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx&quot;
-                }
-            &gt;&gt;)
-            ],
-            &quot;eu.europa.ec.eudiw.pid.it.1&quot;: [
-                24(&lt;&lt;
-                    {
-                    &quot;digestID&quot;: 9,
-                    &quot;random&quot;: h&#39;11aa7273a2d2daa973f5951f0c34c2fbae&#39;,
-                    &quot;elementIdentifier&quot;: &quot;tax_id_number&quot;,
-                    &quot;elementValue&quot;: &quot;TINIT-XXXXXXXXXXXXXXX&quot;
-                    }
-                &gt;&gt;)
-            ]
-        }
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{     
+    &quot;status&quot;: 0,     
+    &quot;version&quot;: &quot;1.0&quot;,     
+    &quot;documents&quot;: [        
+    {             
+      &quot;docType&quot;: &quot;eu.europa.ec.eudiw.pid.1&quot;,                         
+      &quot;issuerSigned&quot;: {                
+          &quot;issuerAuth&quot;: [                
+          &lt;&lt; {1: -7} &gt;&gt;, % protected header with the value alg:ES256                    
+          {                         
+              33: h&#39;30820215308201BCA003020102021404AD30C…&#39;% 33-&gt;X5chain:COSE X_509  
+          },
+          &lt;&lt;                       
+              24(&lt;&lt;    
+                  {                            
+                  &quot;docType&quot;: &quot;eu.europa.ec.eudiw.pid.1&quot;,                                
+                  &quot;version&quot;: &quot;1.0&quot;,  
+                  &quot;validityInfo&quot;: {                                
+                      &quot;signed&quot;: 0(&quot;2023-02-22T06:23:56Z&quot;),                                     
+                      &quot;validFrom&quot;: 0(&quot;2023-02-22T06:23:56Z&quot;),                                   
+                      &quot;validUntil&quot;: 0(&quot;2024-02-22T00:00:00Z&quot;)                               
+                  },
+                  &quot;valueDigests&quot;: { 
+                      &quot;eu.europa.ec.eudiw.pid.1&quot;: {        
+                          1: h&#39;0F1571A97FFB799CC8FCDF2BA4FC2909929…&#39;,                                          
+                          2: h&#39;0CDFE077400432C055A2B69596C90…&#39;,     
+                          3: h&#39;E2382149255AE8E955AF9B8984395…&#39;,                                        
+                          4: h&#39;BBC77E6CCA981A3AD0C3E544EDF86…&#39;,                                     
+                          6: h&#39;BB6E6C68D1B4B4EC5A2AE9206F5t4…&#39;,
+                          7: h&#39;F8A5966E6DAC9970E0334D8F75E25…&#39;,              
+                          8: h&#39;DEFDF1AA746718016EF1B94BFE5R6…&#39;
+                      },
+                      &quot;eu.europa.ec.eudiw.pid.it.1&quot;: {  
+                          9: h&#39;F9EE4D36F67DBD75E23311AC1C29…&#39;
+                      }
+                  },                             
+                  &quot;deviceKeyInfo&quot;: {                              
+                      &quot;deviceKey&quot;: {                                  
+                          1: 2, % kty:EC2 (Eliptic curves with x and y coordinate pairs)           
+                          -1: 1, % crv:p256                     
+                          -2: h&#39;B820963964E53AF064686DD9218303494A…&#39;, % x-coordiantes                                        
+                          -3: h&#39;0A6DA0AF437E2943F1836F31C678D89298E9…&#39;% y-ccordiantes                                     
+                      }                            
+                  },                             
+                  &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;    
+                  }                       
+              &gt;&gt;)                     
+          &gt;&gt;,                        
+          h&#39;1AD0D6A7313EFDC38FCD765852FA2BD43DEBF48BF5A580D&#39;                 
+          ],                 
+          &quot;nameSpaces&quot;: {
+              &quot;eu.europa.ec.eudiw.pid.1&quot;: [                         
+              24(&lt;&lt;    
+                  {      
+                  &quot;digestID&quot;: 1,                                  
+                  &quot;random&quot;: h&#39;E0B70BCEFBD43686F345C9ED429343AA&#39;,                                 
+                  &quot;elementIdentifier&quot;: &quot;expiry_date&quot;,                                
+                  &quot;elementValue&quot;: 1004(&quot;2024-02-22&quot;)                             
+                  }                         
+              &gt;&gt;), 
+              24(&lt;&lt;             
+                  {       
+                  &quot;digestID&quot;: 2,                                  
+                  &quot;random&quot;: h&#39;AE84834F389EE69888665B90A3E4FCCE&#39;, 
+                  &quot;elementIdentifier&quot;: &quot;issue_date&quot;,   
+                  &quot;elementValue&quot;: 1004(&quot;2023-02-22&quot;)                                
+                  }
+              &gt;&gt;),                         
+              24(&lt;&lt;   
+                  {                              
+                  &quot;digestID&quot;: 3,                                 
+                  &quot;random&quot;: h&#39;960CB15A2EA9B68E5233CE902807AA95&#39;,                               
+                  &quot;elementIdentifier&quot;: &quot;issuing_country&quot;,                               
+                  &quot;elementValue&quot;: &quot;IT&quot;                                                    
+                  }                       
+              &gt;&gt;), 
+              24(&lt;&lt;       
+                  {                        
+                  &quot;digestID&quot;: 4,    
+                  &quot;random&quot;: h&#39;9D3774BD5994CCFED248674B32A4F76A&#39;, 
+                  &quot;elementIdentifier&quot;: &quot;issuing_authority&quot;,   
+                  &quot;elementValue&quot;: &quot;Ministero dell&#39;Interno&quot;  
+                  }   
+              &gt;&gt;),                 
+              24(&lt;&lt;        
+                  {                              
+                  &quot;digestID&quot;: 5,                         
+                  &quot;random&quot;: h&#39;EB12193DC66C6174530CDC29B274381F&#39;, 
+                  &quot;elementIdentifier&quot;: &quot;given_name&quot;,
+                  &quot;elementValue&quot;: &quot;Mario&quot;                             
+                  }                         
+              &gt;&gt;)),            
+              24(&lt;&lt;                            
+                  {                               
+                  &quot;digestID&quot;: 6,                             
+                  &quot;random&quot;: h&#39;DB143143538F3C8D41DC024F9CB25C9D&#39;,
+                  &quot;elementIdentifier&quot;: &quot;family_name&quot;,  
+                  &quot;elementValue&quot;: &quot;Rossi&quot;    
+                  } 
+              &gt;&gt;),                         
+              24(&lt;&lt;               
+                  {                          
+                  &quot;digestID&quot;: 7, 
+                  &quot;random&quot;: h&#39;6059FF1CE27B4997B4ADE1DE7B01DC60&#39;,
+                  &quot;elementIdentifier&quot;: &quot;birth_date&quot;,
+                  &quot;elementValue&quot;: 1004(&quot;1956-01-12&quot;)% the tag 1004 defines the value    
+                                                      is a full date 
+                  }  
+              &gt;&gt;),         
+              24(&lt;&lt;  
+                  {                              
+                  &quot;digestID&quot;: 8,                              
+                  &quot;random&quot;: h&#39;53C15C57B3B076E788795829190220B4&#39;,
+                  &quot;elementIdentifier&quot;: &quot;unique_id&quot;,
+                  &quot;elementValue&quot;: &quot;xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx&quot; 
+                  }   
+              &gt;&gt;)
+              ],
+              &quot;eu.europa.ec.eudiw.pid.it.1&quot;: [
+                  24(&lt;&lt;
+                      {
+                      &quot;digestID&quot;: 9, 
+                      &quot;random&quot;: h&#39;11aa7273a2d2daa973f5951f0c34c2fbae&#39;,
+                      &quot;elementIdentifier&quot;: &quot;tax_id_number&quot;, 
+                      &quot;elementValue&quot;: &quot;TINIT-XXXXXXXXXXXXXXX&quot;
+                      }                         
+                  &gt;&gt;)                    
+              ]            
+          }  
+      }           
     }
+    ]
   }
-  ]
-}
 </pre></div>
 </div>
 </section>

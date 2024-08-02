@@ -109,7 +109,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **status**
       - [NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member *status_attestation* set to a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Attestation is bound. It is RECOMMENDED to use *sha-256*. 
-      - Section 3.2.2.2 `SD-JWT-VC`_ and `[OAuth Status Attestations Draft 01] <https://www.ietf.org/archive/id/draft-demarco-status-attestations-01.html#section-9>`_.
+      - Section 3.2.2.2 `SD-JWT-VC`_ and Section 11 `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - [NSD].JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
@@ -129,7 +129,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
 
 .. note::
 
-    Type Metadata JSON Document MAY be retrieved directly from URL contained in the claim **vct** using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not supported in the current implementation profile.
+    Credential Type Metadata JSON Document MAY be retrieved directly from URL contained in the claim **vct** using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not supported in the current implementation profile.
 
 
 Digital Credential Metadata Type
@@ -145,14 +145,11 @@ The Type Metadata document MUST be a JSON object and contains the following para
       - **Description**
       - **Reference**
     * - **name**
-      - A human-readable name of the Digital Credential type. In case of multiple language the language tags are added to member names, delimited by a #
-      - [`SD-JWT-VC`_] Section 6.2.
-    * - **name#it-IT**
-      - A human-readable of the Digital Credential type rappresented in multiple language.
-      - [`OIDC`_] Section 5.2.
+      - A human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :ref: `RFC5646`.
+      - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
     * - **description**
-      - A human-readable description of the Digital Credential type.
-      - [`SD-JWT-VC`_] Section 6.2.
+      - A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :ref: `RFC5646`.
+      - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
     * - **extends**
       - String Identitifier of an exteded metadata type document.
       - [`SD-JWT-VC`_] Section 6.2.
@@ -171,7 +168,7 @@ The Type Metadata document MUST be a JSON object and contains the following para
     * - **data_source**
       - Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
 
-          * ``trust_framework``: MUST cointain trust framework used for digital authetication towards authentic source system.
+          * ``trust_framework``: MUST cointain trust framework used for digital authentication towards authentic source system.
           * ``authentic_source``: MUST contain ``organization_name`` and ``organization_code`` cliam related to name and code identifier of the authentic source.
       - This specification
     * - **vc_claims**
@@ -225,70 +222,16 @@ PID Non-Normative Examples
 
 In the following, the non-normative example of the payload of a PID represented in JSON format.
 
-.. code-block:: JSON
+.. literalinclude:: ../../examples/pid-json-example-payload.json
+  :language: JSON  
 
-  {
-    "iss": "https://issuer.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "iat": 1683000000,
-    "exp": 1883000000,
-    "status": {
-      "status_attestation": {
-        "credential_hash_alg": "sha-256"
-      },
-    "vct": "PersonIdentificationData",
-    "unique_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "given_name": "Mario",
-    "family_name": "Rossi",
-    "birth_date": "1980-01-10",
-    "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"
-  }
+The corresponding SD-JWT version for PID is given by
 
-The corresponding SD-JWT verson for PID is given by
+.. literalinclude:: ../../examples/pid-sd-jwt-example-header.json
+  :language: JSON    
 
-.. code-block:: JSON
-
-  {
-     "typ":"vc+sd-jwt",
-     "alg":"ES256",
-     "kid":"dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw",
-     "trust_chain" : [
-      "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
-      "eyJhbGciOiJSUzI1NiIsImtpZCI6 ...",
-      "IkJYdmZybG5oQU11SFIwN2FqVW1B ..."
-     ]
-  }
-
-.. code-block:: JSON
-
-  {
-    "_sd": [
-      "7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc",
-      "NOxVzjUJg667iBdeDwmr6tZ46X-jchKwIVxMAfv43yc",
-      "TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8",
-      "UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4",
-      "q6Tqnxau97tu-MqUDg0fSAmLGZdSuMUMk6a2s3bcsC0",
-      "wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc"
-    ],
-    "exp": 1883000000,
-    "iss": "https://pidprovider.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "status": {
-      "status_attestation": {
-        "credential_hash_alg": "sha-256"
-      }
-    },
-    "vct": "PersonIdentificationData",
-    "_sd_alg": "sha-256",
-    "cnf": {
-      "jwk": {
-        "kty": "EC",
-        "crv": "P-256",
-        "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-        "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-      }
-    }
-  }
+.. literalinclude:: ../../examples/pid-sd-jwt-example-payload.json
+  :language: JSON  
 
 In the following the disclosure list is given
 
@@ -376,74 +319,16 @@ The combined format for the PID issuance is given by
 
 In the following, we provide a non-normative example of (Q)EAA in JSON.
 
-.. code-block:: JSON
-
-  {
-    "iss": "https://issuer.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "iat": 1683000000,
-    "exp": 1883000000,
-    "status": {
-    "status_attestation": {
-      "credential_hash_alg": "sha-256"
-    },
-    "vct": "DisabilityCard",
-    "document_number": "XXXXXXXXXX",
-    "given_name": "Mario",
-    "family_name": "Rossi",
-    "birth_date": "1980-01-10",
-    "expiry_date": "2024-01-01",
-    "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX",
-    "constant_attendance_allowance": true
-  }
+.. literalinclude:: ../../examples/qeaa-json-example-payload.json
+  :language: JSON  
 
 The corresponding SD-JWT for the previous data is represented as follow, as decoded JSON for both header and payload.
 
-.. code-block:: JSON
+.. literalinclude:: ../../examples/qeaa-sd-jwt-example-header.json
+  :language: JSON  
 
-  {
-     "typ":"vc+sd-jwt",
-     "alg":"ES256",
-     "kid":"d126a6a856f7724560484fa9dc59d195",
-     "trust_chain" : [
-      "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
-      "eyJhbGciOiJSUzI1NiIsImtpZCI6 ...",
-      "IkJYdmZybG5oQU11SFIwN2FqVW1B ..."
-     ]
-  }
-
-.. code-block:: JSON
-
-  {
-    "_sd": [
-      "-LLA7MCh-YWWYNzFfwZsJBGGiE096fN8d60a-ml3sgo",
-      "7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc",
-      "AFRJaRPZTMaNxYu5IIWPifOAXJCnK-_h1eJt7MymcgM",
-      "TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8",
-      "UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4",
-      "i9XHLePHyV8OM35l3nf1MKqfpWuD7OFpRamSAsX0-5g",
-      "rhPkItz7BGGpjnWX2SGVH_OV9VhRjz9Hx_INXwBbz6o",
-      "wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc"
-    ],
-    "exp": 1883000000,
-    "iss": "https://issuer.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "status": {
-      "status_attestation": {
-        "credential_hash_alg": "sha-256"
-      }
-    },
-    "vct": "DisabilityCard",
-    "_sd_alg": "sha-256",
-    "cnf": {
-      "jwk": {
-        "kty": "EC",
-        "crv": "P-256",
-        "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-        "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-      }
-    }
-  }
+.. literalinclude:: ../../examples/qeaa-sd-jwt-example-payload.json
+  :language: JSON  
 
 In the following the disclosure list is given:
 
@@ -792,7 +677,7 @@ The `MobileSecurityObjectBytes` MUST have the following attributes:
     * - **version**
       - See :ref:`Table <table-mdoc-attributes>`.
       - [ISO 18013-5#9.1.2.4]
-    * - **validityInfo**. 
+    * - **validityInfo**
       - Object containing issuance and expiration datetimes. It MUST contain the following sub-value:
 
           * *signed*
@@ -828,141 +713,7 @@ A non-normative example of a PID in MDOC-CBOR format is represented below using 
 
 The `Diagnostic Notation` of the above MDOC-CBOR is given below:
 
-.. code-block:: text
-    
-  {     
-    "status": 0,     
-    "version": "1.0",     
-    "documents": [        
-    {             
-      "docType": "eu.europa.ec.eudiw.pid.1",                         
-      "issuerSigned": {                
-          "issuerAuth": [                
-          << {1: -7} >>, % protected header with the value alg:ES256                    
-          {                         
-              33: h'30820215308201BCA003020102021404AD30C…'% 33->X5chain:COSE X_509  
-          },
-          <<                       
-              24(<<    
-                  {                            
-                  "docType": "eu.europa.ec.eudiw.pid.1",                                
-                  "version": "1.0",  
-                  "validityInfo": {                                
-                      "signed": 0("2023-02-22T06:23:56Z"),                                     
-                      "validFrom": 0("2023-02-22T06:23:56Z"),                                   
-                      "validUntil": 0("2024-02-22T00:00:00Z")                               
-                  },
-                  "valueDigests": { 
-                      "eu.europa.ec.eudiw.pid.1": {        
-                          1: h'0F1571A97FFB799CC8FCDF2BA4FC2909929…',                                          
-                          2: h'0CDFE077400432C055A2B69596C90…',     
-                          3: h'E2382149255AE8E955AF9B8984395…',                                        
-                          4: h'BBC77E6CCA981A3AD0C3E544EDF86…',                                     
-                          6: h'BB6E6C68D1B4B4EC5A2AE9206F5t4…',
-                          7: h'F8A5966E6DAC9970E0334D8F75E25…',              
-                          8: h'DEFDF1AA746718016EF1B94BFE5R6…'
-                      },
-                      "eu.europa.ec.eudiw.pid.it.1": {  
-                          9: h'F9EE4D36F67DBD75E23311AC1C29…'
-                      }
-                  },                             
-                  "deviceKeyInfo": {                              
-                      "deviceKey": {                                  
-                          1: 2, % kty:EC2 (Eliptic curves with x and y coordinate pairs)           
-                          -1: 1, % crv:p256                     
-                          -2: h'B820963964E53AF064686DD9218303494A…', % x-coordiantes                                        
-                          -3: h'0A6DA0AF437E2943F1836F31C678D89298E9…'% y-ccordiantes                                     
-                      }                            
-                  },                             
-                  "digestAlgorithm": "SHA-256"    
-                  }                       
-              >>)                     
-          >>,                        
-          h'1AD0D6A7313EFDC38FCD765852FA2BD43DEBF48BF5A580D'                 
-          ],                 
-          "nameSpaces": {
-              "eu.europa.ec.eudiw.pid.1": [                         
-              24(<<    
-                  {      
-                  "digestID": 1,                                  
-                  "random": h'E0B70BCEFBD43686F345C9ED429343AA',                                 
-                  "elementIdentifier": "expiry_date",                                
-                  "elementValue": 1004("2024-02-22")                             
-                  }                         
-              >>), 
-              24(<<             
-                  {       
-                  "digestID": 2,                                  
-                  "random": h'AE84834F389EE69888665B90A3E4FCCE', 
-                  "elementIdentifier": "issue_date",   
-                  "elementValue": 1004("2023-02-22")                                
-                  }
-              >>),                         
-              24(<<   
-                  {                              
-                  "digestID": 3,                                 
-                  "random": h'960CB15A2EA9B68E5233CE902807AA95',                               
-                  "elementIdentifier": "issuing_country",                               
-                  "elementValue": "IT"                                                    
-                  }                       
-              >>), 
-              24(<<       
-                  {                        
-                  "digestID": 4,    
-                  "random": h'9D3774BD5994CCFED248674B32A4F76A', 
-                  "elementIdentifier": "issuing_authority",   
-                  "elementValue": "Ministero dell'Interno"  
-                  }   
-              >>),                 
-              24(<<        
-                  {                              
-                  "digestID": 5,                         
-                  "random": h'EB12193DC66C6174530CDC29B274381F', 
-                  "elementIdentifier": "given_name",
-                  "elementValue": "Mario"                             
-                  }                         
-              >>)),            
-              24(<<                            
-                  {                               
-                  "digestID": 6,                             
-                  "random": h'DB143143538F3C8D41DC024F9CB25C9D',
-                  "elementIdentifier": "family_name",  
-                  "elementValue": "Rossi"    
-                  } 
-              >>),                         
-              24(<<               
-                  {                          
-                  "digestID": 7, 
-                  "random": h'6059FF1CE27B4997B4ADE1DE7B01DC60',
-                  "elementIdentifier": "birth_date",
-                  "elementValue": 1004("1956-01-12")% the tag 1004 defines the value    
-                                                      is a full date 
-                  }  
-              >>),         
-              24(<<  
-                  {                              
-                  "digestID": 8,                              
-                  "random": h'53C15C57B3B076E788795829190220B4',
-                  "elementIdentifier": "unique_id",
-                  "elementValue": "xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx" 
-                  }   
-              >>)
-              ],
-              "eu.europa.ec.eudiw.pid.it.1": [
-                  24(<<
-                      {
-                      "digestID": 9, 
-                      "random": h'11aa7273a2d2daa973f5951f0c34c2fbae',
-                      "elementIdentifier": "tax_id_number", 
-                      "elementValue": "TINIT-XXXXXXXXXXXXXXX"
-                      }                         
-                  >>)                    
-              ]            
-          }  
-      }           
-    }
-    ]
-  }
-
+.. literalinclude:: ../../examples/pid-mdoc-cbor-example.txt
+  :language: text
 
 

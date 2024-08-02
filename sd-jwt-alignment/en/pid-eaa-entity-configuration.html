@@ -191,7 +191,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>URL of the authorization server's token endpoint. See <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_registration_types_supported</strong></p></td>
-<td><p>Array specifying the registration types supported. The authorization server MUST support <em>automatic</em>. See  <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.1.3.</p></td>
+<td><p>Array specifying the registration types supported. The authorization server MUST support <em>automatic</em>. See  <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Section 5.1.3.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code_challenge_methods_supported</strong></p></td>
 <td><p>JSON array containing a list of Proof Key for Code Exchange (PKCE) <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html"><strong>RFC 7636</strong></a> code challenge methods supported by the authorization server. The authorization server MUST support <em>S256</em>.</p></td>
@@ -218,7 +218,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>JSON array containing a list of the supported grant type values. The authorization server MUST support <em>authorization_code</em>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>token_endpoint_auth_methods_supported</strong></p></td>
-<td><p>JSON array containing a list of supported client authentication methods. The Token Endpoint MUST support <em>attest_jwt_client_auth</em> as defined in <a class="reference external" href="https://www.ietf.org/archive/id/draft-ietf-oauth-attestation-based-client-auth-03.html#name-registration-of-attest_jwt_">[draft-ietf-oauth-attestation-based-client-auth-03]</a>.</p></td>
+<td><p>JSON array containing a list of supported client authentication methods. The Token Endpoint MUST support <em>attest_jwt_client_auth</em> as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>token_endpoint_auth_signing_alg_values_supported</strong></p></td>
 <td><p>JSON array containing a list of the JWS signing algorithms (&quot;<em>alg</em>&quot; values) supported by the token endpoint for the signature on the JWT used to authenticate the client at the Token Endpoint. See <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
@@ -227,7 +227,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>JSON array containing a list of the JWS signing algorithms (&quot;<em>alg</em>&quot; values) supported for Request Objects. See <a class="reference external" href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata">[openid-connect-discovery-1_0]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>JSON Web Key Set containing the cryptographic keys for the authorization server. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
+<td><p>JSON Web Key Set containing the cryptographic keys for the authorization server. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -247,10 +247,10 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>credential_issuer</strong></p></td>
-<td><p>The PID/(Q)EAA Provider identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Draft 13 Sections 11.2.1 and 11.2.3.</p></td>
+<td><p>The PID/(Q)EAA Provider identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Sections 11.2.1 and 11.2.3.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_endpoint</strong></p></td>
-<td><p>URL of the credential endpoint. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Draft 13 Section 11.2.3.</p></td>
+<td><p>URL of the credential endpoint. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Section 11.2.3.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>revocation_endpoint</strong></p></td>
 <td><p>URL of the revocation endpoint. See <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
@@ -259,7 +259,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Attestations. See Section <a class="reference internal" href="revocation-lists.html#credential-lifecycle"><span class="std std-ref">Credential Lifecycle</span></a> for more details.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>display</strong></p></td>
-<td><p>See <cite>OpenID4VCI</cite> Draft 13 Section 11.2.3. Array of objects containing display language properties. The parameters that MUST be included are:</p>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Section 11.2.3. Array of objects containing display language properties. The parameters that MUST be included are:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>name</strong>: String value of a display name for the PID/(Q)EAA Provider.</p></li>
@@ -269,14 +269,14 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_configurations_supported</strong></p></td>
-<td><p>JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <cite>OpenID4VCI</cite> Draft 13 Sections 11.2.3 and A.3.2.</p>
+<td><p>JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Sections 11.2.3 and A.3.2.</p>
 <blockquote>
 <div><ul>
-<li><p><strong>format</strong>:  String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>vc+sd-jwt</em>&quot;. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Draft 13 Section A.3.1.</p></li>
+<li><p><strong>format</strong>:  String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>vc+sd-jwt</em>&quot;. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Section A.3.1.</p></li>
 <li><p><strong>scope</strong>: String identifying the supported <em>scope</em> value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the <em>scope</em> values in the <em>scopes_supported</em> parameter of the Authorization Server.</p></li>
 <li><p><strong>cryptographic_binding_methods_supported</strong>: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The PID/(Q)EAA Provider MUST support the value &quot;<em>jwk</em>&quot;.</p></li>
 <li><p><strong>credential_signing_alg_values_supported</strong>: JSON Array of case sensitive strings that identify the algorithms that the PID/(Q)EAA Provider MUST support to sign the issued Credential. See Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> for more details.</p></li>
-<li><p><strong>proof_types_supported</strong>: JSON object which provide detailed information about the key proof(s) supported by the PID/(Q)EAA Provider. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The PID/(Q)EAA Provider MUST support at least &quot;<em>jwt</em>&quot; as defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Draft 13 Section 7.2. The value associated with each name/value pair is a JSON object containing metadata related to the key proof. The PID/(Q)EAA Provider MUST support at least the parameter <strong>proof_signing_alg_values_supported</strong> which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> for more details about the supported algorithms).</p></li>
+<li><p><strong>proof_types_supported</strong>: JSON object which provide detailed information about the key proof(s) supported by the PID/(Q)EAA Provider. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The PID/(Q)EAA Provider MUST support at least &quot;<em>jwt</em>&quot; as defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Section 7.2. The value associated with each name/value pair is a JSON object containing metadata related to the key proof. The PID/(Q)EAA Provider MUST support at least the parameter <strong>proof_signing_alg_values_supported</strong> which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> for more details about the supported algorithms).</p></li>
 <li><p><strong>display</strong>: Array of objects containing display language properties. The parameters that MUST be included are:</p>
 <blockquote>
 <div><ul class="simple">
@@ -286,7 +286,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </div></blockquote>
 </li>
 <li><p><strong>vct</strong>: As defined in [<a class="reference internal" href="pid-eaa-data-model.html#sd-jwt-vc-credential-format"><span class="std std-ref">SD-JWT-VC Credential Format</span></a>].</p></li>
-<li><p><strong>claims</strong>: JSON object comprising a collection of name/value pairs, where each name represents a claim related to the subject described in the credential. The value associated with each name MAY be either another nested object or an array of objects. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Draft 13 Section A.3.2.</p>
+<li><p><strong>claims</strong>: JSON object comprising a collection of name/value pairs, where each name represents a claim related to the subject described in the credential. The value associated with each name MAY be either another nested object or an array of objects. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Section A.3.2.</p>
 <blockquote>
 <div><ul>
 <li><p><strong>value_type</strong>: String value determining the type of value of the claim. The values that MUST be supported by the PID/(Q)EAA Provider are <em>String</em> and <em>Boolean</em>.</p></li>
@@ -306,7 +306,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
+<td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
 </tbody>
 </table>
