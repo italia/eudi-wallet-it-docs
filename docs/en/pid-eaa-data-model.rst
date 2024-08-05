@@ -111,13 +111,13 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [NSD].UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **status**
-      - [NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Attestation is bound. It is RECOMMENDED to use *sha-256*. 
+      - [NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use *sha-256*. 
       - Section 3.2.2.2 `SD-JWT-VC`_ and Section 11 `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - [NSD].JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD].Credential type value MUST be a case-sensitive StringOrURI (see :rfc:`7519`) and MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. It serves as an identifier for the type of the SD-JWT VC and MUST be a Collision-Resistant Name as defined in Section 2 of :rfc:`7515`. It MUST contains also the number of version of the Credential type, for example, in the case of the PID, it is ``https://issuer.example.org/v1.0/personidentificationdata``.
+      - [NSD].Credential type value MUST be an HTTPS URL String and MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. It serves as an identifier for the type of the SD-JWT VC and MUST be a Collision-Resistant Name as defined in Section 2 of :rfc:`7515`. It MUST contains also the number of version of the Credential type, for example, in the case of the PID, it is ``https://issuer.example.org/v1.0/personidentificationdata``.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD].The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
@@ -125,9 +125,9 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
     * - **verification**
       - [NSD].Object containing user authentication information. It MUST contain the following sub-value:
 
-          * ``auth_trust_framework``: trust framework used for user digital authetication.
-          * ``loa``: level of identity assurance guarateed during the authentication process.
-          * ``auth_method``: digital identity system used for the authentication.
+          * ``auth_trust_framework``: String identifying the trust framework used for user digital authetication.
+          * ``loa``: String identifying the level of identity assurance guarateed during the authentication process.
+          * ``auth_method``: String identifying the digital identity system used for the authentication.
       - This specification
 
 .. note::
@@ -148,13 +148,13 @@ The Type Metadata document MUST be a JSON object and contains the following para
       - **Description**
       - **Reference**
     * - **name**
-      - A human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :rfc:`5646`.
+      - REQUIRED. A human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :rfc:`5646` (e.g. *name#it-IT*).
       - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
     * - **description**
-      - A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :rfc:`5646`.
+      - REQUIRED. A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :rfc:`5646`.
       - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
     * - **extends**
-      - String Identitifier of an exteded metadata type document.
+      - OPTIONAL. String Identitifier of an exteded metadata type document.
       - [`SD-JWT-VC`_] Section 6.2.
     * - **extends#integrity**
       - CONDITIONAL. REQUIRED if **extends** is present.
@@ -169,13 +169,13 @@ The Type Metadata document MUST be a JSON object and contains the following para
       - CONDITIONAL. REQUIRED if **schema_uri** is not present.
       - [`SD-JWT-VC`_] Section 6.2.
     * - **data_source**
-      - Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
+      - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
 
           * ``trust_framework``: MUST cointain trust framework used for digital authentication towards authentic source system.
           * ``authentic_source``: MUST contain ``organization_name`` and ``organization_code`` cliam related to name and code identifier of the authentic source.
       - This specification
     * - **vc_claims**
-      - Object containing useful information about the Digital credential graphical rappresentation. It MUST contain the for each credential claim the following objects:
+      - REQUIRED. Object containing useful information about the Digital credential graphical rappresentation. It MUST contain the for each credential claim the following objects:
 
           * ``display``: MUST cointain name human-readable display name.
           * ``graphics``: MUST contain position, font character, color, size.
