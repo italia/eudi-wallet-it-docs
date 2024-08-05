@@ -73,3 +73,5 @@ Technical References
       - Fett, D., Yasuda, K., Campbell, B., "Selective Disclosure for JWTs (SD-JWT)".
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
       - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication".
+    * - USASCII
+      - American National Standards Institute, "Coded Character Set -- 7-bit American Standard Code for Information Interchange", 1986.

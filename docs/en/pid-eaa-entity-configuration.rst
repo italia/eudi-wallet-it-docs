@@ -87,6 +87,8 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - URL of the revocation endpoint. See :rfc:`8414#section-2`.
   * - **status_attestation_endpoint**
     - It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Attestations. See Section :ref:`Credential Lifecycle` for more details.
+  * - **notification_endpoint**
+    - It MUST be an HTTPs URL indicating the notification endpoint. See Section 11.2.3 of [`OpenID4VCI`_].
   * - **display**
     - See `OpenID4VCI` Draft 13 Section 11.2.3. Array of objects containing display language properties. The parameters that MUST be included are:
         
