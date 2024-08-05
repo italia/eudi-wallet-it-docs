@@ -16,7 +16,7 @@
     }
   },
   "vct": "https://pidprovider.example.org/v1.0/personidentificationdata",
-  "vct#integrity": "55f5fe57f1e491d49f33672784528532d9d257016d4c68f17e55fe4e1520e45e",
+  "vct#integrity": "c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f",
   "verification": {
     "auth_trust_framework": "eidas",
     "loa": "high",

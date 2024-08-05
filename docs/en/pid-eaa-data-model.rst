@@ -304,15 +304,15 @@ The combined format for the PID issuance is given by
   DY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0YXR1c19hc3NlcnR
   pb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9fSwgInZjdCI6ICJ
   odHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnL3YxLjAvcGVyc29uaWRlbnRpZml
-  jYXRpb25kYXRhIiwgInZjdCNpbnRlZ3JpdHkiOiAiNTVmNWZlNTdmMWU0OTFkNDlmMzM
-  2NzI3ODQ1Mjg1MzJkOWQyNTcwMTZkNGM2OGYxN2U1NWZlNGUxNTIwZTQ1ZSIsICJ2ZXJ
+  jYXRpb25kYXRhIiwgInZjdCNpbnRlZ3JpdHkiOiAiYzVmNzNlMjUwZmU4NjlmMjRkMTU
+  xMThhY2NlMjg2YzliYjU2YjYzYTQ0M2RjODVhZjY1M2NkNzNmNjA3OGIxZiIsICJ2ZXJ
   pZmljYXRpb24iOiB7ImF1dGhfdHJ1c3RfZnJhbWV3b3JrIjogImVpZGFzIiwgImxvYSI
   6ICJoaWdoIiwgImF1dGhfbWV0aG9kIjogImNpZSJ9LCAiX3NkX2FsZyI6ICJzaGEtMjU
   2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIng
   iOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ
   5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX1
-  9.Ssz4rT0L4BXK5IrlJrTyLBLo5k6JVXrReFy28PdVEewaZNH7Vju-r0WHq10n6UPmdc
-  _UhA8VMHsfxNHpKORyRA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE
+  9.2ONzaRl6N2uC-NHwnthEwyORn0NwKoeIxZOprp_xYoaB6R9h_gMuI_SH6SH4eDIoTX
+  4gW7XzIUz6ojXLmqxVWA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE
   2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsIC
   J4eHh4eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ~WyI2SWo3dE0tYTV
   pVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5L
@@ -407,7 +407,7 @@ In the following the disclosure list is given:
    ``true]``
 
 
-The combined format for the PID issuance is represented below:
+The combined format for the (Q)EAA issuance is represented below:
 
 .. code-block::
 

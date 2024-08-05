@@ -1,20 +1,20 @@
 {	
-    "name": "mobile driver's licence",
-    "description": "Digital version of mobile driver's licence",
-    "template_uri": "https://issuer.example.org/v1.0/templatemdl",	
-    "schema_uri": "https://issuer.example.org/schema/v1.0/mdl",
+    "name": "Person Identification Data",
+    "description": "Digital version of Person Identification Data",
+    "template_uri": "https://pidprovider.example.org/v1.0/templatepid",	
+    "schema_uri": "https://pidprovider.example.org/schema/v1.0/mdl",
     "schema#integrity": "c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16",
     "data_source": {
         "verification": {
         "trust_framework": "pdnd",
         "authentic_source": {
-            "organization_name": "Ministero delle infrastrutture e dei Trasporti",
-            "organization_code": "mit-uco"
+            "organization_name": "Ministero degli Interni",
+            "organization_code": "m_it"
             }
         }	
     },					
     "vc_claims": {
-        "given_name": {
+        "unique_id": {
             "display": [
                 {
                     "name": "Nome",
@@ -29,6 +29,27 @@
                 "position": {
                     "x": 10,
                     "y": 10
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
+            }
+        },
+        "given_name": {
+            "display": [
+                {
+                    "name": "Nome",
+                    "locale": "it-IT"
+                },
+                {
+                    "name": "First Name",
+                    "locale": "en-US"
+                }
+            ],
+            "graphics": {
+                "position": {
+                    "x": 10,
+                    "y": 20
                 },
                 "font": "arial",
                 "color": "black",
@@ -50,7 +71,7 @@
             "graphics": {
                 "position": {
                     "x": 10,
-                    "y": 20
+                    "y": 30
                 },
                 "font": "arial",
                 "color": "black",
@@ -72,14 +93,14 @@
             "graphics": {
                 "position": {
                     "x": 10,
-                    "y": 30
+                    "y": 40
                 },
                 "font": "arial",
                 "color": "black",
                 "size": "12pt"
                 }
         },
-        "place_of_birth": {
+        "tax_id_code": {
             "value_type": "string",
             "display": [
                 {
@@ -94,205 +115,7 @@
             "graphics": {
                 "position": {
                     "x": 10,
-                    "y": 40
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "issue_date": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Data di rilascio (YYYY-MM-GG)",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Issue Date (YYYY-MM-GG)",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
                     "y": 50
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "expiry_date": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Data di scadenza (YYYY-MM-GG)",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Expiry Date (YYYY-MM-GG)",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 60
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "issuing_country": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Paese di rilascio",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Issuing Country",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 70
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "issuing_authority": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Autorità di rilascio",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Issuing Authority",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 80
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "document_number": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Numero di documento",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Document Number",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 90
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "portrait": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Foto codificata in base64",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Portrait base64 encoded",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 100
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "driving_privileges": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Elenco delle categorie di abilitazione separate da spazio",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Driving Privileges separated by space",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 110
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "restrictions_conditions": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Annotazioni/Restrizioni valide per tutte le categorie separate da spazio",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Restriction/Condition for all driving privileges separated by space ",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 120
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "driving_privileges_details": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Dettagli delle categorie di abilitazione",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Driving privilege details",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 130
                 },
                 "font": "arial",
                 "color": "black",
