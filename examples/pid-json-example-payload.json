@@ -1,17 +1,23 @@
 {
-    "iss": "https://issuer.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "iat": 1683000000,
-    "exp": 1883000000,
-    "status": {
-      "status_attestation": {
-        "credential_hash_alg": "sha-256"
-      },
-    "vct": "PersonIdentificationData",
-    "unique_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "given_name": "Mario",
-    "family_name": "Rossi",
-    "birth_date": "1980-01-10",
-    "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"
-  }
+  "iss": "https://pidprovider.example.org",
+  "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+  "iat": 1683000000,
+  "exp": 1883000000,
+  "status": {
+    "status_assertion": {
+      "credential_hash_alg": "sha-256"
+    }
+  },
+  "vct": "https://pidprovider.example.org/v1.0/personidentificationdata",
+  "vct#integrity": "55f5fe57f1e491d49f33672784528532d9d257016d4c68f17e55fe4e1520e45e",
+  "verification": {
+    "auth_trust_framework": "eidas",
+    "loa": "high",
+    "auth_method": "cie"
+  },
+  "unique_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "given_name": "Mario",
+  "family_name": "Rossi",
+  "birth_date": "1980-01-10",
+  "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"
 }
