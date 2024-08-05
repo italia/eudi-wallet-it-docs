@@ -258,7 +258,10 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <tr class="row-odd"><td><p><strong>status_attestation_endpoint</strong></p></td>
 <td><p>It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Attestations. See Section <a class="reference internal" href="revocation-lists.html#credential-lifecycle"><span class="std std-ref">Credential Lifecycle</span></a> for more details.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>display</strong></p></td>
+<tr class="row-even"><td><p><strong>notification_endpoint</strong></p></td>
+<td><p>It MUST be an HTTPs URL indicating the notification endpoint. See Section 11.2.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>display</strong></p></td>
 <td><p>See <cite>OpenID4VCI</cite> Draft 13 Section 11.2.3. Array of objects containing display language properties. The parameters that MUST be included are:</p>
 <blockquote>
 <div><ul class="simple">
@@ -268,7 +271,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>credential_configurations_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>credential_configurations_supported</strong></p></td>
 <td><p>JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <cite>OpenID4VCI</cite> Draft 13 Sections 11.2.3 and A.3.2.</p>
 <blockquote>
 <div><ul>
@@ -305,7 +308,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>jwks</strong></p></td>
+<tr class="row-odd"><td><p><strong>jwks</strong></p></td>
 <td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a> Draft 36 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
 </tbody>
@@ -419,6 +422,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">            </span><span class="nt">&quot;credential_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/credential&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;revocation_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/revoke&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;status_attestation_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/status&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;notification_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/notification&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EAA Provider&quot;</span><span class="p">,</span>
@@ -1047,7 +1051,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
     <div class="footer" role="contentinfo">
     &#169; Copyright Dipartimento per la Trasformazione Digitale.
-      Last updated on 31/07/2024.
+      Last updated on 05/08/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
