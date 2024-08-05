@@ -264,7 +264,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7519">[RFC7519, Section 4.1.4]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>status</strong></p></td>
-<td><p>[NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member <em>status_assertion</em> set to a JSON Object containing the <em>credential_hash_alg</em> claim indicating the Algorithm used for hashing the Digital Credential to which the Status Attestation is bound. It is RECOMMENDED to use <em>sha-256</em>.</p></td>
+<td><p>[NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member <em>status_assertion</em> set to a JSON Object containing the <em>credential_hash_alg</em> claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use <em>sha-256</em>.</p></td>
 <td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> and Section 11 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>cnf</strong></p></td>
@@ -272,7 +272,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7800">[RFC7800, Section 3.1]</a> and Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vct</strong></p></td>
-<td><p>[NSD].Credential type value MUST be a case-sensitive StringOrURI (see <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>) and MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. It serves as an identifier for the type of the SD-JWT VC and MUST be a Collision-Resistant Name as defined in Section 2 of <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>. It MUST contains also the number of version of the Credential type, for example, in the case of the PID, it is <code class="docutils literal notranslate"><span class="pre">https://issuer.example.org/v1.0/personidentificationdata</span></code>.</p></td>
+<td><p>[NSD].Credential type value MUST be an HTTPS URL String and MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. It serves as an identifier for the type of the SD-JWT VC and MUST be a Collision-Resistant Name as defined in Section 2 of <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>. It MUST contains also the number of version of the Credential type, for example, in the case of the PID, it is <code class="docutils literal notranslate"><span class="pre">https://issuer.example.org/v1.0/personidentificationdata</span></code>.</p></td>
 <td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vct#integrity</strong></p></td>
@@ -283,9 +283,9 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[NSD].Object containing user authentication information. It MUST contain the following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">auth_trust_framework</span></code>: trust framework used for user digital authetication.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">loa</span></code>: level of identity assurance guarateed during the authentication process.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">auth_method</span></code>: digital identity system used for the authentication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auth_trust_framework</span></code>: String identifying the trust framework used for user digital authetication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">loa</span></code>: String identifying the level of identity assurance guarateed during the authentication process.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auth_method</span></code>: String identifying the digital identity system used for the authentication.</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -315,15 +315,15 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>name</strong></p></td>
-<td><p>A human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>.</p></td>
+<td><p>REQUIRED. A human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> (e.g. <em>name#it-IT</em>).</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>description</strong></p></td>
-<td><p>A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>.</p></td>
+<td><p>REQUIRED. A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>.</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>extends</strong></p></td>
-<td><p>String Identitifier of an exteded metadata type document.</p></td>
+<td><p>OPTIONAL. String Identitifier of an exteded metadata type document.</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>extends#integrity</strong></p></td>
@@ -343,7 +343,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_source</strong></p></td>
-<td><p>Object containing information about the data origin. It MUST contain the object <code class="docutils literal notranslate"><span class="pre">verification</span></code> with this following sub-value:</p>
+<td><p>REQUIRED. Object containing information about the data origin. It MUST contain the object <code class="docutils literal notranslate"><span class="pre">verification</span></code> with this following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: MUST cointain trust framework used for digital authentication towards authentic source system.</p></li>
@@ -354,7 +354,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>This specification</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vc_claims</strong></p></td>
-<td><p>Object containing useful information about the Digital credential graphical rappresentation. It MUST contain the for each credential claim the following objects:</p>
+<td><p>REQUIRED. Object containing useful information about the Digital credential graphical rappresentation. It MUST contain the for each credential claim the following objects:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">display</span></code>: MUST cointain name human-readable display name.</p></li>
