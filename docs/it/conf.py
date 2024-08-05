@@ -69,7 +69,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = settings_project_name
-copyright = settings_copyright_copyleft
+# copyright = settings_copyright_copyleft
 
 # URL of Discourse instance used by sphinxcontrib.discourse extension
 # discourse_url = settings_discourse_url
@@ -230,8 +230,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', settings_file_name + '.tex', settings_project_name,
-   settings_copyright_copyleft, 'manual'),
+  ('index', settings_file_name + '.tex', settings_project_name, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -275,7 +274,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', settings_file_name, settings_project_name,
-   settings_copyright_copyleft, settings_project_name, settings_project_name,
+   settings_project_name, settings_project_name,
    'Miscellaneous'),
 ]
 
