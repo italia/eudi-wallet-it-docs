@@ -72,16 +72,19 @@ The JOSE header contains the following mandatory parameters:
     - **Reference**
   * - **typ**
     - REQUIRED. It MUST be set to ``vc+sd-jwt`` as defined in `SD-JWT-VC`_. 
-    - `[RFC7515, Section 4.1.9] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9>`_.
+    - :rfc:`7515` Section 4.1.9.
   * - **alg**
     - REQUIRED. Signature Algorithm. 
-    - `[RFC7515, Section 4.1.1] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1>`_.
+    - :rfc:`7515` Section 4.1.1.
   * - **kid**
     - REQUIRED. Unique identifier of the public key. 
-    - `[RFC7515, Section 4.1.8] <https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.8>`_.
+    - :rfc:`7515` Section 4.1.8.
   * - **trust_chain**
     - OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
     - [`OID-FED`_] Section 3.2.1.
+  * - **x5c**
+    - OPTIONAL. Contains the X.509 public key certificate or certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. 
+    - :rfc:`7515` Section 4.1.8 and [`SD-JWT-VC`_] Section 3.5.
   * - **vctm**
     - OPTIONAL. JSON array of base64url-encoded Type Metadata JSON documents. In case of extended type metadata, this claim contains the entire chain of JSON documents. 
     - [`SD-JWT-VC`_] Section 6.3.5.
@@ -123,7 +126,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [NSD].Object containing user authentication information. It MUST contain the following sub-value:
 
           * ``auth_trust_framework``: trust framework used for user digital authetication.
-          * ``assurance_level``: level of identity assurance guarateed (LoA) during the authentication process.
+          * ``loa``: level of identity assurance guarateed during the authentication process.
           * ``auth_method``: digital identity system used for the authentication.
       - This specification
 
@@ -237,51 +240,51 @@ In the following the disclosure list is given
 
 **Claim** ``iat``:
 
--  SHA-256 Hash: ``7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc``
+-  SHA-256 Hash: ``Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE``
 -  Disclosure:
-   ``WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
--  Contents: ``["57mvycTh5yZCrKLZ5xnfUw", "iat", 1683000000]``
+   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
+-  Contents: ``["2GLC42sKQveCfGfryNRN9w", "iat", 1683000000]``
 
 **Claim** ``unique_id``:
 
--  SHA-256 Hash: ``NOxVzjUJg667iBdeDwmr6tZ46X-jchKwIVxMAfv43yc``
+-  SHA-256 Hash: ``BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig``
 -  Disclosure:
-   ``WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInVuaXF1ZV9pZCIsICJ4eHh4``
+   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4``
    ``eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ``
--  Contents: ``["kucrBmlo_hMaIFF585RzaQ", "unique_id",``
+-  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "unique_id",``
    ``"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]``
 
 **Claim** ``given_name``:
 
--  SHA-256 Hash: ``wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc``
+-  SHA-256 Hash: ``zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o``
 -  Disclosure:
-   ``WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFy``
+   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFy``
    ``aW8iXQ``
--  Contents: ``["NTNRoOiuVVRtF6CEztd9Zw", "given_name", "Mario"]``
+-  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "given_name", "Mario"]``
 
 **Claim** ``family_name``:
 
--  SHA-256 Hash: ``UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4``
+-  SHA-256 Hash: ``VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA``
 -  Disclosure:
-   ``WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJv``
+   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJv``
    ``c3NpIl0``
--  Contents: ``["FDSSPggzGBUwQLHDSE6wQQ", "family_name", "Rossi"]``
+-  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "family_name", "Rossi"]``
 
 **Claim** ``birth_date``:
 
--  SHA-256 Hash: ``TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8``
+-  SHA-256 Hash: ``s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk``
 -  Disclosure:
-   ``WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4``
+   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4``
    ``MC0wMS0xMCJd``
--  Contents: ``["KZ8e5wVEtDvb1ziSPA4DzA", "birth_date", "1980-01-10"]``
+-  Contents: ``["Qg_O64zqAxe412a108iroA", "birth_date", "1980-01-10"]``
 
 **Claim** ``tax_id_code``:
 
--  SHA-256 Hash: ``q6Tqnxau97tu-MqUDg0fSAmLGZdSuMUMk6a2s3bcsC0``
+-  SHA-256 Hash: ``ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E``
 -  Disclosure:
-   ``WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgInRheF9pZF9jb2RlIiwgIlRJ``
+   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJ``
    ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["pZ5MRyOxpVWZuHLoJ-yjRg", "tax_id_code",``
+-  Contents: ``["AJx-095VPrpTtN4QMOqROA", "tax_id_code",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 
@@ -290,29 +293,33 @@ The combined format for the PID issuance is given by
 
 .. code-block::
 
-  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
-  IjdXRzRuVDZLMjZfUjM5NzV6Y3duVndnb0hBN2I5ODhfMy12SnpiWmY2WWMiLCAiTk94
-  VnpqVUpnNjY3aUJkZUR3bXI2dFo0NlgtamNoS3dJVnhNQWZ2NDN5YyIsICJUSzJSZ3VQ
-  WW9YekN4MHZ2NWhiTjl1NU0ybUhsV0J0NDFxR1dsTFhDTnU4IiwgIlVIQ2hwR3RORjJi
-  ajFGdkFmQmJ5MXJuZjdXWGt4ZWxGSjVhNHZTajJGTzQiLCAicTZUcW54YXU5N3R1LU1x
-  VURnMGZTQW1MR1pkU3VNVU1rNmEyczNiY3NDMCIsICJ3eWZ4VnFxOUJvc1BUN3RONFNI
-  T0k0RTQ4UDE5YVZBMWt0VzVaZjBFLWZjIl0sICJleHAiOiAxODgzMDAwMDAwLCAiaXNz
-  IjogImh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56Ykxz
-  WGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0YXR1c19h
-  dHRlc3RhdGlvbiI6IHsiY3JlZGVudGlhbF9oYXNoX2FsZyI6ICJzaGEtMjU2In19LCAi
-  dmN0IjogIlBlcnNvbklkZW50aWZpY2F0aW9uRGF0YSIsICJfc2RfYWxnIjogInNoYS0y
-  NTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAi
-  eCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwg
-  InkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9
-  fX0.A36ovweqpCpPkYHX75dg-HIib7zQKlfmMCaixlpOCmEl1CxlX-NtZbFn_kdN0nlJ
-  YMLay4xSeetmic_ScLTxdg~WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsI
-  DE2ODMwMDAwMDBd~WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInVuaXF1ZV9pZCIs
-  ICJ4eHh4eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ~WyJOVE5Sb09pd
-  VZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJGRFNTUGdnek
-  dCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJLWjhlNXdWRX
-  REdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJwWjVNU
-  nlPeHBWV1p1SExvSi15alJnIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYW
-  FhYWFhYWFgiXQ~
+  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIkJvTUd
+  rdFcxcmJpa250dzhGenhfQmVMNFliQW5kcjZBSHNkZ3BhdEZDaWciLCAiRU5ObzMxamZ
+  6RnA4WTJEVzBSLWZJTWVXd2U3RUxHdkdvSE13TUJwdTE0RSIsICJWUUktUzFtVDFLeGZ
+  xMm84Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdTcjRleEVZdHF
+  ERXNtUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiczFYSzVmMnBNMy1hRlRhdVhobXZ
+  kOXB5UVRKNkZNVWhjLUpYZkhyeGhMayIsICJ6VmRnaGNtQ2xNVldsVWdHc0dwU2tDUGt
+  FSFo0dTlvV2oxU2xJQmxDYzFvIl0sICJleHAiOiAxODgzMDAwMDAwLCAiaXNzIjogImh
+  0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56YkxzWGg4dUR
+  DY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0YXR1c19hc3NlcnR
+  pb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9fSwgInZjdCI6ICJ
+  odHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnL3YxLjAvcGVyc29uaWRlbnRpZml
+  jYXRpb25kYXRhIiwgInZjdCNpbnRlZ3JpdHkiOiAiNTVmNWZlNTdmMWU0OTFkNDlmMzM
+  2NzI3ODQ1Mjg1MzJkOWQyNTcwMTZkNGM2OGYxN2U1NWZlNGUxNTIwZTQ1ZSIsICJ2ZXJ
+  pZmljYXRpb24iOiB7ImF1dGhfdHJ1c3RfZnJhbWV3b3JrIjogImVpZGFzIiwgImxvYSI
+  6ICJoaWdoIiwgImF1dGhfbWV0aG9kIjogImNpZSJ9LCAiX3NkX2FsZyI6ICJzaGEtMjU
+  2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIng
+  iOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ
+  5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX1
+  9.Ssz4rT0L4BXK5IrlJrTyLBLo5k6JVXrReFy28PdVEewaZNH7Vju-r0WHq10n6UPmdc
+  _UhA8VMHsfxNHpKORyRA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE
+  2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsIC
+  J4eHh4eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ~WyI2SWo3dE0tYTV
+  pVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5L
+  UHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4
+  ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk
+  1VlBycFR0TjRRTU9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFh
+  YWFhYWFgiXQ~
 
 (Q)EAA non-normative examples
 -----------------------------
@@ -334,69 +341,69 @@ In the following the disclosure list is given:
 
 **Claim** ``iat``:
 
--  SHA-256 Hash: ``7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc``
+-  SHA-256 Hash: ``Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE``
 -  Disclosure:
-   ``WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
--  Contents: ``["57mvycTh5yZCrKLZ5xnfUw", "iat", 1683000000]``
+   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
+-  Contents: ``["2GLC42sKQveCfGfryNRN9w", "iat", 1683000000]``
 
 **Claim** ``document_number``:
 
--  SHA-256 Hash: ``AFRJaRPZTMaNxYu5IIWPifOAXJCnK-_h1eJt7MymcgM``
+-  SHA-256 Hash: ``Dx-6hjvrcxNzF0slU6ukNmzHoL-YvBN-tFa0T8X-bY0``
 -  Disclosure:
-   ``WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgImRvY3VtZW50X251bWJlciIs``
+   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImRvY3VtZW50X251bWJlciIs``
    ``ICJYWFhYWFhYWFhYIl0``
 -  Contents:
-   ``["kucrBmlo_hMaIFF585RzaQ", "document_number", "XXXXXXXXXX"]``
+   ``["eluV5Og3gSNII8EYnsxA_A", "document_number", "XXXXXXXXXX"]``
 
 **Claim** ``given_name``:
 
--  SHA-256 Hash: ``wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc``
+-  SHA-256 Hash: ``zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o``
 -  Disclosure:
-   ``WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFy``
+   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFy``
    ``aW8iXQ``
--  Contents: ``["NTNRoOiuVVRtF6CEztd9Zw", "given_name", "Mario"]``
+-  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "given_name", "Mario"]``
 
 **Claim** ``family_name``:
 
--  SHA-256 Hash: ``UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4``
+-  SHA-256 Hash: ``VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA``
 -  Disclosure:
-   ``WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJv``
+   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJv``
    ``c3NpIl0``
--  Contents: ``["FDSSPggzGBUwQLHDSE6wQQ", "family_name", "Rossi"]``
+-  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "family_name", "Rossi"]``
 
 **Claim** ``birth_date``:
 
--  SHA-256 Hash: ``TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8``
+-  SHA-256 Hash: ``s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk``
 -  Disclosure:
-   ``WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4``
+   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4``
    ``MC0wMS0xMCJd``
--  Contents: ``["KZ8e5wVEtDvb1ziSPA4DzA", "birth_date", "1980-01-10"]``
+-  Contents: ``["Qg_O64zqAxe412a108iroA", "birth_date", "1980-01-10"]``
 
 **Claim** ``expiry_date``:
 
--  SHA-256 Hash: ``i9XHLePHyV8OM35l3nf1MKqfpWuD7OFpRamSAsX0-5g``
+-  SHA-256 Hash: ``aBVdfcnxT0Z5RrwdxZSUhuUxz3gM2vcEZLeYIj61Kas``
 -  Disclosure:
-   ``WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImV4cGlyeV9kYXRlIiwgIjIw``
+   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIjIw``
    ``MjQtMDEtMDEiXQ``
--  Contents: ``["pZ5MRyOxpVWZuHLoJ-yjRg", "expiry_date", "2024-01-01"]``
+-  Contents: ``["AJx-095VPrpTtN4QMOqROA", "expiry_date", "2024-01-01"]``
 
 **Claim** ``tax_id_code``:
 
--  SHA-256 Hash: ``-LLA7MCh-YWWYNzFfwZsJBGGiE096fN8d60a-ml3sgo``
+-  SHA-256 Hash: ``8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E``
 -  Disclosure:
-   ``WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
+   ``WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
    ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["jtVuKCpn7bTcHrAg_seUbQ", "tax_id_code",``
+-  Contents: ``["Pc33JM2LchcU_lHggv_ufQ", "tax_id_code",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 **Claim** ``constant_attendance_allowance``:
 
--  SHA-256 Hash: ``rhPkItz7BGGpjnWX2SGVH_OV9VhRjz9Hx_INXwBbz6o``
+-  SHA-256 Hash: ``GE3Sjy_zAT34f8wa5DUkVB0FslaSJRAAc8I3lN11Ffc``
 -  Disclosure:
-   ``WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImNvbnN0YW50X2F0dGVuZGFu``
+   ``WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGFu``
    ``Y2VfYWxsb3dhbmNlIiwgdHJ1ZV0``
 -  Contents:
-   ``["WDkd6JsNhDFvLP4s1hQdyA", "constant_attendance_allowance",``
+   ``["G02NSrQfjFXQ7Io09syajA", "constant_attendance_allowance",``
    ``true]``
 
 
@@ -404,32 +411,36 @@ The combined format for the PID issuance is represented below:
 
 .. code-block::
 
-  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
-  Ii1MTEE3TUNoLVlXV1lOekZmd1pzSkJHR2lFMDk2Zk44ZDYwYS1tbDNzZ28iLCAiN1dH
-  NG5UNksyNl9SMzk3NXpjd25Wd2dvSEE3Yjk4OF8zLXZKemJaZjZZYyIsICJBRlJKYVJQ
-  WlRNYU54WXU1SUlXUGlmT0FYSkNuSy1faDFlSnQ3TXltY2dNIiwgIlRLMlJndVBZb1h6
-  Q3gwdnY1aGJOOXU1TTJtSGxXQnQ0MXFHV2xMWENOdTgiLCAiVUhDaHBHdE5GMmJqMUZ2
-  QWZCYnkxcm5mN1dYa3hlbEZKNWE0dlNqMkZPNCIsICJpOVhITGVQSHlWOE9NMzVsM25m
-  MU1LcWZwV3VEN09GcFJhbVNBc1gwLTVnIiwgInJoUGtJdHo3QkdHcGpuV1gyU0dWSF9P
-  VjlWaFJqejlIeF9JTlh3QmJ6Nm8iLCAid3lmeFZxcTlCb3NQVDd0TjRTSE9JNEU0OFAx
-  OWFWQTFrdFc1WmYwRS1mYyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRw
-  czovL2lzc3Vlci5leGFtcGxlLm9yZyIsICJzdWIiOiAiTnpiTHNYaDh1RENjZDdub1dY
-  RlpBZkhreFpzUkdDOVhzIiwgInN0YXR1cyI6IHsic3RhdHVzX2F0dGVzdGF0aW9uIjog
-  eyJjcmVkZW50aWFsX2hhc2hfYWxnIjogInNoYS0yNTYifX0sICJ2Y3QiOiAiRGlzYWJp
-  bGl0eUNhcmQiLCAiX3NkX2FsZyI6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJr
-  dHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRX
-  NHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZR
-  NGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX19.1kOe6IgFxgbb_jtaLUhM_bgjmby
-  j6B63rm_WjaOwpOBsiPSKJY7hBHd2a83euSI8JqbSkVHJS3wcr0kd9ppZRw~WyI1N212
-  eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJrdWNyQm1sb19
-  oTWFJRkY1ODVSemFRIiwgImRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0~WyJ
-  OVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJG
-  RFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJL
-  WjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd
-  ~WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDE
-  tMDEiXQ~WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgInRheF9pZF9jb2RlIiwgIlRJ
-  TklULVhYWFhYWFhYWFhYWFhYWFgiXQ~WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgI
-  mNvbnN0YW50X2F0dGVuZGFuY2VfYWxsb3dhbmNlIiwgdHJ1ZV0~
+  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjhKam9
+  6QmZvdk1OdlEzSGZsbVBXeTRPMTlHcHhzNjFGV0hqWmViVTU4OUUiLCAiRHgtNmhqdnJ
+  jeE56RjBzbFU2dWtObXpIb0wtWXZCTi10RmEwVDhYLWJZMCIsICJHRTNTanlfekFUMzR
+  mOHdhNURVa1ZCMEZzbGFTSlJBQWM4STNsTjExRmZjIiwgIlZRSS1TMW1UMUt4ZnEybzh
+  KOWlvN3hNTVgyTUl4YUc5TTlQZUpWcXJNY0EiLCAiWXJjLXMtV1NyNGV4RVl0cURFc21
+  SbDdzcG9WZm1CeGl4UDEyZTRzeXFORSIsICJhQlZkZmNueFQwWjVScndkeFpTVWh1VXh
+  6M2dNMnZjRVpMZVlJajYxS2FzIiwgInMxWEs1ZjJwTTMtYUZUYXVYaG12ZDlweVFUSjZ
+  GTVVoYy1KWGZIcnhoTGsiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU5b1d
+  qMVNsSUJsQ2MxbyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRwczovL2l
+  zc3Vlci5leGFtcGxlLm9yZyIsICJzdWIiOiAiTnpiTHNYaDh1RENjZDdub1dYRlpBZkh
+  reFpzUkdDOVhzIiwgInN0YXR1cyI6IHsic3RhdHVzX2Fzc2VydGlvbiI6IHsiY3JlZGV
+  udGlhbF9oYXNoX2FsZyI6ICJzaGEtMjU2In19LCAidmN0IjogImh0dHBzOi8vaXNzdWV
+  yLmV4YW1wbGUub3JnL3YxLjAvZGlzYWJpbGl0eWNhcmQiLCAidmN0I2ludGVncml0eSI
+  6ICIyZTQwYmNkNjc5OTAwODA4NWZmYjFhMWYzNTE3ZWZlZTMzNTI5OGZkOTc2YjNlNjU
+  1YmZiM2Y0ZWFhMTFkMTcxIiwgInZlcmlmaWNhdGlvbiI6IHsiYXV0aF90cnVzdF9mcmF
+  tZXdvcmsiOiAiZWlkYXMiLCAibG9hIjogImhpZ2giLCAiYXV0aF9tZXRob2QiOiAiY2l
+  lIn0sICJfc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJ
+  FQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9
+  ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWl
+  yc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0.I1f3TEF25LTHT6icfgBwdFyZFTNWSGlXp8w
+  WyXXl9lk9hoC_eRM3WRewx8Bmze8BINUkSRLE-yLHCpP9yQXHpA~WyIyR0xDNDJzS1F2
+  ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEV
+  ZbnN4QV9BIiwgImRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0~WyI2SWo3dE0
+  tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205
+  UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6
+  cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSng
+  tMDk1VlBycFR0TjRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ~
+  WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhY
+  WFhYWFhYWFhYWFhYWFgiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0Y
+  W50X2F0dGVuZGFuY2VfYWxsb3dhbmNlIiwgdHJ1ZV0~
 
 MDOC-CBOR
 =========
