@@ -274,7 +274,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', settings_file_name, settings_project_name,
-   settings_copyright_copyleft, settings_project_name, settings_project_name,
+   settings_project_name, settings_project_name,
    'Miscellaneous'),
 ]
 
