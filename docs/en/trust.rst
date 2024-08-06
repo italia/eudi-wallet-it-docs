@@ -63,7 +63,7 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - 
    * - Trusted List
      - Trust Anchor
-     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their accredited subordinates.
+     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates.
    * - Wallet Provider
      - Leaf
      - 
@@ -137,11 +137,11 @@ This section includes the requirements necessary for the successful implementati
    * - [FR #21]
      - **Future-Proof Cryptography**: the system should employ a flexible cryptographic framework that can be updated in response to new threats or advancements in cryptographic research, ensuring long-term security and integrity of federation operations.
    * - [FR #23]
-     - **Autonomous Registration Bodies**: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and accrediting entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
+     - **Autonomous Registration Bodies**: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and registering entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
    * - [FR #24]
      - **Compliance Evaluation for Federation Entity Candidates**: registration bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.
    * - [FR #25]
-     - **Periodic Auditing of Registration Bodies and Entities**: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their accredited entities. This ensures ongoing adherence to federation standards and policies.
+     - **Periodic Auditing of Registration Bodies and Entities**: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities. This ensures ongoing adherence to federation standards and policies.
    * - [FR #26]
      - **Certification of Compliance for Personal Devices**: trusted bodies, in the form of federation entities, should issue certifications of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These certifications should be attested and periodically renewed to ensure the devices meet current security standards.
    * - [FR #27]
@@ -579,10 +579,10 @@ The Trust Chains can also be verified offline, using one of the Trust Anchor's p
     The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.
 
 
-Relying Party Attestation
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Relying Party Trust Evaluation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms and any other necessary information for the interoperability requirements.
+The Relying Party is registered by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms and any other necessary information for the interoperability requirements.
 
 Any requests for User attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and SHOULD contain the verifiable Trust Chain regarding the Relying Party.
 
