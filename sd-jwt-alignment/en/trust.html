@@ -30,7 +30,15 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">The Italian EUDI Wallet implementation profile version: latest documentation</a></h1>
+        <h1><a href="index.html" title="Go to homepage"><img src="https://avatars.githubusercontent.com/u/15377824?s=48&v=4"/></a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="white" d="M503.5 204.6L502.8 202.8L433.1 21.02C431.7 17.45 429.2 14.43 425.9 12.38C423.5 10.83 420.8 9.865 417.9 9.57C415 9.275 412.2 9.653 409.5 10.68C406.8 11.7 404.4 13.34 402.4 15.46C400.5 17.58 399.1 20.13 398.3 22.9L351.3 166.9H160.8L113.7 22.9C112.9 20.13 111.5 17.59 109.6 15.47C107.6 13.35 105.2 11.72 102.5 10.7C99.86 9.675 96.98 9.295 94.12 9.587C91.26 9.878 88.51 10.83 86.08 12.38C82.84 14.43 80.33 17.45 78.92 21.02L9.267 202.8L8.543 204.6C-1.484 230.8-2.72 259.6 5.023 286.6C12.77 313.5 29.07 337.3 51.47 354.2L51.74 354.4L52.33 354.8L158.3 434.3L210.9 474L242.9 498.2C246.6 500.1 251.2 502.5 255.9 502.5C260.6 502.5 265.2 500.1 268.9 498.2L300.9 474L353.5 434.3L460.2 354.4L460.5 354.1C482.9 337.2 499.2 313.5 506.1 286.6C514.7 259.6 513.5 230.8 503.5 204.6z"/>
+        </svg>
+    
+</a>
+        
 
         <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
     <template v-if="mode == 'light'">
@@ -128,6 +136,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
@@ -213,7 +222,7 @@ except for Wallet Instances which are End-User's personal devices certified by t
 </tr>
 <tr class="row-odd"><td><p>Trusted List</p></td>
 <td><p>Trust Anchor</p></td>
-<td><p>The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their accredited subordinates.</p></td>
+<td><p>The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates.</p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>Leaf</p></td>
@@ -312,13 +321,13 @@ except for Wallet Instances which are End-User's personal devices certified by t
 <td><p><strong>Future-Proof Cryptography</strong>: the system should employ a flexible cryptographic framework that can be updated in response to new threats or advancements in cryptographic research, ensuring long-term security and integrity of federation operations.</p></td>
 </tr>
 <tr class="row-odd"><td><p>[FR #23]</p></td>
-<td><p><strong>Autonomous Registration Bodies</strong>: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and accrediting entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.</p></td>
+<td><p><strong>Autonomous Registration Bodies</strong>: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and registering entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.</p></td>
 </tr>
 <tr class="row-even"><td><p>[FR #24]</p></td>
 <td><p><strong>Compliance Evaluation for Federation Entity Candidates</strong>: registration bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>[FR #25]</p></td>
-<td><p><strong>Periodic Auditing of Registration Bodies and Entities</strong>: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their accredited entities. This ensures ongoing adherence to federation standards and policies.</p></td>
+<td><p><strong>Periodic Auditing of Registration Bodies and Entities</strong>: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities. This ensures ongoing adherence to federation standards and policies.</p></td>
 </tr>
 <tr class="row-even"><td><p>[FR #26]</p></td>
 <td><p><strong>Certification of Compliance for Personal Devices</strong>: trusted bodies, in the form of federation entities, should issue certifications of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These certifications should be attested and periodically renewed to ensure the devices meet current security standards.</p></td>
@@ -804,9 +813,9 @@ and in relation to the signature mechanisms MUST be applied for the Entity State
 <p>Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it <strong>requires the presentation of the Wallet Attestation during the credential issuance and presentation phases</strong>.</p>
 <p>The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.</p>
 </div>
-<section id="relying-party-attestation">
-<h3>Relying Party Attestation<a class="headerlink" href="#relying-party-attestation" title="Link to this heading">¶</a></h3>
-<p>The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms and any other necessary information for the interoperability requirements.</p>
+<section id="relying-party-trust-evaluation">
+<h3>Relying Party Trust Evaluation<a class="headerlink" href="#relying-party-trust-evaluation" title="Link to this heading">¶</a></h3>
+<p>The Relying Party is registered by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms and any other necessary information for the interoperability requirements.</p>
 <p>Any requests for User attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and SHOULD contain the verifiable Trust Chain regarding the Relying Party.</p>
 <p>The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active, proving that the Relying Party is still part of the Federation and not revoked.</p>
 <p>The Trust Chain SHOULD be contained within the signed request in the form of a JWS header parameter.</p>
@@ -928,7 +937,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 </ul>
 </li>
 <li><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
-<li><a class="reference internal" href="#relying-party-attestation">Relying Party Attestation</a></li>
+<li><a class="reference internal" href="#relying-party-trust-evaluation">Relying Party Trust Evaluation</a></li>
 <li><a class="reference internal" href="#wallet-attestation">Wallet Attestation</a></li>
 <li><a class="reference internal" href="#trust-chain">Trust Chain</a></li>
 <li><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a><ul>
@@ -971,11 +980,10 @@ Trust Chain is close to expiration but the overall structure of the federation h
 
 
     <div class="footer" role="contentinfo">
-    &#169; Copyright Dipartimento per la Trasformazione Digitale.
       Last updated on 06/08/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
-<p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
+<p id="theme_credit"></p>
   </body>
 </html>
