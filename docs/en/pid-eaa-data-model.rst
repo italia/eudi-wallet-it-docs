@@ -36,7 +36,7 @@ Each digest value, calculated using a hash function over the disclosures, verifi
   - the claim name (only when the claim is an object element), 
   - the claim value. 
 
-In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore **_sd** claim containing digests MAY appear multiple times in the SD-JWT.
+In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore **_sd** claim containing digests MAY appear multiple times at different level in the SD-JWT.
 
 For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 5.2.4.2 of `SD-JWT`_.
 
@@ -132,7 +132,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
 
 .. note::
 
-    Credential Type Metadata JSON Document MAY be retrieved directly from URL contained in the claim **vct** using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not supported in the current implementation profile.
+    Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim **vct**, using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.
 
 
 Digital Credential Metadata Type
