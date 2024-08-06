@@ -1,6 +1,6 @@
 {
     "jti": "f8555ceb-c65c-4025-9378-b6672b6149af",
-    "aud": "https://eaa-provider.example.org/as/par",
+    "aud": "https://eaa-provider.example.org",
     "iat": 1715842560,
     "exp": 1715842860,
     "response_type": "code",
