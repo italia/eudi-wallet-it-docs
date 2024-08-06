@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Wallet Solution &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
+    <script src="_static/documentation_options.js?v=edb75691"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Wallet Attestation" href="wallet-attestation.html" />
+    <link rel="prev" title="The Infrastructure of Trust" href="trust.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage"><img src="https://avatars.githubusercontent.com/u/15377824?s=48&v=4"/></a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="white" d="M503.5 204.6L502.8 202.8L433.1 21.02C431.7 17.45 429.2 14.43 425.9 12.38C423.5 10.83 420.8 9.865 417.9 9.57C415 9.275 412.2 9.653 409.5 10.68C406.8 11.7 404.4 13.34 402.4 15.46C400.5 17.58 399.1 20.13 398.3 22.9L351.3 166.9H160.8L113.7 22.9C112.9 20.13 111.5 17.59 109.6 15.47C107.6 13.35 105.2 11.72 102.5 10.7C99.86 9.675 96.98 9.295 94.12 9.587C91.26 9.878 88.51 10.83 86.08 12.38C82.84 14.43 80.33 17.45 78.92 21.02L9.267 202.8L8.543 204.6C-1.484 230.8-2.72 259.6 5.023 286.6C12.77 313.5 29.07 337.3 51.47 354.2L51.74 354.4L52.33 354.8L158.3 434.3L210.9 474L242.9 498.2C246.6 500.1 251.2 502.5 255.9 502.5C260.6 502.5 265.2 500.1 268.9 498.2L300.9 474L353.5 434.3L460.2 354.4L460.5 354.1C482.9 337.2 499.2 313.5 506.1 286.6C514.7 259.6 513.5 230.8 503.5 204.6z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="wallet-solution">
+<span id="wallet-solution-rst"></span><h1>Wallet Solution<a class="headerlink" href="#wallet-solution" title="Link to this heading">¶</a></h1>
+<p>The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of Users in managing their digital assets securely. It is issued by the Wallet Provider in the form of a mobile app, it also consists of services and web interfaces for the exchange of data between the Wallet Provider and its Wallet Instances for the requirements of the trust model and in total respect of the User's privacy, in accordance with national and EU legislation.</p>
+<p>The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital Credentials conveniently. These are a set of data that can uniquely identify a natural or a legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. Once a User installs the mobile app on their device, it is referred to such an installation as a Wallet Instance for the User.</p>
+<p>By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, since it is responsible for issuing the Wallet Attestation, that is a cryptographic proof that allow the evaluation of the authenticity and the integrity of the Wallet Instance.</p>
+<p>The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h2>
+<p>This section lists below the essential requirements that must be met by the Wallet Solution to ensure its functionality, security, and compliance with relevant standards and regulations.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Trustworthiness within the Wallet ecosystem</strong>: the Wallet Instance MUST establish trust and reliability within the Wallet ecosystem.</p></li>
+<li><p><strong>Compliance with Provider specifications for obtaining PID and (Q)EAA</strong>: the Wallet Instance MUST adhere to the specifications set by Providers for obtaining Personal Identification (PID) and (Q)EAAs.</p></li>
+<li><p><strong>Support for Android and iOS operating systems</strong>: the Wallet Instance MUST be compatible and functional at least on both Android and iOS operating systems, as well as available on the Play Store and App Store respectively.</p></li>
+<li><p><strong>Verification of device ownership by the User</strong>: the Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="wallet-instance">
+<h2>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Link to this heading">¶</a></h2>
+<p>The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem. It establishes a strong and reliable mechanismm for the User to engage various digital transactions in a secure and privacy-preserving manner.</p>
+<p>The Wallet Instance establishes the trust within the Wallet ecosystem by consistently presenting a Wallet Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, purpose to authenticate the Wallet Instance itself, ensuring its realiability when engaging with other ecosystem actors.</p>
+<p>To guarantee the utmost security, these cryptographic keys MUST be securely stored within the WSCD which MAY be internal (device's Trusted Execution Environment (TEE)[3]), external, or hybrid. This ensures that only the User is allowed to access them, thus preventing unauthorized usage or tampering. For more detailed information please refer to the <a class="reference external" href="wallet-attestation.html">Wallet Attestation section</a> and the <a class="reference external" href="trust.html">Trust Model section</a> of this document.</p>
+</section>
+<section id="wallet-instance-lifecycle">
+<h2>Wallet Instance Lifecycle<a class="headerlink" href="#wallet-instance-lifecycle" title="Link to this heading">¶</a></h2>
+<p>The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed[2].</p>
+<section id="initialization-process">
+<h3>Initialization Process<a class="headerlink" href="#initialization-process" title="Link to this heading">¶</a></h3>
+<p>To activate the Wallet Instance, the Users MUST install the mobile Wallet application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.</p>
+<p>After completing these steps, the Wallet Instance sets the Operational state.</p>
+</section>
+<section id="transition-to-valid-state">
+<h3>Transition to Valid state<a class="headerlink" href="#transition-to-valid-state" title="Link to this heading">¶</a></h3>
+<p>To transition from the Operational state to the Valid state, the Wallet Instance MUST obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes Valid.</p>
+<p>To securely and unambiguously authenticate Users, the Wallet Instance necessitates a High Level of Assurance (LoA 3) for User authentication. The method to achieve this LoA is selected by the PID Provider based on the identity proofing method employed during the provisioning of the Digital Credential to the User. Furthermore, to store the acquired Digital Credential, the Wallet Instance MUST demonstrate to the Credential Issuer an adequate security compliance to maintain the Credential at the same LoA at which it was issued.</p>
+<p>Once the Wallet Instance is in the Operational state, Users can:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers[1];</p></li>
+<li><p>Authenticate to Relying Parties[1];</p></li>
+<li><p>Authorize the presentation of their digital Credentials with Relying Parties.</p></li>
+</ul>
+</div></blockquote>
+<p>Please refer to the relative sections for further information about PID and (Q)EAAs issuance and presentation.</p>
+</section>
+<section id="return-to-operational-state">
+<h3>Return to Operational state<a class="headerlink" href="#return-to-operational-state" title="Link to this heading">¶</a></h3>
+<p>A Valid Wallet Instance may revert to the Operational state under specific circumstances. These circumstances include the expiration or the revocation of the associated PID by its PID Provider.</p>
+</section>
+<section id="deactivation">
+<h3>Deactivation<a class="headerlink" href="#deactivation" title="Link to this heading">¶</a></h3>
+<p>Users have the ability to deactivate the Wallet Instance voluntarily. This action removes the operational capabilities of the Wallet Instance and sets it to the Deactivated state. Deactivation provides Users with control over access and usage according to their preferences.</p>
+</section>
+</section>
+<section id="wallet-provider-endpoints">
+<h2>Wallet Provider Endpoints<a class="headerlink" href="#wallet-provider-endpoints" title="Link to this heading">¶</a></h2>
+<p>The Wallet Provider that issues the Wallet Attestations MUST
+made available its APIs in the form of RESTful services, as listed below.</p>
+<section id="wallet-provider-metadata">
+<h3>Wallet Provider Metadata<a class="headerlink" href="#wallet-provider-metadata" title="Link to this heading">¶</a></h3>
+<p>An HTTP GET request to the <strong>/.well-known/openid-federation</strong> endpoint allows the retrieval of the Wallet
+Provider Entity Configuration.</p>
+<p>The Wallet Provider Entity Configuration is a JWS containing the public keys and supported algorithms of the Wallet Provider metadata definition. It is structured in accordance with the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OpenID Connect Federation</a> and the Trust Model section outlined in this specification.</p>
+<p>The returning Entity Configuration of the Wallet Provider MUST contain the
+attributes listed below:</p>
+</section>
+</section>
+<section id="header">
+<h2>Header<a class="headerlink" href="#header" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Key</strong></p></th>
+<th class="head"><p><strong>Value</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>alg</p></td>
+<td><p>Algorithm used to verify the token signature. It MUST be one of the possibile values indicated in this <a class="reference external" href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/algorithms.html">table</a> (e.g., ES256).</p></td>
+</tr>
+<tr class="row-odd"><td><p>kid</p></td>
+<td><p>Thumbprint of the public key used for signing, according to <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html"><strong>RFC 7638</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>typ</p></td>
+<td><p>Media type, set to <code class="docutils literal notranslate"><span class="pre">entity-statement+jwt</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="payload">
+<h2>Payload<a class="headerlink" href="#payload" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Key</strong></p></th>
+<th class="head"><p><strong>Value</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>iss</p></td>
+<td><p>Public URL of the Wallet Provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sub</p></td>
+<td><p>Public URL of the Wallet Provider.</p></td>
+</tr>
+<tr class="row-even"><td><p>iat</p></td>
+<td><p>Issuance datetime in Unix Timestamp format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>exp</p></td>
+<td><p>Expiration datetime in Unix Timestamp format.</p></td>
+</tr>
+<tr class="row-even"><td><p>authority_hints</p></td>
+<td><p>Array of URLs (String) containing the list of URLs of the immediate superior Entities, such as the Trust Anchor or an Intermediate, that MAY issue an Entity Statement related to this subject.</p></td>
+</tr>
+<tr class="row-odd"><td><p>jwks</p></td>
+<td><p>A JSON Web Key Set (JWKS) <a class="reference external" href="http://tools.ietf.org/htmlrfc7517.html">RFC 7517</a> that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid).</p></td>
+</tr>
+<tr class="row-even"><td><p>metadata</p></td>
+<td><p>Contains the metadata <code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code> and the <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> metadata.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id1">
+<h3><cite>wallet_provider</cite> metadata<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Key</strong></p></td>
+<td><p><strong>Value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>jwks</p></td>
+<td><p>A JSON Web Key Set (JWKS)
+that represents the  Wallet
+Provider's public keys.</p></td>
+</tr>
+<tr class="row-odd"><td><p>token_endpoint</p></td>
+<td><p>Endpoint for obtaining the Wallet
+Instance Attestation.</p></td>
+</tr>
+<tr class="row-even"><td><p>nonce_endpoint</p></td>
+<td><p>HTTPs URL indicating the endpoint
+where the client can request the nonce.</p></td>
+</tr>
+<tr class="row-odd"><td><p>aal_values_supported</p></td>
+<td><p>List of supported values for the
+certifiable security context. These
+values specify the security level
+of the app, according to the levels: low, medium, or high.
+Authenticator Assurance Level values supported.</p></td>
+</tr>
+<tr class="row-even"><td><p>grant_types_supported</p></td>
+<td><p>The types of grants supported by
+the token endpoint. It MUST be set to
+<code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:</span>
+<span class="pre">jwt-client-attestation</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>token_endpoint_auth_methods_suppor
+ted</p></td>
+<td><p>Supported authentication methods for
+the token endpoint.</p></td>
+</tr>
+<tr class="row-even"><td><p>token_endpoint_auth_signing_alg_va
+lues_supported</p></td>
+<td><p>Supported signature
+algorithms for the token endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>aal_values_supported</cite> parameter is experimental and under review.</p>
+</div>
+</section>
+<section id="payload-federation-entity">
+<h3>Payload <cite>federation_entity</cite><a class="headerlink" href="#payload-federation-entity" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Key</strong></p></td>
+<td><p><strong>Value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>organization_name</p></td>
+<td><p>Organization name.</p></td>
+</tr>
+<tr class="row-odd"><td><p>homepage_uri</p></td>
+<td><p>Organization's website URL.</p></td>
+</tr>
+<tr class="row-even"><td><p>tos_uri</p></td>
+<td><p>URL to the terms of service.</p></td>
+</tr>
+<tr class="row-odd"><td><p>policy_uri</p></td>
+<td><p>URL to the privacy policy.</p></td>
+</tr>
+<tr class="row-even"><td><p>logo_uri</p></td>
+<td><p>URL of the organization's logo in SVG format.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below a non-normative example of the Entity Configuration.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;alg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;typ&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;entity-statement+jwt&quot;</span>
+<span class="p">}</span>
+<span class="p">.</span>
+<span class="p">{</span>
+<span class="s2">&quot;iss&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
+<span class="s2">&quot;sub&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
+<span class="s2">&quot;jwks&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;keys&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">},</span>
+<span class="s2">&quot;metadata&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;wallet_provider&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;jwks&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;keys&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="s2">&quot;crv&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;kty&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;kid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;token_endpoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/token&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;nonce_endpoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/nonce&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;aal_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/basic&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/medium&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;https://wallet-provider.example.org/LoA/high&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;grant_types_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;token_endpoint_auth_methods_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;private_key_jwt&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;token_endpoint_auth_signing_alg_values_supported&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">&quot;federation_entity&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;organization_name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;IT-Wallet Provider&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;homepage_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;policy_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/privacy_policy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;tos_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/info_policy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;logo_uri&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/logo.svg&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">},</span>
+<span class="s2">&quot;authority_hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;https://registry.eudi-wallet.example.it&quot;</span>
+<span class="p">]</span>
+<span class="s2">&quot;iat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1687171759</span><span class="p">,</span>
+<span class="s2">&quot;exp&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1709290159</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="wallet-attestation">
+<h3>Wallet Attestation<a class="headerlink" href="#wallet-attestation" title="Link to this heading">¶</a></h3>
+<p>Please refer to the <a class="reference external" href="wallet-attestation.html">Wallet Attestation section</a>.</p>
+</section>
+</section>
+<section id="external-references">
+<h2>External references<a class="headerlink" href="#external-references" title="Link to this heading">¶</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Definitions are inherited from the EUDI Wallet Architecture and Reference Framework, version 1.1.0 at the time of writing. Please refer to <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#2-definitions">this page</a> for extended definitions and details.</p>
+</aside>
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Wallet Instance states adhere to the EUDI Wallet Architecture and Reference Framework, as defined <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#424-eudi-wallet-instance-lifecycle">here</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>Depending on the device operating system, TEE is defined by <a class="reference external" href="https://source.android.com/docs/security/features/trusty">Trusty</a> or <a class="reference external" href="https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web">Secure Enclave</a> for Android and iOS devices, respectively.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">Wallet Solution</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#wallet-instance">Wallet Instance</a></li>
+<li><a class="reference internal" href="#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li><a class="reference internal" href="#initialization-process">Initialization Process</a></li>
+<li><a class="reference internal" href="#transition-to-valid-state">Transition to Valid state</a></li>
+<li><a class="reference internal" href="#return-to-operational-state">Return to Operational state</a></li>
+<li><a class="reference internal" href="#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li><a class="reference internal" href="#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#header">Header</a></li>
+<li><a class="reference internal" href="#payload">Payload</a><ul>
+<li><a class="reference internal" href="#id1"><cite>wallet_provider</cite> metadata</a></li>
+<li><a class="reference internal" href="#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li><a class="reference internal" href="#wallet-attestation">Wallet Attestation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#external-references">External references</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="trust.html">
+                    <span class="icon">&lt;</span><span>The Infrastructure of Trust</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="wallet-attestation.html"><span>Wallet Attestation</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 06/08/2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
