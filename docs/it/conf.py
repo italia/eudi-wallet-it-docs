@@ -3,7 +3,7 @@
 
 # -- PROJECT Variables ----------------------------------------------------
 settings_project_name = "The Italian EUDI Wallet implementation profile"
-settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
+# settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
 settings_doc_version = 'version: latest'
 settings_doc_release = 'version: latest'
@@ -13,7 +13,6 @@ settings_file_name = 'eidas-it-wallet-docs'
 # -- No need to change below here
 
 import sys, os
-docs_italia_theme = __import__("docs_italia_theme")
 from recommonmark.transform import AutoStructify
 from recommonmark.parser import CommonMarkParser
 
@@ -48,7 +47,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.ifconfig',
-    'docs_italia_theme',
+    'sphinx.ext.autosectionlabel',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -70,7 +69,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = settings_project_name
-copyright = settings_copyright_copyleft
+# copyright = settings_copyright_copyleft
 
 # URL of Discourse instance used by sphinxcontrib.discourse extension
 # discourse_url = settings_discourse_url
@@ -111,9 +110,9 @@ def setup(app):
 
 
 # -- Options for HTML output ----------------------------------------------
-html_theme = 'docs-italia-theme'
+html_theme = 'piccolo_theme'
 
-html_theme_path = [docs_italia_theme.get_html_theme_path()]
+# html_theme_path = [docs_italia_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -130,8 +129,9 @@ html_theme_options = {
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if not on_rtd:  # only import and set the theme if we're building docs locally
-    html_theme_path = [docs_italia_theme.get_html_theme_path()]
-    html_theme = 'docs_italia_theme'
+    #  html_theme_path = [docs_italia_theme.get_html_theme_path()]
+    #  html_theme = 'docs_italia_theme'
+    pass
 else:
     # Override default css to get a larger width for ReadTheDoc build
     html_context = {
@@ -230,8 +230,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', settings_file_name + '.tex', settings_project_name,
-   settings_copyright_copyleft, 'manual'),
+  ('index', settings_file_name + '.tex', settings_project_name, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -275,11 +274,11 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', settings_file_name, settings_project_name,
-   settings_copyright_copyleft, settings_project_name, settings_project_name,
+   settings_project_name, settings_project_name,
    'Miscellaneous'),
 ]
 
 numfig = True
 
-# to turn smartquotes off and be able to use ’ 
+# to turn smartquotes off and be able to use  
 smartquotes = False

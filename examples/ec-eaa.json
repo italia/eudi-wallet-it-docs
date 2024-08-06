@@ -91,6 +91,7 @@
             "credential_endpoint": "https://eaa-provider.example.org/credential",
             "revocation_endpoint": "https://eaa-provider.example.org/revoke",
             "status_attestation_endpoint": "https://eaa-provider.example.org/status",
+            "notification_endpoint": "https://eaa-provider.example.org/notification",
             "display": [
                 {
                     "name": "EAA Provider",

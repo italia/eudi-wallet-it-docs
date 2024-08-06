@@ -59,6 +59,8 @@ Technical References
       - Campbell, Mortimore, C., Jones, M., Goland, Y.,  "Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants", May 2015.       
     * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC".
+    * - `OAUTH-STATUS-ASSERTION`_
+      - De Marco, G., Steele, O., Marino, F., "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC", June 2024, Draft 2.
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
       - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication", May 2024, Draft 3.    
     * - `OAUTH-V2-JARM-04`_
@@ -69,7 +71,15 @@ Technical References
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application. International Organization for Standardization.
     * - `OIDC`_
       - Sakimura, N., Bradley, J., Jones, M.,  de Medeiros, B., Mortimore, C., "OpenID Connect Core 1.0 incorporating errata set 2", December 2023.
-    * - `SELECTIVE-DISCLOSURE-JWT`_
+    * - `SD-JWT`_
       - Fett, D., Yasuda, K., Campbell, B., "Selective Disclosure for JWTs (SD-JWT)".
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
       - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication".
+    * - USASCII
+      - American National Standards Institute, "Coded Character Set -- 7-bit American Standard Code for Information Interchange", 1986.
+    * - `MODI`_
+      - "Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni", November 2023, Version 1.2.
+    * - `PDND`_
+      - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati", December 2021, Version 1.0.
+    * - `W3C-SRI`_
+      - Akhawe, D., Braun, F., Marier, F., and J. Weinberger, "Subresource Integrity", 23 June 2016.

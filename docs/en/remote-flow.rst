@@ -493,7 +493,7 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
   * - **nonce**
     - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. How this value is obtained is up to the protocol used and out of scope of this specification.
   * - **sd_hash**
-    - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures as defined below.
+    - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.
 
 
 MDOC-CBOR Presentation

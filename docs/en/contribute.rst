@@ -5,7 +5,7 @@
 How to contribute
 +++++++++++++++++++++++++++
 
-The IT Wallet project, including this document, follows an **open development process**. This approach ensures the development process is accessible to all, inviting all interested parties to participate.
+The IT-Wallet project, including this document, follows an **open development process**. This approach ensures the development process is accessible to all, inviting all interested parties to participate.
 
 Consequently, stakeholders, national and international community members are not only encouraged but also heartily welcomed to contribute to the refinement of these technical rules.
 

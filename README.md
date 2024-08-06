@@ -62,17 +62,13 @@ HTML
 ````
 pip install -r requirements.txt
 
-# italian version
-sphinx-build -b html -d html/it/doctrees docs/it/  html/it
-
-# english version
 sphinx-build -b html -d html/en/doctrees docs/en/  html/en
 ````
 
 ODT
 ````
 sudo apt install pandoc
-sphinx-build -b singlehtml docs/it/  html/
+sphinx-build -b singlehtml docs/en/  html/
 cd html
 pandoc -o eidas-it-wallet-docs.odt index.html
 ````

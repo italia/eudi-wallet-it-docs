@@ -1,7 +1,7 @@
 {
     "iss": "https://eaa-provider.example.org",
     "sub": "d4e0bb387aa2556ff306925fdfb9a765",
-    "aud": "https://eaa-provider.example.org/credential",
+    "aud": "https://eaa-provider.example.org",
     "iat": 1715842560,
     "exp": 1778914560,
     "jti": "f9655ceb-c65c-4025-9378-b6672b6149bg",
