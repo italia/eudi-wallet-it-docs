@@ -559,7 +559,7 @@ without encoding and signature. The JWS header:</p>
 <li><p>It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to <a class="reference internal" href="#table-credential-response-claim"><span class="std std-ref">Table of the credential response parameters</span></a>.</p></li>
 <li><p>It MUST check the PID integrity by verifying the signature using the algorithm specified in the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter of SD-JWT (<a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>) and the public key that is identified using using the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header of the SD-JWT.</p></li>
 <li><p>It MUST check that the received PID (in credential claim) matches the schema defined in <a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>.</p></li>
-<li><p>It MUST process and verify the PID in SD-JWT VC format (according to <a class="reference external" href="https://drafts.oauth.net/oauth-selective-disclosure-jwt/draft-ietf-oauth-selective-disclosure-jwt.html#name-verification-and-processing">SD.JWT#Verification</a> Section 6.) or MDOC CBOR format.</p></li>
+<li><p>It MUST process and verify the PID in SD-JWT VC format (according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> Section 6.) or MDOC CBOR format.</p></li>
 <li><p>It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID Provider is trusted.</p></li>
 </ol>
 </div></blockquote>
@@ -1402,7 +1402,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <section id="notification-endpoint">
 <h2>Notification endpoint<a class="headerlink" href="#notification-endpoint" title="Link to this heading">¶</a></h2>
 <p>The Notification Endpoint is used by the Wallet to notify the PID/(Q)EAA Provider of certain events for issued Credentials, such as if the Credential was successfully stored in the Wallet Instance or in case of unsuccessful Credential issuance caused by a User action.</p>
-<p>This endpoint MUST be a protected endpoint and a valid DPoP Access Token MUST be used. TLS is REQUIRED according to Section 10 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p>
+<p>This endpoint MUST be protected using a DPoP Access Token. TLS for the confidentiality of the HTTP transport is REQUIRED according to Section 10 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p>
 <section id="notification-request">
 <h3>Notification Request<a class="headerlink" href="#notification-request" title="Link to this heading">¶</a></h3>
 <p>The Notification Request MUST be an HTTP POST using the <em>application/json</em> media type with the following parameters.</p>
