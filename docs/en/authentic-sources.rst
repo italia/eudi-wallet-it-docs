@@ -4,7 +4,7 @@
 Authentic Sources
 +++++++++++++++++++
 
-Authentic Sources are responsible for the authenticity of the User's attributes provided as Digital Credentials by the PID/(Q)EAA Provider. During the Issuance Flow, PID/(Q)EAA Providers, after authenticating the User, request from Authentic Sources the attributes required to provide the credential requested by the User. If PID/(Q)EAA Providers and Authentic Sources are both allowed to use PDND, the communication between them MUST be done in compliance with [`MODI`_] and [`PDND`_] according to the following rules. In particular, 
+Authentic Sources are responsible for the authenticity of the User's attributes provided as Digital Credentials by the PID/(Q)EAA Provider. During the Issuance Flow, PID/(Q)EAA Providers, after authenticating the User, request from Authentic Sources the attributes required to provide the requested Credential. If PID/(Q)EAA Providers and Authentic Sources are both allowed to use PDND, the communication between them is accomplished in compliance with [`MODI`_] and [`PDND`_] and according to the rules defined within this specification. In particular, 
 
     - The Authentic Source MUST provide an e-service registered within the PDND catalogue which the PID/(Q)EAA Provider, as the recipient, MUST use to request the User's attributes.
     - In case of unavailability of the User's attributes, the Authentic Source MUST provide a response to the PID/(Q)EAA Provider with an estimation time when a new request can be sent. 
