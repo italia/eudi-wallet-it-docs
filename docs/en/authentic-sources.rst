@@ -30,7 +30,7 @@ The following security patterns and profiles are applicable:
 
     - **[INTEGRITY_REST_01]** REST message payload integrity (*Annex 2 - Security Pattern* [`MODI`_]): REQUIRED. It adds message payload integrity of the HTTP POST request.  
 
-    - **[AUDIT_REST_02]** submission of audit data within the request (*Annex 2 - Security Pattern* [`MODI`_]): OPTIONAL. The Authentic Source MAY request an evidence about the User Authentication related to the User's attributes requested by the PID/(Q)EAA Provider and/or a proof that the Wallet Instance is valid and authentic. In this case this pattern MUST be used.
+    - **[AUDIT_REST_02]** submission of audit data within the request (*Annex 2 - Security Pattern* [`MODI`_]): OPTIONAL. The Authentic Source MAY request an evidence about the User Authentication related to the User's attributes requested by the PID/(Q)EAA Provider and/or a proof that the Wallet Instance is valid. In this case this pattern MUST be used.
 
     - **[PROFILE_NON_REPUDIATION_01]** Profile for non-repudiation of transmission (*Annex 3 - Interoperability Profile* [`MODI`_]): REQUIRED. This profile uses the following security patterns:
         
