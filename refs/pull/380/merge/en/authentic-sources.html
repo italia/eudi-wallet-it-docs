@@ -158,7 +158,7 @@
             
   <section id="authentic-sources">
 <h1>Authentic Sources<a class="headerlink" href="#authentic-sources" title="Link to this heading">¶</a></h1>
-<p>Authentic Sources are responsible for the authenticity of the User's attributes provided as Digital Credentials by the PID/(Q)EAA Provider. During the Issuance Flow, PID/(Q)EAA Providers, after authenticating the User, request from Authentic Sources the attributes required to provide the credential requested by the User. If PID/(Q)EAA Providers and Authentic Sources are both allowed to use PDND, the communication between them MUST be done in compliance with [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>] and [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>] according to the following rules. In particular,</p>
+<p>Authentic Sources are responsible for the authenticity of the User's attributes provided as Digital Credentials by the PID/(Q)EAA Provider. During the Issuance Flow, PID/(Q)EAA Providers, after authenticating the User, request from Authentic Sources the attributes required to provide the requested Credential. If PID/(Q)EAA Providers and Authentic Sources are both allowed to use PDND, the communication between them is accomplished in compliance with [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>] and [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>] and according to the rules defined within this specification. In particular,</p>
 <blockquote>
 <div><ul>
 <li><p>The Authentic Source MUST provide an e-service registered within the PDND catalogue which the PID/(Q)EAA Provider, as the recipient, MUST use to request the User's attributes.</p></li>
@@ -166,7 +166,7 @@
 <li><p>The PID/(Q)EAA Provider MUST provide to the Authentic Source an evidence that</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>the request for User attributes is related to a request by a User and regarding data of which he/she is the holder.</p></li>
+<li><p>the request for Users attributes is related to data about themselves.</p></li>
 <li><p>the request for User attributes comes from a valid and authentic Wallet Instance.</p></li>
 </ul>
 </div></blockquote>
