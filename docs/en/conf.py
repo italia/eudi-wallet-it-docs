@@ -3,7 +3,7 @@
 
 # -- PROJECT Variables ----------------------------------------------------
 settings_project_name = "The Italian EUDI Wallet implementation profile"
-settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
+# settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
 settings_doc_version = 'version: latest'
 settings_doc_release = 'version: latest'
@@ -69,7 +69,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = settings_project_name
-copyright = settings_copyright_copyleft
+# copyright = settings_copyright_copyleft
 
 # URL of Discourse instance used by sphinxcontrib.discourse extension
 # discourse_url = settings_discourse_url
@@ -112,6 +112,20 @@ def setup(app):
 # -- Options for HTML output ----------------------------------------------
 html_theme = 'piccolo_theme'
 
+# html_theme_path = [docs_italia_theme.get_html_theme_path()]
+
+# Theme options are theme-specific and customize the look and feel of a theme
+# further.  For a list of options available for each theme, see the
+# documentation.
+html_theme_options = {
+    # This option can be used with docs-italia-theme to customise how the versions "badge" is shown:
+    # 'False': default (alabaster) badge | 'True': custom (italia) badge
+    'custom_versions_badge': 'True',
+    'collapse_navigation': 'True',
+    "show_theme_credit": False,
+    "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
+    "source_icon": "gitlab",
+}
 
 # -- ReadTheDoc requirements and local template generation---------------------
 
@@ -141,7 +155,7 @@ else:
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-# html_logo = "images/logo.png"
+html_logo = "https://avatars.githubusercontent.com/u/15377824?s=48&v=4"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -189,7 +203,7 @@ html_last_updated_fmt = '%d/%m/%Y'
 #html_show_sphinx = True
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-# html_show_copyright = True
+html_show_copyright = False
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the
@@ -220,8 +234,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', settings_file_name + '.tex', settings_project_name,
-   settings_copyright_copyleft, 'manual'),
+  ('index', settings_file_name + '.tex', settings_project_name, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -265,7 +278,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', settings_file_name, settings_project_name,
-   settings_copyright_copyleft, settings_project_name, settings_project_name,
+   settings_project_name, settings_project_name,
    'Miscellaneous'),
 ]
 
