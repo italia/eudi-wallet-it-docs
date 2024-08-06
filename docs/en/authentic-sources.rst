@@ -8,9 +8,9 @@ Authentic Sources are responsible for the authenticity of the User's attributes 
 
     - The Authentic Source MUST provide an e-service registered within the PDND catalogue which the PID/(Q)EAA Provider, as the recipient, MUST use to request the User's attributes.
     - In case of unavailability of the User's attributes, the Authentic Source MUST provide a response to the PID/(Q)EAA Provider with an estimation time when a new request can be sent. 
-    - The PID/(Q)EAA Provider MUST provide to the Authentic Source an evidence that 
+    - The PID/(Q)EAA Provider MUST provide to the Authentic Source an evidence that:
     
-        - the request for Users attributes is related to data about themselves.
+        - the request for Users attributes is related to data about themselves;
         - the request for User attributes comes from a valid Wallet Instance. 
 
     - The PID/(Q)EAA Provider MUST make available to the Authentic Source an e-service for notifications on attributes availability and validity status (revocation or updates). The Authentic Source MUST use this e-service to notify to the PID/(Q)EAA Provider the notifications on the availability of the User's attributes as well as those relating to the attributes updates. 
