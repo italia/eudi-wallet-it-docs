@@ -1,52 +1,139 @@
+{
+    "id": "presentation definitions",
+    "input_descriptors": [
         {
-            "id": "d76c51b7-ea90-49bb-8368-6b3d194fc131",
-            "input_descriptors": [
-                {
-                    "id": "PersonIdentificationData",
-                    "name": "Person Identification Data",
-                    "purpose": "User Authentication",
-                    "format": {
-                        "vc+sd-jwt": {
-                            "alg": [
-                                "ES256",
-                                "ES384",
-                                "ES512"
-                            ]
-                        }
+			"id": "eu.europa.ec.eudiw.pid.it.1",
+            "name": "Person Identification Data",
+            "purpose": "User authentication",
+			"group": [
+                "group1"
+            ],
+			"format": {
+                "vc+sd-jwt": {
+                    "alg": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ]
+                }
+            },
+            "constraints": {
+                "limit_disclosure": "preferred",
+                "fields": [
+                    {
+                        "filter": {
+                            "const": "unique_id",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.credentialSubject.unique_id"
+                        ]
                     },
-                    "constraints": {
-                        "limit_disclosure": "required",
-                        "fields": [
-                            {
-                                "filter": {
-                                    "const": "PersonIdentificationData",
-                                    "type": "string"
-                                },
-                                "path": [
-                                    "$.vct"
-                                ]
-                            },
-                            {
-                                "filter": {
-                                    "type": "object"
-                                },
-                                "path": [
-                                    "$.cnf.jwk"
-                                ]
-                            },
-                            {
-                                "path": [
-                                    "$.unique_id"
-                                ]
-                            },
-                            {
-                                "path": [
-                                    "$.tax_id_code"
-                                ]
-                            }
+                    {
+                        "filter": {
+                            "const": "given_name",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.credentialSubject.given_name"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "const": "family_name",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.credentialSubject.family_name"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "const": "bith_date",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.credentialSubject.bith_date"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "const": "tax_id_code",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.credentialSubject.tax_id_code"
                         ]
                     }
-                  
-                }
-            ]
+                ]
+            }
+        },
+        {
+			"id": "WalletAttestation",
+            "name": "Wallet Attestation",
+            "purpose": "Wallet Authentication",
+			"format": "jwt",
+            "group": [
+                "group2"
+            ],
+            "constraints": {
+                "fields": [
+                    {
+                        "filter": {
+                            "enum": [
+                                "https://issuer.example.org"
+                            ],
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.iss"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "minimum": 1504700136,
+                            "type": "number"
+                        },
+                        "path": [
+                            "$.exp"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "minimum": 1504700136,
+                            "type": "number"
+                        },
+                        "path": [
+                            "$.iat"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "type": "object"
+                        },
+                        "path": [
+                            "$.cnf.jwk"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "const": "aal",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.aal"
+                        ]
+                    }
+                ]
+            }
         }
+    ],
+    "submission_requirements": [
+        {
+			"name": "Sample requirement",
+            "count": 1,
+			"rule": "pick",
+            "from": "group1"
+        }
+    ]
+}
