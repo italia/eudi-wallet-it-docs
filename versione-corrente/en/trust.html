@@ -222,7 +222,7 @@ except for Wallet Instances which are End-User's personal devices certified by t
 </tr>
 <tr class="row-odd"><td><p>Trusted List</p></td>
 <td><p>Trust Anchor</p></td>
-<td><p>The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their accredited subordinates.</p></td>
+<td><p>The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates.</p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>Leaf</p></td>
@@ -321,13 +321,13 @@ except for Wallet Instances which are End-User's personal devices certified by t
 <td><p><strong>Future-Proof Cryptography</strong>: the system should employ a flexible cryptographic framework that can be updated in response to new threats or advancements in cryptographic research, ensuring long-term security and integrity of federation operations.</p></td>
 </tr>
 <tr class="row-odd"><td><p>[FR #23]</p></td>
-<td><p><strong>Autonomous Registration Bodies</strong>: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and accrediting entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.</p></td>
+<td><p><strong>Autonomous Registration Bodies</strong>: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and registering entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.</p></td>
 </tr>
 <tr class="row-even"><td><p>[FR #24]</p></td>
 <td><p><strong>Compliance Evaluation for Federation Entity Candidates</strong>: registration bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>[FR #25]</p></td>
-<td><p><strong>Periodic Auditing of Registration Bodies and Entities</strong>: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their accredited entities. This ensures ongoing adherence to federation standards and policies.</p></td>
+<td><p><strong>Periodic Auditing of Registration Bodies and Entities</strong>: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities. This ensures ongoing adherence to federation standards and policies.</p></td>
 </tr>
 <tr class="row-even"><td><p>[FR #26]</p></td>
 <td><p><strong>Certification of Compliance for Personal Devices</strong>: trusted bodies, in the form of federation entities, should issue certifications of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These certifications should be attested and periodically renewed to ensure the devices meet current security standards.</p></td>
@@ -813,9 +813,9 @@ and in relation to the signature mechanisms MUST be applied for the Entity State
 <p>Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it <strong>requires the presentation of the Wallet Attestation during the credential issuance and presentation phases</strong>.</p>
 <p>The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.</p>
 </div>
-<section id="relying-party-attestation">
-<h3>Relying Party Attestation<a class="headerlink" href="#relying-party-attestation" title="Link to this heading">¶</a></h3>
-<p>The Relying Party is accredited by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms and any other necessary information for the interoperability requirements.</p>
+<section id="relying-party-trust-evaluation">
+<h3>Relying Party Trust Evaluation<a class="headerlink" href="#relying-party-trust-evaluation" title="Link to this heading">¶</a></h3>
+<p>The Relying Party is registered by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms and any other necessary information for the interoperability requirements.</p>
 <p>Any requests for User attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and SHOULD contain the verifiable Trust Chain regarding the Relying Party.</p>
 <p>The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active, proving that the Relying Party is still part of the Federation and not revoked.</p>
 <p>The Trust Chain SHOULD be contained within the signed request in the form of a JWS header parameter.</p>
@@ -937,7 +937,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 </ul>
 </li>
 <li><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
-<li><a class="reference internal" href="#relying-party-attestation">Relying Party Attestation</a></li>
+<li><a class="reference internal" href="#relying-party-trust-evaluation">Relying Party Trust Evaluation</a></li>
 <li><a class="reference internal" href="#wallet-attestation">Wallet Attestation</a></li>
 <li><a class="reference internal" href="#trust-chain">Trust Chain</a></li>
 <li><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a><ul>
