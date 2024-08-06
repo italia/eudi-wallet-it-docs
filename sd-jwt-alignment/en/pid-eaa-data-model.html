@@ -176,7 +176,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <li><p>the claim value.</p></li>
 </ul>
 </div></blockquote>
-<p>In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore <strong>_sd</strong> claim containing digests MAY appear multiple times in the SD-JWT.</p>
+<p>In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore <strong>_sd</strong> claim containing digests MAY appear multiple times at different level in the SD-JWT.</p>
 <p>For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 5.2.4.2 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a>.</p>
 <p>In case of array elements, digest values are calculated using a hash function over the disclosures, containing:</p>
 <blockquote>
@@ -295,7 +295,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Credential Type Metadata JSON Document MAY be retrieved directly from URL contained in the claim <strong>vct</strong> using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> the <strong>.well-known</strong> endpoint is not supported in the current implementation profile.</p>
+<p>Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim <strong>vct</strong>, using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> the <strong>.well-known</strong> endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.</p>
 </div>
 </section>
 <section id="digital-credential-metadata-type">
