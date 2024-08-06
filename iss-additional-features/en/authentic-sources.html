@@ -150,20 +150,20 @@
             
   <section id="authentic-sources">
 <h1>Authentic Sources<a class="headerlink" href="#authentic-sources" title="Link to this heading">¶</a></h1>
-<p>Authentic Sources are responsible for the authenticity of the User's attributes provided as Digital Credentials by the PID/(Q)EAA Provider. During the Issuance Flow, PID/(Q)EAA Providers, after authenticating the User, request from Authentic Sources the attributes required to provide the credential requested by the User. If PID/(Q)EAA Providers and Authentic Sources are both allowed to use PDND, the communication between them MUST be done in compliance with [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>] and [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>] according to the following rules. In particular,</p>
+<p>Authentic Sources are responsible for the authenticity of the User's attributes provided as Digital Credentials by the PID/(Q)EAA Provider. During the Issuance Flow, PID/(Q)EAA Providers, after authenticating the User, request from Authentic Sources the attributes required to provide the requested Credential. If PID/(Q)EAA Providers and Authentic Sources are both allowed to use PDND, the communication between them is accomplished in compliance with [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>] and [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>] and according to the rules defined within this specification. In particular,</p>
 <blockquote>
 <div><ul>
 <li><p>The Authentic Source MUST provide an e-service registered within the PDND catalogue which the PID/(Q)EAA Provider, as the recipient, MUST use to request the User's attributes.</p></li>
 <li><p>In case of unavailability of the User's attributes, the Authentic Source MUST provide a response to the PID/(Q)EAA Provider with an estimation time when a new request can be sent.</p></li>
-<li><p>The PID(Q)EAA Provider MUST provide to the Authentic Source an evidence that</p>
+<li><p>The PID/(Q)EAA Provider MUST provide to the Authentic Source an evidence that:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>the request for User attributes is related to a request by a User and regarding data of which he/she is the holder.</p></li>
-<li><p>the request for User attributes comes from a valid and authentic Wallet Instance.</p></li>
+<li><p>the request for Users attributes is related to data about themselves;</p></li>
+<li><p>the request for User attributes comes from a valid Wallet Instance.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>The PID/(Q)EAA Provider MUST make available to the Authentic Source an e-service for notifications on attributes availability and validity status (revocation or updates). The Authentic Source MUST use this e-service to send the PID/(Q)EAA Provider both notifications on the availability of the User's attributes as well as those relating to the attributes validity status.</p></li>
+<li><p>The PID/(Q)EAA Provider MUST make available to the Authentic Source an e-service for notifications on attributes availability and validity status (revocation or updates). The Authentic Source MUST use this e-service to notify to the PID/(Q)EAA Provider the notifications on the availability of the User's attributes as well as those relating to the attributes updates.</p></li>
 <li><p>The protocol flow MUST ensure integrity, authenticity, and non-repudiation of the exchanged data between the Authentic Source and the PID/(Q)EAA Provider.</p></li>
 <li><p>The e-services MUST be implemented in REST. SOAP protocol MUST NOT be used.</p></li>
 </ul>
@@ -173,10 +173,10 @@
 <p>The following security patterns and profiles are applicable:</p>
 <blockquote>
 <div><ul>
-<li><p><strong>[REST_JWS_2021_POP]</strong> JWS POP Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]): REQUIRED. It adds a proof of possession on the Voucher. The client using the Voucher to access an e-service MUST give proof of possession of the private key whose public is attested on the Voucher.</p></li>
+<li><p><strong>[REST_JWS_2021_POP]</strong> JWS POP Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]): REQUIRED. It adds a proof of possession on the Voucher. The client using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.</p></li>
 <li><p><strong>[ID_AUTH_REST_02]</strong> Client Authentication with X.509 certificate with uniqueness of the token/message (<a href="#id1"><span class="problematic" id="id2">*</span></a>Annex 2 - Security Pattern <a href="#id3"><span class="problematic" id="id4">*</span></a>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It guarantees trust between the Authentic Source and the PID/(Q)EAA Provider and provides a mitigation against replay attacks.</p></li>
 <li><p><strong>[INTEGRITY_REST_01]</strong> REST message payload integrity (<em>Annex 2 - Security Pattern</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It adds message payload integrity of the HTTP POST request.</p></li>
-<li><p><strong>[AUDIT_REST_02]</strong> submission of audit data within the request (<em>Annex 2 - Security Pattern</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OPTIONAL. The Authentic Source MAY request an evidence about the User Authentication related to the User's attributes requested by the PID/(Q)EAA Provider and/or a proof that the Wallet Instance is valid and authentic. In this case this pattern MUST be used.</p></li>
+<li><p><strong>[AUDIT_REST_02]</strong> submission of audit data within the request (<em>Annex 2 - Security Pattern</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OPTIONAL. The Authentic Source MAY request an evidence about the User Authentication related to the User's attributes requested by the PID/(Q)EAA Provider and/or a proof that the Wallet Instance is valid. In this case this pattern MUST be used.</p></li>
 <li><p><strong>[PROFILE_NON_REPUDIATION_01]</strong> Profile for non-repudiation of transmission (<em>Annex 3 - Interoperability Profile</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. This profile uses the following security patterns:</p>
 <blockquote>
 <div><ul class="simple">
@@ -236,7 +236,7 @@
 
 
     <div class="footer" role="contentinfo">
-    &#169; Copyright Dipartimento per la Trasformazione Digitale.
+    &#169; Copyright .
       Last updated on 06/08/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>

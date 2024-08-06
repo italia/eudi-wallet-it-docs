@@ -90,7 +90,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
   * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the latter.
   * **Same-device Issuance flow**: The User receives the Credential on the same device that initiated the flow. 
   * **Immediate Issuance flow**: The PID/(Q)EAA Provider issues the Credential directly in response to the Credential Request.
-  * **Deferred Issuance flow**: The PID/(Q)EAA Provider requires time to issue the requested Digital Credential and needs the Wallet to come back to retrieve it.
+  * **Deferred Issuance flow**: The PID/(Q)EAA Provider may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.
 
 
 .. _fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance:
@@ -98,7 +98,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
 .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/bPRVRo8t4CVV_LUCSWy5QL6ggaz8EHr9w0NrbD24KruY8MTtW6aMc_e777tetzwn3RicaBH1aRBOy-Fhpynu-MATDCulQo6zqyeldz48iU8rAcabbOEpxnRD6KWBNeXd_ICj_6J1BjbgjT0Ap-3JDvelt6NjyT3tqkXDuouFznvbNQE3aM89giHein6eAk0ihpICHzVddJ-wmy40naQlgTh59C6V3VG-W--3VdQI56orDt1DStAoXYk35If7iXOUUcotwSCMhH16QOUWrsXW0vyURqQJeRXB0Tm2eIRhGC_YyyHuwx224o9iq1j3iOpUPnPHQZKZiuoE5cii7Md5aKvv2-5P4YlIBuU22cAYewytaw_tm-6jk5fW-N8g0905vjGe_GrvKSQCKbLx8EGiBD79IZgPwuM00rYoGUaGnhzV3Lb-XS0QQ4PeOf37qQ0trkETFR7zU70Fz_YNH-kWywG03DgLLXQdRhl28goKDQ5oKwhIDmuwBHUXtcgE9vQcB6-Xax59aVCmqbequLI72VAT2vRvpqxga-f2ZlCKpDHy_mVapi7IN4dd3UvCzX46pg5rBVC0UorhgiXj8QCjABLVmoyXWyxkl5Dlg03yiIAcEINLJOqTEblsOU2PZw6_OvuMVeiPiZ1TuMNqf0yx2bcxR6RWuYAqtG7Cmk_7nTlG8fmW69SfmuRS0bHyPdSSNGyUW9r3ErNmK2vmYJPoAiFfbMi9OMtnLUhKxTsFfcV5RwHGrRuEJEW8JbEIq9m5XAhoFxAs0Rhva5CxONDKQ7W3hhazuGMtR-wjZDQpVEvWfit9qNVw1HNmaLQQ-93PV4vufwrrG9B7xXpFvzn8vRBPqbKsfFlBuEs1lF16zGdThCyZ99UshqDL-icsrzZsWct_puthxNVQqU7WxuxqxcQeo60PM_Kf30WbXkd4UIraMQArquYeIAIYqdp02YYdIgiIcuTfDdt7rsEYntyhRIr73zNlx3oZ-Q5zXlpD4fPjjxTrRCgOpS9nBVCJndR9Azp6dLOu8qKHSP2nbAv8LiUpJXRaMb8jdsi4qTBDR3B4-s1jhdU15hjR8CqfDrv6E6FJNfryfZXCta8PBk3Ct3fjC4kSCRlDaZJKRYQJCOpl7YPmhlBzpYj91U2Q8tR5gPV7vRVlGt6FSxAELsLTWrla8de6Q-cm0a4giU6WiV8SfSboRd2jT-dRjqF6EZz0IpkUu9UVV-LjkDBASKfnT66IXTkxILl3_oXWZRAQEbhY-uEGi_05YSa2uTKljmBaB49H89VQg_GMvSXWLrYcg_zv2qt2MDlD0XKuG_CvchGVU8QVbl4IDSx6XLcjDo3dajIhQvm_N_Z1B-j_0G00
+    :target: https://www.plantuml.com/plantuml/svg/hPRVJoCt4CVV_LUCk8S6QIEggaz8Txe0wH7r12dan4kbbTcTP4TixAqzJYxzwsklazW9eLUa8WGRUtvy_PaPRpvRbeRTiXNIiLPk-On6YCwlKKMTL0ndtooQCv0Md13F-djS-Cc2NNghhj4Ap-33LreqVDKwFFIzCdgzTvU7Uq-oRP5Xehm4LM5linQeQl1PZZHC9pSNWp_EnwCHJ8rUKRsDISB_h67u2Tmbw6UMf62ZdO4RMX3B5guDrgYOP2iS3BtT-X8sQ8KmIZE2Ng61DNnukftCnk8-1k06eINBeEVzyymuorZ32H4swEr3UHd3Jrv4fTMSpB9tjDXYnQILZtJAMmZd9Nb5-kLGK46UwEJBxUpBmtXy9wuRh5vE1G2ou3djbVw6Vb7s6QMgTq28BIoHPIrPvdeXu00lsQ1aXEdlrsCllqRm6cXEQFeWJvFHSAgdMtlozjFH0ppWNmujm-1F1M3GTbfPB7dJOH5MgfPGSKbr_EI3bbKJwgqMU6AfzF8Q7OrDZ7mE_iEQk87xaUDcUDr778wO_MOwubkRGJ9iQtcBqcF90P_26zlnlw3TEbXQACdEuCva6-5OOi2_aYtLn1l8-0kA3Rad6Y72O4kWT8OAmEyT6RGbgVFOwg7NvIM4Ssj3V_TvKZaIUCZ2d0idUqzwjwEGBMTJ11y_XaOyW5cutG0v6vh69mZ6LPyXrb3rpzuT9pUZH_3EeS5gUAmQNABjELNXz8eJ8Mmj7gME_N_-tlHUyHifLBshWoTq32UL9BHh0Q6g_XzPkmUwVfTJcha5gj1E23UXKLzmy-PUPxIUvvC8SsrENWQiNr01ghhJf5Xa4plpEwdM0KaUU_1wOXT6Aix6MTVPsEwkXx1Yi2Q3LMoM_tra1KKcyGGvMrbLQ6tP7xc89uzoiu4fe2gLLXNk7yfycbvTW966_-sqjJvw43pOUlRcH_O9uPibgLBtfhhiov9w-qHjiXD6Rdd5KjoonZaf2W2B86CfkOXMhsUNBCYLf5O-jmWYqSrj4k9Ti9JhNu4MSQgtS-SRAIUSsAIhC9mfbDvPgCA5cfbRrWQpn1cpkop9djhjR3Q5wVtZ32vKlZyuabG0hb35TqiYFUf9nnOJfruJLr-_ZSK3BiYoNvLj2zpayeO6MybOWo0LgCNa_Wbyb7t-2uChlHMMtWDP5VAZfJhqP_lbvr_zDbnhnQXOfAinLVRkVfQg-uFIjYZhacc9FnYHZ8KhICmQXADlRGN8UGz5WLngf-BxqaS6ss4LB_dd3UmJzbLVDwY03IqMQE9-u1c-LlRNfM7RBynRlGQvaAGEB-pF_ezRjly0
 
     PID/(Q)EAA Issuance - Detailed flow
 
@@ -347,7 +347,7 @@ If the checks defined above are successful the Wallet Instance proceeds with the
 
 .. note::
 
-  If the issuance of the requested credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the *Deferred Flow* (step 24) as specified in Section :ref:`Deferred Flow`.
+  If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the *Deferred Flow* (step 24) as specified in Section :ref:`Deferred Flow`.
 
 **Steps 22 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
 
@@ -412,7 +412,7 @@ Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EA
 
 If the *lead_time* parameter is less than the expiration time of the Access Token, the Wallet Instance MAY use it along with the *c_nonce* provided in the Credential Response to perform a new Credential Request without requiring the User to submit a new authentication request.
 
-In the case where the Authentic Source and the PID/(Q)EAA Provider are both enabled to use *PDND*, what is described in Section ... MUST apply.
+In the case where the Authentic Source and the PID/(Q)EAA Provider are both enabled to use *PDND*, what is described in Section :ref:`Authentic Sources` MUST apply.
 
 Pushed Authorization Request Endpoint
 -------------------------------------
@@ -957,7 +957,7 @@ Credential Response
 
 Credential Response to the Wallet Instance MUST be sent using `application/json` media type. If the Credential Request is successfully validated, and the Credential is immediately available, the PID/(Q)EAA Provider MUST return HTTP response with a *200 (OK)* status code. If the Credential is not available and the deferred flow is supported by the PID/(Q)EAA Provider, an HTTP status code *202* MUST be returned.  
 
-The Credential Reaponse contains the following parameters:
+The Credential Response contains the following parameters:
 
 .. _table_credential_response_claim:
 .. list-table:: 
@@ -974,13 +974,13 @@ The Credential Reaponse contains the following parameters:
     - CONDITIONAL. REQUIRED if ``credential`` is not present. The amount of time (in seconds) required before making a new Credential Request.
     - This Specification
   * - **c_nonce**
-    - REQUIRED. JSON string containing a ``nonce`` value to be used to create a *proof of possession* of the key material when requesting a further Credential or for the renewal of a credential.
+    - REQUIRED. JSON string containing a ``nonce`` value to be used to create a *proof of possession* of the key material when requesting a further Credential or for the renewal of a Credential.
     - Section 7.3 of [`OpenID4VCI`_].
   * - **c_nonce_expires_in**
     - REQUIRED. JSON integer corresponding to the ``c_nonce`` lifetime in seconds.
     - Section 7.3 of [`OpenID4VCI`_].
   * - **notification_id**
-    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if credential parameter is not present
+    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credential`` parameter is not present
     - Section 7.3 of [`OpenID4VCI`_].
 
 
@@ -1001,9 +1001,9 @@ If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an err
 Notification endpoint
 ---------------------
 
-The Notification Endpoint is used by the Wallet to notify the PID/(Q)EAA Provider of certain events for issued Credentials, such as if the Credential was successfully stored in the Wallet Instance or in case of unsuccessful Credential issuance caused by a user action.
+The Notification Endpoint is used by the Wallet to notify the PID/(Q)EAA Provider of certain events for issued Credentials, such as if the Credential was successfully stored in the Wallet Instance or in case of unsuccessful Credential issuance caused by a User action.
 
-This endpoint MUST be a protected endpoint and a valid DPoP Access Token MUST be used. TLS is REQUIRED according to Section 10 of [`OpenID4VCI`_].
+This endpoint MUST be protected using a DPoP Access Token. TLS for the confidentiality of the HTTP transport is REQUIRED according to Section 10 of [`OpenID4VCI`_].
 
 
 Notification Request
