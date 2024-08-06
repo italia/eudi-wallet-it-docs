@@ -412,7 +412,7 @@ Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EA
 
 If the *lead_time* parameter is less than the expiration time of the Access Token, the Wallet Instance MAY use it along with the *c_nonce* provided in the Credential Response to perform a new Credential Request without requiring the User to submit a new authentication request.
 
-In the case where the Authentic Source and the PID/(Q)EAA Provider are both enabled to use *PDND*, what is described in Section ... MUST apply.
+In the case where the Authentic Source and the PID/(Q)EAA Provider are both enabled to use *PDND*, what is described in Section :ref:`Authentic Sources` MUST apply.
 
 Pushed Authorization Request Endpoint
 -------------------------------------
