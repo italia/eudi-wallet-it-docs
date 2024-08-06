@@ -26,7 +26,7 @@ The following security patterns and profiles are applicable:
 
     - **[REST_JWS_2021_POP]** JWS POP Voucher Issuing Profile (*Annex 3 - Standards and technical details used for Voucher Authorization* [`PDND`_]): REQUIRED. It adds a proof of possession on the Voucher. The client using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.  
 
-    - **[ID_AUTH_REST_02]** Client Authentication with X.509 certificate with uniqueness of the token/message (*Annex 2 - Security Pattern *[`MODI`_]): REQUIRED. It guarantees trust between the Authentic Source and the PID/(Q)EAA Provider and provides a mitigation against replay attacks.
+    - **[ID_AUTH_REST_02]** Client Authentication with X.509 certificate with uniqueness of the token/message (*Annex 2 - Security Pattern* [`MODI`_]): REQUIRED. It guarantees trust between the Authentic Source and the PID/(Q)EAA Provider and provides a mitigation against replay attacks.
 
     - **[INTEGRITY_REST_01]** REST message payload integrity (*Annex 2 - Security Pattern* [`MODI`_]): REQUIRED. It adds message payload integrity of the HTTP POST request.  
 
