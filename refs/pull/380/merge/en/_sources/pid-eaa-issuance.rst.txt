@@ -90,7 +90,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
   * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the latter.
   * **Same-device Issuance flow**: The User receives the Credential on the same device that initiated the flow. 
   * **Immediate Issuance flow**: The PID/(Q)EAA Provider issues the Credential directly in response to the Credential Request.
-  * **Deferred Issuance flow**: The PID/(Q)EAA Provider requires time to issue the requested Digital Credential and needs the Wallet to come back to retrieve it.
+  * **Deferred Issuance flow**: The PID/(Q)EAA Provider may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.
 
 
 .. _fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance:
@@ -347,7 +347,7 @@ If the checks defined above are successful the Wallet Instance proceeds with the
 
 .. note::
 
-  If the issuance of the requested credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the *Deferred Flow* (step 24) as specified in Section :ref:`Deferred Flow`.
+  If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the *Deferred Flow* (step 24) as specified in Section :ref:`Deferred Flow`.
 
 **Steps 22 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
 
@@ -974,13 +974,13 @@ The Credential Response contains the following parameters:
     - CONDITIONAL. REQUIRED if ``credential`` is not present. The amount of time (in seconds) required before making a new Credential Request.
     - This Specification
   * - **c_nonce**
-    - REQUIRED. JSON string containing a ``nonce`` value to be used to create a *proof of possession* of the key material when requesting a further Credential or for the renewal of a credential.
+    - REQUIRED. JSON string containing a ``nonce`` value to be used to create a *proof of possession* of the key material when requesting a further Credential or for the renewal of a Credential.
     - Section 7.3 of [`OpenID4VCI`_].
   * - **c_nonce_expires_in**
     - REQUIRED. JSON integer corresponding to the ``c_nonce`` lifetime in seconds.
     - Section 7.3 of [`OpenID4VCI`_].
   * - **notification_id**
-    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if credential parameter is not present
+    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credential`` parameter is not present
     - Section 7.3 of [`OpenID4VCI`_].
 
 
@@ -1001,7 +1001,7 @@ If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an err
 Notification endpoint
 ---------------------
 
-The Notification Endpoint is used by the Wallet to notify the PID/(Q)EAA Provider of certain events for issued Credentials, such as if the Credential was successfully stored in the Wallet Instance or in case of unsuccessful Credential issuance caused by a user action.
+The Notification Endpoint is used by the Wallet to notify the PID/(Q)EAA Provider of certain events for issued Credentials, such as if the Credential was successfully stored in the Wallet Instance or in case of unsuccessful Credential issuance caused by a User action.
 
 This endpoint MUST be a protected endpoint and a valid DPoP Access Token MUST be used. TLS is REQUIRED according to Section 10 of [`OpenID4VCI`_].
 

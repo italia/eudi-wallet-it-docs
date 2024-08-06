@@ -252,7 +252,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <li><p><strong>Wallet Initiated Flow</strong>: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the latter.</p></li>
 <li><p><strong>Same-device Issuance flow</strong>: The User receives the Credential on the same device that initiated the flow.</p></li>
 <li><p><strong>Immediate Issuance flow</strong>: The PID/(Q)EAA Provider issues the Credential directly in response to the Credential Request.</p></li>
-<li><p><strong>Deferred Issuance flow</strong>: The PID/(Q)EAA Provider requires time to issue the requested Digital Credential and needs the Wallet to come back to retrieve it.</p></li>
+<li><p><strong>Deferred Issuance flow</strong>: The PID/(Q)EAA Provider may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.</p></li>
 </ul>
 </div></blockquote>
 <figure class="align-center" id="id5" style="width: 100%">
@@ -581,7 +581,7 @@ without encoding and signature. The JWS header:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the issuance of the requested credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the <em>Deferred Flow</em> (step 24) as specified in Section <a class="reference internal" href="#deferred-flow"><span class="std std-ref">Deferred Flow</span></a>.</p>
+<p>If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the <em>Deferred Flow</em> (step 24) as specified in Section <a class="reference internal" href="#deferred-flow"><span class="std std-ref">Deferred Flow</span></a>.</p>
 </div>
 <p><strong>Steps 22 (Notification Request)</strong>: According to Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], the Wallet sends an HTTP POST request to the Notification Endpoint using the <em>application/json</em> media type as in the following non-normative example.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/notification</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1366,7 +1366,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <td><p>This Specification</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>c_nonce</strong></p></td>
-<td><p>REQUIRED. JSON string containing a <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value to be used to create a <em>proof of possession</em> of the key material when requesting a further Credential or for the renewal of a credential.</p></td>
+<td><p>REQUIRED. JSON string containing a <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value to be used to create a <em>proof of possession</em> of the key material when requesting a further Credential or for the renewal of a Credential.</p></td>
 <td><p>Section 7.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>c_nonce_expires_in</strong></p></td>
@@ -1374,7 +1374,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <td><p>Section 7.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>notification_id</strong></p></td>
-<td><p>OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section <a class="reference internal" href="#notification-request"><span class="std std-ref">Notification Request</span></a>. It MUST NOT be present if credential parameter is not present</p></td>
+<td><p>OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section <a class="reference internal" href="#notification-request"><span class="std std-ref">Notification Request</span></a>. It MUST NOT be present if the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter is not present</p></td>
 <td><p>Section 7.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 </tbody>
@@ -1401,7 +1401,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </section>
 <section id="notification-endpoint">
 <h2>Notification endpoint<a class="headerlink" href="#notification-endpoint" title="Link to this heading">¶</a></h2>
-<p>The Notification Endpoint is used by the Wallet to notify the PID/(Q)EAA Provider of certain events for issued Credentials, such as if the Credential was successfully stored in the Wallet Instance or in case of unsuccessful Credential issuance caused by a user action.</p>
+<p>The Notification Endpoint is used by the Wallet to notify the PID/(Q)EAA Provider of certain events for issued Credentials, such as if the Credential was successfully stored in the Wallet Instance or in case of unsuccessful Credential issuance caused by a User action.</p>
 <p>This endpoint MUST be a protected endpoint and a valid DPoP Access Token MUST be used. TLS is REQUIRED according to Section 10 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p>
 <section id="notification-request">
 <h3>Notification Request<a class="headerlink" href="#notification-request" title="Link to this heading">¶</a></h3>
