@@ -24,13 +24,13 @@ SD-JWT-VC Credential Format
 
 The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SD-JWT`_ as specified in `SD-JWT-VC`_.
 
-An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
+SD-JWT MUST be signed using the Issuer's private key. SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section. 
 
-The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of `SD-JWT`_. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
+The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of `SD-JWT`_. **_sd_alg**  MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
-Claims that are not selectively disclosable MUST be included in the SD-JWT in plaintext.  The digests of the disclosures (and decoy digests, if any) related to an object element claim that is selectively disclosable MUST be contained in a new JWT claim, **_sd** as specified in Section 5.2.4.1 of `SD-JWT`_. 
+Claims that are not selectively disclosable MUST be included in the SD-JWT as they are.  The digests of the disclosures, along with any decoy if present,  MUST be contained in the  **_sd** array, as specified in Section 5.2.4.1 of `SD-JWT`_. 
 
-Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains:
+Each digest value, calculated using a hash function over the disclosures, verifies the integrity and corresponds to a specific Disclosure. Each disclosure includes:
 
   - a random salt, 
   - the claim name (only when the claim is an object element), 
@@ -45,9 +45,9 @@ In case of array elements, digest values are calculated using a hash function ov
   - a random salt, 
   - the array element
 
-In case of multiple array elements, the Issuer may wish to conceal presence of any statement while also	allowing the holder to reveal each of those	elements individually (Section 5.2.6 `SD-JWT`_). Both the entire array and the individuals entries could be selective disclosure.
+In case of multiple array elements, the Issuer may wish to conceal presence of any statement while also allowing the Holder to reveal each of those elements individually (Section 5.2.6 `SD-JWT`_). Both the entire array and the individuals entries can be selective disclosure.
 
-The Disclosures are provided to the Holder together with the SD-JWT in the *Combined Format for Issuance* that MUST be an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
+The Disclosures are provided to the Holder together with the SD-JWT in the *Combined Format for Issuance* that is an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
 
 .. code-block::
 
@@ -111,13 +111,13 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [NSD].UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **status**
-      - [NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use *sha-256*. 
+      - [NSD]. It MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use *sha-256*. 
       - Section 3.2.2.2 `SD-JWT-VC`_ and Section 11 `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - [NSD].JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD].Credential type value MUST be an HTTPS URL String and MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. It serves as an identifier for the type of the SD-JWT VC and MUST be a Collision-Resistant Name as defined in Section 2 of :rfc:`7515`. It MUST contains also the number of version of the Credential type, for example, in the case of the PID, it is ``https://issuer.example.org/v1.0/personidentificationdata``.
+      - [NSD]. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the PID/(Q)EAA Issuer metadata. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://issuer.example.org/v1.0/personidentificationdata``).
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD].The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
@@ -138,7 +138,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
 Digital Credential Metadata Type
 --------------------------------
 
-The Type Metadata document MUST be a JSON object and contains the following parameters.
+The Metadata type document MUST be a JSON object and contains the following parameters.
 
 .. list-table:: 
     :widths: 20 60 20
@@ -148,7 +148,7 @@ The Type Metadata document MUST be a JSON object and contains the following para
       - **Description**
       - **Reference**
     * - **name**
-      - REQUIRED. A human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :rfc:`5646` (e.g. *name#it-IT*).
+      - REQUIRED. Human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :rfc:`5646` (e.g. *name#it-IT*).
       - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
     * - **description**
       - REQUIRED. A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :rfc:`5646`.
