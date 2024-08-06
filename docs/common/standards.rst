@@ -75,3 +75,7 @@ Technical References
       - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication".
     * - USASCII
       - American National Standards Institute, "Coded Character Set -- 7-bit American Standard Code for Information Interchange", 1986.
+    * - `MODI`_
+      - "Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni", November 2023, Version 1.2.
+    * - `PDND`_
+      - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati", December 2021, Version 1.0.

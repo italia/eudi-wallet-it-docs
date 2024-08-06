@@ -42,6 +42,7 @@ Index of content
    pid-eaa-data-model.rst
    pid-eaa-issuance.rst
    pid-eaa-entity-configuration.rst
+   authentic-sources.rst
    relying-party-solution.rst
    relying-party-entity-configuration.rst
    revocation-lists.rst
