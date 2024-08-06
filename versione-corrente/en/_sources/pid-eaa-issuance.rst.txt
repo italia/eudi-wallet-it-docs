@@ -329,7 +329,7 @@ without encoding and signature. The JWS header:
     1. It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using using the ``kid`` header of the SD-JWT.
     3. It MUST check that the received PID (in credential claim) matches the schema defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
-    4. It MUST process and verify the PID in SD-JWT VC format (according to `SD.JWT#Verification <https://drafts.oauth.net/oauth-selective-disclosure-jwt/draft-ietf-oauth-selective-disclosure-jwt.html#name-verification-and-processing>`_ Section 6.) or MDOC CBOR format. 
+    4. It MUST process and verify the PID in SD-JWT VC format (according to `SD-JWT`_ Section 6.) or MDOC CBOR format. 
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID Provider is trusted.
 
 If the checks defined above are successful the Wallet Instance proceeds with the secure storage of the PID/(Q)EAA.
