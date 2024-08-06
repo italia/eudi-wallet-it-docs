@@ -24,13 +24,13 @@ Security Patterns
 
 The following security patterns and profiles are applicable: 
 
-    - **[REST_JWS_2021_POP]** JWS POP Voucher Issuing Profile (*Annex 3 - Standards and technical details used for Voucher Authorization* [`PDND`_]): REQUIRED. It adds a proof of possession on the Voucher. The client using the Voucher to access an e-service MUST give proof of possession of the private key whose public is attested on the Voucher.  
+    - **[REST_JWS_2021_POP]** JWS POP Voucher Issuing Profile (*Annex 3 - Standards and technical details used for Voucher Authorization* [`PDND`_]): REQUIRED. It adds a proof of possession on the Voucher. The client using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.  
 
     - **[ID_AUTH_REST_02]** Client Authentication with X.509 certificate with uniqueness of the token/message (*Annex 2 - Security Pattern *[`MODI`_]): REQUIRED. It guarantees trust between the Authentic Source and the PID/(Q)EAA Provider and provides a mitigation against replay attacks.
 
     - **[INTEGRITY_REST_01]** REST message payload integrity (*Annex 2 - Security Pattern* [`MODI`_]): REQUIRED. It adds message payload integrity of the HTTP POST request.  
 
-    - **[AUDIT_REST_02]** submission of audit data within the request (*Annex 2 - Security Pattern* [`MODI`_]): OPTIONAL. The Authentic Source MAY request an evidence about the User Authentication related to the User's attributes requested by the PID/(Q)EAA Provider and/or a proof that the Wallet Instance is valid and authentic. In this case this pattern MUST be used.
+    - **[AUDIT_REST_02]** submission of audit data within the request (*Annex 2 - Security Pattern* [`MODI`_]): OPTIONAL. The Authentic Source MAY request an evidence about the User Authentication related to the User's attributes requested by the PID/(Q)EAA Provider and/or a proof that the Wallet Instance is valid. In this case this pattern MUST be used.
 
     - **[PROFILE_NON_REPUDIATION_01]** Profile for non-repudiation of transmission (*Annex 3 - Interoperability Profile* [`MODI`_]): REQUIRED. This profile uses the following security patterns:
         
