@@ -156,7 +156,7 @@ Below, is given a non-normative example of a single Revocation Assertion Request
     .
     {
       "iss": "0b434530-e151-4c40-98b7-74c75a5ef760",
-      "aud": "https://pid-provider.example.org/revoke",
+      "aud": "https://pid-provider.example.org",
       "iat": 1698744039,
       "exp": 1698744139, 
       "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
@@ -592,7 +592,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Assertion.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
-      - It MUST be set to the Credential Issuer endpoint at which the JWT is used.
+      - It MUST be set to the identifier of the Issuer.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
       - UNIX Timestamp with the expiry time of the JWT. It MUST be greater than the value set for `iat`.

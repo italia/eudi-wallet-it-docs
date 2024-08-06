@@ -135,6 +135,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
@@ -282,7 +283,12 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#detailed-flow">Detailed Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#low-level-issuance-flow">Low-Level Issuance Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#deferred-flow">Deferred Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#general-requirements">General Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#technical-flow">Technical Flow</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
@@ -304,6 +310,11 @@
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#notification-endpoint">Notification endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#notification-request">Notification Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#notification-response">Notification Response</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
@@ -312,6 +323,10 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#security-patterns">Security Patterns</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>

@@ -136,6 +136,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
@@ -229,8 +230,8 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 </ol>
 </div></blockquote>
 </section>
-<section id="detailed-flow">
-<h2>Detailed Flow<a class="headerlink" href="#detailed-flow" title="Link to this heading">¶</a></h2>
+<section id="low-level-issuance-flow">
+<h2>Low-Level Issuance Flow<a class="headerlink" href="#low-level-issuance-flow" title="Link to this heading">¶</a></h2>
 <p>The PID/(Q)EAA Issuance flow is based on [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>] and the following main reference standards/specifications MUST be supported on top of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>:</p>
 <blockquote>
 <div><ul class="simple">
@@ -251,10 +252,11 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <li><p><strong>Wallet Initiated Flow</strong>: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the latter.</p></li>
 <li><p><strong>Same-device Issuance flow</strong>: The User receives the Credential on the same device that initiated the flow.</p></li>
 <li><p><strong>Immediate Issuance flow</strong>: The PID/(Q)EAA Provider issues the Credential directly in response to the Credential Request.</p></li>
+<li><p><strong>Deferred Issuance flow</strong>: The PID/(Q)EAA Provider may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.</p></li>
 </ul>
 </div></blockquote>
 <figure class="align-center" id="id5" style="width: 100%">
-<span id="fig-low-level-flow-itwallet-pid-qeaa-issuance"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/bLJVRzis47xdNt587vO0DlPke4MTn6kC5OEHfSXB086HplOj4gcHnwZUm_xs7KLPfkQqQ8C0KSZxyNtVVSUFdhNZqDHA1xOcDC_eb6hbZ4fgjM6u-EBHNO3s49Hwjb_JmIyUV2DHxTuQl81tdsctv-iwu3JtsjbkJDVJkqTTryYmDWB1bDZ7T0fD1TBbVnWswrlOEFjArL2CbFnqCFy0OG7scJKPEDZWG29LWBbST0iue5VA6Si8zXKTTF3kyMxzi5931kyHQl8CTjj_FxZW6Il8s_a8gQyX3USVf5rfpPPSqsTuhB5aiYQMoDEK2W92CDYNAOGPYLhhJtSFd-vNgp_KpHxBbqaca0SXFuBw3ULGzpsqgOvaYJqqoBhIh7E449c3W7Ie6M7p-yrA05S8qfosXAulyhXUpZTsCyIJn6-Mzt2FVmVq39TF1i2XRwtnMF2XnLayAMj2mmLLwJyfMfJxE4IpmpUE2e6tjodOfSfv6UqzkiXgsY2_UIym_nsWFfaho7LyIyNag1yHSaZmj3EQWyCXv5XXoOoUJvf7iLzrJHNn0JAr5IMdZVeboU1ou5i4HpF0hoqvz0MPgsJQw5gzW6KGVHpza_gCufzaXgpCbGgwpwIVJbGJtMRXk0J1HpT8BScYCXNhYFU0wzlbdt0dAzspBoCdm-Uy1T4Pc562Q8OPH1Nb3ta_4kX-9Ybpz0vD71_2hTW1Nl3mpRlMMRlDVGvRwwOxnlO53GYZrf9GonRXGMv6KPCUMT7ByqNOEMquCx6jicquRjstdVy-EBCWvEr2lAeRlx1n98iKEnzZvp5syLV7y-FDoQDI_BkxCwnWHGxBtXDFqOcKn4kCyo7eiaJlYrwYML8gqSkSF8EoCDQKE7uKcStFtw6adlosrdkf7iT-EMJsuTFuNFApsKb85Ishwt60sVnkJhVdGyofzGR9HtkgMrIu9KEzjh5_etcMegxUUeEkFtzPgNlSaUUuKNKTtv8CvjnXBQGgK6HIDIdSyqhsIBltgyDNcpuXVsI6EUNCic4DwB9kFpmQ4VNqgaKnefs2XpA-ZLcSP-joEkgZW0jD_Hy0"><img alt="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" src="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" /></a>
+<span id="fig-low-level-flow-itwallet-pid-qeaa-issuance"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/hPRVJoCt4CVV_LUCk8S6QIEggaz8Txe0wH7r12dan4kbbTcTP4TixAqzJYxzwsklazW9eLUa8WGRUtvy_PaPRpvRbeRTiXNIiLPk-On6YCwlKKMTL0ndtooQCv0Md13F-djS-Cc2NNghhj4Ap-33LreqVDKwFFIzCdgzTvU7Uq-oRP5Xehm4LM5linQeQl1PZZHC9pSNWp_EnwCHJ8rUKRsDISB_h67u2Tmbw6UMf62ZdO4RMX3B5guDrgYOP2iS3BtT-X8sQ8KmIZE2Ng61DNnukftCnk8-1k06eINBeEVzyymuorZ32H4swEr3UHd3Jrv4fTMSpB9tjDXYnQILZtJAMmZd9Nb5-kLGK46UwEJBxUpBmtXy9wuRh5vE1G2ou3djbVw6Vb7s6QMgTq28BIoHPIrPvdeXu00lsQ1aXEdlrsCllqRm6cXEQFeWJvFHSAgdMtlozjFH0ppWNmujm-1F1M3GTbfPB7dJOH5MgfPGSKbr_EI3bbKJwgqMU6AfzF8Q7OrDZ7mE_iEQk87xaUDcUDr778wO_MOwubkRGJ9iQtcBqcF90P_26zlnlw3TEbXQACdEuCva6-5OOi2_aYtLn1l8-0kA3Rad6Y72O4kWT8OAmEyT6RGbgVFOwg7NvIM4Ssj3V_TvKZaIUCZ2d0idUqzwjwEGBMTJ11y_XaOyW5cutG0v6vh69mZ6LPyXrb3rpzuT9pUZH_3EeS5gUAmQNABjELNXz8eJ8Mmj7gME_N_-tlHUyHifLBshWoTq32UL9BHh0Q6g_XzPkmUwVfTJcha5gj1E23UXKLzmy-PUPxIUvvC8SsrENWQiNr01ghhJf5Xa4plpEwdM0KaUU_1wOXT6Aix6MTVPsEwkXx1Yi2Q3LMoM_tra1KKcyGGvMrbLQ6tP7xc89uzoiu4fe2gLLXNk7yfycbvTW966_-sqjJvw43pOUlRcH_O9uPibgLBtfhhiov9w-qHjiXD6Rdd5KjoonZaf2W2B86CfkOXMhsUNBCYLf5O-jmWYqSrj4k9Ti9JhNu4MSQgtS-SRAIUSsAIhC9mfbDvPgCA5cfbRrWQpn1cpkop9djhjR3Q5wVtZ32vKlZyuabG0hb35TqiYFUf9nnOJfruJLr-_ZSK3BiYoNvLj2zpayeO6MybOWo0LgCNa_Wbyb7t-2uChlHMMtWDP5VAZfJhqP_lbvr_zDbnhnQXOfAinLVRkVfQg-uFIjYZhacc9FnYHZ8KhICmQXADlRGN8UGz5WLngf-BxqaS6ss4LB_dd3UmJzbLVDwY03IqMQE9-u1c-LlRNfM7RBynRlGQvaAGEB-pF_ezRjly0"><img alt="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" src="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">PID/(Q)EAA Issuance - Detailed flow</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
@@ -312,7 +314,7 @@ OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jbGllb
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;47b982369791d08003a7283f059cb0d1&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/as/par&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1715842560</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1778914560</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f8555ceb-c65c-4025-9378-b6672b6149af&quot;</span>
@@ -329,7 +331,7 @@ OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jbGllb
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f8555ceb-c65c-4025-9378-b6672b6149af&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/as/par&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1715842560</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1715842860</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;response_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;code&quot;</span><span class="p">,</span>
@@ -469,7 +471,7 @@ The <code class="docutils literal notranslate"><span class="pre">OAuth-Client-At
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d4e0bb387aa2556ff306925fdfb9a765&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/credential&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1715842560</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1778914560</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f9655ceb-c65c-4025-9378-b6672b6149bg&quot;</span><span class="p">,</span>
@@ -545,7 +547,7 @@ without encoding and signature. The JWS header:</p>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;47b982369791d08003a7283f059cb0d1&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/credential&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1705570055</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ts_EtUQs0ieiIS1NYNBHEQSoy3ct4gpy-4FZKwHilkY&quot;</span>
 <span class="p">}</span>
@@ -572,10 +574,76 @@ without encoding and signature. The JWS header:</p>
 <span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;credential&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImM5NTBjMGU2ZmRlYjVkZTUwYTUwMDk2YjI0N2FmMDNjIn0.eyJfc2QiOlsiQ1JJQkdpbWhhbE1TSzhLZUxmNzg2N0w4cHV6MEZnRTVaS1VXLW12N0hiYyIsIlhhZjVJZFVGc0UzYWtabEszT0E5d3dHcjJKcVAwUU01M3BBY2hiempRZmMiLCJjR2FuQVdySG9WQVoyalBhNXk0SzE3U0xpYWFKcGRNUF9PdnBmTGx0VWJjIiwiNEFuZU1ZVVAxRWh3emRHdkRQOEhobnRaRGN1ejZrOHhHWVJ0NXo0SHh0SSIsIjRuYTVXSHRMYzdrYnNxdHFVaHd6WXdVdUQtY3hKVmdENmRaLTl0ZUdhZ3MiLCJiZS10a2U3YVU0WmhDNWUxcGZqRjcxUWpFRzRsZG1IaFRoUFl1TnQyOHo0IiwiSnNkaHhTMWRVTTJaN29MUmZYWVJvOFFEaDJ4M1dQNkdILUJnY21DdzJGayIsIlVobXBRSy1HS3hzaHJwXzZwYVpfZzROVG5fX29aeVdOb01zTGNaMUhlMjgiLCJOdDdQU3RxMkEyWkliUHBHdTJpdmVSek9rbWpYUEN1V0RBdy0tdktSQTBjIiwiV3Rtck5JVzFTVkN0UnZNUF9UM2YtRGlhRUdHNS1iVk5rWGJRckowRnpzRSJdLCJleHAiOjE3NDY1MTU5NzIsImlzcyI6Imh0dHBzOi8vZWFhLXByb3ZpZGVyLmlwenMuaXQiLCJzdWIiOiJOemJMc1hoOHVEQ2NkN25vV1hGWkFmSGt4WnNSR0M5WHMiLCJzdGF0dXMiOnsic3RhdHVzX2F0dGVzdGF0aW9uIjp7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiJzaGEtMjU2In19LCJ2Y3QiOiJEaXNhYmlsaXR5Q2FyZCIsIl9zZF9hbGciOiJzaGEtMjU2IiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6InBWVTNqYXR1NGEzdGs5Yzlhb3dWZ0x5QkJfcko3TS0zV2xqazFlalV6MkUiLCJ5IjoiVEw1T052Ui1JZ2FybmdyejVqZHZzcG9mZnpGd2NqUFJ0RlVrZW5lSEVJMCJ9fX0.v9ynFXhKXPOhQSMmuLvIBKRWfPEPDf4QwDoNmDOjMROxr5J4Hshh9mBEM5qohH_PDE62i1TLc36C65jFYa7x3A~WyIwQUx5SzRfUi1aVUpTekVKdW5HTFdRIiwiaWF0IiwiMTc0NzExOTU5NSJd~WyItT25uM29FcGh6TDNncHJUcVF0YUd3IiwiZG9jdW1lbnRfbnVtYmVyIiwiMDAwMDAwMDIiXQ~WyJ2bmtVX2tJV2RSa1dPZzBoNlRYcDd3IiwiZ2l2ZW5fbmFtZSIsIk1hcmlvIl~WyJvRUdnaVZQaXV1dEJVby1wcTd6WURBIiwiZmFtaWx5X25hbWUiLCJSb3NzaSJd~WyJGVU1iQm5hLWhlLUlaWTZkOVZ1UkNBIiwiYmlydGhfZGF0ZSIsIjE5ODAtMDEtMTAiXQ~WyJjQ0ZDeXljV1J4alZINkZURVR5OTd3IiwidGF4X2lkX2NvZGUiLCJSU1NNUkE4MFIwMUg1MDFCIl0~WyJVSEFhaWZ1bzloTW9pbkVDU0loOG9RIiwiZXhwaXJ5X2RhdGUiLCIyMDMwLTAxLTEwIl~WyJ3TW1xYkkzTFRPMDVLajFoLXNpWWhRIiwiY29uc3RhbnRfYXR0ZW5kYW5jZV9hbGxvd2FuY2UiLCIwIl0~WyJBODVjeFI1REZyOElfaFZFQTZqZGNBIiwibGlua19xcl9jb2RlIiwiaHR0cHM6Ly9xci5leGFtcGxlLmNvbSJd~WyJHWHRYNXNueTctVEVpblhZajNMdGdBIiwicG9ydHJhaXQiLCIvOWovNEFBUVNrWkpSZ0FCQVFFQkxBRXNBQUQvNFFCV1JYaHBaZ0FBVFUwQUtnQUFBQWdBQkFFYUFBVUFBQUFCQUFBQVBnRWJBQVVBQUFBQkFBQUFSZ0VvQUFNQUFBQUJBQUlBQUFJVEFBTUFBQUFCQUFFQUFBQUFBQUFBQUFFc0FBQUFBUUFBQVN3QUFBQUIvKzBBTEZCb2IzUnZjMmh2Y0NBekxqQUFPRUpKVFFRRUFBQUFBQUFQSEFGYUFBTWJKVWNjQVFBQUFnQUVBUC9oRElGb2RIUndPaTh2Ym5NdVlXUnZZbVV1WTI5dEwzaGhjQzh4TGpBdkFEdy9lSEJoWTJ0bGRDQmlaV2RwYmowbjc3dS9KeUJwWkQwblZ6Vk5NRTF3UTJWb2FVaDZjbVZUZWs1VVkzcHJZemxrSno4K0NqeDRPbmh0Y0cxbGRHRWdlRzFzYm5NNmVEMG5ZV1J2WW1VNmJuTTZiV1YwWVM4bklIZzZlRzF3ZEdzOUowbHRZV2RsT2pwRmVHbG1WRzl2YkNBeE1DNHhNQ2MrQ2p4eVpHWTZVa1JHSUhodGJHNXpPbkprWmowbmFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1UazVPUzh3TWk4eU1pMXlaR1l0YzNsdWRHRjRMVzV6SXljK0Nnb2dQSEprWmpwRVpYTmpjbWx3ZEdsdmJpQnlaR1k2WVdKdmRYUTlKeWNLSUNCNGJXeHVjenAwYVdabVBTZG9kSFJ3T2k4dmJuTXVZV1J2WW1VdVkyOXRMM1JwWm1Zdk1TNHdMeWMrQ2lBZ1BIUnBabVk2VW1WemIyeDFkR2x2YmxWdWFYUStNand2ZEdsbVpqcFNaWE52YkhWMGFXOXVWVzVwZEQ0S0lDQThkR2xtWmpwWVVtVnpiMngxZEdsdmJqNHpNREF2TVR3dmRHbG1aanBZVW1WemIyeDFkR2x2Ymo0S0lDQThkR2xtWmpwWlVtVnpiMngxZEdsdmJqNHpNREF2TVR3dmRHbG1aanBaVW1WemIyeDFkR2x2Ymo0S0lEd3ZjbVJtT2tSbGMyTnlhWEIwYVc5dVBnb0tJRHh5WkdZNlJHVnpZM0pwY0hScGIyNGdjbVJtT21GaWIzVjBQU2NuQ2lBZ2VHMXNibk02ZUcxd1RVMDlKMmgwZEhBNkx5OXVjeTVoWkc5aVpTNWpiMjB2ZUdGd0x6RXVNQzl0YlM4blBnb2dJRHg0YlhCTlRUcEViMk4xYldWdWRFbEVQbUZrYjJKbE9tUnZZMmxrT25OMGIyTnJPamxqTmpabVpUZGxMVFkzWTJRdE5ETTRZeTA1WlRobUxUSXdPREE1TkRObU9UWTJaVHd2ZUcxd1RVMDZSRzlqZFcxbGJuUkpSRDRLSUNBOGVHMXdUVTA2U1c1emRHRnVZMlZKUkQ1NGJYQXVhV2xrT2pSaE16ZzBZVFUxTFdJek1UZ3ROR05rWVMwNE4yVXpMVE14TVRZd00yTmhaVEUzT0R3dmVHMXdUVTA2U1c1emRHRnVZMlZKUkQ0S0lEd3ZjbVJtT2tSbGMyTnlhWEIwYVc5dVBnbzhMM0prWmpwU1JFWStDand2ZURwNGJYQnRaWFJoUGdvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lBb2dJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FLSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUFvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lBb2dJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FLSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUFvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lBbzhQM2h3WVdOclpYUWdaVzVrUFNkM0p6OCsvOXNBUXdBRkF3UUVCQU1GQkFRRUJRVUZCZ2NNQ0FjSEJ3Y1BDd3NKREJFUEVoSVJEeEVSRXhZY0Z4TVVHaFVSRVJnaEdCb2RIUjhmSHhNWElpUWlIaVFjSGg4ZS85c0FRd0VGQlFVSEJnY09DQWdPSGhRUkZCNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlLzhBQUVRZ0JhQUZvQXdFUkFBSVJBUU1SQWYvRUFCMEFBUUFCQlFFQkFRQUFBQUFBQUFBQUFBQUdBUVVIQ0FrRUFnUC94QUJDRUFFQUFRTUNBZ01OQlFVSEJRQUFBQUFBQVFJREJBVUdCeEVoTVZFSUVoTVVGeUpCVm1GeG9hVFNRb0dSa3NFak1rT0NvaFVXWW5LRHNzSVlObEoxcy8vRUFCWUJBUUVCQUFBQUFBQUFBQUFBQUFBQUFBQUJBdi9FQUJZUkFRRUJBQUFBQUFBQUFBQUFBQUFBQUFBUkFmL2FBQXdEQVFBQ0VRTVJBRDhBM0xBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCNXRTejhMVE1HN25hamwyTVRGczA5OWN2WHJrVVVVUjJ6TTlFQXdudmZ1bHRwNlZjcnh0dDRPVHIxNm5uSGh1ZmdNZm43S3FvbXFyN3FlWHRJTVY2MTNTWEVQTnVUT0JScEdsMGVpTFdOTjJxUHZybVkrQ3dXWHk5Y1ZlLzc3KzgxUHU4UXNjdjloQmV0RjdwTGlIaFhJblBvMGpWS1BURjNHbTFWUDMwVEVmQWd5cHNqdWx0cDZyY294dHlZT1RvTjZybEhodWZoOGZuN2FxWWlxbjc2ZVh0U0RObW01K0ZxZUZhenRPeTdHWGkzcWUrdDNyTnlLNks0N1ltT2lRZWtBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFFTTRyOFJkQzRlYUY0OXFkVTM4dTl6cHc4SzNWRVhMOVVmN2FZOU5VOUVlMmVVQTB2NGs4UXR6YisxT2NyWE15ZkZxS3BuSHdiVXpGaXhIc3A5TlgrS2VjKzdxVVJKUUFBQUJMZUczRUxjMndkVGpLMFBNbnhhdXFKeU1HN016WXZ4N2FmUlYvaWpsUHY2a0c2SENqaUxvWEVQUXZIdE1xbXhsMmVWT1poWEtvbTVZcW4vZFRQb3Fqb24yVHpoQk13QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVdQZm01OU4yZHRYTzNEcXRmTEh4YU9jVVJQblhhNTZLYUtmYlZQS1BqNkFhRWI4M1ZxKzg5elpXdjZ6ZTcvSXZ6eW90MHo1bGkzSDd0dWlQUlRIeG5uTTlNcUxFb0FBQUFBQXZ1dzkxYXZzemMyTHIralh1OHlMRThxN2RVK1pmdHorOWJyajAwejhKNVRIVENEZmZZZTU5TjNqdFhCM0RwVmZQSHlxT2MwVFBuV3E0NktxS3ZiVFBPUGo2VUY4QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQnFSM1l1OHE5VDNkajdReGJzK0o2VFRGM0ppSjZLOGl1bm5IUC9MUk1mZlhLNE1ES0FBQUFBQUFBTTg5eDF2S3ZUTjNaRzBNcTdQaWVxMHpkeG9tZWlqSW9wNXp5L3pVUlAzMFFtamJkQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCK2VUZHQyTWU1ZnUxZDdidDB6WFZQWkVSemtIT1RjK3JYdGUzSHFXdDVGVXpkejhxNWtWZnpWVE1SOTBjbys1UmJsQUFBQUFBQUFGeDJ4cTE3UWR4NmJyZVBWTVhjREt0NUZQOHRVVE1mZkhPUHZRZEc4YTdidjQ5dS9hcTc2M2NwaXVtZTJKam5DRDlBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVI3aVhmcXh1SFc1TWlpZVZWdlNzcXFtZmJGcW9ITytpT1ZGTWRrUkRRcUFBQUFBQUFBQ2xjYzZLbzdZbUFkRU9HbCtySjRkYmJ5SzU1MVhOS3hhcXA5czJxV1JJUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFXWGZtSlZxR3lOZHdhSTUxNUdtNUZxbVBiVmJxaUFjNktPbWltWjdJYUZRQUFBQUFBQUFVcjZLS3Bqc2tIUmZZZUpWcCt5TkN3YTQ1VjQrbTQ5cXFQYlRicGlXUmVnQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVVxaUppWW1PY0E1NThUZHYzTnJjUU5iMEt1aWFhY1hNcjhEempydFZUMzF1ZnkxUW9qaWdBQUFBQUFBQ1I4TXR2M04wY1FORTBLaWlhcWNyTW84TnlqcXRVejMxeWZ5MHlnNkdVeEVSRVJIS0VGUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBYTNkMlRzV3UvalltKzlQc3pWT1BUR0xxVVV4L0Q1L3M3ays2Wm1tWi94VTlpNE5ZRkFBQUFBQUFBR3ovY2JiRnJzWTJYdnZVTE0wemtVemk2YkZVZncrZjdTNUh2bUlwai9BQzFkcWFOa1VBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFIbjFIQ3hkUndMK0JuV0tNakZ5TGRWcTlhcmpuVFhSVkhLWW4yVEFOSGVPWEREUDRkN2hud1ZGM0kwSExybWNIS21PZmUrbndWYytpdU8zN1VkUGJFVVk1VUFBQUFBQVpHNEc4TU0vaUp1R1BDMFhjZlFjU3VKenNxSTVkOTZmQlVUL3dDYzl2Mlk2ZXlKZzNpMDdDeGRPd0xHQmcyS01mRng3ZE5xemFvamxUUlJUSEtJajJSQ0QwQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUE4RzRORzB2WDlJeU5KMWpDczV1RmtVOTdkczNZNXhWSDZUSFhFeDB4UFVEVTdpMzNQbXZiZXUzdFMyalRlMXZTZWMxZUx4MDVWaU96bC9FajJ4NTNiSHBXakNOeWl1M2NydDNLYXFLNko1VjAxUnlxcG5zbUo2WWxSOGdBQStyZEZkeTVSYnQwMVYxMXp5b3Bwam5WVlBaRVIweklNM2NKTzU4MTdjTjJ6cVc3cWIyaWFUemlyeGVlakt2eDJjdjRjZTJmTzdJOUtVYlk3ZjBiUzlBMGpIMG5SOEt6aFlXUFQzdHF6YWpsRk1mck05Y3pQVE05YUQzZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBY3dlRFU5WjBqVEtacTFMVk1IQ3Bqcm5JeUtMY2YxVEFJSnJPQndlNGxabHpGeWIyM2RYejZQTjhKajVWRk9SSHVyb21LcCtNQWhldGR5OXRYSXJtdlNkd2F4cDhUOWk3RkYrbVB4aUorSzBXYi9wV283Ly9BTDVxNzMvMWtjLy9BS0ZGNTBYdVh0cTQ5Y1Y2dHVEV05RaVBzV29vc1V6K0VWVDhTaWFhTmdjSHVHdVpieGNhOXQzU00rdnpmQ1pHVlJWa1Q3NjY1bXFQaENDZDZack9rYW5URldtNnBnNXRNOVU0K1JSY2orbVpCNytZQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFMSnZEZG0zZG82ZC9hRzR0V3h0UHNUUEtqd2xYT3E1UFpSVEhuVlQ3SWlRWWIxM3VvdHM0OTJxalJ0dTZycU1SMVhMMWRHUFRWN284NnJsNzRoWUlacTNkUmJvdmQ5R21iYjBqRXBucW0vZHVYNm8vRHZZSUlocTNIdmlobnhWVFRyOXJDb243T0poMjZPWDMxUlZQeElJanErK041NnZFeHFXNjlieXFaNjZhczJ1S2Z5eE1SOEFSKzVNM0s1cnVmdEtwKzFYNTAvaktpbnBpZlRIVlBZQ1JhUHZuZW1rVVJiMHpkbXQ0dHVPcWlqTnJtbVA1Wm1ZUVhmeXZjVGU4NzMrK3VxOHZmUnovQUI3MGd0R3NiNTNwcTlFMjlUM1pyZVZibnJvcnphNHBuK1dKaUFSMzB6UHBucm50VVZ0ek51dUs3ZjdPcVB0VWViUDR3Q1FhUnZqZWVrUkVhYnV2VzhXbU9xbW5Ocm1uOHN6TWZCQkx0SjQ5OFVNQ0thYXRmdFp0RWVqTHc3ZGZQNzZZcG40a0V2MG51b3QwV2U5alU5dDZSbDB4MXpZdTNMRlUvajMwRUV6MEx1b3RzNUYybWpXZHZhcnAwVDEzTE5kR1JUSDNlYlZ5OTBTUVprMmZ1emJ1N3RPL3REYnVyWTJvV0lubFg0T3JsVmJuc3JwbnpxWjlreENDOWdBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWhuR0hmdUR3OTJmZDFqSW9wdjVkeXJ3T0ZqVFZ5OE5kbU9jUlBaVEVkTXoyUjJ6QU5HTjI3ajFuZFd1WHRaMTdPdVptWmRuOTZyb3BvcDlGRkZQVlRUSG9pUGpQU290S2dBQUFBQUFBQUFBQUFBQzdiUzNIck8xZGNzNnpvV2Rjdzh5MVA3MVBUVFhUNmFLNmVxcW1leWZoUFNnM240UGI5d2VJV3o3V3NZOUZOakx0MWVCemNhS3VmZ2JzUnptSTdhWmpwaWV5ZTJKUVRNQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUdtZmRkN2l2YXR4VHEwZUxremk2TmowV2FLWW5vOEpjaUs2NnZmeW1pUDVWd1liVUFBQUFBQUFBQUFBQUFBQUFabDdrVGNWN1NlS2RPanpjbU1YV2NldXpYVE05SGhMY1RYUlY3K1VWeC9NbWpjdEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFucUJvRnh5ditNY1lkMTNPZlZxZHlqOHNSVC94WEJERkFBQUFBQUFBQUFBQUFBQUFFejRHMy9GK01PMUxuUHIxTzNSK2FKcC81Sm8zOWpxUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUpCenM0aDVIamUvOEFjV1Z6NStGMVhLcWlmOVdwUllsQUFBQUFBQUFBQUFBQUFBQUY5NGVaSGltLzl1NVhQbDRMVmNXcVovMWFVSFJPRUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUZLcGlLWm1laUk2UWMyZFV2VGthbmw1RTlNM2NpNWMvTlhNL3FvOHlnQUFBQUFBQUFBQUFBQUFBRDA2WGVuSDFQRXlJNkp0WkZ1NStXdUovUkIwbXBtSnBpWTZZbnBRVkFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQjRkd1gvRmRDejhtWjVSYXhydGY0VVRQNkE1dVVUem9wcW5ybUlsb1ZBQUFBQUFBQUFBQUFBQUFBQlN1ZVZGVlVkY1JNZzZSN2Z2K05hRmdaTVR6aTdqV3EveG9pZjFaSHVBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJIT0tHUkdKdzMzTGs4K1hnOUp5WmlmYjRLb0hQR21PVk1SMlJFTkNvQUFBQUFBQUFBQUFBQUFBQUtWUnpwbU8ySmdIUTdoZmtSbDhOOXRaUFBuNFRTY2FabjIrQ3BaRWpBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJCTzZDeVBGdURHNnJrVHk1NmZYYi9OTVUvcURRdWV1V2hRQUFBQUFBQUFBQUFBQUFBQUZZNjRCdnAzUHVSNHp3WTJyY21lZkxUNkxmNVptbjlHUk93QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFZLzdvckN5Yy9ndHViSHhLS3E3bE9MRjJhYVk1ek5OdXVtdXIrbW1RYUh0QUFBQUFBQUFBQUFBQUFBQUFBRGZEdWRjTEp3T0MyMmNmTG9xb3UxWXMzWXBxamxNVTNLNnE2ZjZhb1pHUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWZOeWlpN2JxdDNLS2E2S29tS3FhbzV4TVQxeE1BMWI0cGR6ZHFsR3FYdFEySGN4NytGZXFtcU5PdjNmQjEySm43TkZjK2JWVDJSTXhNZFhPVm9nUGtINHErcS93QTlZK3NvZVFmaXI2ci9BRDFqNnloNUIrS3ZxdjhBUFdQcktIa0g0cStxL3dBOVkrc29lUWZpcjZyL0FEMWo2eWg1QitLdnF2OEFQV1ByS0hrSDRxK3Evd0E5WStzb2VRZmlyNnIvQUQxajZ5aDVCK0t2cXY4QVBXUHJLSGtINHErcS93QTlZK3NvZVFmaXI2ci9BRDFqNnloNUIrS3ZxdjhBUFdQcktIa0g0cStxL3dBOVkrc29lUWZpcjZyL0FEMWo2eWg1QitLdnF2OEFQV1ByS0hrSDRxK3Evd0E5WStzb2VRZmlyNnIvQUQxajZ5aWZjTGU1dTFTdlZMT29iOHVZOWpDczFSVk9uV0x2aEs3OHg5bXV1UE5wcDdZaVptZXJuQlJ0SmJvb3RXNmJkdWltaWltSWltbW1PVVJFZFVSQ0Q2QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCLy9aIl0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ff_EtUQs0ieiIS1NYNBHEQSoy3ct4gpy-89JKwHilrT&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;notification_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dab8ef51-fb43-43a5-a5c1-247c93ddb942&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the <em>Deferred Flow</em> (step 24) as specified in Section <a class="reference internal" href="#deferred-flow"><span class="std std-ref">Deferred Flow</span></a>.</p>
+</div>
+<p><strong>Steps 22 (Notification Request)</strong>: According to Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], the Wallet sends an HTTP POST request to the Notification Endpoint using the <em>application/json</em> media type as in the following non-normative example.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/notification</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">eaa-provider.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU</span>
+<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik</span>
+    <span class="l">VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR</span>
+    <span class="l">nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R</span>
+    <span class="l">1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj</span>
+    <span class="l">oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z</span>
+    <span class="l">WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF</span>
+    <span class="l">c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E</span>
+    <span class="l">OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;notification_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dab8ef51-fb43-43a5-a5c1-247c93ddb942&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_accepted&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Steps 23 (Notification Response)</strong>: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code <em>204</em> as recommended in Section 10.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>]. Below is a non-normative example of response to a successful Notification Request:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</pre></div>
+</div>
+</section>
+<section id="deferred-flow">
+<h2>Deferred Flow<a class="headerlink" href="#deferred-flow" title="Link to this heading">¶</a></h2>
+<p>The PID/(Q)EAA Providers MAY support a <em>Deferred Flow</em> which has the aim of handling the cases where an immediate issuance is not possible for some reasons due to errors during the communication between the PID/(Q)EAA Provider and the Authentic Source (for example the Authentic Source is temporarily unavailable, etc.) or due to administrative or technical processes that do not allow the Credential to be provided immediately.</p>
+<section id="general-requirements">
+<h3>General Requirements<a class="headerlink" href="#general-requirements" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The Deferred Credential request MAY also happen several days after the initial Credential request.</p></li>
+<li><p>The User MUST be informed that the Credential is available and ready to be issued.</p></li>
+<li><p>The Wallet Provider MUST NOT be informed about which Credential is available to be issued or which Credential Provider the User needs to contact.</p></li>
+<li><p>The Wallet Instance MUST be informed about the amount of time to wait before making a new Credential request.</p></li>
+<li><p>As, in general, an unavailability may be an unexpected event, the PID/(Q)EAA Provider MUST be able to switch on the fly between a <em>immediate</em> and an <em>deferred</em> flow. This decision MUST be taken after the authorization step.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="technical-flow">
+<h3>Technical Flow<a class="headerlink" href="#technical-flow" title="Link to this heading">¶</a></h3>
+<p>If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue a requested Credential, they MUST provide the Wallet Instance with an HTTP Credential Response cointaining the amount of time to wait before making a new Credential request. The HTTP status code MUST be <em>202</em> (see Section 15.3.3 of [<span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9110.html"><strong>RFC 9110</strong></a>]). Below a non-normative example is given.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">202</span> <span class="ne">Accepted</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;lead_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">864000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;c_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ff_EtUQs0ieiIS1NYNBHEQSoy3ct4gpy-89JKwHilrT&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;c_nonce_expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>The Wallet Instance MUST use the value given in the <em>lead_time</em> parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the <em>lead_time</em> time value). PID/(Q)EAA Providers MAY send a notification to the User through a communication channel (e.g. email address), if available from the PID/(Q)EAA Provider.</p>
+<p>Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User opens the Wallet Instance and start the Issuance Flow again from the beginning as defined in the previous section.</p>
+<p>If the <em>lead_time</em> parameter is less than the expiration time of the Access Token, the Wallet Instance MAY use it along with the <em>c_nonce</em> provided in the Credential Response to perform a new Credential Request without requiring the User to submit a new authentication request.</p>
+<p>In the case where the Authentic Source and the PID/(Q)EAA Provider are both enabled to use <em>PDND</em>, what is described in Section <a class="reference internal" href="authentic-sources.html#authentic-sources"><span class="std std-ref">Authentic Sources</span></a> MUST apply.</p>
+</section>
 </section>
 <section id="pushed-authorization-request-endpoint">
 <h2>Pushed Authorization Request Endpoint<a class="headerlink" href="#pushed-authorization-request-endpoint" title="Link to this heading">¶</a></h2>
@@ -599,7 +667,7 @@ without encoding and signature. The JWS header:</p>
 <tbody>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
 <td><p>MUST be set to the thumbprint of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation.</p></td>
-<td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
+<td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request</strong></p></td>
 <td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation MUST be used for signing the Request Object.</p></td>
@@ -645,11 +713,11 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.</p></td>
-<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -673,23 +741,23 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>It MUST be set to the <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
-<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>It MUST be set to the identifier of the PID/(Q)EAA Provider.</p></td>
-<td><p><span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX Timestamp with the expiry time of the JWT. The claim value MUST be not greater than 300 seconds from the issuance time.</p></td>
-<td><p><span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_type</strong></p></td>
 <td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">code</span></code>.</p></td>
-<td><p><span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
+<td><p><span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_mode</strong></p></td>
 <td><p>It MUST be a string indicating the &quot;<em>response_mode</em>&quot;, as specified in [<a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAUTH-MULT-RESP-TYPE</a>]. It MUST be one of the supported values (<em>response_modes_supported</em>) provided in the metadata of the PID/(Q)EAA Provider. It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of <em>HTTP 302 Redirect Response</em> the value MUST be <em>query</em>. In this mode, Authorization Response parameters are encoded in the query string added to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> when redirecting back to the Wallet Instance. In case of <em>HTTP POST Response</em> the value MUST be <em>form_post.jwt</em> according to [<a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-04.html">OAUTH-V2-JARM-04</a>]. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the user-agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the <em>application/x-www-form-urlencoded</em> format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.</p></td>
@@ -705,11 +773,11 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 </tr>
 <tr class="row-even"><td><p><strong>code_challenge</strong></p></td>
 <td><p>A challenge derived from the <strong>code verifier</strong> that is sent in the authorization request.</p></td>
-<td><p><span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.2"><strong>RFC 7636#section-4.2</strong></a>.</p></td>
+<td><p><span class="target" id="index-47"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.2"><strong>RFC 7636#section-4.2</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code_challenge_method</strong></p></td>
 <td><p>A method that was used to derive <strong>code challenge</strong>. It MUST be set to <code class="docutils literal notranslate"><span class="pre">S256</span></code>.</p></td>
-<td><p><span class="target" id="index-47"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
+<td><p><span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>authorization_details</strong></p></td>
 <td><p>Array of JSON Objects. Each JSON Object MUST include the following claims:</p>
@@ -722,7 +790,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 </ul>
 </div></blockquote>
 </td>
-<td><p>See [RAR <span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] and [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
+<td><p>See [RAR <span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] and [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>redirect_uri</strong></p></td>
 <td><p>Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.</p></td>
@@ -730,7 +798,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
 <td><p>Unique identifier of the JWT that, together with the value contained in the <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim,  prevents the reuse of the JWT (replay attack). Since the <cite>jti</cite> value alone is not collision resistant, it MUST be identified uniquely together with its issuer.</p></td>
-<td><p>[<span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
@@ -750,7 +818,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -770,30 +838,30 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>Thumbprint of the JWK in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter.</p></td>
-<td><p><span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-52"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-52"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>It MUST be set to the identifier of the PID/(Q)EAA Provider.</p></td>
-<td><p><span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-55"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX Timestamp with the expiry time of the JWT.</p></td>
-<td><p><span class="target" id="index-55"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-56"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-56"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-57"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-57"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-58"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-58"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-59"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
-<td><p>Unique identifier for the DPoP proof JWT. The value SHOULD be set using a <em>UUID v4</em> value according to [<span class="target" id="index-59"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>].</p></td>
-<td><p>[<span class="target" id="index-60"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
+<td><p>Unique identifier for the DPoP proof JWT. The value SHOULD be set using a <em>UUID v4</em> value according to [<span class="target" id="index-60"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="pushed-authorization-request-par-response">
 <span id="sec-par"></span><h3>Pushed Authorization Request (PAR) Response<a class="headerlink" href="#pushed-authorization-request-par-response" title="Link to this heading">¶</a></h3>
-<p>If the verification is successful, the PID/(Q)EAA Issuer MUST provide the response with a <em>201 HTTP status code</em>. The following parameters are included as top-level members in the HTTP response message body, using the <code class="docutils literal notranslate"><span class="pre">application/json</span></code> media type as defined in [<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8259.html"><strong>RFC 8259</strong></a>].</p>
+<p>If the verification is successful, the PID/(Q)EAA Issuer MUST provide the response with a <em>201 HTTP status code</em>. The following parameters are included as top-level members in the HTTP response message body, using the <code class="docutils literal notranslate"><span class="pre">application/json</span></code> media type as defined in [<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8259.html"><strong>RFC 8259</strong></a>].</p>
 <table class="docutils align-default" id="table-http-response-claim">
 <colgroup>
 <col style="width: 20.0%" />
@@ -809,15 +877,15 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>request_uri</strong></p></td>
 <td><p>The request URI corresponding to the authorization request posted. This URI MUST be a single-use reference to the respective authorization request. It MUST contain some part generated using a cryptographically strong pseudorandom algorithm. The value format MUST be <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:request_uri:&lt;reference-value&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">&lt;reference-value&gt;</span></code> as the random part of the URI that references the respective authorization request data.</p></td>
-<td><p>[<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>expires_in</strong></p></td>
 <td><p>A JSON number that represents the lifetime of the request URI in seconds as a positive integer.</p></td>
-<td><p>[<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-64"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
-<p>If any errors occur during the PAR Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-64"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html#section-2.3"><strong>RFC 9126#section-2.3</strong></a>. The response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
+<p>If any errors occur during the PAR Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html#section-2.3"><strong>RFC 9126#section-2.3</strong></a>. The response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>error</em>. The error code.</p></li>
@@ -864,7 +932,7 @@ The authorization server MUST first verify the identity of the User that own the
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
 <td><p>It MUST be set to the same value as obtained by PAR Response. See <a class="reference internal" href="revocation-lists.html#table-http-response-claim"><span class="std std-ref">Table of the HTTP PAR Response parameters</span></a>.</p></td>
-<td><p>[<span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
@@ -892,19 +960,19 @@ The authorization server MUST first verify the identity of the User that own the
 <tbody>
 <tr class="row-even"><td><p><strong>code</strong></p></td>
 <td><p>Unique <em>Authorization Code</em> that the Wallet Instance submits to the Token Endpoint.</p></td>
-<td><p>[<span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>], [<span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>], [<span class="target" id="index-68"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>state</strong></p></td>
 <td><p>The Wallet Instance MUST check the correspondence with the <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter value in the Request Object. It is defined as in the <a class="reference internal" href="#table-jwt-request"><span class="std std-ref">Table of the JWT Request parameters</span></a>.</p></td>
-<td><p>[<span class="target" id="index-68"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-69"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>Unique identifier of the PID/(Q)EAA Issuer who created the Authentication Response. The Wallet Instance MUST validate this parameter.</p></td>
-<td><p>[<span class="target" id="index-69"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9207.html"><strong>RFC 9207</strong></a>], [<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>, Section 4.1.1.].</p></td>
+<td><p>[<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9207.html"><strong>RFC 9207</strong></a>], [<span class="target" id="index-71"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>, Section 4.1.1.].</p></td>
 </tr>
 </tbody>
 </table>
-<p>If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-71"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>. The response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
+<p>If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>. The response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>error</em>. The error code.</p></li>
@@ -916,7 +984,7 @@ The authorization server MUST first verify the identity of the User that own the
 <section id="token-endpoint">
 <h2>Token endpoint<a class="headerlink" href="#token-endpoint" title="Link to this heading">¶</a></h2>
 <p>The token endpoint is used by the Wallet Instance to obtain an Access Token by presenting an authorization grant, as
-defined in <span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>. The Token Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a> ].</p>
+defined in <span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>. The Token Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a> ].</p>
 <section id="token-request">
 <span id="sec-token-request"></span><h3>Token Request<a class="headerlink" href="#token-request" title="Link to this heading">¶</a></h3>
 <p>The request to the PID/(Q)EAA Token endpoint MUST be an HTTP request with method POST, with the body message encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format. The Wallet Instance sends the Token endpoint request with <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation</span></code> and <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> as header parameters according to <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>.</p>
@@ -924,7 +992,7 @@ defined in <span class="target" id="index-72"></span><a class="rfc reference ext
 the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters <strong>OAuth-Client-Attestation</strong> as <strong>OAuth-Client-Attestation-PoP</strong>
 as defined in the &quot;Pushed Authorization Request (PAR) Endpoint&quot;.</p>
 <p>The Token endpoint issues DPoP tokens, therefore it is REQUIRED that the request incluides in its HTTP header the DPoP proof parameter.
-The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (<span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>). This mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [<span class="target" id="index-74"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <code class="docutils literal notranslate"><span class="pre">invalid_dpop_proof</span></code> as the value of the error parameter.</p>
+The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (<span class="target" id="index-74"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>). This mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [<span class="target" id="index-75"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <code class="docutils literal notranslate"><span class="pre">invalid_dpop_proof</span></code> as the value of the error parameter.</p>
 <p>All the parameters listed below are REQUIRED:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -941,15 +1009,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>grant_type</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">authorization_code</span></code>.</p></td>
-<td><p>[<span class="target" id="index-75"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-76"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code</strong></p></td>
 <td><p>Authorization code returned in the Authentication Response.</p></td>
-<td><p>[<span class="target" id="index-76"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-77"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>redirect_uri</strong></p></td>
 <td><p>It MUST be set as in the Request Object <a class="reference internal" href="#table-jwt-request"><span class="std std-ref">Table of the JWT Request parameters</span></a>.</p></td>
-<td><p>[<span class="target" id="index-77"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-78"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code_verifier</strong></p></td>
 <td><p>Verification code of the <strong>code_challenge</strong>.</p></td>
@@ -974,15 +1042,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>It MUST be equal to <code class="docutils literal notranslate"><span class="pre">dpop+jwt</span></code>.</p></td>
-<td><p>[<span class="target" id="index-78"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] and [<span class="target" id="index-79"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>. Section 3.11].</p></td>
+<td><p>[<span class="target" id="index-79"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] and [<span class="target" id="index-80"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>. Section 3.11].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or with a symmetric algorithm (MAC) identifier.</p></td>
-<td><p>[<span class="target" id="index-80"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-81"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwk</strong></p></td>
-<td><p>It represents the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [<span class="target" id="index-81"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] format that the Access Token MUST be bound to, as defined in [<span class="target" id="index-82"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] Section 4.1.3. It MUST NOT contain a private key.</p></td>
-<td><p>[<span class="target" id="index-83"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] and [<span class="target" id="index-84"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>It represents the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [<span class="target" id="index-82"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] format that the Access Token MUST be bound to, as defined in [<span class="target" id="index-83"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] Section 4.1.3. It MUST NOT contain a private key.</p></td>
+<td><p>[<span class="target" id="index-84"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] and [<span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
@@ -1001,20 +1069,20 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
-<td><p>Unique identifier for the DPoP proof JWT. The value SHOULD be set using a <em>UUID v4</em> value according to [<span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>].</p></td>
-<td><p>[<span class="target" id="index-86"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
+<td><p>Unique identifier for the DPoP proof JWT. The value SHOULD be set using a <em>UUID v4</em> value according to [<span class="target" id="index-86"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>htm</strong></p></td>
 <td><p>The value of the HTTP method of the request to which the JWT is attached.</p></td>
-<td><p>[<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9110.html"><strong>RFC 9110</strong></a>. Section 9.1].</p></td>
+<td><p>[<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9110.html"><strong>RFC 9110</strong></a>. Section 9.1].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>htu</strong></p></td>
 <td><p>The HTTP target URI, without query and fragment parts, of the request to which the JWT is attached.</p></td>
-<td><p>[<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9110.html"><strong>RFC 9110</strong></a>. Section 7.1].</p></td>
+<td><p>[<span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9110.html"><strong>RFC 9110</strong></a>. Section 7.1].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-<td><p>[<span class="target" id="index-90"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
+<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-90"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[<span class="target" id="index-91"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
 </tr>
 </tbody>
 </table>
@@ -1037,15 +1105,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>access_token</strong></p></td>
 <td><p>The <em>DPoP-bound Access Token</em>, in signed JWT format, allows accessing the PID/(Q)EAA Credential Endpoint for obtaining the credential.</p></td>
-<td><p><span class="target" id="index-91"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
+<td><p><span class="target" id="index-92"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>token_type</strong></p></td>
 <td><p>Type of <em>Access Token</em> returned. It MUST be equal to <code class="docutils literal notranslate"><span class="pre">DPoP</span></code>.</p></td>
-<td><p><span class="target" id="index-92"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
+<td><p><span class="target" id="index-93"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>expires_in</strong></p></td>
 <td><p>Expiry time of the <em>Access Token</em> in seconds.</p></td>
-<td><p><span class="target" id="index-93"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
+<td><p><span class="target" id="index-94"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>c_nonce</strong></p></td>
 <td><p>JSON string containing a <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value to be used to create a <em>proof of possession</em> of key material when requesting a Credential.</p></td>
@@ -1061,7 +1129,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </tr>
 </tbody>
 </table>
-<p>If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-94"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>.</p>
+<p>If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-95"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json;charset=UTF-8</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
@@ -1077,7 +1145,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </section>
 <section id="access-token">
 <h3>Access Token<a class="headerlink" href="#access-token" title="Link to this heading">¶</a></h3>
-<p>A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [<span class="target" id="index-95"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (<span class="target" id="index-96"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>).</p>
+<p>A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [<span class="target" id="index-96"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (<span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>).</p>
 <p>The JOSE header of a <strong>DPoP JWT</strong> MUST contain the following claims.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1094,15 +1162,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>It MUST be equal to <code class="docutils literal notranslate"><span class="pre">at+jwt</span></code>.</p></td>
-<td><p>[<span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or with a symmetric algorithm (MAC) identifier.</p></td>
-<td><p>[<span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> used by the PID/(Q)EAA Provider to sign the Access Token.</p></td>
-<td><p><span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-100"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1121,35 +1189,35 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>It MUST be an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet Instance MUST verify that this value matches the PID/(Q)EAA Issuer where it has requested the credential.</p></td>
-<td><p>[<span class="target" id="index-100"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-101"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-101"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-102"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
 <td><p>It identifies the subject of the JWT. It MUST be set to the value of the <code class="docutils literal notranslate"><span class="pre">sub</span></code> field in the PID/(Q)EAA SD-JWT-VC.</p></td>
-<td><p>[<span class="target" id="index-102"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-103"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and Section 8 of [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>].</p></td>
+<td><p>[<span class="target" id="index-103"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-104"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and Section 8 of [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
 <td><p>The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>).</p></td>
-<td><p>[<span class="target" id="index-104"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-105"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and Section 8 of [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>].</p></td>
+<td><p>[<span class="target" id="index-105"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-106"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and Section 8 of [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>It MUST be set to the URL of Credential Endpoint of the PID/(Q)EAA Provider.</p></td>
-<td><p>[<span class="target" id="index-106"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>].</p></td>
+<td><p>It MUST be set to the identifier of the PID/(Q)EAA Provider.</p></td>
+<td><p>[<span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-<td><p>[<span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-109"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
+<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[<span class="target" id="index-109"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-110"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in <span class="target" id="index-110"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-<td><p>[<span class="target" id="index-111"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-112"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in <span class="target" id="index-111"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[<span class="target" id="index-112"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-113"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
 <td><p>It MUST be a String in <em>uuid4</em> format. Unique Token ID identifier that the RP SHOULD use to prevent reuse by rejecting the Token ID if already processed.</p></td>
-<td><p>[<span class="target" id="index-113"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-114"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-114"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-115"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>cnf</strong></p></td>
-<td><p>It MUST contain a <strong>jkt</strong> claim being JWK SHA-256 Thumbprint Confirmation Method. The value of the <em>jkt</em> member MUST be the base64url encoding (as defined in [<span class="target" id="index-115"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.</p></td>
-<td><p>[<span class="target" id="index-116"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>. Section 6.1] and [<span class="target" id="index-117"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html"><strong>RFC 7638</strong></a>].</p></td>
+<td><p>It MUST contain a <strong>jkt</strong> claim being JWK SHA-256 Thumbprint Confirmation Method. The value of the <em>jkt</em> member MUST be the base64url encoding (as defined in [<span class="target" id="index-116"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.</p></td>
+<td><p>[<span class="target" id="index-117"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>. Section 6.1] and [<span class="target" id="index-118"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html"><strong>RFC 7638</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
@@ -1161,13 +1229,13 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <section id="credential-request">
 <h3>Credential Request<a class="headerlink" href="#credential-request" title="Link to this heading">¶</a></h3>
 <p>The Wallet Instance when requests the PID/(Q)EAA to the PID/(Q)EAA Credential endpoint, MUST use the following parameters in the message body of the HTTP POST request, using the <cite>application/json</cite> media type.</p>
-<p>The Credential endpoint MUST accept and validate the <em>DPoP proof</em> sent in the DPoP HTTP Header parameter, according to the steps defined in (<span class="target" id="index-118"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) Section 4.3. The <em>DPoP proof</em> in addition to the values that are defined in the Token Endpoint section MUST contain the following claim:</p>
+<p>The Credential endpoint MUST accept and validate the <em>DPoP proof</em> sent in the DPoP HTTP Header parameter, according to the steps defined in (<span class="target" id="index-119"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) Section 4.3. The <em>DPoP proof</em> in addition to the values that are defined in the Token Endpoint section MUST contain the following claim:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>ath</strong>: hash value of the Access Token encoded in ASCII. The value MUST use the base64url encoding (as defined in Section 2 of <span class="target" id="index-119"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) with the SHA-256 algorithm.</p></li>
+<li><p><strong>ath</strong>: hash value of the Access Token encoded in ASCII. The value MUST use the base64url encoding (as defined in Section 2 of <span class="target" id="index-120"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) with the SHA-256 algorithm.</p></li>
 </ul>
 </div></blockquote>
-<p>If the <em>DPoP proof</em> is invalid, the Credential endpoint returns an error response per Section 5.2 of [<span class="target" id="index-120"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <cite>invalid_dpop_proof</cite> as the value of the error parameter.</p>
+<p>If the <em>DPoP proof</em> is invalid, the Credential endpoint returns an error response per Section 5.2 of [<span class="target" id="index-121"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <cite>invalid_dpop_proof</cite> as the value of the error parameter.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The Wallet Instance MUST create a <strong>new DPoP proof</strong> for the Credential request and MUST NOT use the previously created proof for the Token Endpoint.</p>
@@ -1228,15 +1296,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or to a symmetric algorithm (MAC) identifier.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-121"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-122"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-122"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-123"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
 <td><p>It MUST be set to <cite>openid4vci-proof+jwt</cite>.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-123"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-124"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-124"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-125"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwk</strong></p></td>
-<td><p>Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [<span class="target" id="index-125"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [<span class="target" id="index-126"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-127"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-128"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
+<td><p>Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [<span class="target" id="index-126"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [<span class="target" id="index-127"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-128"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-129"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
@@ -1255,15 +1323,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>The value of this claim MUST be the <strong>client_id</strong> of the Wallet Instance.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-129"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>, Section 4.1.1].</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-130"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>, Section 4.1.1].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>The value of this claim MUST be the identifier URL of the PID/(Q)EAA Issuer.</p></td>
 <td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-130"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-131"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
+<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-131"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-132"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nonce</strong></p></td>
 <td><p>The value type of this claim MUST be a string, where the value is a <strong>c_nonce</strong> provided by the PID/(Q)EAA Issuer in the Token response.</p></td>
@@ -1274,9 +1342,9 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </section>
 <section id="credential-response">
 <h3>Credential Response<a class="headerlink" href="#credential-response" title="Link to this heading">¶</a></h3>
-<p>Credential Response to the Wallet Instance MUST be sent using <cite>application/json</cite> media type. If the Credential Request is successfully validated, the PID/(Q)EAA Provider MUST return HTTP response with a <em>200 (OK)</em> status code and MUST contain the following mandatory claims:</p>
-<span id="table-credential-response-claim"></span><table class="docutils align-default" id="id8">
-<caption><span class="caption-number">Table 5 </span><span class="caption-text">Credential http response parameters</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<p>Credential Response to the Wallet Instance MUST be sent using <cite>application/json</cite> media type. If the Credential Request is successfully validated, and the Credential is immediately available, the PID/(Q)EAA Provider MUST return HTTP response with a <em>200 (OK)</em> status code. If the Credential is not available and the deferred flow is supported by the PID/(Q)EAA Provider, an HTTP status code <em>202</em> MUST be returned.</p>
+<p>The Credential Response contains the following parameters:</p>
+<table class="docutils align-default" id="table-credential-response-claim">
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -1290,15 +1358,23 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>credential</strong></p></td>
-<td><p>String Containing the issued PID/(Q)EAA. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST NOT be re-encoded. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST be a base64url-encoded representation of the issued Credential.</p></td>
+<td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">lead_time</span></code> is not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST NOT be re-encoded. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST be a base64url-encoded representation of the issued Credential.</p></td>
 <td><p>Section 7.3, Annex A2.5 and Annex A3.5 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>c_nonce</strong></p></td>
-<td><p>JSON string containing a <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value to be used to create a <em>proof of possession</em> of the key material when requesting a further Credential or for the renewal of a credential.</p></td>
+<tr class="row-odd"><td><p><strong>lead_time</strong></p></td>
+<td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">credential</span></code> is not present. The amount of time (in seconds) required before making a new Credential Request.</p></td>
+<td><p>This Specification</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>c_nonce</strong></p></td>
+<td><p>REQUIRED. JSON string containing a <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value to be used to create a <em>proof of possession</em> of the key material when requesting a further Credential or for the renewal of a Credential.</p></td>
 <td><p>Section 7.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>c_nonce_expires_in</strong></p></td>
-<td><p>JSON integer corresponding to the <strong>c_nonce</strong> lifetime in seconds.</p></td>
+<tr class="row-odd"><td><p><strong>c_nonce_expires_in</strong></p></td>
+<td><p>REQUIRED. JSON integer corresponding to the <code class="docutils literal notranslate"><span class="pre">c_nonce</span></code> lifetime in seconds.</p></td>
+<td><p>Section 7.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>notification_id</strong></p></td>
+<td><p>OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section <a class="reference internal" href="#notification-request"><span class="std std-ref">Notification Request</span></a>. It MUST NOT be present if the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter is not present</p></td>
 <td><p>Section 7.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 </tbody>
@@ -1323,6 +1399,53 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </div>
 </section>
 </section>
+<section id="notification-endpoint">
+<h2>Notification endpoint<a class="headerlink" href="#notification-endpoint" title="Link to this heading">¶</a></h2>
+<p>The Notification Endpoint is used by the Wallet to notify the PID/(Q)EAA Provider of certain events for issued Credentials, such as if the Credential was successfully stored in the Wallet Instance or in case of unsuccessful Credential issuance caused by a User action.</p>
+<p>This endpoint MUST be protected using a DPoP Access Token. TLS for the confidentiality of the HTTP transport is REQUIRED according to Section 10 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p>
+<section id="notification-request">
+<h3>Notification Request<a class="headerlink" href="#notification-request" title="Link to this heading">¶</a></h3>
+<p>The Notification Request MUST be an HTTP POST using the <em>application/json</em> media type with the following parameters.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19.0%" />
+<col style="width: 57.1%" />
+<col style="width: 23.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>notification_id</strong></p></td>
+<td><p>REQUIRED. It MUST be equal to the <code class="docutils literal notranslate"><span class="pre">notification_id</span></code> value returned in the Credential Response by the PID/(Q)EAA Provider.</p></td>
+<td><p>Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>event</strong></p></td>
+<td><p>REQUIRED. Type of the notification event. It MUST be a case sensitive string and it MUST support the following values:</p>
+<ul class="simple">
+<li><p><em>credential_accepted</em>: when the Credential was successfully stored in the Wallet Instance.</p></li>
+<li><p><em>credential_deleted</em>: when the unsuccessful Credential issuance was caused by a user action.</p></li>
+<li><p><em>credential_failure</em>: in all other unsuccessful cases.</p></li>
+</ul>
+</td>
+<td><p>Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>event_description</strong></p></td>
+<td><p>OPTIONAL. Human-readable ASCII [USASCII] text providing additional information, used to inform about the event that occurred. Values for the event_description parameter MUST NOT include characters outside the set <em>%x20-21 / %x23-5B / %x5D-7E</em>.</p></td>
+<td><p>Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notification-response">
+<h3>Notification Response<a class="headerlink" href="#notification-response" title="Link to this heading">¶</a></h3>
+<p>The Notification Response MUST be use an HTTP status code <em>204 (No Content)</em>, as recommended in Section 10.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p>
+<p>In case of errors, what is described in Section 10.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>] MUST apply.</p>
+</section>
+</section>
 </section>
 
 
@@ -1342,7 +1465,12 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <li><a class="reference internal" href="#">PID/(Q)EAA Issuance</a><ul>
 <li><a class="reference internal" href="#high-level-pid-flow">High-Level PID flow</a></li>
 <li><a class="reference internal" href="#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
-<li><a class="reference internal" href="#detailed-flow">Detailed Flow</a></li>
+<li><a class="reference internal" href="#low-level-issuance-flow">Low-Level Issuance Flow</a></li>
+<li><a class="reference internal" href="#deferred-flow">Deferred Flow</a><ul>
+<li><a class="reference internal" href="#general-requirements">General Requirements</a></li>
+<li><a class="reference internal" href="#technical-flow">Technical Flow</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
 <li><a class="reference internal" href="#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
 <li><a class="reference internal" href="#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
@@ -1362,6 +1490,11 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <li><a class="reference internal" href="#credential-endpoint">Credential endpoint</a><ul>
 <li><a class="reference internal" href="#credential-request">Credential Request</a></li>
 <li><a class="reference internal" href="#credential-response">Credential Response</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#notification-endpoint">Notification endpoint</a><ul>
+<li><a class="reference internal" href="#notification-request">Notification Request</a></li>
+<li><a class="reference internal" href="#notification-response">Notification Response</a></li>
 </ul>
 </li>
 </ul>
