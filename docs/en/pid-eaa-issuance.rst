@@ -974,7 +974,7 @@ The Credential Response contains the following parameters:
     - CONDITIONAL. REQUIRED if ``credential`` is not present. The amount of time (in seconds) required before making a new Credential Request.
     - This Specification
   * - **c_nonce**
-    - REQUIRED. JSON string containing a ``nonce`` value to be used to create a *proof of possession* of the key material when requesting a further Credential or for the renewal of a credential.
+    - REQUIRED. JSON string containing a ``nonce`` value to be used to create a *proof of possession* of the key material when requesting a further Credential or for the renewal of a Credential.
     - Section 7.3 of [`OpenID4VCI`_].
   * - **c_nonce_expires_in**
     - REQUIRED. JSON integer corresponding to the ``c_nonce`` lifetime in seconds.
