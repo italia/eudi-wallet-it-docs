@@ -126,6 +126,7 @@ html_theme_options = {
     "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
     "source_icon": "gitlab",
 }
+
 # -- ReadTheDoc requirements and local template generation---------------------
 
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org

@@ -1,0 +1,23 @@
+{
+  "iss": "https://pidprovider.example.org",
+  "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+  "iat": 1683000000,
+  "exp": 1883000000,
+  "status": {
+    "status_assertion": {
+      "credential_hash_alg": "sha-256"
+    }
+  },
+  "vct": "https://pidprovider.example.org/v1.0/personidentificationdata",
+  "vct#integrity": "c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f",
+  "verification": {
+    "auth_trust_framework": "eidas",
+    "loa": "high",
+    "auth_method": "cie"
+  },
+  "unique_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "given_name": "Mario",
+  "family_name": "Rossi",
+  "birth_date": "1980-01-10",
+  "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"
+}

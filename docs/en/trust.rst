@@ -205,7 +205,7 @@ All the participants in the federation MUST obtain the federation configuration 
 MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the 
 public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (**max_path_length**).
 
-Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OpenID Federation <OIDC-FED>`_ specification:
+Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OpenID Federation <OID-FED>`_ specification:
 
 .. code-block:: text
 

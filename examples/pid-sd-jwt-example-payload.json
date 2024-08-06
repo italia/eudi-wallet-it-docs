@@ -1,0 +1,34 @@
+{
+  "_sd": [
+    "BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig",
+    "ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E",
+    "VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA",
+    "Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE",
+    "s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk",
+    "zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o"
+  ],
+  "exp": 1883000000,
+  "iss": "https://pidprovider.example.org",
+  "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+  "status": {
+    "status_assertion": {
+      "credential_hash_alg": "sha-256"
+    }
+  },
+  "vct": "https://pidprovider.example.org/v1.0/personidentificationdata",
+  "vct#integrity": "c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f",
+  "verification": {
+    "auth_trust_framework": "eidas",
+    "loa": "high",
+    "auth_method": "cie"
+  },
+  "_sd_alg": "sha-256",
+  "cnf": {
+    "jwk": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+      "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+    }
+  }
+}

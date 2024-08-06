@@ -1,0 +1,36 @@
+{
+  "_sd": [
+    "8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E",
+    "Dx-6hjvrcxNzF0slU6ukNmzHoL-YvBN-tFa0T8X-bY0",
+    "GE3Sjy_zAT34f8wa5DUkVB0FslaSJRAAc8I3lN11Ffc",
+    "VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA",
+    "Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE",
+    "aBVdfcnxT0Z5RrwdxZSUhuUxz3gM2vcEZLeYIj61Kas",
+    "s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk",
+    "zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o"
+  ],
+  "exp": 1883000000,
+  "iss": "https://issuer.example.org",
+  "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+  "status": {
+    "status_assertion": {
+      "credential_hash_alg": "sha-256"
+    }
+  },
+  "vct": "https://issuer.example.org/v1.0/disabilitycard",
+  "vct#integrity": "2e40bcd6799008085ffb1a1f3517efee335298fd976b3e655bfb3f4eaa11d171",
+  "verification": {
+    "auth_trust_framework": "eidas",
+    "loa": "high",
+    "auth_method": "cie"
+  },
+  "_sd_alg": "sha-256",
+  "cnf": {
+    "jwk": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+      "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+    }
+  }
+}
