@@ -122,7 +122,11 @@ html_theme_options = {
     # 'False': default (alabaster) badge | 'True': custom (italia) badge
     'custom_versions_badge': 'True',
     'collapse_navigation': 'True',
+    "show_theme_credit": False,
+    "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
+    "source_icon": "gitlab",
 }
+
 # -- ReadTheDoc requirements and local template generation---------------------
 
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
@@ -151,7 +155,7 @@ else:
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-# html_logo = "images/logo.png"
+html_logo = "https://avatars.githubusercontent.com/u/15377824?s=48&v=4"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -199,7 +203,7 @@ html_last_updated_fmt = '%d/%m/%Y'
 #html_show_sphinx = True
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-# html_show_copyright = True
+html_show_copyright = False
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the
