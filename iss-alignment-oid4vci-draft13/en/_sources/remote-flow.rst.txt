@@ -201,9 +201,9 @@ Cross Device Flow Status Checks and Security
 
 When the flow is Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).
 
-Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under the Relying Party responsability the implementation details of this solution, since it is related to the Relying Party's internal API. However, the text below offers an implementation solution.
+Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under the Relying Party responsability the implementation details of this solution, since it is related to the Relying Party's internal API. However, the text below describes an implementation example.
 
-The Relying Party MUST bind the request of the user-agent, with a session cookie marked as ``Secure`` and ``HttpOnly`` , with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:
+The Relying Party binds the request of the user-agent, with a session cookie marked as ``Secure`` and ``HttpOnly``, with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:
 
 * **201 Created**. The signed Request Object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
 * **202 Accepted**. This response is given when the signed Request Object was obtained by the Wallet Instance.
@@ -397,7 +397,7 @@ Below a non-normative example of the request:
   response=eyJhbGciOiJFUzI1NiIs...9t2LQ
   
 
-Below is a non-normative example of the decrypted JSON ``response`` content:
+Below is a non-normative example of the decrypted payload of the JWT contained in the ``response``, before base64url encoding:
 
 .. code-block:: 
 
@@ -444,45 +444,62 @@ Where the following parameters are used:
     - Unique identifier provided by the Relying Party within the Authorization Request.
 
 
-Below is a non-normative example of the ``vp_token`` decoded content, represented in the form of JWS header and payload, separated by a period:
+The items contained in the ``vp_token`` array are Verifiable Presentations of Credentials.
+Both SD-JWT and mdoc CBOR provide indications for the presentation, according to their specifications.
 
-.. code-block:: text
+SD-JWT Presentation
+-------------------
 
-   {
-     "alg": "ES256",
-     "typ": "JWT"
-   }
-   .
-   {
-     "iss": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-     "jti": "3978344f-8596-4c3a-a978-8fcaba3903c5",
-     "aud": "https://relying-party.example.org/response_uri",
-     "iat": 1541493724,
-     "exp": 1573029723,
-     "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb",
-     "vp": "<Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>"
-   }
+SD-JWT defines how an Holder can present a Credential to a Verifier proving the legitimate possession
+of the Credential. For doing this the Holder MUST include the ``KB-JWT`` in the SD-JWT,
+by appending the ``KB-JWT`` at the end of the of the SD-JWT, as represented in the example below:
 
-Where the following parameters are used:
+.. code-block::
+
+  <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>~<KB-JWT>
+
+To validate the signature on the Key Binding JWT, the Verifier MUST use the key material included in the Issuer-Signed-JWT.
+The Key Binding JWT MUST specify which key material the Verifier needs to use to validate the Key Binding JWT signature,
+using JOSE header parameter ``kid``.
+
+When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS header:
 
 .. list-table::
   :widths: 25 50
   :header-rows: 1
 
-  * - **Name**
+  * - **Claim**
     - **Description**
-  * - **vp**
-    - The Digital Credential in its original state. The public key contained in the Digital Credential MUST be used to verify the entire VP JWS as Proof of Possession of the private key which the public key is included in the Digital Credential. Eg: for SD-JWT VC the public key is provided within the ``cnf.jwk`` claim.
-  * - **jti**
-    - JWS unique identifier.
+  * - **typ**
+    - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of [RFC8725].
+  * - **alg**
+    - REQUIRED. Signature Algorithm using one of the specified in the section Cryptographic Algorithms. 
+  * - **kid**
+    - REQUIRED. Unique identifier of the public key to be used to verify the signature.
+
+
+When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS payload:
+
+.. list-table::
+  :widths: 25 50
+  :header-rows: 1
+
+  * - **Claim**
+    - **Description**
   * - **iat**
-    - Unix timestamp of the time of issuance of this presentation.
-  * - **exp**
-    - Unix timestamp beyond which this presentation will no longer be considered valid.
+    - REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519].
   * - **aud**
-    - Audience of the VP, corresponding to the ``response_uri`` within the Authorization request issued by the Relying Party.
+    - REQUIRED. The intended receiver of the Key Binding JWT. How the value is represented is up to the protocol used and out of scope of this specification.
   * - **nonce**
-    - The nonce value provided by the Relying Party within the Authorization Request.
+    - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. How this value is obtained is up to the protocol used and out of scope of this specification.
+  * - **sd_hash**
+    - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.
+
+
+MDOC-CBOR Presentation
+----------------------
+
+TBD.
 
 
 Authorization Response Errors
@@ -532,13 +549,13 @@ The following is a non-normative example of the response from the Relying Party 
 .. code-block:: http
 
   HTTP/1.1 200 OK
-  Content-Type: application/json;charset=UTF-8
+  Content-Type: application/json
 
   {
-    "redirect_uri": "https://relying-party.example.org/cb#response_code=091535f699ea575c7937fa5f0f454aee"
+    "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
   }
 
-The ``redirect_uri`` value MUST be used with an HTTP method GET by either the Wallet Instance or the user-agent to redirect the User to the Relying Party in order to complete the process. The specific entity that performs this action depends on whether the flow is Same device or Cross device.
+The ``redirect_uri`` value MUST be used with an HTTP method GET by either the Wallet Instance or the user-agent to redirect the User to the Relying Party in order to complete the process. The value can be added as a path component, as a fragment or as a parameter to the URL according to Section 6.2 of `OpenID4VP`_. The specific entity that performs this action depends on whether the flow is Same device or Cross device.
 
 Redirect URI Errors
 -------------------
