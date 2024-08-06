@@ -980,7 +980,7 @@ The Credential Response contains the following parameters:
     - REQUIRED. JSON integer corresponding to the ``c_nonce`` lifetime in seconds.
     - Section 7.3 of [`OpenID4VCI`_].
   * - **notification_id**
-    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if credential parameter is not present
+    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credential`` parameter is not present
     - Section 7.3 of [`OpenID4VCI`_].
 
 
