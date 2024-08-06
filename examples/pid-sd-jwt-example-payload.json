@@ -7,8 +7,9 @@
     "s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk",
     "zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o"
   ],
-  "exp": 1883000000,
   "iss": "https://pidprovider.example.org",
+  "iat": 1683000000,
+  "exp": 1883000000,
   "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
   "status": {
     "status_assertion": {
@@ -18,9 +19,11 @@
   "vct": "https://pidprovider.example.org/v1.0/personidentificationdata",
   "vct#integrity": "c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f",
   "verification": {
-    "auth_trust_framework": "eidas",
-    "loa": "high",
-    "auth_method": "cie"
+    "trust_framework": "eidas",
+    "assurance_level": "high",
+    "evidence": {
+      "method": "cie"
+    }
   },
   "_sd_alg": "sha-256",
   "cnf": {

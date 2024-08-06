@@ -11,9 +11,11 @@
   "vct": "https://pidprovider.example.org/v1.0/personidentificationdata",
   "vct#integrity": "c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f",
   "verification": {
-    "auth_trust_framework": "eidas",
-    "loa": "high",
-    "auth_method": "cie"
+    "trust_framework": "eidas",
+    "assurance_level": "high",
+    "evidence": {
+      "method": "cie"
+    }
   },
   "unique_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "given_name": "Mario",
