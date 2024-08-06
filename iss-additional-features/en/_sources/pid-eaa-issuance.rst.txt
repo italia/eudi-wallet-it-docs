@@ -848,7 +848,7 @@ The JOSE header of a **DPoP JWT** MUST contain the following claims.
     - The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet Attestation (``cnf.jwk``).
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **aud**
-    - It MUST be set to the URL of Credential Endpoint of the PID/(Q)EAA Provider.
+    - It MUST be set to the identifier of the PID/(Q)EAA Provider.
     - [:rfc:`9068`].
   * - **iat**
     - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
