@@ -347,7 +347,7 @@ If the checks defined above are successful the Wallet Instance proceeds with the
 
 .. note::
 
-  If the issuance of the requested credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the *Deferred Flow* (step 24) as specified in Section :ref:`Deferred Flow`.
+  If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the *Deferred Flow* (step 24) as specified in Section :ref:`Deferred Flow`.
 
 **Steps 22 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
 
