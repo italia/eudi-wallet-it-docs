@@ -83,5 +83,5 @@ Technical References
       - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati", December 2021, Version 1.0.
     * - `W3C-SRI`_
       - Akhawe, D., Braun, F., Marier, F., and J. Weinberger, "Subresource Integrity", 23 June 2016.
-    * - `OIDC-IDENTITY-ASSURANCE`_
+    * - `OIDC-IDA`_
       - Lodderstedt, T., Fett, D., Haine, M., Pulido, A., Lehmann, K., Koiwai, K., "OpenID Connect for Identity Assurance 1.0", 24 July 2024.

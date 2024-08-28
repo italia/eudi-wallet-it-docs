@@ -128,7 +128,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
           * ``trust_framework``: String identifying the trust framework used for user digital authetication.
           * ``assurance_level``: String identifying the level of identity assurance guarateed during the authentication process.
           * ``evidence``: It MUST contain ``method`` claim identifying the digital identity system used for the authentication.
-      - `OIDC-IDENTITY-ASSURANCE`_.
+      - `OIDC-IDA`_.
 
 .. note::
 

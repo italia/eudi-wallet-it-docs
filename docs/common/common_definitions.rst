@@ -67,4 +67,4 @@
 .. _MODI: https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf
 .. _PDND: https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf
 .. _W3C-SRI: https://www.w3.org/TR/SRI/
-.. _OIDC-IDENTITY-ASSURANCE: https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html
+.. _OIDC-IDA: https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html
