@@ -790,7 +790,7 @@ If the Token Request is successfully validated, the Authorization Server provide
       - JSON integer, it represents the lifetime in seconds of the **c_nonce**.
       - [`OpenID4VCI`_].
     * - **authorization_details**
-      - JSON object, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued.
+      - Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued.
       - [`OpenID4VCI`_].
 
 If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`.
