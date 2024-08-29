@@ -161,34 +161,34 @@
 <p>Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance. It primarily certifies the <strong>authenticity</strong>, <strong>integrity</strong>, <strong>security</strong>, <strong>privacy</strong>, and <strong>trustworthiness</strong> of a particular Wallet Instance. The Wallet Attestation MUST contain a Wallet Instance public key.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h2>
-<p>The following requirements for the Wallet Attestation are met:</p>
+<p>The following requirements for the Wallet Attestation must be met:</p>
 <ul class="simple">
 <li><p>The Wallet Attestation MUST use the signed JSON Web Token (JWT) format;</p></li>
-<li><p>The Wallet Attestation MUST give all the relevant information to attests the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed.</p></li>
-<li><p>The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and that is the owner of the Wallet Solution, as specified by the overseeing registration authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.</p></li>
-<li><p>The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties. The Wallet Provider MUST also verify the Wallet Instance by using the App Store vendor's API, <em>Play Integrity API</em> for Android, and <em>DeviceCheck</em> for iOS. These services are defined in this specification as <strong>Device Integrity Service (DIS)</strong>.</p></li>
+<li><p>The Wallet Attestation MUST provide all the relevant information to attest to the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed.</p></li>
+<li><p>The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing registration authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.</p></li>
+<li><p>The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties. The Wallet Provider MUST also verify the Wallet Instance using the App Store vendor's API, such as the <em>Play Integrity API</em> for Android and <em>DeviceCheck</em> for iOS. These services are defined in this specification as <strong>Device Integrity Service (DIS)</strong>.</p></li>
 <li><p>The Wallet Attestation MUST have a mechanism in place for revoking the Wallet Instance, allowing the Wallet Provider to terminate service for a specific instance at any time.</p></li>
-<li><p>The Wallet Attestation MUST be securely bound to the Wallet Instance ephemeral public key.</p></li>
-<li><p>The Wallet Attestation MAY be usable multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.</p></li>
-<li><p>The Wallet Attestation MUST be short-lived and MUST have an expiration date time, after which SHOULD no longer be considered valid.</p></li>
+<li><p>The Wallet Attestation MUST be securely bound to the Wallet Instance's ephemeral public key.</p></li>
+<li><p>The Wallet Attestation MAY be used multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction.</p></li>
+<li><p>The Wallet Attestation MUST be short-lived and MUST have an expiration date/time, after which it SHOULD no longer be considered valid.</p></li>
 <li><p>The Wallet Attestation MUST NOT be issued by the Wallet Provider if the authenticity, integrity, and genuineness are not guaranteed. In this case, the Wallet Instance MUST be revoked.</p></li>
-<li><p>Each Wallet Instance SHOULD be able to request multiple attestations with different ephemeral public keys associated to them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point listed below).</p></li>
-<li><p>The Wallet Attestation MUST NOT contain any information that can be used to directly reference the User.</p></li>
-<li><p>The Wallet Instances MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework">ARF</a>.</p></li>
+<li><p>Each Wallet Instance SHOULD be able to request multiple attestations with different ephemeral public keys associated with them. This requirement provides a privacy-preserving measure, as the public key MAY be used as a tracking tool during the presentation phase (see also the point listed below).</p></li>
+<li><p>The Wallet Attestation MUST NOT contain any information that can be used to directly identify the User.</p></li>
+<li><p>The Wallet Instance MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework">ARF</a>.</p></li>
 <li><p>Private keys MUST be generated and stored in the WSCD using at least one of the approaches listed below:</p>
 <ul>
-<li><p><strong>Local Internal WSCD</strong>: in this approach, the WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS devices or the Hardware Backed Keystore or Strongbox on Android devices.</p></li>
-<li><p><strong>Local External WSCD</strong>: the WSCD is an hardware external to the User's device, such as a smart card compliant with <em>GlobalPlatform</em> and supporting <em>JavaCard</em>.</p></li>
+<li><p><strong>Local Internal WSCD</strong>: In this approach, the WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS devices or the Hardware-Backed Keystore or Strongbox on Android devices.</p></li>
+<li><p><strong>Local External WSCD</strong>: The WSCD is hardware external to the User's device, such as a smart card compliant with <em>GlobalPlatform</em> and supporting <em>JavaCard</em>.</p></li>
 <li><p><strong>Remote WSCD</strong>: Here, the WSCD utilizes a remote Hardware Security Module (HSM).</p></li>
-<li><p><strong>Local Hybrid WSCD</strong>: the WSCD involves a pluggable internal hardware component within the User's device, such as an <em>eUICC</em> that adheres to <em>GlobalPlatform</em> standards and supports <em>JavaCard</em>.</p></li>
-<li><p><strong>Remote Hybrid WSCD</strong>: the WSCD involves a local component mixed with a remote service.</p></li>
+<li><p><strong>Local Hybrid WSCD</strong>: The WSCD involves a pluggable internal hardware component within the User's device, such as an <em>eUICC</em> that adheres to <em>GlobalPlatform</em> standards and supports <em>JavaCard</em>.</p></li>
+<li><p><strong>Remote Hybrid WSCD</strong>: The WSCD involves a local component mixed with a remote service.</p></li>
 </ul>
 </li>
 <li><p>The Wallet Provider MUST offer a set of services, exclusively available to its Wallet Solution instances, for the verification and issuance of Wallet Attestations.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>At the current stage, the current implementation profile defined in this document supports only the <strong>Local Internal WSCD</strong>. Future versions of this specification MAY include other approaches depending on the required <cite>AAL</cite>.</p>
+<p>At the current stage, the implementation profile defined in this document supports only the <strong>Local Internal WSCD</strong>. Future versions of this specification MAY include other approaches depending on the required <cite>AAL</cite>.</p>
 </div>
 </section>
 <section id="static-component-view">
@@ -203,19 +203,19 @@
 <section id="wallet-instance-initialization-and-registration">
 <h3>Wallet Instance Initialization and Registration<a class="headerlink" href="#wallet-instance-initialization-and-registration" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="sequence-diagram-for-wallet-instance-initialization">
-<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/ZLFHRjD047o_hrYb3xHM-84yeA8Iqgf04IdmlBOtpYhEdRMt3eIlPy-cQMoPmeCZQszcTcOklewAeks-TjXgyEq-9t5RBWas8MWUVhfNZG6uu0QzEeU51e7PrqWo0upGseixGy3iEzOrATnvK_O5TIXi6XYYtj612pAKKYMiHrYJf4aFHurm4HjXNrL2v2StV9PmCAC2EHOxycL7pOkTSvM4je7WwoEqJV2mOOaAR8wCYSes2XlGBILZBaLu_SRU5j2L4PzEuB8d6k0g1US3Qa-nvm_ZPal53dW3Vmi4R7aEo3NcDJadFfX6E90aeRdPXOiFTwlRnzMNvVAJw-N60KqY5V1a-ZtPi8-1leIGAx87DkDxKYnHqLaTtIRdUg-sPm4hqyooOflKVKLPzXmgrMRF2UX9qZXu0kKzfGf6r8JkEnWTb3HGFLLrKZNyZHmR3PLWi-K2Rb7A7oW4ztICMMPPMRfaKOEy38T7h6ndlmGrBW1LAQeTNPvCpU5bWIkNgCzfqlXj9zELR8uYLvvAo8_miFnurkZQUXx6dq_oBSn_nPY-ZczOSuawke59m7Zt0BR-PvrnUB4FznEtQOVfYrd0w4Et5rOs9x-eFASP9VqTtRNzjFlwDm00"><img alt="The figure illustrates the sequence diagram for initializa a Wallet Instance, with the steps explained below." src="_images/wallet_instance_initialization.svg" /></a>
+<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/ZLFHRjD047o_hrYb3xHM-84yeA8Iqgf04IdmlBOtpYhEdRMt3eIlPy-cQMoPmeCZQszcTcOklewAeks-TjXgyEq-9t5RBWas8MWUVhfNZG6uu0QzEeU51e7PrqWo0upGseixGy3iEzOrATnvK_O5TIXi6XYYtj612pAKKYMiHrYJf4aFHurm4HjXNrL2v2StV9PmCAC2EHOxycL7pOkTSvM4je7WwoEqJV2mOOaAR8wCYSes2XlGBILZBaLu_SRU5j2L4PzEuB8d6k0g1US3Qa-nvm_ZPal53dW3Vmi4R7aEo3NcDJadFfX6E90aeRdPXOiFTwlRnzMNvVAJw-N60KqY5V1a-ZtPi8-1leIGAx87DkDxKYnHqLaTtIRdUg-sPm4hqyooOflKVKLPzXmgrMRF2UX9qZXu0kKzfGf6r8JkEnWTb3HGFLLrKZNyZHmR3PLWi-K2Rb7A7oW4ztICMMPPMRfaKOEy38T7h6ndlmGrBW1LAQeTNPvCpU5bWIkNgCzfqlXj9zELR8uYLvvAo8_miFnurkZQUXx6dq_oBSn_nPY-ZczOSuawke59m7Zt0BR-PvrnUB4FznEtQOVfYrd0w4Et5rOs9x-eFASP9VqTtRNzjFlwDm00"><img alt="The figure illustrates the sequence diagram for initializing a Wallet Instance, with the steps explained below." src="_images/wallet_instance_initialization.svg" /></a>
 </figure>
 <p><strong>Step 1</strong>: The User starts the Wallet Instance mobile app for the first time.</p>
 <p><strong>Step 2</strong>: The Wallet Instance:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>check if Device Integrity Service is available.</p></li>
-<li><p>check whether the device meets the minimum security requirements.</p></li>
+<li><p>Checks if the Device Integrity Service is available.</p></li>
+<li><p>Checks whether the device meets the minimum security requirements.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Federation Check</strong>: The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the Wallet Provider is represented within the section <a class="reference external" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider metadata</a>.</p>
+<p><strong>Federation Check</strong>: The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol-specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the Wallet Provider is represented within the section <a class="reference external" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider metadata</a>.</p>
 </div>
 <p><strong>Steps 3-5</strong>: The Wallet Instance sends a request to the Wallet Provider Backend and receives a one-time <code class="docutils literal notranslate"><span class="pre">challenge</span></code>. This &quot;challenge&quot; is a <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, which must be unpredictable to serve as the main defense against replay attacks. The backend must generate the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-nonce-endpoint/">OAuth 2.0 Nonce Endpoint</a>.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/nonce</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -233,24 +233,24 @@
 <p><strong>Step 6</strong>: The Wallet Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>It MUST ensure that Cryptographic Hardware Keys do not already exist, if they exist and the Wallet is in the initialization phase they MUST be deleted.</p></li>
+<li><p>It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Wallet is in the initialization phase, they MUST be deleted.</p></li>
 <li><p>It MUST generate a pair of asymmetric Elliptic Curve keys (Cryptographic Hardware Keys) via a local WSCD.</p></li>
 <li><p>It SHOULD obtain a unique identifier (Cryptographic Hardware Key Tag) for the generated Cryptographic Hardware Keys from the operating system. If the operating system permits specifying a tag during the creation of keys, then a random string for the Cryptographic Hardware Key Tag MUST be selected. This random value MUST be collision-resistant and unpredictable to ensure security. To achieve this, consider using a cryptographic hash function or a secure random number generator provided by the operating system or a reputable cryptographic library.</p></li>
-<li><p>If the previous points are satisfied, It MUST store the Cryptographic Hardware Key Tag in a local storage.</p></li>
+<li><p>If the previous points are satisfied, it MUST store the Cryptographic Hardware Key Tag in local storage.</p></li>
 </ol>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>WSCD</strong>: The Wallet Instance MAY use a local WSCD for key generation on devices that support this feature. On Android devices, Strongbox is RECOMMENDED, Trusted Execution Environment (TEE) SHOULD be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) SHOULD be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.</p>
+<p><strong>WSCD</strong>: The Wallet Instance MAY use a local WSCD for key generation on devices that support this feature. On Android devices, Strongbox is RECOMMENDED; Trusted Execution Environment (TEE) SHOULD be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) SHOULD be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.</p>
 </div>
-<p><strong>Step 7</strong>: The Wallet Instance uses the Device Integrity Service, providing a &quot;challenge&quot; and the Cryptographic Hardware Key Tag to acquire the Key Attestation.</p>
+<p><strong>Step 7</strong>: The Wallet Instance uses the Device Integrity Service, providing the &quot;challenge&quot; and the Cryptographic Hardware Key Tag to acquire the Key Attestation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Device Integrity Service</strong>: In this section the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers the verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this scope.</p>
-<p>The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess the device has not been compromised. For Android, the DIS is represented by <em>Key Attestation</em>, a feature supported by <em>StrongBox Keymaster</em>, which is a physical HSM installed directly on the motherboard, and the <em>TEE</em> (Trusted Execution Environment), a secure area of the main processor. <em>Key Attestation</em> aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the <em>Play Integrity API</em>.For Apple devices, the DIS is represented by <em>DeviceCheck</em>, which provides a framework and server interface to manage device-specific data securely. <em>DeviceCheck</em> is used in combination with the <em>Secure Enclave</em>, a dedicated HSM integrated into Apple's SoCs. <em>DeviceCheck</em> can be used to attest the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like <em>Secure Enclave</em>. Developers can leverage <em>DeviceCheck</em> functionality by using the framework itself.
+<p><strong>Device Integrity Service</strong>: In this section, the Device Integrity Service is considered as it is provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Wallet Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.</p>
+<p>The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess whether the device has been compromised. For Android, the DIS is represented by <em>Key Attestation</em>, a feature supported by <em>StrongBox Keymaster</em>, which is a physical HSM installed directly on the motherboard, and the <em>TEE</em> (Trusted Execution Environment), a secure area of the main processor. <em>Key Attestation</em> aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the <em>Play Integrity API</em>. For Apple devices, the DIS is represented by <em>DeviceCheck</em>, which provides a framework and server interface to manage device-specific data securely. <em>DeviceCheck</em> is used in combination with the <em>Secure Enclave</em>, a dedicated HSM integrated into Apple's SoCs. <em>DeviceCheck</em> can be used to attest to the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like <em>Secure Enclave</em>. Developers can leverage <em>DeviceCheck</em> functionality by using the framework itself.
 These services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. Additionally, as they are specifically developed for mobile architecture, they do not need to be registered as Federation Entities through national registration systems.
-For Apple devices <em>Secure Enclave</em> is available since the iPhone 5s (2013).
-For Android devices, the inclusion of <strong>Strongbox Keymaster</strong> may vary by each smartphone manufacturer, who decides whether to include it or not.</p>
+<em>Secure Enclave</em> has been available on Apple devices since the iPhone 5s (2013).
+For Android devices, the inclusion of <strong>Strongbox Keymaster</strong> may vary by manufacturer, who decides whether to include it or not.</p>
 </div>
 <p><strong>Step 8</strong>: The Device Integrity Service performs the following actions:</p>
 <ul class="simple">
