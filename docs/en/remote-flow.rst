@@ -413,12 +413,12 @@ Below is a non-normative example of the decrypted payload of the JWT contained i
         "descriptor_map": [
             {
                 "id": "PersonIdentificationData",
-                "path": "$.vp_token[0].vp",
+                "path": "$.vp_token[0]",
                 "format": "vc+sd-jwt"
             },
             {
                 "id": "WalletAttestation",
-                "path": "$.vp_token[1].vp",
+                "path": "$.vp_token[1]",
                 "format": "jwt"
             }
         ]
