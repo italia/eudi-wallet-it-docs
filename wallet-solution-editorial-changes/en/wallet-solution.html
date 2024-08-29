@@ -284,6 +284,49 @@
 </table>
 <section id="id1">
 <h3>wallet_provider metadata<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Key</strong></p></td>
+<td><p><strong>Value</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>jwks</p></td>
+<td><p>A JSON Web Key Set (JWKS)
+that represents the  Wallet
+Provider's public keys.</p></td>
+</tr>
+<tr class="row-odd"><td><p>token_endpoint</p></td>
+<td><p>Endpoint for obtaining the Wallet
+Instance Attestation.</p></td>
+</tr>
+<tr class="row-even"><td><p>nonce_endpoint</p></td>
+<td><p>HTTPs URL indicating the endpoint
+where the client can request the nonce.</p></td>
+</tr>
+<tr class="row-odd"><td><p>aal_values_supported</p></td>
+<td><p>List of supported values for the
+certifiable security context. These
+values specify the security level
+of the app, according to the levels: low, medium, or high.
+Authenticator Assurance Level values supported.</p></td>
+</tr>
+<tr class="row-even"><td><p>grant_types_supported</p></td>
+<td><p>The types of grants supported by
+the token endpoint. It MUST be set to
+<code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:</span>
+<span class="pre">jwt-client-attestation</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>token_endpoint_auth_methods_suppor
+ted</p></td>
+<td><p>Supported authentication methods for
+the token endpoint.</p></td>
+</tr>
+<tr class="row-even"><td><p>token_endpoint_auth_signing_alg_va
+lues_supported</p></td>
+<td><p>Supported signature
+algorithms for the token endpoint.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <cite>aal_values_supported</cite> parameter is experimental and under review.</p>
