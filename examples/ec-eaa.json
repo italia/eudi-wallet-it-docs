@@ -254,55 +254,6 @@
                         }
                     }
                 },
-                "EuropeanHealthInsuranceCard": {
-                    "format": "vc+sd-jwt",
-                    "scope": "EuropeanHealthInsuranceCard",
-                    "cryptographic_binding_methods_supported": [
-                        "jwk"
-                    ],
-                    "credential_signing_alg_values_supported": [
-                        "ES256",
-                        "ES384",
-                        "ES512"
-                    ],
-                    "proof_types_supported": {
-                        "jwt": {
-                            "proof_signing_alg_values_supported": [
-                                "ES256",
-                                "ES384",
-                                "ES512"
-                            ]
-                        }
-                    },
-                    "display": [
-                        {
-                            "name": "Tessera sanitaria europea",
-                            "locale": "it-IT"
-                        },
-                        {
-                            "name": "European Health Insurance Card",
-                            "locale": "en-US"
-                        }
-                    ],
-                    "credential_definition": {
-                        "vct": "EuropeanHealthInsuranceCard",
-                        "claims": {
-                            "content": {
-                                "value_type": "string",
-                                "display": [
-                                    {
-                                        "name": "PDF della tessera sanitaria europea codificato in base64",
-                                        "locale": "it-IT"
-                                    },
-                                    {
-                                        "name": "European Health Insurance Card PDF base64 encoded",
-                                        "locale": "en-US"
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                },
                 "MDL": {
                     "format": "vc+sd-jwt",
                     "scope": "MDL",
