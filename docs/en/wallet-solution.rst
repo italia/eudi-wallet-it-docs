@@ -114,27 +114,40 @@ Payload
     * - metadata
       - Contains the ``wallet_provider`` and ``federation_entity`` metadata.
 
-`wallet_provider` metadata
+wallet_provider metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +---------------------------------------------+---------------------------------------------------------------------+
 | **Key**                                     | **Value**                                                           |
 +---------------------------------------------+---------------------------------------------------------------------+
-| jwks                                        | A JSON Web Key Set (JWKS) that represents the Wallet                |
+| jwks                                        | A JSON Web Key Set (JWKS)                                           |
+|                                             | that represents the  Wallet                                         |
 |                                             | Provider's public keys.                                             |
 +---------------------------------------------+---------------------------------------------------------------------+
-| token_endpoint                              | Endpoint for obtaining the Wallet Instance Attestation.             |
+| token_endpoint                              | Endpoint for obtaining the Wallet                                   |
+|                                             | Instance Attestation.                                               |
 +---------------------------------------------+---------------------------------------------------------------------+
-| nonce_endpoint                              | HTTPS URL indicating the endpoint where the client can request the nonce. |
+| nonce_endpoint                              | HTTPs URL indicating the endpoint                                   |
+|                                             | where the client can request the nonce.                             |
 +---------------------------------------------+---------------------------------------------------------------------+
-| aal_values_supported                        | List of supported values for the certifiable security context. These values specify the security level of the app, according to the levels: low, medium, or high. Authenticator Assurance Level values supported. |
+| aal_values_supported                        | List of supported values for the                                    |
+|                                             | certifiable security context. These                                 |
+|                                             | values specify the security level                                   |
+|                                             | of the app, according to the levels: low, medium, or high.          |
+|                                             | Authenticator Assurance Level values supported.                     |
 +---------------------------------------------+---------------------------------------------------------------------+
-| grant_types_supported                       | The types of grants supported by the token endpoint. It MUST be set to ``urn:ietf:params:oauth:client-assertion-type:jwt-client-attestation``. |
+| grant_types_supported                       | The types of grants supported by                                    |
+|                                             | the token endpoint. It MUST be set to                               |
+|                                             | `urn:ietf:params:oauth:client-assertion-type:                       |
+|                                             | jwt-client-attestation`.                                            |
 +---------------------------------------------+---------------------------------------------------------------------+
-| token_endpoint_auth_methods_supported       | Supported authentication methods for the token endpoint.            |
+| token_endpoint_auth_methods_suppor          | Supported authentication methods for                                |
+| ted                                         | the token endpoint.                                                 |
 +---------------------------------------------+---------------------------------------------------------------------+
-| token_endpoint_auth_signing_alg_values_supported | Supported signature algorithms for the token endpoint.           |
+| token_endpoint_auth_signing_alg_va          | Supported signature                                                 |
+| lues_supported                              | algorithms for the token endpoint.                                  |
 +---------------------------------------------+---------------------------------------------------------------------+
+
 
 .. note::
    The `aal_values_supported` parameter is experimental and under review.
