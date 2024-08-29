@@ -138,8 +138,8 @@ wallet_provider metadata
 +---------------------------------------------+---------------------------------------------------------------------+
 | grant_types_supported                       | The types of grants supported by                                    |
 |                                             | the token endpoint. It MUST be set to                               |
-|                                             | `urn:ietf:params:oauth:client-assertion-type:                       |
-|                                             | jwt-client-attestation``.                                            |
+|                                             | ``urn:ietf:params:oauth:client-assertion-type:                      |
+|                                             | jwt-client-attestation``.                                           |
 +---------------------------------------------+---------------------------------------------------------------------+
 | token_endpoint_auth_methods_suppor          | Supported authentication methods for                                |
 | ted                                         | the token endpoint.                                                 |
