@@ -711,12 +711,12 @@ HOST: relying-party.example.org
       &quot;descriptor_map&quot;: [
           {
               &quot;id&quot;: &quot;PersonIdentificationData&quot;,
-              &quot;path&quot;: &quot;$.vp_token[0].vp&quot;,
+              &quot;path&quot;: &quot;$.vp_token[0]&quot;,
               &quot;format&quot;: &quot;vc+sd-jwt&quot;
           },
           {
               &quot;id&quot;: &quot;WalletAttestation&quot;,
-              &quot;path&quot;: &quot;$.vp_token[1].vp&quot;,
+              &quot;path&quot;: &quot;$.vp_token[1]&quot;,
               &quot;format&quot;: &quot;jwt&quot;
           }
       ]
@@ -808,7 +808,7 @@ using JOSE header parameter <code class="docutils literal notranslate"><span cla
 <td><p>REQUIRED. The intended receiver of the Key Binding JWT. How the value is represented is up to the protocol used and out of scope of this specification.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>nonce</strong></p></td>
-<td><p>REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. How this value is obtained is up to the protocol used and out of scope of this specification.</p></td>
+<td><p>REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sd_hash</strong></p></td>
 <td><p>REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.</p></td>

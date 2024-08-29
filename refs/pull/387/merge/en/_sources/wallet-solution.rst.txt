@@ -45,7 +45,7 @@ Transition to Valid state
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 To transition from the Operational state to the Valid state, the Wallet Instance MUST obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes Valid.
 
-To securely and unambiguously authenticate Users, the Wallet Instance necessitates a High Level of Assurance (LoA 3) for User authentication. The method to achieve this LoA is selected by the PID Provider based on the identity proofing method employed during the provisioning of the Digital Credential to the User. Furthermore, to store the acquired Digital Credential, the Wallet Instance MUST demonstrate to the Credential Issuer adequate security compliance to maintain the Credential at the same LoA at which it was issued.
+The Wallet Instance MUST demonstrate to the Credential Issuer adequate security compliance to maintain the Credential at the same LoA at which it was issued.
 
 Once the Wallet Instance is in the Valid state, Users can:
 

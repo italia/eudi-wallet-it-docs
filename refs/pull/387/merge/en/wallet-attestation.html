@@ -161,7 +161,7 @@
 <p>Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance. It primarily certifies the <strong>authenticity</strong>, <strong>integrity</strong>, <strong>security</strong>, <strong>privacy</strong>, and <strong>trustworthiness</strong> of a particular Wallet Instance. The Wallet Attestation MUST contain a Wallet Instance public key.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h2>
-<p>The following requirements for the Wallet Attestation must be met:</p>
+<p>The requirements for the Wallet Attestation are defined below:</p>
 <ul class="simple">
 <li><p>The Wallet Attestation MUST use the signed JSON Web Token (JWT) format;</p></li>
 <li><p>The Wallet Attestation MUST provide all the relevant information to attest to the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed.</p></li>
@@ -177,9 +177,9 @@
 <li><p>The Wallet Instance MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework">ARF</a>.</p></li>
 <li><p>Private keys MUST be generated and stored in the WSCD using at least one of the approaches listed below:</p>
 <ul>
-<li><p><strong>Local Internal WSCD</strong>: In this approach, the WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS devices or the Hardware-Backed Keystore or Strongbox on Android devices.</p></li>
+<li><p><strong>Local Internal WSCD</strong>: The WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS devices or the Hardware-Backed Keystore or Strongbox on Android devices.</p></li>
 <li><p><strong>Local External WSCD</strong>: The WSCD is hardware external to the User's device, such as a smart card compliant with <em>GlobalPlatform</em> and supporting <em>JavaCard</em>.</p></li>
-<li><p><strong>Remote WSCD</strong>: Here, the WSCD utilizes a remote Hardware Security Module (HSM).</p></li>
+<li><p><strong>Remote WSCD</strong>: The WSCD utilizes a remote Hardware Security Module (HSM).</p></li>
 <li><p><strong>Local Hybrid WSCD</strong>: The WSCD involves a pluggable internal hardware component within the User's device, such as an <em>eUICC</em> that adheres to <em>GlobalPlatform</em> standards and supports <em>JavaCard</em>.</p></li>
 <li><p><strong>Remote Hybrid WSCD</strong>: The WSCD involves a local component mixed with a remote service.</p></li>
 </ul>

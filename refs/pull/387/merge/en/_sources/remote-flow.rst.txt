@@ -413,12 +413,12 @@ Below is a non-normative example of the decrypted payload of the JWT contained i
         "descriptor_map": [
             {
                 "id": "PersonIdentificationData",
-                "path": "$.vp_token[0].vp",
+                "path": "$.vp_token[0]",
                 "format": "vc+sd-jwt"
             },
             {
                 "id": "WalletAttestation",
-                "path": "$.vp_token[1].vp",
+                "path": "$.vp_token[1]",
                 "format": "jwt"
             }
         ]
@@ -491,7 +491,7 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
   * - **aud**
     - REQUIRED. The intended receiver of the Key Binding JWT. How the value is represented is up to the protocol used and out of scope of this specification.
   * - **nonce**
-    - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. How this value is obtained is up to the protocol used and out of scope of this specification.
+    - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object.
   * - **sd_hash**
     - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.
 
