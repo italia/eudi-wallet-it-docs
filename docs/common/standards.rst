@@ -85,3 +85,4 @@ Technical References
       - Akhawe, D., Braun, F., Marier, F., and J. Weinberger, "Subresource Integrity", 23 June 2016.
     * - `OIDC-IDA`_
       - Lodderstedt, T., Fett, D., Haine, M., Pulido, A., Lehmann, K., Koiwai, K., "OpenID Connect for Identity Assurance 1.0", 24 July 2024.
+      
