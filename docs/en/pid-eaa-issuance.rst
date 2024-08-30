@@ -521,9 +521,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
 
             - **type**: it MUST be set to ``openid_credential``,
-            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
-            - **format**: If Credential Format Profile for Credentials complies with [`SD-JWT-VC`_], it MUST be set to ``vc+sd-jwt`` according to Annex A3 of [`OpenID4VCI`_]. If Credential Format Profile for Credentials complies with [ISO 18013-5], the the format identifier MUST be ``mso_mdoc`` according to Annex A2 of [`OpenID4VCI`_].
-            - **vct**: CONDITIONAL. It MUST be present only if the format identifier is ``vc+sd-jwt``. 
+            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``. 
       - See [RAR :rfc:`9396`] and [`OpenID4VCI`_].
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
@@ -892,11 +890,8 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
   * - **Claim**
     - **Description**
     - **Reference**
-  * - **credential_definition**
-    - JSON object containing the detailed description of the Credential type. It MUST have at least the **type** sub claims which is a JSON array containing the type values the Wallet SHALL request in the Credential Request. It MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the PID/(Q)EAA Issuer metadata. In the case of the PID it MUST be set to ``PersonIdentificationData``.
-    - [`OpenID4VCI`_].
   * - **format**
-    - Format of the Credential to be issued. This MUST be `vc+sd-jwt`.
+    - Format of the Credential to be issued. This MUST be ``vc+sd-jwt`` or ``mso_mdoc``.
     - [`OpenID4VCI`_].
   * - **vct**
     - CONDITIONAL. REQUIRED only if the *format* identifier is ``vc+sd-jwt``. 

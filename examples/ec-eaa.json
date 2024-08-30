@@ -46,7 +46,6 @@
             ],
             "scopes_supported": [
                 "EuropeanDisabilityCard",
-                "EuropeanHealthInsuranceCard",
                 "MDL"
             ],
             "response_modes_supported": [
