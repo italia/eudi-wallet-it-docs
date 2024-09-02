@@ -274,7 +274,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <li><p>MUST create the <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code> with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html"><strong>RFC 7636</strong></a>.</p></li>
 <li><p>signs this request using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></li>
 <li><p>MUST use the <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation</span></code> and  <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> parameters according to OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>], since in this flow the Pushed Authorization Endpoint is a protected endpoint.</p></li>
-<li><p>specifies the types of the requested credentials using the <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> [RAR <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] parameter.</p></li>
+<li><p>specifies the types of the requested credentials using the <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> [RAR <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] parameter and/or scope header parameter.</p></li>
 </ul>
 </div></blockquote>
 <p>The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:</p>
@@ -300,6 +300,7 @@ Content-Type: application/x-www-form-urlencoded
 OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9._v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
 OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCJhdWQiOiIgaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsImp0aSI6IjVlZmY5YzFiLWVkMGQtNDdlOC1hNTUzLWY3NGRmMWJiZWVkZCIsImlhdCI6MTcyMjI0OTQ0NywiZXhwIjoxNzIyMjQ5NzQ3fQ.aZpx7u7R-W8q7fJh9BEaRf8LM7RQRxAVc-okalAVqxHWqUMh3ehYukMLaCsiDQ33pyS41Y5PEsZ3HXwAXQ3nMg
 
+&amp;scope=EuropeanDisabilityCard
 &amp;client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
 &amp;request=$SIGNED-JWT
 </pre></div>
@@ -661,11 +662,15 @@ without encoding and signature. The JWS header:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>MUST be set to the thumbprint of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation.</p></td>
+<tr class="row-even"><td><p><strong>scope</strong></p></td>
+<td><p>MUST contains a subset or the entire set of the <em>scope</em> values contained in the <em>credential_configurations_supported</em> of the Credential Issuer Metadata.</p></td>
 <td><p><span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>request</strong></p></td>
+<tr class="row-odd"><td><p><strong>client_id</strong></p></td>
+<td><p>MUST be set to the thumbprint of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation.</p></td>
+<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>request</strong></p></td>
 <td><p>It MUST be a signed JWT. The private key corresponding to the public one in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter inside the Wallet Attestation MUST be used for signing the Request Object.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests">OpenID Connect Core. Section 6</a></p></td>
 </tr>
@@ -709,11 +714,11 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.</p></td>
-<td><p><span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -737,23 +742,23 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>It MUST be set to the <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
-<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>It MUST be set to the identifier of the PID/(Q)EAA Provider.</p></td>
-<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX Timestamp with the expiry time of the JWT. The claim value MUST be not greater than 300 seconds from the issuance time.</p></td>
-<td><p><span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_type</strong></p></td>
 <td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">code</span></code>.</p></td>
-<td><p><span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
+<td><p><span class="target" id="index-47"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_mode</strong></p></td>
 <td><p>It MUST be a string indicating the &quot;<em>response_mode</em>&quot;, as specified in [<a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAUTH-MULT-RESP-TYPE</a>]. It MUST be one of the supported values (<em>response_modes_supported</em>) provided in the metadata of the PID/(Q)EAA Provider. It informs the PID/(Q)EAA Provider of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of <em>HTTP 302 Redirect Response</em> the value MUST be <em>query</em>. In this mode, Authorization Response parameters are encoded in the query string added to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> when redirecting back to the Wallet Instance. In case of <em>HTTP POST Response</em> the value MUST be <em>form_post.jwt</em> according to [<a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-04.html">OAUTH-V2-JARM-04</a>]. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the user-agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the <em>application/x-www-form-urlencoded</em> format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.</p></td>
@@ -769,11 +774,11 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 </tr>
 <tr class="row-even"><td><p><strong>code_challenge</strong></p></td>
 <td><p>A challenge derived from the <strong>code verifier</strong> that is sent in the authorization request.</p></td>
-<td><p><span class="target" id="index-47"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.2"><strong>RFC 7636#section-4.2</strong></a>.</p></td>
+<td><p><span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.2"><strong>RFC 7636#section-4.2</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code_challenge_method</strong></p></td>
 <td><p>A method that was used to derive <strong>code challenge</strong>. It MUST be set to <code class="docutils literal notranslate"><span class="pre">S256</span></code>.</p></td>
-<td><p><span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
+<td><p><span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>authorization_details</strong></p></td>
 <td><p>Array of JSON Objects. Each JSON Object MUST include the following claims:</p>
@@ -784,7 +789,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 </ul>
 </div></blockquote>
 </td>
-<td><p>See [RAR <span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] and [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
+<td><p>See [RAR <span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>] and [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>redirect_uri</strong></p></td>
 <td><p>Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.</p></td>
@@ -792,10 +797,14 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
 <td><p>Unique identifier of the JWT that, together with the value contained in the <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim,  prevents the reuse of the JWT (replay attack). Since the <cite>jti</cite> value alone is not collision resistant, it MUST be identified uniquely together with its issuer.</p></td>
-<td><p>[<span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the request cointains scope value and the <em>authorization_details</em> parameter the Credential Issuer MUST interpret these individually. However, if both request the same Credential type, then the Credential Issuer MUST follow the request as given by the authorization details object.</p>
+</div>
 <p>The JOSE header of the Wallet Attestation proof of possession, contained in the HTTP Request headers, MUST contain:</p>
 <table class="docutils align-default" id="table-jwt-pop">
 <colgroup>
@@ -812,7 +821,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-52"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -832,30 +841,30 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>Thumbprint of the JWK in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter.</p></td>
-<td><p><span class="target" id="index-52"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>It MUST be set to the identifier of the PID/(Q)EAA Provider.</p></td>
-<td><p><span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-55"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-55"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-56"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX Timestamp with the expiry time of the JWT.</p></td>
-<td><p><span class="target" id="index-56"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-57"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-57"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-58"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-58"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-59"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-59"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-60"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
-<td><p>Unique identifier for the DPoP proof JWT. The value SHOULD be set using a <em>UUID v4</em> value according to [<span class="target" id="index-60"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>].</p></td>
-<td><p>[<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
+<td><p>Unique identifier for the DPoP proof JWT. The value SHOULD be set using a <em>UUID v4</em> value according to [<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="pushed-authorization-request-par-response">
 <span id="sec-par"></span><h3>Pushed Authorization Request (PAR) Response<a class="headerlink" href="#pushed-authorization-request-par-response" title="Link to this heading">¶</a></h3>
-<p>If the verification is successful, the PID/(Q)EAA Issuer MUST provide the response with a <em>201 HTTP status code</em>. The following parameters are included as top-level members in the HTTP response message body, using the <code class="docutils literal notranslate"><span class="pre">application/json</span></code> media type as defined in [<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8259.html"><strong>RFC 8259</strong></a>].</p>
+<p>If the verification is successful, the PID/(Q)EAA Issuer MUST provide the response with a <em>201 HTTP status code</em>. The following parameters are included as top-level members in the HTTP response message body, using the <code class="docutils literal notranslate"><span class="pre">application/json</span></code> media type as defined in [<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8259.html"><strong>RFC 8259</strong></a>].</p>
 <table class="docutils align-default" id="table-http-response-claim">
 <colgroup>
 <col style="width: 20.0%" />
@@ -871,15 +880,15 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <tbody>
 <tr class="row-even"><td><p><strong>request_uri</strong></p></td>
 <td><p>The request URI corresponding to the authorization request posted. This URI MUST be a single-use reference to the respective authorization request. It MUST contain some part generated using a cryptographically strong pseudorandom algorithm. The value format MUST be <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:request_uri:&lt;reference-value&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">&lt;reference-value&gt;</span></code> as the random part of the URI that references the respective authorization request data.</p></td>
-<td><p>[<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-64"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>expires_in</strong></p></td>
 <td><p>A JSON number that represents the lifetime of the request URI in seconds as a positive integer.</p></td>
-<td><p>[<span class="target" id="index-64"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
-<p>If any errors occur during the PAR Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html#section-2.3"><strong>RFC 9126#section-2.3</strong></a>. The response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
+<p>If any errors occur during the PAR Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html#section-2.3"><strong>RFC 9126#section-2.3</strong></a>. The response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>error</em>. The error code.</p></li>
@@ -926,7 +935,7 @@ The authorization server MUST first verify the identity of the User that own the
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
 <td><p>It MUST be set to the same value as obtained by PAR Response. See <a class="reference internal" href="revocation-lists.html#table-http-response-claim"><span class="std std-ref">Table of the HTTP PAR Response parameters</span></a>.</p></td>
-<td><p>[<span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
@@ -954,19 +963,19 @@ The authorization server MUST first verify the identity of the User that own the
 <tbody>
 <tr class="row-even"><td><p><strong>code</strong></p></td>
 <td><p>Unique <em>Authorization Code</em> that the Wallet Instance submits to the Token Endpoint.</p></td>
-<td><p>[<span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>], [<span class="target" id="index-68"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-68"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>], [<span class="target" id="index-69"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>state</strong></p></td>
 <td><p>The Wallet Instance MUST check the correspondence with the <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter value in the Request Object. It is defined as in the <a class="reference internal" href="#table-jwt-request"><span class="std std-ref">Table of the JWT Request parameters</span></a>.</p></td>
-<td><p>[<span class="target" id="index-69"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2"><strong>RFC 6749#section-4.1.2</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>Unique identifier of the PID/(Q)EAA Issuer who created the Authentication Response. The Wallet Instance MUST validate this parameter.</p></td>
-<td><p>[<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9207.html"><strong>RFC 9207</strong></a>], [<span class="target" id="index-71"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>, Section 4.1.1.].</p></td>
+<td><p>[<span class="target" id="index-71"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9207.html"><strong>RFC 9207</strong></a>], [<span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>, Section 4.1.1.].</p></td>
 </tr>
 </tbody>
 </table>
-<p>If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>. The response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
+<p>If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>. The response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>error</em>. The error code.</p></li>
@@ -978,7 +987,7 @@ The authorization server MUST first verify the identity of the User that own the
 <section id="token-endpoint">
 <h2>Token endpoint<a class="headerlink" href="#token-endpoint" title="Link to this heading">¶</a></h2>
 <p>The token endpoint is used by the Wallet Instance to obtain an Access Token by presenting an authorization grant, as
-defined in <span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>. The Token Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a> ].</p>
+defined in <span class="target" id="index-74"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>. The Token Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a> ].</p>
 <section id="token-request">
 <span id="sec-token-request"></span><h3>Token Request<a class="headerlink" href="#token-request" title="Link to this heading">¶</a></h3>
 <p>The request to the PID/(Q)EAA Token endpoint MUST be an HTTP request with method POST, with the body message encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format. The Wallet Instance sends the Token endpoint request with <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation</span></code> and <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> as header parameters according to <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>.</p>
@@ -986,7 +995,7 @@ defined in <span class="target" id="index-73"></span><a class="rfc reference ext
 the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters <strong>OAuth-Client-Attestation</strong> as <strong>OAuth-Client-Attestation-PoP</strong>
 as defined in the &quot;Pushed Authorization Request (PAR) Endpoint&quot;.</p>
 <p>The Token endpoint issues DPoP tokens, therefore it is REQUIRED that the request incluides in its HTTP header the DPoP proof parameter.
-The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (<span class="target" id="index-74"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>). This mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [<span class="target" id="index-75"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <code class="docutils literal notranslate"><span class="pre">invalid_dpop_proof</span></code> as the value of the error parameter.</p>
+The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (<span class="target" id="index-75"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>). This mitigates the misuse of leaked or stolen Access Tokens at the credential endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [<span class="target" id="index-76"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <code class="docutils literal notranslate"><span class="pre">invalid_dpop_proof</span></code> as the value of the error parameter.</p>
 <p>All the parameters listed below are REQUIRED:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1003,15 +1012,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>grant_type</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">authorization_code</span></code>.</p></td>
-<td><p>[<span class="target" id="index-76"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-77"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code</strong></p></td>
 <td><p>Authorization code returned in the Authentication Response.</p></td>
-<td><p>[<span class="target" id="index-77"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-78"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>redirect_uri</strong></p></td>
 <td><p>It MUST be set as in the Request Object <a class="reference internal" href="#table-jwt-request"><span class="std std-ref">Table of the JWT Request parameters</span></a>.</p></td>
-<td><p>[<span class="target" id="index-78"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-79"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>code_verifier</strong></p></td>
 <td><p>Verification code of the <strong>code_challenge</strong>.</p></td>
@@ -1036,15 +1045,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>It MUST be equal to <code class="docutils literal notranslate"><span class="pre">dpop+jwt</span></code>.</p></td>
-<td><p>[<span class="target" id="index-79"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] and [<span class="target" id="index-80"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>. Section 3.11].</p></td>
+<td><p>[<span class="target" id="index-80"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] and [<span class="target" id="index-81"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>. Section 3.11].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or with a symmetric algorithm (MAC) identifier.</p></td>
-<td><p>[<span class="target" id="index-81"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-82"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwk</strong></p></td>
-<td><p>It represents the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [<span class="target" id="index-82"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] format that the Access Token MUST be bound to, as defined in [<span class="target" id="index-83"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] Section 4.1.3. It MUST NOT contain a private key.</p></td>
-<td><p>[<span class="target" id="index-84"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] and [<span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>It represents the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [<span class="target" id="index-83"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] format that the Access Token MUST be bound to, as defined in [<span class="target" id="index-84"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] Section 4.1.3. It MUST NOT contain a private key.</p></td>
+<td><p>[<span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] and [<span class="target" id="index-86"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
@@ -1063,20 +1072,20 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
-<td><p>Unique identifier for the DPoP proof JWT. The value SHOULD be set using a <em>UUID v4</em> value according to [<span class="target" id="index-86"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>].</p></td>
-<td><p>[<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
+<td><p>Unique identifier for the DPoP proof JWT. The value SHOULD be set using a <em>UUID v4</em> value according to [<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.7].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>htm</strong></p></td>
 <td><p>The value of the HTTP method of the request to which the JWT is attached.</p></td>
-<td><p>[<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9110.html"><strong>RFC 9110</strong></a>. Section 9.1].</p></td>
+<td><p>[<span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9110.html"><strong>RFC 9110</strong></a>. Section 9.1].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>htu</strong></p></td>
 <td><p>The HTTP target URI, without query and fragment parts, of the request to which the JWT is attached.</p></td>
-<td><p>[<span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9110.html"><strong>RFC 9110</strong></a>. Section 7.1].</p></td>
+<td><p>[<span class="target" id="index-90"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9110.html"><strong>RFC 9110</strong></a>. Section 7.1].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-90"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-<td><p>[<span class="target" id="index-91"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
+<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-91"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[<span class="target" id="index-92"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
 </tr>
 </tbody>
 </table>
@@ -1099,15 +1108,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>access_token</strong></p></td>
 <td><p>The <em>DPoP-bound Access Token</em>, in signed JWT format, allows accessing the PID/(Q)EAA Credential Endpoint for obtaining the credential.</p></td>
-<td><p><span class="target" id="index-92"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
+<td><p><span class="target" id="index-93"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>token_type</strong></p></td>
 <td><p>Type of <em>Access Token</em> returned. It MUST be equal to <code class="docutils literal notranslate"><span class="pre">DPoP</span></code>.</p></td>
-<td><p><span class="target" id="index-93"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
+<td><p><span class="target" id="index-94"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>expires_in</strong></p></td>
 <td><p>Expiry time of the <em>Access Token</em> in seconds.</p></td>
-<td><p><span class="target" id="index-94"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
+<td><p><span class="target" id="index-95"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>c_nonce</strong></p></td>
 <td><p>JSON string containing a <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value to be used to create a <em>proof of possession</em> of key material when requesting a Credential.</p></td>
@@ -1123,7 +1132,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </tr>
 </tbody>
 </table>
-<p>If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-95"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>.</p>
+<p>If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-96"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json;charset=UTF-8</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
@@ -1139,7 +1148,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </section>
 <section id="access-token">
 <h3>Access Token<a class="headerlink" href="#access-token" title="Link to this heading">¶</a></h3>
-<p>A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [<span class="target" id="index-96"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (<span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>).</p>
+<p>A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [<span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (<span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>).</p>
 <p>The JOSE header of a <strong>DPoP JWT</strong> MUST contain the following claims.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1156,15 +1165,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>It MUST be equal to <code class="docutils literal notranslate"><span class="pre">at+jwt</span></code>.</p></td>
-<td><p>[<span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or with a symmetric algorithm (MAC) identifier.</p></td>
-<td><p>[<span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-100"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> used by the PID/(Q)EAA Provider to sign the Access Token.</p></td>
-<td><p><span class="target" id="index-100"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-101"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1183,35 +1192,35 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>It MUST be an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet Instance MUST verify that this value matches the PID/(Q)EAA Issuer where it has requested the credential.</p></td>
-<td><p>[<span class="target" id="index-101"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-102"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-102"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-103"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
 <td><p>It identifies the subject of the JWT. It MUST be set to the value of the <code class="docutils literal notranslate"><span class="pre">sub</span></code> field in the PID/(Q)EAA SD-JWT-VC.</p></td>
-<td><p>[<span class="target" id="index-103"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-104"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and Section 8 of [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>].</p></td>
+<td><p>[<span class="target" id="index-104"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-105"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and Section 8 of [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
 <td><p>The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>).</p></td>
-<td><p>[<span class="target" id="index-105"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-106"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and Section 8 of [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>].</p></td>
+<td><p>[<span class="target" id="index-106"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and Section 8 of [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>It MUST be set to the identifier of the PID/(Q)EAA Provider.</p></td>
-<td><p>[<span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-<td><p>[<span class="target" id="index-109"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-110"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
+<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-109"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[<span class="target" id="index-110"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-111"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in <span class="target" id="index-111"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-<td><p>[<span class="target" id="index-112"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-113"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in <span class="target" id="index-112"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[<span class="target" id="index-113"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-114"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
 <td><p>It MUST be a String in <em>uuid4</em> format. Unique Token ID identifier that the RP SHOULD use to prevent reuse by rejecting the Token ID if already processed.</p></td>
-<td><p>[<span class="target" id="index-114"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-115"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+<td><p>[<span class="target" id="index-115"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<span class="target" id="index-116"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>cnf</strong></p></td>
-<td><p>It MUST contain a <strong>jkt</strong> claim being JWK SHA-256 Thumbprint Confirmation Method. The value of the <em>jkt</em> member MUST be the base64url encoding (as defined in [<span class="target" id="index-116"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.</p></td>
-<td><p>[<span class="target" id="index-117"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>. Section 6.1] and [<span class="target" id="index-118"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html"><strong>RFC 7638</strong></a>].</p></td>
+<td><p>It MUST contain a <strong>jkt</strong> claim being JWK SHA-256 Thumbprint Confirmation Method. The value of the <em>jkt</em> member MUST be the base64url encoding (as defined in [<span class="target" id="index-117"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.</p></td>
+<td><p>[<span class="target" id="index-118"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>. Section 6.1] and [<span class="target" id="index-119"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html"><strong>RFC 7638</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
@@ -1223,13 +1232,13 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <section id="credential-request">
 <h3>Credential Request<a class="headerlink" href="#credential-request" title="Link to this heading">¶</a></h3>
 <p>The Wallet Instance when requests the PID/(Q)EAA to the PID/(Q)EAA Credential endpoint, MUST use the following parameters in the message body of the HTTP POST request, using the <cite>application/json</cite> media type.</p>
-<p>The Credential endpoint MUST accept and validate the <em>DPoP proof</em> sent in the DPoP HTTP Header parameter, according to the steps defined in (<span class="target" id="index-119"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) Section 4.3. The <em>DPoP proof</em> in addition to the values that are defined in the Token Endpoint section MUST contain the following claim:</p>
+<p>The Credential endpoint MUST accept and validate the <em>DPoP proof</em> sent in the DPoP HTTP Header parameter, according to the steps defined in (<span class="target" id="index-120"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) Section 4.3. The <em>DPoP proof</em> in addition to the values that are defined in the Token Endpoint section MUST contain the following claim:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>ath</strong>: hash value of the Access Token encoded in ASCII. The value MUST use the base64url encoding (as defined in Section 2 of <span class="target" id="index-120"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) with the SHA-256 algorithm.</p></li>
+<li><p><strong>ath</strong>: hash value of the Access Token encoded in ASCII. The value MUST use the base64url encoding (as defined in Section 2 of <span class="target" id="index-121"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) with the SHA-256 algorithm.</p></li>
 </ul>
 </div></blockquote>
-<p>If the <em>DPoP proof</em> is invalid, the Credential endpoint returns an error response per Section 5.2 of [<span class="target" id="index-121"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <cite>invalid_dpop_proof</cite> as the value of the error parameter.</p>
+<p>If the <em>DPoP proof</em> is invalid, the Credential endpoint returns an error response per Section 5.2 of [<span class="target" id="index-122"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>] with <cite>invalid_dpop_proof</cite> as the value of the error parameter.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The Wallet Instance MUST create a <strong>new DPoP proof</strong> for the Credential request and MUST NOT use the previously created proof for the Token Endpoint.</p>
@@ -1286,15 +1295,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or to a symmetric algorithm (MAC) identifier.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-122"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-123"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-123"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-124"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
 <td><p>It MUST be set to <cite>openid4vci-proof+jwt</cite>.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-124"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-125"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-125"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-126"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwk</strong></p></td>
-<td><p>Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [<span class="target" id="index-126"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [<span class="target" id="index-127"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-128"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-129"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
+<td><p>Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [<span class="target" id="index-127"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] format that the PID/(Q)EAA shall be bound to, as defined in Section 4.1.3 of [<span class="target" id="index-128"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>].</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-129"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-130"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 </tbody>
 </table>
@@ -1313,15 +1322,15 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>The value of this claim MUST be the <strong>client_id</strong> of the Wallet Instance.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-130"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>, Section 4.1.1].</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-131"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>, Section 4.1.1].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>The value of this claim MUST be the identifier URL of the PID/(Q)EAA Issuer.</p></td>
 <td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-131"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-132"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
+<td><p>UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in <span class="target" id="index-132"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>], [<span class="target" id="index-133"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>. Section 4.1.6].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nonce</strong></p></td>
 <td><p>The value type of this claim MUST be a string, where the value is a <strong>c_nonce</strong> provided by the PID/(Q)EAA Issuer in the Token response.</p></td>
