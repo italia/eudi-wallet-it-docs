@@ -13,7 +13,7 @@
     "authorization_details": [
       {
         "type": "openid_credential",
-        "credential_configuration_id": "DisabilityCard"
+        "credential_configuration_id": "EuropeanDisabilityCard"
       }
     ],
     "redirect_uri": "https://client.example.com/cb"
