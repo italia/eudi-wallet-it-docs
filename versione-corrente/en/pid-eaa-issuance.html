@@ -344,7 +344,7 @@ OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jbGllb
 <span class="w">    </span><span class="nt">&quot;authorization_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;credential_configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span>
+<span class="w">        </span><span class="nt">&quot;credential_configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;redirect_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://client.example.com/cb&quot;</span>
@@ -518,12 +518,8 @@ The <code class="docutils literal notranslate"><span class="pre">OAuth-Client-At
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;credential_definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;DisabilityCard&quot;</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;proof&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;proof_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJvcGVuaWQ0dmNpLXByb29mK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwiY3J2IjoiUC0yNTYiLCJ4IjoicFZVM2phdHU0YTN0azljOWFvd1ZnTHlCQl9ySjdNLTNXbGprMWVqVXoyRSIsInkiOiJUTDVPTnZSLUlnYXJuZ3J6NWpkdnNwb2ZmekZ3Y2pQUnRGVWtlbmVIRUkwIn19.eyJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsImF1ZCI6Imh0dHBzOi8vZWFhLXByb3ZpZGVyLndhbGxldC5pcHpzLml0L2NyZWRlbnRpYWwiLCJpYXQiOjE3MDU1NzAwNTUsImV4cCI6MTc3ODkxNDU2MCwibm9uY2UiOiJ0c19FdFVRczBpZWlJUzFOWU5CSEVRU295M2N0NGdweS00RlpLd0hpbGtZIn0.ILIEIk_mBJp8BHyngsPHIUyM3WGaOkt9hsdref3Qek4kYAtAfRRER6DgTeRURNAWKBem8m1mILYhBTNFfZcJjg&quot;</span>
@@ -785,8 +781,6 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <div><ul class="simple">
 <li><p><strong>type</strong>: it MUST be set to <code class="docutils literal notranslate"><span class="pre">openid_credential</span></code>,</p></li>
 <li><p><strong>credential_configuration_id</strong>: JSON String. String specifying a unique identifier of the Credential being described in the <cite>credential_configurations_supported</cite> map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></li>
-<li><p><strong>format</strong>: If Credential Format Profile for Credentials complies with [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>], it MUST be set to <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code> according to Annex A3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>]. If Credential Format Profile for Credentials complies with [ISO 18013-5], the the format identifier MUST be <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> according to Annex A2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></li>
-<li><p><strong>vct</strong>: CONDITIONAL. It MUST be present only if the format identifier is <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code>.</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -1253,23 +1247,19 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>credential_definition</strong></p></td>
-<td><p>JSON object containing the detailed description of the Credential type. It MUST have at least the <strong>type</strong> sub claims which is a JSON array containing the type values the Wallet SHALL request in the Credential Request. It MUST be set in accordance to the type of the requested PID/(Q)EAA that is obtained from the PID/(Q)EAA Issuer metadata. In the case of the PID it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
+<tr class="row-even"><td><p><strong>format</strong></p></td>
+<td><p>Format of the Credential to be issued. This MUST be <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code> or <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>.</p></td>
 <td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>format</strong></p></td>
-<td><p>Format of the Credential to be issued. This MUST be <cite>vc+sd-jwt</cite>.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>vct</strong></p></td>
+<tr class="row-odd"><td><p><strong>vct</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED only if the <em>format</em> identifier is <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code>.</p></td>
 <td><p>See Annex A3.4. of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>]</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>doctype</strong></p></td>
+<tr class="row-even"><td><p><strong>doctype</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED only if the <em>format</em> identifier is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>.</p></td>
 <td><p>See Annex A2.4. of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>]</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>proof</strong></p></td>
+<tr class="row-odd"><td><p><strong>proof</strong></p></td>
 <td><p>JSON object containing proof of possession of the key material the issued credential shall be bound to. The proof object MUST contain the following mandatory claims:</p>
 <ul class="simple">
 <li><p><strong>proof_type</strong>: JSON string denoting the proof type. It MUST be <cite>jwt</cite>.</p></li>
@@ -1526,7 +1516,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 29/08/2024.
+      Last updated on 02/09/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
