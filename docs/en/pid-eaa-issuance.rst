@@ -116,7 +116,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
   * MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`.
   * signs this request using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation ``cnf`` claim.
   * MUST use the ``OAuth-Client-Attestation`` and  ``OAuth-Client-Attestation-PoP`` parameters according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint.
-  * specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter and/or scope header parameter.
+  * specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter and/or scope parameter.
 
 The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:
 
@@ -142,7 +142,6 @@ Below a non-normative example of the PAR.
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRWaUk1RU5aQXdVQ0lVTWdQQVk4X1VISW5fMkhIWlMxN3RfQzAifQ.eyJpc3MiOiAiaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCAiYXVkIjogImh0dHBzOi8vYXMuZXhhbXBsZS5jb20iLCAibmJmIjogMTMwMDgxNTc4MCwgImV4cCI6IDEzMDA4MTkzODB9._v3bjJelKI0TNpbc4ysS7yJupwSZzMPQ0ZQ9N5zj8XGQ_T3NN9bghUyVzegR60xokqBnqmMS4iYgPOL7ekEspw
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCJhdWQiOiIgaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsImp0aSI6IjVlZmY5YzFiLWVkMGQtNDdlOC1hNTUzLWY3NGRmMWJiZWVkZCIsImlhdCI6MTcyMjI0OTQ0NywiZXhwIjoxNzIyMjQ5NzQ3fQ.aZpx7u7R-W8q7fJh9BEaRf8LM7RQRxAVc-okalAVqxHWqUMh3ehYukMLaCsiDQ33pyS41Y5PEsZ3HXwAXQ3nMg
 
-    &scope=EuropeanDisabilityCard
     &client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$
     &request=$SIGNED-JWT
 
@@ -433,9 +432,6 @@ The HTTP POST method MUST use the parameters in the message body encoded in ``ap
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **scope**
-      - MUST contains a subset or the entire set of the *scope* values contained in the *credential_configurations_supported* of the Credential Issuer Metadata.
-      - :rfc:`6749`
     * - **client_id**
       - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Attestation.
       - :rfc:`6749`
@@ -521,6 +517,9 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
     * - **code_challenge_method**
       - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
+    * - **scope**
+      - JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``. It MAY be multivalued, each value must be separated by a space.
+      - :rfc:`6749`
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
 
