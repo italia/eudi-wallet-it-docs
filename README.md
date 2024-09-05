@@ -40,6 +40,7 @@ Released versions can be navigated by adding the tag in the webpath leaded by a 
 
 
 
+ - [https://italia.github.io/eudi-wallet-it-docs/v0.8.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.8.0/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.7.1/en/](https://italia.github.io/eudi-wallet-it-docs/v0.7.1/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.7.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.7.0/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.6.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.6.0/en/)
