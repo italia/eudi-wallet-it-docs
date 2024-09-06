@@ -329,7 +329,7 @@ The JWS payload parameters are described herein:
 
   - ``presentation_definition``: JSON object according to `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_. This parameter MUST not be present when ``presentation_definition_uri`` or ``scope`` are present.
   - ``presentation_definition_uri``: Not supported. String containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when ``presentation_definition`` parameter or a ``scope`` value representing a Presentation Definition is not present. 
-  - ``client_metadata``: A JSON object containing the Relying Party metadata values. If the ``client_metadata`` parameter is present when ``client_id_scheme`` is ``entity_id``, the client_metadata MUST only contains the member ``jwks`` and containing within it ephemeral cryptographic public keys to be used only for the Wallet Instance with which the Relying Party is interacting with.
+  - ``client_metadata``: A JSON object containing the Relying Party metadata values. If the ``client_metadata`` parameter is present when ``client_id_scheme`` is ``entity_id``, the ``client_metadata`` MUST only contain the member ``jwks`` and containing ephemeral cryptographic public keys to be used only for the Wallet Instance with which the Relying Party is interacting with for this specific session.
 
 
 Request URI Endpoint Errors
