@@ -234,7 +234,8 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
 Request URI Response
 --------------------
 
-The Relying Party issues the signed Request Object, where a non-normative example in the form of decoded header and payload is shown below:
+The Relying Party issues the signed Request Object using the content type set to ``application/oauth-authz-req+jwt``,
+where a non-normative example in the form of decoded header and payload is shown below:
 
 .. code-block:: text
 
@@ -328,8 +329,7 @@ The JWS payload parameters are described herein:
 
   - ``presentation_definition``: JSON object according to `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_. This parameter MUST not be present when ``presentation_definition_uri`` or ``scope`` are present.
   - ``presentation_definition_uri``: Not supported. String containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when ``presentation_definition`` parameter or a ``scope`` value representing a Presentation Definition is not present. 
-  - ``client_metadata``: A JSON object containing the Relying Party metadata values. The ``client_metadata`` parameter MUST NOT be present when ``client_id_scheme`` is ``entity_id``. Since the ``client_metadata`` is taken from ``trust_chain``, this parameter is intended to not be used.
-  - ``client_metadata_uri``: string containing an HTTPS URL pointing to a resource where a JSON object with the Relying Party metadata can be retrieved. The ``client_metadata_uri`` parameter MUST NOT be present when ``client_id_scheme`` is ``entity_id``. Since the ``client_metadata`` is taken from ``trust_chain``, this parameter is intended to not be used.
+  - ``client_metadata``: A JSON object containing the Relying Party metadata values. If the ``client_metadata`` parameter is present when ``client_id_scheme`` is ``entity_id``, the client_metadata MUST only contains the member ``jwks`` and containing within it ephemeral cryptographic public keys to be used only for the Wallet Instance with which the Relying Party is interacting with.
 
 
 Request URI Endpoint Errors
@@ -420,7 +420,7 @@ Below is a non-normative example of the decrypted payload of the JWT contained i
             {
                 "id": "WalletAttestation",
                 "path": "$.vp_token[1]",
-                "format": "jwt"
+                "format": "wallet-attestation+jwt"
             }
         ]
     }
@@ -440,7 +440,7 @@ Where the following parameters are used:
       - The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
       - The Wallet Attestation
   * - **presentation_submission**
-    - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_.
+    - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_. This is expressed via elements in the ``descriptor_map`` array (Input Descriptor Mapping Objects) that contain a field called ``path``, which MUST have the value $ (top level root path) when only one Verifiable Presentation is contained in the VP Token, and MUST have the value $[n] (indexed path from root) when there are multiple Verifiable Presentations, where ``n`` is the index to select. The Relyingh PArty receiving the `presentation_submission` descriptor therefore is able to use the corred method to decode each credential data format provided withi nthe ``vp_token``.
   * - **state**
     - Unique identifier provided by the Relying Party within the Authorization Request.
 
