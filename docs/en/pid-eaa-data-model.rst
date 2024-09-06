@@ -19,30 +19,41 @@ The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provid
 
 The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections. 
 
-SD-JWT
-======
+SD-JWT-VC Credential Format
+===========================
 
-The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `Selective Disclosure JWT format <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ as specified in `[SD-JWT-based Verifiable Credentials 02] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`__.
+The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SD-JWT`_ as specified in `SD-JWT-VC`_.
 
-An SD-JWT is a JWT that MUST be signed using the Issuer's private key. The SD-JWT payload of the MUST contain the **_sd_alg** claim described in `[SD-JWT]. Section 5.1.2. <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`_ and other claims specified in this section, some of them may be selectively disclosable claims. 
+SD-JWT MUST be signed using the Issuer's private key. SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section. 
 
-The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests over the salts and the claim values. The **_sd_alg** claim MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
+The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of `SD-JWT`_. **_sd_alg**  MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
-Selectively disclosable claims are omitted from the SD-JWT. Instead, the digests of the respective disclosures and decoy digests are contained as an array in a new JWT claim, **_sd**. 
+Claims that are not selectively disclosable MUST be included in the SD-JWT as they are.  The digests of the disclosures, along with any decoy if present,  MUST be contained in the  **_sd** array, as specified in Section 5.2.4.1 of `SD-JWT`_. 
 
-Each digest value ensures the integrity of, and maps to, the respective Disclosure. Digest values are calculated using a hash function over the disclosures, each of which contains 
+Each digest value, calculated using a hash function over the disclosures, verifies the integrity and corresponds to a specific Disclosure. Each disclosure includes:
 
   - a random salt, 
-  - the claim name (only when the claim is an object property), 
+  - the claim name (only when the claim is an object element), 
   - the claim value. 
-  
-The Disclosures are sent to the Holder together with the SD-JWT in the *Combined Format for Issuance* that MUST be an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
+
+In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore **_sd** claim containing digests MAY appear multiple times at different level in the SD-JWT.
+
+For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 5.2.4.2 of `SD-JWT`_.
+
+In case of array elements, digest values are calculated using a hash function over the disclosures, containing:
+
+  - a random salt, 
+  - the array element
+
+In case of multiple array elements, the Issuer may wish to conceal presence of any statement while also allowing the Holder to reveal each of those elements individually (Section 5.2.6 `SD-JWT`_). Both the entire array and the individuals entries can be selective disclosure.
+
+The Disclosures are provided to the Holder together with the SD-JWT in the *Combined Format for Issuance* that is an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
 
 .. code-block::
 
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
 
-See `[SD-JWT VC] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html>`_ and `[SD-JWT] <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04>`__ for more details. 
+See `SD-JWT-VC`_ and `SD-JWT`_ for additional details. 
 
 
 PID/(Q)EAA SD-JWT parameters
@@ -60,17 +71,23 @@ The JOSE header contains the following mandatory parameters:
     - **Description**
     - **Reference**
   * - **typ**
-    - MUST be set to ``vc+sd-jwt`` as defined in `[draft-terbu-sd-jwt-vc-latest] <https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html>`__. 
-    - `[RFC7515, Section 4.1.9] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9>`_.
+    - REQUIRED. It MUST be set to ``vc+sd-jwt`` as defined in `SD-JWT-VC`_. 
+    - :rfc:`7515` Section 4.1.9.
   * - **alg**
-    - Signature Algorithm. 
-    - `[RFC7515, Section 4.1.1] <https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1>`_.
+    - REQUIRED. Signature Algorithm. 
+    - :rfc:`7515` Section 4.1.1.
   * - **kid**
-    - Unique identifier of the public key. 
-    - `[RFC7515, Section 4.1.8] <https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.8>`_.
+    - REQUIRED. Unique identifier of the public key. 
+    - :rfc:`7515` Section 4.1.8.
   * - **trust_chain**
-    - JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
-    - `[OIDC-FED, Section 3.2.1] <https://openid.net/specs/openid-connect-federation-1_0.html#name-trust-chain-header-paramete>`_.
+    - OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
+    - [`OID-FED`_] Section 3.2.1.
+  * - **x5c**
+    - OPTIONAL. Contains the X.509 public key certificate or certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. 
+    - :rfc:`7515` Section 4.1.8 and [`SD-JWT-VC`_] Section 3.5.
+  * - **vctm**
+    - OPTIONAL. JSON array of base64url-encoded Type Metadata JSON documents. In case of extended type metadata, this claim contains the entire chain of JSON documents. 
+    - [`SD-JWT-VC`_] Section 6.3.5.
 
 The following claims MUST be in the JWT payload. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
 
@@ -94,15 +111,81 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [NSD].UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **status**
-      - [NSD].it MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member *status_attestation* set to a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Attestation is bound. It is RECOMMENDED to use *sha-256*. 
-      - `[SD-JWT-VC. Section 3.2.2.2] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html#section-3.2.2.2>`_ and `[OAuth Status Attestations Draft 01] <https://www.ietf.org/archive/id/draft-demarco-status-attestations-01.html#section-9>`_.
+      - [NSD]. It MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member *status_assertion* set to a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use *sha-256*. 
+      - Section 3.2.2.2 `SD-JWT-VC`_ and Section 11 `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - [NSD].JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
-      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and `[SD-JWT-VC. Section 3.2.2.2] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html#section-3.2.2.2>`_.
+      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD].Credential type as a string, MUST be set in accordance to the type obtained from the PID/(Q)EAA Issuer metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
-      - `[SD-JWT-VC. Section 3.2.2.2] <https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-02.html#section-3.2.2.2>`_.
+      - [NSD]. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the PID/(Q)EAA Issuer metadata. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://issuer.example.org/v1.0/personidentificationdata``).
+      - Section 3.2.2.2 `SD-JWT-VC`_.
+    * - **vct#integrity**
+      - [NSD].The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
+      - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
+    * - **verification**
+      - [NSD].Object containing user authentication information. It MUST contain the following sub-value:
 
+          * ``trust_framework``: String identifying the trust framework used for user digital authetication.
+          * ``assurance_level``: String identifying the level of identity assurance guarateed during the authentication process.
+          * ``evidence``: It MUST contain ``method`` claim identifying the digital identity system used for the authentication.
+      - `OIDC-IDA`_.
+
+.. note::
+
+    Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim **vct**, using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.
+
+
+Digital Credential Metadata Type
+--------------------------------
+
+The Metadata type document MUST be a JSON object and contains the following parameters.
+
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **name**
+      - REQUIRED. Human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :rfc:`5646` (e.g. *name#it-IT*).
+      - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
+    * - **description**
+      - REQUIRED. A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in :rfc:`5646`.
+      - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
+    * - **extends**
+      - OPTIONAL. String Identitifier of an exteded metadata type document.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **extends#integrity**
+      - CONDITIONAL. REQUIRED if **extends** is present.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **schema**
+      - CONDITIONAL. REQUIRED if **schema_uri** is not present.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **schema_uri**
+      - CONDITIONAL. REQUIRED if **schema** is not present.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **schema#integrity**
+      - CONDITIONAL. REQUIRED if **schema_uri** is not present.
+      - [`SD-JWT-VC`_] Section 6.2.
+    * - **data_source**
+      - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
+
+          * ``trust_framework``: MUST cointain trust framework used for digital authentication towards authentic source system.
+          * ``authentic_source``: MUST contain ``organization_name`` and ``organization_code`` cliam related to name and code identifier of the authentic source.
+      - This specification
+    * - **vc_claims**
+      - REQUIRED. Object containing useful information about the Digital credential graphical rappresentation. It MUST contain the for each credential claim the following objects:
+
+          * ``display``: MUST cointain name human-readable display name.
+          * ``graphics``: MUST contain position, font character, color, size.
+      - This specification
+
+
+A non-normative Digital Credential metadata type is provided below.
+
+.. literalinclude:: ../../examples/vc-metadata-type.json
+  :language: JSON  
 
 .. _sec-pid-user-claims:   
 
@@ -140,122 +223,68 @@ The PID attribute schema, which encompasses all potential User data, is defined 
 PID Non-Normative Examples
 --------------------------
 
-In the following, the non-normative example of a PID in JSON format.
+In the following, the non-normative example of the payload of a PID represented in JSON format.
 
-.. code-block:: JSON
+.. literalinclude:: ../../examples/pid-json-example-payload.json
+  :language: JSON  
 
-  {
-    "iss": "https://issuer.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "iat": 1683000000,
-    "exp": 1883000000,
-    "status": {
-      "status_attestation": {
-        "credential_hash_alg": "sha-256"
-      },
-    "vct": "PersonIdentificationData",
-    "unique_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "given_name": "Mario",
-    "family_name": "Rossi",
-    "birth_date": "1980-01-10",
-    "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"
-  }
+The corresponding SD-JWT version for PID is given by
 
-The corresponding SD-JWT verson for PID is given by
+.. literalinclude:: ../../examples/pid-sd-jwt-example-header.json
+  :language: JSON    
 
-.. code-block:: JSON
-
-  {
-     "typ":"vc+sd-jwt",
-     "alg":"ES256",
-     "kid":"dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw",
-     "trust_chain" : [
-      "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
-      "eyJhbGciOiJSUzI1NiIsImtpZCI6 ...",
-      "IkJYdmZybG5oQU11SFIwN2FqVW1B ..."
-     ]
-  }
-
-.. code-block:: JSON
-
-  {
-    "_sd": [
-      "7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc",
-      "NOxVzjUJg667iBdeDwmr6tZ46X-jchKwIVxMAfv43yc",
-      "TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8",
-      "UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4",
-      "q6Tqnxau97tu-MqUDg0fSAmLGZdSuMUMk6a2s3bcsC0",
-      "wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc"
-    ],
-    "exp": 1883000000,
-    "iss": "https://pidprovider.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "status": {
-      "status_attestation": {
-        "credential_hash_alg": "sha-256"
-      }
-    },
-    "vct": "PersonIdentificationData",
-    "_sd_alg": "sha-256",
-    "cnf": {
-      "jwk": {
-        "kty": "EC",
-        "crv": "P-256",
-        "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-        "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-      }
-    }
-  }
+.. literalinclude:: ../../examples/pid-sd-jwt-example-payload.json
+  :language: JSON  
 
 In the following the disclosure list is given
 
 **Claim** ``iat``:
 
--  SHA-256 Hash: ``7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc``
+-  SHA-256 Hash: ``Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE``
 -  Disclosure:
-   ``WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
--  Contents: ``["57mvycTh5yZCrKLZ5xnfUw", "iat", 1683000000]``
+   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
+-  Contents: ``["2GLC42sKQveCfGfryNRN9w", "iat", 1683000000]``
 
 **Claim** ``unique_id``:
 
--  SHA-256 Hash: ``NOxVzjUJg667iBdeDwmr6tZ46X-jchKwIVxMAfv43yc``
+-  SHA-256 Hash: ``BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig``
 -  Disclosure:
-   ``WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInVuaXF1ZV9pZCIsICJ4eHh4``
+   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4``
    ``eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ``
--  Contents: ``["kucrBmlo_hMaIFF585RzaQ", "unique_id",``
+-  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "unique_id",``
    ``"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]``
 
 **Claim** ``given_name``:
 
--  SHA-256 Hash: ``wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc``
+-  SHA-256 Hash: ``zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o``
 -  Disclosure:
-   ``WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFy``
+   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFy``
    ``aW8iXQ``
--  Contents: ``["NTNRoOiuVVRtF6CEztd9Zw", "given_name", "Mario"]``
+-  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "given_name", "Mario"]``
 
 **Claim** ``family_name``:
 
--  SHA-256 Hash: ``UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4``
+-  SHA-256 Hash: ``VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA``
 -  Disclosure:
-   ``WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJv``
+   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJv``
    ``c3NpIl0``
--  Contents: ``["FDSSPggzGBUwQLHDSE6wQQ", "family_name", "Rossi"]``
+-  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "family_name", "Rossi"]``
 
 **Claim** ``birth_date``:
 
--  SHA-256 Hash: ``TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8``
+-  SHA-256 Hash: ``s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk``
 -  Disclosure:
-   ``WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4``
+   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4``
    ``MC0wMS0xMCJd``
--  Contents: ``["KZ8e5wVEtDvb1ziSPA4DzA", "birth_date", "1980-01-10"]``
+-  Contents: ``["Qg_O64zqAxe412a108iroA", "birth_date", "1980-01-10"]``
 
 **Claim** ``tax_id_code``:
 
--  SHA-256 Hash: ``q6Tqnxau97tu-MqUDg0fSAmLGZdSuMUMk6a2s3bcsC0``
+-  SHA-256 Hash: ``ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E``
 -  Disclosure:
-   ``WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgInRheF9pZF9jb2RlIiwgIlRJ``
+   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJ``
    ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["pZ5MRyOxpVWZuHLoJ-yjRg", "tax_id_code",``
+-  Contents: ``["AJx-095VPrpTtN4QMOqROA", "tax_id_code",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 
@@ -265,203 +294,154 @@ The combined format for the PID issuance is given by
 .. code-block::
 
   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
-  IjdXRzRuVDZLMjZfUjM5NzV6Y3duVndnb0hBN2I5ODhfMy12SnpiWmY2WWMiLCAiTk94
-  VnpqVUpnNjY3aUJkZUR3bXI2dFo0NlgtamNoS3dJVnhNQWZ2NDN5YyIsICJUSzJSZ3VQ
-  WW9YekN4MHZ2NWhiTjl1NU0ybUhsV0J0NDFxR1dsTFhDTnU4IiwgIlVIQ2hwR3RORjJi
-  ajFGdkFmQmJ5MXJuZjdXWGt4ZWxGSjVhNHZTajJGTzQiLCAicTZUcW54YXU5N3R1LU1x
-  VURnMGZTQW1MR1pkU3VNVU1rNmEyczNiY3NDMCIsICJ3eWZ4VnFxOUJvc1BUN3RONFNI
-  T0k0RTQ4UDE5YVZBMWt0VzVaZjBFLWZjIl0sICJleHAiOiAxODgzMDAwMDAwLCAiaXNz
-  IjogImh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56Ykxz
-  WGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0YXR1c19h
-  dHRlc3RhdGlvbiI6IHsiY3JlZGVudGlhbF9oYXNoX2FsZyI6ICJzaGEtMjU2In19LCAi
-  dmN0IjogIlBlcnNvbklkZW50aWZpY2F0aW9uRGF0YSIsICJfc2RfYWxnIjogInNoYS0y
-  NTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAi
-  eCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwg
-  InkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9
-  fX0.A36ovweqpCpPkYHX75dg-HIib7zQKlfmMCaixlpOCmEl1CxlX-NtZbFn_kdN0nlJ
-  YMLay4xSeetmic_ScLTxdg~WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsI
-  DE2ODMwMDAwMDBd~WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgInVuaXF1ZV9pZCIs
-  ICJ4eHh4eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ~WyJOVE5Sb09pd
-  VZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJGRFNTUGdnek
-  dCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJLWjhlNXdWRX
-  REdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJwWjVNU
-  nlPeHBWV1p1SExvSi15alJnIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYW
-  FhYWFhYWFgiXQ~
+  IkJvTUdrdFcxcmJpa250dzhGenhfQmVMNFliQW5kcjZBSHNkZ3BhdEZDaWciLCAiRU5O
+  bzMxamZ6RnA4WTJEVzBSLWZJTWVXd2U3RUxHdkdvSE13TUJwdTE0RSIsICJWUUktUzFt
+  VDFLeGZxMm84Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdTcjRl
+  eEVZdHFERXNtUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiczFYSzVmMnBNMy1hRlRh
+  dVhobXZkOXB5UVRKNkZNVWhjLUpYZkhyeGhMayIsICJ6VmRnaGNtQ2xNVldsVWdHc0dw
+  U2tDUGtFSFo0dTlvV2oxU2xJQmxDYzFvIl0sICJpc3MiOiAiaHR0cHM6Ly9waWRwcm92
+  aWRlci5leGFtcGxlLm9yZyIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXhwIjogMTg4MzAw
+  MDAwMCwgInN1YiI6ICJOemJMc1hoOHVEQ2NkN25vV1hGWkFmSGt4WnNSR0M5WHMiLCAi
+  c3RhdHVzIjogeyJzdGF0dXNfYXNzZXJ0aW9uIjogeyJjcmVkZW50aWFsX2hhc2hfYWxn
+  IjogInNoYS0yNTYifX0sICJ2Y3QiOiAiaHR0cHM6Ly9waWRwcm92aWRlci5leGFtcGxl
+  Lm9yZy92MS4wL3BlcnNvbmlkZW50aWZpY2F0aW9uZGF0YSIsICJ2Y3QjaW50ZWdyaXR5
+  IjogImM1ZjczZTI1MGZlODY5ZjI0ZDE1MTE4YWNjZTI4NmM5YmI1NmI2M2E0NDNkYzg1
+  YWY2NTNjZDczZjYwNzhiMWYiLCAidmVyaWZpY2F0aW9uIjogeyJ0cnVzdF9mcmFtZXdv
+  cmsiOiAiZWlkYXMiLCAiYXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2Ui
+  OiB7Im1ldGhvZCI6ICJjaWUifX0sICJfc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjog
+  eyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5
+  WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdX
+  YlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0.NE_Q2unPGzoh
+  rIyVI0kAZ8nz3DLhUXBBd-jji8302PyIU0xqLnGtcWrdM9NPE_-BfUe3H-XFahYOMI54
+  PUvdZw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~
+  WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4eC14
+  eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
+  lZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZG
+  hRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm
+  9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRT
+  U9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ~
 
 (Q)EAA non-normative examples
 -----------------------------
 
 In the following, we provide a non-normative example of (Q)EAA in JSON.
 
-.. code-block:: JSON
-
-  {
-    "iss": "https://issuer.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "iat": 1683000000,
-    "exp": 1883000000,
-    "status": {
-    "status_attestation": {
-      "credential_hash_alg": "sha-256"
-    },
-    "vct": "DisabilityCard",
-    "document_number": "XXXXXXXXXX",
-    "given_name": "Mario",
-    "family_name": "Rossi",
-    "birth_date": "1980-01-10",
-    "expiry_date": "2024-01-01",
-    "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX",
-    "constant_attendance_allowance": true
-  }
+.. literalinclude:: ../../examples/qeaa-json-example-payload.json
+  :language: JSON  
 
 The corresponding SD-JWT for the previous data is represented as follow, as decoded JSON for both header and payload.
 
-.. code-block:: JSON
+.. literalinclude:: ../../examples/qeaa-sd-jwt-example-header.json
+  :language: JSON  
 
-  {
-     "typ":"vc+sd-jwt",
-     "alg":"ES256",
-     "kid":"d126a6a856f7724560484fa9dc59d195",
-     "trust_chain" : [
-      "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
-      "eyJhbGciOiJSUzI1NiIsImtpZCI6 ...",
-      "IkJYdmZybG5oQU11SFIwN2FqVW1B ..."
-     ]
-  }
-
-.. code-block:: JSON
-
-  {
-    "_sd": [
-      "-LLA7MCh-YWWYNzFfwZsJBGGiE096fN8d60a-ml3sgo",
-      "7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc",
-      "AFRJaRPZTMaNxYu5IIWPifOAXJCnK-_h1eJt7MymcgM",
-      "TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8",
-      "UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4",
-      "i9XHLePHyV8OM35l3nf1MKqfpWuD7OFpRamSAsX0-5g",
-      "rhPkItz7BGGpjnWX2SGVH_OV9VhRjz9Hx_INXwBbz6o",
-      "wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc"
-    ],
-    "exp": 1883000000,
-    "iss": "https://issuer.example.org",
-    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-    "status": {
-      "status_attestation": {
-        "credential_hash_alg": "sha-256"
-      }
-    },
-    "vct": "DisabilityCard",
-    "_sd_alg": "sha-256",
-    "cnf": {
-      "jwk": {
-        "kty": "EC",
-        "crv": "P-256",
-        "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-        "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-      }
-    }
-  }
+.. literalinclude:: ../../examples/qeaa-sd-jwt-example-payload.json
+  :language: JSON  
 
 In the following the disclosure list is given:
 
 **Claim** ``iat``:
 
--  SHA-256 Hash: ``7WG4nT6K26_R3975zcwnVwgoHA7b988_3-vJzbZf6Yc``
+-  SHA-256 Hash: ``Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE``
 -  Disclosure:
-   ``WyI1N212eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
--  Contents: ``["57mvycTh5yZCrKLZ5xnfUw", "iat", 1683000000]``
+   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
+-  Contents: ``["2GLC42sKQveCfGfryNRN9w", "iat", 1683000000]``
 
 **Claim** ``document_number``:
 
--  SHA-256 Hash: ``AFRJaRPZTMaNxYu5IIWPifOAXJCnK-_h1eJt7MymcgM``
+-  SHA-256 Hash: ``Dx-6hjvrcxNzF0slU6ukNmzHoL-YvBN-tFa0T8X-bY0``
 -  Disclosure:
-   ``WyJrdWNyQm1sb19oTWFJRkY1ODVSemFRIiwgImRvY3VtZW50X251bWJlciIs``
+   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImRvY3VtZW50X251bWJlciIs``
    ``ICJYWFhYWFhYWFhYIl0``
 -  Contents:
-   ``["kucrBmlo_hMaIFF585RzaQ", "document_number", "XXXXXXXXXX"]``
+   ``["eluV5Og3gSNII8EYnsxA_A", "document_number", "XXXXXXXXXX"]``
 
 **Claim** ``given_name``:
 
--  SHA-256 Hash: ``wyfxVqq9BosPT7tN4SHOI4E48P19aVA1ktW5Zf0E-fc``
+-  SHA-256 Hash: ``zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o``
 -  Disclosure:
-   ``WyJOVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFy``
+   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFy``
    ``aW8iXQ``
--  Contents: ``["NTNRoOiuVVRtF6CEztd9Zw", "given_name", "Mario"]``
+-  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "given_name", "Mario"]``
 
 **Claim** ``family_name``:
 
--  SHA-256 Hash: ``UHChpGtNF2bj1FvAfBby1rnf7WXkxelFJ5a4vSj2FO4``
+-  SHA-256 Hash: ``VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA``
 -  Disclosure:
-   ``WyJGRFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJv``
+   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJv``
    ``c3NpIl0``
--  Contents: ``["FDSSPggzGBUwQLHDSE6wQQ", "family_name", "Rossi"]``
+-  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "family_name", "Rossi"]``
 
 **Claim** ``birth_date``:
 
--  SHA-256 Hash: ``TK2RguPYoXzCx0vv5hbN9u5M2mHlWBt41qGWlLXCNu8``
+-  SHA-256 Hash: ``s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk``
 -  Disclosure:
-   ``WyJLWjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4``
+   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4``
    ``MC0wMS0xMCJd``
--  Contents: ``["KZ8e5wVEtDvb1ziSPA4DzA", "birth_date", "1980-01-10"]``
+-  Contents: ``["Qg_O64zqAxe412a108iroA", "birth_date", "1980-01-10"]``
 
 **Claim** ``expiry_date``:
 
--  SHA-256 Hash: ``i9XHLePHyV8OM35l3nf1MKqfpWuD7OFpRamSAsX0-5g``
+-  SHA-256 Hash: ``aBVdfcnxT0Z5RrwdxZSUhuUxz3gM2vcEZLeYIj61Kas``
 -  Disclosure:
-   ``WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImV4cGlyeV9kYXRlIiwgIjIw``
+   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIjIw``
    ``MjQtMDEtMDEiXQ``
--  Contents: ``["pZ5MRyOxpVWZuHLoJ-yjRg", "expiry_date", "2024-01-01"]``
+-  Contents: ``["AJx-095VPrpTtN4QMOqROA", "expiry_date", "2024-01-01"]``
 
 **Claim** ``tax_id_code``:
 
--  SHA-256 Hash: ``-LLA7MCh-YWWYNzFfwZsJBGGiE096fN8d60a-ml3sgo``
+-  SHA-256 Hash: ``8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E``
 -  Disclosure:
-   ``WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
+   ``WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
    ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["jtVuKCpn7bTcHrAg_seUbQ", "tax_id_code",``
+-  Contents: ``["Pc33JM2LchcU_lHggv_ufQ", "tax_id_code",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 **Claim** ``constant_attendance_allowance``:
 
--  SHA-256 Hash: ``rhPkItz7BGGpjnWX2SGVH_OV9VhRjz9Hx_INXwBbz6o``
+-  SHA-256 Hash: ``GE3Sjy_zAT34f8wa5DUkVB0FslaSJRAAc8I3lN11Ffc``
 -  Disclosure:
-   ``WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgImNvbnN0YW50X2F0dGVuZGFu``
+   ``WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGFu``
    ``Y2VfYWxsb3dhbmNlIiwgdHJ1ZV0``
 -  Contents:
-   ``["WDkd6JsNhDFvLP4s1hQdyA", "constant_attendance_allowance",``
+   ``["G02NSrQfjFXQ7Io09syajA", "constant_attendance_allowance",``
    ``true]``
 
 
-The combined format for the PID issuance is represented below:
+The combined format for the (Q)EAA issuance is represented below:
 
 .. code-block::
 
   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
-  Ii1MTEE3TUNoLVlXV1lOekZmd1pzSkJHR2lFMDk2Zk44ZDYwYS1tbDNzZ28iLCAiN1dH
-  NG5UNksyNl9SMzk3NXpjd25Wd2dvSEE3Yjk4OF8zLXZKemJaZjZZYyIsICJBRlJKYVJQ
-  WlRNYU54WXU1SUlXUGlmT0FYSkNuSy1faDFlSnQ3TXltY2dNIiwgIlRLMlJndVBZb1h6
-  Q3gwdnY1aGJOOXU1TTJtSGxXQnQ0MXFHV2xMWENOdTgiLCAiVUhDaHBHdE5GMmJqMUZ2
-  QWZCYnkxcm5mN1dYa3hlbEZKNWE0dlNqMkZPNCIsICJpOVhITGVQSHlWOE9NMzVsM25m
-  MU1LcWZwV3VEN09GcFJhbVNBc1gwLTVnIiwgInJoUGtJdHo3QkdHcGpuV1gyU0dWSF9P
-  VjlWaFJqejlIeF9JTlh3QmJ6Nm8iLCAid3lmeFZxcTlCb3NQVDd0TjRTSE9JNEU0OFAx
-  OWFWQTFrdFc1WmYwRS1mYyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRw
-  czovL2lzc3Vlci5leGFtcGxlLm9yZyIsICJzdWIiOiAiTnpiTHNYaDh1RENjZDdub1dY
-  RlpBZkhreFpzUkdDOVhzIiwgInN0YXR1cyI6IHsic3RhdHVzX2F0dGVzdGF0aW9uIjog
-  eyJjcmVkZW50aWFsX2hhc2hfYWxnIjogInNoYS0yNTYifX0sICJ2Y3QiOiAiRGlzYWJp
-  bGl0eUNhcmQiLCAiX3NkX2FsZyI6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJr
-  dHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRX
-  NHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZR
-  NGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX19.1kOe6IgFxgbb_jtaLUhM_bgjmby
-  j6B63rm_WjaOwpOBsiPSKJY7hBHd2a83euSI8JqbSkVHJS3wcr0kd9ppZRw~WyI1N212
-  eWNUaDV5WkNyS0xaNXhuZlV3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJrdWNyQm1sb19
-  oTWFJRkY1ODVSemFRIiwgImRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0~WyJ
-  OVE5Sb09pdVZWUnRGNkNFenRkOVp3IiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJG
-  RFNTUGdnekdCVXdRTEhEU0U2d1FRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJL
-  WjhlNXdWRXREdmIxemlTUEE0RHpBIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd
-  ~WyJwWjVNUnlPeHBWV1p1SExvSi15alJnIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDE
-  tMDEiXQ~WyJqdFZ1S0NwbjdiVGNIckFnX3NlVWJRIiwgInRheF9pZF9jb2RlIiwgIlRJ
-  TklULVhYWFhYWFhYWFhYWFhYWFgiXQ~WyJXRGtkNkpzTmhERnZMUDRzMWhRZHlBIiwgI
-  mNvbnN0YW50X2F0dGVuZGFuY2VfYWxsb3dhbmNlIiwgdHJ1ZV0~
+  IjhKam96QmZvdk1OdlEzSGZsbVBXeTRPMTlHcHhzNjFGV0hqWmViVTU4OUUiLCAiRHgt
+  NmhqdnJjeE56RjBzbFU2dWtObXpIb0wtWXZCTi10RmEwVDhYLWJZMCIsICJHRTNTanlf
+  ekFUMzRmOHdhNURVa1ZCMEZzbGFTSlJBQWM4STNsTjExRmZjIiwgIlZRSS1TMW1UMUt4
+  ZnEybzhKOWlvN3hNTVgyTUl4YUc5TTlQZUpWcXJNY0EiLCAiWXJjLXMtV1NyNGV4RVl0
+  cURFc21SbDdzcG9WZm1CeGl4UDEyZTRzeXFORSIsICJhQlZkZmNueFQwWjVScndkeFpT
+  VWh1VXh6M2dNMnZjRVpMZVlJajYxS2FzIiwgInMxWEs1ZjJwTTMtYUZUYXVYaG12ZDlw
+  eVFUSjZGTVVoYy1KWGZIcnhoTGsiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUha
+  NHU5b1dqMVNsSUJsQ2MxbyJdLCAiaXNzIjogImh0dHBzOi8vaXNzdWVyLmV4YW1wbGUu
+  b3JnIiwgImlhdCI6IDE2ODMwMDAwMDAsICJleHAiOiAxODgzMDAwMDAwLCAic3ViIjog
+  Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0
+  YXR1c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9
+  fSwgInZjdCI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy92MS4wL2Rpc2FiaWxp
+  dHljYXJkIiwgInZjdCNpbnRlZ3JpdHkiOiAiMmU0MGJjZDY3OTkwMDgwODVmZmIxYTFm
+  MzUxN2VmZWUzMzUyOThmZDk3NmIzZTY1NWJmYjNmNGVhYTExZDE3MSIsICJ2ZXJpZmlj
+  YXRpb24iOiB7InRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIsICJhc3N1cmFuY2VfbGV2
+  ZWwiOiAiaGlnaCIsICJldmlkZW5jZSI6IHsibWV0aG9kIjogImNpZSJ9fSwgIl9zZF9h
+  bGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6
+  ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxz
+  N3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0
+  NGpUOUYySFpRIn19fQ.FAIV8Cncch43N07yBcWleJg4ZO9o_XdefgIejdShK1cCj8yT9
+  S022cvSpdxuV44x-c_XmTn3Db9t0jJJPtqebA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STj
+  l3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgI
+  mRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0~WyI2SWo3dE0tYTVpVlBHYm9TN
+  XRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW
+  5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMD
+  hpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0T
+  jRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ~WyJQYzMzSk0yTG
+  NoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWF
+  hYWFgiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGF
+  uY2VfYWxsb3dhbmNlIiwgdHJ1ZV0~
 
 MDOC-CBOR
 =========
@@ -709,7 +689,7 @@ The `MobileSecurityObjectBytes` MUST have the following attributes:
     * - **version**
       - See :ref:`Table <table-mdoc-attributes>`.
       - [ISO 18013-5#9.1.2.4]
-    * - **validityInfo**. 
+    * - **validityInfo**
       - Object containing issuance and expiration datetimes. It MUST contain the following sub-value:
 
           * *signed*
@@ -745,141 +725,7 @@ A non-normative example of a PID in MDOC-CBOR format is represented below using 
 
 The `Diagnostic Notation` of the above MDOC-CBOR is given below:
 
-.. code-block:: text
-    
-  {     
-    "status": 0,     
-    "version": "1.0",     
-    "documents": [        
-    {             
-      "docType": "eu.europa.ec.eudiw.pid.1",                         
-      "issuerSigned": {                
-          "issuerAuth": [                
-          << {1: -7} >>, % protected header with the value alg:ES256                    
-          {                         
-              33: h'30820215308201BCA003020102021404AD30C…'% 33->X5chain:COSE X_509  
-          },
-          <<                       
-              24(<<    
-                  {                            
-                  "docType": "eu.europa.ec.eudiw.pid.1",                                
-                  "version": "1.0",  
-                  "validityInfo": {                                
-                      "signed": 0("2023-02-22T06:23:56Z"),                                     
-                      "validFrom": 0("2023-02-22T06:23:56Z"),                                   
-                      "validUntil": 0("2024-02-22T00:00:00Z")                               
-                  },
-                  "valueDigests": { 
-                      "eu.europa.ec.eudiw.pid.1": {        
-                          1: h'0F1571A97FFB799CC8FCDF2BA4FC2909929…',                                          
-                          2: h'0CDFE077400432C055A2B69596C90…',     
-                          3: h'E2382149255AE8E955AF9B8984395…',                                        
-                          4: h'BBC77E6CCA981A3AD0C3E544EDF86…',                                     
-                          6: h'BB6E6C68D1B4B4EC5A2AE9206F5t4…',
-                          7: h'F8A5966E6DAC9970E0334D8F75E25…',              
-                          8: h'DEFDF1AA746718016EF1B94BFE5R6…'
-                      },
-                      "eu.europa.ec.eudiw.pid.it.1": {  
-                          9: h'F9EE4D36F67DBD75E23311AC1C29…'
-                      }
-                  },                             
-                  "deviceKeyInfo": {                              
-                      "deviceKey": {                                  
-                          1: 2, % kty:EC2 (Eliptic curves with x and y coordinate pairs)           
-                          -1: 1, % crv:p256                     
-                          -2: h'B820963964E53AF064686DD9218303494A…', % x-coordiantes                                        
-                          -3: h'0A6DA0AF437E2943F1836F31C678D89298E9…'% y-ccordiantes                                     
-                      }                            
-                  },                             
-                  "digestAlgorithm": "SHA-256"    
-                  }                       
-              >>)                     
-          >>,                        
-          h'1AD0D6A7313EFDC38FCD765852FA2BD43DEBF48BF5A580D'                 
-          ],                 
-          "nameSpaces": {
-              "eu.europa.ec.eudiw.pid.1": [                         
-              24(<<    
-                  {      
-                  "digestID": 1,                                  
-                  "random": h'E0B70BCEFBD43686F345C9ED429343AA',                                 
-                  "elementIdentifier": "expiry_date",                                
-                  "elementValue": 1004("2024-02-22")                             
-                  }                         
-              >>), 
-              24(<<             
-                  {       
-                  "digestID": 2,                                  
-                  "random": h'AE84834F389EE69888665B90A3E4FCCE', 
-                  "elementIdentifier": "issue_date",   
-                  "elementValue": 1004("2023-02-22")                                
-                  }
-              >>),                         
-              24(<<   
-                  {                              
-                  "digestID": 3,                                 
-                  "random": h'960CB15A2EA9B68E5233CE902807AA95',                               
-                  "elementIdentifier": "issuing_country",                               
-                  "elementValue": "IT"                                                    
-                  }                       
-              >>), 
-              24(<<       
-                  {                        
-                  "digestID": 4,    
-                  "random": h'9D3774BD5994CCFED248674B32A4F76A', 
-                  "elementIdentifier": "issuing_authority",   
-                  "elementValue": "Ministero dell'Interno"  
-                  }   
-              >>),                 
-              24(<<        
-                  {                              
-                  "digestID": 5,                         
-                  "random": h'EB12193DC66C6174530CDC29B274381F', 
-                  "elementIdentifier": "given_name",
-                  "elementValue": "Mario"                             
-                  }                         
-              >>)),            
-              24(<<                            
-                  {                               
-                  "digestID": 6,                             
-                  "random": h'DB143143538F3C8D41DC024F9CB25C9D',
-                  "elementIdentifier": "family_name",  
-                  "elementValue": "Rossi"    
-                  } 
-              >>),                         
-              24(<<               
-                  {                          
-                  "digestID": 7, 
-                  "random": h'6059FF1CE27B4997B4ADE1DE7B01DC60',
-                  "elementIdentifier": "birth_date",
-                  "elementValue": 1004("1956-01-12")% the tag 1004 defines the value    
-                                                      is a full date 
-                  }  
-              >>),         
-              24(<<  
-                  {                              
-                  "digestID": 8,                              
-                  "random": h'53C15C57B3B076E788795829190220B4',
-                  "elementIdentifier": "unique_id",
-                  "elementValue": "xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx" 
-                  }   
-              >>)
-              ],
-              "eu.europa.ec.eudiw.pid.it.1": [
-                  24(<<
-                      {
-                      "digestID": 9, 
-                      "random": h'11aa7273a2d2daa973f5951f0c34c2fbae',
-                      "elementIdentifier": "tax_id_number", 
-                      "elementValue": "TINIT-XXXXXXXXXXXXXXX"
-                      }                         
-                  >>)                    
-              ]            
-          }  
-      }           
-    }
-    ]
-  }
-
+.. literalinclude:: ../../examples/pid-mdoc-cbor-example.txt
+  :language: text
 
 

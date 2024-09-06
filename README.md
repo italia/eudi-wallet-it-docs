@@ -40,6 +40,7 @@ Released versions can be navigated by adding the tag in the webpath leaded by a 
 
 
 
+ - [https://italia.github.io/eudi-wallet-it-docs/v0.8.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.8.0/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.7.1/en/](https://italia.github.io/eudi-wallet-it-docs/v0.7.1/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.7.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.7.0/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.6.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.6.0/en/)
@@ -62,17 +63,13 @@ HTML
 ````
 pip install -r requirements.txt
 
-# italian version
-sphinx-build -b html -d html/it/doctrees docs/it/  html/it
-
-# english version
 sphinx-build -b html -d html/en/doctrees docs/en/  html/en
 ````
 
 ODT
 ````
 sudo apt install pandoc
-sphinx-build -b singlehtml docs/it/  html/
+sphinx-build -b singlehtml docs/en/  html/
 cd html
 pandoc -o eidas-it-wallet-docs.odt index.html
 ````

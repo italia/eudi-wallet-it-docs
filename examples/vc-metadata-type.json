@@ -1,0 +1,126 @@
+{	
+    "name": "Person Identification Data",
+    "description": "Digital version of Person Identification Data",
+    "template_uri": "https://pidprovider.example.org/v1.0/templatepid",	
+    "schema_uri": "https://pidprovider.example.org/schema/v1.0/mdl",
+    "schema#integrity": "c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16",
+    "data_source": {
+        "verification": {
+        "trust_framework": "pdnd",
+        "authentic_source": {
+            "organization_name": "Ministero degli Interni",
+            "organization_code": "m_it"
+            }
+        }	
+    },					
+    "vc_claims": {
+        "unique_id": {
+            "display": [
+                {
+                    "name": "Nome",
+                    "locale": "it-IT"
+                },
+                {
+                    "name": "First Name",
+                    "locale": "en-US"
+                }
+            ],
+            "graphics": {
+                "position": {
+                    "x": 10,
+                    "y": 10
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
+            }
+        },
+        "given_name": {
+            "display": [
+                {
+                    "name": "Nome",
+                    "locale": "it-IT"
+                },
+                {
+                    "name": "First Name",
+                    "locale": "en-US"
+                }
+            ],
+            "graphics": {
+                "position": {
+                    "x": 10,
+                    "y": 20
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
+            }
+        },
+        "family_name": {
+            "value_type": "string",
+            "display": [
+                {
+                    "name": "Cognome",
+                    "locale": "it-IT"
+                },
+                {
+                    "name": "Family Name",
+                    "locale": "en-US"
+                }
+            ],
+            "graphics": {
+                "position": {
+                    "x": 10,
+                    "y": 30
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
+            }
+        },
+        "birth_date": {
+            "value_type": "string",
+            "display": [
+                {
+                    "name": "Data di nascita (YYYY-MM-GG)",
+                    "locale": "it-IT"
+                },
+                {
+                    "name": "Date of Birth (YYYY-MM-GG)",
+                    "locale": "en-US"
+                }
+            ],
+            "graphics": {
+                "position": {
+                    "x": 10,
+                    "y": 40
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
+                }
+        },
+        "tax_id_code": {
+            "value_type": "string",
+            "display": [
+                {
+                    "name": "Luogo di Nascita",
+                    "locale": "it-IT"
+                },
+                {
+                    "name": "Place of Birth",
+                    "locale": "en-US"
+                }
+            ],
+            "graphics": {
+                "position": {
+                    "x": 10,
+                    "y": 50
+                },
+                "font": "arial",
+                "color": "black",
+                "size": "12pt"
+            }
+        }
+    }
+}

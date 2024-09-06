@@ -1,0 +1,10 @@
+{
+  "typ":"vc+sd-jwt",
+  "alg":"ES256",
+  "kid":"d126a6a856f7724560484fa9dc59d195",
+  "trust_chain" : [
+   "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
+   "eyJhbGciOiJSUzI1NiIsImtpZCI6 ...",
+   "IkJYdmZybG5oQU11SFIwN2FqVW1B ..."
+  ]
+}
