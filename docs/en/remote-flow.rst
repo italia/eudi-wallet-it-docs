@@ -22,11 +22,12 @@ A High-Level description of the remote flow, from the User's perspective, is giv
   2. the Wallet Instance extracts from the payload the following parameters: ``client_id``, ``request_uri``, ``state``, ``request_uri_method`` and ``client_id_scheme``;
   3. If the ``client_id_scheme`` is provided and set with the value ``entity_id``, the Wallet Instance MUST collect and validate the OpenID Federation Trust Chain related to the Relying Party. If the ``client_id_scheme`` is either not provided or is assigned a value different from ``entity_id``, the Wallet Instance MUST establish the trust by utilizing the ``client_id`` or an alternative ``client_id_scheme`` value. This alternative value MUST enable the Wallet Instance to establish trust with the Relying Party, ensuring compliance with the assurance levels mandated by the trust framework;
   4. If ``request_uri_method`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the HTTP POST method and obtain the signed Request Object. If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter;
-  5. the Wallet Instance verifies the signature of the signed Request Object, using the public key obtained with the trust chain, and that its issuer matches the ``client_id`` obtained at the step number 2;
-  6. the Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the trust chain;
-  7. the Wallet Instance asks User disclosure and consent;
-  8. the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. The Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;
-  9. the Wallet Instance informs the User about the successfull authentication with the Relying Party, the User continues the navigation.
+  5. the Wallet Instance verifies the signature of the signed Request Object, using the public key identifier within the Request Object JWT header parameter to select the correct public key obtained within Trust Chain related to the RP;
+  6. the Wallet Instance verifies that the ``client_id`` contained in the Request Object issuer (RP) matches with the one obtained at the step number 2 and with the ``sub`` parameter contained in the RP's Entity Configuration within the Trust Chain;
+  7. the Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the trust chain;
+  8. the Wallet Instance asks User disclosure and consent;
+  9. the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. The Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;
+  10. the Wallet Instance informs the User about the successfull authentication with the Relying Party, the User continues the navigation.
 
 Below a sequence diagram that summarizes the interactions between all the involved parties.
 
@@ -60,7 +61,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **13**
     - When the Wallet Instance capabilities discovery is not supported by RP, the Wallet Instance request the signed Request Object using the HTTP method GET.
   * - **14**
-    - The Wallet Instance obtains the signed Request Object.
+    - The RP issues the Request Object signin it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (`metadata.openid_wallet_relying_party.jwks`). The Wallet Instance obtains the signed Request Object.
   * - **15**, **16**, **17**
     - The Request Object JWS is verified by the Wallet Instance. The Wallet Instance processes the Relying Party metadata and applies the policies related to the Relying Party, attesting whose Digital Credentials and User data the Relying Party is granted to request.
   * - **18**, **19**
