@@ -9,11 +9,10 @@
 
 ## Table of Contents
 
-- [Description](#description)
+- [Description](#Intro)
 - [Documentation](#documentation)
 - [Versioning](#versioning)
 - [Contributing](#how-to-contribute)
-- [Authors](#authors)
 - [License](#license)
 
 ## Intro
@@ -37,8 +36,6 @@ Preview of other branches can be navigated by adding the branch name in the webp
 ### Preview of released versions
 
 Released versions can be navigated by adding the tag in the webpath leaded by a _v_, as follows:
-
-
 
  - [https://italia.github.io/eudi-wallet-it-docs/v0.8.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.8.0/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.7.1/en/](https://italia.github.io/eudi-wallet-it-docs/v0.7.1/en/)
