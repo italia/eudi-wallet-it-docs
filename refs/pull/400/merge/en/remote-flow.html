@@ -216,7 +216,7 @@
 <td><p>When the Wallet Instance capabilities discovery is not supported by RP, the Wallet Instance request the signed Request Object using the HTTP method GET.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>14</strong></p></td>
-<td><p>The RP issues the Request Object signin it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (<cite>metadata.openid_wallet_relying_party.jwks</cite>). The Wallet Instance obtains the signed Request Object.</p></td>
+<td><p>The RP issues the Request Object signin it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (<cite>metadata.wallet_relying_party.jwks</cite>). The Wallet Instance obtains the signed Request Object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>15</strong>, <strong>16</strong>, <strong>17</strong></p></td>
 <td><p>The Request Object JWS is verified by the Wallet Instance. The Wallet Instance processes the Relying Party metadata and applies the policies related to the Relying Party, attesting whose Digital Credentials and User data the Relying Party is granted to request.</p></td>
@@ -263,7 +263,7 @@ with the method POST and content type set to <cite>application/json</cite>.</p>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
 <span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;authorization_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid4vp:&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;authorization_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid4vp://&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;response_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;vp_token&quot;</span>
 <span class="w">    </span><span class="p">],</span>
@@ -924,7 +924,7 @@ Content-Type: application/json
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 06/09/2024.
+      Last updated on 09/09/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
