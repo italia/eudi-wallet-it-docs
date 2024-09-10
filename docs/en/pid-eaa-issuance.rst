@@ -15,6 +15,15 @@ The relevant entities and interfaces involved in the issuance flow are:
     - *National Identity Provider*,
     - *(Q)EAA Provider*.
 
+
+PID/(Q)EAA Providers are composed of:
+
+  - Credential Issuer Component: based on the "OpenID for Verifiable Credential Issuance" specification [OpenID4VCI] to release the PID/(Q)EAA.
+  - Relying Party Component: The component to authenticate the User. PID Providers authenticate users with the national Digital Identity Providers, based on OpenID Connect Core 1.0 or SAML2 while (Q)EAA Providers authenticate users with the PID. 
+
+The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [OpenID4VP]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.
+
+
 High-Level PID flow
 -------------------
 
