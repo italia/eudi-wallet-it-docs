@@ -214,7 +214,7 @@
 </tr>
 <tr class="row-even"><td><p>Relying Party</p></td>
 <td><p>An Organizational Entity that relies upon an electronic identification or a Trust Service originating from a Wallet Instance. [Revised from ARF v1.4]</p></td>
-<td><p>Differences with ARF: renamed “natural or legal person” in “Organizational Entity”</p></td>
+<td><p>Differences with ARF: renamed “natural or legal person” in “Organizational Entity”.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RP Instance</p></td>
 <td><p>A Relying Party Instance in the context of a mobile application or a standalone embedded device refers to a specific deployment of the application or device. These instances depend on an User Authentication through a Wallet Instance to confirm User identities before granting access to their functionalities. Each version or environment where the application or device is running, be it a particular release of a mobile app installed on a User's smartphone or a specific embedded device in use, constitutes a separate instance. In case of proximity supervised scenarios, it belongs to and is controlled by a Verifier. [Revised from ARF v1.4]</p></td>
@@ -333,26 +333,12 @@
 <td></td>
 </tr>
 <tr class="row-even"><td><p>Qualified Electronic Attestation of Attributes Provider</p></td>
-<td><p>It represents the Issuer of (Q)EAAs. It is composed with the following components:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>OpenID4VCI Component: based on the &quot;OpenID for Verifiable Credential Issuance&quot; specification to release (Q)EAAs.</p></li>
-<li><p>Relying Party: Component to authenticate the User with the PID. The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.</p></li>
-</ul>
-</div></blockquote>
-</td>
+<td><p>Organizational Entity which serves as Credential issuer providing Qualified Electronic Attestations of Attributes (QEAAs).</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>PID Provider</p></td>
-<td><p>The entity that issues the eIDAS Person Identification Data (PID) to users. It is composed of:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>OpenID4VCI Component: based on the &quot;OpenID for Verifiable Credential Issuance&quot; specification  [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>] to release the PID.</p></li>
-<li><p>National eID Relying Party: The component to authenticate the User with the national Digital Identity Providers, based on OpenID Connect Core 1.0 or SAML2.</p></li>
-</ul>
-</div></blockquote>
-</td>
-<td></td>
+<td><p>Organizational Entity which serves as Credential issuer providing Person Identification Data to Users.</p></td>
+<td><p>Differences with ARF: renamed “Member Stare or other legal entity” in “Organizational Entity”</p></td>
 </tr>
 <tr class="row-even"><td><p>National Identity Provider</p></td>
 <td><p>It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (eg: the Italian SPID and CIE id schemes notified eIDAS with <em>LoA</em> <strong>High</strong>, see <a class="reference external" href="https://italia.github.io/spid-cie-oidc-docs/en">SPID/CIE-OpenID-Connect-Specifications</a>).</p></td>
@@ -480,7 +466,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 09/09/2024.
+      Last updated on 10/09/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

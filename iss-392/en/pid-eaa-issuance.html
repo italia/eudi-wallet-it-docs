@@ -170,6 +170,14 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <li><p><em>(Q)EAA Provider</em>.</p></li>
 </ul>
 </div></blockquote>
+<p>PID/(Q)EAA Providers are composed of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Credential Issuer Component: based on the &quot;OpenID for Verifiable Credential Issuance&quot; specification [OpenID4VCI] to release the PID/(Q)EAA.</p></li>
+<li><p>Relying Party Component: The component to authenticate the User. PID Providers authenticate users with the national Digital Identity Providers, based on OpenID Connect Core 1.0 or SAML2 while (Q)EAA Providers authenticate users with the PID.</p></li>
+</ul>
+</div></blockquote>
+<p>The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [OpenID4VP]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.</p>
 <section id="high-level-pid-flow">
 <h2>High-Level PID flow<a class="headerlink" href="#high-level-pid-flow" title="Link to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#fig-high-level-flow-itwallet-pid-issuance"><span class="std std-numref">Fig. 2</span></a> shows a general architecture and highlights the main operations involved in the issuance of a PID.</p>
@@ -1504,7 +1512,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 09/09/2024.
+      Last updated on 10/09/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

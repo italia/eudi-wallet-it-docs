@@ -54,7 +54,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - Differences with ARF: (i) merged the PID Providers and (Q)EEA Providers definitions using the general term Digital Credential, (ii) renamed “Member Stare or other legal entity” in “Organizational Entity” ARF alternative terms: PID Providers,(Q)EEA Providers, puB-EAA Provider, Attestation Provider Other alternative terms: Verifiable Credential Issuer
    * - Relying Party
      - An Organizational Entity that relies upon an electronic identification or a Trust Service originating from a Wallet Instance. [Revised from ARF v1.4]
-     - Differences with ARF: renamed “natural or legal person” in “Organizational Entity”
+     - Differences with ARF: renamed “natural or legal person” in “Organizational Entity”.
    * - RP Instance
      - A Relying Party Instance in the context of a mobile application or a standalone embedded device refers to a specific deployment of the application or device. These instances depend on an User Authentication through a Wallet Instance to confirm User identities before granting access to their functionalities. Each version or environment where the application or device is running, be it a particular release of a mobile app installed on a User's smartphone or a specific embedded device in use, constitutes a separate instance. In case of proximity supervised scenarios, it belongs to and is controlled by a Verifier. [Revised from ARF v1.4]
      - Differences with ARF: added a sentence on proximity supervised scenarios. Other alternative terms: Verifier App
@@ -143,17 +143,11 @@ Below are the description of acronyms and definitions which are useful for furth
      - The Electronic Trust Service Provider responsible for the issuing of Qualified Electronic Signature certificates to the User.
      -
    * - Qualified Electronic Attestation of Attributes Provider
-     - It represents the Issuer of (Q)EAAs. It is composed with the following components:
-
-        - OpenID4VCI Component: based on the "OpenID for Verifiable Credential Issuance" specification to release (Q)EAAs.
-        - Relying Party: Component to authenticate the User with the PID. The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [`OpenID4VP`_]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.
-     -
+     - Organizational Entity which serves as Credential issuer providing Qualified Electronic Attestations of Attributes (QEAAs).
+     - 
    * - PID Provider
-     - The entity that issues the eIDAS Person Identification Data (PID) to users. It is composed of:
-
-        - OpenID4VCI Component: based on the "OpenID for Verifiable Credential Issuance" specification  [`OpenID4VCI`_] to release the PID.
-        - National eID Relying Party: The component to authenticate the User with the national Digital Identity Providers, based on OpenID Connect Core 1.0 or SAML2.
-     -
+     - Organizational Entity which serves as Credential issuer providing Person Identification Data to Users.
+     - Differences with ARF: renamed “Member Stare or other legal entity” in “Organizational Entity”
    * - National Identity Provider
      - It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (eg: the Italian SPID and CIE id schemes notified eIDAS with *LoA* **High**, see `SPID/CIE-OpenID-Connect-Specifications`_).
      -
