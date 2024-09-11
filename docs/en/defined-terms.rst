@@ -166,7 +166,11 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Holder
      - Natural or Legal person that receives Verifiable Credentials from the Credential Issuers, manages the Verifiable Credentials within the Wallet, and presents them to Verifiers. The Holder is the User in control of the Wallet.
      -
-
+   * - Pseudonym
+     - Pseudonyms are alternative identifier used to represent an entity (such as a person or organization)
+without revealing their true identity. It provides a layer of privacy and
+anonymity while still allowing for consistent authentication and authorization within a system.
+     -
 
 Acronyms
 --------

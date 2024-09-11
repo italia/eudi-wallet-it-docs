@@ -3,12 +3,9 @@
 .. _pseudonyms.rst:
 
 
-pseudonyms.rst
-+++++++++++++++++++++++++++
+Pseudonyms
+++++++++++
 
-Pseudonyms are alternative identifier used to represent an entity (such as a person or organization)
-without revealing their true identity. It provides a layer of privacy and
-anonymity while still allowing for consistent authentication and authorization within a system.
 
 What it is useful for
 ---------------------
