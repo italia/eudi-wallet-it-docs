@@ -489,7 +489,7 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
   * - **iat**
     - REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519].
   * - **aud**
-    - REQUIRED. The intended receiver of the Key Binding JWT. How the value is represented is up to the protocol used and out of scope of this specification.
+    - REQUIRED. The intended receiver of the Key Binding JWT. The value of this parameter MUST match the Relying Party unique entity identifier.
   * - **nonce**
     - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object.
   * - **sd_hash**
