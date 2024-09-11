@@ -33,7 +33,7 @@ Below are the description of acronyms and definitions which are useful for furth
      -
    * - Digital Credential
      - A signed set of Attributes encapsulated in a specific data format, such as mdoc format specified in [ISO 18013-5] or the SD-JWT VC format specified in [SD-JWT-VC]. This may be a Personal Identification Data (PID), (Qualified) Electronic Attestation of Attribute ((Q)EAA). [Revised from ARF v1.3]
-     - Differences with ARF: The definition from ARF restricts the data format to mdoc and SD-JWT VC. For the scope of the Trust Model, a Digital Credential definition should be neutral on the format. ARF alternative terms: Attestation Other alternative terms: Verifiable Credential
+     - Differences with ARF: The definition from ARF restricts the data format to mdoc and SD-JWT VC. For the scope of the Trust Model, a Digital Credential definition should be neutral on the format. ARF alternative terms: Electronic Attestation, Attestation. Other alternative terms: Verifiable Credential, Digital Attestation.
    * - Organizational Entity
      - A legal person (only considering organizations and public entities, not natural/physical persons) recognized by the Member State through a unique identifier to operate a certain role within the EUDI Wallet ecosystem.
      - In this category the following entity roles are included: Wallet Provider, Credential Issuer, Relying Party, QTSP In general, any kind of Entity that must be registered through a national or European registration mechanism. ARF alternative terms: legal person (only considering organizations and public entities, not natural/physical persons)
@@ -165,6 +165,11 @@ Below are the description of acronyms and definitions which are useful for furth
      -
    * - Holder
      - Natural or Legal person that receives Verifiable Credentials from the Credential Issuers, manages the Verifiable Credentials within the Wallet, and presents them to Verifiers. The Holder is the User in control of the Wallet.
+     -
+   * - Pseudonym
+     - Pseudonyms are alternative identifier used to represent an entity (such as a person or organization)
+without revealing their true identity. It provides a layer of privacy and
+anonymity while still allowing for consistent authentication and authorization within a system.
      -
 
 
