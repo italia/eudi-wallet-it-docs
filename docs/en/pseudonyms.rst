@@ -42,4 +42,4 @@ Implementation Considerations
 - IT-Wallet MUST implement a secure method for generating and storing pseudonyms.
 - IT-Wallet SHOULD use different pseudonyms for the same entity across different contexts to prevent cross-context linking.
 - IT-Wallet SHOULD implement access controls to protect the mapping between pseudonyms and real identities.
-- IT-Wallet SHOULD SHOULD implements policies for pseudonym rotation or expiration.
+- IT-Wallet SHOULD implements policies for pseudonym rotation or expiration.
