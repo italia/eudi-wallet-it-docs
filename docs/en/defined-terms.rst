@@ -55,7 +55,7 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Relying Party
      - An Organizational Entity that relies upon an electronic identification or a Trust Service originating from a Wallet Instance. [Revised from ARF v1.4]
      - Differences with ARF: renamed “natural or legal person” in “Organizational Entity”.
-   * - RP Instance
+   * - Relying Party Instance
      - A Relying Party Instance in the context of a mobile application or a standalone embedded device refers to a specific deployment of the application or device. These instances depend on an User Authentication through a Wallet Instance to confirm User identities before granting access to their functionalities. Each version or environment where the application or device is running, be it a particular release of a mobile app installed on a User's smartphone or a specific embedded device in use, constitutes a separate instance. In case of proximity supervised scenarios, it belongs to and is controlled by a Verifier. [Revised from ARF v1.4]
      - Differences with ARF: added a sentence on proximity supervised scenarios. Other alternative terms: Verifier App
    * - Verifier
