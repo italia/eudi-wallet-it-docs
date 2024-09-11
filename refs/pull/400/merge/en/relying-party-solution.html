@@ -140,7 +140,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
@@ -644,7 +644,7 @@ where a non-normative example in the form of decoded header and payload is shown
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code>: JSON object according to <a class="reference external" href="https://identity.foundation/presentation-exchange/spec/v2.0.0/">Presentation Exchange</a>. This parameter MUST not be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code> or <code class="docutils literal notranslate"><span class="pre">scope</span></code> are present.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">presentation_definition_uri</span></code>: Not supported. String containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when <code class="docutils literal notranslate"><span class="pre">presentation_definition</span></code> parameter or a <code class="docutils literal notranslate"><span class="pre">scope</span></code> value representing a Presentation Definition is not present.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>: A JSON object containing the Relying Party metadata values. If the <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter is present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, the <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> MUST only contain the member <code class="docutils literal notranslate"><span class="pre">jwks</span></code> and containing ephemeral cryptographic public keys to be used only for the Wallet Instance with which the Relying Party is interacting with for this specific session.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>: A JSON object containing the Relying Party metadata values. If the <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter is present when <code class="docutils literal notranslate"><span class="pre">client_id_scheme</span></code> is <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, the Wallet Instance MUST consider the client metadata obtained through the OpenID Federation Trust Chain.</p></li>
 </ul>
 </div>
 <section id="request-uri-endpoint-errors">
@@ -806,7 +806,7 @@ using JOSE header parameter <code class="docutils literal notranslate"><span cla
 <td><p>REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>REQUIRED. The intended receiver of the Key Binding JWT. How the value is represented is up to the protocol used and out of scope of this specification.</p></td>
+<td><p>REQUIRED. The intended receiver of the Key Binding JWT. The value of this parameter MUST match the Relying Party unique entity identifier.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>nonce</strong></p></td>
 <td><p>REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object.</p></td>
@@ -1374,7 +1374,7 @@ The details on the structure of mDoc Response are provided below.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 09/09/2024.
+      Last updated on 11/09/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

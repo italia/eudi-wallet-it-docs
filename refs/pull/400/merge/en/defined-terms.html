@@ -140,7 +140,7 @@
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
@@ -173,11 +173,11 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>User</p></td>
-<td><p>A natural or legal person using an EUDI Wallet. [ARF v1.3]</p></td>
+<td><p>A natural or legal person, or a natural person representing another natural person or a legal person, that uses a trust services or electronic identification means provided in accordance with EUDI Wallet Architecture Reference Framework. [ARF v1.4]</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>User Attribute</p></td>
-<td><p>A feature, characteristic or quality of a natural or legal person or of an entity, in electronic form. [ARF v1.3]</p></td>
+<td><p>A characteristic, quality, right or permission of a natural or legal person or of an object. [ARF v1.4]</p></td>
 <td><p>Other alternative terms: User Claim</p></td>
 </tr>
 <tr class="row-even"><td><p>Digital Identity Provider</p></td>
@@ -185,39 +185,39 @@
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>Digital Credential</p></td>
-<td><p>A signed set of Attributes encapsulated in a specific data format, such as mdoc format specified in [ISO 18013-5] or the SD-JWT VC format specified in [SD-JWT-VC]. This may be a Personal Identification Data (PID), (Qualified) Electronic Attestation of Attribute ((Q)EAA). [Revised from ARF v1.3]</p></td>
-<td><p>Differences with ARF: The definition from ARF restricts the data format to mdoc and SD-JWT VC. For the scope of the Trust Model, a Digital Credential definition should be neutral on the format. ARF alternative terms: Attestation Other alternative terms: Verifiable Credential</p></td>
+<td><p>A signed set of Attributes encapsulated in a specific data format, such as mdoc format specified in [ISO 18013-5] or the SD-JWT VC format specified in [SD-JWT-VC]. This may be a Personal Identification Data (PID), (Qualified) Electronic Attestation of Attribute ((Q)EAA). [Revised from ARF v1.4]</p></td>
+<td><p>Differences with ARF: The definition from ARF restricts the data format to mdoc and SD-JWT VC. For the scope of the Trust Model, a Digital Credential definition should be neutral on the format. ARF alternative terms: Electronic Attestation, Attestation. Other alternative terms: Verifiable Credential, Digital Attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p>Organizational Entity</p></td>
 <td><p>A legal person (only considering organizations and public entities, not natural/physical persons) recognized by the Member State through a unique identifier to operate a certain role within the EUDI Wallet ecosystem.</p></td>
 <td><p>In this category the following entity roles are included: Wallet Provider, Credential Issuer, Relying Party, QTSP In general, any kind of Entity that must be registered through a national or European registration mechanism. ARF alternative terms: legal person (only considering organizations and public entities, not natural/physical persons)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Wallet Solution</p></td>
-<td><p>A Wallet Solution is the entire eIDAS-compliant product and service provided by a Wallet Provider to all Users. [Revised from ARF v1.3]</p></td>
+<td><p>A Wallet Solution is the entire eIDAS-compliant product and service provided by a Wallet Provider to all Users and certified as EUDI-compliant by a Conformity Assessment Body (CAB). [Revised from ARF v1.4]</p></td>
 <td><p>Differences with ARF: editorial ARF alternative terms: EUDI Wallet Solution</p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
-<td><p>An Organizational Entity, responsible for the management and release operation of a Wallet Solution. [Revised from ARF v1.3]</p></td>
-<td><p>Differences with ARF: Removed “instantiated on a User's device, e.g., through installation and initialization” as this is a technical aspect that is not related with the WP definition. ARF alternative terms: EUDI Wallet Provider</p></td>
+<td><p>An Organizational Entity, responsible for the management and release operation of a Wallet Solution. The Wallet Provider issues the Wallet Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with the security and privacy requirements. [Revised from ARF v1.4]</p></td>
+<td><p>Differences with ARF: editorial ARF alternative terms: EUDI Wallet Provider</p></td>
 </tr>
 <tr class="row-odd"><td><p>Wallet Instance</p></td>
-<td><p>Instance of a Wallet Solution belonging to and which is controlled by a User. It enables the storage and management of Digital Credentials. [Revised from ARF v1.3]</p></td>
-<td><p>Differences with ARF: added the last sentence. ARF alternative terms: EUDI Wallet Instance Other alternative terms: Personal Wallet</p></td>
+<td><p>Instance of a Wallet Solution installed on a User’s device belonging to and which is controlled by a User. It enables the storage and management of Digital Credentials.The Wallet Instance provides graphical interfaces for User interaction with Relying Parties, PID, (Q)EAA Providers and the Wallet Provider. [Revised from ARF v1.4]</p></td>
+<td><p>Differences with ARF: editorial ARF alternative terms: EUDI Wallet Instance</p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider Backend</p></td>
 <td><p>Is the technical infrastructure and server-side components, including a set of endpoints, managed by a Wallet Provider.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>Credential Issuer</p></td>
-<td><p>An Organizational Entity providing Digital Credentials to Users. It may be PID Provider and (Q)EAA Providers. [Revised from ARF v1.3]</p></td>
+<td><p>An Organizational Entity providing Digital Credentials to Users. It may be PID Provider or (Q)EAA Providers. [Revised from ARF v1.4]</p></td>
 <td><p>Differences with ARF: (i) merged the PID Providers and (Q)EEA Providers definitions using the general term Digital Credential, (ii) renamed “Member Stare or other legal entity” in “Organizational Entity” ARF alternative terms: PID Providers,(Q)EEA Providers, Attestation Provider Other alternative terms: Verifiable Credential Issuer</p></td>
 </tr>
 <tr class="row-even"><td><p>Relying Party</p></td>
-<td><p>An Organizational Entity that relies upon an electronic identification or a Trust Service originating from a Wallet Instance. [Revised from ARF v1.3]</p></td>
-<td><p>Differences with ARF: renamed “natural or legal person” in “Organizational Entity”</p></td>
+<td><p>An Organizational Entity that relies upon an electronic identification or a Trust Service originating from a Wallet Instance. [Revised from ARF v1.4]</p></td>
+<td><p>Differences with ARF: renamed “natural or legal person” in “Organizational Entity”.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RP Instance</p></td>
-<td><p>A Relying Party Instance in the context of a mobile application or a standalone embedded device refers to a specific deployment of the application or device. These instances depend on an User Authentication through a Wallet Instance to confirm User identities before granting access to their functionalities. Each version or environment where the application or device is running, be it a particular release of a mobile app installed on a User's smartphone or a specific embedded device in use, constitutes a separate instance. In case of proximity supervised scenarios, it belongs to and is controlled by a Verifier. [Revised from ARF v1.3]</p></td>
+<tr class="row-odd"><td><p>Relying Party Instance</p></td>
+<td><p>A Relying Party Instance in the context of a mobile application or a standalone embedded device refers to a specific deployment of the application or device. These instances depend on an User Authentication through a Wallet Instance to confirm User identities before granting access to their functionalities. Each version or environment where the application or device is running, be it a particular release of a mobile app installed on a User's smartphone or a specific embedded device in use, constitutes a separate instance. In case of proximity supervised scenarios, it belongs to and is controlled by a Verifier. [Revised from ARF v1.4]</p></td>
 <td><p>Differences with ARF: added a sentence on proximity supervised scenarios. Other alternative terms: Verifier App</p></td>
 </tr>
 <tr class="row-even"><td><p>Verifier</p></td>
@@ -225,19 +225,19 @@
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>Trust</p></td>
-<td><p>Trust is the confidence in the security, reliability, and integrity of entities (such as systems, organizations, or individuals) and their actions, ensuring that they will operate as expected in a secure and predictable manner. It is often established through empirical proof, such as past performance, security certifications, or transparent operational practices, which demonstrate a track record of adherence to security standards and ethical conduct. [Revised from ARF v1.3]</p></td>
+<td><p>Trust is the confidence in the security, reliability, and integrity of entities (such as systems, organizations, or individuals) and their actions, ensuring that they will operate as expected in a secure and predictable manner. It is often established through empirical proof, such as past performance, security certifications, or transparent operational practices, which demonstrate a track record of adherence to security standards and ethical conduct. [Revised from ARF v1.4]</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>Trust Framework</p></td>
-<td><p>A legally enforceable set of operational and technical rules and agreements that govern a multi-party system designed for conducting specific types of transactions among a community of participants and bound by a common set of requirements. [ARF v1.3]</p></td>
+<td><p>A legally enforceable set of operational and technical rules and agreements that govern a multi-party system designed for conducting specific types of transactions among a community of participants and bound by a common set of requirements. [ARF v1.4]</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>Trust Model</p></td>
-<td><p>Collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem. [ARF v1.3]</p></td>
+<td><p>Collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem. [ARF v1.4]</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>Trusted List</p></td>
-<td><p>Repository of information about authoritative entities in a particular legal or contractual context which provides information about their current and historical status. It serves as the bedrock of trust, acting as federative sources that publish the crucial information about root entities within the ecosystem. [Revised from ARF v1.3]</p></td>
+<td><p>Repository of information about authoritative entities in a particular legal or contractual context which provides information about their current and historical status. It serves as the bedrock of trust, acting as federative sources that publish the crucial information about root entities within the ecosystem. [Revised from ARF v1.4]</p></td>
 <td><p>Differences with ARF: added the last sentence</p></td>
 </tr>
 <tr class="row-odd"><td><p>Registration Authority</p></td>
@@ -245,11 +245,11 @@
 <td><p>ARF: Registrar</p></td>
 </tr>
 <tr class="row-even"><td><p>Conformity Assessment Body (CAB)</p></td>
-<td><p>A conformity assessment body as defined in Article 2, point 13, of Regulation (EC) No 765/2008, which is accredited in accordance with that Regulation as competent to carry out conformity assessment of a qualified trust service provider and the qualified trust services it provides, or as competent to carry out certification of European Digital Identity Wallets or electronic identification means. [ARF v1.3]</p></td>
+<td><p>A conformity assessment body as defined in Article 2, point 13, of Regulation (EC) No 765/2008, which is accredited in accordance with that Regulation as competent to carry out conformity assessment of a qualified trust service provider and the qualified trust services it provides, or as competent to carry out certification of European Digital Identity Wallets or electronic identification means. [ARF v1.4]</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>National Accreditation Bodies (NAB)</p></td>
-<td><p>A body that performs accreditation with authority derived from a Member State under Regulation (EC) No 765/2008. [ARF v1.3]</p></td>
+<td><p>A body that performs accreditation with authority derived from a Member State under Regulation (EC) No 765/2008. [ARF v1.4]</p></td>
 <td><p>Other alternative terms: Accreditation Authority</p></td>
 </tr>
 <tr class="row-even"><td><p>Trust Evaluation</p></td>
@@ -332,36 +332,52 @@
 <td><p>The Electronic Trust Service Provider responsible for the issuing of Qualified Electronic Signature certificates to the User.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Relying Party</p></td>
+<tr class="row-even"><td><p>Qualified Electronic Attestation of Attributes Provider</p></td>
+<td><p>Organizational Entity which serves as Credential issuer providing Qualified Electronic Attestations of Attributes (QEAAs).</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>PID Provider</p></td>
+<td><p>Organizational Entity which serves as Credential issuer providing Person Identification Data to Users.</p></td>
+<td><p>Differences with ARF: renamed “Member Stare or other legal entity” in “Organizational Entity”</p></td>
+</tr>
+<tr class="row-even"><td><p>National Identity Provider</p></td>
+<td><p>It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (eg: the Italian SPID and CIE id schemes notified eIDAS with <em>LoA</em> <strong>High</strong>, see <a class="reference external" href="https://italia.github.io/spid-cie-oidc-docs/en">SPID/CIE-OpenID-Connect-Specifications</a>).</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Relying Party</p></td>
 <td><p>A natural or legal person that implements an authentication system requiring electronic attribute attestation submissions as an authentication mechanism.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Verifier</p></td>
+<tr class="row-even"><td><p>Verifier</p></td>
 <td><p>See Relying Party</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Trust Attestation</p></td>
+<tr class="row-odd"><td><p>Trust Attestation</p></td>
 <td><p>Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Trust Layer</p></td>
+<tr class="row-even"><td><p>Trust Layer</p></td>
 <td><p>Architectural component that enables IT-Wallet system participants to establish trust, in terms of reliability and compliance of all participants with the regulatory framework governing the digital identity system.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Trust Model</p></td>
+<tr class="row-odd"><td><p>Trust Model</p></td>
 <td><p>System defining how the participants of the ecosystem establish and maintain trust in their interactions. The Trust Model outlines the rules and the procedures for the entities (like users, systems, or applications) should validate each other's identities, authenticate, and establish the level of trust before exchanging information.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Level of Assurance</p></td>
+<tr class="row-even"><td><p>Level of Assurance</p></td>
 <td><p>The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the Digital Credential was issued.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Holder Key Binding</p></td>
+<tr class="row-odd"><td><p>Holder Key Binding</p></td>
 <td><p>Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Holder</p></td>
+<tr class="row-even"><td><p>Holder</p></td>
 <td><p>Natural or Legal person that receives Verifiable Credentials from the Credential Issuers, manages the Verifiable Credentials within the Wallet, and presents them to Verifiers. The Holder is the User in control of the Wallet.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Pseudonym</p></td>
+<td><p>Pseudonyms are alternative identifier used to represent an entity (such as a person or organization) without revealing their true identity. It provides a layer of privacy and anonymity while still allowing for consistent authentication and authorization within a system.</p></td>
 <td></td>
 </tr>
 </tbody>
@@ -454,7 +470,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 09/09/2024.
+      Last updated on 11/09/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
