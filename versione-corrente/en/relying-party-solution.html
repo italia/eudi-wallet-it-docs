@@ -805,7 +805,7 @@ using JOSE header parameter <code class="docutils literal notranslate"><span cla
 <td><p>REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>REQUIRED. The intended receiver of the Key Binding JWT. How the value is represented is up to the protocol used and out of scope of this specification.</p></td>
+<td><p>REQUIRED. The intended receiver of the Key Binding JWT. The value of this parameter MUST match the Relying Party unique entity identifier.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>nonce</strong></p></td>
 <td><p>REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object.</p></td>
