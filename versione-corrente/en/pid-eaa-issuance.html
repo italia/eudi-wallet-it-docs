@@ -161,27 +161,23 @@
 <p>This section describes the PID and (Q)EAAs issuance flow with an high level of security.
 The relevant entities and interfaces involved in the issuance flow are:</p>
 <blockquote>
-<div><ul>
-<li><p><em>Wallet Provider</em>: The entity responsible for releasing an EUDI Wallet Solution. The Wallet Provider issues the Wallet Attestations to its Wallet Instances through an Attestation Service. The Wallet Attestation certifies the genuinity and authenticity of the Wallet Instance and its compliance with the security and privacy requirements.</p></li>
-<li><p><em>Wallet Solution</em>: Entire product and service owned by a Wallet Provider, offered to all the Users and certified as EUDI-compliant by a Conformity Assessment Body (CAB).</p></li>
-<li><p><em>Wallet Instance</em>: Instance of a Wallet Solution, installed on the User device. The Wallet Instance provides graphical interfaces for User interaction with Relying Parties, PID, (Q)EAA Providers and the Wallet Provider.</p></li>
-<li><p><em>PID Provider</em>: The entity that issues the eIDAS Person Identification Data (PID). It is composed of:</p>
+<div><ul class="simple">
+<li><p><em>Wallet Provider</em>,</p></li>
+<li><p><em>Wallet Solution</em>,</p></li>
+<li><p><em>Wallet Instance</em>,</p></li>
+<li><p><em>PID Provider</em>,</p></li>
+<li><p><em>National Identity Provider</em>,</p></li>
+<li><p><em>(Q)EAA Provider</em>.</p></li>
+</ul>
+</div></blockquote>
+<p>PID/(Q)EAA Providers are composed of:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>OpenID4VCI Component: based on the &quot;OpenID for Verifiable Credential Issuance&quot; specification  [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>] to release the PID.</p></li>
-<li><p>National eID Relying Party: The component to authenticate the User with the national Digital Identity Providers, based on OpenID Connect Core 1.0 or SAML2.</p></li>
+<li><p>Credential Issuer Component: based on the &quot;OpenID for Verifiable Credential Issuance&quot; specification [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>] to release the PID/(Q)EAA.</p></li>
+<li><p>Relying Party Component: The component to authenticate the User. PID Providers authenticate users with the national Digital Identity Providers, based on OpenID Connect Core 1.0 or SAML2 while (Q)EAA Providers authenticate users with the PID.</p></li>
 </ul>
 </div></blockquote>
-</li>
-<li><p><em>National Identity Provider</em>: It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (eg: the Italian SPID and CIE id schemes notified eIDAS with <em>LoA</em> <strong>High</strong>, see <a class="reference external" href="https://italia.github.io/spid-cie-oidc-docs/en/">SPID/CIE OpenID Connect Specifications</a>).</p></li>
-<li><p><em>(Q)EAA Provider</em>: It represents the Issuer of (Q)EAAs. It is composed with the following components:</p>
-<ul class="simple">
-<li><p>OpenID4VCI Component: based on the &quot;OpenID for Verifiable Credential Issuance&quot; specification to release (Q)EAAs.</p></li>
-<li><p>Relying Party: Component to authenticate the User with the PID. The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.</p></li>
-</ul>
-</li>
-</ul>
-</div></blockquote>
+<p>The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.</p>
 <section id="high-level-pid-flow">
 <h2>High-Level PID flow<a class="headerlink" href="#high-level-pid-flow" title="Link to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#fig-high-level-flow-itwallet-pid-issuance"><span class="std std-numref">Fig. 2</span></a> shows a general architecture and highlights the main operations involved in the issuance of a PID.</p>
