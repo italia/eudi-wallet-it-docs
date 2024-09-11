@@ -116,7 +116,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
   * MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`.
   * signs this request using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation ``cnf`` claim.
   * MUST use the ``OAuth-Client-Attestation`` and  ``OAuth-Client-Attestation-PoP`` parameters according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint.
-  * specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter.
+  * specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter and or scope parameter.
 
 The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:
 
@@ -517,6 +517,9 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
     * - **code_challenge_method**
       - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
+    * - **scope**
+      - JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``. It MAY be multivalued, each value MUST be separated by a space.
+      - :rfc:`6749`
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
 
@@ -530,7 +533,9 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
       - [:rfc:`7519`].
 
+.. note::
 
+    If the request cointains scope value and the *authorization_details* parameter the Credential Issuer MUST interpret these individually. However, if both request the same Credential type, then the Credential Issuer MUST follow the request as given by the authorization details object.
 
 The JOSE header of the Wallet Attestation proof of possession, contained in the HTTP Request headers, MUST contain:
 
