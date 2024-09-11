@@ -51,7 +51,7 @@ Below are the description of acronyms and definitions which are useful for furth
      -
    * - Credential Issuer
      - An Organizational Entity providing Digital Credentials to Users. It may be PID Provider or (Q)EAA Providers. [Revised from ARF v1.4]
-     - Differences with ARF: (i) merged the PID Providers and (Q)EEA Providers definitions using the general term Digital Credential, (ii) renamed “Member Stare or other legal entity” in “Organizational Entity” ARF alternative terms: PID Providers,(Q)EEA Providers, puB-EAA Provider, Attestation Provider Other alternative terms: Verifiable Credential Issuer
+     - Differences with ARF: (i) merged the PID Providers and (Q)EEA Providers definitions using the general term Digital Credential, (ii) renamed “Member Stare or other legal entity” in “Organizational Entity” ARF alternative terms: PID Providers,(Q)EEA Providers, Attestation Provider Other alternative terms: Verifiable Credential Issuer
    * - Relying Party
      - An Organizational Entity that relies upon an electronic identification or a Trust Service originating from a Wallet Instance. [Revised from ARF v1.4]
      - Differences with ARF: renamed “natural or legal person” in “Organizational Entity”.
