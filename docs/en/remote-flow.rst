@@ -474,8 +474,6 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
     - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of [RFC8725].
   * - **alg**
     - REQUIRED. Signature Algorithm using one of the specified in the section Cryptographic Algorithms. 
-  * - **kid**
-    - REQUIRED. Unique identifier of the public key to be used to verify the signature.
 
 
 When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS payload:
