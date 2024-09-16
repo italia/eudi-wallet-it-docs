@@ -59,10 +59,10 @@ Below are the description of acronyms and definitions which are useful for furth
      - A Relying Party Instance in the context of a mobile application or a standalone embedded device refers to a specific deployment of the application or device. These instances depend on an User Authentication through a Wallet Instance to confirm User identities before granting access to their functionalities. Each version or environment where the application or device is running, be it a particular release of a mobile app installed on a User's smartphone or a specific embedded device in use, constitutes a separate instance. In case of proximity supervised scenarios, it belongs to and is controlled by a Verifier. [Revised from ARF v1.4]
      - Differences with ARF: added a sentence on proximity supervised scenarios. Other alternative terms: Verifier App
    * - Verifier
-     - A natural person or legal person using an RP Instance. [New]
+     - Also known as Credential Verifier. It is a natural person or a legal person using an Relying Party Instance. [New]
      -
    * - Trust
-     - Trust is the confidence in the security, reliability, and integrity of entities (such as systems, organizations, or individuals) and their actions, ensuring that they will operate as expected in a secure and predictable manner. It is often established through empirical proof, such as past performance, security certifications, or transparent operational practices, which demonstrate a track record of adherence to security standards and ethical conduct. [Revised from ARF v1.4]
+     - Trust, within the technical field, is the confidence in the security, reliability, and integrity of entities (such as systems, organizations, or individuals) and their actions, ensuring that they will operate as expected in a secure and predictable manner. It is often established through empirical proof, such as past performance, security certifications, or transparent operational practices, which demonstrate a track record of adherence to security standards and ethical conduct. [Revised from ARF v1.4]
      -
    * - Trust Framework
      - A legally enforceable set of operational and technical rules and agreements that govern a multi-party system designed for conducting specific types of transactions among a community of participants and bound by a common set of requirements. [ARF v1.4]
@@ -115,8 +115,17 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Federation Authority
      - A public governance entity that issues guidelines and technical rules, and administers - directly or through its intermediary - Trusted Lists, services, and accreditation processes, the status of participants, and their eligibility evaluation. It also performs oversight functions.
      -
-   * - Wallet Attestation
-     - Verifiable Attestation, issued by the Wallet Provider, that proves the security compliace of the Wallet Instance.
+   * - Wallet Secure Cryptographic Application
+     - An application that manages critical assets utilizing the cryptographic functions provided by the Wallet Secure Cryptographic Device.
+     -
+   * - Wallet Instance
+     - The application installed and configured on a Wallet User’s device or environment, which is part of a Wallet Unit, and that the Wallet User uses to interact with the Wallet Unit.
+     -
+   * - Wallet Unit
+     - Unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications, and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user.
+     -
+   * - Wallet Unit Attestation
+     - Also known as Wallet Attestation or Wallet Instance Attestation, it is a Data object issued by a Wallet Provider that describes the components of the Wallet Unit. It allows authentication and validation of those components, and is cryptographically bound to Wallet Secure Cryptographic Devices.
      -
    * - Wallet Secure Cryptographic Device (WSCD)
      - Hardware-backed secure environment for creating, storing, and/or managing cryptographic keys and data. A WSCD MAY implement an association proof in different ways. This largely depends on the implementation of the WSCD for example: remote HSM, external smart card, internal UICC, internal native cryptographic hardware, such as the iOS Secure Enclave or the Android Hardware Backed Keystore or StrongBox
