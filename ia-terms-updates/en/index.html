@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Italian EUDI Wallet implementation profile &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <script src="_static/documentation_options.js?v=edb75691"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Digital Identity Wallet Paradigm" href="ssi-introduction.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="#" title="Go to homepage"><img src="https://avatars.githubusercontent.com/u/15377824?s=48&v=4"/></a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="white" d="M503.5 204.6L502.8 202.8L433.1 21.02C431.7 17.45 429.2 14.43 425.9 12.38C423.5 10.83 420.8 9.865 417.9 9.57C415 9.275 412.2 9.653 409.5 10.68C406.8 11.7 404.4 13.34 402.4 15.46C400.5 17.58 399.1 20.13 398.3 22.9L351.3 166.9H160.8L113.7 22.9C112.9 20.13 111.5 17.59 109.6 15.47C107.6 13.35 105.2 11.72 102.5 10.7C99.86 9.675 96.98 9.295 94.12 9.587C91.26 9.878 88.51 10.83 86.08 12.38C82.84 14.43 80.33 17.45 78.92 21.02L9.267 202.8L8.543 204.6C-1.484 230.8-2.72 259.6 5.023 286.6C12.77 313.5 29.07 337.3 51.47 354.2L51.74 354.4L52.33 354.8L158.3 434.3L210.9 474L242.9 498.2C246.6 500.1 251.2 502.5 255.9 502.5C260.6 502.5 265.2 500.1 268.9 498.2L300.9 474L353.5 434.3L460.2 354.4L460.5 354.1C482.9 337.2 499.2 313.5 506.1 286.6C514.7 259.6 513.5 230.8 503.5 204.6z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="the-italian-eudi-wallet-implementation-profile">
+<h1>The Italian EUDI Wallet implementation profile<a class="headerlink" href="#the-italian-eudi-wallet-implementation-profile" title="Link to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>The European Parliament <a class="reference external" href="https://www.europarl.europa.eu/doceo/document/A-9-2023-0038_EN.html#_section1">has adopted</a> the revision of the eIDAS Regulation concerning electronic identification and trust services, introducing a significant innovation: the <a class="reference external" href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-digital-identity_en">European Digital Identity Wallet</a>. This update marks a pivotal advancement in the EU's digital strategy, aiming to enhance the security, interoperability, and usability of digital identities across Member States. For further details, resources, and notes on this legislative development, please refer to the official EU Commission and Parliament websites.</p>
+<p>Italy has launched the National digital identity Wallet solution, known as IT-Wallet, established by the Legislative Decree of March 2, 2024, No. 19 (commonly referred to as the PNRR Decree)., in direct response to the European community's directives. This initiative ensures full interoperability with the digital identity solutions provided by other European Member States, aligning with European regulations.</p>
+<p>The purpose of the following technical rules is to define the technical architecture and reference framework to be used as a guideline by all the parties involved in the development of the IT-Wallet project.</p>
+<p>This documentation defines the national implementation profile of IT-Wallet, containing the technical details about components of the Wallet ecosystem, as listed below:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Entities of the ecosystem according to <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p></li>
+<li><p>Infrastructure of trust attesting realiability and eligibility of the participants.</p></li>
+<li><p>PID and EAAs data schemes and attribute sets.</p></li>
+<li><p>PID/EAA in MDL CBOR format.</p></li>
+<li><p>PID/EAA in <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> format.</p></li>
+<li><p>Wallet Solution general architecture.</p></li>
+<li><p>Wallet Attestation.</p></li>
+<li><p>Issuance of PID/EAA according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>.</p></li>
+<li><p>Presentation of PID/EAA according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>.</p></li>
+<li><p>Presentation of pseudonyms according to <a class="reference external" href="https://openid.net/specs/openid-connect-self-issued-v2-1_0.html">SIOPv2</a>.</p></li>
+<li><p>PID/EAA backup and restore mechanisms.</p></li>
+<li><p>PID/EAA revocation lists.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="index-of-content">
+<h2>Index of content<a class="headerlink" href="#index-of-content" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="defined-terms.html#acronyms">Acronyms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-roles">Federation Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-infrastructure-functional-requirements">Trust Infrastructure Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#federation-api-endpoints">Federation API endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-configuration">Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configurations-common-parameters">Entity Configurations Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-trust-anchor">Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates">Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#id1">Metadata Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves">Metadata of federation_entity Leaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#entity-statements">Entity Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#entity-statement">Entity Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#relying-party-trust-evaluation">Relying Party Trust Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#wallet-attestation">Wallet Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#trust-chain">Trust Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust.html#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#privacy-remarks">Privacy Remarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust.html#considerations-about-decentralization">Considerations about Decentralization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#initialization-process">Initialization Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#transition-to-valid-state">Transition to Valid state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#return-to-operational-state">Return to Operational state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#deactivation">Deactivation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1">wallet_provider metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-request">Wallet Attestation Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#table-wallet-attestation-claim">Wallet Attestation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#wallet-instance-lifecycle">Wallet Instance Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#states">States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#transitions">Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#revocations">Revocations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#sd-jwt-vc-credential-format">SD-JWT-VC Credential Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#digital-credential-metadata-type">Digital Credential Metadata Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-claims">PID Claims</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#pid-non-normative-examples">PID Non-Normative Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#q-eaa-non-normative-examples">(Q)EAA non-normative examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor">MDOC-CBOR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#namespaces">nameSpaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mobile-security-object">Mobile Security Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#low-level-issuance-flow">Low-Level Issuance Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#deferred-flow">Deferred Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#general-requirements">General Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#technical-flow">Technical Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-endpoint">Pushed Authorization Request Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-request">Pushed Authorization Request (PAR) Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#pushed-authorization-request-par-response">Pushed Authorization Request (PAR) Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#authorization-endpoint">Authorization endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-request">Authorization Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#authorization-response">Authorization Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#token-endpoint">Token endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#notification-endpoint">Notification endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#notification-request">Notification Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#notification-response">Notification Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#security-patterns">Security Patterns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-flow">Remote Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-with-http-post">Request URI with HTTP POST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#cross-device-flow-status-checks-and-security">Cross Device Flow Status Checks and Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-response">Request URI Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#sd-jwt-presentation">SD-JWT Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-cbor-presentation">MDOC-CBOR Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#device-engagement">Device Engagement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-request">mDoc Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mdoc-response">mDoc Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#operational-requirements">Operational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#functional-requirements">Functional Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-use-cases">Revocation Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-flows">Revocation Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#revocation-request-by-wallet-instance">Revocation Request by Wallet Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-assertion-flows">Status Assertion Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-assertion-request-by-wallet-instance">Status Assertion Request by Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="revocation-lists.html#status-assertion-presentation-to-the-verifiers">Status Assertion Presentation to the Verifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#credential-proof-of-possession">Credential Proof of Possession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#revocation-assertion">Revocation Assertion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#status-assertion">Status Assertion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="revocation-lists.html#error-assertion">Error Assertion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#what-it-is-useful-for">What it is useful for</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#implementation-considerations">Implementation Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#general-properties">General Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#implementation-considerations">Implementation considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#libraries-and-code-snippets">Libraries and code snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">The Italian EUDI Wallet implementation profile</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#index-of-content">Index of content</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="ssi-introduction.html"><span>The Digital Identity Wallet Paradigm</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 16/09/2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
