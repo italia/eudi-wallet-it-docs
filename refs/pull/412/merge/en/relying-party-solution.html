@@ -765,7 +765,7 @@ by appending the <code class="docutils literal notranslate"><span class="pre">KB
 </div>
 <p>To validate the signature on the Key Binding JWT, the Verifier MUST use the key material included in the Issuer-Signed-JWT.
 The Key Binding JWT MUST specify which key material the Verifier needs to use to validate the Key Binding JWT signature,
-using JOSE header parameter <code class="docutils literal notranslate"><span class="pre">kid</span></code>.</p>
+using the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter contained in the Issuer-Signed-JWT.</p>
 <p>When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS header:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1370,7 +1370,7 @@ The details on the structure of mDoc Response are provided below.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 15/09/2024.
+      Last updated on 17/09/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
