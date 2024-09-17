@@ -15,7 +15,7 @@ The User attributes, for natural person, provided within the Italian PID are the
     - Unique Identifier
     - Taxpayer identification number
 
-For legal person, the user attributes provided within the Italian PID are based on the eIDAS document, and the minimum dataset is listed below:
+For legal person, the user attributes provided within the Italian PID are based on the eIDAS document `EIDAS_SAML_ATTRIBUTE_PROFILE_1_4`_, and the minimum dataset is listed below:
 
     - LegalName
     - LegalPersonIdentifier
