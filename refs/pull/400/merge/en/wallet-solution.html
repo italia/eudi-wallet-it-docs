@@ -158,31 +158,45 @@
             
   <section id="wallet-solution">
 <span id="wallet-solution-rst"></span><h1>Wallet Solution<a class="headerlink" href="#wallet-solution" title="Link to this heading">¶</a></h1>
-<p>The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of Users in managing their digital assets securely. It is issued by the Wallet Provider in the form of a mobile app and consists of services and web interfaces for the exchange of data between the Wallet Provider and its Wallet Instances to meet the requirements of the trust model and ensure full respect for the User's privacy, in accordance with national and EU legislation.</p>
-<p>The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital Credentials conveniently. These Credentials are a set of data that can uniquely identify a natural or legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.</p>
-<p>By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, as it is responsible for issuing the Wallet Attestation, which is a cryptographic proof that allows the evaluation of the authenticity and integrity of the Wallet Instance.</p>
-<p>The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.</p>
+<p>The Wallet Solution is issued by the Wallet Provider in the form of a mobile app and services, such as web interfaces.</p>
+<p>The mobile app serves as the primary interface for Users,
+allowing them to hold their Digital Credentials and interact with other participants of the ecosystem,
+such as Credential Issuers and Relying Parties.</p>
+<p>These Credentials are a set of data that can uniquely identify a natural or legal person,
+along with other Qualified and non-qualified Electronic Attestations of Attributes,
+also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1].</p>
+<p>Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.</p>
+<p>By supporting the mobile app, the Wallet Provider enusers the security and reliability of the entire Wallet Solution,
+as it is responsible for issuing the Wallet Attestation,
+which is a cryptographic proof about the authenticity and integrity of the Wallet Instance.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h2>
-<p>This section lists the essential requirements that must be met by the Wallet Solution to ensure its functionality, security, and compliance with relevant standards and regulations.</p>
+<p>This section lists the requirements that are be met by Wallet Providers and Wallet Solutions.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Trustworthiness within the Wallet ecosystem</strong>: the Wallet Instance MUST establish trust and reliability within the Wallet ecosystem.</p></li>
-<li><p><strong>Compliance with Provider specifications for obtaining PID and (Q)EAA</strong>: the Wallet Instance MUST adhere to the specifications set by Providers for obtaining Personal Identification (PID) and (Q)EAAs.</p></li>
-<li><p><strong>Support for Android and iOS operating systems</strong>: the Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively.</p></li>
-<li><p><strong>Verification of device ownership by the User</strong>: the Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.</p></li>
+<li><p>The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.</p></li>
+<li><p>The Wallet Instance MUST periodically reestablish trust with its Wallet Provider.</p></li>
+<li><p>The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers and Relying Parties.</p></li>
+<li><p>The Wallet Solutions MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.</p></li>
+<li><p>The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively.</p></li>
+<li><p>The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.</p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="wallet-instance">
 <h2>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Link to this heading">¶</a></h2>
-<p>The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem. It establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.</p>
-<p>The Wallet Instance establishes trust within the Wallet ecosystem by consistently presenting a Wallet Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, serve to authenticate the Wallet Instance itself, ensuring its reliability when engaging with other ecosystem actors.</p>
+<p>The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem.
+It establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.</p>
+<p>The Wallet Instance allows other entities within the ecosystem to establish trust with it, by consistently
+presenting a Wallet Attestation during interactions with PID Providers,
+(Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider,
+serve to authenticate the Wallet Instance itself, ensuring its reliability when engaging with other ecosystem actors.</p>
 <p>To guarantee the utmost security, these cryptographic keys MUST be securely stored within the WSCD, which MAY be internal (device's Trusted Execution Environment (TEE)[3]), external, or hybrid. This ensures that only the User can access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the <a class="reference external" href="wallet-attestation.html">Wallet Attestation section</a> and the <a class="reference external" href="trust.html">Trust Model section</a> of this document.</p>
 </section>
 <section id="wallet-instance-lifecycle">
 <h2>Wallet Instance Lifecycle<a class="headerlink" href="#wallet-instance-lifecycle" title="Link to this heading">¶</a></h2>
-<p>The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed[2].</p>
+<p>The Wallet Instance has three distinct states: Operational, Valid, and Deactivated.
+Each state represents a specific functional status and determines the actions that can be performed[2].</p>
 <section id="initialization-process">
 <h3>Initialization Process<a class="headerlink" href="#initialization-process" title="Link to this heading">¶</a></h3>
 <p>To activate the Wallet Instance, Users MUST install the mobile Wallet application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.</p>
@@ -515,7 +529,7 @@ algorithms for the token endpoint.</p></td>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 11/09/2024.
+      Last updated on 18/09/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

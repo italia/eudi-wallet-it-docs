@@ -107,7 +107,7 @@ A non-normative example of the HTTP request is represented below:
   Content-Type: application/json
 
   {
-      "authorization_endpoint": "openid4vp://",
+      "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
       "response_types_supported": [
         "vp_token"
       ],
@@ -161,7 +161,7 @@ Below a non-normative example of the response containing the required parameters
 
 .. code-block:: javascript
 
-  openid4vp://?client_id=...&request_uri=...&client_id_scheme=entity_id&request_uri_method=post
+  https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=...&request_uri=...&client_id_scheme=entity_id&request_uri_method=post
 
 The value corresponding to the `request_uri` endpoint SHOULD be randomized, according to `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
 
@@ -171,7 +171,7 @@ In the **Same Device Flow** the Relying Party uses an HTTP response redirect (wi
 .. code:: text
 
     HTTP/1.1 /authorization Found
-    Location: openid4vp://?
+    Location: https://wallet-solution.digital-strategy.europa.eu?
     client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
     &request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri
     &client_id_scheme=entity_id
@@ -191,7 +191,7 @@ Below is represented a non-normative example of the QR Code raw payload:
 
 .. code-block:: text
 
-  openid4vp://?client_id=https%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&client_id_scheme=entity_id&request_uri_method=post
+  https://wallet-solution.digital-strategy.europa.eu/authorization?client_id=https%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&client_id_scheme=entity_id&request_uri_method=post
 
 .. note::
     The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured.
@@ -461,7 +461,7 @@ by appending the ``KB-JWT`` at the end of the of the SD-JWT, as represented in t
 
 To validate the signature on the Key Binding JWT, the Verifier MUST use the key material included in the Issuer-Signed-JWT.
 The Key Binding JWT MUST specify which key material the Verifier needs to use to validate the Key Binding JWT signature,
-using JOSE header parameter ``kid``.
+using the ``cnf`` parameter contained in the Issuer-Signed-JWT.
 
 When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS header:
 
@@ -475,8 +475,6 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
     - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of [RFC8725].
   * - **alg**
     - REQUIRED. Signature Algorithm using one of the specified in the section Cryptographic Algorithms. 
-  * - **kid**
-    - REQUIRED. Unique identifier of the public key to be used to verify the signature.
 
 
 When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS payload:
