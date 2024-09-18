@@ -460,7 +460,7 @@ by appending the ``KB-JWT`` at the end of the of the SD-JWT, as represented in t
 
 To validate the signature on the Key Binding JWT, the Verifier MUST use the key material included in the Issuer-Signed-JWT.
 The Key Binding JWT MUST specify which key material the Verifier needs to use to validate the Key Binding JWT signature,
-using JOSE header parameter ``kid``.
+using the ``cnf`` parameter contained in the Issuer-Signed-JWT.
 
 When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS header:
 
@@ -474,8 +474,6 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
     - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of [RFC8725].
   * - **alg**
     - REQUIRED. Signature Algorithm using one of the specified in the section Cryptographic Algorithms. 
-  * - **kid**
-    - REQUIRED. Unique identifier of the public key to be used to verify the signature.
 
 
 When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS payload:
