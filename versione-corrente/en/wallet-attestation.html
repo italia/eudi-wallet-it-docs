@@ -158,11 +158,13 @@
             
   <section id="wallet-attestation">
 <span id="wallet-attestation-rst"></span><h1>Wallet Attestation<a class="headerlink" href="#wallet-attestation" title="Link to this heading">¶</a></h1>
-<p>Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance. It primarily certifies the <strong>authenticity</strong>, <strong>integrity</strong>, <strong>security</strong>, <strong>privacy</strong>, and <strong>trustworthiness</strong> of a particular Wallet Instance. The Wallet Attestation MUST contain a Wallet Instance public key.</p>
+<p>Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance.
+It primarily certifies the <strong>authenticity</strong>, <strong>integrity</strong>, <strong>security</strong>, <strong>privacy</strong>, and <strong>trustworthiness</strong> of a particular Wallet Instance.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h2>
 <p>The requirements for the Wallet Attestation are defined below:</p>
 <ul class="simple">
+<li><p>The Wallet Attestation MUST contain a Wallet Instance public key.</p></li>
 <li><p>The Wallet Attestation MUST use the signed JSON Web Token (JWT) format;</p></li>
 <li><p>The Wallet Attestation MUST provide all the relevant information to attest to the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed.</p></li>
 <li><p>The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing registration authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.</p></li>
@@ -184,7 +186,7 @@
 <li><p><strong>Remote Hybrid WSCD</strong>: The WSCD involves a local component mixed with a remote service.</p></li>
 </ul>
 </li>
-<li><p>The Wallet Provider MUST offer a set of services, exclusively available to its Wallet Solution instances, for the verification and issuance of Wallet Attestations.</p></li>
+<li><p>The Wallet Provider MUST offer a set of services, exclusively available to its Wallet Solution instances, for the issuance of Wallet Attestations.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

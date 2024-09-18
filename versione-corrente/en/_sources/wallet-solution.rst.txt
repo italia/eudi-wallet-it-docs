@@ -5,35 +5,50 @@
 Wallet Solution
 -------------------
 
-The Wallet Solution is a comprehensive product offered by the Wallet Provider to cater to the needs of Users in managing their digital assets securely. It is issued by the Wallet Provider in the form of a mobile app and consists of services and web interfaces for the exchange of data between the Wallet Provider and its Wallet Instances to meet the requirements of the trust model and ensure full respect for the User's privacy, in accordance with national and EU legislation.
+The Wallet Solution is issued by the Wallet Provider in the form of a mobile app and services, such as web interfaces.
 
-The mobile app serves as the primary interface for Users, allowing them to access and interact with their digital Credentials conveniently. These Credentials are a set of data that can uniquely identify a natural or legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.
+The mobile app serves as the primary interface for Users,
+allowing them to hold their Digital Credentials and interact with other participants of the ecosystem,
+such as Credential Issuers and Relying Parties.
 
-By supporting the mobile app, the Wallet Provider plays a vital role in ensuring the security and reliability of the entire Wallet Solution, as it is responsible for issuing the Wallet Attestation, which is a cryptographic proof that allows the evaluation of the authenticity and integrity of the Wallet Instance.
+These Credentials are a set of data that can uniquely identify a natural or legal person,
+along with other Qualified and non-qualified Electronic Attestations of Attributes,
+also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. 
 
-The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.
+Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.
+
+By supporting the mobile app, the Wallet Provider enusers the security and reliability of the entire Wallet Solution,
+as it is responsible for issuing the Wallet Attestation,
+which is a cryptographic proof about the authenticity and integrity of the Wallet Instance.
 
 Requirements
 ^^^^^^^^^^^^
 
-This section lists the essential requirements that must be met by the Wallet Solution to ensure its functionality, security, and compliance with relevant standards and regulations.
+This section lists the requirements that are be met by Wallet Providers and Wallet Solutions.
 
- - **Trustworthiness within the Wallet ecosystem**: the Wallet Instance MUST establish trust and reliability within the Wallet ecosystem.
- - **Compliance with Provider specifications for obtaining PID and (Q)EAA**: the Wallet Instance MUST adhere to the specifications set by Providers for obtaining Personal Identification (PID) and (Q)EAAs.
- - **Support for Android and iOS operating systems**: the Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively.
- - **Verification of device ownership by the User**: the Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
+ - The Wallet Provider MUST offer a RESTful set of services for issuing the Wallet Attestations.
+ - The Wallet Instance MUST periodically reestablish trust with its Wallet Provider.
+ - The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers and Relying Parties.
+ - The Wallet Solutions MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.
+ - The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively.
+ - The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
 
 Wallet Instance
 ^^^^^^^^^^^^^^^
-The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem. It establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.
+The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem.
+It establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.
 
-The Wallet Instance establishes trust within the Wallet ecosystem by consistently presenting a Wallet Attestation during interactions with other ecosystem actors such as PID Providers, (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider, serve to authenticate the Wallet Instance itself, ensuring its reliability when engaging with other ecosystem actors.
+The Wallet Instance allows other entities within the ecosystem to establish trust with it, by consistently
+presenting a Wallet Attestation during interactions with PID Providers,
+(Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider,
+serve to authenticate the Wallet Instance itself, ensuring its reliability when engaging with other ecosystem actors.
 
 To guarantee the utmost security, these cryptographic keys MUST be securely stored within the WSCD, which MAY be internal (device's Trusted Execution Environment (TEE)[3]), external, or hybrid. This ensures that only the User can access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Attestation section`_ and the `Trust Model section`_ of this document.
 
 Wallet Instance Lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-The Wallet Instance has three distinct states: Operational, Valid, and Deactivated. Each state represents a specific functional status and determines the actions that can be performed[2].
+The Wallet Instance has three distinct states: Operational, Valid, and Deactivated.
+Each state represents a specific functional status and determines the actions that can be performed[2].
 
 Initialization Process
 ~~~~~~~~~~~~~~~~~~~~~~
