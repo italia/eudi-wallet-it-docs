@@ -22,18 +22,19 @@ A High-Level description of the remote flow, from the User's perspective, is giv
   2. the Wallet Instance extracts from the payload the following parameters: ``client_id``, ``request_uri``, ``state``, ``request_uri_method`` and ``client_id_scheme``;
   3. If the ``client_id_scheme`` is provided and set with the value ``entity_id``, the Wallet Instance MUST collect and validate the OpenID Federation Trust Chain related to the Relying Party. If the ``client_id_scheme`` is either not provided or is assigned a value different from ``entity_id``, the Wallet Instance MUST establish the trust by utilizing the ``client_id`` or an alternative ``client_id_scheme`` value. This alternative value MUST enable the Wallet Instance to establish trust with the Relying Party, ensuring compliance with the assurance levels mandated by the trust framework;
   4. If ``request_uri_method`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the HTTP POST method and obtain the signed Request Object. If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter;
-  5. the Wallet Instance verifies the signature of the signed Request Object, using the public key obtained with the trust chain, and that its issuer matches the ``client_id`` obtained at the step number 2;
-  6. the Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the trust chain;
-  7. the Wallet Instance asks User disclosure and consent;
-  8. the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. The Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;
-  9. the Wallet Instance informs the User about the successfull authentication with the Relying Party, the User continues the navigation.
+  5. the Wallet Instance verifies the signature of the signed Request Object, using the public key identifier within the Request Object JWT header parameter to select the correct public key obtained within Trust Chain related to the RP;
+  6. the Wallet Instance verifies that the ``client_id`` contained in the Request Object issuer (RP) matches with the one obtained at the step number 2 and with the ``sub`` parameter contained in the RP's Entity Configuration within the Trust Chain;
+  7. the Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the trust chain;
+  8. the Wallet Instance asks User disclosure and consent;
+  9. the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. The Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;
+  10. the Wallet Instance informs the User about the successfull authentication with the Relying Party, the User continues the navigation.
 
 Below a sequence diagram that summarizes the interactions between all the involved parties.
 
 .. figure:: ../../images/cross_device_auth_seq_diagram.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/ZLLRRnit4ttdhpZGz_3PXkCcwPi05t5SDvUqjMefoKCI21Ht9B6co2qlgxX5_tjdIUo2SWIqXc5Or5pEd3apyo94wMFQ6I5JT3RjLkI545SgEe_9-q1-0XcGX5Yvh-NX_m4_KgSLXGd-zxFUREDBaqYq74ShtKeRCVaeZQ68DvR3MqKvnlxG976e9t93DfOCKf1jm5aEpUx8F6YxmOmV7x9bHq985NKd8p6mX2S_iFSK7sc5EVaU6Qpiz4P6xMnbAaL3jQFiFJkQuex-I1GYPjv5Kf4QVWakUSMPBY_vcGB3pE4msyf0kBmSu_PuEXf2NNlgtoJEpW9xqDaPEidqVBOhbxY-w30M7g6SkzT7t7q1j4nUmmzGEXeg_UtksZM4spkyNYnc3BRHdd7ZvFkdpq-nrt7xsIgZESDID-Trj7DaLEVuL3qkTnIthlc2JwFJCgWjxUXBnLZcdNystgMMWRemw03EceT29z8KywtR8svfWDbohGVCoqVjOxVz5BSjsUpsI3kGRNiEuvGqa8aDB8kZjBOEEiPadUrHGiwLj8m2FOpnyUPhz6oRKx7I91TFFc3jtIw_3VPa6p4wKTz43XuGVGenSvojHyQEaIUaYT1hVCirT42W4WUps_b20C1-a47hNQSR2WCNx2GR6IMYorbhVJ3ErcaRSuIwMG0mAgkgeE8uahAw9rR9LgwqqL5J46G2_GVOhsuMS1xMHRHbGaHLm-1TyWMziTGCRt2htqd5aVFZzUG6T3JeusY8n_eyqh231O9V1YQbRT0wenLNF7fz8A_N3pcLZCaJtBg2F-w9sv9xz996DzNOikM7sKauBGPfElgjdOToDbDrR0IkdLrhlwFcKDa3fLaek4hS2Q__BEk85rNRHyHdMxhIjSlexicEazvMssiPqcgdG-1_Z-ylt1JUA9UTwT1oPUXm1-O4erD5G2MjgyZa5_iB1bS-rWQped7Fm7L0l_C7jdyYViwU_1ttwUXMq24hprF7O9gB2ar9rQ_IXX5hQV0cX4GUYtvqIyWHCjv-N60-zBkAml0KXQ9UDOOImdDMWkl8indVlpUlNYzUtTtS_2gEUqm5hhUaxl7QcOQTtj43NchRi2Gp4FRYilbtvaAWt1fsUO8KsA8igRHYcUAU7SiDqNbFrWL6XovBjxHjLZfq8GGMMxAWQkKrEYZZ0ZMGCNgzIapM52f3r6imo-D4Qaw0CYoU83kf3MiXRyRCWgZeUj-E0dWVo2EKKd1IJXnI_huvHJNH_V7wxjd5Cpn_-XItxxWpVqrykMLv5KocsCRO1YHlYhWz5RKlbMi8Vul7urzkqrpkwE0qxOV3oT0on3fB7MClwYl5TVxRkUjelCPlvzFIwKTNgimXJlfgn-sLgodKd7upYGKihew5sUYER77F0NiYmZaIsnd3ZMvpqvn7IAfNupgPmzjxI5ckyGN_IJlp3m00
+    :target: https://www.plantuml.com/plantuml/svg/ZLPDRnit4BtpLmpKGst3Tftq9i157DUrdRIrQYdn8Gu4YZkIM5FabX-hk4N_UuQabk36EaG80fYQz-RDcnbIRvpdreUDOZnueyDcWPOnTY6yiJ3wuD2EW3i8Z2tCbtpmeuDViPC2tGX--5skrlwj2iXQuf52jbnx63rmfT33hIPwBJ1nR8SXWQXE-0grpnauGzq0PHc6tQDwbde54pfyJf4TCiQ5bnttIC82dFn2w34yu0AcQACoqBoJA-wbqLKePmtMG1wH7OxX7ly9w3nChF4eF3PquaomWZATdzCnEfAPw62ovWxX_BpmHZqTzbIN5kCPXwCZHmWyEeAEapsFUc42rUSDbC8z26EUv1wupOBcmKgmlPGE-qh_khyq3SBTFTpCPXCIsqXBkk7WvxFNXx2LVlseXPAKOIwRuvhj69AgO_XK7SutwDUc-GoV2cZkn1et-9aSg-kCdvKreIMXnlLp04QhvvsTOGpJjTc2NsCliwLQ1yxpRzf7iEqOxbhK2VRDx01lssDGHd05F520zbBarjQaXPFcR0kPSYgu9XKGPPJ3go_UKcnAHPF6gNYq3fRMRE9PYKVTi0B2s4GYT-1jS3vvdAABO_lCOrnva4juwJL81mvtF9ExwOm1VRRz6BJMTB91rtj18Dvmpy4RoZgS3zBP6gbzOgYR1VGfarLLK7diKMWPZHMyvGkff9Ve62g7to7x-ce6ne8s7jgy8QogeKVdV4wkD3Rz6PZ5toXyyNnlFRa17VRpiPVYnNo-RDZW0e4_UYUvRg0rIWg9hg0-efNBvvIA-s0HpBAIN-w9kvoxeBYIJRMs5FbnSk0ESq0O5zpIM116Hwlshi2bqKjfDzWC9xjO6WS5BW9rmif_qmeGjMiZ8ppgt9MkdNlpXBfiUblTNdCN5XlfN5oU_VVNrSwtM7QsG_A5mk4Tc18KK6L0DLeNtgFByQSaBlzP1qpoZ5iIBbtSHD-x_HlISKBITzIdlRU2T6doB7OafZcjrEnINLgYqLvo1RVE1RGmYwkxeooItptCODhtks8XUGAToqjUg1Ypb1N1T6WfZDw_s-kRsVNzrTMVR3zYpE1oZU89Reng2FGUd-6jr0sDP192A2gR_asCSvXQGv0J28uYyYKL5ZIcy4J0_8P87S_h0hs1BerkRjiaT-YKCPYjKGDMLruZdL36OGFSUoiNmQCRWqWIvHB8vRAHqb9KNXQBm3ikLPo5k9Z91LRPzQ4j0n1_8y2k53Z8Jno4z7rp26ouilrxCkKRh9-JQl7Z6_VJgzDNyFhi3ExUKmF_6zdyvAKROpI6jVUjWs1LtW6xMugvC0t2_xizvAJIPOarlDQp7VnQe3e7pzttwIk_Ayex_Muwtit0yFtA6me7aQ3SQwc0RDhXYntTbN6nZsObEzGPdWXZxUuO0iKfHIFGfdOQ2ow8EAVBe8Qlyh0ngVetz5_OgAy0
 
 
     Remote Protocol Flow
@@ -60,7 +61,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **13**
     - When the Wallet Instance capabilities discovery is not supported by RP, the Wallet Instance request the signed Request Object using the HTTP method GET.
   * - **14**
-    - The Wallet Instance obtains the signed Request Object.
+    - The RP issues the Request Object signin it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (`metadata.wallet_relying_party.jwks`). The Wallet Instance obtains the signed Request Object.
   * - **15**, **16**, **17**
     - The Request Object JWS is verified by the Wallet Instance. The Wallet Instance processes the Relying Party metadata and applies the policies related to the Relying Party, attesting whose Digital Credentials and User data the Relying Party is granted to request.
   * - **18**, **19**
@@ -69,7 +70,7 @@ The details of each step shown in the previous picture are described in the tabl
     - The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post.jwt").
   * - **21**, **22**, **23**, **24**, **25** 
     - The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials.
-  * - **26**
+  * - **26** (Same Device Flow only)
     - The Relying Party provides to the Wallet Instance a redirect URI with a response code to be used by the Wallet Instance to finalize the authentication.
   * - **27**, **28** and **29**
     - The User is informed by the Wallet Instance that the Autentication succeded, then the protected resource is made available to the User.
@@ -233,7 +234,8 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
 Request URI Response
 --------------------
 
-The Relying Party issues the signed Request Object, where a non-normative example in the form of decoded header and payload is shown below:
+The Relying Party issues the signed Request Object using the content type set to ``application/oauth-authz-req+jwt``,
+where a non-normative example in the form of decoded header and payload is shown below:
 
 .. code-block:: text
 
@@ -327,8 +329,7 @@ The JWS payload parameters are described herein:
 
   - ``presentation_definition``: JSON object according to `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_. This parameter MUST not be present when ``presentation_definition_uri`` or ``scope`` are present.
   - ``presentation_definition_uri``: Not supported. String containing an HTTPS URL pointing to a resource where a Presentation Definition JSON object can be retrieved. This parameter MUST be present when ``presentation_definition`` parameter or a ``scope`` value representing a Presentation Definition is not present. 
-  - ``client_metadata``: A JSON object containing the Relying Party metadata values. The ``client_metadata`` parameter MUST NOT be present when ``client_id_scheme`` is ``entity_id``. Since the ``client_metadata`` is taken from ``trust_chain``, this parameter is intended to not be used.
-  - ``client_metadata_uri``: string containing an HTTPS URL pointing to a resource where a JSON object with the Relying Party metadata can be retrieved. The ``client_metadata_uri`` parameter MUST NOT be present when ``client_id_scheme`` is ``entity_id``. Since the ``client_metadata`` is taken from ``trust_chain``, this parameter is intended to not be used.
+  - ``client_metadata``: A JSON object containing the Relying Party metadata values. If the ``client_metadata`` parameter is present when ``client_id_scheme`` is ``entity_id``, the Wallet Instance MUST consider the client metadata obtained through the OpenID Federation Trust Chain.
 
 
 Request URI Endpoint Errors
@@ -419,7 +420,7 @@ Below is a non-normative example of the decrypted payload of the JWT contained i
             {
                 "id": "WalletAttestation",
                 "path": "$.vp_token[1]",
-                "format": "jwt"
+                "format": "wallet-attestation+jwt"
             }
         ]
     }
@@ -439,7 +440,7 @@ Where the following parameters are used:
       - The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
       - The Wallet Attestation
   * - **presentation_submission**
-    - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_.
+    - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_. This is expressed via elements in the ``descriptor_map`` array (Input Descriptor Mapping Objects) that contain a field called ``path``, which MUST have the value $ (top level root path) when only one Verifiable Presentation is contained in the VP Token, and MUST have the value $[n] (indexed path from root) when there are multiple Verifiable Presentations, where ``n`` is the index to select. The Relying Party receiving the `presentation_submission` descriptor therefore is able to use the correct method to decode each credential data format provided within the ``vp_token``.
   * - **state**
     - Unique identifier provided by the Relying Party within the Authorization Request.
 
