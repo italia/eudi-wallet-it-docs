@@ -122,7 +122,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - The application installed and configured on a Wallet User’s device or environment, which is part of a Wallet Unit, and that the Wallet User uses to interact with the Wallet Unit.
      -
    * - Wallet Unit
-     - Unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications, and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user.
+     - Unique configuration of a Wallet Solution that includes Wallet instances, Wallet Secure Cryptographic Applications, and Wallet Secure Cryptographic Devices provided by a Wallet Provider to an individual Wallet User.
      -
    * - Wallet Unit Attestation
      - Also known as Wallet Attestation or Wallet Instance Attestation, it is a data object issued by a Wallet Provider that describes the components of the Wallet Unit. It allows authentication and validation of those components, and is cryptographically bound to Wallet Secure Cryptographic Devices.
