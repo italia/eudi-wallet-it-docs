@@ -5,13 +5,16 @@
 Wallet Attestation
 ++++++++++++++++++
 
-Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance. It primarily certifies the **authenticity**, **integrity**, **security**, **privacy**, and **trustworthiness** of a particular Wallet Instance. The Wallet Attestation MUST contain a Wallet Instance public key.
+Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance.
+It primarily certifies the **authenticity**, **integrity**, **security**, **privacy**, and **trustworthiness** of a particular Wallet Instance.
+
 
 Requirements
 ------------
 
 The requirements for the Wallet Attestation are defined below:
 
+- The Wallet Attestation MUST contain a Wallet Instance public key.
 - The Wallet Attestation MUST use the signed JSON Web Token (JWT) format;
 - The Wallet Attestation MUST provide all the relevant information to attest to the **integrity** and **security** of the device where the Wallet Instance is installed.
 - The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing registration authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.
@@ -32,7 +35,7 @@ The requirements for the Wallet Attestation are defined below:
   - **Local Hybrid WSCD**: The WSCD involves a pluggable internal hardware component within the User's device, such as an *eUICC* that adheres to *GlobalPlatform* standards and supports *JavaCard*.
   - **Remote Hybrid WSCD**: The WSCD involves a local component mixed with a remote service.
 
-- The Wallet Provider MUST offer a set of services, exclusively available to its Wallet Solution instances, for the verification and issuance of Wallet Attestations.
+- The Wallet Provider MUST offer a set of services, exclusively available to its Wallet Solution instances, for the issuance of Wallet Attestations.
 
 .. warning::
   At the current stage, the implementation profile defined in this document supports only the **Local Internal WSCD**. Future versions of this specification MAY include other approaches depending on the required `AAL`.
