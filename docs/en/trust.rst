@@ -631,15 +631,16 @@ Below is a non-normative example of a Trust Chain in its original format (JSON A
 .. note::
 
     The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.
+
 There are events where keys are unavailable to verify the entire trust chain:
 
  - **Key Change by Credential Issuer**: If the credential issuer updates its keys, the previous keys MUST be valid for their originally designated validity period. This MUST be managed using the Federation Historical Keys Endpoint.
 
- - **Change in Credential Types**: If the credential issuer changes the credential issued, for example deciding not to issue one or more credential types, the related keys MUST be available for the originally designated validity period.
+ - **Change in Credential Types**: If the credential issuer changes the credential **types** issued, for example deciding not to issue one or more credential types, the related keys MUST be available for the originally designated validity period.
 
- - **Credential Issuers Merge**: If a credential issuer merges with another, the previousòly available federation configuration MUST be available throught both Federation Historical Keys Endpoint and Federation Historical Entity Endpoint. 
+ - **Credential Issuers Merge**: If a credential issuer merges with another, the **previously** available federation configuration MUST be available throught both Federation Historical Keys Endpoint and Federation Historical Entity Endpoint. 
 
- - **Credential Issuer Becomes Inactive**: If a credential issuer becomes inactive for any reason, a Federation Historical Entity Endpoint MUST be available, managed by a higher authority. This situation may not only apply to the credential issuer (leaf) but could also occur at an intermediate or root entity level. In such cases the root or trust anchor may be the entity responsible for managing the Federation Historical Entity Endpoint.
+ - **Credential Issuer Becomes Inactive**: If a credential issuer becomes inactive for any reason, a **related** Federation Historical Entity Endpoint MUST be available, managed by a higher authority. This situation may not only apply to the credential issuer (leaf) but could also occur at an intermediate or root entity level. In such cases the root or trust anchor may be the entity responsible for managing the Federation Historical Entity Endpoint.
 
 In the latter scenarios, the root authority, or an entity authorized by the root authority, MUST retain the keys and trust chain end points for a period established by law.
 
