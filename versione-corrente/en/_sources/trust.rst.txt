@@ -136,21 +136,21 @@ This section includes the requirements necessary for the successful implementati
      - **Cross-Federation Interoperability**: ensure the system is capable of interoperating with other federations or trust frameworks, facilitating cross-federation transactions and trust establishment without compromising security or compliance.
    * - [FR #21]
      - **Future-Proof Cryptography**: the system should employ a flexible cryptographic framework that can be updated in response to new threats or advancements in cryptographic research, ensuring long-term security and integrity of federation operations.
-   * - [FR #23]
+   * - [FR #22]
      - **Autonomous Registration Bodies**: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and registering entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
-   * - [FR #24]
+   * - [FR #23]
      - **Compliance Evaluation for Federation Entity Candidates**: registration bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.
-   * - [FR #25]
+   * - [FR #24]
      - **Periodic Auditing of Registration Bodies and Entities**: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities. This ensures ongoing adherence to federation standards and policies.
-   * - [FR #26]
+   * - [FR #25]
      - **Certification of Compliance for Personal Devices**: trusted bodies, in the form of federation entities, should issue certifications of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These certifications should be attested and periodically renewed to ensure the devices meet current security standards.
-   * - [FR #27]
+   * - [FR #26]
      - **Certification of Compliance for Cryptographic Devices**: similar to personal devices, personal cryptographic devices used within the federation must also receive certifications of compliance and signed proof thereof from trusted bodies. These certifications should be subject to periodic renewal to reflect the latest security and compliance standards.
-   * - [FR #28]
+   * - [FR #27]
      - **Transparent Compliance Reporting**: develop a system for transparent reporting and publication of compliance statuses, audit results, and certification renewals for all federation entities. This transparency fosters trust within the federation and with external stakeholders.
-   * - [FR #29]
+   * - [FR #28]
      - **Automated Compliance Monitoring**: the system should include automated tools for monitoring the compliance of entities with federation standards. This automation aids in the early detection of potential compliance issues.
-   * - [FR #30]
+   * - [FR #29]
      - **Secure Protocol Capabilities Binding**: the secure protocol must enable the exchange of protocol-specific capabilities data as cryptographically-bound metadata attached to a specific identity. This metadata should define the technical capabilities associated with the identity, ensuring verifiable proof and tamper-proof association for robust trust establishment and access control.
 
 
