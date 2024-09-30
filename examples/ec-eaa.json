@@ -457,6 +457,20 @@
                     }
                 }
             },
+            "credential_status_detail_supported": {
+                "display": [
+                    {
+                    "state": "Invalida",
+                    "description": "La credenziale non è più utilizzabile in quanto è stata revocata. Questo stato è irreversibile",
+                    "locale": "it-IT"
+                    },
+                    {
+                    "state": "Invalid",
+                    "description": "The Credential is no longer usable as it has been revoked. This state is irreversible",
+                    "locale": "en-US"
+                    }
+                ]
+            },
             "jwks": {
                 "keys": [
                     {

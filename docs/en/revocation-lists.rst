@@ -267,6 +267,9 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
     "credential_hash": $CREDENTIAL-HASH,
     "credential_hash_alg": "sha-256",
     "credential_status_validity": false,
+    "credential_status_detail": {
+      "state": "invalid"
+    },
     "cnf": {
       "jwk": {
         "kty": "EC",
@@ -648,6 +651,9 @@ When the JWT format is used, the Revocation Assertion MUST contain the following
     * - **credential_status_validity**
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It MUST be set with the value `false`.
       - `OAUTH-STATUS-ASSERTION`_.
+    * - **credential_status_detail**
+      - Object containing detailed information about the real status of the credential. IT MUST contains ``state`` claim that MUST be set with one of the values defined in the *credential_status_detail_supported* mapped in the Credential Issuer Metadata.
+      - `OAUTH-STATUS-ASSERTION`_.
     
 
 Status Assertion
@@ -698,6 +704,9 @@ When the JWT format is used, the Status Assertion MUST contain the following cla
       - `OAUTH-STATUS-ASSERTION`_.
     * - **credential_status_validity**
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It is REQUIRED and it MUST be set with the value "false" or "true".
+      - `OAUTH-STATUS-ASSERTION`_.
+    * - **credential_status_detail**
+      - REQUIRED if **credential_status_validity** is set to `false`. Object containing detailed information about the real status of the credential. IT MUST contains ``state`` claim that MUST be set with one of the values defined in the *credential_status_detail_supported* mapped in the Credential Issuer Metadata.
       - `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
