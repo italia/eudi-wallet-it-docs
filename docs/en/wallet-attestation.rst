@@ -246,7 +246,7 @@ Below a non-normative example of the ``client_data``.
 
 **Steps 11-12**: The Wallet Instance:
 
-  * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``hardware_key_tag``, and ``cnf``, and is signed using the private key of the initially generated ephemeral key pair.
+  * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>` below) and is signed using the private key of the initially generated ephemeral key pair.
   * Submits the Wallet Attestation Request to the token endpoint of the Wallet Provider Backend.
 
 Below an non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
@@ -283,6 +283,17 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
         },
       },
     },
+    authorization_endpoint": "eudiw:",
+    "response_types_supported": [
+      "vp_token"
+    ],
+    "response_modes_supported": [
+      "form_post.jwt"
+    ],
+    "request_object_signing_alg_values_supported": [
+      "ES256"
+    ],
+    "presentation_definition_uri_supported": false,
     "iat": 1686645115,
     "exp": 1686652315
   }
@@ -445,6 +456,21 @@ The body of the Wallet Attestation Request JWT MUST contain:
       - :rfc:`7800`
     * - **vp_formats_supported**
       - JSON object with name/value pairs, identifying a Credential format supported by the Wallet.
+      -
+    * - **authorization_endpoint**
+      - URL of the Wallet Authorization Endpoint (custom url schema or universal link of the Wallet Instance).
+      -
+    * - **response_types_supported**
+      - JSON array containing a list of the OAuth 2.0 ``response_type`` values.
+      -
+    * - **response_modes_supported**
+      - JSON array containing a list of the OAuth 2.0 "response_mode" values that this authorization server supports.
+      - :rfc:`8414`
+    * - **request_object_signing_alg_values_supported**
+      - JSON array containing a list of the JWS signing algorithms (alg values) supported.
+      -
+    * - **presentation_definition_uri_supported**
+      - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
       -
 
 .. _table_wallet_attestation_claim:
