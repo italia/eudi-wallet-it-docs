@@ -383,7 +383,7 @@ The `status_assertion_requests` MUST be set with an array of strings, where each
 
 A non-normative example of Credential Proof of Possession is provided :ref:`in the previous section <credential_pop_jwt_ex>`.
 
-**Step 2 (Revocation Assertion Request verification)**: The Credential Issuer that receives the Status Assertion Request object MUST validate that the Wallet Instance making the request is authorized to request Status Assertions. Therefore the following requirements MUST be satisfied:
+**Step 2 (Status Assertion Request verification)**: The Credential Issuer that receives the Status Assertion Request object MUST validate that the Wallet Instance making the request is authorized to request Status Assertions. Therefore the following requirements MUST be satisfied:
 
 - The Credential Issuer MUST verify the compliance of all elements in the `status_assertion_requests` object using the confirmation method contained within the Digital Credential where the Status Assertion Request object is referred to;
 
