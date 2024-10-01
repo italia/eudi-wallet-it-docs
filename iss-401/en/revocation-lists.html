@@ -403,7 +403,8 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
    &quot;credential_hash_alg&quot;: &quot;sha-256&quot;,
    &quot;credential_status_validity&quot;: false,
    &quot;credential_status_detail&quot;: {
-     &quot;state&quot;: &quot;invalid&quot;
+     &quot;state&quot;: &quot;invalid&quot;,
+     &quot;description&quot;: &quot;The Credential is no longer usable as it has been revoked. This state is irreversible&quot;
    },
    &quot;cnf&quot;: {
      &quot;jwk&quot;: {
@@ -838,7 +839,7 @@ The <cite>error</cite> parameter for the Status Assertion Error object MUST be s
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_status_detail</strong></p></td>
-<td><p>Object containing detailed information about the real status of the credential. IT MUST contains <code class="docutils literal notranslate"><span class="pre">state</span></code> claim that MUST be set with one of the values defined in the <em>credential_status_detail_supported</em> mapped in the Credential Issuer Metadata.</p></td>
+<td><p>Object containing detailed information about the real status of the credential. IT MUST contains <code class="docutils literal notranslate"><span class="pre">state</span></code> and related <code class="docutils literal notranslate"><span class="pre">description</span></code> claims that MUST be set with one of the values defined in the <em>credential_status_detail_supported</em> mapped in the Credential Issuer Metadata.</p></td>
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 </tbody>
@@ -912,7 +913,7 @@ The <cite>error</cite> parameter for the Status Assertion Error object MUST be s
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_status_detail</strong></p></td>
-<td><p>REQUIRED if <strong>credential_status_validity</strong> is set to <cite>false</cite>. Object containing detailed information about the real status of the credential. IT MUST contains <code class="docutils literal notranslate"><span class="pre">state</span></code> claim that MUST be set with one of the values defined in the <em>credential_status_detail_supported</em> mapped in the Credential Issuer Metadata.</p></td>
+<td><p>REQUIRED if <strong>credential_status_validity</strong> is set to <cite>false</cite>. Object containing detailed information about the real status of the credential. IT MUST contains <code class="docutils literal notranslate"><span class="pre">state</span></code> and related <code class="docutils literal notranslate"><span class="pre">description</span></code> claims that MUST be set with one of the values defined in the <em>credential_status_detail_supported</em> mapped in the Credential Issuer Metadata.</p></td>
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>cnf</strong></p></td>
@@ -1050,7 +1051,7 @@ The <cite>error</cite> parameter for the Status Assertion Error object MUST be s
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 30/09/2024.
+      Last updated on 01/10/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
