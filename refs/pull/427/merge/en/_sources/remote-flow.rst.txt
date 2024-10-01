@@ -460,7 +460,7 @@ by appending the ``KB-JWT`` at the end of the of the SD-JWT, as represented in t
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>~<KB-JWT>
 
 To validate the signature on the Key Binding JWT, the Verifier MUST use the key material included in the Issuer-Signed-JWT.
-The Key Binding JWT (KB-JWT) signature MUST using the public key included in the SD-JWT,
+The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT,
 using the ``cnf`` parameter contained in the Issuer-Signed-JWT.
 
 When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS header:
