@@ -519,7 +519,7 @@ The <cite>error</cite> parameter for the Revocation Assertion Error object MUST 
 <p>The Status Assertion HTTP request can be sent to a single Credential Issuer regarding multiple Digital Credentials, and MUST contain a JSON object with the member <cite>status_assertion_requests</cite>.
 The <cite>status_assertion_requests</cite> MUST be set with an array of strings, where each string within the array represents a Digital Credential Status Assertion Request object.</p>
 <p>A non-normative example of Credential Proof of Possession is provided <a class="reference internal" href="#credential-pop-jwt-ex"><span class="std std-ref">in the previous section</span></a>.</p>
-<p><strong>Step 2 (Revocation Assertion Request verification)</strong>: The Credential Issuer that receives the Status Assertion Request object MUST validate that the Wallet Instance making the request is authorized to request Status Assertions. Therefore the following requirements MUST be satisfied:</p>
+<p><strong>Step 2 (Status Assertion Request verification)</strong>: The Credential Issuer that receives the Status Assertion Request object MUST validate that the Wallet Instance making the request is authorized to request Status Assertions. Therefore the following requirements MUST be satisfied:</p>
 <ul class="simple">
 <li><p>The Credential Issuer MUST verify the compliance of all elements in the <cite>status_assertion_requests</cite> object using the confirmation method contained within the Digital Credential where the Status Assertion Request object is referred to;</p></li>
 <li><p>The Credential Issuer MUST verify that it is the legitimate Issuer of the Digital Credential to which each Status Assertion Request object refers.</p></li>
@@ -1039,7 +1039,7 @@ The <cite>error</cite> parameter for the Status Assertion Error object MUST be s
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 30/09/2024.
+      Last updated on 01/10/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
