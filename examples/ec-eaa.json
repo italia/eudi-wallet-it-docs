@@ -461,7 +461,7 @@
                 "display": [
                     {
                     "state": "Invalida",
-                    "description": "La credenziale non è più utilizzabile in quanto è stata revocata. Questo stato è irreversibile",
+                    "description": "La Credenziale non è più utilizzabile in quanto è stata revocata. Questo stato è irreversibile",
                     "locale": "it-IT"
                     },
                     {

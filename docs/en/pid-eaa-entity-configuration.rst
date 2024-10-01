@@ -121,7 +121,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **credential_status_detail_supported**
     - JSON object that outlines the details of each validity status supported by the PID/(Q)EAA Provider related to the credentials issued. It contains ``Display`` array containing a list of states with the corresponding descriptions and language identifiers. The parameter that MUST be included are:
 
-        - **state**: String value of a credential status supported.
+        - **state**: String value of a Credential status supported.
         - **description**: String containing the description of the status related to this object.
         - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
   * - **jwks**
