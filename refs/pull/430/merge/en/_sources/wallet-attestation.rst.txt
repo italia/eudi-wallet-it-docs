@@ -283,7 +283,7 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
         },
       },
     },
-    authorization_endpoint": "eudiw:",
+    authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
     "response_types_supported": [
       "vp_token"
     ],
