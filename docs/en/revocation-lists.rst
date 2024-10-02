@@ -140,7 +140,7 @@ The request MUST be signed with the private key related to the public key contai
     Host: pid-provider.example.org
     Content-Type: application/json
     
-    revocation_requests : ["${base64url(json({typ: (some pop for revocation-assertion)+jwt, ...}))}.payload.signature", ... ]
+    revocation_requests : ["${base64url(json({typ: revocation-assertion+jwt, ...}))}.payload.signature", ... ]
    
  
 Below, is given a non-normative example of a single Revocation Assertion Request object with decoded JWT headers and payload and without signature for better readability:
@@ -164,7 +164,7 @@ Below, is given a non-normative example of a single Revocation Assertion Request
       "credential_hash_alg": "sha-256"
     }
 
-**Step 2 (PoP verification)**: The Credential Issuer verifies the proof of possession of the Credential requested to be revoked, using the the confirmation method that was attested in the Credential. If the verification is successful the revocation request is allowed.
+**Step 2 (Revocation Assertion Request verification)**: The Credential Issuer verifies the proof of possession of the Credential requested to be revoked, using the the confirmation method that was attested in the Credential. If the verification is successful the revocation request is allowed.
 
 **Step 3 (Credential Revocation)**: The Credential Issuer revokes the Credential provided in the Revocation Request object. After the revocation, the Credential Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. 
 
@@ -375,7 +375,7 @@ Below a non-normative example representing a Status Assertion Request array with
     Content-Type: application/json
 
 	{
-		"status_assertion_requests" : ["${base64url(json({typ: (some pop for status-assertion)+jwt, ...}))}.payload.signature", ... ]
+		"status_assertion_requests" : ["${base64url(json({typ: status-assertion+jwt, ...}))}.payload.signature", ... ]
 	}
 
 The Status Assertion HTTP request can be sent to a single Credential Issuer regarding multiple Digital Credentials, and MUST contain a JSON object with the member `status_assertion_requests`.
@@ -383,7 +383,7 @@ The `status_assertion_requests` MUST be set with an array of strings, where each
 
 A non-normative example of Credential Proof of Possession is provided :ref:`in the previous section <credential_pop_jwt_ex>`.
 
-**Step 2 (PoP verification)**: The Credential Issuer that receives the Status Assertion Request object MUST validate that the Wallet Instance making the request is authorized to request Status Assertions. Therefore the following requirements MUST be satisfied:
+**Step 2 (Status Assertion Request verification)**: The Credential Issuer that receives the Status Assertion Request object MUST validate that the Wallet Instance making the request is authorized to request Status Assertions. Therefore the following requirements MUST be satisfied:
 
 - The Credential Issuer MUST verify the compliance of all elements in the `status_assertion_requests` object using the confirmation method contained within the Digital Credential where the Status Assertion Request object is referred to;
 
@@ -601,7 +601,7 @@ The Credential Proof of Possession (**credential_pop**) MUST be a JWT that MUST 
       - UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **jti**
-      - Unique identifier for the PoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
+      - Unique identifier for the proof of possession JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
       - :rfc:`7519#section-4.1.7`.
     * - **credential_hash**
       - It MUST contain the hash value of a Digital Credential, derived by computing the base64url encoded hash of the Digital Credential.
