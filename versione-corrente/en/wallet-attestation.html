@@ -398,7 +398,7 @@ Below is a non-normative example of the response.</p>
 <p><strong>Steps 11-12</strong>: The Wallet Instance:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">challenge</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, and <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, and is signed using the private key of the initially generated ephemeral key pair.</p></li>
+<li><p>Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">challenge</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code> and other configuration related parameters (see <a class="reference internal" href="#table-wallet-attestation-request-claim"><span class="std std-ref">Table of the Wallet Attestation Request Body</span></a> below) and is signed using the private key of the initially generated ephemeral key pair.</p></li>
 <li><p>Submits the Wallet Attestation Request to the token endpoint of the Wallet Provider Backend.</p></li>
 </ul>
 </div></blockquote>
@@ -433,6 +433,17 @@ Below is a non-normative example of the response.</p>
       <span class="p">},</span>
     <span class="p">},</span>
   <span class="p">},</span>
+  <span class="n">authorization_endpoint</span><span class="s2">&quot;: &quot;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">wallet</span><span class="o">-</span><span class="n">solution</span><span class="o">.</span><span class="n">digital</span><span class="o">-</span><span class="n">strategy</span><span class="o">.</span><span class="n">europa</span><span class="o">.</span><span class="n">eu</span><span class="o">/</span><span class="n">authorization</span><span class="s2">&quot;,</span>
+  <span class="s2">&quot;response_types_supported&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;vp_token&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;response_modes_supported&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;form_post.jwt&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;ES256&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;presentation_definition_uri_supported&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
   <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1686645115</span><span class="p">,</span>
   <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1686652315</span>
 <span class="p">}</span>
@@ -611,6 +622,26 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 <td><p>JSON object with name/value pairs, identifying a Credential format supported by the Wallet.</p></td>
 <td></td>
 </tr>
+<tr class="row-even"><td><p><strong>authorization_endpoint</strong></p></td>
+<td><p>URL of the Wallet Authorization Endpoint (custom url schema or universal link of the Wallet Instance).</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>response_types_supported</strong></p></td>
+<td><p>JSON array containing a list of the OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>response_modes_supported</strong></p></td>
+<td><p>JSON array containing a list of the OAuth 2.0 &quot;response_mode&quot; values that this authorization server supports.</p></td>
+<td><p><span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
+<td><p>JSON array containing a list of the JWS signing algorithms (alg values) supported.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
+<td><p>Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.</p></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -632,11 +663,11 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> inside the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim of Wallet Instance as base64url-encoded JWK Thumbprint value.</p></td>
-<td><p><span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">wallet-attestation+jwt</span></code></p></td>
@@ -664,23 +695,23 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>Identifier of the Wallet Provider</p></td>
-<td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
 <td><p>Identifier of the Wallet Instance which is the thumbprint of the Wallet Instance JWK contained in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></td>
-<td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX Timestamp with the expiry time of the JWT.</p></td>
-<td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
+<td><p><span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aal</strong></p></td>
 <td><p>JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.</p></td>
@@ -696,7 +727,7 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 </tr>
 <tr class="row-even"><td><p><strong>response_modes_supported</strong></p></td>
 <td><p>JSON array containing a list of the OAuth 2.0 &quot;response_mode&quot; values that this authorization server supports.</p></td>
-<td><p><span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
+<td><p><span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vp_formats_supported</strong></p></td>
 <td><p>JSON object with name/value pairs, identifying a Credential format supported by the Wallet.</p></td>
