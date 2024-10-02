@@ -653,7 +653,7 @@ When the JWT format is used, the Revocation Assertion MUST contain the following
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It MUST be set with the value `false`.
       - `OAUTH-STATUS-ASSERTION`_.
     * - **credential_status_detail**
-      - Object containing detailed information about the real status of the Credential. It MUST contains ``state`` and related ``description`` claims that MUST be set with one of the values defined in the *credential_status_detail_supported* mapped in the Credential Issuer Metadata.
+      - Object containing detailed information about the real status of the Credential. It MUST contains ``state`` and related ``description`` parameters that MUST be set with one of the values defined in the *credential_status_detail_supported* mapped in the Credential Issuer metadata.
       - `OAUTH-STATUS-ASSERTION`_.
     
 
@@ -707,7 +707,7 @@ When the JWT format is used, the Status Assertion MUST contain the following cla
       - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It is REQUIRED and it MUST be set with the value "false" or "true".
       - `OAUTH-STATUS-ASSERTION`_.
     * - **credential_status_detail**
-      - REQUIRED if **credential_status_validity** is set to `false`. Object containing detailed information about the real status of the Credential. IT MUST contains ``state`` and related ``description`` claims that MUST be set with one of the values defined in the *credential_status_detail_supported* mapped in the Credential Issuer Metadata.
+      - REQUIRED if **credential_status_validity** is set to `false`. Object containing detailed information about the real status of the Credential. IT MUST contains ``state`` and related ``description`` parameters that MUST be set with one of the values defined in the *credential_status_detail_supported* mapped in the Credential Issuer metadata.
       - `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
