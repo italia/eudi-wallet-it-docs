@@ -125,7 +125,7 @@ The PID/(Q)EAA Provider performs the following checks upon the receipt of the PA
     2. It MUST check that the used algorithm for signing the request in the ``alg`` header is one of the listed within the Section `Cryptographic Algorithms <algorithms.html>`_.
     3. It MUST check that the ``client_id`` in the request body of the PAR request matches the ``client_id`` claim included in the Request Object.
     4. It MUST check that the ``iss`` claim in the Request Object matches the ``client_id`` claim in the Request Object (:rfc:`9126`, :rfc:`9101`).
-    5. It MUST check that the ``aud`` claim in the Request Object is equal to the PID/(Q)EAA Provider authorization endpoint uri (:rfc:`9126`, :rfc:`9101`).
+    5. It MUST check that the ``aud`` claim in the Request Object is equal to the identifier of the PID/(Q)EAA Provider (:rfc:`9126`, :rfc:`9101`).
     6. It MUST reject the PAR request, if it contains the ``request_uri`` parameter (:rfc:`9126`).
     7. It MUST check that the Request Object contains all the mandatory parameters which values are validated according to :ref:`Table of the HTTP parameters <table_request_object_claim>` [derived from :rfc:`9126`].
     8. It MUST check that the Request Object is not expired, checking the ``exp`` claim.
@@ -943,7 +943,7 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - The value of this claim MUST be the **client_id** of the Wallet Instance.
     - [`OpenID4VCI`_], [:rfc:`7519`, Section 4.1.1].
   * - **aud**
-    - The value of this claim MUST be the identifier URL of the PID/(Q)EAA Issuer.
+    - It MUST be set to the identifier of the PID/(Q)EAA Provider.
     - [`OpenID4VCI`_].
   * - **iat**
     - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
