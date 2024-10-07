@@ -6,14 +6,21 @@
 PID/(Q)EAA Data Model
 +++++++++++++++++++++
 
-The Person Identification Data (PID) is issued by the PID Provider according to national laws. The main scope of the PID is allowing natural persons to be authenticated for the access to a service or to a protected resource. 
-The User attributes provided within the Italian PID are the ones listed below:
+The Person Identification Data (PID) is issued by the PID Provider according to national laws. The main scope of the PID is allowing natural or legal person to be authenticated for the access to a service or to a protected resource. 
+The User attributes, for natural person, provided within the Italian PID are the ones listed below:
 
     - Current Family Name
     - Current First Name
     - Date of Birth
     - Unique Identifier
     - Taxpayer identification number
+
+For legal person, the user attributes provided within the Italian PID are based on the eIDAS document `EIDAS_SAML_ATTRIBUTE_PROFILE_1_4`_, and the minimum dataset is listed below:
+
+    - LegalName
+    - LegalPersonIdentifier
+    - VATRegistration
+    - LegalEmailAddress (PEC) 
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or MDOC-CBOR data format. 
 
@@ -198,7 +205,7 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
     :widths: 20 60 20
     :header-rows: 1
 
-    * - **Claim**
+    * - **Natural Person Claim**
       - **Description**
       - **Reference**
     * - **given_name**
@@ -216,6 +223,25 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
     * - **tax_id_code**
       - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
       - 
+.. list-table:: 
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Legal Person Claim**
+      - **Description**
+      - **Reference**
+    * - **LegalName**
+      - [SD]. Current Legal Name.
+      - `[eIDAS LegalName] <http://eidas.europa.eu/attributes/legalperson/LegalName>`_
+    * - **LegalPersonIdentifier**
+      - [SD]. Current Legal Person Identifier.
+      - `[eIDAS LegalPersonIdentifier] <http://eidas.europa.eu/attributes/legalperson/LegalPersonIdentifier>`_
+    * - **VATRegistration**
+      - [SD]. VAT Registration Number for the organization.
+      - `[eIDAS VATRegistration] <http://eidas.europa.eu/attributes/legalperson/VATRegistration>`_
+    * - **LegalEmailAddress**
+      - [SD]. Contact Email Address.
+      - `[eIDAS LegalEmailAddress] <http://eidas.europa.eu/attributes/legalperson/LegalEmailAddress>`_
 
 The PID attribute schema, which encompasses all potential User data, is defined in `ARF v1.4 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#21-identification-and-authentication-to-access-online-services>`_, and furthermore detailed in the `PID Rulebook <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md#23-pid-attributes>`_.
 

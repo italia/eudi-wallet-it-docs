@@ -69,3 +69,4 @@
 .. _W3C-SRI: https://www.w3.org/TR/SRI/
 .. _OIDC-IDA: https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html
 .. _SPID/CIE-OpenID-Connect-Specifications: https://italia.github.io/spid-cie-oidc-docs/en
+.. _EIDAS_SAML_ATTRIBUTE_PROFILE_1_4: https://ec.europa.eu/digital-building-blocks/sites/download/attachments/467109280/eIDAS%20SAML%20Attribute%20Profile%20v1.4_final.pdf
