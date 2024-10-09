@@ -495,12 +495,6 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
     - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.
 
 
-MDOC-CBOR Presentation
-----------------------
-
-TBD.
-
-
 Authorization Response Errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
