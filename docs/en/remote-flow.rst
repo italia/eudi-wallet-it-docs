@@ -3,7 +3,6 @@
 .. _Trust Model: trust.html
 
 
-
 Remote Flow
 ===========
 
@@ -500,6 +499,18 @@ MDOC-CBOR Presentation
 
 TBD.
 
+Revocation Checks
+~~~~~~~~~~~~~~~~~
+
+The revocation mechanisms that the Relying Parties MUST implement are defined in the section (:ref:`Revocations <revocation-lists.rst>`).
+
+In the context of Digital Credential evaluation, any Relying Parties (RPs) establishes internal policies that define the meaning and value of presented Credentials. This is particularly important in scenarios where a Credential may be suspended but still holds value for certain purposes. For example, a suspended mobile driving license might still be valid for verifying the age of the holder.
+
+The process begins with the RP requesting specific Credentials from the Holder. This request should align with the Relying Party's requirements and the context in which the Credentials will be used. The Holder then responds by releasing the requested Credentials.
+
+Upon receiving the Credentials, the Relying Party evaluates their validity and value based on its internal policies. This evaluation considers the current status of the Credential (e.g., active, suspended, revoked) and the specific use case for which the Credential is being presented.
+
+Relying Parties should develop comprehensive internal policies that outline how different types of Credentials are to be evaluated. These policies should address scenarios where a Credential may be partially valid or have limited applicability. Flexibility in evaluation processes is important to accommodate various use cases. For instance, a Credential that is suspended for driving purposes might still be acceptable for age verification.
 
 Authorization Response Errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
