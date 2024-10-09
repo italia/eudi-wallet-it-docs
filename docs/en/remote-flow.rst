@@ -436,7 +436,7 @@ Where the following parameters are used:
   * - **vp_token**
     - JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
 
-      - The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
+      - The requested Digital Credential (one or more, in format of SD-JWT VC)
       - The Wallet Attestation
   * - **presentation_submission**
     - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_. This is expressed via elements in the ``descriptor_map`` array (Input Descriptor Mapping Objects) that contain a field called ``path``, which MUST have the value $ (top level root path) when only one Verifiable Presentation is contained in the VP Token, and MUST have the value $[n] (indexed path from root) when there are multiple Verifiable Presentations, where ``n`` is the index to select. The Relying Party receiving the `presentation_submission` descriptor therefore is able to use the correct method to decode each credential data format provided within the ``vp_token``.
@@ -445,7 +445,7 @@ Where the following parameters are used:
 
 
 The items contained in the ``vp_token`` array are Verifiable Presentations of Credentials.
-Both SD-JWT and mdoc CBOR provide indications for the presentation, according to their specifications.
+
 
 SD-JWT Presentation
 -------------------
@@ -494,11 +494,6 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
     - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.
 
 
-MDOC-CBOR Presentation
-----------------------
-
-TBD.
-
 Revocation Checks
 ~~~~~~~~~~~~~~~~~
 
@@ -511,6 +506,7 @@ The process begins with the RP requesting specific Credentials from the Holder. 
 Upon receiving the Credentials, the Relying Party evaluates their validity and value based on its internal policies. This evaluation considers the current status of the Credential (e.g., active, suspended, revoked) and the specific use case for which the Credential is being presented.
 
 Relying Parties should develop comprehensive internal policies that outline how different types of Credentials are to be evaluated. These policies should address scenarios where a Credential may be partially valid or have limited applicability. Flexibility in evaluation processes is important to accommodate various use cases. For instance, a Credential that is suspended for driving purposes might still be acceptable for age verification.
+
 
 Authorization Response Errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
