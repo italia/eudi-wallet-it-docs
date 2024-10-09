@@ -740,7 +740,7 @@ where a non-normative example in the form of decoded header and payload is shown
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
 <td><p>JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:</p>
 <ul class="simple">
-<li><p>The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)</p></li>
+<li><p>The requested Digital Credential (one or more, in format of SD-JWT VC)</p></li>
 <li><p>The Wallet Attestation</p></li>
 </ul>
 </td>
@@ -753,8 +753,7 @@ where a non-normative example in the form of decoded header and payload is shown
 </tr>
 </tbody>
 </table>
-<p>The items contained in the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> array are Verifiable Presentations of Credentials.
-Both SD-JWT and mdoc CBOR provide indications for the presentation, according to their specifications.</p>
+<p>The items contained in the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> array are Verifiable Presentations of Credentials.</p>
 </section>
 <section id="sd-jwt-presentation">
 <h3>SD-JWT Presentation<a class="headerlink" href="#sd-jwt-presentation" title="Link to this heading">¶</a></h3>
