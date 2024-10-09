@@ -437,7 +437,7 @@ Where the following parameters are used:
   * - **vp_token**
     - JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:
 
-      - The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)
+      - The requested Digital Credential (one or more, in format of SD-JWT VC)
       - The Wallet Attestation
   * - **presentation_submission**
     - JSON Object containing the mappings between the requested Verifiable Credentials and where to find them within the returned Verifiable Presentation Token, according to the `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_. This is expressed via elements in the ``descriptor_map`` array (Input Descriptor Mapping Objects) that contain a field called ``path``, which MUST have the value $ (top level root path) when only one Verifiable Presentation is contained in the VP Token, and MUST have the value $[n] (indexed path from root) when there are multiple Verifiable Presentations, where ``n`` is the index to select. The Relying Party receiving the `presentation_submission` descriptor therefore is able to use the correct method to decode each credential data format provided within the ``vp_token``.
@@ -446,7 +446,7 @@ Where the following parameters are used:
 
 
 The items contained in the ``vp_token`` array are Verifiable Presentations of Credentials.
-Both SD-JWT and mdoc CBOR provide indications for the presentation, according to their specifications.
+
 
 SD-JWT Presentation
 -------------------
