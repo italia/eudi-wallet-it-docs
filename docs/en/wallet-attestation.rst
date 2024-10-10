@@ -59,14 +59,14 @@ Wallet Instance Initialization and Registration
 .. figure:: ../../images/wallet_instance_initialization.svg
    :name: Sequence Diagram for Wallet Instance Initialization
    :alt: The figure illustrates the sequence diagram for initializing a Wallet Instance, with the steps explained below.
-   :target: https://www.plantuml.com/plantuml/uml/ZLFHRjD047o_hrYb3xHM-84yeA8Iqgf04IdmlBOtpYhEdRMt3eIlPy-cQMoPmeCZQszcTcOklewAeks-TjXgyEq-9t5RBWas8MWUVhfNZG6uu0QzEeU51e7PrqWo0upGseixGy3iEzOrATnvK_O5TIXi6XYYtj612pAKKYMiHrYJf4aFHurm4HjXNrL2v2StV9PmCAC2EHOxycL7pOkTSvM4je7WwoEqJV2mOOaAR8wCYSes2XlGBILZBaLu_SRU5j2L4PzEuB8d6k0g1US3Qa-nvm_ZPal53dW3Vmi4R7aEo3NcDJadFfX6E90aeRdPXOiFTwlRnzMNvVAJw-N60KqY5V1a-ZtPi8-1leIGAx87DkDxKYnHqLaTtIRdUg-sPm4hqyooOflKVKLPzXmgrMRF2UX9qZXu0kKzfGf6r8JkEnWTb3HGFLLrKZNyZHmR3PLWi-K2Rb7A7oW4ztICMMPPMRfaKOEy38T7h6ndlmGrBW1LAQeTNPvCpU5bWIkNgCzfqlXj9zELR8uYLvvAo8_miFnurkZQUXx6dq_oBSn_nPY-ZczOSuawke59m7Zt0BR-PvrnUB4FznEtQOVfYrd0w4Et5rOs9x-eFASP9VqTtRNzjFlwDm00
+   :target: https://www.plantuml.com/plantuml/uml/ZLJ1RjD04BtlLupQ0sqKVY07L5H2MXKe8WKkNCRsn1d5tZMpiu7mzSpQROYZK3WuMis-z-QzjrAkeg9eQXk7IODFRK7YrbmHh4BG8lnqBpe3SCaTUdKEImq2PvyZoHbWX1GDVu20iw_ODAHmwqtPbzIZiEjWZ7f3Mox9K4griEvWIP8d0nmrmddiX7rT2v4_kU6ZXAqP5IYmt92lUcfHRfoh9QGEWczsaBhWOSKI5TWS6HELRHHMe6lAnboEyFALdMRGbn6VRk1Y81hWCWVdBUf0iU-HSRscSWCyg5L3g9ReKQHbpsrg8LAP-fH2tnCBjUGrVlFegqoTJFxMncG2706to0qM3JadFYX1s99a7rDB2-VlRXSt3ujFy_a7DxWvxiSaSdzFcT-I3OSMie5GAB87rcZ65IjKTDPclycv8QhjcS62rAoMwwpkQ_EsxwHltRuzq9FaSV04oYtb1e-e6JrKU7HHqKXrt_HUrV3Nikiqr8BTcakuGQb-e13SqIvQOnsozCcY1daU3WzOsyvX2MgS0QfILBkws9kQmlC2bovJ_wJ9uzUzJ5-oEOfSUwgWsC7z_Fr1eqlhUHn_Uf9lOVuhnkdd-88DLpOURpeDEDezWYt_MMSSF-pztOdNjCiKIMPmz3zX1rOs9x-eEgGPnLbDxif-Kjly1W00
 
 **Step 1**: The User starts the Wallet Instance mobile app for the first time.
 
 **Step 2**: The Wallet Instance:
 
-  * Checks if the Device Integrity Service is available.
   * Checks whether the device meets the minimum security requirements.
+  * Checks if the Device Integrity Service is available.
 
 .. note::
 
@@ -246,7 +246,7 @@ Below a non-normative example of the ``client_data``.
 
 **Steps 11-12**: The Wallet Instance:
 
-  * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``hardware_key_tag``, and ``cnf``, and is signed using the private key of the initially generated ephemeral key pair.
+  * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>` below) and is signed using the private key of the initially generated ephemeral key pair.
   * Submits the Wallet Attestation Request to the token endpoint of the Wallet Provider Backend.
 
 Below an non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
@@ -283,6 +283,17 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
         },
       },
     },
+    authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
+    "response_types_supported": [
+      "vp_token"
+    ],
+    "response_modes_supported": [
+      "form_post.jwt"
+    ],
+    "request_object_signing_alg_values_supported": [
+      "ES256"
+    ],
+    "presentation_definition_uri_supported": false,
     "iat": 1686645115,
     "exp": 1686652315
   }
@@ -445,6 +456,21 @@ The body of the Wallet Attestation Request JWT MUST contain:
       - :rfc:`7800`
     * - **vp_formats_supported**
       - JSON object with name/value pairs, identifying a Credential format supported by the Wallet.
+      -
+    * - **authorization_endpoint**
+      - URL of the Wallet Authorization Endpoint (custom url schema or universal link of the Wallet Instance).
+      -
+    * - **response_types_supported**
+      - JSON array containing a list of the OAuth 2.0 ``response_type`` values.
+      -
+    * - **response_modes_supported**
+      - JSON array containing a list of the OAuth 2.0 "response_mode" values that this authorization server supports.
+      - :rfc:`8414`
+    * - **request_object_signing_alg_values_supported**
+      - JSON array containing a list of the JWS signing algorithms (alg values) supported.
+      -
+    * - **presentation_definition_uri_supported**
+      - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
       -
 
 .. _table_wallet_attestation_claim:
