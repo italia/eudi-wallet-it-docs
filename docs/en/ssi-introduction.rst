@@ -10,9 +10,9 @@ Users possess their digital documents and determine to which actors they present
 
 The main difference between this new approach and the traditional IAM infrastructure is that during the presentation phase there are no intermediaries between the Wallet and the Relying Party, while in the SAML2 or OIDC based infrastructure an Identity Provider is always involved, knowing which services a citizen is accessing to.
 
-SSI is also significant in the field of data exchange and data governance. This is relevant at both national and European levels, including the new eIDAS Regulation. In fact, it envisions a login option designed for European Users - be they citizens, public administrations, or companies - who want to access another Member State's services using their national authentication systems.
+Self-Sovereign Identity (SSI) is also significant in the field of data exchange and data governance. This is relevant at both national and European levels, including the new eIDAS Regulation. In fact, it envisions a login option designed for European Users - be they citizens, public administrations, or companies - who want to access another Member State's services using their national authentication systems.
 
-The main roles in an Wallet ecosystem are are listed as follow:
+The main roles in a Wallet ecosystem are are listed as follow:
 
  - Issuers: parties who can issue digital credentials about a person;
  - Verifiers: parties who request Holders' digital credentials for authentication and authorization purposes;
