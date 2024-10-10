@@ -74,15 +74,39 @@ General Properties
 
 The architecture of the trust infrastructure based on OpenID Federation is built upon several core principles:
 
-- [P1] **Security**: incorporates mechanisms to ensure the integrity, confidentiality, and authenticity of the trust relationships and interactions within the federation.
-- [P2] **Privacy**: designed to respect and protect the privacy of the entities and individuals involved, minimal disclosure is part of this.
-- [P3] **Interoperability**: supports seamless interaction and trust establishment between diverse systems and entities within the federation.
-- [P4] **Transitive Trust**: trust established indirectly through a chain of trusted relationships, enabling entities to trust each other based on common authorities and trusted intermediaries.
-- [P6] **Scalability**: designed to efficiently manage an increasing number of entities or interactions without a significant increase in trust management complexity.
-- [P5] **Delegation**: technical ability/feature to delegate authority or responsibilities to other entities, allowing for a distributed trust mechanism.
-- [P7] **Flexibility**: adaptable to various operational and organizational needs, allowing entities to define and adjust their trust relationships and policies.
-- [P8] **Autonomy**: while part of a federated ecosystem, each entity retains control over its own definitions and configurations.
-- [P9] **Decentralization**: unlike traditional centralized systems, the OpenID Federation model promotes a decentralized approach. This ensures that no single entity has control over the entire system, enhancing privacy and security for all participants. 
+.. list-table:: 
+   :header-rows: 1
+
+   * - Identifier
+     - Property
+     - Description
+   * - P1
+     - **Security**
+     - Incorporates mechanisms to ensure the integrity, confidentiality, and authenticity of the trust relationships and interactions within the federation.
+   * - P2
+     - **Privacy**
+     - Designed to respect and protect the privacy of the entities and individuals involved, minimal disclosure is part of this.
+   * - P3
+     - **Interoperability**
+     - Supports seamless interaction and trust establishment between diverse systems and entities within the federation.
+   * - P4
+     - **Transitive Trust**
+     - Trust established indirectly through a chain of trusted relationships, enabling entities to trust each other based on common authorities and trusted intermediaries.
+   * - P5
+     - **Delegation**
+     - Technical ability/feature to delegate authority or responsibilities to other entities, allowing for a distributed trust mechanism.
+   * - P6
+     - **Scalability**
+     - Designed to efficiently manage an increasing number of entities or interactions without a significant increase in trust management complexity.
+   * - P7
+     - **Flexibility**
+     - Adaptable to various operational and organizational needs, allowing entities to define and adjust their trust relationships and policies.
+   * - P8
+     - **Autonomy**
+     - While part of a federated ecosystem, each entity retains control over its own definitions and configurations.
+   * - P9
+     - **Decentralization**
+     - Unlike traditional centralized systems, the OpenID Federation model promotes a decentralized approach. This ensures that no single entity has control over the entire system, enhancing privacy and security for all participants.
 
 Trust Infrastructure Functional Requirements
 ----------------------------------------------
@@ -94,63 +118,63 @@ This section includes the requirements necessary for the successful implementati
 
    * - ID
      - Description
-   * - [FR #1]
+   * - FR1
      - **Federation Trust Establishment**: the system must be able to establish trust between different entities (Credential Issuers, Relying Parties, etc.) within a federation, using cryptographic signatures for secure information exchange about the participants in the ecosystem.
-   * - [FR #2]
+   * - FR2
      - **Entity Authentication**: the system must implement mechanisms for authenticating entities within the federation, ensuring compliance with the shared rules.
-   * - [FR #3]
+   * - FR3
      - **Signature Validation**: the system must support the creation, verification, and validation of electronic signatures and provide standard and secure mechanisms to obtain the public keys required for the signature validation.
-   * - [FR #4]
+   * - FR4
      - **Time Stamping**: the signed artifacts must contain time stamps to ensure the integrity and non-repudiation of transactions over time, thanks to the interfaces, services, storage model and approaches defined within the federation.
-   * - [FR #5]
+   * - FR5
      - **Certificate Validation**: the system requires confidential transmission, secured via TLS over HTTP, and validation of certificates for website authentication, ensuring they meet eIDAS criteria.
-   * - [FR #6]
+   * - FR6
      - **Interoperability and Standards Compliance**: ensure interoperability between federation members by adhering to technical standards, facilitating cross-border electronic transactions.
-   * - [FR #7]
+   * - FR7
      - **Data Protection and Privacy**: implement data protection measures in compliance with GDPR and eIDAS regulations, ensuring the privacy and security of personal data processed within the federation.
-   * - [FR #8]
+   * - FR8
      - **User Consent and Control**: design mechanisms for obtaining and managing user consent, empowering users with control over their personal information.
-   * - [FR #9]
+   * - FR9
      - **Audit and Logging**: the system must minimize data, anonymize if possible, define retention periods, secure access, and storage encryption. This protects privacy while enabling security and accountability.
-   * - [FR #10]
+   * - FR10
      - **Dispute Resolution and Liability**: establish clear procedures for dispute resolution and define liability among federation members, in accordance with eIDAS provisions.
-   * - [FR #11]
+   * - FR11
      - **Accessibility**: ensure that the system is accessible to all users, including those with disabilities, aligning with eIDAS and local accessibility standards.
-   * - [FR #12]
+   * - FR12
      - **Emergency and Revocation Services**: implement mechanisms for the immediate revocation of electronic identification means and participants in case of security breaches or other emergencies.
-   * - [FR #13]
+   * - FR13
      - **Scalable Trust Infrastructure**: the system must support scalable trust establishment mechanisms, leveraging approaches and technical solutions that complement delegation transitive approaches to efficiently manage trust relationships as the federation grows, removing central registries that might technically or administratively fail.
-   * - [FR #14]
+   * - FR14
      - **Efficient Storage Scalability**: implement a storage solution that scales horizontally to accommodate increasing data volumes while minimizing central storage and administrative costs. The system should enable members to independently store and present historical trust attestations and signed artifacts during dispute resolutions, with the federation infrastructure maintaining only a registry of historical keys to validate the historical data, stored and provided by the participants.
-   * - [FR #15]
+   * - FR15
      - **Verifiable Attestation (Trust Mark)**: incorporate a mechanism for issuing and verifying verifiable attestations that serve as proof of compliance with specific profiles or standards. This allows entities within the federation to demonstrate adherence to agreed-upon security, privacy, and operational standards.
-   * - [FR #16]
+   * - FR16
      - **Dynamic Policy Language**: develop and implement a dynamic, extensible policy language that allows for the creation and modification of federation policies in response to evolving requirements, technological advancements, and regulatory changes. This policy language should support the specification of rules governing entity behavior, metadata handling, and trust validation within the federation.
-   * - [FR #17]
+   * - FR17
      - **Automated Policy Enforcement**: the system must automatically enforce federation policies as defined by policy language and verifiable attestations, ensuring that all operations and transactions comply with current rules and standards.
-   * - [FR #18]
+   * - FR18
      - **Decentralized Dispute Resolution Mechanism**: design a decentralized mechanism for dispute resolution that allows federation members to independently verify historical trust establishment and signed artifacts, reducing reliance on central authorities and streamlining the resolution process.
-   * - [FR #19]
+   * - FR19
      - **Adaptive Load Management**: implement adaptive load management strategies to ensure the system remains responsive and efficient under varying loads, particularly during peak usage times or when processing complex tasks.
-   * - [FR #20]
+   * - FR20
      - **Cross-Federation Interoperability**: ensure the system is capable of interoperating with other federations or trust frameworks, facilitating cross-federation transactions and trust establishment without compromising security or compliance.
-   * - [FR #21]
+   * - FR21
      - **Future-Proof Cryptography**: the system should employ a flexible cryptographic framework that can be updated in response to new threats or advancements in cryptographic research, ensuring long-term security and integrity of federation operations.
-   * - [FR #22]
+   * - FR22
      - **Autonomous Registration Bodies**: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and registering entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
-   * - [FR #23]
+   * - FR23
      - **Compliance Evaluation for Federation Entity Candidates**: registration bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.
-   * - [FR #24]
+   * - FR24
      - **Periodic Auditing of Registration Bodies and Entities**: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities. This ensures ongoing adherence to federation standards and policies.
-   * - [FR #25]
+   * - FR25
      - **Certification of Compliance for Personal Devices**: trusted bodies, in the form of federation entities, should issue certifications of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These certifications should be attested and periodically renewed to ensure the devices meet current security standards.
-   * - [FR #26]
+   * - FR26
      - **Certification of Compliance for Cryptographic Devices**: similar to personal devices, personal cryptographic devices used within the federation must also receive certifications of compliance and signed proof thereof from trusted bodies. These certifications should be subject to periodic renewal to reflect the latest security and compliance standards.
-   * - [FR #27]
+   * - FR27
      - **Transparent Compliance Reporting**: develop a system for transparent reporting and publication of compliance statuses, audit results, and certification renewals for all federation entities. This transparency fosters trust within the federation and with external stakeholders.
-   * - [FR #28]
+   * - FR28
      - **Automated Compliance Monitoring**: the system should include automated tools for monitoring the compliance of entities with federation standards. This automation aids in the early detection of potential compliance issues.
-   * - [FR #29]
+   * - FR29
      - **Secure Protocol Capabilities Binding**: the secure protocol must enable the exchange of protocol-specific capabilities data as cryptographically-bound metadata attached to a specific identity. This metadata should define the technical capabilities associated with the identity, ensuring verifiable proof and tamper-proof association for robust trust establishment and access control.
 
 
@@ -255,9 +279,6 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
                 "https://registry.spid.eidas.trust-anchor.example.eu",
                 "https://private.other.intermediary.org"
             ]
-        },
-        "constraints": {
-            "max_path_length": 1
         }
     }
 
@@ -557,6 +578,8 @@ The Entity Statement issued by Trust Anchors and Intermediates contains the foll
 
 Trust Evaluation Mechanism
 --------------------------
+
+Trust Anchors MUST distribute their Federation Public Keys through secure out-of-band mechanisms, such as publishing them on a verified web page or storing them in a remote repository as part of a trust list. The rationale behind this requirement is that relying solely on the data provided within the Trust Anchor's Entity Configuration does not adequately mitigate risks associated with DNS and TLS manipulation attacks. To ensure security, all participants MUST obtain the Trust Anchor's public keys using these out-of-band methods. They should then compare these keys with those obtained from the Trust Anchor's Entity Configuration, discarding any keys that do not match. This process helps to ensure the integrity and authenticity of the Trust Anchor's public keys and the overall security of the federation.
 
 The Trust Anchor publishes the list of its Subordinates (Federation Subordinate Listing endpoint) and the attestations of their metadata and public keys (Entity Statements).
 

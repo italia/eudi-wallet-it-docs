@@ -730,7 +730,7 @@ where a non-normative example in the form of decoded header and payload is shown
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
 <td><p>JSON Array containing the Verifiable Presentation(s). There MUST be at least two signed presentations in this Array:</p>
 <ul class="simple">
-<li><p>The requested Digital Credential (one or more, in format of SD-JWT VC or MDOC CBOR)</p></li>
+<li><p>The requested Digital Credential (one or more, in format of SD-JWT VC)</p></li>
 <li><p>The Wallet Attestation</p></li>
 </ul>
 </td>
@@ -743,8 +743,7 @@ where a non-normative example in the form of decoded header and payload is shown
 </tr>
 </tbody>
 </table>
-<p>The items contained in the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> array are Verifiable Presentations of Credentials.
-Both SD-JWT and mdoc CBOR provide indications for the presentation, according to their specifications.</p>
+<p>The items contained in the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> array are Verifiable Presentations of Credentials.</p>
 </section>
 <section id="sd-jwt-presentation">
 <h2>SD-JWT Presentation<a class="headerlink" href="#sd-jwt-presentation" title="Link to this heading">¶</a></h2>
@@ -803,10 +802,14 @@ using the <code class="docutils literal notranslate"><span class="pre">cnf</span
 </tr>
 </tbody>
 </table>
+<section id="revocation-checks">
+<h3>Revocation Checks<a class="headerlink" href="#revocation-checks" title="Link to this heading">¶</a></h3>
+<p>The revocation mechanisms that the Relying Parties MUST implement are defined in the section (<span class="xref std std-ref">Revocations</span>).</p>
+<p>In the context of Digital Credential evaluation, any Relying Parties (RPs) establishes internal policies that define the meaning and value of presented Credentials. This is particularly important in scenarios where a Credential may be suspended but still holds value for certain purposes. For example, a suspended mobile driving license might still be valid for verifying the age of the holder.</p>
+<p>The process begins with the RP requesting specific Credentials from the Holder. This request should align with the Relying Party's requirements and the context in which the Credentials will be used. The Holder then responds by releasing the requested Credentials.</p>
+<p>Upon receiving the Credentials, the Relying Party evaluates their validity and value based on its internal policies. This evaluation considers the current status of the Credential (e.g., active, suspended, revoked) and the specific use case for which the Credential is being presented.</p>
+<p>Relying Parties should develop comprehensive internal policies that outline how different types of Credentials are to be evaluated. These policies should address scenarios where a Credential may be partially valid or have limited applicability. Flexibility in evaluation processes is important to accommodate various use cases. For instance, a Credential that is suspended for driving purposes might still be acceptable for age verification.</p>
 </section>
-<section id="mdoc-cbor-presentation">
-<h2>MDOC-CBOR Presentation<a class="headerlink" href="#mdoc-cbor-presentation" title="Link to this heading">¶</a></h2>
-<p>TBD.</p>
 <section id="authorization-response-errors">
 <h3>Authorization Response Errors<a class="headerlink" href="#authorization-response-errors" title="Link to this heading">¶</a></h3>
 <p>When the Wallet sends a response using <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> to the Relying Party, several errors may occur, including:</p>
@@ -890,8 +893,8 @@ Content-Type: application/json
 </ul>
 </li>
 <li><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
-<li><a class="reference internal" href="#sd-jwt-presentation">SD-JWT Presentation</a></li>
-<li><a class="reference internal" href="#mdoc-cbor-presentation">MDOC-CBOR Presentation</a><ul>
+<li><a class="reference internal" href="#sd-jwt-presentation">SD-JWT Presentation</a><ul>
+<li><a class="reference internal" href="#revocation-checks">Revocation Checks</a></li>
 <li><a class="reference internal" href="#authorization-response-errors">Authorization Response Errors</a></li>
 </ul>
 </li>
@@ -921,7 +924,7 @@ Content-Type: application/json
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 02/10/2024.
+      Last updated on 10/10/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
