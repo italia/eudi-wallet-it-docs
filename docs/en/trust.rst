@@ -358,7 +358,7 @@ The Trust Anchor Entity Configuration, in addition of the common parameters list
 Entity Configuration Leaves and Intermediates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In addition to the previously defined claims, the Entity Configuration of the Leaf and of the Intermediate Entities, MUST contain the parameters listed below:
+In addition to the previously defined claims, the Entity Configuration of the Leaf and of the Intermediate Entities, MAY contain the parameters listed below:
 
 
 .. list-table::
