@@ -490,3 +490,5 @@ SPR-W-50
      - The Wallet must ensure that the Credentials and private keys are protected from unauthorized access.
 
 To prevent unauthorized access to the Wallet, it is unlocked on the User's device by entering a personal identification number (PIN) or using biometric authentication, such as fingerprint or facial recognition, based on the User's preferences and the device's capabilities. Additionally, the cryptographic keys are securely stored within the WSCD, ensuring that only the User can access them, thereby preventing unauthorized use or tampering.
+
+
