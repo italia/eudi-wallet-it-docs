@@ -5,8 +5,7 @@
 Security and Privacy Considerations
 +++++++++++++++++++++++++++++++++++
 
-This section provides an informal security analysis of the IT Wallet specification
-by analyzing the compliance with the security and privacy requirements identified in [`OpenID4VC-SecTrust`_]. 
+This section provides an informal security analysis of the IT Wallet specification by analyzing the compliance with the security and privacy requirements identified in [`OpenID4VC-SecTrust`_]. 
 
 .. note::
 
