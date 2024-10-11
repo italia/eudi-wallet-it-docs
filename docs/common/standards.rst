@@ -87,3 +87,7 @@ Technical References
       - Lodderstedt, T., Fett, D., Haine, M., Pulido, A., Lehmann, K., Koiwai, K., "OpenID Connect for Identity Assurance 1.0", 24 July 2024.
     * - `SPID/CIE-OpenID-Connect-Specifications`_
       - SPID/CIE OpenID Connect.
+    * - `OAuthCrossDeviceSec`_
+      - Kasselman, P., Fett, D., Skokan, F.,  "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
+    * - `OpenID4VC-SecTrust`_
+      - Fett, D., Lodderstedt, T.,  "Security and Trust in OpenID for Verifiable Credentials Ecosystems", March 2024.
