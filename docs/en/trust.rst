@@ -332,7 +332,7 @@ The Entity Configurations of all the participants in the federation MUST have in
 Entity Configuration Trust Anchor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Trust Anchor Entity Configuration, in addition of the common parameters listed above, MAY contain the following parameters:
+The Trust Anchor Entity Configuration, in addition to the common parameters listed above, uses the following parameters:
 
 .. list-table::
    :widths: 20 60 20
@@ -358,7 +358,7 @@ The Trust Anchor Entity Configuration, in addition of the common parameters list
 Entity Configuration Leaves and Intermediates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In addition to the previously defined claims, the Entity Configuration of the Leaves and of the Intermediate Entities use the following parameters:
+In addition to the previously defined claims, the Entity Configuration of the Leaves and of the Intermediate Entities uses the following parameters:
 
 
 .. list-table::
