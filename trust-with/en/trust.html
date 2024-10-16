@@ -866,12 +866,19 @@ proving that the Relying Party is still part of the Federation and not revoked.<
 <li><p><strong>Federation Entity Discovery</strong>: Wallet Instances and Relying Parties MUST verify the identity of the Issuer through a Federation Entity Discovery process. This involves querying a trusted list or directory to confirm the Issuer's validity status and compliance with the Trust Framework.</p></li>
 <li><p><strong>Trust Chains</strong>: Wallet Instances and Relying Parties evaluate Issuer's Trust Chains, be provided statically or build though a Federation Entity Discovery process, to ensure that the entity requesting the Credential is part of a recognized and trusted federation. This involves checking the Trust Chain from the root authority to the Issuer.</p></li>
 <li><p><strong>Trust Marks Evaluation</strong>: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation.</p></li>
-<li><p><strong>Policy Evaluation</strong>: Continuous evaluation of policies ensures that the Issuer and the requesting entity comply with the latest security and operational standards.</p></li>
+<li><p><strong>Policy Evaluation</strong>: Wallet Instances and Relying Parties MUST check that the Credential Issuer is allowed in the issuance of the Credential of their interest. Metadata, metadata policies and Trust Marks are used for the implementation of these checks.</p></li>
 </ul>
-<p>In the process represented in the sequence diagram below, the Wallet Instance uses the Federation API to discover and collect all the Credential Issuers enabled within the federation.</p>
+<p>In the process represented in the sequence diagram below, the Wallet Instance uses the Federation API to discover and collect all the Credential Issuers enabled within the federation.
+The discovery process produces the Trust Chain. When the Trust Chain is provided statically within a signed request or Credential, it only REQUIRES to be refreshed when the
+internet connection is available, while it MUST be refreshed when the statically provided Trust Chain results as expired.</p>
 <figure class="align-center" style="width: 100%">
 <a class="reference external image-reference" href="//www.plantuml.com/plantuml/svg/fPCzRzim48Pt_ef3bavkzWn13DTfXIv1quyboqKynOTIH-9uj9D_NqQ46hkmkaGJGJtty7q5wYORgfKnk8Hgt7D2CVY58P2TR6qwm0mN6oLFOem1kfmBwSK9rMqdgXCZ7Sap6br-rv8DrjBlOgLTSyFg-hewh-2MhD_LrOSCs-gr5zX46VYfA1f7UH10Wuy72c7rM-91BcCYORyQo5D3WCIdo69kqqtQTi8LV2ChAcUr9p5cVljiYdsDMgn6VPtvKgqP1erZI_YF8yIOO8WAXBN3wPY3-XmTqctdhk-jkMo-BuzHFGiQmRsXqKXYJJrCm99Y_W8_CR1_dROTGLBQSomPyfkgP9QdwUtjts1peQ_qaXyaQTop9myi4tSsaoFnplqlGBiqcnsoE8V1e1kEzu1pOm75mm-XvyHAVgdNdSQUoCE1RNUKlEtdx2XaMffTr_msaysmLOsws66TKc3AS1S3ztLnZlb4odjgbsfWmG0Z6NeqF4T_9WFS8mTy30Hlls262iG3-UaISiu5fITtG-BB6Fu0"><img alt="_images/trust-with-ci-discovery.svg" src="_images/trust-with-ci-discovery.svg" /></a>
 </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As represented in the figure, the trust evaluation process is completely decoupled and distinct from the protocol specific flow,</p>
+</div>
+<p>positioning the trust evaluationin a different flow and using different protocols, specialized for this scope.</p>
 </section>
 <section id="wallet-attestation">
 <h3>Wallet Attestation<a class="headerlink" href="#wallet-attestation" title="Link to this heading">¶</a></h3>
