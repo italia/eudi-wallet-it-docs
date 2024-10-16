@@ -13,7 +13,7 @@ This section provides an informal security analysis of the IT Wallet specificati
 
 .. note::
 
-    The focus of the analysis is the compliance of the design choices in the IT Wallet specification w.r.t the OpenID4VC protocols. 
+    The focus of the analysis is the compliance of the design choices in the IT Wallet specification with respect to the OpenID4VC protocols. 
     It is currently out-of-scope *(i)* the analysis of the design of the proximity flow based on ISO 18013-5, and *(ii)* the analysis of the implementation; 
     as a consequence 7 requirements specifically related to the implementation are not considered (e.g., SV-00: The Verifier must implement the protocol securely and correctly).
 
