@@ -388,7 +388,7 @@ The subsequent sections define the protocol interface between the Wallet Instanc
 </tr>
 </tbody>
 </table>
-<p>The Revocation Assertion object MUST contain the parameter <code class="docutils literal notranslate"><span class="pre">credential_status_validity</span></code> with the value set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.
+<p>The Revocation Assertion object MUST contain the parameter <code class="docutils literal notranslate"><span class="pre">credential_status_validity</span></code> with the value set to <code class="docutils literal notranslate"><span class="pre">1</span></code>.
 Below a non-normative example of a Revocation Assertion object in JWT format, with the headers and payload represented in JSON and without applying the signature.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> {
    &quot;alg&quot;: &quot;ES256&quot;,
@@ -401,7 +401,11 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
    &quot;jti&quot;: &quot;6f204f7e-e453-4dfd-814e-9d155319408c&quot;
    &quot;credential_hash&quot;: $CREDENTIAL-HASH,
    &quot;credential_hash_alg&quot;: &quot;sha-256&quot;,
-   &quot;credential_status_validity&quot;: false,
+   &quot;credential_status_validity&quot;: 1,
+   &quot;credential_status_detail&quot;: {
+     &quot;state&quot;: &quot;invalid&quot;,
+     &quot;description&quot;: &quot;The Credential is no longer usable as it has been revoked. This state is irreversible&quot;
+   },
    &quot;cnf&quot;: {
      &quot;jwk&quot;: {
        &quot;kty&quot;: &quot;EC&quot;,
@@ -538,7 +542,7 @@ The <cite>status_assertion_requests</cite> MUST be set with an array of strings,
             &quot;exp&quot;: 1504785536,
             &quot;credential_hash&quot;: $CREDENTIAL-HASH,
             &quot;credential_hash_alg&quot;: &quot;sha-256&quot;,
-            &quot;credential_status_validity&quot;: true,
+            &quot;credential_status_validity&quot;: 0,
             &quot;cnf&quot;: {
                     &quot;jwk&quot;: {...}
             }
@@ -831,7 +835,18 @@ The <cite>error</cite> parameter for the Status Assertion Error object MUST be s
 <td><p><span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html#section-4.1.7"><strong>RFC 7519#section-4.1.7</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credential_status_validity</strong></p></td>
-<td><p>Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It MUST be set with the value <cite>false</cite>.</p></td>
+<td><p>Numerical value indicating the validity of the Credential linked to the Status Assertion describing its state, mode, condition or stage. It MUST be set with <cite>1</cite> (INVALID status).</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>credential_status_detail</strong></p></td>
+<td><p>Object containing detailed information about the real status of the Credential. IT MUST contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>state</strong>: String value of the Credential status,</p></li>
+<li><p><strong>description</strong>: String containing the description of the Credential status.</p></li>
+</ul>
+</div></blockquote>
+</td>
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 </tbody>
@@ -901,10 +916,21 @@ The <cite>error</cite> parameter for the Status Assertion Error object MUST be s
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_status_validity</strong></p></td>
-<td><p>Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It is REQUIRED and it MUST be set with the value &quot;false&quot; or &quot;true&quot;.</p></td>
+<td><p>Numerical value indicating the validity of the Credential linked to the Status Assertion describing its state, mode, condition or stage. It MUST be set with values from 0 to 2 with the following meaning: 0-VALID, 1-INVALID, 2-SUSPENDED.</p></td>
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>cnf</strong></p></td>
+<tr class="row-even"><td><p><strong>credential_status_detail</strong></p></td>
+<td><p>REQUIRED if <strong>credential_status_validity</strong> is not set to <cite>0</cite>. Object containing detailed information about the real status of the Credential. IT MUST contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>state</strong>: String value of the Credential status,</p></li>
+<li><p><strong>description</strong>: String containing the description of the Credential status.</p></li>
+</ul>
+</div></blockquote>
+</td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object containing confirmation methods. The sub-member contained within <cite>cnf</cite> member, such as <cite>jwk</cite> for JWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7800">[RFC7800, Section 3.1]</a> and <a class="reference external" href="https://www.iana.org/go/rfc7800">[RFC8747, Section 3.1]</a>.</p></td>
 </tr>
@@ -1039,7 +1065,7 @@ The <cite>error</cite> parameter for the Status Assertion Error object MUST be s
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 09/10/2024.
+      Last updated on 16/10/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

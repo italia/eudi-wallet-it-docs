@@ -250,7 +250,7 @@ The ``revocation_assertion_responses`` object MUST contain the following mandato
       - the Revocation Assertions and or the Revocation Assertion Errors related to the request made by the Wallet Instance. 
       - `OAUTH-STATUS-ASSERTION`_.
 
-The Revocation Assertion object MUST contain the parameter ``credential_status_validity`` with the value set to ``false``.
+The Revocation Assertion object MUST contain the parameter ``credential_status_validity`` with the value set to ``1``.
 Below a non-normative example of a Revocation Assertion object in JWT format, with the headers and payload represented in JSON and without applying the signature.
 
 .. code::
@@ -266,7 +266,11 @@ Below a non-normative example of a Revocation Assertion object in JWT format, wi
     "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
     "credential_hash": $CREDENTIAL-HASH,
     "credential_hash_alg": "sha-256",
-    "credential_status_validity": false,
+    "credential_status_validity": 1,
+    "credential_status_detail": {
+      "state": "invalid",
+      "description": "The Credential is no longer usable as it has been revoked. This state is irreversible"
+    },
     "cnf": {
       "jwk": {
         "kty": "EC",
@@ -407,7 +411,7 @@ A non-normative example of Credential Proof of Possession is provided :ref:`in t
 		"exp": 1504785536,
 		"credential_hash": $CREDENTIAL-HASH,
 		"credential_hash_alg": "sha-256",
-		"credential_status_validity": true,
+		"credential_status_validity": 0,
 		"cnf": {
 			"jwk": {...}
 		}
@@ -646,7 +650,13 @@ When the JWT format is used, the Revocation Assertion MUST contain the following
       - Unique identifier for the JWT.
       - :rfc:`7519#section-4.1.7`.
     * - **credential_status_validity**
-      - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It MUST be set with the value `false`.
+      - Numerical value indicating the validity of the Credential linked to the Status Assertion describing its state, mode, condition or stage. It MUST be set with `1` (INVALID status). 
+      - `OAUTH-STATUS-ASSERTION`_.
+    * - **credential_status_detail**
+      - Object containing detailed information about the real status of the Credential. IT MUST contains:
+
+          - **state**: String value of the Credential status,
+          - **description**: String containing the description of the Credential status.
       - `OAUTH-STATUS-ASSERTION`_.
     
 
@@ -697,7 +707,13 @@ When the JWT format is used, the Status Assertion MUST contain the following cla
       - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``S256``.
       - `OAUTH-STATUS-ASSERTION`_.
     * - **credential_status_validity**
-      - Boolean value indicating the absolute validity of the Credential linked to the Status Assertion. It is REQUIRED and it MUST be set with the value "false" or "true".
+      - Numerical value indicating the validity of the Credential linked to the Status Assertion describing its state, mode, condition or stage. It MUST be set with values from 0 to 2 with the following meaning: 0-VALID, 1-INVALID, 2-SUSPENDED.
+      - `OAUTH-STATUS-ASSERTION`_.
+    * - **credential_status_detail**
+      - REQUIRED if **credential_status_validity** is not set to `0`. Object containing detailed information about the real status of the Credential. IT MUST contains:
+
+          - **state**: String value of the Credential status,
+          - **description**: String containing the description of the Credential status.
       - `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
