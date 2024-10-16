@@ -29,7 +29,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - A characteristic, quality, right or permission of a natural or legal person or of an object. [ARF v1.4]
      - Other alternative terms: User Claim
    * - Digital Identity Provider
-     - Entity responsible for identifying citizens for the issuance of an digital identity.
+     - Entity responsible for identifying citizens for the issuance of a digital identity.
      -
    * - Digital Credential
      - A signed set of Attributes encapsulated in a specific data format, such as mdoc format specified in [ISO 18013-5] or the SD-JWT VC format specified in [SD-JWT-VC]. This may be a Personal Identification Data (PID), (Qualified) Electronic Attestation of Attribute ((Q)EAA). [Revised from ARF v1.4]
