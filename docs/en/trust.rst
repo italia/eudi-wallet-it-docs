@@ -376,6 +376,7 @@ In addition to the previously defined claims, the Entity Configuration of the Le
      - A JSON Array containing the Trust Marks.
      - |uncheck-icon|
 
+
 Metadata Types
 ^^^^^^^^^^^^^^^^
 
@@ -461,6 +462,7 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
     - Institutional certified email address (PEC) of the entity. See `OID-FED`_ Draft 36 Section 5.2.2
   * - **federation_resolve_endpoint**
     - See `OID-FED`_ Draft 36 Section 5.1.1
+
 
 Entity Statements
 -----------------
@@ -602,18 +604,44 @@ The Trust Chains can also be verified offline, using one of the Trust Anchor's p
     The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.
 
 
-Relying Party Trust Evaluation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Establishing Trust with Relying Parties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party is registered by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration. In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms and any other necessary information for the interoperability requirements.
+The Relying Party is registered by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration.
+In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms
+and any other necessary information for the interoperability requirements.
 
-Any requests for User attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and SHOULD contain the verifiable Trust Chain regarding the Relying Party.
+Any requests for User attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and SHOULD contain the verifiable
+Trust Chain regarding the Relying Party.
 
-The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active, proving that the Relying Party is still part of the Federation and not revoked.
+The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active,
+proving that the Relying Party is still part of the Federation and not revoked.
 
-The Trust Chain SHOULD be contained within the signed request in the form of a JWS header parameter.
+The Trust Chain MAY be contained within the signed request in the form of a JWS header parameter.
 
 In offline flows, Trust Chain verification enables the assessment of the reliability of Trust Marks and Attestations contained within.
+
+Establishing Trust with Credential Issuers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the issuance process, trust evaluation ensures the integrity and authenticity of the Credentials being issued and the realiability of their Issuers. This section delineates the trust evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.
+
+Trust evaluations implement different ways, as defined below:
+
+* **Federation Entity Discovery**: Wallet Instances and Relying Parties MUST verify the identity of the Issuer through a Federation Entity Discovery process. This involves querying a trusted list or directory to confirm the Issuer's validity status and compliance with the Trust Framework.
+
+* **Trust Chains**: Wallet Instances and Relying Parties evaluate Issuer's Trust Chains, be provided statically or build though a Federation Entity Discovery process, to ensure that the entity requesting the Credential is part of a recognized and trusted federation. This involves checking the Trust Chain from the root authority to the Issuer.
+
+* **Trust Marks Evaluation**: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation.
+
+* **Policy Evaluation**: Continuous evaluation of policies ensures that the Issuer and the requesting entity comply with the latest security and operational standards.
+
+In the process represented in the sequence diagram below, the Wallet Instance uses the Federation API to discover and collect all the Credential Issuers enabled within the federation.
+
+.. figure:: ../../images/trust-with-ci-discovery.svg
+    :figwidth: 100%
+    :align: center
+    :target: //www.plantuml.com/plantuml/svg/fPCzRzim48Pt_ef3bavkzWn13DTfXIv1quyboqKynOTIH-9uj9D_NqQ46hkmkaGJGJtty7q5wYORgfKnk8Hgt7D2CVY58P2TR6qwm0mN6oLFOem1kfmBwSK9rMqdgXCZ7Sap6br-rv8DrjBlOgLTSyFg-hewh-2MhD_LrOSCs-gr5zX46VYfA1f7UH10Wuy72c7rM-91BcCYORyQo5D3WCIdo69kqqtQTi8LV2ChAcUr9p5cVljiYdsDMgn6VPtvKgqP1erZI_YF8yIOO8WAXBN3wPY3-XmTqctdhk-jkMo-BuzHFGiQmRsXqKXYJJrCm99Y_W8_CR1_dROTGLBQSomPyfkgP9QdwUtjts1peQ_qaXyaQTop9myi4tSsaoFnplqlGBiqcnsoE8V1e1kEzu1pOm75mm-XvyHAVgdNdSQUoCE1RNUKlEtdx2XaMffTr_msaysmLOsws66TKc3AS1S3ztLnZlb4odjgbsfWmG0Z6NeqF4T_9WFS8mTy30Hlls262iG3-UaISiu5fITtG-BB6Fu0
 
 
 Wallet Attestation
