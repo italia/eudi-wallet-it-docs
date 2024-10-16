@@ -49,6 +49,7 @@ Index of content
    pseudonyms.rst
    backup-restore.rst
    algorithms.rst
+   security-privacy-considerations.rst
    contribute.rst
    standards.rst
 
