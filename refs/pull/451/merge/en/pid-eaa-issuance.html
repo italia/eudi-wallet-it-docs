@@ -266,7 +266,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>creates a fresh PKCE code verifier, Wallet Attestation Proof of Possession, and <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter for the <em>Pushed Authorization Request</em>.</p></li>
-<li><p>provides to the PID/(Q)EAA Provider PAR endpoint the parameters previously listed above, using the <code class="docutils literal notranslate"><span class="pre">request</span></code> parameter (hereafter Request Object) according to <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> Section 3 to prevent Request URI swapping attack. PAR Request allows to authenticate client before interactions with the user occur. So that it is possible to refuse illegitimate requests at the beginning of the flow preventing spoofing attack, tampering or improper uses of the authorization request.</p></li>
+<li><p>provides to the PID/(Q)EAA Provider PAR endpoint the parameters previously listed above, using the <code class="docutils literal notranslate"><span class="pre">request</span></code> parameter (hereafter Request Object) according to <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> Section 3 to prevent Request URI swapping attack. The Pushed Authorization Request enables client authentication prior to any user interaction. This step allows for the early rejection of illegitimate requests, effectively preventing spoofing attacks, tampering, and improper use of authorization requests.</p></li>
 <li><p>MUST create the <code class="docutils literal notranslate"><span class="pre">code_verifier</span></code> with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html"><strong>RFC 7636</strong></a>.</p></li>
 <li><p>signs this request using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></li>
 <li><p>MUST use the <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation</span></code> and  <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> parameters according to OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>], since in this flow the Pushed Authorization Endpoint is a protected endpoint.</p></li>
@@ -1520,7 +1520,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/10/2024.
+      Last updated on 17/10/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
