@@ -476,7 +476,8 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
     - REQUIRED. Signature Algorithm using one of the specified in the section Cryptographic Algorithms. 
 
 
-When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS payload:
+When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the `cnf` parameter. 
+The KB-JWT MUST contain the following parameters in the JWS payload:
 
 .. list-table::
   :widths: 25 50
@@ -491,7 +492,7 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
   * - **nonce**
     - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object.
   * - **sd_hash**
-    - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.
+    - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures. 
 
 
 Revocation Checks
