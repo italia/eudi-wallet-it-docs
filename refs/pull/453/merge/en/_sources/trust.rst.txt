@@ -617,7 +617,7 @@ Trust Chain regarding the Relying Party.
 The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active,
 proving that the Relying Party is still part of the Federation and not revoked.
 
-The Trust Chain MAY be contained within the signed request in the form of a JWS header parameter.
+The Trust Chain MAY be contained within the signed request in the form of a JWS header parameter, or dynamically built through a Federation Entity Discovery process.
 
 In offline flows, Trust Chain verification enables the assessment of the reliability of Trust Marks and Attestations contained within.
 

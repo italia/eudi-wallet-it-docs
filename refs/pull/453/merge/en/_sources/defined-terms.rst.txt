@@ -203,5 +203,7 @@ Acronyms
     - Level of Assurance
   * - **AAL**
     - Authenticator Assurance Level as defined in `<https://csrc.nist.gov/glossary/term/authenticator_assurance_level>`_
+  * - **PII**
+    - Personally Identifiable Information
   * - **WSCD**
     - Wallet Secure Cryptographic Device
