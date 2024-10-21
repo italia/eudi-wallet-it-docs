@@ -236,7 +236,7 @@ SR-P-50
 .. list-table:: 
    :widths: 8 92
 
-   * - |partially-check-iconcheck-icon| 
+   * - |partially-check-icon| 
      - The protocol must ensure that third parties cannot interfere with the binding process.
 
 In the issuance phase, the Holder binding happens at the Credential request to the protected Credential endpoint. This means that the attacker needs to obtain the access token 
@@ -244,10 +244,15 @@ first and therefore send the request to the Credential endpoint and bind the Cre
 access token, which means that the access token binds to the device using cryptographic materials. 
 
 The second surface for the attack is related to key management. In the case of using software-based keys, it is possible to clone the keys and move them to a device under 
-attacker control, and in the case of stealing the Credentials as well, the attacker can easily create proof of possession of the keys. Therefore, it is highly dependent on 
-the secure storage of the keys. In the case of the IT Wallet, it only supports the local internal WSCD that is providing Hardware bound keys that could mitigate the key cloning 
-attack, but it does not provide a high enough level of assurance to meet stringent eIDAS requirements (local internal WSCD has been shown to be insufficiently secure against 
-highly capable attackers). Therefore, the current implementation only partially satisfies it. 
+attacker control, and in the case of stealing the Credentials as well, the attacker can easily create proof of possession of the keys. IT Wallet is less vulnerable to these attacks as it supports local 
+internal WSCD that uses hardware-based keys. However, the security of local internal WSCD solutions, such as TEE, is known to be vulnerable to attacks like buffer overflow attack and trustzone privilege escalation 
+(for more details see https://www.sciencedirect.com/science/article/pii/S0167404823000901). This, together with the lack of a 
+certification profile that certifies the local internal WSCD against highly capable attackers (the certification for current TEE solutions on the market reaches AVA_VAN.3 at most 
+as shown for example in https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf or https://globalplatform.org/specs-library/tee-protection-profile-v1-3/), makes the requirement only partially satisfied.
+
+.. note::
+   In the EUDI Wallet context, the local internal WSCD and other WSCD deployments are still under certification 
+   (see https://docbox.etsi.org/ESI/Open/workshops/202409_CEN_ETSI_Workshop/DAY3-8%20Certification%20for%20EU%20Digital%20Identity%20Wallets/DAY3-8-26%20ETSI_CEN_WS_WSCA%20Jan%20Kjaersgaard.pdf).
 
 SR-V-10
 ~~~~~~~
