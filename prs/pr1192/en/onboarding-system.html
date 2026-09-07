@@ -644,6 +644,26 @@ A given entity provides only the subset that applies to its role, as defined in 
 <td><p>The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It MUST be provided as an input only by the categories whose Sign/Seal Certificate is not issued by the National Root Certification Authority, see <a class="reference internal" href="infrastructure-trust.html#pki-architecture"><span class="std std-ref">PKI Architecture</span></a>. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.</p></td>
 <td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>], Annex 2</p></td>
 </tr>
+<tr class="row-even"><td><p><cite>verification_endpoint</cite></p></td>
+<td><p>The cross-border verification interface exposed to Qualified Trust Service Providers for the Annex VI attributes exported to the EUDIW Catalogue of Attributes, conformant to ETSI TS 119 478 and declared in the <code class="docutils literal notranslate"><span class="pre">data_capabilities</span></code> of the entry of the Authentic Source Registry, see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>. It is provided by the Authentic Source.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>], Section 2.1</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>trustedAuthorities</cite></p></td>
+<td><p>The trusted authorities that define the trust framework of the Credential type in the Digital Credentials Catalog, that is the trust anchors a verifier relies on to validate the Attestation, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>. It is provided by the Credential Issuer and by the Relying Party.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>], Section 4.3</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>rulebookURI</cite></p></td>
+<td><p>The URI of the human-readable Attestation Rulebook that defines the non-machine-readable aspects of the Credential type in the Digital Credentials Catalog, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>. It is provided by the Authentic Source.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>], Section 4.3</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>bindingType</cite></p></td>
+<td><p>The type of cryptographic key binding required for the issuance of the Credential type in the Digital Credentials Catalog, one of <code class="docutils literal notranslate"><span class="pre">claim</span></code>, <code class="docutils literal notranslate"><span class="pre">key</span></code>, <code class="docutils literal notranslate"><span class="pre">biometric</span></code> or <code class="docutils literal notranslate"><span class="pre">none</span></code>, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>. It is provided by the Authentic Source.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>], Section 4.3</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>attestationLoS</cite></p></td>
+<td><p>The attestation Level of Security of the Credential type in the Digital Credentials Catalog, that is the attack potential resistance required for user authentication and key storage, see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>. It is provided by the Authentic Source.</p></td>
+<td><p>[<a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md">EUDI-TS 11</a>], Section 4.3</p></td>
+</tr>
 </tbody>
 </table>
 </section>
