@@ -107,6 +107,21 @@ A given entity provides only the subset that applies to its role, as defined in 
    * - `signing_trust_anchor`
      - The trust anchor supporting the validation of the Attestations the entity issues, that is the public key and the name. It MUST be provided as an input only by the categories whose Sign/Seal Certificate is not issued by the National Root Certification Authority, see :ref:`infrastructure-trust:PKI Architecture`. For the other categories the trust anchor derives from the Sign/Seal Certificate issued through the Certificate Signing Requests.
      - [`EIDAS-ARF`_], Annex 2
+   * - `verification_endpoint`
+     - The cross-border verification interface exposed to Qualified Trust Service Providers for the Annex VI attributes exported to the EUDIW Catalogue of Attributes, conformant to ETSI TS 119 478 and declared in the ``data_capabilities`` of the entry of the Authentic Source Registry, see :ref:`registry:Authentic Source Registry`. It is provided by the Authentic Source.
+     - [`EUDI-TS 11`_], Section 2.1
+   * - `trustedAuthorities`
+     - The trusted authorities that define the trust framework of the Credential type in the Digital Credentials Catalog, that is the trust anchors a verifier relies on to validate the Attestation, see :ref:`registry:Digital Credentials Catalog`. It is provided by the Credential Issuer and by the Relying Party.
+     - [`EUDI-TS 11`_], Section 4.3
+   * - `rulebookURI`
+     - The URI of the human-readable Attestation Rulebook that defines the non-machine-readable aspects of the Credential type in the Digital Credentials Catalog, see :ref:`registry:Digital Credentials Catalog`. It is provided by the Authentic Source.
+     - [`EUDI-TS 11`_], Section 4.3
+   * - `bindingType`
+     - The type of cryptographic key binding required for the issuance of the Credential type in the Digital Credentials Catalog, one of ``claim``, ``key``, ``biometric`` or ``none``, see :ref:`registry:Digital Credentials Catalog`. It is provided by the Authentic Source.
+     - [`EUDI-TS 11`_], Section 4.3
+   * - `attestationLoS`
+     - The attestation Level of Security of the Credential type in the Digital Credentials Catalog, that is the attack potential resistance required for user authentication and key storage, see :ref:`registry:Digital Credentials Catalog`. It is provided by the Authentic Source.
+     - [`EUDI-TS 11`_], Section 4.3
 
 Mapping to the Registry Data Models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
