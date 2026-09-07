@@ -326,6 +326,7 @@ In addition to the base registration data, a QEAA Provider provides the followin
 - `credential_technical_specification`
 - `credential_policies`
 - `conformity_assessment`
+- `service_supply_point`
 - `signing_trust_anchor`
 
   - Provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
@@ -360,10 +361,6 @@ In addition to the base registration data, a PuB-EAA Provider provides the follo
 Non-Qualified EAA Provider
 """"""""""""""""""""""""""
 
-A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
-A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
-The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`.
-It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.
 In addition to the base registration data, a Non-Qualified EAA Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
 - `entitlements`
@@ -378,13 +375,15 @@ In addition to the base registration data, a Non-Qualified EAA Provider provides
 - `credential_type_declaration`
 - `credential_technical_specification`
 - `credential_policies`
+- `service_supply_point`
+- `trustedAuthorities`
+  
+  - A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`. A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA. The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`. It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.
 
 
 Relying Party
 """""""""""""
 
-At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries.
-This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
 Besides the base registration data, a Relying Party provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
 - `entitlements`
@@ -402,11 +401,13 @@ Besides the base registration data, a Relying Party provides the following exten
 - `certificate_signing_requests`
 
   - One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is the WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.
+- `trustedAuthorities`
+
+  - The Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 .. note::
-   An intermediated Relying Party registers through the Onboarding System only when it operates in the EUDIW Trust Framework, to enable cross-border operations. In this case it MUST have a record in the Register and it MUST obtain its WRPAC and, where applicable, its WRPRC, and these are issued through the Onboarding System.
-   An intermediated Relying Party that operates only at national level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.
-
+   A Relying Party (intermediated or not) MUST register through the Onboarding System to obtain a registration Trust Mark (see :ref:`infrastructure-trust:Trust Mark registration-entity`), and in case of a Mobile Relying Party Instance, to obtain an Authentication X.509 Certificate. 
+   Only if it operates in the EUDIW Trust Framework, it MUST have a record in the Register of WRP and it MUST obtain its WRPAC and its WRPRC.
 
 Relying Party Intermediary
 """"""""""""""""""""""""""
