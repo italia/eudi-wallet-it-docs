@@ -921,6 +921,7 @@ In addition to the base registration data, a QEAA Provider provides the followin
 <li><p><cite>credential_technical_specification</cite></p></li>
 <li><p><cite>credential_policies</cite></p></li>
 <li><p><cite>conformity_assessment</cite></p></li>
+<li><p><cite>service_supply_point</cite></p></li>
 <li><p><cite>signing_trust_anchor</cite></p>
 <ul>
 <li><p>Provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.</p></li>
@@ -961,11 +962,7 @@ In addition to the base registration data, a PuB-EAA Provider provides the follo
 </section>
 <section id="non-qualified-eaa-provider">
 <h4><span class="section-number">8.2.5.4. </span>Non-Qualified EAA Provider<a class="headerlink" href="#non-qualified-eaa-provider" title="Link to this heading">¶</a></h4>
-<p>A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.
-A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
-The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see <a class="reference internal" href="credential-data-model-it-wallet-id.html#it-wallet-id-data-model"><span class="std std-ref">IT-Wallet ID Data Model</span></a> and <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>.
-It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.
-In addition to the base registration data, a Non-Qualified EAA Provider provides the following extended registration data, as defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>:</p>
+<p>In addition to the base registration data, a Non-Qualified EAA Provider provides the following extended registration data, as defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>:</p>
 <ul class="simple">
 <li><p><cite>entitlements</cite></p></li>
 <li><p><cite>service_description</cite></p></li>
@@ -981,13 +978,17 @@ In addition to the base registration data, a Non-Qualified EAA Provider provides
 <li><p><cite>credential_type_declaration</cite></p></li>
 <li><p><cite>credential_technical_specification</cite></p></li>
 <li><p><cite>credential_policies</cite></p></li>
+<li><p><cite>service_supply_point</cite></p></li>
+<li><p><cite>trustedAuthorities</cite></p>
+<ul>
+<li><p>A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>. A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA. The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see <a class="reference internal" href="credential-data-model-it-wallet-id.html#it-wallet-id-data-model"><span class="std std-ref">IT-Wallet ID Data Model</span></a> and <a class="reference internal" href="defined-terms.html#term-IT-Wallet-ID"><span class="xref std std-term">IT-Wallet ID</span></a>. It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="relying-party">
 <h4><span class="section-number">8.2.5.5. </span>Relying Party<a class="headerlink" href="#relying-party" title="Link to this heading">¶</a></h4>
-<p>At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries.
-This choice affects the artifacts it obtains, as detailed in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.
-Besides the base registration data, a Relying Party provides the following extended registration data, as defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>:</p>
+<p>Besides the base registration data, a Relying Party provides the following extended registration data, as defined in <a class="reference internal" href="#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>:</p>
 <ul class="simple">
 <li><p><cite>entitlements</cite></p></li>
 <li><p><cite>service_description</cite></p></li>
@@ -1012,11 +1013,16 @@ Besides the base registration data, a Relying Party provides the following exten
 <li><p>One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is the WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.</p></li>
 </ul>
 </li>
+<li><p><cite>trustedAuthorities</cite></p>
+<ul>
+<li><p>The Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artifacts it obtains, as detailed in <a class="reference internal" href="infrastructure-trust.html#infrastructure-of-trust"><span class="std std-ref">Infrastructure of Trust</span></a>.</p></li>
+</ul>
+</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>An intermediated Relying Party registers through the Onboarding System only when it operates in the EUDIW Trust Framework, to enable cross-border operations. In this case it MUST have a record in the Register and it MUST obtain its WRPAC and, where applicable, its WRPRC, and these are issued through the Onboarding System.
-An intermediated Relying Party that operates only at national level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.</p>
+<p>A Relying Party (intermediated or not) MUST register through the Onboarding System to obtain a registration Trust Mark (see <a class="reference internal" href="infrastructure-trust.html#trust-mark-registration-entity"><span class="std std-ref">Trust Mark registration-entity</span></a>), and in case of a Mobile Relying Party Instance, to obtain an Authentication X.509 Certificate.
+Only if it operates in the EUDIW Trust Framework, it MUST have a record in the Register of WRP and it MUST obtain its WRPAC and its WRPRC.</p>
 </div>
 </section>
 <section id="relying-party-intermediary">
@@ -2427,7 +2433,7 @@ The Digital Credentials Catalog, the Authentic Source Registry, the Claims Regis
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 04/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 07/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
