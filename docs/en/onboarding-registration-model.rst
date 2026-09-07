@@ -305,185 +305,124 @@ PID Provider
 """"""""""""
 
 A PID Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PID Providers LoTE.
-In addition to the base registration data, a PID Provider provides the extended registration data below.
+In addition to the base registration data, a PID Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-.. list-table:: PID Provider Registration Data
-   :class: longtable
-   :widths: 34 66
-   :header-rows: 1
+- `entitlements`
+- `service_description`
+- `provided_attestations`
+- `federation_entity_identifier`
+- `federation_entity_key`
+- `certificate_signing_requests`
 
-   * - **Data Identifier**
-     - **Values**
-   * - `entitlements`
-     - The entitlements that state the PID Provider role, and the additional roles it plays where applicable.
-   * - `service_description`
-     - The localized description of the PID issuance service. The user-facing trade name is provided where available.
-   * - `provided_attestations`
-     - The declaration that the PID Provider issues the PID, with the format and the attributes of the PID.
-   * - `conformity_assessment`
-     - The outcome of the assessment performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).
-   * - `service_supply_point`
-     - The URL at which a Wallet Unit starts the process of requesting and obtaining the PID.
-   * - `credential_type_declaration`
-     - The PID type the PID Provider issues, anchored to the PID Rulebook.
-   * - `credential_technical_specification`
-     - The technical definition of the PID, that is its schemes and its formats, the PID being provided in both the SD-JWT VC and the mdoc-CBOR format.
-   * - `credential_policies`
-     - The conditions of use of the PID, that is its validity and its purposes.
-   * - `federation_entity_identifier`
-     - The Federation Entity Identifier of the PID Provider in the National Trust Framework.
-   * - `federation_entity_key`
-     - The Federation Entity Key of the PID Provider.
-   * - `certificate_signing_requests`
-     - One Certificate Signing Request for the WRPAC, with which the PID Provider authenticates towards the Wallet Units, and one for the Sign/Seal Certificate, with which it signs the issued PID.
+  - One Certificate Signing Request for the WRPAC, with which the PID Provider authenticates towards the Wallet Units.
+  - One Certificate Signing Request for the Sign/Seal Certificate, with which it signs the issued PID.
+- `credential_type_declaration`
+- `credential_technical_specification`
+- `credential_policies`
+- `conformity_assessment`
+- `service_supply_point`
 
 
 QEAA Provider
 """""""""""""
 
 A QEAA Provider is a Federation Entity that issues Qualified Electronic Attestations of Attributes, and its Sign/Seal Certificate is the qualified certificate issued by the Qualified Trust Service Provider it belongs to.
-In addition to the base registration data, a QEAA Provider provides the extended registration data below.
+In addition to the base registration data, a QEAA Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-.. list-table:: QEAA Provider Registration Data
-   :class: longtable
-   :widths: 34 66
-   :header-rows: 1
+- `entitlements`
+- `service_description`
+- `provided_attestations`
+- `federation_entity_identifier`
+- `federation_entity_key`
+- `certificate_signing_requests`
 
-   * - **Data Identifier**
-     - **Values**
-   * - `entitlements`
-     - The entitlements that state the QEAA Provider role, and the additional roles it plays where applicable.
-   * - `service_description`
-     - The localized description of the QEAA issuance service. The user-facing trade name is provided where available.
-   * - `provided_attestations`
-     - The declaration that the QEAA Provider issues its QEAA types, with the format and the attributes of each type.
-   * - `conformity_assessment`
-     - The outcome of the conformity assessment supporting the qualification of the Qualified Trust Service Provider that issues the QEAA.
-   * - `credential_type_declaration`
-     - The QEAA types the QEAA Provider issues, each anchored to its Rulebook.
-   * - `credential_technical_specification`
-     - The technical definition of each QEAA type, that is its schemes and its formats.
-   * - `credential_policies`
-     - The conditions of use of each QEAA type, that is its validity and its purposes.
-   * - `signing_trust_anchor`
-     - The trust anchor supporting the validation of the QEAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
-   * - `federation_entity_identifier`
-     - The Federation Entity Identifier of the QEAA Provider in the National Trust Framework.
-   * - `federation_entity_key`
-     - The Federation Entity Key of the QEAA Provider.
-   * - `certificate_signing_requests`
-     - One Certificate Signing Request for the WRPAC, with which the QEAA Provider authenticates towards the Wallet Units.
+  - One Certificate Signing Request for the WRPAC, with which the QEAA Provider authenticates towards the Wallet Units.
+- `credential_type_declaration`
+- `credential_technical_specification`
+- `credential_policies`
+- `conformity_assessment`
+- `service_supply_point`
+- `signing_trust_anchor`
+
+  - Provided as an input because the Qualified Certification Authority of the QEAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
 
 
 PuB-EAA Provider
 """"""""""""""""
 
 A PuB-EAA Provider is a Federation Entity that is notified and registered in the EUDIW Trust Framework, and its Sign/Seal trust anchor is published in the PuB-EAA Providers LoTE.
-In addition to the base registration data, a PuB-EAA Provider provides the extended registration data below.
+In addition to the base registration data, a PuB-EAA Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-.. list-table:: PuB-EAA Provider Registration Data
-   :class: longtable
-   :widths: 34 66
-   :header-rows: 1
+- `entitlements`
+- `service_description`
+- `provided_attestations`
+- `federation_entity_identifier`
+- `federation_entity_key`
+- `certificate_signing_requests`
 
-   * - **Data Identifier**
-     - **Values**
-   * - `service_description`
-     - The localized description of the PuB-EAA issuance service. The trade name is provided where available.
-   * - `entitlements`
-     - The entitlements that state the PuB-EAA Provider role, and the additional roles it plays where applicable.
-   * - `provided_attestations`
-     - The declaration that the PuB-EAA Provider issues its PuB-EAA types, with the format and the attributes of each type.
-   * - `conformity_assessment`
-     - The Conformity Assessment Report issued by a Conformity Assessment Body under Article 45f of [`EIDAS`_].
-   * - `service_supply_point`
-     - The URL at which a Wallet Unit starts the process of requesting and obtaining a PuB-EAA.
-   * - `credential_type_declaration`
-     - The PuB-EAA types the PuB-EAA Provider issues, each anchored to its Rulebook.
-   * - `credential_technical_specification`
-     - The technical definition of each PuB-EAA type, that is its schemes and its formats.
-   * - `credential_policies`
-     - The conditions of use of each PuB-EAA type, that is its validity and its purposes.
-   * - `signing_trust_anchor`
-     - The trust anchor supporting the validation of the PuB-EAA the Provider issues, that is the public key and the name. It is provided as an input because the Qualified Certification Authority of the PuB-EAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
-   * - `federation_entity_identifier`
-     - The Federation Entity Identifier of the PuB-EAA Provider in the National Trust Framework.
-   * - `federation_entity_key`
-     - The Federation Entity Key of the PuB-EAA Provider.
-   * - `certificate_signing_requests`
-     - One Certificate Signing Request for the WRPAC, with which the PuB-EAA Provider authenticates towards the Wallet Units.
+  - One Certificate Signing Request for the WRPAC, with which the PuB-EAA Provider authenticates towards the Wallet Units.
+- `credential_type_declaration`
+- `credential_technical_specification`
+- `credential_policies`
+- `conformity_assessment`:
+
+  - The Conformity Assessment Report issued by a Conformity Assessment Body under Article 45f of [`EIDAS`_].
+- `service_supply_point`
+- `signing_trust_anchor`
+
+  - Provided as an input because the Qualified Certification Authority of the PuB-EAA Provider is not subordinate to the National Root Certification Authority but belongs to the perimeter of a Qualified Trust Service Provider.
 
 
 Non-Qualified EAA Provider
 """"""""""""""""""""""""""
 
-A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`.
-A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA.
-The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`.
-It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.
-In addition to the base registration data, a Non-Qualified EAA Provider provides the extended registration data below.
+In addition to the base registration data, a Non-Qualified EAA Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-.. list-table:: Non-Qualified EAA Provider Registration Data
-   :class: longtable
-   :widths: 34 66
-   :header-rows: 1
+- `entitlements`
+- `service_description`
+- `provided_attestations`
+- `federation_entity_identifier`
+- `federation_entity_key`
+- `certificate_signing_requests`
 
-   * - **Data Identifier**
-     - **Values**
-   * - `service_description`
-     - The localized description of the EAA issuance service. The user-facing trade name is provided where available.
-   * - `entitlements`
-     - The entitlements that state the Non-Qualified EAA Provider role, and the additional roles it plays where applicable.
-   * - `provided_attestations`
-     - The declaration that the Non-Qualified EAA Provider issues its EAA types, with the format and the attributes of each type.
-   * - `credential_type_declaration`
-     - The EAA types the Non-Qualified EAA Provider issues, each anchored to its Rulebook.
-   * - `credential_technical_specification`
-     - The technical definition of each EAA type, that is its schemes and its formats.
-   * - `credential_policies`
-     - The conditions of use of each EAA type, that is its validity and its purposes.
-   * - `federation_entity_identifier`
-     - The Federation Entity Identifier of the Non-Qualified EAA Provider in the National Trust Framework.
-   * - `federation_entity_key`
-     - The Federation Entity Key of the Non-Qualified EAA Provider.
-   * - `certificate_signing_requests`
-     - One Certificate Signing Request for the Sign/Seal Certificate, with which the Non-Qualified EAA Provider signs the issued EAA. A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework additionally provides one Certificate Signing Request for the WRPAC, with which it authenticates towards the Wallet Units.
-
+  - One Certificate Signing Request for the Sign/Seal Certificate, with which the Non-Qualified EAA Provider signs the issued EAA.
+  - A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework additionally provides one Certificate Signing Request for the WRPAC, with which it authenticates towards the Wallet Units.
+- `credential_type_declaration`
+- `credential_technical_specification`
+- `credential_policies`
+- `service_supply_point`
+- `trustedAuthorities`
+  
+  - A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`. A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA. The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`. It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.
 
 
 Relying Party
 """""""""""""
 
-At onboarding, a Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries.
-This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
-Besides the base registration data, a Relying Party provides the extended registration data below.
+Besides the base registration data, a Relying Party provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-.. list-table:: Relying Party Registration Data
-   :class: longtable
-   :widths: 34 66
-   :header-rows: 1
+- `entitlements`
+- `service_description`
+- `intended_use`:
 
-   * - **Data Identifier**
-     - **Values**
-   * - `service_description`
-     - The localized description of the service the Relying Party offers, one description per service. The user-facing trade name is provided where available.
-   * - `entitlements`
-     - The entitlements that state the Relying Party role, and the additional roles it plays where applicable.
-   * - `intended_use`
-     - The Attestation type and optionally attributes the Relying Party intends to request from the Wallet Units, with one intended-use definition per service.
-   * - `intermediary_relationship`
-     - In the EUDIW Trust Framework, REQUIRED where the Relying Party operates through a RP Intermediary, and in that case it references its RP Intermediary identifier. In the National Trust Framework the Relying Party does not declare it, because the relationship with the RP Intermediary is established through the federation, as the Relying Party sets its ``authority_hints`` to the RP Intermediary that federates it. The RP Intermediary side is described in :ref:`onboarding-system:Relying Party Intermediary`.
-   * - `federation_entity_identifier`
-     - The Federation Entity Identifier of the Relying Party in the National Trust Framework.
-   * - `federation_entity_key`
-     - REQUIRED for a Relying Party that operates without an intermediary. A Relying Party operating through a RP Intermediary MUST NOT provide it, because it is registered by its RP Intermediary according to the National Trust Framework.
-   * - `certificate_signing_requests`
-     - One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is the WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.
+  - The Attestation type and optionally attributes the Relying Party intends to request from the Wallet Units, with one intended-use definition per service.
+- `intermediary_relationship`
+
+  - In the EUDIW Trust Framework, REQUIRED where the Relying Party operates through a RP Intermediary, and in that case it references its RP Intermediary identifier. In the National Trust Framework the Relying Party does not declare it, because the relationship with the RP Intermediary is established through the federation, as the Relying Party sets its ``authority_hints`` to the RP Intermediary that federates it. The RP Intermediary side is described in :ref:`onboarding-system:Relying Party Intermediary`.
+- `federation_entity_identifier`
+- `federation_entity_key`:
+
+  - REQUIRED for a Relying Party that operates without an intermediary. A Relying Party operating through a RP Intermediary MUST NOT provide it, because it is registered by its RP Intermediary according to the National Trust Framework.
+- `certificate_signing_requests`
+
+  - One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is the WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.
+- `trustedAuthorities`
+
+  - The Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 .. note::
-   An intermediated Relying Party registers through the Onboarding System only when it operates in the EUDIW Trust Framework, to enable cross-border operations. In this case it MUST have a record in the Register and it MUST obtain its WRPAC and, where applicable, its WRPRC, and these are issued through the Onboarding System.
-   An intermediated Relying Party that operates only at national level is registered by its RP Intermediary and is not registered in the Register. In this case, when the Intermediated Relying Party is a Mobile Relying Party Instance, it MUST be registered through the Onboarding System to obtain an Authentication X.509 Certificate.
-
+   A Relying Party (intermediated or not) MUST register through the Onboarding System to obtain a registration Trust Mark (see :ref:`infrastructure-trust:Trust Mark registration-entity`), and in case of a Mobile Relying Party Instance, to obtain an Authentication X.509 Certificate. 
+   Only if it operates in the EUDIW Trust Framework, it MUST have a record in the Register of WRP and it MUST obtain its WRPAC and its WRPRC.
 
 Relying Party Intermediary
 """"""""""""""""""""""""""
@@ -519,27 +458,16 @@ Wallet Provider
 
 A Wallet Provider is a Federation Entity that is notified, but it is not registered in the Register, because it does not act as a Wallet-Relying Party.
 Its registration data is part of the notification dataset, and its Sign/Seal trust anchor is published in the Wallet Providers LoTE.
-Besides the base registration data, a Wallet Provider provides the extended registration data below.
+Besides the base registration data, a Wallet Provider provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-.. list-table:: Wallet Provider Registration Data
-   :class: longtable
-   :widths: 34 66
-   :header-rows: 1
+- `entitlements`
+- `service_description`
+- `federation_entity_identifier`
+- `federation_entity_key`
+- `certificate_signing_requests`
 
-   * - **Data Identifier**
-     - **Values**
-   * - `service_description`
-     - The localized description of the Wallet Solution. The user-facing trade name is provided where available.
-   * - `entitlements`
-     - The entitlements that state the Wallet Provider role, and the additional roles it plays where applicable.
-   * - `conformity_assessment`
-     - The outcome of the assessment performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and of the functional testing under the EU functional conformity assessment framework (FCAF).
-   * - `federation_entity_identifier`
-     - The Federation Entity Identifier of the Wallet Provider in the National Trust Framework.
-   * - `federation_entity_key`
-     - The Federation Entity Key of the Wallet Provider.
-   * - `certificate_signing_requests`
-     - One Certificate Signing Request for the Sign/Seal Certificate, with which the Wallet Provider signs the Wallet Unit Attestations.
+  - One Certificate Signing Request for the Sign/Seal Certificate, with which the Wallet Provider signs the Wallet Unit Attestations.
+- `conformity_assessment`
 
 
 Authentic Source
@@ -548,17 +476,7 @@ Authentic Source
 An Authentic Source is out of the EUDIW and the National Trust Frameworks, and its trust is governed by the PDND framework.
 It is not registered in the Register and it is not a Federation Entity, so it does not provide the federation data and it obtains no Trust Artifact.
 Its registration data is the entry of the AS Registry.
-In addition to the base registration data, an Authentic Source provides the extended registration data below.
+In addition to the base registration data, an Authentic Source provides the following extended registration data, as defined in :ref:`onboarding-system:Registration Data Model`:
 
-.. list-table:: Authentic Source Registration Data
-   :class: longtable
-   :widths: 34 66
-   :header-rows: 1
-
-   * - **Data Identifier**
-     - **Values**
-   * - `provided_claims_purposes`
-     - The claims the Authentic Source provides, selected from the Claims Registry, the purposes it serves, selected from the Taxonomy, and the data-provision capabilities, that is the integration through the PDND framework, the data-provision mode and the update frequency.
-   * - `visual_identity`
-     - The logo of the Authentic Source organization and the logo and the background color associated with each provided dataset, each with its integrity digest and its alternative text.
-
+- `provided_claims_purposes`
+- `visual_identity`

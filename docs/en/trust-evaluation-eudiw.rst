@@ -94,12 +94,14 @@ Depending on the Trust Artifact or Attestation being verified, the Trust Evaluat
    - **WRPRC** in the Providers of WRPRC LoTE.
    - **Wallet Unit Attestation Sign/Seal Certificates** in the Wallet Providers LoTE.
    - **PID Sign/Seal Certificates** in the PID Providers LoTE.
+   - **PuB-EAA Sign/Seal Certificates** in the PuB-EAA Providers LoTE.
    - **Registrar Sign/Seal Certificates** in the Registrar LoTE.
 
 2. *Trusted Lists* are used to retrieve Trust Anchors for validating:
 
    - **QEAA Sign/Seal Certificates** in the corresponding Member State Trusted List.
-   - **PuB-EAA Sign/Seal Certificates** in the corresponding Member State Trusted List.
+
+3. For **PuB-EAA Sign/Seal Certificates**, the corresponding Member State Trusted List MUST be used to establish the qualified status of the issuing CA and certificate. It MUST NOT replace the Trust Anchor's listing in the PuB-EAA Providers LoTE.
 
 To verify the authenticity of the retrieved Lists, the Entity MUST perform the following validations:
 
@@ -383,9 +385,7 @@ The process MUST be structured as follows:
 
 - If the Attestation whose signature is being checked is a Digital Credential having a Trust Anchor referenced within a LoTE or Trusted List (i.e., a PID, PuB-EAA, QEAA), or is a Wallet Instance Attestation, then one of the following cases applies:
 
-  - **Base Signature Validation**: Executed when the Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (only for PID or WIA) or Trusted List (only for PuB-EAA or QEAA).
-  
-   In addition, in case of a PuB-EAA Sign/Seal certificate, the Entity validating the signature MAY validate the corresponding PuB-EAA LoTE and match the Trust Anchor the corresponding parameter in the LoTE to establish that the Digital Credential signer is indeed an Authorized Pub-EAA.
+  - **Base Signature Validation**: Executed when the Attestation contains the Sign/Seal Certificate and the associated X.509 trust chain, and the Trust Anchor is present in the relevant LoTE (only for PID, WIA or PuB-EAA) or Trusted List (only for QEAA).
 
   - **Fallback Signature Validation**: Executed when the Attestation does not contain the Sign/Seal Certificate, which is instead directly attested as a Trust Anchor in the LoTE (only for PID or WIA).
 
@@ -420,10 +420,10 @@ This process depends on the Attestation type:
 
 - **PuB-EAA**.
 
-  1. Verify the Attestation signature with the Sign/Seal certificate provided in the Attestation. The qualified electronic signature or seal MUST be validated in accordance with Article 32 of [`EIDAS`_].
-  2. Select the appropriate Trusted List according to the nationality of the Credential Issuer, fetch and validate it as defined in :ref:`trust-evaluation:Trusted List Validation`, and extract the appropriate Trust Anchor from the relevant Entity's ``ServiceDigitalIdentity`` field.
-  3. Extract the signer certificate chain from the Attestation and validate it against the obtained Trust Anchor, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
-  4. [OPTIONAL] Fetch the PuB-EAA LoTE, validate it as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, and match the relevant parameters of the PuB-EAA provider's ``TrustedEntityList`` object (e.g., the ``SubjectDigitalIdentity`` field) with the Trust Anchor recovered from the Trusted List.
+  1. Verify the Attestation signature with the Sign/Seal Certificate provided in the Attestation. A qualified electronic signature MUST be validated in accordance with Article 32 of [`EIDAS`_]; where the Provider is a legal person using an electronic seal, Articles 37 and 40 apply.
+  2. Fetch and validate the PuB-EAA Providers LoTE as defined in :ref:`trust-evaluation:List of Trusted Entities Validation`, match the Provider and its Sign/Seal Certificate with the relevant ``TrustedEntityList`` object, and extract its Trust Anchor.
+  3. Extract the signer certificate chain from the Attestation and validate it against the Trust Anchor obtained from the LoTE, as defined in :ref:`trust-evaluation:X509 Certificate Chain Validation Algorithm`.
+  4. Fetch the Member State Trusted List corresponding to the issuing CA, validate it as defined in :ref:`trust-evaluation:Trusted List Validation`, and establish the qualified status of the issuing CA and Sign/Seal Certificate.
 
 .. note:: 
 

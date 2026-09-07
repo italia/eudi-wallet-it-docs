@@ -792,6 +792,8 @@ According to R_KA_1 of `CIR2026/1731`_, a Wallet Provider MUST choose one of the
 * **Type-shared index.** All KAs attesting keys stored in the same type of WSCD or keystore MUST contain the same index value in ``key_storage_status.status``. Consequently, the status represented by that index is shared by all such KAs.
 * **Per-key-attestation index.** A KA attesting keys stored in an individual WSCD or keystore MUST contain a pairwise-unique index value in ``key_storage_status.status``. Consequently, each KA has a distinct status-list entry and its revocation status can be managed independently.
 
+The requirement for distinct ``idx`` values applies only to the per-key-attestation option. KAs using a type-shared index are exempt.
+
 **Status List Token**
 
 The Wallet Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by either the WIA's ``client_status.status.status_list.uri`` member or the KA's ``key_storage_status.status.status_list.uri`` member, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT.
@@ -805,7 +807,7 @@ Regardless of the format, the Wallet Provider MUST sign the SLT using one of the
 
 **Privacy Considerations**
 
-To prevent Wallet Providers from tracking or profiling users based on their use of Wallet Unit Attestations, Wallet Providers MUST integrate the status information for many WIAs or KAs into the same list and MUST publish the SLT at the same ``uri`` for all those attestations. This specification requires Wallet Providers to configure Status Lists with at least 100,000 status entries. If more attestations are issued, the Wallet Provider MAY create additional SLTs or increase the number of entries in the array, depending on practical considerations such as the total size of each SLT and the management of multiple endpoints.
+To prevent Wallet Providers from tracking or profiling users based on their use of Wallet Unit Attestations, Wallet Providers MUST aggregate the status information for multiple WIAs or KAs using per-key-attestation indexes in the same Status List and MUST publish the SLT at the same ``uri`` for those attestations. Where appropriate, each Status List SHOULD contain approximately 10,000 entries, in accordance with `EUDI-TS 3`_ and `CIR2026/1731`_. These aggregation and size requirements do not apply to KAs using a type-shared index.
 
 e-Service PDND Wallet Provider Catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -837,5 +839,4 @@ Notify User Death
       - Wallet Provider
     * - **Consumer**
       - PID Provider
-
 

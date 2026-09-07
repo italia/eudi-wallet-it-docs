@@ -345,7 +345,7 @@ The following table provides a comprehensive overview of the eIDAS trust list ar
      - Articles 4 and 5 of `CIR2024/2980`_.
      - `ETSI TS 119 602`_ Annex H; ``JSON`` or ``XML`` format.
      - AdES digital signature, baseline B (`ETSI TS 119 182-1`_).
-     - European Union scope; one list per specific ecosystem entity type.
+     - European Union scope; lists notified PuB-EAA Providers and their Sign/Seal Trust Anchors.
      - Machine-readable endpoint specified within the `OJEU`_.
        Implements a pivoting mechanism to handle continuous updates.
    * - **LoTE: Registrar and Register Provider Lists**
@@ -538,4 +538,3 @@ The timing of detection depends on when the Wallet Unit checks the Digital Crede
 
     - It enables Attestation Provider to unilaterally change an EDP, and it may introduce privacy risks and management overhead (as stated in the Discussion Topic D)
     - Technical details of this mechanism are not defined within ETSI standard.
-
