@@ -486,8 +486,12 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - string
      - OPTIONAL. String value of the background color related to be displayed together with the data.
    * - **data_capabilities[].contacts**
-     - String Array
-     - OPTIONAL. Array of customer service contacts or user support channels (e.g., email address).
+     - JSON Object Array
+     - OPTIONAL. Array containing customer service contacts or user support channels. Each object contains:
+    
+        - **type**: REQUIRED. Indicates the type of contact information and MUST be set to ``email``, ``telephone`` or ``url``.
+        - **value**: REQUIRED. Contains the value of the contact information corresponding to the specified type.
+        - **description**: OPTIONAL. A textual description associated with the contact information.
 
 .. note::
   For further details on the required features and the expected outcome in terms of user experience, see the Section :ref:`functionalities:Issuance from the Wallet Instance Catalog` for the parameter `data_capabilities.user_information` and Section :ref:`functionalities:Focus on Electronic Attestations of Attributes` for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
