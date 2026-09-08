@@ -39,7 +39,7 @@ Each X.509 certificate profile defined by this specification MUST conform to the
 
     The rest of the section details the content of the ``tbsCertificate`` field only. For additional information on the ``signatureAlgorithm`` and ``signatureValue`` fields, refer to :rfc:`5280`.
 
-The ``TBSCertificate`` field MUST contain a `TBSCertificate` structure, whose fields MUST conform to :rfc:`5280#section-4.12`.
+The ``tbsCertificate`` field MUST contain a ``TBSCertificate`` structure, whose fields MUST conform to :rfc:`5280#section-4.1.2`.
 
 The following table defines the certificate fields applicable to the certificate profile specified in this document.
 For each field, the table defines its presence requirement, type, description, and corresponding reference in :rfc:`5280`. Individual certificate profiles MAY provide additional contextual notes for these fields, but MUST NOT alter the presence requirements specified herein.

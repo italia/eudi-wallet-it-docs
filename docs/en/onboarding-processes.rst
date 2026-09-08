@@ -123,22 +123,22 @@ The processes that act on the lifecycle of an entity or of a Credential type are
 Notification and Publication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This Section describes the notification of the entities that are subject to it towards the European Commission, and the resulting publication in the Lists of Trusted Entities.
+This Section describes the notification to the European Commission of the entities that are subject to it, and the resulting publication in the Lists of Trusted Entities.
 This process applies to more than one family of processes.
 
-The notification is an act of the Member State towards the Commission, and not of the entity itself.
-Within IT-Wallet the Supervisory Body is the National point of contact towards the Commission, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`, and it relies on the Registrar for the entities the Registrar registers.
+The notification is an act of the Member State to the Commission, and not of the entity itself.
+Within IT-Wallet the Supervisory Body is the National point of contact with the Commission, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`, and it relies on the Registrar for the entities the Registrar registers.
 Its outcome is the inclusion of the entity in the List of Trusted Entities of its type, whose structure and signature are described in :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`.
 
-The notifiable categories according to [`CIR2024/2980`_], adopted under Article 5a(23) of [`EIDAS`_] are the following.
+The categories subject to notification according to [`CIR2024/2980`_], adopted under Article 5a(23) of [`EIDAS`_], are the following:
 
-- Wallet Providers, 
-- PID Providers, 
-- Providers of WRPAC
-- Registrars of the Wallet-Relying Parties, together with the registers, 
+- Wallet Providers;
+- PID Providers;
+- Providers of WRPAC;
+- Registrars of the Wallet-Relying Parties, together with the registers.
 
-The PuB-EAA Providers are notified under Article 45f(3) of [`EIDAS`_], and the modalities are laid down in [`CIR2025/1569`_].
-The Wallet-Relying Parties that are not a notified category are not notified individually, and they are made available through their register.
+The PuB-EAA Providers are notified under Article 45f(3) of [`EIDAS`_], and the detailed rules are laid down in [`CIR2025/1569`_].
+The Wallet-Relying Parties that do not belong to a notified category are not notified individually, and they are made available through their register.
 
 
 **Input**
