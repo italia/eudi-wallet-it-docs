@@ -487,7 +487,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - OPTIONAL. String value of the background color related to be displayed together with the data.
    * - **data_capabilities[].contacts**
      - JSON Object Array
-     - OPTIONAL. Array containing customer service contacts or user support channels. Each object contains:
+     - OPTIONAL. Array containing customer service contacts or user support channels related to the specific dataset. Each object contains:
     
         - **type**: REQUIRED. Indicates the type of contact information and MUST be set to ``email``, ``telephone`` or ``url``.
         - **value**: REQUIRED. Contains the value of the contact information corresponding to the specified type.
