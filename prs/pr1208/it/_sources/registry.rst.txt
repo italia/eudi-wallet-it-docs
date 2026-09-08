@@ -486,8 +486,12 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - string
      - OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.
    * - **data_capabilities[].contacts**
-     - Array di stringhe
-     - OPZIONALE. Array di indirizzi email di contatto del servizio clienti o dei canali di supporto per gli utenti.
+     - Array di Oggetti
+     - OPZIONALE. Array di indirizzi email di contatto del servizio clienti o dei canali di supporto per gli utenti. Ogni oggetto contiene:
+    
+        - **type**: OBBLIGATORIO. Indica il tipo di informazione di contatto e DEVE essere impostato a ``email``, ``telephone`` oppure ``url``.
+        - **value**: OBBLIGATORIO. Contiene il valore dell'informazione di contatto corrispondente al tipo specificato.
+        - **description**: OPZIONALE. Contiene una descrizione testuale associata all'informazione di contatto.
 
 .. note::
   Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi` per il parametro ``data_capabilities.user_information`` e alla Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri ``organization_info.logo_uri``, ``organization_info.logo_extended_uri``, ``data_capabilities.logo_uri``, ``data_capabilities.background_color`` e ``data_capabilities.available_claims.order``.

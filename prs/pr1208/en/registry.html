@@ -1231,8 +1231,16 @@ Content-Type: application/json
 <td><p>OPTIONAL. String value of the background color related to be displayed together with the data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].contacts</strong></p></td>
-<td><p>String Array</p></td>
-<td><p>OPTIONAL. Array of customer service contacts or user support channels (e.g., email address).</p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OPTIONAL. Array containing customer service contacts or user support channels. Each object contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>type</strong>: REQUIRED. Indicates the type of contact information and MUST be set to <code class="docutils literal notranslate"><span class="pre">email</span></code>, <code class="docutils literal notranslate"><span class="pre">telephone</span></code> or <code class="docutils literal notranslate"><span class="pre">url</span></code>.</p></li>
+<li><p><strong>value</strong>: REQUIRED. Contains the value of the contact information corresponding to the specified type.</p></li>
+<li><p><strong>description</strong>: OPTIONAL. A textual description associated with the contact information.</p></li>
+</ul>
+</div></blockquote>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1352,7 +1360,10 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;citizen-support@motorizzazione.gov.example&quot;</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;citizen-support@motorizzazione.gov.example&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1454,7 +1465,10 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003366&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1510,7 +1524,10 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003366&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -3653,7 +3670,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 04/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 08/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
