@@ -499,7 +499,9 @@ The *federation_entity* metadata for Leaves contain the following claims.
   * - **organization_name**
     - REQUIRED. See `OID-FED`_ Section 5.2.2
   * - **homepage_uri**
-    - REQUIRED. See `OID-FED`_ Section 5.2.2
+    - REQUIRED. REQUIRED if ``organization_uri`` is absent.
+  * - **organization_uri**
+    - CONDITIONAL. REQUIRED if ``homepage_uri`` is absent. See `OID-FED`_ Section 5.2.2
   * - **policy_uri**
     - REQUIRED. See `OID-FED`_ Section 5.2.2
   * - **logo_uri**

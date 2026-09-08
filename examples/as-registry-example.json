@@ -106,7 +106,10 @@
                     ],
                     "background_color": "#12107c",
                     "contacts": [
-                        "citizen-support@motorizzazione.gov.example"
+                        {
+                            "type": "email",
+                            "value": "citizen-support@motorizzazione.gov.example"
+                        }
                     ],
                     "data_origin_l10n_id": "authentic_source1.dataset1.origin",
                     "data_provision": {
@@ -208,7 +211,10 @@
                     ],
                     "background_color": "#003366",
                     "contacts": [
-                        "digital-credentials@bank.example"
+                        {
+                            "type": "email",
+                            "value": "digital-credentials@bank.example"
+                        }
                     ],
                     "data_origin_l10n_id": "authentic_source2.dataset1.origin",
                     "data_provision": {
@@ -264,7 +270,10 @@
                     ],
                     "background_color": "#003366",
                     "contacts": [
-                        "digital-credentials@bank.example"
+                        {
+                            "type": "email",
+                            "value": "digital-credentials@bank.example"
+                        }
                     ],
                     "data_origin_l10n_id": "authentic_source2.dataset2.origin",
                     "data_provision": {

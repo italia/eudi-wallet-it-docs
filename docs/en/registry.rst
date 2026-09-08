@@ -75,7 +75,7 @@ The JWT payload of the Registry Discovery response MUST contain the following pa
      - REQUIRED. Unique identifier of the discovery document (e.g., ``urn:it-wallet-registry:it-wallet``).
    * - **version**
      - REQUIRED. Version of the discovery document format (e.g., ``1.0.0``).
-   * - **last_updated**
+   * - **last_modified**
      - REQUIRED. Timestamp of the last modification to the discovery document (e.g., ``2024-03-15T10:30:00Z``).
    * - **endpoints**
      - REQUIRED. JSON object containing the URIs of all registry components. The following endpoint keys MUST be present:
@@ -100,7 +100,7 @@ JWT payload structure (when decoded):
   {
     "id": "urn:it-wallet-registry:it-wallet",
     "version": "1.0.0",
-    "last_updated": "2024-03-15T10:30:00Z",
+    "last_modified": "2024-03-15T10:30:00Z",
     "endpoints": {
       "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
       "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
@@ -174,7 +174,7 @@ The Claims Registry maintains language-neutral, technical definitions for semant
    * - **version**
      - REQUIRED. The version of the Claims Registry (e.g., ``1.0.0``).
    * - **last_modified**
-     - REQUIRED. The timestamp indicating when the registry was last updated (e.g., ``2026-03-06T00:00:00Z``).
+     - REQUIRED. The timestamp indicating when the Claims Registry was last updated (e.g., ``2026-03-06T00:00:00Z``).
    * - **localization**
      - REQUIRED. Localization configuration object containing:
 
@@ -254,7 +254,7 @@ The AS Registry MUST ensure:
   - **Regulatory Compliance**: Supports public administration transparency and private sector coordination requirements.
 
 .. note::
-   Authentic Source Registry is a technical and non-public registry that provides guidance for the Credential Issuer for Credential provisioning.
+   The Authentic Source Registry is a public registry that provides the Credential Issuer with guidance for Credential provisioning.
 
 Authentic Source Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -343,7 +343,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **version**
      - REQUIRED. The version of the Authentic Source Registry (e.g., ``1.0.0``).
    * - **last_modified**
-     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+     - REQUIRED. The timestamp indicating when the Authentic Source Registry was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **localization**
      - REQUIRED. Localization configuration object containing:
 
@@ -486,8 +486,12 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - string
      - OPTIONAL. String value of the background color related to be displayed together with the data.
    * - **data_capabilities[].contacts**
-     - String Array
-     - OPTIONAL. Array of customer service contacts or user support channels (e.g., email address).
+     - JSON Object Array
+     - OPTIONAL. Array containing customer service contacts or user support channels related to the specific dataset. Each object contains:
+    
+        - **type**: REQUIRED. Indicates the type of contact information and MUST be set to ``email``, ``telephone`` or ``url``.
+        - **value**: REQUIRED. Contains the value of the contact information corresponding to the specified type.
+        - **description**: OPTIONAL. A textual description associated with the contact information.
 
 .. note::
   For further details on the required features and the expected outcome in terms of user experience, see the Section :ref:`functionalities:Issuance from the Wallet Instance Catalog` for the parameter `data_capabilities.user_information` and Section :ref:`functionalities:Focus on Electronic Attestations of Attributes` for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
@@ -1050,9 +1054,16 @@ The JWS payload contains the following parameters:
    * - **version**
      - REQUIRED. Version of the Digital Credential Catalog format.
    * - **last_modified**
-     - REQUIRED. Timestamp of the last modification to the Digital Credential Catalog.
+     - REQUIRED. Timestamp of the last modification to the Digital Credential Catalog (e.g., ``2025-03-15T12:00:00Z``).
    * - **iss**
      - REQUIRED. Issuer identifier of the Digital Credential Catalog.
+   * - **localization**
+     - REQUIRED. Localization configuration object containing:
+
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
+       * **version**: Version of the localization bundle format.
    * - **credentials**
      - REQUIRED. Array containing Digital Credential definitions.
 
@@ -1132,13 +1143,6 @@ Each element of the ``credentials`` array contains at least the following inform
           * **max_deferred_issuance_time_minutes**: CONDITIONAL. Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if ``deferred_flow`` is ``true``.
           * **notification_methods**: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
 
-  * - **localization**
-    - REQUIRED. Localization configuration object containing:
-
-       * **default_locale**: Default locale code (e.g., ``it``).
-       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
-       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
-       * **version**: Version of the localization bundle format.
   * - **authentic_sources**
     - CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
 
@@ -1328,10 +1332,12 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
 
    * - **Field Name**
      - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Schema Registry (e.g., ``urn:schemas:it-wallet``).
    * - **version**
      - REQUIRED. The version of the Schema Registry (e.g., ``1.0.0``).
-   * - **last_updated**
-     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the Schema Registry was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
 

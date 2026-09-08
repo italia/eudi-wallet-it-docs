@@ -499,7 +499,9 @@ I metadati *federation_entity* per le Foglie contiene i seguenti claim.
   * - **organization_name**
     - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
   * - **homepage_uri**
-    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. OBBLIGATORIO se ``organization_uri`` è assente.
+  * - **organization_uri**
+    - CONDIZIONALE. OBBLIGATORIO se ``homepage_uri`` è assente. Vedi `OID-FED`_ Sezione 5.2.2
   * - **policy_uri**
     - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
   * - **logo_uri**
