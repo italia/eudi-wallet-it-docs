@@ -99,8 +99,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Key Attestation APIs (OEM)**
-      Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro in un keystore supportato dall’hardware. Esempi includono l’Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS.
-      Non presente in ARF 2.7.3; specifico dell’IT-Wallet.
+      Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro nel Keystore supportato dall'hardware. Esempi includono l'Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS. Queste API sono utilizzate dal Wallet Provider per emettere un Key Attestation per le credenziali non-PID.
+      Non presente in ARF 2.7.3; specifico dell'IT-Wallet.
+
+    **Keystore**
+      Ambiente di archiviazione sicuro hardware-backed fornito dall'OEM del dispositivo per la generazione, l'archiviazione e l'utilizzo di chiavi crittografiche. Sui dispositivi Android, il Keystore si basa sul Trusted Execution Environment (TEE) o Strongbox; sui dispositivi iOS, si basa sul Secure Enclave. Il Keystore è il meccanismo crittografico di default per tutte le operazioni della Wallet Instance e le Credenziali Digitali, ad eccezione del PID che richiede un WSCA/Remote WSCD. Le proprietà del Keystore sono attestate tramite le OEM Key Attestation APIs. Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Livello di Garanzia**
       Nel quadro dell'Unione per l'**identificazione elettronica**, i **livelli di garanzia** esprimono il grado di fiducia nella **correttezza dell'identificazione** delle persone fisiche o giuridiche e nella possibilità di **fare affidamento sui mezzi di identificazione elettronica**. Per gli **schemi di identificazione elettronica notificati**, `EIDAS`_, come modificato (incluso il Quadro europeo di identità digitale codificato dal `EU_2024_1183`_), definisce i livelli **basso (*low*)**, **sostanziale (*substantial*)** e **alto (*high*)**.
@@ -344,11 +347,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3.
 
     **Wallet Secure Cryptographic Application**
-      Applicazione che gestisce gli asset critici utilizzando le funzioni crittografiche fornite dal WSCD.
+      Applicazione che gestisce gli asset critici utilizzando le funzioni crittografiche fornite dal WSCD. In IT-Wallet, il WSCA è usato esclusivamente per l'emissione e la gestione del PID a LoA High, operando all'interno di un Remote WSCD basato su un HSM remoto (remote HSM).
       Conforme con ARF 2.7.3.
 
     **Wallet Secure Cryptographic Device**
-      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici.
+      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli asset critici. In IT-Wallet, il WSCD è implementato come Remote WSCD, ovvero un Hardware Security Module (HSM) remoto operato lato server, usato esclusivamente per l'emissione e la gestione del PID a LoA High.
       Conforme con ARF 2.7.3.
 
     **Soluzione Wallet**
@@ -361,7 +364,8 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Key Attestation**
-      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali risiedono in un WSCD affidabile, utilizzando le API di Key Attestation (OEM).
+    **KA**
+      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali risiedono in un ambiente sicuro affidabile. Per il PID (LoA High), il Key Attestation descrive le proprietà del WSCA e del Remote WSCD (HSM remoto); per tutte le altre Credenziali Digitali device-bound, il Key Attestation descrive le proprietà del Keystore tramite le OEM Key Attestation APIs.
       Allineato alla Technical Specification 3.
 
     **Wallet Instance Attestation**

@@ -100,7 +100,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Key Attestation APIs (OEM)**
-      A device manufacturer’s attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices.
+      A device manufacturer's attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed Keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices. These APIs attest the properties of the Keystore (key generation environment, hardware binding, device security level) and are used by the Wallet Provider to issue a Key Attestation.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
+    **Keystore**
+      A hardware-backed secure storage environment provided by the device OEM for the generation, storage, and use of cryptographic keys. On Android devices, the Keystore relies on the Trusted Execution Environment (TEE) or Strongbox; on iOS devices, it is based on the Secure Enclave. The Keystore is the default cryptographic storage mechanism for all Wallet Instance operations and Digital Credentials. The properties of the Keystore are attested through the OEM Key Attestation APIs.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Level of Assurance**
@@ -333,11 +337,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3.
 
     **Wallet Secure Cryptographic Application**
-      Application managing critical assets using cryptographic functions provided by the WSCD.
+      Application managing critical assets using cryptographic functions provided by the WSCD. In IT-Wallet, the WSCA is used exclusively for the issuance and management of the PID at Level of Assurance High, operating within a Remote WSCD based on a remote Hardware Security Module (remote HSM).
       Aligned with ARF 2.7.3.
 
     **Wallet Secure Cryptographic Device**
-      Tamper-resistant device providing an environment for the WSCA to protect critical assets.
+      Tamper-resistant device providing a secure hardware environment for the WSCA to generate and protect critical assets. In IT-Wallet, the WSCD is implemented as a **Remote WSCD**, i.e., a remote Hardware Security Module (remote HSM) operated server-side, and is used exclusively for PID issuance and management at Level of Assurance High.
       Aligned with ARF 2.7.3.
 
     **Wallet Solution**
@@ -349,7 +353,8 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Key Attestation**
-      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD using the Key Attestation APIs (OEM).
+    **KA**
+      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials are securely generated and stored in a trustworthy hardware-backed environment.
       Aligned with Technical Specification 3.
 
     **Wallet Instance Attestation**

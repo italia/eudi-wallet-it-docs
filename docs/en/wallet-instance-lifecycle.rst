@@ -63,7 +63,7 @@ This association allows the User to directly request Wallet Instance revocation 
   As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
   This specification mandates the use of at least a second-factor for User authentication.
 
-As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding resides in a secure WSCD.
+As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the Keystore (and of the WSCA/Remote WSCD for PID issuance) to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding reside in a secure hardware-backed environment (Keystore for standard credentials; WSCA operating within a Remote WSCD for the PID).
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the **Operational** state.
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a

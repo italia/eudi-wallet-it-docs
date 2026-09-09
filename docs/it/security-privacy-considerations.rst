@@ -239,9 +239,9 @@ token di accesso vincolato al mittente, il che significa che il token di accesso
 
 La seconda superficie per l'attacco è correlata alla gestione delle chiavi. Nel caso di utilizzo di chiavi basate su software, è possibile clonare le chiavi e spostarle su un dispositivo sotto
 il controllo dell'attaccante, e nel caso di furto delle Credenziali, l'attaccante può facilmente creare una prova di possesso delle chiavi. IT-Wallet è meno vulnerabile a questi attacchi in quanto supporta
-WSCD interno locale che utilizza chiavi basate su hardware. Tuttavia, la mancanza di un
-profilo di certificazione che certifichi il WSCD interno locale contro attaccanti altamente capaci (la certificazione per le attuali soluzioni TEE sul mercato raggiunge al massimo AVA_VAN.3
-come mostrato ad esempio in questo `Rapporto di Certificazione <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ o `sito Global Platform <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_ rende il requisito solo parzialmente soddisfatto.
+un Keystore hardware-backed che utilizza chiavi basate su hardware. Tuttavia, la mancanza di un
+profilo di certificazione che certifichi il Keystore (TEE) contro attaccanti altamente capaci (la certificazione per le attuali soluzioni TEE sul mercato raggiunge al massimo AVA_VAN.3
+come mostrato ad esempio in questo `Rapporto di Certificazione <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ o `sito Global Platform <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_ rende il requisito solo parzialmente soddisfatto per le Credenziali Digitali standard. Per il PID, questa limitazione è superata richiedendo un WSCA operante in un Remote WSCD (HSM remoto lato server), che fornisce certificazione a un livello più elevato.
 
 SR-V-10
 ^^^^^^^
@@ -480,6 +480,6 @@ SPR-W-50
    * - |check-icon|
      - Il Wallet deve garantire che le Credenziali e le chiavi private siano protette da accessi non autorizzati.
 
-Per prevenire l'accesso non autorizzato al Wallet, viene sbloccato sul dispositivo dell'Utente inserendo un numero di identificazione personale (PIN) o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, in base alle preferenze dell'Utente e alle capacità del dispositivo. Inoltre, le chiavi crittografiche sono memorizzate in modo sicuro all'interno del WSCD, garantendo che solo l'Utente possa accedervi, impedendo così l'uso non autorizzato o la manomissione.
+Per prevenire l'accesso non autorizzato al Wallet, viene sbloccato sul dispositivo dell'Utente inserendo un numero di identificazione personale (PIN) o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, in base alle preferenze dell'Utente e alle capacità del dispositivo. Inoltre, le chiavi crittografiche sono memorizzate in modo sicuro all'interno del Keystore (o del WSCA/Remote WSCD per il PID), garantendo che solo l'Utente possa accedervi, impedendo così l'uso non autorizzato o la manomissione.
 
 

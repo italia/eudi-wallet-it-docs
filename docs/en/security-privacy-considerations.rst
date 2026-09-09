@@ -239,10 +239,10 @@ first and therefore send the request to the Credential endpoint and bind the Cre
 access token, which means that the access token binds to the device using cryptographic materials.
 
 The second surface for the attack is related to key management. In the case of using software-based keys, it is possible to clone the keys and move them to a device under
-attacker control, and in the case of stealing the Credentials as well, the attacker can easily create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks as it supports local
-internal WSCD that uses hardware-based keys. However, the lack of a
-certification profile that certifies the local internal WSCD against highly capable attackers (the certification for current TEE solutions on the market reaches AVA_VAN.3 at most
-as shown for example in this `Certification Report <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ or `Global Platform site <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_ makes the requirement only partially satisfied.
+attacker control, and in the case of stealing the Credentials as well, the attacker can easily create proof of possession of the keys. IT-Wallet is less vulnerable to these attacks as it supports a
+hardware-backed Keystore that uses hardware-based keys. However, the lack of a
+certification profile that certifies the Keystore (TEE) against highly capable attackers (the certification for current TEE solutions on the market reaches AVA_VAN.3 at most
+as shown for example in this `Certification Report <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ or `Global Platform site <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_ makes the requirement only partially satisfied for standard Digital Credentials. For the PID, this limitation is addressed by requiring a WSCA operating within a Remote WSCD (remote HSM operated server-side), which provides certification at a higher assurance level.
 
 SR-V-10
 ^^^^^^^
@@ -481,6 +481,6 @@ SPR-W-50
    * - |check-icon|
      - The Wallet must ensure that the Credentials and private keys are protected from unauthorized access.
 
-To prevent unauthorized access to the Wallet, it is unlocked on the User's device by entering a personal identification number (PIN) or using biometric authentication, such as fingerprint or facial recognition, based on the User's preferences and the device's capabilities. Additionally, the cryptographic keys are securely stored within the WSCD, ensuring that only the User can access them, thereby preventing unauthorized use or tampering.
+To prevent unauthorized access to the Wallet, it is unlocked on the User's device by entering a personal identification number (PIN) or using biometric authentication, such as fingerprint or facial recognition, based on the User's preferences and the device's capabilities. Additionally, the cryptographic keys are securely stored within the Keystore (or the WSCA/WSCD for the PID), ensuring that only the User can access them, thereby preventing unauthorized use or tampering.
 
 

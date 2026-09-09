@@ -51,7 +51,7 @@ Component(wi_service, "Wallet Instance Lifecycle Management", "Service", "Handle
 
 }
 
-Component(wi_storage, "Secure Storage Component", "WSCA, WSCD, Memory", "Manages keys and credentials", $tags="trust", $sprite="lock")
+Component(wi_storage, "Keystore / WSCA/WSCD Component", "Keystore, WSCA + Remote WSCD (remote HSM for PID)", "Manages keys and credentials", $tags="trust", $sprite="lock")
 }
 
 }
@@ -61,7 +61,7 @@ Component(wi_storage, "Secure Storage Component", "WSCA, WSCD, Memory", "Manages
 Rel(user, wp_frontend, "Uses")
 Rel_L(wi_lifecycle, pdnd_eservices, "Interacts with")
 Rel_L(wp_frontend, pdnd_eservices, "Interacts with")
-BiRel(pdnd_eservices, wi_service, "Interacts with") 
+BiRel(pdnd_eservices, wi_service, "Interacts with")
 Rel_U(wi_lifecycle, trust_security, "Uses for cryptographic operations")
 Rel(wi_lifecycle, dsi, "Uses")
 BiRel(pdnd_eservices, credential_issuers, "Interacts with")
@@ -76,7 +76,7 @@ Rel_L(wi_service, dsi, "Uses")
 BiRel(wi_service, issuer_service, "Digital Credential Issuance")
 BiRel(wi_service, presentation_service, "Digital Credential Presentation")
 BiRel(wi_service, backup_service, "Backup and restore Digital Credentials")
-Rel_L(wallet_instance, wi_storage, "Uses for cryptographic operations") 
+Rel_L(wallet_instance, wi_storage, "Uses for cryptographic operations")
 Rel_U(wallet_solution, trust_anchor, "Federates and obtains registration certificate from")
 
 @enduml

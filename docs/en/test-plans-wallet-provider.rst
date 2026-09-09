@@ -166,11 +166,11 @@ This section lists the test cases from Sections:
    * - WP_013
      - Lifecycle, Interoperability
      - Frontend component architecture
-     - Wallet Instance supports all the components (User Interface, Lifecycle Management, Issuer, Presentation, Backup/Restore, and Secure Storage) as shown in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
+     - Wallet Instance supports all the components (User Interface, Lifecycle Management, Issuer, Presentation, Backup/Restore, Keystore, and WSCA/WSCD Interface for PID) as shown in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
    * - WP_014
      - Trust, Security
-     - WSCD implementation
-     - Wallet Instance exclusively uses the Local Internal WSCD for all required cryptographic operations, such as generating signatures and performing key management, to conform with the profile.
+     - Keystore implementation
+     - Wallet Instance uses the hardware-backed Keystore (Strongbox or TEE on Android; Secure Enclave on iOS) for all required cryptographic operations, such as generating signatures and performing key management. For PID issuance and management, the Wallet Instance interacts with the WSCA operating within the Remote WSCD (remote HSM) to conform with Level of Assurance High requirements.
    * - WP_015
      - Lifecycle, UX
      - Android/iOS compatibility
@@ -770,7 +770,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_100
      - Proximity-flow, Presentation, Security
      - WSCA authentication
-     - Wallet Instance prompts the User to perform a WSCA-based authentication, directly or by unlocking the application, and does not proceed with the proximity flow until it succeeds.
+     - Wallet Instance prompts the User to perform a WSCA-based authentication, directly or by unlocking the application, and does not proceed with the proximity flow until it succeeds. Note: WSCA authentication applies when the PID (LoA High) is involved in the proximity flow.
    * - WP_101
      - Proximity-flow, Presentation, Security
      - Generate ephemeral EC key pair
