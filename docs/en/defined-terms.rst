@@ -26,6 +26,15 @@ Below is the description of acronyms and definitions which are useful for furthe
       Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
+    **Attestation Rulebook**
+      Human-readable document that defines a type of Attestation by specifying the identifiers, the syntax, the semantics and the encoding of its Attributes, the proof mechanisms and, where needed, the trust and the presentation mechanisms.
+      Aligned with Section 5.5 of the `EIDAS-ARF`_.
+
+    **Attestation Scheme Provider**
+      Entity that defines a type of Attestation, publishes its Attestation Rulebook together with the corresponding machine-readable attestation scheme, and may request their registration in a catalogue.
+      Within IT-Wallet it is the Entity that requests the registration of a Credential type in the Digital Credentials Catalog, see :ref:`onboarding-system:Credential Type Registration`.
+      Aligned with Section 3.15 of the `EIDAS-ARF`_.
+
     **Attributes**
     **User Attribute**
     **User Claim**
@@ -195,8 +204,12 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Relying Party**
-    **Wallet‑Relying Party**
       Entity relying on electronic identification or Trust Service from a Wallet Instance.
+      Aligned with ARF 2.7.3.
+
+    **Wallet-Relying Party**
+      Relying Party that intends to rely upon Wallet Units for the provision of public or private services by means of digital interaction.
+      Within IT-Wallet it covers the Credential Issuers (the PID Provider and the Attestation Providers) and the Relying Parties together with the Relying Party Intermediaries.
       Aligned with ARF 2.7.3.
 
     **Relying Party Solution**

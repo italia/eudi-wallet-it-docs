@@ -29,7 +29,7 @@ A claim is never removed from the Claims Registry, because the Credentials alrea
 
 **Process**
 
-1. An Authentic Source, during its :ref:`onboarding-system:Authentic Source Registration`, or a Credential Issuer, during a :ref:`onboarding-system:Credential Type Registration`, needs a claim not yet in the Claims Registry.
+1. An Attestation Scheme Provider, during a :ref:`onboarding-system:Credential Type Registration`, or An Authentic Source acting as Attestation Scheme Provider, during its :ref:`onboarding-system:Authentic Source Registration`, request a new claim not yet in the Claims Registry.
 2. The definition of the claim is established with its canonical name, its ``type``, its ``format``, its ``aliases`` and its nested structure, aligned to the :ref:`Catalogue of Attributes <registry:Registry Integration and Cross-References>` and without conflicts with the claims already registered.
 3. The Claims and Schema Management registers the definition in the Claims Registry.
 4. The claim becomes available and it enables the :ref:`onboarding-system:Schema Provisioning` and the :ref:`onboarding-system:Credential Type Registration` that use it.
@@ -43,7 +43,7 @@ The schema is one of the requirements for the activation of a Credential type, s
 **Input**
 
 The schema of the Credential type follows the Schema Definition Parameters of :ref:`registry:Schema Registry`: its ``credential_type`` and ``version``, the ``format`` it applies to, a JSON Schema for the SD-JWT VC format or a CBOR Schema for the mdoc-CBOR format, and the ``schema_uri`` with its integrity digest.
-The schema is composed of the claims defined in :ref:`registry:Claims Registry`, and a claim still missing activates the :ref:`onboarding-system:Claim Registration`.
+The schema is provided by the Attestation Scheme Provider together with the definition of the Credential type, and it is composed of the claims defined in :ref:`registry:Claims Registry`. A claim still missing activates the :ref:`onboarding-system:Claim Registration`.
 
 **Outcome**
 
@@ -61,24 +61,35 @@ Credential Type Registration
 
 Credential Type Registration process creates a versioned entry of a Credential type in the Digital Credentials Catalog, in the ``INACTIVE`` state, with its data source and the reference to the applicable Rulebook.
 The versioned entry is the pair given by the ``credential_type`` and the ``version``, which MUST be unique in the catalog.
+The process is requested by the Attestation Scheme Provider of the Credential type, and it is independent from the registration of the Credential Issuers, which are added to the entry afterwards.
 
 **Input**
 
-The definition of the Credential type, that a Credential Issuer provides through the ``credential_type_declaration``, the ``credential_technical_specification`` and the ``credential_policies`` of its profile in :ref:`onboarding-system:Registration Data Model`.
+The definition of the Credential type, provided through the ``credential_type_declaration``, the ``credential_technical_specification``, the ``credential_policies``, the ``rulebookURI``, the ``bindingType``, the ``attestationLoS`` and the ``trustedAuthorities`` of the Credential type definition data defined in :ref:`onboarding-system:Registration Data Model`.
 It carries the ``credential_type``, the User authentication methods and the minimum Level of Assurance, the reference to the schemes and the formats, the reference to the Rulebook, and the data source, given by one or more ``authentic_sources`` or, when another Credential type provides the data, by one or more ``parent_credentials``.
 The structure of the versioned entry is defined in :ref:`registry:Digital Credentials Catalog Structure`.
+
+The input is provided by the Attestation Scheme Provider, which owns the Attestation Rulebook of the Credential type and takes the values from it, see :ref:`onboarding-system:System Actors and Roles`.
+The definition of the Rulebook is external to the Onboarding System and it is a precondition of this process, as listed in :ref:`onboarding-system:Process Dependency Map`, so this process records in a structured form what the Rulebook already defines in a human-readable form.
 
 **Outcome**
 
 A versioned entry of the Credential type in the Digital Credentials Catalog, in the ``INACTIVE`` state when it has no ``issuers`` yet.
-It enables the :ref:`onboarding-system:Credential Type Activation and Deactivation` and, for the notified categories, the :ref:`onboarding-system:Notification and Publication`.
+It enables the :ref:`onboarding-system:Credential Type Activation and Deactivation`, the declaration of the Credential type by a Credential Issuer at its :ref:`onboarding-system:Entity Registration` and, for the notified categories, the :ref:`onboarding-system:Notification and Publication`.
 
 **Process**
 
-1. The Credential type is registered with its data source, its ``authentic_sources`` or its ``parent_credentials``, together with the reference to its schema in the Schema Registry and to its Rulebook.
-2. The Catalog Management creates the versioned entry in the Digital Credentials Catalog in the ``INACTIVE`` state.
-3. A Credential type can be registered before any Credential Issuer, to make its identifier available. A Credential Issuer MUST declare the Credential types it intends to issue at the time of its :ref:`onboarding-system:Entity Registration`, and this declaration adds it to the ``issuers`` field of the versioned entry.
+1. The Attestation Scheme Provider requests the registration of the Credential type and provides its definition taken from the applicable Rulebook, together with the reference to its schema in the Schema Registry and its data source (its ``authentic_sources`` or its ``parent_credentials``).
+2. The Supervisory Body verifies the request and approves the Credential type, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
+3. The Catalog Management creates the versioned entry in the Digital Credentials Catalog in the ``INACTIVE`` state, and the Federation Trust Anchor publishes the signed catalog.
 4. The versioned entry is activated when the conditions of the :ref:`onboarding-system:Credential Type Activation and Deactivation` are satisfied.
+
+The versioned entry therefore exists before any Credential Issuer is listed in it, and this makes the identifier of the Credential type available. A Credential Issuer MUST declare the Credential types it intends to issue at the time of its :ref:`onboarding-system:Entity Registration`, and this declaration adds it to the ``issuers`` field of the versioned entry.
+
+.. note::
+   The ``issuers`` field is never provided as an input of this process.
+   Each of its elements derives from the ``provided_attestations`` that a Credential Issuer declares in its registration data, so a Credential type is registered independently of the Credential Issuers and it stays registered when they change.
+   The provision of the whole versioned entry is summarized in :ref:`registry:Digital Credentials Catalog Usage`.
 
 Credential Type Activation and Deactivation
 """""""""""""""""""""""""""""""""""""""""""
@@ -112,7 +123,7 @@ A Credential type is never modified in place, so a change of its definition beco
 
 **Input**
 
-The updated definition of the Credential type, provided as for the :ref:`onboarding-system:Credential Type Registration`, with a new ``version``.
+The updated definition of the Credential type, provided by the Attestation Scheme Provider as for the :ref:`onboarding-system:Credential Type Registration`, with a new ``version``.
 
 **Outcome**
 
@@ -121,6 +132,6 @@ The Credentials already issued from the previous version keep their own status a
 
 **Process**
 
-1. The definition of the Credential type changes.
+1. The Attestation Scheme Provider publishes a new version of the Attestation Rulebook, or the definition of the Credential type changes for another reason.
 2. The Catalog Management registers a new versioned entry, with the new ``version``, as in the Credential Type Registration.
 3. The new versioned entry is activated when the conditions of the :ref:`onboarding-system:Credential Type Activation and Deactivation` are satisfied, and the versioned entry of the previous version changes to ``INACTIVE``.

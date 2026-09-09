@@ -35,7 +35,7 @@ The table below maps the dependencies between the onboarding processes where wha
    * - :ref:`onboarding-system:Entity Registration`
      - None
      - An entity that passed the eligibility and compliance verification requests the registration.
-     - The Certificate and Trust Artifact Issuance processes, and for a Credential Issuer the Credential Type Registration.
+     - The Certificate and Trust Artifact Issuance processes, and for a Credential Issuer the activation of the Credential types it declares.
    * - :ref:`onboarding-system:Authentic Source Registration`
      - None
      - An Authentic Source that passed the eligibility verification requests the registration.
@@ -70,15 +70,15 @@ The table below maps the dependencies between the onboarding processes where wha
      - The activation of a Credential type, as one of its requirements.
    * - :ref:`onboarding-system:Credential Type Registration`
      - :ref:`onboarding-system:Authentic Source Registration`, :ref:`onboarding-system:Schema Provisioning`, :ref:`onboarding-system:Claim Registration`
-     - A Credential Issuer declares a Credential type it intends to issue.
-     - The Credential Type Activation, and the Notification and Publication for the notified categories.
+     - An Attestation Scheme Provider requests the registration of a Credential type defined in an Attestation Rulebook.
+     - The declaration of the Credential type by a Credential Issuer, the Credential Type Activation, and the Notification and Publication for the notified categories.
    * - :ref:`onboarding-system:Credential Type Activation and Deactivation`
      - :ref:`onboarding-system:Credential Type Registration`
      - The verification of the issuance conditions of the Credential type.
      - The issuance of the Credential type by the Credential Issuer.
    * - :ref:`onboarding-system:Credential Type Update`
      - :ref:`onboarding-system:Credential Type Registration`
-     - The publication of a new version of a Credential type.
+     - The publication of a new version of a Credential type by its Attestation Scheme Provider.
      - The activation of the new version.
    * - :ref:`onboarding-system:Entity Update`
      - :ref:`onboarding-system:Entity Registration`
@@ -104,7 +104,7 @@ The following conditions are external to the Onboarding System and are not proce
 - The subscription of an Authentic Source to PDND and the publication of its e-Service.
 - The qualified status of a Qualified Trust Service Provider, for a QEAA Provider and a PuB-EAA Provider.
 - The certification of a Wallet Solution.
-- The availability of the applicable Rulebook, for a Credential Type Registration.
+- The definition and the availability of the applicable Attestation Rulebook, for a Credential Type Registration. The Rulebook is an input of the Onboarding System and its definition is not a process of it.
 - The identity proofing and the eligibility and compliance verification, described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`, that precede every registration.
 
 The diagram below shows the activations between the various processes.

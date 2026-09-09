@@ -12,15 +12,59 @@ At EU level the European Commission maintains two EUDIW catalogues that are the 
  - **Catalogue of Attributes** is the EU-level catalogue of standardized attribute definitions and namespaces used across Attestations.
  - **Catalogue of Schemes** is the EU-level catalogue of Attestation schemes (``SchemaMeta``): the machine-readable metadata that binds an Attestation type to its Rulebook and schema.
 
-.. note::
-  This section focuses on the registries for the semantic definition and discovery of data. The entity trust registers for the EUDIW trust model (**Register of WRPs** operated by a national Registrar under `CIR2025/848`_) and the National trust model (**Federation API Endpoints**) are specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+The registries and the catalogues used within the IT-Wallet ecosystem have different purposes and scopes. The registries whose content is evidence of a trust decision, such as the **Register of WRPs** operated by a national Registrar under `CIR2025/848`_ and the **Federation API Endpoints** of the National Trust Framework, are specified in :ref:`infrastructure-trust:Infrastructure of Trust`.
+The registries for the semantic definition and the discovery of data are detailed in this Section.
 
-This section provides first an overview of the IT-Wallet registry infrastructure (:ref:`registry:Registry Architecture Overview`) and its discovery mechanism (:ref:`registry:Registry Discovery Endpoint`).
+In particular, this section provides first an overview of the IT-Wallet registry infrastructure (:ref:`registry:Registries and Catalogues of the Ecosystem`) and its discovery mechanism (:ref:`registry:Registry Discovery Endpoint`).
 Then, it details its components: :ref:`registry:Taxonomy`, :ref:`registry:Claims Registry`, :ref:`registry:Authentic Source Registry`, :ref:`registry:Schema Registry` and :ref:`registry:Digital Credentials Catalog`.
 Finally, it describes their relationships (:ref:`registry:Registry Integration and Cross-References`) and usage journeys (:ref:`registry:Registry Infrastructure Usage Journeys`).
 
-Registry Architecture Overview
-------------------------------
+Registries and Catalogues of the Ecosystem
+-------------------------------------------
+
+The IT-Wallet ecosystem uses several registries and catalogues, at national and at EU level, and they serve two different purposes.
+
+- **Trust purpose**: the content of the registry is consumed by a Trust Evaluator to accept or to reject an entity or an artifact.
+  These registries are Trust Artifacts, they are defined in :ref:`infrastructure-trust:Infrastructure of Trust` and the way they are consumed is defined in :ref:`trust-evaluation:Trust Evaluation Process`.
+- **Semantic and discovery purpose**: the content of the registry defines the attributes, the schemas and the Credential types, or it makes them discoverable. These registries are defined in this Section.
+
+.. note::
+  The distinction between trust and semantic/discovery registries is on the purpose and not on the content. For example, a registry of the semantic and discovery purpose may carry a parameter that points to a trust framework, as the ``trustedAuthorities`` of the Digital Credentials Catalog does, but such a parameter identifies the applicable trust framework and it is not itself the evidence of a trust decision.
+
+.. _table_registries_and_catalogues:
+.. list-table:: Registries and Catalogues of the Ecosystem
+   :class: longtable
+   :widths: 32 18 26 24
+   :header-rows: 1
+
+   * - **Registry or Catalogue**
+     - **Purpose**
+     - **Maintained by**
+     - **Specified in**
+   * - Taxonomy, Claims Registry, Schema Registry, Authentic Source Registry, Digital Credentials Catalog
+     - Semantic and discovery
+     - Federation Trust Anchor, under the Supervisory Body
+     - This Section
+   * - Register of WRPs
+     - Trust
+     - Registrar
+     - :ref:`infrastructure-trust:Register of WRPs`
+   * - Federation API Endpoints, Entity Statements and Trust Marks
+     - Trust
+     - Federation Trust Anchor and Federation Intermediates
+     - :ref:`infrastructure-trust:National Trust Artifacts`
+   * - Catalogue of Attributes and Catalogue of Schemes
+     - Semantic and discovery
+     - European Commission
+     - [`EUDI-TS 11`_]. The alignment of the national registries is described in :ref:`registry:Registry Integration and Cross-References`
+   * - Lists of Trusted Entities, Trusted Lists and List of Trusted Lists
+     - Trust
+     - European Commission and Member States
+     - :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`
+
+.. note::
+  The mechanisms that publish the status of a certificate or of an Attestation, such as the Certificate Revocation Lists, the OCSP responders and the Token Status Lists, are not registries and they are not listed in the table above.
+  They are described in :ref:`infrastructure-trust:Revocation Mechanisms`.
 
 Five national semantic and discovery registries provide the standardized definitions and discovery data:
 
@@ -30,22 +74,50 @@ Five national semantic and discovery registries provide the standardized definit
 4. **Schema Registry**: Authoritative list of Credential Schemas.
 5. **Digital Credentials Catalog**: Available Credential types with their metadata and issuance information.
 
-The national registries are maintained by the national Trust Anchor under the Supervisory Body to ensure consistency, security, and regulatory compliance.
-The figure below shows, for each component, the onboarding or operational phase in which it is used and by whom. More details are provided in each section.
+The national registries are maintained by the Federation Trust Anchor under the Supervisory Body to ensure consistency, security, and regulatory compliance.
+They are populated by the onboarding processes described in :ref:`onboarding-system:Onboarding Processes`, and they are read both during the onboarding and during the operational phases.
+
+The Entities that **provide** the information are the following:
+
+  - the Attestation Scheme Provider, for the definition of a Credential type and its scheme;
+  - the Authentic Sources, for their declared data capabilities;
+  - the Wallet-Relying Parties and the Wallet Providers, for their registration data.
+
+These roles are described in :ref:`onboarding-system:System Actors and Roles`.
+
+None of these Entities writes in a registry directly. They provide the information through the onboarding processes, which verify it and write it.
+Each registry is then signed and published by the Federation Trust Anchor for the national registries and for the federation statements, by the Registrar for the Register of WRPs, and by the European Commission for the EU catalogues and lists.
+
+.. note::
+  Not all the content of a registry is provided by an Entity. Some of it is set by the Onboarding System itself, such as the state of a Credential type in the Digital Credentials Catalog, which derives from the conditions of the versioned entry. The internal components of the Onboarding System and the process each of them realizes are described in :ref:`onboarding-system:System Components and Services`.
+
+.. note::
+  An Entity that provides an information is not necessarily the Entity that decides it, because the decisions on a Credential type are taken in its Attestation Rulebook, which is an input of the Onboarding System.
+
+Figure :ref:`fig_registry_infrastructure` shows the whole set of the registries and catalogues, grouped by purpose and by level, with the Entities that provide their content and the authorities that publish them.
 
 .. _fig_registry_infrastructure:
 .. plantuml:: plantuml/registry-infrastructure.puml
     :width: 99%
-    :alt: The figure illustrates the national registry infrastructure.
-    :caption: `Registry Infrastructure <https://www.plantuml.com/plantuml/svg/fLHDR-Cs4BthLqoD0iq2w_ZGxMNH1hlhz913Yo1EqQCn9aSM4OfKoQ4TeUX_Bqah5kDLi2fw420EPzwRZpVyv1aTXrPNtoaZT904Fwy_hDOVjclRTjQGuPkg-W5kgLQ6O7F_SFVuwwPmvj2XT3-kX6rRQsucRcfhU8b7yhQbvKyhGOvLhGGopV2MoBX3FyTLM_4qmoruSdvEddO_nosY7SZDS7oYVbPsiy2Kt0fqSeOdFOi6pPwsg7bElya_iUrcU1vHQ_ecv4ePpue3goIEweiDHgBhhmmc2-gjextoxFhtiFXziC73O8CxKpkCVq5mSBHu1tzNPrbU2MJKTXyeXjwglOedM3kIyKwXzh1-kL-yX-zzvnJJBuj1Jn6hG49Vfl4vS9Cm16niS8BEwNmJnuk6MYonDjao7q5eL6q9i4u6Fn-0yTaQswRGn-7tZPX_gggw9-UjkKgYYm5_U7AbSpA_1dV1ysSZ6kiIVZh1wLY6HQ77g4tlcTeh7pfo1-MjwxzOcLioMY2Poj3YRHWXbFU1d9-SCjoTBakGOJT604UwLsP_Zn6S4ix3oG23fGmkrsL4m1T9d1JX9rJo2gKG_GXox6BOdtbhuDxPWv8NYUUDIgnLqMXOQgfvUGDVRSn7MFo61lSfdHQLuVXvG2EX2pkjV1DpgYxw3yk8LA17Z3l3v52mXwFYPZfYajiQnTPv66pP1Jfd1Vb8N2Nrv60uB-f7k5LUs4Eym0CgZJjDCB6wLNNiBaBFbeiTcmi9jNMW3DD-I3J-M-26b8DX9XkhyyGY_UMyOHcwI5vkPqcTS22j5WZiSAUqIhA2gp6Z7EdVGUJqn2cP76FDpgAJIOj3uzwY7lPw1cagqaXAAd2TzVH_MD4NrJusz9ggEubOWWmkWKrZ0pe2IYABdifahnVGgXgMEyrsKYUSICzZt7BVKPPuYaCZ4jHVGJbgeqCidgxtrsaRdhS7r4egxhSI-zW2MmDEwABadvBMcCLm-nPGNfvuirS7CfSPZoopH5HRroBdCYNLogYaoaHiA3KKNG_8xDGkCFbhkCtTBpkVvwr9SCRywgLwFmniR68C8EE38n3MUEKv-fzoSTGvyl6Oj-PL8UYdgZWsIZINd8aXGJEAKrsDFMOvOXQchOk2ggeg7-nn-KPrBCviojHsc7gXzxU5lfZ2dfZyDCD1y4fQyHX7EfAK_HarRsGgEOiGUUf5cavbbCTq9l-DTMpgelf4HePM_mi0>`_
+    :alt: The figure illustrates all the registries and catalogues of the ecosystem, grouped by purpose and by level, with the Entities that provide their content and the authorities that publish them.
+    :caption: `Registries and Catalogues of the Ecosystem <https://www.plantuml.com/plantuml/svg/ZLRRRjiu47tNLqoD0fi0IVEmxKkm6zHria20tSAmKlJHOAInJPGY1LwIQel-UuUaBfJYr39WG29dpioPgpuQoxHrbSYoDrmMmfK8VwtUNwtURrUggfL4QM-ox0-unHsN2FbwS_zmboV2rjMir7zU5QggbBmvShDJqbwoPpIgmiiFLmLgotUyO1PdI9VCiaTcveX-msQ652-t1TFb3Cbd9WJQ6OBulJWmkSSj4tF4TrpC5JK7ZgASAUmCQdDAxefBOxbrbljaPP-KaoNJpPbaTckmOjBouW8MdvaNO08skEV6Qexc0lBs7fWiuPQRGZsXRc3jTAqCBixXHzONpPbbtvLKLKDW3-tZuWBUcbfpYtylkhmkpXETGZ1URNKqwJLN_i1qJfm6CCM1V4mHyd0o7u6PL7lfx043vLmvNU1y72fl9jJU8Q7SyZsdDrXfB3qQ4mPMtVqhI3ydkR7Q6VjQOXxyvIjvY6nGa-wcVGIrWw-RjKbD3vKseh53EgivAVz3lkjW79RhUxYJPQsuj6JzZYZP1d9B7LsHaWdr4NtwZ-blhzj9IQBR2dn2GQRklWpXYM3_ajzcGemYl6MM8l3eh0_2ejVn_9RzpPnKRKFXl4J9u_592A6iJtHmq-i5ybZ6q0mfmfP9pocLZHn_4wgy8RdgpBWQzHCtIZUVL1bgV3W1VvI29DEMK3g8G6kjrHEdf7hM52waLH3I6qb3Vvt2TRDhm69TYyGECKUwPeIGp1y2wTF_h6lI_1f6xkK6HSFb7jQqcoXw8V6jEMwCYow_x2guZvSZSt7S3_xgYDr2XwuO6qkKqy4USj1YnCsGnYywVZncKNfKBw6Rbx8uA3rkhTWryIR5eDqs0cXd51lQcfvFvjtlQ0eW6V9TvhIgaKbOzQSfGDWcf4gx_v9-y7nGK4Tw1YY_KD1M8LV2RJQfA3gyWNIbN7UX2Qgb_vZWWJ0r04jJQ9iQGtjmQfCuphDfYPr0LthF9Fy_1fJBdT9LVFQmmJorC1IiPezSXFRCgFfwq92RCM8NxO3YjREs38DIF-glwIk9LfYEIXDI8MWD1CLiKa01fXsrOykxeJI2tKdp7ud4ilPPckJ87fWbqz0j0ooF8WtrSGsVbQ-V5WVREURJvTzbl2mzTzmhluL6XMBuNiOfLxj7mSqX98tg92dy8xxdBzLUQFHXEYRSjqKGxTWUbnt81k5k_rpJpgAzHl-fGaUG2KAh-j9FAS2xTodIifViujPjxw432FSZoj9_Wly2>`_
+
+Figure :ref:`fig_registry_discovery` shows, for the registries defined in this Section, the onboarding or operational phase in which each of them is read and by whom. More details are provided in each section.
+The way the registries with a trust purpose are read is described in :ref:`trust-evaluation:Trust Evaluation Process`.
+
+.. _fig_registry_discovery:
+.. plantuml:: plantuml/registry-discovery.puml
+    :width: 99%
+    :alt: The figure illustrates who reads the national semantic and discovery registries and in which phase.
+    :caption: `Discovery on the Registry Infrastructure <https://www.plantuml.com/plantuml/svg/dLR1Rjim3BtxAxXWm58WQGxhBiDMT4jtw6K8cWux1ep4909ioPFafCQmVnybnucIEassNcfJvECZ-IZdpdcqlYhoB7kZjCWhIV1fV3CQtyp6fYYD9krli-mTtDD2QOBfvF7XwTiqSVPLYTA-7mbJ54RVTfmiZFP3t90p1Gq_Z2HwdAEZ2rmhH_O2DoLd0gsym9EUnGhracQO-mlSDvZdTDPnfBJpobTUXVgphwRI4ctTr-XdZWhKNea1zBvZSC0S7ccfdBUAt02cstD0BU5UEM7MP6kOLBOqZdfNy3lRpQ7lyTbeKzGCzhHzx0tWhIkjylIvrpQsTvN4Y1nLCRDDoX0v3WRNaZWFW2wD_bBv5KN2KrDPGPVZEB7YMbEiQRHSZY3Oc9jbHHnxhvQAts1iIGO-c3iOj-SdaFvasOIiCxeVTCKWF_XVwXlCx3UjdQUYhvohsBqp6JmqXsdqLeLx04jvhVHomWiMPzrxR0omjQJ1gJ3t2DXskscswnZ08OMz4FSWZOWdrgoLREhv6IsmCwKGZJT7yyuF-GysAmEMK3gGbGtiEJyOFJTSQtWjhM4MBZfdnuHXM9N3MpWKuSUTq2DMc108B76kSXNw0drSeyfndbCJwQx06t1CUM7iYVodKhSxSpwfqfwq90bbitmNPJsSSLjkAyGagT8B0tswNbuFaWIl8B_U_v9iUvsWy6hTr11d45JCJzqqzftjsA0iEzBA_y74ga8tbmt7y6m2RMLXAxsfoQDANMV6ewlYQ7JDAPX5VElAp_PwHu3uwLJoRBlZ9-iC6SGEUURhak9D7U9Gy_LdwLUbB1NiuDhn5lWyMsEkfFBrJ6BDSsQos47r8F-bLNS1mKRv5PyirPhqCUF3Ai-k8a-lG1_BbE6Zh-8CER6c84p-iW5w_dpDAq_k6kuRLIOAZbkJa_0HyyM5DMY5l6iY1v1sbULUyrIO6FitN2oLbXo_HY4T599ybv8gDYibLYzoXWmCxNbLObqhiuaYnRZUeQUxWhBkbJuzd7InryAFf15FtFJzRgSLx6xBm899HPa4ZNPjO_VTScf-aSS_vKoBlkEhB_mA_0i0>`_
 
 
 Registry Discovery Endpoint
 ---------------------------
 
-The Trust Anchor MUST provide a discovery mechanism for registry components through standardized *well-known* endpoints providing metadata and REST API discovery information to handle complex operations like pagination and filtering.
+The Federation Trust Anchor MUST provide a discovery mechanism for registry components through standardized *well-known* endpoints providing metadata and REST API discovery information to handle complex operations like pagination and filtering.
 
-The Trust Anchor MUST publish registry discovery metadata at the ``.well-known/it-wallet-registry`` endpoint with content negotiation support:
+The Federation Trust Anchor MUST publish registry discovery metadata at the ``.well-known/it-wallet-registry`` endpoint with content negotiation support:
 
 - **Default Content-Type**: ``application/jwt`` (signed JWT ensuring authenticity and integrity)
 - **Alternative Content-Type**: ``application/json`` (plain JSON for development/debugging purposes)
@@ -127,7 +199,7 @@ Every endpoint of the Registry Infrastructure MUST support content negotiation a
 - **Default Content-Type**: ``application/jwt`` (signed JWT that provides authenticity and integrity)
 - **Alternative Content-Type**: ``application/json`` (plain JSON for development and debugging)
 
-Both representations are served at the same endpoint URL, not as separate resources or paths. The client selects the representation with the ``Accept`` request header, and the Trust Anchor states the returned representation in the ``Content-Type`` response header. If the request does not ask for a supported type (``Accept`` absent, ``*/*``, or only unsupported types), the endpoint MUST return the ``application/jwt`` representation.
+Both representations are served at the same endpoint URL, not as separate resources or paths. The client selects the representation with the ``Accept`` request header, and the Federation Trust Anchor states the returned representation in the ``Content-Type`` response header. If the request does not ask for a supported type (``Accept`` absent, ``*/*``, or only unsupported types), the endpoint MUST return the ``application/jwt`` representation.
 
 This requirement applies to all the endpoints of the Registry Infrastructure listed in the following table:
 
@@ -712,12 +784,12 @@ The Claims Registry MUST ensure:
 Claims Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^
 
-As shown in Figure :ref:`fig_registry_infrastructure`, the Claims Registry MUST support the complete ecosystem lifecycle:
+As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the Claims Registry MUST support the complete ecosystem lifecycle:
 
 **During Onboarding Process**:
 
   - **AS Registration**: Authentic Sources declare available claims from standardized registry during capability registration.
-  - **CI Registration**: Credential Issuers select Authentic Source entities based on required claims and register Credential types for catalog publication.
+  - **CI Registration**: Credential Issuers select Authentic Source entities based on required claims. The Credential types that use those claims are registered in the catalog by the Attestation Scheme Provider, see :ref:`onboarding-system:Credential Type Registration`.
   - **RP Registration**: Relying Parties specify authorization requirements using domains/purposes for specific User's attributes.
 
 **During Operational Activities**:
@@ -828,7 +900,7 @@ The Authentic Source Registry MUST ensure:
 Authentic Source Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As shown in Figure :ref:`fig_registry_infrastructure`, the Authentic Source Registry supports ecosystem coordination throughout the operational lifecycle:
+As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the Authentic Source Registry supports ecosystem coordination throughout the operational lifecycle:
 
 **During Onboarding Process**:
   - **AS Self-Declaration**: Authentic Sources register capabilities before any Credential types exist in the catalog.
@@ -1088,8 +1160,10 @@ The **Schema Registry** is the authoritative inventory of all known and accepted
 Schema Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^
 
-As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities interacting with the Schema Registry are:
+As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the main Entities interacting with the Schema Registry are:
 
+  - **Attestation Scheme Providers**: They provide the schema of a Credential type, or its alignment to the schema of an external Rulebook, and the Onboarding System registers it with its integrity digest during the :ref:`onboarding-system:Schema Provisioning`.
+  - **Credential Issuers**: They use the Schema Registry to build their metadata and to issue the Digital Credentials according to the registered schema.
   - **Relying Parties**: They use the Schema Registry to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
   - **Wallet Providers**: They access the Schema Registry to retrieve all necessary information for integrating them into their Wallet Solutions.
 
@@ -1200,13 +1274,50 @@ The Digital Credential Catalog MUST ensure to:
 Digital Credentials Catalog Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As shown in Figure :ref:`fig_registry_infrastructure`, the main Entities involved in the Digital Credential Catalog are:
+As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the main Entities involved in the Digital Credential Catalog are:
 
-  - **Digital Credential Issuers**: The entities authorized to issue Digital Credentials, registering them in the Catalog.
+  - **Attestation Scheme Providers**: The Entities that own the Attestation Rulebook of a Digital Credential and that request the registration of the corresponding versioned entry, see Attestation Scheme Provider.
+  - **Digital Credential Issuers**: They are added to the ``issuers`` field of a versioned entry as a result of the Digital Credentials they declare in their registration data.
   - **Relying Parties**: They use the Digital Credential Catalog to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
   - **Wallet Providers**: They access the Digital Credential Catalog to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
   - **Users**: The Users who indirectly use the Digital Credentials Catalog through their Wallet Instances to discover and request Digital Credentials.
-  - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalog.
+  - **Authentic Sources**: They are referenced by the versioned entry as its data source and they act as Attestation Scheme Provider when they own the Attestation Rulebook.
+
+A versioned entry is not provided by a single Entity.
+Its fields come from different sources and they are written in different onboarding phases, as summarized in the table below.
+The Data Identifiers that carry this information through the onboarding, and their mapping to the fields of the entry, are defined in :ref:`onboarding-system:Registration Data Model`.
+
+.. _table_catalog_entry_provision:
+.. list-table:: Provision of a Versioned Entry of the Digital Credentials Catalog
+   :class: longtable
+   :widths: 40 32 28
+   :header-rows: 1
+
+   * - **Fields**
+     - **Provided by**
+     - **Process**
+   * - ``credential_type``, ``version``, ``credential_name_l10n_id``, ``legal_type``, ``domains``, ``classes``, ``purposes``, ``authentication``, ``validity_info``, ``restriction_policy``, ``pricing_policy``, ``rulebookURI``, ``bindingType``, ``attestationLoS``, ``trustedAuthorities``
+     - The Attestation Scheme Provider, that takes the values from the Attestation Rulebook it owns
+     - :ref:`onboarding-system:Credential Type Registration`
+   * - ``authentic_sources`` or ``parent_credentials``
+     - The Attestation Scheme Provider, referencing the entries of the :ref:`registry:Authentic Source Registry` or an already registered Credential type
+     - :ref:`onboarding-system:Credential Type Registration`
+   * - ``schema_uri``, ``format``, ``vct``, ``docType``
+     - The Attestation Scheme Provider, through the schema it makes available in the :ref:`registry:Schema Registry`
+     - :ref:`onboarding-system:Schema Provisioning`
+   * - ``issuers``
+     - Not provided as such. Each element derives from the Digital Credentials that a Credential Issuer declares in its registration data
+     - :ref:`onboarding-system:Entity Registration` and :ref:`onboarding-system:Entity Update`
+   * - ``state``
+     - Not provided. It derives from the conditions of the versioned entry
+     - :ref:`onboarding-system:Credential Type Activation and Deactivation`
+
+The registration of the versioned entry is approved by the Supervisory Body, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`, it is written by the Onboarding System and it is published by the Federation Trust Anchor with the rest of the catalog.
+
+.. note::
+  The scheme is the machine-readable definition of an Attestation type, that at EU level is registered in the Catalogue of Schemes and that at national level corresponds to the versioned entry of the Digital Credentials Catalog.
+  The Credential Schema is the JSON Schema or the CBOR Schema that validates the structure of the Digital Credential, and it is registered in the :ref:`registry:Schema Registry`.
+  The Attestation Scheme Provider owns the first one and provides the second one as part of the technical specification of the Credential type.
 
 Digital Credentials Catalog Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1268,7 +1379,7 @@ Each element of the ``credentials`` array contains at least the following inform
     - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
 
       * **allowed_wallet_ids**: List of allowed Wallet Solutions identifiers.
-      * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added by the Trust Anchor in the **issuers** field of the corresponding Digital Credential.
+      * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added to the **issuers** field of the corresponding Digital Credential, as described in :ref:`onboarding-system:Credential Type Registration`.
       * **presentation_flows**: Type of presentation flows supported; remote and/or proximity flow.
   * - **pricing_policy**
     - OPTIONAL. Information about Digital Credential pricing, including:
@@ -1431,7 +1542,7 @@ Registry Infrastructure Usage Journeys
 
 The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities.
 The main Journeys below illustrate the operational interactions that read the Registry Infrastructure.
-The complementary journey that populates the registries is the onboarding registration, which registers the entities, the Authentic Sources, the claims, the schemas and the Credential types, as described in :ref:`onboarding-system:Onboarding Processes`.
+The complementary journey that populates the registries is the onboarding registration, which registers the entities, the Authentic Sources, the claims, the schemas and the Credential types, as shown in Figure :ref:`fig_registry_infrastructure` and described in :ref:`onboarding-system:Onboarding Processes`.
 
 Catalog Browsing
 ^^^^^^^^^^^^^^^^

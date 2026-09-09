@@ -10,15 +10,17 @@ It is organized as a common part and a profile for each role.
 Registration Data Model
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This section defines the complete set of the data the entities provide to the Onboarding System, with its semantics and, where applicable, its normative reference.
+This section defines the complete set of the data the entities provide to the Onboarding System, together with the data that defines a Credential type, with its semantics and, where applicable, its normative reference.
 The data is identified by a format-agnostic **Data Identifier**.
 
 The following tables provide:
 
 - *Base registration data* provided by every entity, whatever its role.
 - *Extended registration data* provided by an entity depending on its role, where each :ref:`onboarding-system:Registration Profiles` instance specifies which extended data the role provides and how the entity populates it.
+- *Credential type definition data* that describes a Credential type.
 
-Depending on the role, the data is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), the Digital Credentials Catalog for the Credential types (:ref:`registry:Digital Credentials Catalog`), and the notification dataset for a Wallet Provider.
+Depending on the role, the registration data is then encoded in a different data model, the ``WalletRelyingParty`` schema of the Register for a Wallet-Relying Party (:ref:`infrastructure-trust:Register of WRPs`), the entry of the AS Registry for an Authentic Source (:ref:`registry:Authentic Source Registry`), and the notification dataset for a notifiable Entity.
+The Credential type definition data is encoded in the versioned entry of the Digital Credentials Catalog (:ref:`registry:Digital Credentials Catalog`).
 The mapping to the destination data models is given in :ref:`onboarding-system:Mapping to the Registry Data Models`.
 
 .. list-table:: Base Registration Data
@@ -69,11 +71,14 @@ A given entity provides only the subset that applies to its role, as defined in 
      - The attributes a Relying Party intends to request from the Wallet Units. 
      - [`CIR2025/848`_], Annex I
    * - `provided_attestations`
-     - The Attestation types a Credential Issuer intends to issue. It is declared through the Credential type declaration, that anchors each type to its Rulebook and creates or matches the versioned entry of the Digital Credentials Catalog, see :ref:`registry:Digital Credentials Catalog`.
+     - The Attestation types a Credential Issuer intends to issue. Within IT-Wallet each of them references a versioned entry already present in the Digital Credentials Catalog, and the declaration adds the Credential Issuer to the ``issuers`` field of that entry, see :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
    * - `intermediary_relationship`
      - For a Relying Party Intermediary, the declaration that it acts as an intermediary. For an intermediated Relying Party, the reference to the Intermediary it uses.
      - [`ETSI TS 119 475`_], Table 10
+   * - `trust_framework_scope`
+     - The declaration of the Trust Framework in which the entity intends to operate (the EUDIW Trust Framework for the cross-border operation or the National Trust Framework alone). It is provided by the roles for which this choice is not already fixed by the notification, and it determines the Trust Artifacts the entity obtains and the way the other Data Identifiers of the profile are provided, see :ref:`infrastructure-trust:Overview`. It applies to the entity, while ``trustedAuthorities`` of a Credential type applies to the validation of an Attestation of that type.
+     - This specification
    * - `federation_entity_identifier`
      - The identifier of the Federation Entity in the National Trust Framework, that is the ``iss`` and ``sub`` of its Entity Configuration.
      - `OID-FED`_, Section 3
@@ -89,15 +94,6 @@ A given entity provides only the subset that applies to its role, as defined in 
    * - `visual_identity`
      - The visual assets of an Authentic Source, that is the logo of the organization and the logo and the background color associated with a provided dataset, each with its integrity digest and its alternative text.
      - This specification
-   * - `credential_type_declaration`
-     - For a Credential Issuer, the Credential types it issues, each anchored to its Rulebook. It creates or matches the versioned entry of the Digital Credentials Catalog and it groups the metadata of the type, that is the Digital Credential Metadata, that is the unique identifier, the User authentication methods and the minimum Level of Assurance, and the reference to the Authentic Sources that provide its data, see :ref:`registry:Digital Credentials Catalog`.
-     - [`CIR2025/848`_], Annex I
-   * - `credential_technical_specification`
-     - Technical definition of a Credential type, that groups the Technical Specification fields of the Digital Credentials Catalog, that is the Credential schemes, the Credential formats and the authentication policy, see :ref:`registry:Digital Credentials Catalog`.
-     - [`CIR2025/848`_], Annex I
-   * - `credential_policies`
-     - Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see :ref:`registry:Digital Credentials Catalog`.
-     - [`CIR2025/848`_], Annex I
    * - `conformity_assessment`
      - The outcome of the conformity assessment of the entity, such as the Conformity Assessment Report or the assessments performed under the National certification scheme operated by the Italian National Cybersecurity Agency (ACN) and the functional testing under the EU functional conformity assessment framework (FCAF). It MUST be provided by the notified categories.
      - [`EIDAS-ARF`_], Annex 2
@@ -110,23 +106,50 @@ A given entity provides only the subset that applies to its role, as defined in 
    * - `verification_endpoint`
      - The cross-border verification interface exposed to Qualified Trust Service Providers for the Annex VI attributes exported to the EUDIW Catalogue of Attributes, conformant to ETSI TS 119 478 and declared in the ``data_capabilities`` of the entry of the Authentic Source Registry, see :ref:`registry:Authentic Source Registry`. It is provided by the Authentic Source.
      - [`EUDI-TS 11`_], Section 2.1
+
+The data below defines a Credential type and not an entity.
+For this reason it is not registration data, it does not follow a profile of :ref:`onboarding-system:Registration Profiles`, and it is the input of the :ref:`onboarding-system:Credential Type Registration`.
+It is provided by the Attestation Scheme Provider, which owns the Attestation Rulebook of the Credential type, and it is taken from the Rulebook itself.
+The same criterion applies to the definition of a claim, registered through the :ref:`onboarding-system:Claim Registration`.
+
+.. list-table:: Credential Type Definition Data
+   :class: longtable
+   :widths: 26 46 28
+   :header-rows: 1
+
+   * - **Data Identifier**
+     - **Description**
+     - **Normative reference**
+   * - `credential_type_declaration`
+     - The Credential type, anchored to its Rulebook. It creates the versioned entry of the Digital Credentials Catalog and it groups the Digital Credential Metadata of the type (the unique identifier and the version, the human-readable name, the classification by domains and classes, the User authentication methods and the minimum Level of Assurance), together with the reference to the Authentic Sources, or to the parent Credential types, that provide its data, see :ref:`registry:Digital Credentials Catalog`.
+     - [`CIR2025/848`_], Annex I
+   * - `credential_technical_specification`
+     - Technical definition of a Credential type, that groups the Technical Specification fields of the Digital Credentials Catalog, that is the Credential schemes, the Credential formats and the authentication policy, see :ref:`registry:Digital Credentials Catalog`.
+     - [`CIR2025/848`_], Annex I
+   * - `credential_policies`
+     - Conditions of use of a Credential type, that group the Terms of Use fields of the Digital Credentials Catalog, that is the Credential validity, the restriction policy, the pricing policy and the Credential purposes, see :ref:`registry:Digital Credentials Catalog`.
+     - [`CIR2025/848`_], Annex I
    * - `trustedAuthorities`
-     - The trusted authorities that define the trust framework of the Credential type in the Digital Credentials Catalog, that is the trust anchors a verifier relies on to validate the Attestation, see :ref:`registry:Digital Credentials Catalog`. It is provided by the Credential Issuer and by the Relying Party.
+     - The trusted authorities that define the trust framework of the Credential type in the Digital Credentials Catalog, that is the trust anchors a verifier relies on to validate the Attestation, see :ref:`registry:Digital Credentials Catalog`.
      - [`EUDI-TS 11`_], Section 4.3
    * - `rulebookURI`
-     - The URI of the human-readable Attestation Rulebook that defines the non-machine-readable aspects of the Credential type in the Digital Credentials Catalog, see :ref:`registry:Digital Credentials Catalog`. It is provided by the Authentic Source.
+     - The URI of the human-readable Attestation Rulebook that defines the non-machine-readable aspects of the Credential type in the Digital Credentials Catalog, see :ref:`registry:Digital Credentials Catalog`.
      - [`EUDI-TS 11`_], Section 4.3
    * - `bindingType`
-     - The type of cryptographic key binding required for the issuance of the Credential type in the Digital Credentials Catalog, one of ``claim``, ``key``, ``biometric`` or ``none``, see :ref:`registry:Digital Credentials Catalog`. It is provided by the Authentic Source.
+     - The type of cryptographic key binding required for the issuance of the Credential type in the Digital Credentials Catalog, one of ``claim``, ``key``, ``biometric`` or ``none``, see :ref:`registry:Digital Credentials Catalog`.
      - [`EUDI-TS 11`_], Section 4.3
    * - `attestationLoS`
-     - The attestation Level of Security of the Credential type in the Digital Credentials Catalog, that is the attack potential resistance required for user authentication and key storage, see :ref:`registry:Digital Credentials Catalog`. It is provided by the Authentic Source.
+     - The attestation Level of Security of the Credential type in the Digital Credentials Catalog, that is the attack potential resistance required for user authentication and key storage, see :ref:`registry:Digital Credentials Catalog`.
      - [`EUDI-TS 11`_], Section 4.3
+
+.. note::
+   The `provided_attestations` remains part of the registration data of a Credential Issuer, because it is the declaration of the Credential types the Credential Issuer intends to issue and not the definition of those types.
+   The two are distinct: the definition creates the versioned entry, the declaration adds the Credential Issuer to its ``issuers`` field.
 
 Mapping to the Registry Data Models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Onboarding System collects the registration data, and it is then encoded in the data model of the destination that depends on the role.
+The Onboarding System collects the registration data and the Credential type definition data, and they are then encoded in the data model of the destination, that for the registration data depends on the role.
 The table below maps each Data Identifier to the fields of the destination data models, for the Data Identifiers whose mapping is not one-to-one with a single field.
 
 .. list-table:: Mapping of the Data Identifiers to the destination data models
@@ -175,10 +198,13 @@ The table below maps each Data Identifier to the fields of the destination data 
      - In the Digital Credentials Catalog: 
      
          - ``credential_type``, 
+         - ``version``, 
          - ``credential_name_l10n_id``, 
+         - ``domains``, 
+         - ``classes``, 
          - ``authentication``,
        
-       and the reference to the Authentic Sources that provide the data of the Credential type.
+       and the ``authentic_sources``, or the ``parent_credentials``, that provide the data of the Credential type.
    * - `credential_technical_specification`
      - In the Digital Credentials Catalog:
      
@@ -192,6 +218,7 @@ The table below maps each Data Identifier to the fields of the destination data 
          - ``validity_info``, 
          - ``restriction_policy``, 
          - ``pricing_policy``, 
+         - ``purposes``, 
          - ``legal_type``.
    * - `conformity_assessment`
      - In the notification dataset, the conformity assessment report.
@@ -224,6 +251,8 @@ The verification applies to Authentic Sources, Wallet Providers and Wallet-Relyi
   
   .. note::
    The Credential Issuer declares the Credential types it intends to issue, each anchored to its Rulebook, and its integration with the relevant Authentic Sources is authorized where needed.
+
+The Supervisory Body also approves the claims, the schemas and the Credential types before they are registered in the registries, and that approval is a precondition of the :ref:`onboarding-system:Claim Registration`, of the :ref:`onboarding-system:Schema Provisioning` and of the :ref:`onboarding-system:Credential Type Registration`.
 
 The identity proofing of the Wallet-Relying Parties MUST be carried out by the Registrar according to [`ETSI TS 119 461`_], and the verification of the entitlements MUST follow Annex III of [`CIR2025/848`_].
 Within IT-Wallet the identity proofing is applied to every entity that onboards, including the entities that do not operate in the EUDIW Trust Framework, even where it is not strictly required for them.
@@ -301,6 +330,10 @@ Every profile provides the base registration data defined in :ref:`onboarding-sy
 An entity can hold more than one entitlement in a single registration record and for more than one role, so the profiles are not mutually exclusive and they compose.
 For example, an entity can be at the same time a Relying Party and a QEAA Provider, and in that case its input is the union of the two profiles and its outcome is the union of the two.
 
+.. note::
+   The definition of a Credential type is not part of any registration profile, as described in :ref:`onboarding-system:Registration Data Model`.
+   It is provided by the Attestation Scheme Provider, see :ref:`onboarding-system:System Actors and Roles`, through the :ref:`onboarding-system:Credential Type Registration`.
+
 PID Provider
 """"""""""""
 
@@ -316,9 +349,6 @@ In addition to the base registration data, a PID Provider provides the following
 
   - One Certificate Signing Request for the WRPAC, with which the PID Provider authenticates towards the Wallet Units.
   - One Certificate Signing Request for the Sign/Seal Certificate, with which it signs the issued PID.
-- `credential_type_declaration`
-- `credential_technical_specification`
-- `credential_policies`
 - `conformity_assessment`
 - `service_supply_point`
 
@@ -337,9 +367,6 @@ In addition to the base registration data, a QEAA Provider provides the followin
 - `certificate_signing_requests`
 
   - One Certificate Signing Request for the WRPAC, with which the QEAA Provider authenticates towards the Wallet Units.
-- `credential_type_declaration`
-- `credential_technical_specification`
-- `credential_policies`
 - `conformity_assessment`
 - `service_supply_point`
 - `signing_trust_anchor`
@@ -361,9 +388,6 @@ In addition to the base registration data, a PuB-EAA Provider provides the follo
 - `certificate_signing_requests`
 
   - One Certificate Signing Request for the WRPAC, with which the PuB-EAA Provider authenticates towards the Wallet Units.
-- `credential_type_declaration`
-- `credential_technical_specification`
-- `credential_policies`
 - `conformity_assessment`:
 
   - The Conformity Assessment Report issued by a Conformity Assessment Body under Article 45f of [`EIDAS`_].
@@ -387,11 +411,8 @@ In addition to the base registration data, a Non-Qualified EAA Provider provides
 
   - One Certificate Signing Request for the Sign/Seal Certificate, with which the Non-Qualified EAA Provider signs the issued EAA.
   - A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework additionally provides one Certificate Signing Request for the WRPAC, with which it authenticates towards the Wallet Units.
-- `credential_type_declaration`
-- `credential_technical_specification`
-- `credential_policies`
 - `service_supply_point`
-- `trustedAuthorities`
+- `trust_framework_scope`
   
   - A Non-Qualified EAA Provider declares, at onboarding, whether it operates in the EUDIW Trust Framework or only within the national boundary, and this choice affects the artifacts it obtains, as described in :ref:`infrastructure-trust:Infrastructure of Trust`. A Non-Qualified EAA Provider that operates in the EUDIW Trust Framework obtains the Register record, the WRPAC and the Sign/Seal Certificate, while a Non-Qualified EAA Provider that operates only within the national boundary obtains the Sign/Seal Certificate alone, is authenticated by the Wallet Unit through the National Trust Framework, and its Attestations are validated against the trust anchor distributed by the Entity Configuration of the Federation TA. The IT-Wallet ID, the national-scope Electronic Attestation of Person Identification Data, is an example of an Attestation issued by a Non-Qualified EAA Provider that operates within the national boundary, see :ref:`credential-data-model-it-wallet-id:IT-Wallet ID Data Model` and :term:`IT-Wallet ID`. It is an EAA and MUST NOT be confused with the EUDI Person Identification Data, which is not an EAA.
 
@@ -416,7 +437,7 @@ Besides the base registration data, a Relying Party provides the following exten
 - `certificate_signing_requests`
 
   - One Certificate Signing Request for each X.509 certificate the Relying Party needs, that is the WRPAC when it operates in the EUDIW Trust Framework, and the National Authentication Certificate when it operates only in National Trust Framework and supports the Proximity Flow.
-- `trustedAuthorities`
+- `trust_framework_scope`
 
   - The Relying Party declares whether it operates within the EUDIW Trust Framework for cross-border operations or only within national boundaries. This choice affects the artifacts it obtains, as detailed in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
@@ -480,3 +501,6 @@ In addition to the base registration data, an Authentic Source provides the foll
 
 - `provided_claims_purposes`
 - `visual_identity`
+- `verification_endpoint`
+
+  - Provided only where the Authentic Source is responsible for an attribute exported to the EUDIW Catalogue of Attributes, so that a Qualified Trust Service Provider of another Member State can reach its verification interface.

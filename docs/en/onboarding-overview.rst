@@ -31,6 +31,11 @@ The trust-infrastructure roles are realized by the components and services of th
   - **National Federation Authorities**: the **Federation Trust Anchor** and its **Federation Intermediates**, which register Federation Entities and apply the metadata policies. Each Federation Authority issues the X.509 certificates and the Trust Marks for the Federation Entities it registers, while the registration Trust Mark is issued only by the Federation Trust Anchor, as described in :ref:`infrastructure-trust:Trust Mark registration-entity`.
     In IT-Wallet the National Trust Anchor also operates the root Certification Authority of the National X.509 signing PKI, whose root certificate and its distribution are described in :ref:`infrastructure-trust:PKI Architecture`.
  
+**Entities that interact with the Onboarding System without being onboarded**
+
+  - **Attestation Scheme Providers**: they own the Attestation Rulebook of a Credential type and they request the registration of the corresponding versioned entry in the Digital Credentials Catalog, providing the definition and the schema taken from the Rulebook, see :ref:`onboarding-system:Credential Type Registration`.
+  An Attestation Scheme Provider is not registered as an Entity for this role. Within IT-Wallet the role is held by an orfanization that owns the Rulebook.
+
 .. note::
    A single organization may perform several of these functions at once.
  
