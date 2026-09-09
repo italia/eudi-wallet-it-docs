@@ -71,7 +71,7 @@ A given entity provides only the subset that applies to its role, as defined in 
      - The attributes a Relying Party intends to request from the Wallet Units. 
      - [`CIR2025/848`_], Annex I
    * - `provided_attestations`
-     - The Attestation types a Credential Issuer intends to issue. Within IT-Wallet each of them references a versioned entry already present in the Digital Credentials Catalog, and the declaration adds the Credential Issuer to the ``issuers`` field of that entry, see :ref:`registry:Digital Credentials Catalog`.
+     - The Attestation types a Credential Issuer intends to issue. Within IT-Wallet each of them references a versioned entry already present in the Digital Credentials Catalog, and the declaration adds the Credential Issuer to the ``issuers`` field of that entry, together with the issuance capabilities offered for that Credential type (the supported issuance flows, the parameters of the deferred issuance and the documentation of the issuance service), see :ref:`registry:Digital Credentials Catalog`.
      - [`CIR2025/848`_], Annex I
    * - `intermediary_relationship`
      - For a Relying Party Intermediary, the declaration that it acts as an intermediary. For an intermediated Relying Party, the reference to the Intermediary it uses.
@@ -160,13 +160,17 @@ The table below maps each Data Identifier to the fields of the destination data 
    * - **Data Identifier**
      - **Destination fields**
    * - `legal_name`
-     - In the Register, the ``legalName``. In the AS Registry, the ``organization_name_l10n_id``.
+     - In the Register, the ``legalName`` of the ``legalPerson``. In the AS Registry, the ``organization_name_l10n_id``. In the registration Trust Mark, the ``organization_name``. In the Digital Credentials Catalog, the ``organization_name_l10n_id`` of the ``issuers`` element of the Credential Issuer.
+   * - `identifier`
+     - In the Register, the ``identifier`` array, each element carrying its ``type`` and its value. In the registration Trust Mark, the ``vat_number`` for a private entity, the ``ipa_code`` for a public body and the ``legal_identifier``. In the Digital Credentials Catalog, the ``organization_code`` of the ``issuers`` element of the Credential Issuer.
    * - `legal_nature`
-     - In the Register, the ``isPSB`` flag. In the AS Registry, the ``organization_type``.
+     - In the Register, the ``isPSB`` flag. In the AS Registry, the ``organization_type``. In the registration Trust Mark, the ``public_body``.
    * - `contact_information`
      - In the Register: 
      
          - ``postalAddress``, 
+         - ``email``,
+         - ``phone``,
          - ``infoURI``,
          - ``supportURI``. 
        
@@ -174,8 +178,20 @@ The table below maps each Data Identifier to the fields of the destination data 
          
          - ``contacts``, 
          - ``homepage_uri``.
+       
+       In the registration Trust Mark, the ``email`` and the ``support_uri``. In the Entity Configuration, the ``contacts`` and the ``homepage_uri`` of the ``federation_entity`` metadata. In the Digital Credentials Catalog, the ``contacts`` and the ``homepage_uri`` of the ``issuers`` element of the Credential Issuer.
+   * - `service_policies`
+     - In the Register, the ``policyURI`` of each element of the ``policy`` array, distinguished by its ``type``. In the registration Trust Mark, the ``privacy_policy``. In the Entity Configuration, the ``policy_uri`` and the ``tos_uri`` of the ``federation_entity`` metadata. In the Digital Credentials Catalog, the ``policy_uri`` and the ``tos_uri`` of the ``issuers`` element of the Credential Issuer.
    * - `data_protection_authority`
-     - In the Register, the ``supervisoryAuthority``. In the AS Registry, the ``dpa_contact``.
+     - In the Register, the ``supervisoryAuthority``. In the AS Registry, the ``dpa_contact``. In the registration Trust Mark, the ``supervisory_authority``.
+   * - `entitlements`
+     - In the Register, the ``entitlement``. In the registration Trust Mark, the ``entitlements``. In the Digital Credentials Catalog, the ``legal_type`` of the ``issuers`` element of the Credential Issuer.
+   * - `service_description`
+     - In the Register, the ``tradeName`` and the ``srvDescription``. In the registration Trust Mark, the ``srv_description``.
+   * - `intended_use`
+     - In the Register, the ``intendedUse`` array, each element carrying its ``intendedUseIdentifier``, ``purpose``, ``privacyPolicy`` and ``credential``. In the registration Trust Mark, the ``credentials`` and the ``purpose``.
+   * - `provided_attestations`
+     - In the Register, the ``providesAttestations``. In the registration Trust Mark, the ``provides_attestations``. In the Digital Credentials Catalog, the element of the ``issuers`` array of each declared Credential type, including its ``issuance_flows`` and its ``service_documentation_uri``.
    * - `provided_claims_purposes`
      - In the AS Registry, the ``data_capabilities``, that is 
      
@@ -226,6 +242,11 @@ The table below maps each Data Identifier to the fields of the destination data 
      - In the notification dataset, the service supply point.
    * - `signing_trust_anchor`
      - In the notification dataset, the trust anchor.
+
+Some information are present both in the registered data and in the self-signed Entity Configuration of the Entity.
+The registered value is authoritative, asserted by the Registrar in the Register and by the Federation Trust Anchor in the registration Trust Mark, while the informational parameters of the ``federation_entity`` metadata are published under the responsibility of the Entity.
+Where the Onboarding System requires a value that the Entity also publishes in its Entity Configuration, it MUST read the Entity Configuration and MUST verify the match. A mismatch MUST block the registration, and after the registration it MUST be solved through an :ref:`onboarding-system:Entity Update`.
+Within IT-Wallet the ``metadata_policy`` of the Subordinate Statement fixes the ``organization_name`` of the ``federation_entity`` metadata to the registered value, so the name shown to the User cannot diverge from the one carried by the WRPAC and by the WRPRC. The other informational parameters are not fixed.
 
 Eligibility and Compliance Preconditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

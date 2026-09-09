@@ -1306,7 +1306,7 @@ The Data Identifiers that carry this information through the onboarding, and the
      - The Attestation Scheme Provider, through the schema it makes available in the :ref:`registry:Schema Registry`
      - :ref:`onboarding-system:Schema Provisioning`
    * - ``issuers``
-     - Not provided as such. Each element derives from the Digital Credentials that a Credential Issuer declares in its registration data
+     - Each element derives from the Digital Credentials that a Credential Issuer declares in its registration data, with the issuance capabilities it offers for each of them
      - :ref:`onboarding-system:Entity Registration` and :ref:`onboarding-system:Entity Update`
    * - ``state``
      - Not provided. It derives from the conditions of the versioned entry

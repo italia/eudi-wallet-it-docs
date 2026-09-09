@@ -86,6 +86,7 @@ This process describes what the Entity submits and which steps the components ex
 **Input**
 
 The updated registration data defined in :ref:`onboarding-system:Registration Data Model`.
+For a change of the Identity Information the input is the new ``legal_name``, ``identifier``, ``legal_nature``, ``contact_information``, ``service_policies`` or ``data_protection_authority``.
 For a change of the Technical Configuration related to the new key material, the ``federation_entity_key`` and ``certificate_signing_requests`` are provided respectively for the federation identity and for the X.509 certificates.
 For a change of the Authorization Information the input is the new ``entitlements``, ``intended_use``, ``provided_attestations`` or ``intermediary_relationship``, depending on the role.
 
@@ -97,14 +98,18 @@ A change that affects the Authorization Information triggers the re-verification
 **Process**
 
 1. The Entity submits the change of one or more categories of its registration data.
-2. For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Certificate Management re-issues the WRPAC or the WRPRC where the changed data is provided by them.
+2. For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Certificate Management re-issues the WRPAC or the WRPRC where the changed data is provided by them. Where the Entity belongs to a notified category, the EU Notification Management updates the notification, as described in :ref:`onboarding-system:Notification and Publication`.
 3. For a change of the ``federation_entity_key``, the rotation of the key is handled by the National Federation Management, that re-issues the Subordinate Statement attesting the new key, so the new key becomes trusted only when the superior attests it, following :ref:`infrastructure-trust:Federation Entity Key Rotation`. The rotation of the keys of the X.509 certificates is a re-issuance handled by the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes, where the Entity provides the new ``certificate_signing_requests`` in the ACME order.
 4. A change of the Authorization Information is subject to the re-verification of the eligibility by the Supervisory Body, and, for a Credential Issuer, a change of the Credential provision capabilities adds it to or removes it from the ``issuers`` field of the versioned entry of a Credential type, as described in :ref:`onboarding-system:Credential Type Registration`.
 5. The update produces the corresponding event, a ``metadata_update`` for a change of the Identity Information or the Technical Configuration and a ``jwks_update`` for a key rotation, published on the Federation Subordinate Events Endpoint as described in :ref:`onboarding-system:Registration Events and Their Governance`.
 
 .. note::
-   The informational parameters of the ``federation_entity`` metadata, not included in the ``metadata_policy``, can be managed autonomously by the Entity in its self-signed Entity Configuration.
+   The informational parameters of the ``federation_entity`` metadata, with the exception of the ``organization_name``, are not included in the ``metadata_policy`` and can be managed autonomously by the Entity in its self-signed Entity Configuration.
    The protocol signature keys (``jwks``), the service endpoints and the request, response and redirect URIs are instead bound by the ``metadata_policy`` of the Subordinate Statement to the values approved at onboarding, as defined in :ref:`infrastructure-trust:National Trust Artifacts`, then a change of them is an Entity Update that re-issues the Subordinate Statement.
+
+.. note::
+   A change of the registered identity attributes of an Entity is an Entity Update, including a change of its ``legal_name``, of its ``legal_nature`` or of its ``identifier``, where the legal person stays the same.
+   Where the legal person itself changes, such as in a merger or in a demerger, the registration of the previous Entity MUST be cancelled and the new legal person MUST be registered as a new Entity, because the identity proofing is bound to the legal person.
 
 .. note::
    The rotation of a protocol key, the one provided within the protocol metadata, is carried out through the update of the ``metadata_policy`` and MUST follow the common practice: the new key is added to the fixed ``jwks`` and it coexists with the previous one until the Trust Chains built before the rotation have expired, and only then the previous key is removed.
@@ -165,7 +170,8 @@ The process does not produce a state in IT-Wallet, because the trust, the author
    A claim that is not yet in the Claims Registry activates the :ref:`onboarding-system:Claim Registration`.
 4. The Authentic Source Management writes the entry in the AS Registry, whose structure is defined in :ref:`registry:Authentic Source Registry`.
    The Authentic Source becomes discoverable by the Credential Issuers.
-5. The entry enables the :ref:`onboarding-system:Credential Type Registration`, as the Authentic Source is the data source that a Credential type references.
+
+The entry enables the :ref:`onboarding-system:Credential Type Registration`, as the Authentic Source is the data source that a Credential type references.
 
 .. note::
    The integration between an Authentic Source and a Credential Issuer takes place within PDND and is a precondition for the activation of a Credential type, not a process of the Onboarding System.
