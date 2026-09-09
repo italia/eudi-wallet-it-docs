@@ -119,8 +119,8 @@ The events that concern the Credential types and the Authentic Sources are descr
    * - Suspension
      - Request from a Supervisory Body, request from the WRP itself, or initiative of the Registrar in the cases listed after this table.
      - Registrar for the EUDIW Trust Framework, Federation Authority for the National Trust Framework.
-     - Article 9(1), 9(2) and 9(3) of [`CIR2025/848`_].
-     - Notification within 24 hours.
+     - Article 9(1), 9(2), 9(3) and 9(5) of [`CIR2025/848`_].
+     - Information of the WRP and of the Providers of its certificates within 24 hours.
 
    * - Reactivation
      - Removal of the condition that caused the suspension.
@@ -131,8 +131,8 @@ The events that concern the Credential types and the Authentic Sources are descr
    * - Cancellation
      - Request from a Supervisory Body, request from the WRP itself including when it no longer intends to rely upon Wallet Units, or initiative of the Registrar in the cases listed after this table.
      - Registrar for the EUDIW Trust Framework, Federation Authority for the National Trust Framework.
-     - Article 9(1), 9(2) and 9(3) of [`CIR2025/848`_].
-     - Notification within 24 hours.
+     - Article 9(1), 9(2), 9(3) and 9(5) of [`CIR2025/848`_].
+     - Information of the WRP and of the Providers of its certificates within 24 hours.
 
 Two roles carry out an event, one for each Trust Framework.
 Within the EUDIW Trust Framework the Registrar acts on the Register and notifies the Providers of the affected Trust Artifacts.
@@ -149,8 +149,9 @@ The Registrar MAY suspend or cancel the registration on its own initiative where
 
 Before suspending or cancelling a registration on its own initiative, the Registrar MUST conduct a proportionality assessment, taking into account the impact on the fundamental rights, the privacy, the security and the confidentiality of the Users of the ecosystem, the severity of the disruption caused by the measure and the associated costs, both for the WRP and for the User.
 
-The Registrar MUST inform the WRP and the relevant Providers of WRPACs and of WRPRCs without undue delay, and in any case not later than 24 hours.
-After the notification, the Providers MUST revoke the affected certificates without undue delay, where applicable.
+The Registrar MUST inform the WRP and the relevant Providers of WRPACs and of WRPRCs without undue delay, and in any case not later than 24 hours after the suspension or the cancellation, as set by Article 9(5) of [`CIR2025/848`_].
+The information MUST include the reasons for the suspension or the cancellation and the available means of redress or appeal.
+After the notification, the Providers MUST revoke the affected certificates without undue delay, where applicable, as set by Article 9(6) of [`CIR2025/848`_].
 
 The Registrar MUST keep the records of the registration, of the issuance data and of the changes for 10 years.
 Within IT-Wallet the same retention applies to the Federation Authority for the records of the National Trust Framework, by analogy.
@@ -409,12 +410,12 @@ The relationship between an Entity update and the Trust Artifacts it affects is 
 
    * - Suspension of an Entity
      - Registrar, Federation Authority
-     - Register (registration status no longer valid).
+     - Register (registration status no longer valid). Update of the LoTE or of the EUMS TL for the notified categories.
      - Revocation of the affected WRPAC, WRPRC and registration Trust Mark, and update of the Subordinate Statement.
 
    * - Reactivation of an Entity
      - Registrar, Federation Authority
-     - Register (registration status valid again).
+     - Register (registration status valid again). Update of the LoTE or of the EUMS TL for the notified categories.
      - New issuance of the Trust Artifacts revoked at suspension time.
 
    * - Cancellation of an Entity

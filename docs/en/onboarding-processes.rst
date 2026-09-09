@@ -179,7 +179,7 @@ The inclusion is the assertion, at Union level, of the role and of the authoriza
 4. The Commission may request additional information or clarifications to verify the completeness and the consistency of the notified information.
 5. The Commission publishes the List of Trusted Entities that compiles the notified information.
    The entity appears in the List of Trusted Entities of its type, whose data model, format and signature are described in :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`.
-6. Where the registration of the entity later changes, in particular where it is suspended or cancelled, the Onboarding System MUST reflect the change in the notification, and for a suspension or a cancellation the change MUST be notified within 24 hours, as described in :ref:`onboarding-system:Lifecycle Management`.
+6. Where the registration of the entity changes, in particular where it is suspended or cancelled, the Onboarding System MUST reflect the change in the notification.
 
 .. note::
    The Lists of Trusted Entities defined by [`CIR2024/2980`_] and the Trusted Lists defined by [`CID2015/1505`_] are two different artifacts.
