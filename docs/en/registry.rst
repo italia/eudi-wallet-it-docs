@@ -1613,7 +1613,7 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
     * **(EUDIW Trust Framework)**:
 
       * The RP validates the Digital Credential signature and evaluates trust with its issuer as described in :ref:`trust-evaluation:EUDIW Attestation Signature Validation`.
-      * The RP consults the EUDIW Catalogue of Schemes to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
+      * The RP consults the EUDIW Catalogue of Schemes to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`) where applicable.
 
     * **(National Trust Framework)**:
 
