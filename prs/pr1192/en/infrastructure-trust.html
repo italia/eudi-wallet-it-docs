@@ -1558,13 +1558,6 @@ It is RECOMMENDED to set <code class="docutils literal notranslate"><span class=
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Trust Anchor Revocation.</strong>
-Trust Anchor certificates are not subject to revocation, as their trust is established by policy through their formal inclusion and publication as specified by the applicable Trust Framework.
-Consequently, revocation status information, such as CRLs or OCSP responses, is not required for Trust Anchor certificates.</p>
-<p>Moreover, validating entities utilizing Trust Anchor certificates retrieved as specified by the applicable Trust Framework MAY omit revocation status checks for those certificates.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p><strong>Trust Anchor Signature.</strong>
 A Trust Anchor certificate MAY be self-signed (representing a root CA) or non-self-signed (representing an intermediate CA designated as a Trust Anchor by policy).
 Relying Parties MUST NOT require an additional issuer above a Trust Anchor retrieved as specified by the applicable Trust Framework, even if it is not self-signed, because the Trust Anchor is an authoritative input to the path validation algorithm designated by policy.</p>
@@ -3205,7 +3198,7 @@ Within IT-Wallet the registration Trust Mark is issued only by the Federation Tr
 <li><p><strong>metadata_policy</strong> (<code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code>): OPTIONAL in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>.
 Metadata policy bound to a specific metadata type and applied to the subtree, resolved by combining the <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> Claims along the Trust Chain, as defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 6.1.4.
 Within IT-Wallet the Subordinate Statement about a Leaf MUST carry a <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code> that binds the protocol metadata of the Leaf to the values approved at onboarding.
-Using the metadata policy operators of <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 6.1.3, it MUST fix the protocol signature keys (<code class="docutils literal notranslate"><span class="pre">jwks</span></code>) and, when present in the metadata type, the service endpoints and the request, response and redirect URIs (for example the <code class="docutils literal notranslate"><span class="pre">request_uris</span></code>, <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> and <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> of the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>).
+Using the metadata policy operators of <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 6.1.3, it MUST fix the <code class="docutils literal notranslate"><span class="pre">organization_name</span></code> of the <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> metadata, the protocol signature keys (<code class="docutils literal notranslate"><span class="pre">jwks</span></code>) and, when present in the metadata type, the service endpoints and the request, response and redirect URIs (for example the <code class="docutils literal notranslate"><span class="pre">request_uris</span></code>, <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> and <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> of the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>).
 This Subordinate Statement is issued by the immediate superior that registered the Leaf, that is the Federation TA for the Leaves it registers directly and a Federation Intermediate for its affiliated Relying Parties.
 The Subordinate Statement about a Federation Intermediate does not carry a <code class="docutils literal notranslate"><span class="pre">metadata_policy</span></code>, because the Intermediate has no protocol metadata and its affiliated Relying Parties are bound by the Intermediate itself.
 A superior MAY further restrict the metadata policy set by its own superiors, but MUST NOT relax it, as defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 6.1.1.</p></li>
@@ -5062,7 +5055,7 @@ Contains the <code class="docutils literal notranslate"><span class="pre">Revoke
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 08/09/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.6</span><span class="it-docs-footer-detail">Last updated 10/09/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>
