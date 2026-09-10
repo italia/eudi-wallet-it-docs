@@ -33,8 +33,7 @@ The trust-infrastructure roles are realized by the components and services of th
  
 **Entities that interact with the Onboarding System without being onboarded**
 
-  - **Attestation Scheme Providers**: they own the Attestation Rulebook of a Credential type and they request the registration of the corresponding versioned entry in the Digital Credentials Catalog, providing the definition and the schema taken from the Rulebook, see :ref:`onboarding-system:Credential Type Registration`.
-  An Attestation Scheme Provider is not registered as an Entity for this role. Within IT-Wallet the role is held by an orfanization that owns the Rulebook.
+  - **Attestation Scheme Providers**: they own the Attestation Rulebook of a Credential type and they request the registration of the corresponding versioned entry in the Digital Credentials Catalog, providing the definition and the schema taken from the Rulebook, see :ref:`onboarding-system:Credential Type Registration`. An Attestation Scheme Provider is not registered as an Entity for this role. Within IT-Wallet the role is held by an orfanization that owns the Rulebook.
 
 .. note::
    A single organization may perform several of these functions at once.
