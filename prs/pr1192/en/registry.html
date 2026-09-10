@@ -413,11 +413,79 @@ Each registry is then signed and published by the Federation Trust Anchor for th
 <figure class="align-default" id="id3">
 <span id="fig-registry-infrastructure"></span><p class="plantuml">
 <object data="_images/plantuml-a37998d8f18bfb99e2e6bb84f09a9b313ac07233.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-a37998d8f18bfb99e2e6bb84f09a9b313ac07233.png"><img src="_images/plantuml-a37998d8f18bfb99e2e6bb84f09a9b313ac07233.png" alt="The figure illustrates all the registries and catalogues of the ecosystem, grouped by purpose and by level, with the Entities that provide their content and the authorities that publish them." style="width: 99.0%"/></a>
+<a href="_images/plantuml-a37998d8f18bfb99e2e6bb84f09a9b313ac07233.png"><img src="_images/plantuml-a37998d8f18bfb99e2e6bb84f09a9b313ac07233.png" alt="&#64;startuml
+
+!include &lt;C4/C4_Component&gt;
+
+' Define SPRITES
+!include &lt;tupadr3/common&gt;
+!include &lt;tupadr3/font-awesome-5/certificate&gt;
+!include &lt;tupadr3/font-awesome-5/database&gt;
+!include &lt;tupadr3/font-awesome-5/key&gt;
+!include &lt;tupadr3/font-awesome-5/id_card&gt;
+!include &lt;tupadr3/font-awesome-5/wallet&gt;
+!include &lt;tupadr3/font-awesome-5/exchange_alt&gt;
+!include &lt;tupadr3/font-awesome-5/file_alt&gt;
+!include &lt;tupadr3/font-awesome-5/shield_alt&gt;
+!include &lt;tupadr3/font-awesome-5/users&gt;
+!include &lt;tupadr3/font-awesome/institution&gt;
+
+Boundary(nat_semantic, &quot;National Registries, Semantic and Discovery Purpose&quot;) {
+Component(taxonomy, &quot;Taxonomy&quot;, $sprite=&quot;database&quot;)
+Component(claim_registry, &quot;Claims Registry&quot;, $sprite=&quot;database&quot;)
+Component(as_registry, &quot;Authentic Source Registry&quot;, $sprite=&quot;database&quot;)
+Component(schema_registry, &quot;Schema Registry&quot;, $sprite=&quot;database&quot;)
+Component(catalogue, &quot;Digital Credentials Catalogue&quot;, $sprite=&quot;database&quot;)
+}
+
+Boundary(nat_trust, &quot;National Registries, Trust Purpose&quot;) {
+Component(register, &quot;Register of WRPs&quot;, $sprite=&quot;shield_alt&quot;)
+Component(fed_api, &quot;Federation API Endpoints, Entity Statements and Trust Marks&quot;, $sprite=&quot;shield_alt&quot;)
+}
+
+Boundary(eu_level, &quot;EU Catalogues and Lists&quot;) {
+Component(cat_attributes, &quot;Catalogue of Attributes&quot;, $sprite=&quot;database&quot;)
+Component(cat_schemes, &quot;Catalogue of Schemes&quot;, $sprite=&quot;database&quot;)
+Component(lote, &quot;Lists of Trusted Entities, Trusted Lists and List of Trusted Lists&quot;, $sprite=&quot;shield_alt&quot;)
+}
+
+System(supervisoryBody, &quot;Supervisory Body&quot;, $sprite=&quot;certificate&quot;)
+System(schemeProviders, &quot;Attestation Scheme Providers&quot;, $sprite=&quot;file_alt&quot;)
+System(authenticSources, &quot;Authentic Sources&quot;, $sprite=&quot;institution&quot;)
+Boundary(wrp, &quot;Wallet-Relying Parties&quot;) {
+System(issuers, &quot;Digital Credential Issuers&quot;, $sprite=&quot;id_card&quot;)
+System(relyingParties, &quot;Relying Parties&quot;, $sprite=&quot;exchange_alt&quot;)
+}
+System(walletProviders, &quot;Wallet Providers&quot;, $sprite=&quot;wallet&quot;)
+Component(trustAnchor, &quot;Federation Trust Anchor&quot;, $sprite=&quot;key&quot;)
+Component(registrar, &quot;Registrar&quot;, $sprite=&quot;certificate&quot;)
+System(commission, &quot;European Commission&quot;, $sprite=&quot;users&quot;)
+
+' ---- who provides the content ----
+schemeProviders --&gt; nat_semantic: Provide the definition of a Credential type and its schema
+authenticSources --&gt; nat_semantic: Provide the organization information and the data capabilities
+wrp --&gt; nat_trust: Provide the registration data
+issuers --&gt; catalogue: Declare the Credential types they issue
+walletProviders --&gt; fed_api: Provide the federation data
+supervisoryBody --&gt; nat_semantic: Approves the content that is registered
+supervisoryBody --&gt; commission: Notifies the entities of the notified categories
+
+' ---- who signs and publishes ----
+trustAnchor --&gt; nat_semantic: Signs and publishes
+trustAnchor --&gt; fed_api: Signs and publishes
+registrar --&gt; register: Signs and publishes
+commission --&gt; eu_level: Maintains and publishes
+
+' ---- alignment ----
+nat_semantic ..&gt; eu_level: Alignment of the national definitions
+
+&#64;enduml
+
+" style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLRRRjiu47tNLqoD0fi0IVEmxKkm6zHria20tSAmKlJHOAInJPGY1LwIQel-UuUaBfJYr39WG29dpioPgpuQoxHrbSYoDrmMmfK8VwtUNwtURrUggfL4QM-ox0-unHsN2FbwS_zmboV2rjMir7zU5QggbBmvShDJqbwoPpIgmiiFLmLgotUyO1PdI9VCiaTcveX-msQ652-t1TFb3Cbd9WJQ6OBulJWmkSSj4tF4TrpC5JK7ZgASAUmCQdDAxefBOxbrbljaPP-KaoNJpPbaTckmOjBouW8MdvaNO08skEV6Qexc0lBs7fWiuPQRGZsXRc3jTAqCBixXHzONpPbbtvLKLKDW3-tZuWBUcbfpYtylkhmkpXETGZ1URNKqwJLN_i1qJfm6CCM1V4mHyd0o7u6PL7lfx043vLmvNU1y72fl9jJU8Q7SyZsdDrXfB3qQ4mPMtVqhI3ydkR7Q6VjQOXxyvIjvY6nGa-wcVGIrWw-RjKbD3vKseh53EgivAVz3lkjW79RhUxYJPQsuj6JzZYZP1d9B7LsHaWdr4NtwZ-blhzj9IQBR2dn2GQRklWpXYM3_ajzcGemYl6MM8l3eh0_2ejVn_9RzpPnKRKFXl4J9u_592A6iJtHmq-i5ybZ6q0mfmfP9pocLZHn_4wgy8RdgpBWQzHCtIZUVL1bgV3W1VvI29DEMK3g8G6kjrHEdf7hM52waLH3I6qb3Vvt2TRDhm69TYyGECKUwPeIGp1y2wTF_h6lI_1f6xkK6HSFb7jQqcoXw8V6jEMwCYow_x2guZvSZSt7S3_xgYDr2XwuO6qkKqy4USj1YnCsGnYywVZncKNfKBw6Rbx8uA3rkhTWryIR5eDqs0cXd51lQcfvFvjtlQ0eW6V9TvhIgaKbOzQSfGDWcf4gx_v9-y7nGK4Tw1YY_KD1M8LV2RJQfA3gyWNIbN7UX2Qgb_vZWWJ0r04jJQ9iQGtjmQfCuphDfYPr0LthF9Fy_1fJBdT9LVFQmmJorC1IiPezSXFRCgFfwq92RCM8NxO3YjREs38DIF-glwIk9LfYEIXDI8MWD1CLiKa01fXsrOykxeJI2tKdp7ud4ilPPckJ87fWbqz0j0ooF8WtrSGsVbQ-V5WVREURJvTzbl2mzTzmhluL6XMBuNiOfLxj7mSqX98tg92dy8xxdBzLUQFHXEYRSjqKGxTWUbnt81k5k_rpJpgAzHl-fGaUG2KAh-j9FAS2xTodIifViujPjxw432FSZoj9_Wly2">Registries and Catalogues of the Ecosystem</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLL1R-D63xthLymNV41J8DaSkhq4RR1U9mK2T1T6d6AF1YFHDh6Z6M589UiM-zyx6bhMoEiqyaaUyZqEoKVE1nO8qjQs-1-vqhOLcj_cxw_cxrTpNpVUePERelZ9tEAQ79hbuk7-yMwPEKlRG1L-kIfzNNjtSyAozaukuGNPrtZvwrM9GMXD9GXEyAv0u0buYkjNt4tmecfLGgWcUBw0jIWJ7F5RkGMtmHNOAUvhibDTUKjegudEBMFWj_okoB6Gj49TiugFldKLXDsv0ranrk24oWjpzXaw1x3c0JV44WZvmYptTWEkChV4fN_6i3EBDZIUyUndyqzn4Csvm3VlVBsBP8_xpxCBytzk0Wd-VgPzxL0PfhH0zIfeo0uvxmwulyJR15nkiOQSOPbEfZC0v-XPArjCAIzz6qgSpbF6G-itBKQMMzfG_6Vc0QkE3IoRUMz_XUbxSTGS2ItBQvrvx8olD4BJmH2n2i5W_DfyULXm7dkGsYYFDSQpXYBu3wmmfE1cjhWtTwvgF3dXY_Wf93kp512iCHubWUYTFa7u-dgSxrcIsAuiFgEDeUx-6kgZP7yI2-U9QObN81BegHNa23jWklnc1ykKNgsISdvaIVAPG66zOCIcQqQS9e-LbcPe4MecGqxgErZ-irJBNVIhpxbjC3mJ-x3xwAiayk74T4SvIRPk8ykUGhDT1FzC5GRkb2w2BDfUJTeSp3bTlxm6BkXdH4U4JupDY25RG97aqFwNq4JabxHpBn_GxiXjp0A246hZz-68kSN09yVAtAjn54xt_N3VeDnAtV4S1yl0msRN7lGS-ZJazTEBdwwPUe_qagPvvigj3-FHqgbHIyuH7xSHmNv9mJ3MyVlDldUFD377GDsKjS4t2CxC3wSvGNfE8ZG-_fVnPrwstZIQ7XlPeYcz4tIIhCMHekBXZSdVbEk-D0bQuPeSfOJzsa3UGjarcCQ3X8tky-9OOc-m-x01HtzhGScjVQZrEz9gU10m9JJmH3QDPn7LTo1DlHapxgkjB1swsCimWGwx_jhSOcaXA6YSb1PjPnAm60j8QVQhTXmv7c8UzsZuJrHYrdHTEkgHR44CiUaV0wnECWtwk3QVVQUVFG_kzrXiL_hlr5XrkUF6XsWQ2OLfutJBDUsJ9TuYgquouP-u-_97M8x8otJQkM-KklRPdlOTaatE_VjpRJu1EG4Q0x84mKQs-Y3zF0NpxbtED3juzdNhN-zX0hZuWAvgQ_il">Registries and Catalogues of the Ecosystem</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Figure <a class="reference internal" href="#fig-registry-discovery"><span class="std std-ref">Discovery on the Registry Infrastructure</span></a> shows, for the registries defined in this Section, the onboarding or operational phase in which each of them is read and by whom. More details are provided in each section.

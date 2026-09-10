@@ -1200,130 +1200,197 @@ Each process is described with its Input, its Outcome and its Process, that is t
 <p>The Sections <a class="reference internal" href="#process-dependency-map"><span class="std std-ref">Process Dependency Map</span></a> and <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> below provide respectively the order of the processes and the dependencies between them, and the notification process of the entities that are subject to it.</p>
 <section id="process-dependency-map">
 <h3><span class="section-number">8.3.1. </span>Process Dependency Map<a class="headerlink" href="#process-dependency-map" title="Link to this heading">¶</a></h3>
-<p>This section describes, for each process, its prerequisites, the dependencies, the triggers and what it enables, together with the preconditions that are external to the Onboarding System.</p>
-<p>The processes are carried out by the components described in <a class="reference internal" href="#system-components-and-services"><span class="std std-ref">System Components and Services</span></a>.
-The table below maps the dependencies between the onboarding processes where what a process enables is another process that becomes possible after it.</p>
-<table class="longtable docutils align-default" id="id828">
-<caption><span class="caption-number">Table 8.8 </span><span class="caption-text">Process Dependency Map</span><a class="headerlink" href="#id828" title="Link to this table">¶</a></caption>
+<p>This section maps every onboarding process against four relations:</p>
+<ul class="simple">
+<li><p><strong>Preconditions</strong> are the conditions that MUST hold before the process can run. They include the completion of another process and the conditions that are external to the Onboarding System, such as the certification of a Wallet Solution or the qualified status of a Qualified Trust Service Provider.</p></li>
+<li><p><strong>Started by</strong> is who or what starts the process. A process is started by an external party that requests it, or it is invoked by another process, or it has no explicit request and it is a re-evaluation of conditions.</p></li>
+<li><p><strong>Activates</strong> are the processes that start as a consequence of this one.</p></li>
+<li><p><strong>Enables</strong> are the capabilities that become possible afterwards, which are not processes of the Onboarding System.</p></li>
+</ul>
+<p>The processes are carried out by the components described in <a class="reference internal" href="#system-components-and-services"><span class="std std-ref">System Components and Services</span></a>, and one table is given for each family of <a class="reference internal" href="#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>.</p>
+<span id="table-map-entity"></span><table class="longtable docutils align-default" id="id828">
+<caption><span class="caption-number">Table 8.8 </span><span class="caption-text">Process Map of the Entity Onboarding Processes</span><a class="headerlink" href="#id828" title="Link to this table">¶</a></caption>
 <colgroup>
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
+<col style="width: 18.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 20.0%" />
+<col style="width: 18.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Process</strong></p></th>
-<th class="head"><p><strong>Depends on</strong></p></th>
-<th class="head"><p><strong>Trigger</strong></p></th>
+<th class="head"><p><strong>Preconditions</strong></p></th>
+<th class="head"><p><strong>Started by</strong></p></th>
+<th class="head"><p><strong>Activates</strong></p></th>
 <th class="head"><p><strong>Enables</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
-<td><p>None</p></td>
-<td><p>An entity that passed the eligibility and compliance verification requests the registration.</p></td>
-<td><p>The Certificate and Trust Artifact Issuance processes, and for a Credential Issuer the activation of the Credential types it declares.</p></td>
+<td><p>Eligibility and compliance verification, including the identity proofing and the verification of the entitlements</p></td>
+<td><p>The Entity, which requests the registration</p></td>
+<td><p>Registration Trust Mark Issuance; the update of the notification dataset of the Notification and Publication, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">notified</span> <span class="pre">category</span></code>; Credential Type Activation and Deactivation, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">it</span> <span class="pre">completes</span> <span class="pre">a</span> <span class="pre">versioned</span> <span class="pre">entry</span></code></p></td>
+<td><p>The request, by the Entity, of the WRPAC and of the WRPRC <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">EUDIW</span> <span class="pre">Trust</span> <span class="pre">Framework</span></code>, of the Sign/Seal Certificate <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">National</span> <span class="pre">PKI</span></code>, and of the National Authentication Certificate <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">Proximity</span> <span class="pre">Flow</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#entity-update"><span class="std std-ref">Entity Update</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>The Entity, which submits a change of one or more categories of its registration data</p></td>
+<td><p>Registration Trust Mark Issuance, where the change affects the data it carries; the update of the notification dataset of the Notification and Publication, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">notified</span> <span class="pre">category</span></code></p></td>
+<td><p>The request, by the Entity, of the re-issuance of the certificates that carry the changed data, after the revocation of the WRPRC by its Provider, and the re-verification of the eligibility where the change affects the Authorization Information</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#entity-suspension-and-removal"><span class="std std-ref">Entity Suspension and Removal</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
+<td><p>The competent authority or the Entity, which requests a suspension, a reactivation or a cancellation</p></td>
+<td><p>Credential Type Activation and Deactivation, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">Credential</span> <span class="pre">Issuer</span></code>; the update of the notification dataset of the Notification and Publication, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">notified</span> <span class="pre">category</span></code></p></td>
+<td><p>—</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a></p></td>
-<td><p>None</p></td>
-<td><p>An Authentic Source that passed the eligibility verification requests the registration.</p></td>
-<td><p>The Credential Type Registration, as the data source a Credential type references.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a></p></td>
-<td><p>None</p></td>
-<td><p>A claim that a Credential type or an Authentic Source needs is not yet in the Claims Registry.</p></td>
-<td><p>The Schema Provisioning and the Credential Type Registration that use the claim.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#wallet-relying-party-access-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Access Certificate Issuance</span></a></p></td>
-<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
-<td><p>The first registration, or a new issuance or re-issuance, for example after a key rotation.</p></td>
-<td><p>The authentication of the entity towards the Wallet Units.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a></p></td>
-<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
-<td><p>The first registration, or a re-issuance, where the certificate applies to the role.</p></td>
-<td><p>The presentation of the registration data of the entity to the Wallet Units.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#signature-and-seal-certificate-issuance"><span class="std std-ref">Signature and Seal Certificate Issuance</span></a></p></td>
-<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
-<td><p>The first registration, or a re-issuance, for the categories whose Sign/Seal Certificate is issued by the National PKI.</p></td>
-<td><p>The signature of the Attestations or of the Wallet Unit Attestations the entity issues.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#national-authentication-certificate-issuance"><span class="std std-ref">National Authentication Certificate Issuance</span></a></p></td>
-<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
-<td><p>An entity that operates in the Proximity Flow.</p></td>
-<td><p>The authentication of the entity in the Proximity Flow.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#registration-trust-mark-issuance"><span class="std std-ref">Registration Trust Mark Issuance</span></a></p></td>
-<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
-<td><p>The completion of the federation registration.</p></td>
-<td><p>The recognition of the entity as a registered participant of the National Trust Framework.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a></p></td>
-<td><p><a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a></p></td>
-<td><p>A Credential type needs its schema to be available.</p></td>
-<td><p>The activation of a Credential type, as one of its requirements.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
-<td><p><a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a>, <a class="reference internal" href="#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a>, <a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a></p></td>
-<td><p>An Attestation Scheme Provider requests the registration of a Credential type defined in an Attestation Rulebook.</p></td>
-<td><p>The declaration of the Credential type by a Credential Issuer, the Credential Type Activation, and the Notification and Publication for the notified categories.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a></p></td>
-<td><p><a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
-<td><p>The verification of the issuance conditions of the Credential type.</p></td>
-<td><p>The issuance of the Credential type by the Credential Issuer.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#credential-type-update"><span class="std std-ref">Credential Type Update</span></a></p></td>
-<td><p><a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
-<td><p>The publication of a new version of a Credential type by its Attestation Scheme Provider.</p></td>
-<td><p>The activation of the new version.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#entity-update"><span class="std std-ref">Entity Update</span></a></p></td>
-<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
-<td><p>A change of the registered information, that is the identity, the technical configuration, or the authorization information.</p></td>
-<td><p>The re-issuance of a certificate, or the re-verification of the eligibility where the change affects the authorization information.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#entity-suspension-and-removal"><span class="std std-ref">Entity Suspension and Removal</span></a></p></td>
-<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a></p></td>
-<td><p>A request of the competent authority or of the entity.</p></td>
-<td><p>The revocation of the Trust Artifacts of the entity, and the deactivation of its Credential types where it is a Credential Issuer.</p></td>
+<td><p>Eligibility and compliance verification by the Supervisory Body; the subscription of the Authentic Source to PDND and the publication of its e-Service</p></td>
+<td><p>The Authentic Source, which declares its registration data</p></td>
+<td><p>Claim Registration, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">a</span> <span class="pre">claim</span> <span class="pre">is</span> <span class="pre">missing</span></code></p></td>
+<td><p>The registration of the Credential types that reference the Authentic Source as their data source</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#authentic-source-update"><span class="std std-ref">Authentic Source Update</span></a></p></td>
 <td><p><a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a></p></td>
-<td><p>A change of the AS Registry entry.</p></td>
-<td><p>The update of the Credential types that depend on the Authentic Source.</p></td>
+<td><p>The Authentic Source, or the notification through PDND of the change of an e-Service</p></td>
+<td><p>Credential Type Activation and Deactivation, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">a</span> <span class="pre">type</span> <span class="pre">loses</span> <span class="pre">its</span> <span class="pre">data</span> <span class="pre">source</span></code></p></td>
+<td><p>—</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#authentic-source-removal"><span class="std std-ref">Authentic Source Removal</span></a></p></td>
 <td><p><a class="reference internal" href="#authentic-source-registration"><span class="std std-ref">Authentic Source Registration</span></a></p></td>
-<td><p>A request of removal.</p></td>
-<td><p>The deactivation of the Credential types that lose the Authentic Source as their data source.</p></td>
+<td><p>A request of removal</p></td>
+<td><p>Credential Type Activation and Deactivation, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">a</span> <span class="pre">type</span> <span class="pre">loses</span> <span class="pre">its</span> <span class="pre">data</span> <span class="pre">source</span></code></p></td>
+<td><p>—</p></td>
 </tr>
 </tbody>
 </table>
-<p>The <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a> process is transversal and follows the registration of the notified categories.</p>
-<p>The following conditions are external to the Onboarding System and are not processes defined within IT-Wallet, but they are preconditions or triggers.</p>
-<ul class="simple">
-<li><p>The subscription of an Authentic Source to PDND and the publication of its e-Service.</p></li>
-<li><p>The qualified status of a Qualified Trust Service Provider, for a QEAA Provider and a PuB-EAA Provider.</p></li>
-<li><p>The certification of a Wallet Solution.</p></li>
-<li><p>The definition and the availability of the applicable Attestation Rulebook, for a Credential Type Registration. The Rulebook is an input of the Onboarding System and its definition is not a process of it.</p></li>
-<li><p>The identity proofing and the eligibility and compliance verification, described in <a class="reference internal" href="#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>, that precede every registration.</p></li>
-</ul>
-<p>The diagram below shows the activations between the various processes.
-Those on the left are the <em>starting processes</em>, triggered from outside the Onboarding System.
-Those on the right are activated by a starting process or by a lifecycle process.
-The processes that act on the lifecycle of an entity or of a Credential type are governed as described in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>, and the effects of an update are described there as well.</p>
-<figure class="align-center" id="id829">
-<span id="fig-onboarding-dep-map"></span><p class="plantuml">
-<object data="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.png"><img src="_images/plantuml-f5743203ae8d0ebc53e0fa094b33d84bfe43ca90.png" alt="The figure illustrates the activations between the various processes. On the left the *starting processes* are illustrated, triggered from outside the Onboarding System. Those on the right are activated by a starting process or by a lifecycle process." style="width: 99.0%"/></a>
-
-</object></p>
-<figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLRRQXin47qt-1-6vA5FfabBqpJG4dkpRWEnCRikUV6BiZjUYsWb8sdZk2N_tj5ginTVaifWp5pEp9mv4husbcbRv09cMYLe30mJov-OvKh2XAtxFO5B2rQ1vjdAGier9ixPxvb7BjTCinmUMFAOQLN8D512QR2QIKCkbBOTPbOiLHikCrWoOR3jId792c7d-6o7WcSofrH8w0jrEsnDXLY6iTqA1DS8avde00srLXlVnUb5UVQyOoLjpFyWd9-tVJNSIEaKTONnkJoTE3-dbgZXij_hzpx0TtTA8jrmQqya6c_lzsfaE0cbvNQxa15ct11DZicFlzSfitW2p40OmUbeT1EEHvsqOM5NH0PF85Q5Jh0BK6OEuyEfWSRKfJ81y-qQZvSEvWGGN8ONmRVMLC2y733TdwlQ1fpCTM4iaMlvai99DfBCReKbyDqPd8w_k0_yxVU0JgkzTZTGuYpaXEb7k3McO3BnlSqd134EpqQVzW3kezamw4Pxqx64cEJ5RA4Hc4mXHYOMCa3NEqzepYvK7BzLEDel71qlF2s7f3tKsomDRrIVjiTuQH5UiROjHmYOPK9bZhSkx-Tly1u8nlC3CWfQ8jWbBbbXpXQI7eedRYY1nEv9cXtDsL5Vwt5PIDVx3RBQKgbms82zT9GyLHLBJYgKJ9qK3w8oUBweaV1y58PVsmgERd_-cb-1u4jCjWaXlNz18IxC6gMf-ummLqzC-3jwvAOTkgHD5jtFIPFckXiC1b2LEt0deI76kD1-Zzw6mU27kmjNmCI6RKrjyug_0hvqFsipgRUqSH8LlLPAB-Gz4m8jb3jCtUFQ84G74AQli9Jmp7FNwrYeJUEVURSiTuDfxN1xzBNf7LVvcegY8Ix1aWoQ-NSvwp2nJu5xv4hqo8CpIBoEkO6SfYH5DjYxslilajqh-6w5rw1uzXfaghjnAEe85JJu3XbtjKBtTn_lOfKhRHpxYoW5rydnv2-aK4xxt1em9UckWskKAVqB-0S0">Onboarding Process Dependency Map.</a></span><a class="headerlink" href="#id829" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
+<span id="table-map-artifacts"></span><table class="longtable docutils align-default" id="id829">
+<caption><span class="caption-number">Table 8.9 </span><span class="caption-text">Process Map of the Certificate and Trust Artifact Issuance Processes</span><a class="headerlink" href="#id829" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 20.0%" />
+<col style="width: 18.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Process</strong></p></th>
+<th class="head"><p><strong>Preconditions</strong></p></th>
+<th class="head"><p><strong>Started by</strong></p></th>
+<th class="head"><p><strong>Activates</strong></p></th>
+<th class="head"><p><strong>Enables</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#wallet-relying-party-access-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Access Certificate Issuance</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, with a record of the Entity in the Register, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">EUDIW</span> <span class="pre">Trust</span> <span class="pre">Framework</span></code></p></td>
+<td><p>The Entity, with an ACME order, for the first issuance or for a re-issuance</p></td>
+<td><p>—</p></td>
+<td><p>The authentication of the Entity towards the Wallet Units</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wallet-relying-party-registration-certificate-issuance"><span class="std std-ref">Wallet-Relying Party Registration Certificate Issuance</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, with a record with a valid registration status in the Register and a valid WRPAC, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">EUDIW</span> <span class="pre">Trust</span> <span class="pre">Framework</span></code></p></td>
+<td><p>The Entity, which requests the certificate to its Provider of WRPRC, for the first issuance or after the revocation of the previous one</p></td>
+<td><p>—</p></td>
+<td><p>The presentation of the registration data of the Entity to the Wallet Units</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#signature-and-seal-certificate-issuance"><span class="std std-ref">Signature and Seal Certificate Issuance</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">National</span> <span class="pre">PKI</span></code>. For a QEAA Provider and a PuB-EAA Provider the certificate is qualified and it is issued by a Qualified Trust Service Provider outside this process</p></td>
+<td><p>The Entity, with an ACME order, for the first issuance or for a re-issuance</p></td>
+<td><p>—</p></td>
+<td><p>The signature or the seal of the Attestations the Entity issues</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#national-authentication-certificate-issuance"><span class="std std-ref">National Authentication Certificate Issuance</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">Proximity</span> <span class="pre">Flow</span></code></p></td>
+<td><p>The Entity, with an ACME order, for the first issuance or for a re-issuance</p></td>
+<td><p>—</p></td>
+<td><p>The authentication of the Entity in the Proximity Flow</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#registration-trust-mark-issuance"><span class="std std-ref">Registration Trust Mark Issuance</span></a></p></td>
+<td><p>The completion of the federation registration of the Entity</p></td>
+<td><p>Invoked by the Entity Registration, and by the Entity Update where the change affects the data the Trust Mark carries</p></td>
+<td><p>—</p></td>
+<td><p>The recognition of the Entity as a registered participant of the National Trust Framework, and the reading of its authorization data where it has no record in the Register</p></td>
+</tr>
+</tbody>
+</table>
+<span id="table-map-attestation"></span><table class="longtable docutils align-default" id="id830">
+<caption><span class="caption-number">Table 8.10 </span><span class="caption-text">Process Map of the Attestation Onboarding Processes</span><a class="headerlink" href="#id830" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 20.0%" />
+<col style="width: 18.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Process</strong></p></th>
+<th class="head"><p><strong>Preconditions</strong></p></th>
+<th class="head"><p><strong>Started by</strong></p></th>
+<th class="head"><p><strong>Activates</strong></p></th>
+<th class="head"><p><strong>Enables</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#claim-registration"><span class="std std-ref">Claim Registration</span></a></p></td>
+<td><p>—</p></td>
+<td><p>Invoked by the Authentic Source Registration, by the Schema Provisioning or by the Credential Type Registration, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">a</span> <span class="pre">claim</span> <span class="pre">is</span> <span class="pre">missing</span></code></p></td>
+<td><p>—</p></td>
+<td><p>The Schema Provisioning and the Credential Type Registration that use the claim</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#schema-provisioning"><span class="std std-ref">Schema Provisioning</span></a></p></td>
+<td><p>The claims that compose the schema are available in the Claims Registry</p></td>
+<td><p>Invoked by the Credential Type Registration, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">the</span> <span class="pre">schema</span> <span class="pre">is</span> <span class="pre">missing</span></code></p></td>
+<td><p>Claim Registration, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">a</span> <span class="pre">claim</span> <span class="pre">is</span> <span class="pre">missing</span></code></p></td>
+<td><p>The activation of a Credential type, as one of its conditions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
+<td><p>The definition and the availability of the applicable Attestation Rulebook; the Authentic Source Registration, or a parent Credential type, as the data source</p></td>
+<td><p>The Attestation Scheme Provider, which requests the registration</p></td>
+<td><p>Claim Registration, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">a</span> <span class="pre">claim</span> <span class="pre">is</span> <span class="pre">missing</span></code>; Schema Provisioning, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">the</span> <span class="pre">schema</span> <span class="pre">is</span> <span class="pre">missing</span></code>; Credential Type Activation and Deactivation</p></td>
+<td><p>The declaration of the Credential type by a Credential Issuer at its Entity Registration</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#credential-type-activation-and-deactivation"><span class="std std-ref">Credential Type Activation and Deactivation</span></a></p></td>
+<td><p><a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
+<td><p>No explicit request. The versioned entry is re-evaluated whenever one of its three conditions changes</p></td>
+<td><p>—</p></td>
+<td><p>The issuance of the Credential type by the Credential Issuers listed in the versioned entry</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#credential-type-update"><span class="std std-ref">Credential Type Update</span></a></p></td>
+<td><p><a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a></p></td>
+<td><p>The Attestation Scheme Provider, which publishes a new version</p></td>
+<td><p>Credential Type Registration for the new versioned entry; Credential Type Activation and Deactivation</p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+<span id="table-map-notification"></span><table class="longtable docutils align-default" id="id831">
+<caption><span class="caption-number">Table 8.11 </span><span class="caption-text">Process Map of the Notification and Publication</span><a class="headerlink" href="#id831" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 20.0%" />
+<col style="width: 18.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Process</strong></p></th>
+<th class="head"><p><strong>Preconditions</strong></p></th>
+<th class="head"><p><strong>Started by</strong></p></th>
+<th class="head"><p><strong>Activates</strong></p></th>
+<th class="head"><p><strong>Enables</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a></p></td>
+<td><p><a class="reference internal" href="#entity-registration"><span class="std std-ref">Entity Registration</span></a>, and the conformity assessment for the notified categories</p></td>
+<td><p>Invoked by the Entity Registration, by the Entity Update or by the Entity Suspension and Removal, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">notified</span> <span class="pre">category</span></code>, for the collection of the notifiable information. The submission to the European Commission is an act of the Supervisory Body</p></td>
+<td><p>—</p></td>
+<td><p>The inclusion of the Entity in the List of Trusted Entities of its category</p></td>
+</tr>
+</tbody>
+</table>
+<p>The processes that act on the lifecycle of an entity or of a Credential type are governed as described in <a class="reference internal" href="#lifecycle-management"><span class="std std-ref">Lifecycle Management</span></a>, and the effects of each event on the registries and on the Trust Artifacts are given in <a class="reference internal" href="#events-registries-and-trust-artifacts"><span class="std std-ref">Events, Registries and Trust Artifacts</span></a>.</p>
 </section>
 <section id="notification-and-publication">
 <h3><span class="section-number">8.3.2. </span>Notification and Publication<a class="headerlink" href="#notification-and-publication" title="Link to this heading">¶</a></h3>
@@ -1473,7 +1540,7 @@ A change that affects the Authorization Information triggers the re-verification
 <p><strong>Process</strong></p>
 <ol class="arabic simple">
 <li><p>The Entity submits the change of one or more categories of its registration data.</p></li>
-<li><p>For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Certificate Management re-issues the WRPAC or the WRPRC where the changed data is provided by them. Where the Entity belongs to a notified category, the Notification Dataset Management updates the notification, as described in <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a>.</p></li>
+<li><p>For a change of the Identity Information or of the Authorization Information, the EUDIW Registration Management updates the record in the Register, the National Federation Management updates the Subordinate Statement and the registration Trust Mark, and the Entity requests the re-issuance of the certificates that carry the changed data, as described in <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a>. Where the Entity belongs to a notified category, the Notification Dataset Management updates the notification, as described in <a class="reference internal" href="#notification-and-publication"><span class="std std-ref">Notification and Publication</span></a>.</p></li>
 <li><p>For a change of the <code class="docutils literal notranslate"><span class="pre">federation_entity_key</span></code>, the rotation of the key is handled by the National Federation Management, that re-issues the Subordinate Statement attesting the new key, so the new key becomes trusted only when the superior attests it, following <a class="reference internal" href="infrastructure-trust.html#federation-entity-key-rotation"><span class="std std-ref">Federation Entity Key Rotation</span></a>. The rotation of the keys of the X.509 certificates is a re-issuance handled by the <a class="reference internal" href="#certificate-and-trust-artifact-issuance"><span class="std std-ref">Certificate and Trust Artifact Issuance</span></a> processes, where the Entity provides the new <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> in the ACME order.</p></li>
 <li><p>A change of the Authorization Information is subject to the re-verification of the eligibility by the Supervisory Body, and, for a Credential Issuer, a change of the Credential provision capabilities adds it to or removes it from the <code class="docutils literal notranslate"><span class="pre">issuers</span></code> field of the versioned entry of a Credential type, as described in <a class="reference internal" href="#credential-type-registration"><span class="std std-ref">Credential Type Registration</span></a>.</p></li>
 <li><p>The update produces the corresponding event, a <code class="docutils literal notranslate"><span class="pre">metadata_update</span></code> for a change of the Identity Information or the Technical Configuration and a <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> for a key rotation, published on the Federation Subordinate Events Endpoint as described in <a class="reference internal" href="#registration-events-and-their-governance"><span class="std std-ref">Registration Events and Their Governance</span></a>.</p></li>
@@ -1594,8 +1661,8 @@ Both sources provide the authorization data with the same logic of [<a class="re
 <p>A distinct ACME service is provided for each purpose, so the type of the certificate is determined by the service, and the profile of each certificate is fixed by its type.</p>
 <p>Within IT-Wallet the lifecycle of these certificates is kept separate from the lifecycle of the Trust Chain.
 A certificate has its own <code class="docutils literal notranslate"><span class="pre">notBefore</span></code> and <code class="docutils literal notranslate"><span class="pre">notAfter</span></code> and it is governed by the X.509 revocation, so the loss of the federation membership of an Entity is reflected by the revocation of its certificates, see <a class="reference internal" href="#entity-suspension-and-removal"><span class="std std-ref">Entity Suspension and Removal</span></a>, and not by the expiration of the Trust Chain.</p>
-<p>The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME but during the registration or the update of the Entity.</p>
-<figure class="align-default" id="id830">
+<p>The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME. The registration Trust Mark is issued during the registration of the Entity, while the Wallet-Relying Party Registration Certificate is requested by the Entity to its Provider after it has obtained its WRPAC, whose validity is one of the conditions of the issuance.</p>
+<figure class="align-default" id="id832">
 <p class="plantuml">
 <object data="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.png"><img src="_images/plantuml-811695b7521d32ffb12aeaf2247fe2e4eed6c26b.png" alt="&#64;startuml
@@ -1626,7 +1693,7 @@ CA --&gt; E : X.509 certificate
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLDDRzH03BtdLrZbiaWiAa95eeUg8GgSAggb1muhLMx6IKOxwmaUfqlxw_5aFqXLH0vHD7xFx_cDSvqKHSTjADB6yu22MtZ0PjD97DbLCKG15UHa9MATeLAFBkuyTz1YI3IhE6fn37f7lxKClkEj4Q6n5yaCLOh4tLxWpQVfcHLlpPHl_82iNw8uaWFmu_JCkpGQvVyGXueFcEXVg08p7sfMhq-02UfY-2iDPsLrKqCYUVGDGMn1UrfpHOPeVOFg8qCvQX_5w6UPNvN5KGzMrFbaG-VpLVsjA6fONXa2Be5fzpsxWOLt5enriszz6ana8FPksP9L9u6tXJ6MHgoDzwgwFFy0JOyX47Uq5yYuPB5dix0X6slly7aYh7ddjGTam6PBzqA_Haev0qFE39vwWb0Q8jiuYzmKTHGojeCx6PD2rQC_M3mm7p5uYu0c-HbepOkl9zl7n7DuUVvcDkfL3iiQ2Q63NDH0UONI93j8R7sWWgD9YEzwpVSoAP_oRhqaVRTccGuEYdihDoYRV1-sio7l-Ojmfnl9ilCaMiysqRFDN_rOlRYCd-ylpZ_ROX-tWOfhOfV_fJy0">Issuance of an X.509 certificate through ACME and the OpenID Federation profile.</a></span><a class="headerlink" href="#id830" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLDDRzH03BtdLrZbiaWiAa95eeUg8GgSAggb1muhLMx6IKOxwmaUfqlxw_5aFqXLH0vHD7xFx_cDSvqKHSTjADB6yu22MtZ0PjD97DbLCKG15UHa9MATeLAFBkuyTz1YI3IhE6fn37f7lxKClkEj4Q6n5yaCLOh4tLxWpQVfcHLlpPHl_82iNw8uaWFmu_JCkpGQvVyGXueFcEXVg08p7sfMhq-02UfY-2iDPsLrKqCYUVGDGMn1UrfpHOPeVOFg8qCvQX_5w6UPNvN5KGzMrFbaG-VpLVsjA6fONXa2Be5fzpsxWOLt5enriszz6ana8FPksP9L9u6tXJ6MHgoDzwgwFFy0JOyX47Uq5yYuPB5dix0X6slly7aYh7ddjGTam6PBzqA_Haev0qFE39vwWb0Q8jiuYzmKTHGojeCx6PD2rQC_M3mm7p5uYu0c-HbepOkl9zl7n7DuUVvcDkfL3iiQ2Q63NDH0UONI93j8R7sWWgD9YEzwpVSoAP_oRhqaVRTccGuEYdihDoYRV1-sio7l-Ojmfnl9ilCaMiysqRFDN_rOlRYCd-ylpZ_ROX-tWOfhOfV_fJy0">Issuance of an X.509 certificate through ACME and the OpenID Federation profile.</a></span><a class="headerlink" href="#id832" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1638,8 +1705,8 @@ The Wallet-Relying Party Registration Certificate and the registration Trust Mar
 <p>A Certificate Signing Request carries the public key to be certified, proves possession of the corresponding private key, and requests the values of the certificate fields supplied by the Entity.
 It does not determine the content of the issued certificate: the Certification Authority MUST validate the requested values against the registration data and the applicable certificate profile, and it MUST add or determine the issuer-dependent values required by that profile.</p>
 <p>The Certificate Signing Request MUST be a <code class="docutils literal notranslate"><span class="pre">CertificationRequest</span></code> as defined in <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2986.html"><strong>RFC 2986</strong></a> (PKCS #10), DER-encoded, and it is carried in the ACME order as required by <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8555.html#section-7.4"><strong>RFC 8555#section-7.4</strong></a>.</p>
-<table class="longtable docutils align-default" id="id831">
-<caption><span class="caption-number">Table 8.9 </span><span class="caption-text">Certificate Signing Request Fields</span><a class="headerlink" href="#id831" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id833">
+<caption><span class="caption-number">Table 8.12 </span><span class="caption-text">Certificate Signing Request Fields</span><a class="headerlink" href="#id833" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -1691,8 +1758,8 @@ It MUST be distinct from the Federation Entity Key, and a distinct key MUST be u
 </table>
 <p>The following table defines the extension values requested by the Entity and the extension values determined by the Certification Authority.
 The criticality of each requested extension MUST follow the applicable certificate profile.</p>
-<table class="longtable docutils align-default" id="id832">
-<caption><span class="caption-number">Table 8.10 </span><span class="caption-text">Certificate Signing Request Extension Fields</span><a class="headerlink" href="#id832" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id834">
+<caption><span class="caption-number">Table 8.13 </span><span class="caption-text">Certificate Signing Request Extension Fields</span><a class="headerlink" href="#id834" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 55.0%" />
@@ -1828,15 +1895,19 @@ The attributes of the certificate come from the record of the Entity in the Regi
 <section id="wallet-relying-party-registration-certificate-issuance">
 <h4><span class="section-number">8.3.4.4. </span>Wallet-Relying Party Registration Certificate Issuance<a class="headerlink" href="#wallet-relying-party-registration-certificate-issuance" title="Link to this heading">¶</a></h4>
 <p>Wallet-Relying Party Registration Certificate Issuance issues the WRPRC, described in the <a class="reference internal" href="infrastructure-trust.html#wallet-relying-party-registration-certificate-wrprc-profile"><span class="std std-ref">Wallet-Relying Party Registration Certificate (WRPRC) Profile</span></a>.
-The WRPRC is issued during the registration or the update of the Entity.</p>
+The WRPRC is requested by the Entity to the Provider of WRPRC, which verifies the conditions of Annex V, point 3(c) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>] before issuing it.
+The Provider of WRPRC monitors the Register, according to [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>], and revokes the WRPRC when the registration of the Entity changes, so that the Entity requests a new one.</p>
 <p><strong>Input</strong></p>
-<p>The registration data of the Entity held in the Register.</p>
+<p>The request of the Entity and its valid WRPAC.
+The attributes of the certificate come from the record of the Entity in the Register.</p>
 <p><strong>Outcome</strong></p>
 <p>The WRPRC, signed by the Provider of WRPRC with its Sign/Seal Certificate, that the Entity presents to the Wallet Units together with its registration data.</p>
 <p><strong>Process</strong></p>
 <ol class="arabic simple">
-<li><p>During the Entity Registration, or an Entity Update that changes the registration data, the Provider of WRPRC builds the WRPRC from the record of the Entity in the Register.</p></li>
-<li><p>The Provider of WRPRC signs the WRPRC with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.</p></li>
+<li><p>The Entity requests the WRPRC to its Provider of WRPRC, for the first issuance or after the revocation of the previous one.</p></li>
+<li><p>The Provider of WRPRC verifies that the Entity has a record with a valid registration status in the Register, that the information the certificate carries is consistent with that record, and that the WRPAC of the Entity is valid, as required by Annex V, point 3(c) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>].</p></li>
+<li><p>The Provider of WRPRC builds the WRPRC from the record of the Entity in the Register and signs it with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.</p></li>
+<li><p>The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/848/">CIR2025/848</a>]. The revocation is published through the <a class="reference internal" href="infrastructure-trust.html#token-status-list-wrprc-profile"><span class="std std-ref">Token Status List (WRPRC Profile)</span></a>.</p></li>
 </ol>
 </section>
 <section id="signature-and-seal-certificate-issuance">
@@ -2007,16 +2078,16 @@ The lifecycle of the single Digital Credentials issued to the Users is a differe
 <section id="entity-lifecycle-state-machine">
 <h3><span class="section-number">8.4.1. </span>Entity Lifecycle State Machine<a class="headerlink" href="#entity-lifecycle-state-machine" title="Link to this heading">¶</a></h3>
 <p>This section applies to WRPs and WPs as they are directly involved in the operational phases.
-As shown in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.4</span></a>, an Entity has five distinct and mutually exclusive states: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
+As shown in <a class="reference internal" href="#fig-entity-lifecycle-states"><span class="std std-numref">Fig. 8.3</span></a>, an Entity has five distinct and mutually exclusive states: <code class="docutils literal notranslate"><span class="pre">UNREGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">REGISTERED</span></code>, <code class="docutils literal notranslate"><span class="pre">OPERATIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code>.
 Each state determines the authorization level and the operational capabilities of the Entity.</p>
-<figure class="align-default" id="id833">
+<figure class="align-default" id="id835">
 <span id="fig-entity-lifecycle-states"></span><p class="plantuml">
 <object data="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.svg" type="image/svg+xml" style="width:70%">
 <a href="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png"><img src="_images/plantuml-b8fc279efd96ac9b22d2713b77c08383087553f0.png" alt="The figure illustrates the lifecycle states of an Entity and the transitions between them." style="width: 70.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id833" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TP91RiCW44Ntd6BMbNA1BgfO3geYMKva9wkq2meJ1na3Od2IthxONSHrwkKmxy-V3wmfYX3xph2BLWZO-VWD2aa6xQDsbb6hhHT1TF0bPDi4rrkLE-C2n20ifHRQEA7e8fIxQTl0MHX2nauldx1QlS6nhFZxjZxmYcyOcrPZUrA-Gi16Kve_R03ITTvWHCLcajsULzbXkokp8cbYw2b22gFFGaO2JTGdpHHwyfbhyEvrGFLXKxo0LzUc0NFN-bZlURaPzTIJHql3FSrz5h37yJ-XqmxwEeP-SispCkT5CO9IM8d6_89ptqNmh_CYnXwTWKklnzPerV13VW00">Entity Lifecycle States.</a></span><a class="headerlink" href="#id835" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Transition from UNREGISTERED to REGISTERED</strong></p>
@@ -2079,8 +2150,8 @@ The Authentic Sources follow the PDND framework, and the effects that their life
 <p>Every transition of the state machine of the Entities is caused by an event.
 For each event, this section states who is entitled to trigger it, who is responsible for it, and, when applicable, on which normative basis and within which conditions.
 The events that concern the Credential types and the Authentic Sources are described in the dedicated sections below.</p>
-<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id834">
-<caption><span class="caption-number">Table 8.11 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id834" title="Link to this table">¶</a></caption>
+<span id="table-registration-events"></span><table class="longtable docutils align-default" id="id836">
+<caption><span class="caption-number">Table 8.14 </span><span class="caption-text">Registration Events</span><a class="headerlink" href="#id836" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 16.0%" />
 <col style="width: 26.0%" />
@@ -2165,8 +2236,8 @@ This is set by Annex IV of [<a class="reference external" href="https://eur-lex.
 The endpoint and the format of its response are described in <a class="reference internal" href="infrastructure-trust.html#federation-api-endpoints"><span class="std std-ref">Federation API Endpoints</span></a>.</p>
 <p>Each event of the state machine MUST be published as an object of the <code class="docutils literal notranslate"><span class="pre">federation_registration_events</span></code> array, using the event types defined in [<a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>].
 The table below gives, for each event, the value of the <code class="docutils literal notranslate"><span class="pre">event</span></code> parameter and how the parameters of the event object are populated.</p>
-<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id835">
-<caption><span class="caption-number">Table 8.12 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id835" title="Link to this table">¶</a></caption>
+<span id="table-subordinate-events-mapping"></span><table class="longtable docutils align-default" id="id837">
+<caption><span class="caption-number">Table 8.15 </span><span class="caption-text">Mapping of the Lifecycle Events to the Subordinate Events</span><a class="headerlink" href="#id837" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 24.0%" />
@@ -2224,8 +2295,8 @@ The specific effects depend on the role of the Entity and on the Trust Artifacts
 This section provides the relationship between the categories of registered data and the Trust Artifacts that contain them.</p>
 <p><strong>Registered Data and Associated Trust Artifact</strong></p>
 <p>The table below provides the relationship between the categories of registered data and the Trust Artifacts in which they are contained, for each type of Entity.</p>
-<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id836">
-<caption><span class="caption-number">Table 8.13 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id836" title="Link to this table">¶</a></caption>
+<span id="table-entity-data-and-trust-artifacts"></span><table class="longtable docutils align-default" id="id838">
+<caption><span class="caption-number">Table 8.16 </span><span class="caption-text">Entity Data and Trust Artifacts</span><a class="headerlink" href="#id838" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 26.0%" />
@@ -2370,8 +2441,8 @@ Within IT-Wallet the notification is therefore an obligation of the Credential I
 <p>The table below summarises, for each event, which registries and catalogs are impacted and where the effects on the Trust Artifacts are described.
 It covers both the initial registration and the subsequent lifecycle events.
 The relationship between an Entity update and the Trust Artifacts it affects is given in <a class="reference internal" href="#entity-updates-and-their-effects-on-trust-artifacts"><span class="std std-ref">Entity Updates and Their Effects on Trust Artifacts</span></a>, and the technical mechanisms that publish the status of a Trust Artifact in <a class="reference internal" href="infrastructure-trust.html#revocation-mechanisms"><span class="std std-ref">Revocation Mechanisms</span></a>.</p>
-<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id837">
-<caption><span class="caption-number">Table 8.14 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id837" title="Link to this table">¶</a></caption>
+<span id="table-events-registries-artifacts"></span><table class="longtable docutils align-default" id="id839">
+<caption><span class="caption-number">Table 8.17 </span><span class="caption-text">Events and Impacted Registries</span><a class="headerlink" href="#id839" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 20.0%" />
