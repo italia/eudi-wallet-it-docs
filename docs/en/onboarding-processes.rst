@@ -127,7 +127,7 @@ This Section describes the notification to the European Commission of the entiti
 This process applies to more than one family of processes.
 
 The notification is an act of the Member State to the Commission, and not of the entity itself.
-Within IT-Wallet the Supervisory Body is the National point of contact with the Commission, as described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`, and it relies on the Registrar for the entities the Registrar registers.
+Within IT-Wallet the Supervisory Body is the National point of contact with the Commission and it relies on the Registrar for the entities the Registrar registers.
 Its outcome is the inclusion of the entity in the List of Trusted Entities of its type, whose structure and signature are described in :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`.
 
 The categories subject to notification according to Articles 4 and 5 of [`CIR2024/2980`_], adopted under Article 5a(23) of [`EIDAS`_], are the following:
