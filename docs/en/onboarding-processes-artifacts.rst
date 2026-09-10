@@ -25,7 +25,7 @@ A distinct ACME service is provided for each purpose, so the type of the certifi
 Within IT-Wallet the lifecycle of these certificates is kept separate from the lifecycle of the Trust Chain.
 A certificate has its own ``notBefore`` and ``notAfter`` and it is governed by the X.509 revocation, so the loss of the federation membership of an Entity is reflected by the revocation of its certificates, see :ref:`onboarding-system:Entity Suspension and Removal`, and not by the expiration of the Trust Chain.
 
-The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME but during the registration or the update of the Entity.
+The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify keys, so they are not issued through ACME. The registration Trust Mark is issued during the registration of the Entity, while the Wallet-Relying Party Registration Certificate is requested by the Entity to its Provider after it has obtained its WRPAC, whose validity is one of the conditions of the issuance.
 
 .. plantuml:: plantuml/acme-oidfed-x509-issuance.puml
    :width: 99%
@@ -154,11 +154,13 @@ Wallet-Relying Party Registration Certificate Issuance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Wallet-Relying Party Registration Certificate Issuance issues the WRPRC, described in the :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
-The WRPRC is issued during the registration or the update of the Entity.
+The WRPRC is requested by the Entity to the Provider of WRPRC, which verifies the conditions of Annex V, point 3(c) of [`CIR2025/848`_] before issuing it.
+The Provider of WRPRC monitors the Register, according to [`CIR2025/848`_], and revokes the WRPRC when the registration of the Entity changes, so that the Entity requests a new one. 
 
 **Input**
 
-The registration data of the Entity held in the Register.
+The request of the Entity and its valid WRPAC.
+The attributes of the certificate come from the record of the Entity in the Register.
 
 **Outcome**
 
@@ -166,8 +168,10 @@ The WRPRC, signed by the Provider of WRPRC with its Sign/Seal Certificate, that 
 
 **Process**
 
-1. During the Entity Registration, or an Entity Update that changes the registration data, the Provider of WRPRC builds the WRPRC from the record of the Entity in the Register.
-2. The Provider of WRPRC signs the WRPRC with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.
+1. The Entity requests the WRPRC to its Provider of WRPRC, for the first issuance or after the revocation of the previous one.
+2. The Provider of WRPRC verifies that the Entity has a record with a valid registration status in the Register, that the information the certificate carries is consistent with that record, and that the WRPAC of the Entity is valid, as required by Annex V, point 3(c) of [`CIR2025/848`_].
+3. The Provider of WRPRC builds the WRPRC from the record of the Entity in the Register and signs it with its Sign/Seal Certificate, issued by the WRPRC Sign/Seal Certification Authority.
+4. The Provider of WRPRC monitors any change of the Register in an automated manner and revokes the WRPRC where the registration of the Entity is modified, suspended or cancelled, or where the content of the certificate is no longer consistent with the record, as required by Annex V, point 3(d) of [`CIR2025/848`_]. The revocation is published through the :ref:`infrastructure-trust:Token Status List (WRPRC Profile)`.
 
 Signature and Seal Certificate Issuance
 """""""""""""""""""""""""""""""""""""""

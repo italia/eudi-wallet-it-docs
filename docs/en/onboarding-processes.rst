@@ -18,107 +18,149 @@ The Sections :ref:`onboarding-system:Process Dependency Map` and :ref:`onboardin
 Process Dependency Map
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This section describes, for each process, its prerequisites, the dependencies, the triggers and what it enables, together with the preconditions that are external to the Onboarding System.
+This section maps every onboarding process against four relations:
 
-The processes are carried out by the components described in :ref:`onboarding-system:System Components and Services`.
-The table below maps the dependencies between the onboarding processes where what a process enables is another process that becomes possible after it.
+- **Preconditions** are the conditions that MUST hold before the process can run. They include the completion of another process and the conditions that are external to the Onboarding System, such as the certification of a Wallet Solution or the qualified status of a Qualified Trust Service Provider.
+- **Started by** is who or what starts the process. A process is started by an external party that requests it, or it is invoked by another process, or it has no explicit request and it is a re-evaluation of conditions.
+- **Activates** are the processes that start as a consequence of this one.
+- **Enables** are the capabilities that become possible afterwards, which are not processes of the Onboarding System.
 
-.. list-table:: Process Dependency Map
+The processes are carried out by the components described in :ref:`onboarding-system:System Components and Services`, and one table is given for each family of :ref:`onboarding-system:Onboarding Processes`.
+
+.. _table_map_entity:
+.. list-table:: Process Map of the Entity Onboarding Processes
    :class: longtable
-   :widths: 25 25 25 25
+   :widths: 18 22 22 20 18
    :header-rows: 1
 
    * - **Process**
-     - **Depends on**
-     - **Trigger**
+     - **Preconditions**
+     - **Started by**
+     - **Activates**
      - **Enables**
    * - :ref:`onboarding-system:Entity Registration`
-     - None
-     - An entity that passed the eligibility and compliance verification requests the registration.
-     - The Certificate and Trust Artifact Issuance processes, and for a Credential Issuer the activation of the Credential types it declares.
-   * - :ref:`onboarding-system:Authentic Source Registration`
-     - None
-     - An Authentic Source that passed the eligibility verification requests the registration.
-     - The Credential Type Registration, as the data source a Credential type references.
-   * - :ref:`onboarding-system:Claim Registration`
-     - None
-     - A claim that a Credential type or an Authentic Source needs is not yet in the Claims Registry.
-     - The Schema Provisioning and the Credential Type Registration that use the claim.
-   * - :ref:`onboarding-system:Wallet-Relying Party Access Certificate Issuance`
-     - :ref:`onboarding-system:Entity Registration`
-     - The first registration, or a new issuance or re-issuance, for example after a key rotation.
-     - The authentication of the entity towards the Wallet Units.
-   * - :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`
-     - :ref:`onboarding-system:Entity Registration`
-     - The first registration, or a re-issuance, where the certificate applies to the role.
-     - The presentation of the registration data of the entity to the Wallet Units.
-   * - :ref:`onboarding-system:Signature and Seal Certificate Issuance`
-     - :ref:`onboarding-system:Entity Registration`
-     - The first registration, or a re-issuance, for the categories whose Sign/Seal Certificate is issued by the National PKI.
-     - The signature of the Attestations or of the Wallet Unit Attestations the entity issues.
-   * - :ref:`onboarding-system:National Authentication Certificate Issuance`
-     - :ref:`onboarding-system:Entity Registration`
-     - An entity that operates in the Proximity Flow.
-     - The authentication of the entity in the Proximity Flow.
-   * - :ref:`onboarding-system:Registration Trust Mark Issuance`
-     - :ref:`onboarding-system:Entity Registration`
-     - The completion of the federation registration.
-     - The recognition of the entity as a registered participant of the National Trust Framework.
-   * - :ref:`onboarding-system:Schema Provisioning`
-     - :ref:`onboarding-system:Claim Registration`
-     - A Credential type needs its schema to be available.
-     - The activation of a Credential type, as one of its requirements.
-   * - :ref:`onboarding-system:Credential Type Registration`
-     - :ref:`onboarding-system:Authentic Source Registration`, :ref:`onboarding-system:Schema Provisioning`, :ref:`onboarding-system:Claim Registration`
-     - An Attestation Scheme Provider requests the registration of a Credential type defined in an Attestation Rulebook.
-     - The declaration of the Credential type by a Credential Issuer, the Credential Type Activation, and the Notification and Publication for the notified categories.
-   * - :ref:`onboarding-system:Credential Type Activation and Deactivation`
-     - :ref:`onboarding-system:Credential Type Registration`
-     - The verification of the issuance conditions of the Credential type.
-     - The issuance of the Credential type by the Credential Issuer.
-   * - :ref:`onboarding-system:Credential Type Update`
-     - :ref:`onboarding-system:Credential Type Registration`
-     - The publication of a new version of a Credential type by its Attestation Scheme Provider.
-     - The activation of the new version.
+     - Eligibility and compliance verification, including the identity proofing and the verification of the entitlements
+     - The Entity, which requests the registration
+     - Registration Trust Mark Issuance; the update of the notification dataset of the Notification and Publication, ``if notified category``; Credential Type Activation and Deactivation, ``if it completes a versioned entry``
+     - The request, by the Entity, of the WRPAC and of the WRPRC ``if EUDIW Trust Framework``, of the Sign/Seal Certificate ``if National PKI``, and of the National Authentication Certificate ``if Proximity Flow``
    * - :ref:`onboarding-system:Entity Update`
      - :ref:`onboarding-system:Entity Registration`
-     - A change of the registered information, that is the identity, the technical configuration, or the authorization information.
-     - The re-issuance of a certificate, or the re-verification of the eligibility where the change affects the authorization information.
+     - The Entity, which submits a change of one or more categories of its registration data
+     - Registration Trust Mark Issuance, where the change affects the data it carries; the update of the notification dataset of the Notification and Publication, ``if notified category``
+     - The request, by the Entity, of the re-issuance of the certificates that carry the changed data, after the revocation of the WRPRC by its Provider, and the re-verification of the eligibility where the change affects the Authorization Information
    * - :ref:`onboarding-system:Entity Suspension and Removal`
      - :ref:`onboarding-system:Entity Registration`
-     - A request of the competent authority or of the entity.
-     - The revocation of the Trust Artifacts of the entity, and the deactivation of its Credential types where it is a Credential Issuer.
+     - The competent authority or the Entity, which requests a suspension, a reactivation or a cancellation
+     - Credential Type Activation and Deactivation, ``if Credential Issuer``; the update of the notification dataset of the Notification and Publication, ``if notified category``
+     - —
+   * - :ref:`onboarding-system:Authentic Source Registration`
+     - Eligibility and compliance verification by the Supervisory Body; the subscription of the Authentic Source to PDND and the publication of its e-Service
+     - The Authentic Source, which declares its registration data
+     - Claim Registration, ``if a claim is missing``
+     - The registration of the Credential types that reference the Authentic Source as their data source
    * - :ref:`onboarding-system:Authentic Source Update`
      - :ref:`onboarding-system:Authentic Source Registration`
-     - A change of the AS Registry entry.
-     - The update of the Credential types that depend on the Authentic Source.
+     - The Authentic Source, or the notification through PDND of the change of an e-Service
+     - Credential Type Activation and Deactivation, ``if a type loses its data source``
+     - —
    * - :ref:`onboarding-system:Authentic Source Removal`
      - :ref:`onboarding-system:Authentic Source Registration`
-     - A request of removal.
-     - The deactivation of the Credential types that lose the Authentic Source as their data source.
+     - A request of removal
+     - Credential Type Activation and Deactivation, ``if a type loses its data source``
+     - —
 
-The :ref:`onboarding-system:Notification and Publication` process is transversal and follows the registration of the notified categories.
+.. _table_map_artifacts:
+.. list-table:: Process Map of the Certificate and Trust Artifact Issuance Processes
+   :class: longtable
+   :widths: 18 22 22 20 18
+   :header-rows: 1
 
-The following conditions are external to the Onboarding System and are not processes defined within IT-Wallet, but they are preconditions or triggers.
+   * - **Process**
+     - **Preconditions**
+     - **Started by**
+     - **Activates**
+     - **Enables**
+   * - :ref:`onboarding-system:Wallet-Relying Party Access Certificate Issuance`
+     - :ref:`onboarding-system:Entity Registration`, with a record of the Entity in the Register, ``if EUDIW Trust Framework``
+     - The Entity, with an ACME order, for the first issuance or for a re-issuance
+     - —
+     - The authentication of the Entity towards the Wallet Units
+   * - :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance`
+     - :ref:`onboarding-system:Entity Registration`, with a record with a valid registration status in the Register and a valid WRPAC, ``if EUDIW Trust Framework``
+     - The Entity, which requests the certificate to its Provider of WRPRC, for the first issuance or after the revocation of the previous one
+     - —
+     - The presentation of the registration data of the Entity to the Wallet Units
+   * - :ref:`onboarding-system:Signature and Seal Certificate Issuance`
+     - :ref:`onboarding-system:Entity Registration`, ``if National PKI``. For a QEAA Provider and a PuB-EAA Provider the certificate is qualified and it is issued by a Qualified Trust Service Provider outside this process
+     - The Entity, with an ACME order, for the first issuance or for a re-issuance
+     - —
+     - The signature or the seal of the Attestations the Entity issues
+   * - :ref:`onboarding-system:National Authentication Certificate Issuance`
+     - :ref:`onboarding-system:Entity Registration`, ``if Proximity Flow``
+     - The Entity, with an ACME order, for the first issuance or for a re-issuance
+     - —
+     - The authentication of the Entity in the Proximity Flow
+   * - :ref:`onboarding-system:Registration Trust Mark Issuance`
+     - The completion of the federation registration of the Entity
+     - Invoked by the Entity Registration, and by the Entity Update where the change affects the data the Trust Mark carries
+     - —
+     - The recognition of the Entity as a registered participant of the National Trust Framework, and the reading of its authorization data where it has no record in the Register
 
-- The subscription of an Authentic Source to PDND and the publication of its e-Service.
-- The qualified status of a Qualified Trust Service Provider, for a QEAA Provider and a PuB-EAA Provider.
-- The certification of a Wallet Solution.
-- The definition and the availability of the applicable Attestation Rulebook, for a Credential Type Registration. The Rulebook is an input of the Onboarding System and its definition is not a process of it.
-- The identity proofing and the eligibility and compliance verification, described in :ref:`onboarding-system:Eligibility and Compliance Preconditions`, that precede every registration.
+.. _table_map_attestation:
+.. list-table:: Process Map of the Attestation Onboarding Processes
+   :class: longtable
+   :widths: 18 22 22 20 18
+   :header-rows: 1
 
-The diagram below shows the activations between the various processes.
-Those on the left are the *starting processes*, triggered from outside the Onboarding System.
-Those on the right are activated by a starting process or by a lifecycle process.
-The processes that act on the lifecycle of an entity or of a Credential type are governed as described in :ref:`onboarding-system:Lifecycle Management`, and the effects of an update are described there as well.
+   * - **Process**
+     - **Preconditions**
+     - **Started by**
+     - **Activates**
+     - **Enables**
+   * - :ref:`onboarding-system:Claim Registration`
+     - —
+     - Invoked by the Authentic Source Registration, by the Schema Provisioning or by the Credential Type Registration, ``if a claim is missing``
+     - —
+     - The Schema Provisioning and the Credential Type Registration that use the claim
+   * - :ref:`onboarding-system:Schema Provisioning`
+     - The claims that compose the schema are available in the Claims Registry
+     - Invoked by the Credential Type Registration, ``if the schema is missing``
+     - Claim Registration, ``if a claim is missing``
+     - The activation of a Credential type, as one of its conditions
+   * - :ref:`onboarding-system:Credential Type Registration`
+     - The definition and the availability of the applicable Attestation Rulebook; the Authentic Source Registration, or a parent Credential type, as the data source
+     - The Attestation Scheme Provider, which requests the registration
+     - Claim Registration, ``if a claim is missing``; Schema Provisioning, ``if the schema is missing``; Credential Type Activation and Deactivation
+     - The declaration of the Credential type by a Credential Issuer at its Entity Registration
+   * - :ref:`onboarding-system:Credential Type Activation and Deactivation`
+     - :ref:`onboarding-system:Credential Type Registration`
+     - No explicit request. The versioned entry is re-evaluated whenever one of its three conditions changes
+     - —
+     - The issuance of the Credential type by the Credential Issuers listed in the versioned entry
+   * - :ref:`onboarding-system:Credential Type Update`
+     - :ref:`onboarding-system:Credential Type Registration`
+     - The Attestation Scheme Provider, which publishes a new version
+     - Credential Type Registration for the new versioned entry; Credential Type Activation and Deactivation
+     - —
 
-.. _fig_onboarding_dep_map:
-.. plantuml:: plantuml/onboarding-dependency-map.puml
-    :width: 99%
-    :align: center
-    :alt: The figure illustrates the activations between the various processes. On the left the *starting processes* are illustrated, triggered from outside the Onboarding System. Those on the right are activated by a starting process or by a lifecycle process.
-    :caption: `Onboarding Process Dependency Map. <https://www.plantuml.com/plantuml/svg/ZLRRQXin47qt-1-6vA5FfabBqpJG4dkpRWEnCRikUV6BiZjUYsWb8sdZk2N_tj5ginTVaifWp5pEp9mv4husbcbRv09cMYLe30mJov-OvKh2XAtxFO5B2rQ1vjdAGier9ixPxvb7BjTCinmUMFAOQLN8D512QR2QIKCkbBOTPbOiLHikCrWoOR3jId792c7d-6o7WcSofrH8w0jrEsnDXLY6iTqA1DS8avde00srLXlVnUb5UVQyOoLjpFyWd9-tVJNSIEaKTONnkJoTE3-dbgZXij_hzpx0TtTA8jrmQqya6c_lzsfaE0cbvNQxa15ct11DZicFlzSfitW2p40OmUbeT1EEHvsqOM5NH0PF85Q5Jh0BK6OEuyEfWSRKfJ81y-qQZvSEvWGGN8ONmRVMLC2y733TdwlQ1fpCTM4iaMlvai99DfBCReKbyDqPd8w_k0_yxVU0JgkzTZTGuYpaXEb7k3McO3BnlSqd134EpqQVzW3kezamw4Pxqx64cEJ5RA4Hc4mXHYOMCa3NEqzepYvK7BzLEDel71qlF2s7f3tKsomDRrIVjiTuQH5UiROjHmYOPK9bZhSkx-Tly1u8nlC3CWfQ8jWbBbbXpXQI7eedRYY1nEv9cXtDsL5Vwt5PIDVx3RBQKgbms82zT9GyLHLBJYgKJ9qK3w8oUBweaV1y58PVsmgERd_-cb-1u4jCjWaXlNz18IxC6gMf-ummLqzC-3jwvAOTkgHD5jtFIPFckXiC1b2LEt0deI76kD1-Zzw6mU27kmjNmCI6RKrjyug_0hvqFsipgRUqSH8LlLPAB-Gz4m8jb3jCtUFQ84G74AQli9Jmp7FNwrYeJUEVURSiTuDfxN1xzBNf7LVvcegY8Ix1aWoQ-NSvwp2nJu5xv4hqo8CpIBoEkO6SfYH5DjYxslilajqh-6w5rw1uzXfaghjnAEe85JJu3XbtjKBtTn_lOfKhRHpxYoW5rydnv2-aK4xxt1em9UckWskKAVqB-0S0>`_
+.. _table_map_notification:
+.. list-table:: Process Map of the Notification and Publication
+   :class: longtable
+   :widths: 18 22 22 20 18
+   :header-rows: 1
 
+   * - **Process**
+     - **Preconditions**
+     - **Started by**
+     - **Activates**
+     - **Enables**
+   * - :ref:`onboarding-system:Notification and Publication`
+     - :ref:`onboarding-system:Entity Registration`, and the conformity assessment for the notified categories
+     - Invoked by the Entity Registration, by the Entity Update or by the Entity Suspension and Removal, ``if notified category``, for the collection of the notifiable information. The submission to the European Commission is an act of the Supervisory Body
+     - —
+     - The inclusion of the Entity in the List of Trusted Entities of its category
+
+The processes that act on the lifecycle of an entity or of a Credential type are governed as described in :ref:`onboarding-system:Lifecycle Management`, and the effects of each event on the registries and on the Trust Artifacts are given in :ref:`onboarding-system:Events, Registries and Trust Artifacts`.
 
 Notification and Publication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
