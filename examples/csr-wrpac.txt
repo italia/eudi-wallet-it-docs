@@ -18,7 +18,49 @@ CertificationRequest csr = {
       subjectPublicKey: "BASE64(SPKI_PUBLIC_KEY_BYTES)"
     },
 
-    attributes: []
+    attributes: [
+      Attribute {
+        type: "1.2.840.113549.1.9.14",                    // extensionRequest
+        values: [
+          Extensions [
+            Extension {
+              oid: "2.5.29.15",                           // keyUsage
+              critical: true,
+              value: KeyUsage {
+                nonRepudiation: true                       // Type A
+                // All other bits set to false
+              }
+            },
+
+            Extension {
+              oid: "2.5.29.32",                           // certificatePolicies
+              critical: false,
+              value: CertificatePolicies [
+                PolicyInformation {
+                  policyIdentifier: "0.4.0.194118.1.2",   // NCP-l-eudiwrp
+                  policyQualifiers: [
+                    CPSuri("https://rpca.example.test/cps")
+                  ]
+                }
+              ]
+            },
+
+            Extension {
+              oid: "2.5.29.17",                           // subjectAltName
+              critical: false,
+              value: SubjectAltName [
+                GeneralName.uniformResourceIdentifier("https://rp.example.test/support"),
+                GeneralName.rfc822Name("support@rp.example.test"),
+                GeneralName.otherName(
+                  type-id: "2.5.4.20",                    // id-at-telephoneNumber
+                  value: "+39100000000"
+                )
+              ]
+            }
+          ]
+        ]
+      }
+    ]
   },
 
   signatureAlgorithm: AlgorithmIdentifier {

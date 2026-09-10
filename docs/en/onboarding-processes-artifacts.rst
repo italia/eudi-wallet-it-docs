@@ -39,7 +39,8 @@ This section defines the profile that the ``certificate_signing_requests`` MUST 
 The Entity provides one Certificate Signing Request for each X.509 certificate it needs, that is, depending on the role, the WRPAC, the Sign/Seal Certificate or the National Authentication Certificate, and it presents each of them in the ACME order of the corresponding service.
 The Wallet-Relying Party Registration Certificate and the registration Trust Mark do not certify a key, so they are not requested through a Certificate Signing Request, see :ref:`onboarding-system:Wallet-Relying Party Registration Certificate Issuance` and :ref:`onboarding-system:Registration Trust Mark Issuance`.
 
-A Certificate Signing Request does not determine the content of the issued certificate, but solely carries the public key to be certified and proves possession of the corresponding private key.
+A Certificate Signing Request carries the public key to be certified, proves possession of the corresponding private key, and requests the values of the certificate fields supplied by the Entity.
+It does not determine the content of the issued certificate: the Certification Authority MUST validate the requested values against the registration data and the applicable certificate profile, and it MUST add or determine the issuer-dependent values required by that profile.
 
 The Certificate Signing Request MUST be a ``CertificationRequest`` as defined in :rfc:`2986` (PKCS #10), DER-encoded, and it is carried in the ACME order as required by :rfc:`8555#section-7.4`.
 
@@ -52,32 +53,72 @@ The Certificate Signing Request MUST be a ``CertificationRequest`` as defined in
      - **Description**
      - **Reference**
 
+   * - ``certificationRequestInfo``
+     - REQUIRED. It contains the version, subject, public key and attributes of the request.
+     - :rfc:`2986#section-4.1`
+
    * - ``version``
      - REQUIRED. It MUST be ``0``, which denotes a PKCS #10 version 1 request.
      - :rfc:`2986#section-4.1`
 
    * - ``subject``
-     - REQUIRED. Its attributes MUST be consistent with the registration data of the Entity and with [`ETSI EN 319 412-2`_] for legal persons.
+     - REQUIRED. Its attributes MUST be consistent with the registration data of the Entity and with [`ETSI EN 319 412-2`_] for natural persons or [`ETSI EN 319 412-3`_] for legal persons.
        The subject is not authoritative, so the Certification Authority MAY replace it with the value derived from the record of the Entity in the Register or, in its absence, from the registration Trust Mark.
-     - :rfc:`2986#section-4.1`, [`ETSI EN 319 412-2`_]
+     - :rfc:`2986#section-4.1`, [`ETSI EN 319 412-2`_], [`ETSI EN 319 412-3`_]
 
    * - ``subjectPKInfo``
      - REQUIRED. It carries the public key to be certified.
-       The key MUST use one of the signature algorithms defined in :ref:`algorithms:Cryptographic Algorithms`.
+       The key MUST use one of the public-key algorithms defined in :ref:`algorithms:Cryptographic Algorithms`.
        It MUST be distinct from the Federation Entity Key, and a distinct key MUST be used for each requested certificate.
      - :rfc:`2986#section-4.1`
 
    * - ``attributes``
-     - OPTIONAL. The Entity SHOULD NOT request certificate extensions through the ``extensionRequest`` attribute, because the extensions of the issued certificate are fixed by the applicable certificate profile and set by the Certification Authority, which MAY ignore any requested extension.
+     - REQUIRED. It MUST contain exactly one ``extensionRequest`` attribute. Other attributes MAY be included only when supported by the applicable certificate profile.
+     - :rfc:`2986#section-4.1`, :rfc:`2985#section-5.4.2`
+
+   * - ``extensionRequest``
+     - REQUIRED within ``attributes``. It MUST have the object identifier ``1.2.840.113549.1.9.14`` and a single value of type ``Extensions``. The requested extensions MUST be consistent with the applicable certificate profile and the authoritative registration data.
      - :rfc:`2985#section-5.4.2`
 
    * - ``signatureAlgorithm``
-     - REQUIRED. It MUST correspond to the algorithm of ``subjectPKInfo`` and it MUST be one of the signature algorithms defined in :ref:`algorithms:Cryptographic Algorithms`.
+     - REQUIRED. It MUST be compatible with the private key corresponding to ``subjectPKInfo`` and it MUST be one of the signature algorithms defined in :ref:`algorithms:Cryptographic Algorithms`.
      - :rfc:`2986#section-4.2`
 
    * - ``signature``
      - REQUIRED. The request MUST be signed with the private key corresponding to ``subjectPKInfo``, which proves possession of that key.
      - :rfc:`2986#section-4.2`
+
+The following table defines the extension values requested by the Entity and the extension values determined by the Certification Authority.
+The criticality of each requested extension MUST follow the applicable certificate profile.
+
+.. list-table:: Certificate Signing Request Extension Fields
+   :class: longtable
+   :header-rows: 1
+   :widths: 25 55 20
+
+   * - **Extension**
+     - **Description**
+     - **Reference**
+
+   * - ``extensions``
+     - REQUIRED as the value of ``extensionRequest``. It MUST contain the requested extension fields as a DER-encoded ``Extensions`` sequence.
+       It MUST include ``keyUsage`` and ``subjectAltName`` and, when required by the applicable certificate profile, ``certificatePolicies``.
+       Extensions whose values depend on the issuing Certification Authority SHOULD be omitted from the request.
+     - :rfc:`2985#section-5.4.2`, :rfc:`5280#section-4.2`
+
+   * - ``keyUsage``
+     - REQUIRED. It MUST be marked critical and MUST contain exactly one of the key-usage settings permitted by the applicable certificate profile.
+        For a WRPAC, National Authentication Certificate or Registrar Sign/Seal Certificate, it MUST contain one (and only one) of *Type A*, *Type B* or *Type F*.
+        For an Entity Sign/Seal Certificate, it MUST contain one (and only one) of *Type A*, *Type B*, *Type C* or *Type F*.
+        For a WRPAC, *Type A* SHOULD be used as per LEG-4.3.1-4 in Clause 4.3.1 [`ETSI EN 319 412-3`_].
+     - :rfc:`5280#section-4.2.1.3`, :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`, :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile`, :ref:`infrastructure-trust:Entity Sign/Seal Certificate Profile`
+
+   * - ``subjectAltName``
+     - REQUIRED. It MUST be marked non-critical and MUST contain at least one ``GeneralName`` permitted by the applicable certificate profile.
+       For a WRPAC or National Authentication Certificate, it MUST contain at least one of the following contact values: a ``uniformResourceIdentifier`` for a helpdesk/support website, an ``otherName`` with ``type-id`` set to ``2.5.4.20`` (``id-at-telephoneNumber``), or an ``rfc822Name`` for a registration/usage email address.
+     - :rfc:`5280#section-4.2.1.6`, :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`
+
+Extensions not applicable to, or not listed in, the applicable certificate profile MUST NOT be included in the issued certificate, regardless of any value requested in the Certificate Signing Request.
 
 .. note::
    The Certificate Signing Request certifies a key that is separate from the Federation Entity Key.
@@ -188,5 +229,3 @@ It makes the Entity recognizable as a registered participant of the National Tru
 
 1. At the completion of the federation registration, the National Federation Management builds the registration Trust Mark with the authorization data of the Entity.
 2. The Federation Trust Anchor signs the Trust Mark, which is carried in the Subordinate Statement, as described in :ref:`onboarding-system:Entity Registration`.
-
-
