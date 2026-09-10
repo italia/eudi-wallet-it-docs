@@ -60,41 +60,38 @@ The table below lists the components, the services each of them provides, and th
    * - **Component**
      - **Services**
      - **Realized process**
-   * - Supervisory Body
-     - Eligibility and compliance verification, approval of claims, schemas and Credential types
-     - Precondition to every registration, see :ref:`onboarding-system:Eligibility and Compliance Preconditions`
    * - National Federation Management
      - Federation registration, issuance of Trust Marks, publication of the signed registries
-     - :ref:`onboarding-system:Entity Registration`
+     - :ref:`onboarding-system:Entity Registration`, :ref:`onboarding-system:Entity Update`, :ref:`onboarding-system:Entity Suspension and Removal`, :ref:`onboarding-system:Registration Trust Mark Issuance`
    * - EUDIW Registration Management
      - Verification and registration of the Wallet-Relying Parties in the Register
-     - :ref:`onboarding-system:Entity Registration`
+     - :ref:`onboarding-system:Entity Registration`, :ref:`onboarding-system:Entity Update`, :ref:`onboarding-system:Entity Suspension and Removal`
    * - Certificate Management
      - Issuance and update of WRPAC, WRPRC, Sign/Seal and National Authentication certificates
-     - :ref:`onboarding-system:Certificate and Trust Artifact Issuance`
-   * - EU Notification Management
-     - Signature of the EU Member State Trusted List and notification to the European Commission
+     - :ref:`onboarding-system:Certificate and Trust Artifact Issuance`, :ref:`onboarding-system:Entity Update`
+   * - Notification Dataset Management
+     - Collection and maintenance, in the notification dataset, of the information subject to notification
      - :ref:`onboarding-system:Notification and Publication`
    * - Authentic Source Management
-     - Registration of the Authentic Sources in the AS Registry
-     - :ref:`onboarding-system:Authentic Source Registration`
+     - Registration, update and removal of the Authentic Sources in the AS Registry
+     - :ref:`onboarding-system:Authentic Source Registration`, :ref:`onboarding-system:Authentic Source Update`, :ref:`onboarding-system:Authentic Source Removal`
    * - Claims and Schema Management
      - Registration of the claims and provisioning of the schemas
-     - :ref:`onboarding-system:Attestation Onboarding`
+     - :ref:`onboarding-system:Claim Registration`, :ref:`onboarding-system:Schema Provisioning`
    * - Catalog Management
      - Registration, activation and versioning of the Credential types in the Digital Credentials Catalog
-     - :ref:`onboarding-system:Attestation Onboarding`
+     - :ref:`onboarding-system:Credential Type Registration`, :ref:`onboarding-system:Credential Type Activation and Deactivation`, :ref:`onboarding-system:Credential Type Update`
 
-The components write to the National registries and data stores described in :ref:`registry:Registry Infrastructure`.
-At the EU level, they interact with the European Commission for catalog notification and alignment.
+The components write to the National registries and data stores described in :ref:`registry:Registry Infrastructure`, which are grouped by purpose as in :ref:`registry:Registries and Catalogues of the Ecosystem`.
 
 Two data stores are kept separate on purpose, the Register, which holds the Wallet-Relying Party registration records defined by [`CIR2025/848`_] and drives the issuance of the certificates, and the notification dataset, which holds the notifiable information defined by [`CIR2024/2980`_] and feeds the Publication Service.
 They overlap only in the identification data, so the split keeps the registration distinct from the notification.
  
-The diagram below shows the components, the actors that interact with them and the data stores they write.
+The diagram below groups the components by responsibility and shows the data stores they interact with.
+A component can realize processes of more than one family, so the groups of the diagram do not coincide with the families of :ref:`onboarding-system:Onboarding Processes`, and the correspondence is the one given by the table above.
 The Authentic Sources register only in the AS Registry, without a Register record and without Trust Artifacts, since they are neither Wallet-Relying Parties nor Federation Entities.
 The Credential Issuers, instead, register as Entities and also declare the Credential types they issue, and they are added to the issuers of the types they declare in the Digital Credentials Catalog.
 
 .. plantuml:: plantuml/onboarding-system-overview.puml
     :width: 99%
-    :caption: `IT-Wallet Onboarding System. <https://www.plantuml.com/plantuml/svg/bLPBRnen4Bv7odyOaKDR54YZD7qTgi9c8wLIMnHIfGSkPZqi5bvxPNkJqAh_lJFUXIoF9ggH4FOyFT_CPpxx85oe2WrNDxrReJK6-6wcLZYfJ0xZfGzO71ved0K85fpAvm6aSfW5PStXWLyeKmed2l1p8Uqz6ys4zjWMIPo9IeSRV0W3hN9Je0cGqHUwjbefieN8SHoM6e4Z29Fh3KS3v-nzOhLrSFGshXtffJLXh7uXd9wsPLeP3CiImRemjss9iH8zbd3wldtgX5dmwPlpZTDLKaFh9BecaxEuDlHiPMHYdK476swb268g_7Fs8WlMxTKvF8Wow8oh4jsTyjOjOMZbiWF2Wv057AMdmpHznwfDGQ7p1BOT-Csg06lbGGX8NS7ujjIZ_tAHYn3WwFASFsm9jDPLWKwtEwZ2d91L6OnjvJBiTc5Ykjslmf1p1hxRdPX-VsAs5Nrz0r_aTDtaVVes-R37VQA5AaZDI1XdSop4V_htsVoP08IGjZbxWRrkjOR4eMJNWgR6-mfTxJiJOSltdwtIfcGKbdkgoWFnL5M_HJWetYL5TZKs-tEB8LHpsndA9wwQ_hYukeLhp9KF__IvUzTZCj5Bxg0HKGU5EfwOziaIhdYo2vHAE19FZ2rZpYHN1kgeKvuGuUgsTPZ3qN1uaLuEzo6256McgBgu9x-V_VFN7s8_VBcz8GeWLPeG3ozlhqU3v8I-hvDNCSe3AxR2DE1ibGI-sIRQ_dgChYxW14RLi9SE1Z1ozav9Bih4D1EsFggnhQQFCJTweQax5IXcVq5z1sCQxGOwQWecY-skM148T5OjGR2FLo0sBE1ZGTkuxvf1Cqad4rCF4lle7yEDUB365cjWpfvpr6uH3ytuhERXNyQn2RXjE6rqKVtUbJkDi6EnWGxNp6E8reO5M_16X3DjAxd1QXItqZYrTb5VaX1AurehfvMZdXMacTYYKDwJLTJ5x57tyE05z6Y1Rr7nbAWOY2G9LPOHNHCbztgVLjJv4UmTzGRMg4zCpblZD_IO33u2qakffaepOKJLp1QbLi9as8hjcfiGL3DqIC8cBjsgt__KS5BBWBrOmo7eEVVSR_3otYbA-DKguqZ1d4ji97gNQixa4su8gb9DT7n0FoaMmSQR6a5wTwZfUHyngRUS2sRjF5fJJGMkn6FgBo9liGCUsKVtzOxyrIMArQgcVF8PZQJ_C7y1>`_
+    :caption: `IT-Wallet Onboarding System. <https://www.plantuml.com/plantuml/svg/XLRVRzis47xNNt587WO4YRiiIz42Gr77iO4yh0ki37tn2osTPCxKKJXISxoX_tj9YX9OntOLm3_8--w-k_lkdC_62hPTe-3fvUQhK0ej_4LhBRYKL4E-DnQRJ65bmMfWMMyib9Ani59JPhQIMi6Y0RCHfTvvI2MKmUIcn4fqohxWgvqgMLE3PA5mByY9LIkAhQWnjtk5uDqBgbNgPigiTpEjDCFb-_0SNYuqsLp-Xt1xcrmfIMZtBO9ckz791UaI3RPm-o4vP45RV_ZxVN8uqddGN2974dVXISrqH-LCCo53whCKLgo5-GbQ55RpCPCibWOkpdJe0lxFCe3HT8crD9Q5xz8520FjjcQiuN9nx_-SDG2CYJd0rTMNO2mKBB347Wb_2dBkVCUkhbOqcQnegdumc9ELLgAvNb7UhRMd92n2ReKDC0E2IdZXpbZdZBScaAcmXClvtUAtnUDR7lE_7v--GapW58s-3ZTBL7jVX6V1dWNeDX2ZUaMIm6uGWhT8OC6YmPtcRI31M9ycCUqSsELMGAuxBl08XKEJFZLXcfeJlzz-QCiC7SzA5hv6JyPqWWeSsbEuktFzIR372h9ydiwkmRqjtLikQtgNer2-_2iQMpjo3WTGZ2uZ-zVxNp-U93-rpimUTcIWB-nvzah8fbT3Ncom4KToI6ncZAKdwZYRO1xu-Sz9UOz44LOeNH_ndJXqso2cwn8_rwqlEbOd6IBIPzDC8V3es1YqnzW8YxLcBrdJhV_18cnNUXElMvya5mT4OYXOY0MvrOnceEhtJiBLWHDuFn5jnwqsemIjFtIGyCJqODXVOqpa5UdAIwqFjUCspDB3m-DyyV06b6oBwVCJpAbijIJhLqRO7ljaMwpenBeu3F3j89qS6n5cqUDBQGhzB_B-C3-3pPdiXYbnevqF-sSVXph4dtsOlvzzF8c3gDztAueITqucr_0YNZNfPZzidRkVUahbQY2AUb1iYevrI5oa0bnHL6201dKvEOKdoCc12wMxCXrj1rfs2jTQnosv7Y7Hjj-eaLI7e2jmS9Rhpc9iO7hPZtjK9NQEsUWm-mLkt0CS0m9ZXOnKO3ZFNEp9v5DSBgDrePjM4r8O6UCL3xsvamdySNFpAUebyprpNwC-ix2Pmq5ePnPtYJi8JSaSi-6x-vYvsGkVGzd6u6By3sOdxIR-ma0nv6jw9b5gZdpCUCGd6nTa_07eCP5jMC6PV_6v3D8V3s8oeyEuCyHQENzKQMv24qSQWrUNJPPzHYgxHdq7>`_

@@ -13,55 +13,67 @@ skinparam roundCorner 8
 skinparam databaseBorderColor #333333
 skinparam actorBorderColor #333333
 
-actor "Supervisory Body" as adm #E1BEE7
-
 package "IT-Wallet Onboarding System" {
 
-  package "Attestation Onboarding" as pkgatt #F5F5F5 {
-    rectangle "**Authentic Source** \n**Management**\n..\nAuthentic Sources" as asmgr #C8E6C9
-    rectangle "**Claims and Schema** \n**Management**\n..\nAuthentic Sources" as schmgr #C8E6C9
-    rectangle "**Catalog**\n **Management**\n..\nAll Credential Issuers" as catmgr #C8E6C9
+  package "Registration" as pkgreg #F5F5F5 {
+    rectangle "**National Federation Management**\n..\nAll Federation Entities,\nSubordinate Statements and Trust Marks" as fed #E3F2FD
+    rectangle "**EUDIW Registration Management**\n..\nWallet-Relying Parties operating\nin the EUDIW Trust Framework" as reg #E3F2FD
+    rectangle "**Authentic Source Management**\n..\nAuthentic Sources" as asmgr #E3F2FD
   }
 
-  package "Entity Onboarding" as pkgent #F5F5F5 {
-    rectangle "**National Federation Management**\n..\nAll Entities" as fed #C8E6C9
-    rectangle "**EUDIW Registration Management**\n..\nCredential Issuers, Relying Parties,\nRelying Party Intermediaries\noperating in EUDIW boundary" as reg #BBDEFB
-    rectangle "**Certificate Management**\n..\nX.509 and JWT Artifacts (WRPAC/WRPRC)" as x509 #BBDEFB
+  package "Certificate Issuance" as pkgcert #F5F5F5 {
+    rectangle "**Certificate Management**\n..\nWRPAC, WRPRC, Sign/Seal and\nNational Authentication certificates" as x509 #E3F2FD
   }
 
-  rectangle "**EU Notification Management**\n..\nPID / PuB-EAA Providers,\nWallet Providers" as pub #BBDEFB
+  package "Attestation Management" as pkgatt #F5F5F5 {
+    rectangle "**Claims and Schema Management**\n..\nClaims and Credential schemas" as schmgr #E3F2FD
+    rectangle "**Catalog Management**\n..\nCredential types" as catmgr #E3F2FD
+  }
+
+  package "Notification" as pkgnot #F5F5F5 {
+    rectangle "**Notification Dataset Management**\n..\nCategories subject to notification" as pub #E3F2FD
+  }
 
   package "Registries and Data Stores" as pkgdata #F5F5F5 {
-    database "National\nAS Registry" as asreg #C8E6C9
-    database "National Claims /\nSchema Reg., Taxonomy" as reg3 #C8E6C9
-    database "National\nCredentials Catalog" as cat #C8E6C9
-    database "EUDIW\nRegister" as wrpreg #BBDEFB
-    database "EUDIW\nNotification Dataset" as notif #BBDEFB
+
+    package "Trust purpose" as pkgtrust #FFFFFF {
+      database "Register\nof WRPs" as wrpreg #BBDEFB
+      database "Federation API Endpoints,\nEntity Statements\nand Trust Marks" as fedreg #BBDEFB
+    }
+
+    package "Semantic and discovery purpose" as pkgsem #FFFFFF {
+      database "National\nAS Registry" as asreg #C8E6C9
+      database "National Claims /\nSchema Reg., Taxonomy" as reg3 #C8E6C9
+      database "National\nCredentials Catalog" as cat #C8E6C9
+    }
+
+    database "Notification\nDataset" as notif #EEEEEE
   }
 }
 
 cloud "Attestation\nRulebook" as rb #EEEEEE
-cloud "European\nCommission" as ec #EEEEEE
-
-' ---- supervisory body gates ----
-adm --> pkgatt : oversees and\ngoverns
-adm --> pkgent : eligibility and\ncompliance
+cloud "EUDIW Catalogue of Attributes\nand Catalogue of Schemes" as eucat #EEEEEE
 
 ' ---- rulebook reference ----
-rb ..> catmgr
+rb ..> pkgatt
 
-' ---- component to store (writes) ----
+' ---- component to store  ----
+fed <--> fedreg
+reg --> wrpreg
 asmgr --> asreg
 schmgr --> reg3
 catmgr --> cat
-reg --> wrpreg
 pub --> notif
-pub ..> ec
+
+' ---- alignment with the EU catalogues ----
+pkgsem ..> eucat 
 
 ' ---- certificate issuance ----
-' fed --> x509
 reg --> x509
+x509 <-- fedreg 
+x509 <-- wrpreg 
 
-pkgent --> pub
+' ---- notifiable information ----
+pkgreg --> pub
 
 @enduml
