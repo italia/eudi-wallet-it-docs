@@ -281,8 +281,8 @@ Within IT-Wallet the identity proofing is applied to every entity that onboards,
 For the notified entities the certifications are a mandatory input to the onboarding, and in every case the eligibility and compliance verification is a mandatory precondition for the technical registration.
 
 
-Registration Outcomes
-^^^^^^^^^^^^^^^^^^^^^
+Trust Artifacts Registration Outcomes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A successful registration produces, depending on the role and on the scope of operation, the entry in the Register and the Trust Artifacts. For the notified categories, the entry in a List of Trusted Entities follows from the :ref:`onboarding-system:Notification and Publication`, which is a separate process.
 The way each artifact is produced is described in :ref:`onboarding-system:Onboarding Processes`, and the effects of the later changes in :ref:`onboarding-system:Events, Registries and Trust Artifacts`.
@@ -290,7 +290,7 @@ The way each artifact is produced is described in :ref:`onboarding-system:Onboar
 The table shows the artifacts that vary by role.
 The X.509 certificate column groups the X.509 certificates the entity obtains, in particular the WRPAC, the Sign/Seal Certificate and the national Authentication Certificate, while the WRPRC is shown on its own because it is not an X.509 certificate but a JSON Web Token or a CBOR Web Token.
 
-.. list-table:: Registration Outcomes by Entity Type
+.. list-table:: Trust Artifacts Registration Outcomes by Entity Type
    :class: longtable
    :widths: 20 12 10 34 24
    :header-rows: 1

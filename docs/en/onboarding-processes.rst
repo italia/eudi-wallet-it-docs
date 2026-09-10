@@ -159,7 +159,7 @@ For a PID Provider and a Wallet Provider the Sign/Seal Certificate is issued by 
 For a PuB-EAA Provider the Sign/Seal Certificate is a qualified certificate issued by a Qualified Trust Service Provider, and its Trust Anchor is conveyed by the eIDAS Trusted Lists that are outside of this process.
 Therefore, the Sign/Seal Trust Anchor is not required as an input for a PuB-EAA Provider, and the qualified status of its certificate is evaluated in the conformity assessment required for eligibility and compliance, see :ref:`onboarding-system:Eligibility and Compliance Preconditions`.
 
-The notifiable information is collected in the notification dataset, that is kept separate from the Register as described in :ref:`onboarding-system:Registration Outcomes`.
+The notifiable information is collected in the notification dataset, that is kept separate from the Register as described in :ref:`onboarding-system:Trust Artifacts Registration Outcomes`.
 
 .. note::
    The Sign/Seal Trust Anchor is not the certificate the entity uses to sign, whose public key is conveyed by the ``certificate_signing_requests``.

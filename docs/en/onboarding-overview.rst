@@ -84,7 +84,7 @@ The table below lists the components, the services each of them provides, and th
 
 The components write to the National registries and data stores described in :ref:`registry:Registry Infrastructure`, which are grouped by purpose as in :ref:`registry:Registries and Catalogues of the Ecosystem`.
 
-Two data stores are kept separate on purpose, the Register, which holds the Wallet-Relying Party registration records defined by [`CIR2025/848`_] and drives the issuance of the certificates, and the notification dataset, which holds the notifiable information defined by [`CIR2024/2980`_] and feeds the Publication Service.
+Two data stores are kept separate on purpose, the Register, which holds the Wallet-Relying Party registration records defined by [`CIR2025/848`_] and drives the issuance of the certificates, and the notification dataset, which holds the notifiable information defined by [`CIR2024/2980`_].
 They overlap only in the identification data, so the split keeps the registration distinct from the notification.
  
 The diagram below groups the components by responsibility and shows the data stores they interact with.

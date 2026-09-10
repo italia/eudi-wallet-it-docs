@@ -53,7 +53,7 @@ The registration is recorded across the two Trust Frameworks according to the ro
 - In the EUDIW Trust Framework, for the Wallet-Relying Parties, a signed record is written in the Register, and it drives the later issuance of the WRPAC and of the WRPRC.
 
 The National Trust Framework is always the registration layer, while the EUDIW Trust Framework is added for the notified categories and for the Entities that declare the cross-border operation, as described in :ref:`infrastructure-trust:Overview`.
-The Register and the notification dataset are kept separate, as described in :ref:`onboarding-system:Registration Outcomes`.
+The Register and the notification dataset are kept separate, as described in :ref:`onboarding-system:Trust Artifacts Registration Outcomes`.
 
 **Process**
 
