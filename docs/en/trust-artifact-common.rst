@@ -325,13 +325,6 @@ Fields not listed in the table remain subject to the requirements defined in the
        In any case, it MUST NOT contain a ``QCStatement`` structure with ``statementId`` set to ``0.4.0.1862.1.7`` (``id-etsi-qcs-QcCClegislation``), referred to as ``esi4-qcStatement-7``.
 
 .. note::
-  **Trust Anchor Revocation.**
-  Trust Anchor certificates are not subject to revocation, as their trust is established by policy through their formal inclusion and publication as specified by the applicable Trust Framework.
-  Consequently, revocation status information, such as CRLs or OCSP responses, is not required for Trust Anchor certificates.
-
-  Moreover, validating entities utilizing Trust Anchor certificates retrieved as specified by the applicable Trust Framework MAY omit revocation status checks for those certificates.
-
-.. note::
   **Trust Anchor Signature.**
   A Trust Anchor certificate MAY be self-signed (representing a root CA) or non-self-signed (representing an intermediate CA designated as a Trust Anchor by policy).
   Relying Parties MUST NOT require an additional issuer above a Trust Anchor retrieved as specified by the applicable Trust Framework, even if it is not self-signed, because the Trust Anchor is an authoritative input to the path validation algorithm designated by policy.
