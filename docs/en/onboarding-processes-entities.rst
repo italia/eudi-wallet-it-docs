@@ -69,7 +69,8 @@ The Register and the notification dataset are kept separate, as described in :re
 4. Where the role and the declaration of the Entity require the EUDIW Trust Framework, the EUDIW Registration Management verifies the Entity and writes its record in the Register, and the Registrar signs or seals it.
    The record drives the later issuance of the WRPAC and of the WRPRC, and its data model and its public API are defined in :ref:`infrastructure-trust:Register of WRPs`.
    For a Credential Issuer, the ``provided_attestations`` declared at registration add the Credential Issuer to the ``issuers`` field of the versioned entry of each declared Credential type, as described in :ref:`onboarding-system:Credential Type Registration`, and the same declaration is carried in the record and in the WRPRC.
-5. The registration produces the ``registration`` event, that the Federation Authority publishes on the Federation Subordinate Events Endpoint as described in :ref:`onboarding-system:Registration Events and Their Governance`.
+5. Where the Entity belongs to a category subject to notification, the Notification Dataset Management collects its notifiable information in the notification dataset, as described in :ref:`onboarding-system:Notification and Publication`.
+6. The registration produces the ``registration`` event, that the Federation Authority publishes on the Federation Subordinate Events Endpoint as described in :ref:`onboarding-system:Registration Events and Their Governance`.
    At the end of the process the Entity is ``REGISTERED``, the record enables the :ref:`onboarding-system:Certificate and Trust Artifact Issuance` processes that bring it to ``OPERATIONAL``, and, for a Credential Issuer, the declaration can activate the declared Credential types, as described in :ref:`onboarding-system:Credential Type Activation and Deactivation`.
 
 .. note::

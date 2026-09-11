@@ -70,7 +70,7 @@ The table below lists the components, the services each of them provides, and th
      - :ref:`onboarding-system:Certificate and Trust Artifact Issuance`, :ref:`onboarding-system:Entity Update`
    * - Notification Dataset Management
      - Collection and maintenance, in the notification dataset, of the information subject to notification
-     - :ref:`onboarding-system:Notification and Publication`
+     - :ref:`onboarding-system:Entity Registration`, :ref:`onboarding-system:Entity Update`, :ref:`onboarding-system:Entity Suspension and Removal`
    * - Authentic Source Management
      - Registration, update and removal of the Authentic Sources in the AS Registry
      - :ref:`onboarding-system:Authentic Source Registration`, :ref:`onboarding-system:Authentic Source Update`, :ref:`onboarding-system:Authentic Source Removal`
