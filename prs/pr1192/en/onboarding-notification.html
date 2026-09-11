@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9.1.7. Wallet Solution Metadata &#8212; IT-Wallet Technical Specifications</title>
+    <title>Notification and Publication &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
@@ -23,8 +23,6 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9.2. Credential Issuer Solution" href="credential-issuer-solution.html" />
-    <link rel="prev" title="9.1.6. Wallet Provider Entity Configuration" href="wallet-provider-entity-configuration.html" />
    
   <meta name="description" content="IT-Wallet Technical Specifications">
   <script>
@@ -157,7 +155,7 @@
                     <ul class="link-list" role="menu" aria-labelledby="languagesDropButton">
                       <li>
                         <a class="dropdown-item list-item it-lang-option"
-                           href="../it/wallet-solution-metadata.html"
+                           href="../it/onboarding-notification.html"
                            data-lang="it"
                            role="menuitemradio"
                            aria-checked="false"
@@ -259,7 +257,7 @@
       
       <div class="it-docs-sphinx-toc">
         <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
@@ -268,22 +266,7 @@
 <li class="toctree-l1"><a class="reference internal" href="trust-evaluation.html">6. Trust Evaluation Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="onboarding-system.html">8. Onboarding System and Lifecycle Management</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="entities.html">9. Entities</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">9.1. Wallet Solution</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">9.1.1. Wallet Solution Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">9.1.2. Wallet Solution Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">9.1.3. Wallet Solution Interaction Patterns</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance.html">9.1.4. Wallet Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">9.1.5. Backup and Restore</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">9.1.6. Wallet Provider Entity Configuration</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">9.1.7. Wallet Solution Metadata</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">9.2. Credential Issuer Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">9.3. Relying Party Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">9.4. Authentic Sources</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
@@ -313,89 +296,64 @@
           </noscript>
           <div class="body">
             
-  <section id="wallet-solution-metadata">
-<h1><span class="section-number">9.1.7. </span>Wallet Solution Metadata<a class="headerlink" href="#wallet-solution-metadata" title="Link to this heading">¶</a></h1>
-<p>The metadata JSON Object whose key is <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code> contains the following parameters. The public keys found in this object are exclusively used for signing and/or encryption operations required by this Entity when acting as a component of the Wallet Provider (e.g., sign the Wallet Attestations to the Wallet Instance).</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 30.0%" />
-<col style="width: 70.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Key</strong></p></th>
-<th class="head"><p><strong>Value</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">jwks</span></code></p></td>
-<td><p>CONDITIONAL. JSON Web Key Set document, passed by value, containing the Entity's keys for that Entity Type. It MUST be present if <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code> and <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri</span></code> are absent.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code></p></td>
-<td><p>CONDITIONAL. URL referencing a JWK Set document containing the Wallet Solution's keys for that Entity Type. This URL MUST use the https scheme. It MUST be present if <code class="docutils literal notranslate"><span class="pre">jwks</span></code> and <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri</span></code> are absent.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">signed_jwks_uri</span></code></p></td>
-<td><p>CONDITIONAL. URL referencing a signed JWT having the Entity's JWK Set document for that Entity Type as its payload. This URL MUST use the https scheme. The JWT MUST be signed using a Federation Entity Key. A successful response from the URL MUST use the HTTP status code 200 with the Content Type <code class="docutils literal notranslate"><span class="pre">application/jwk-set+jwt</span></code>. It MUST be present if <code class="docutils literal notranslate"><span class="pre">jwks</span></code> and <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code> are absent.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logo_uri</span></code></p></td>
-<td><p>REQUIRED. URL of the entity's logo that will be shown to the User. The logo mime type MUST be <code class="docutils literal notranslate"><span class="pre">application/svg</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wallet_name</span></code></p></td>
-<td><p>REQUIRED. String containing a human-readable name of the Wallet.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code></p></td>
-<td><p>REQUIRED. URL of the authorization server's endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Using a universal link is preferable for enhanced security and fallback support; custom URL schemes can also be used if necessary.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">credential_offer_endpoint</span></code></p></td>
-<td><p>REQUIRED. Credential Offer Endpoint of a Wallet.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">response_types_supported</span></code></p></td>
-<td><p>OPTIONAL. JSON array of OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values. If present it MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-82</span></a>).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">response_modes_supported</span></code></p></td>
-<td><p>OPTIONAL. JSON array of OAuth 2.0 &quot;response_mode&quot; values as specified in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAUTH-MULT-RESP-TYPE</a>. The supported value MUST be <em>query</em>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code></p></td>
-<td><p>REQUIRED. Object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Wallet supports. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendix B. Wallet Instances MUST support the Credential Format Identifiers required by <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a> (including <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> and <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">client_id_prefixes_supported</span></code></p></td>
-<td><p>RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> and <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; if omitted, the default is <code class="docutils literal notranslate"><span class="pre">pre-registered</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">request_object_signing_alg_values_supported</span></code></p></td>
-<td><p>OPTIONAL. See OpenID Connect Discovery.</p></td>
-</tr>
-</tbody>
-</table>
+  <section id="notification-and-publication">
+<h1>Notification and Publication<a class="headerlink" href="#notification-and-publication" title="Link to this heading">¶</a></h1>
+<p>This Section describes the notification to the European Commission of the entities that are subject to it, and the resulting publication in the Lists of Trusted Entities. The submission is an act of the Member State (through the Single Point Of Contact) and the publication is an act of the European Commission, so the notification is not one of the <a class="reference internal" href="onboarding-system.html#onboarding-processes"><span class="std std-ref">Onboarding Processes</span></a>. The Onboarding System handles only the collection and the maintenance of the notifiable information.</p>
+<p>Within IT-Wallet the Supervisory Body is the National Single Point Of Contact with the Commission and it relies on the Registrar for the entities the Registrar registers.
+Its outcome is the inclusion of the entity in the List of Trusted Entities of its type, whose structure and signature are described in <a class="reference internal" href="infrastructure-trust.html#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p>
+<p>The categories subject to notification according to Articles 4 and 5 of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>], adopted under Article 5a(23) of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>], are the following:</p>
+<ul class="simple">
+<li><p>Wallet Providers;</p></li>
+<li><p>PID Providers;</p></li>
+<li><p>Providers of WRPAC;</p></li>
+<li><p>Providers of WRPRC, where applicable;</p></li>
+<li><p>Registrars of the Wallet-Relying Parties, together with the registers.</p></li>
+</ul>
+<p>The PuB-EAA Providers are notified under Article 45f(3) of [<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>], and the detailed rules are laid down in [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj">CIR2025/1569</a>].
+The Wallet-Relying Parties that do not belong to a notified category are not notified individually, and they are made available through their register.</p>
+<p><strong>Input</strong></p>
+<p>The input is the notifiable information of the entity, that is the subset of its registration data that applies to the category, defined by Annex II of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] and, for the PuB-EAA Providers, by Annex III of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj">CIR2025/1569</a>].
+The information is a projection of the <a class="reference internal" href="onboarding-system.html#registration-data-model"><span class="std std-ref">Registration Data Model</span></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">legal_name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifier</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contact_information</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service_policies</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conformity_assessment</span></code></p></li>
+</ul>
+<p>For a PID Provider and a Wallet Provider the Sign/Seal Certificate is issued by the National PKI, so the <code class="docutils literal notranslate"><span class="pre">signing_trust_anchor</span></code> is not provided as an input by the entity but derives from the issuance described in <a class="reference internal" href="onboarding-system.html#signature-and-seal-certificate-issuance"><span class="std std-ref">Signature and Seal Certificate Issuance</span></a>.</p>
+<p>For a PuB-EAA Provider the Sign/Seal Certificate is a qualified certificate issued by a Qualified Trust Service Provider, and its Trust Anchor is conveyed by the eIDAS Trusted Lists that are outside of this process.
+Therefore, the Sign/Seal Trust Anchor is not required as an input for a PuB-EAA Provider, and the qualified status of its certificate is evaluated in the conformity assessment required for eligibility and compliance, see <a class="reference internal" href="onboarding-system.html#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.</p>
+<p>The notifiable information is collected in the notification dataset, that is kept separate from the Register as described in <a class="reference internal" href="onboarding-system.html#trust-artifacts-registration-outcomes"><span class="std std-ref">Trust Artifacts Registration Outcomes</span></a>.
+The dataset is written and kept up to date by the Notification Dataset Management during the <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>, the <a class="reference internal" href="onboarding-system.html#entity-update"><span class="std std-ref">Entity Update</span></a> and the <a class="reference internal" href="onboarding-system.html#entity-suspension-and-removal"><span class="std std-ref">Entity Suspension and Removal</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>There are Digital Credential flows that require retrieving Wallet Solution metadata before interacting with the Wallet itself. The flow is described in <a class="reference internal" href="wallet-metadata-retrieval.html#wallet-metadata-retrieval-flow"><span class="std std-ref">Wallet Metadata Retrieval Flow</span></a>.</p>
+<p>The Sign/Seal Trust Anchor is not the certificate the entity uses to sign, whose public key is conveyed by the <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code>.</p>
 </div>
+<p><strong>Outcome</strong></p>
+<p>The outcome is the inclusion of the entity in the List of Trusted Entities of its type.
+The inclusion is the assertion, at EU level, of the role and of the authorization of the entity, and it is what allows a Wallet Unit or a Wallet-Relying Party of another Member State to validate the entity.</p>
+<p><strong>Process</strong></p>
+<ol class="arabic simple">
+<li><p>The entity MUST have completed its <a class="reference internal" href="onboarding-system.html#entity-registration"><span class="std std-ref">Entity Registration</span></a>, and for the notified categories the conformity assessment MUST have been verified as described in <a class="reference internal" href="onboarding-system.html#eligibility-and-compliance-preconditions"><span class="std std-ref">Eligibility and Compliance Preconditions</span></a>.
+The completion of the registration is the precondition of the notification.</p></li>
+<li><p>The Onboarding System collects the notifiable information of the category from the notification dataset, following Annex II of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] or, for the PuB-EAA Providers, Annex III of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj">CIR2025/1569</a>].</p></li>
+<li><p>The Supervisory Body, as the National Single Point Of Contact, submits the information to the secure electronic notification system that the Commission makes available. The submission MUST be made at least in English.
+The system and its requirements are defined in Annex I of [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>].</p></li>
+<li><p>The Commission may request additional information or clarifications to verify the completeness and the consistency of the notified information.</p></li>
+<li><p>The Commission publishes the List of Trusted Entities that compiles the notified information.
+The entity appears in the List of Trusted Entities of its type, whose data model, format and signature are described in <a class="reference internal" href="infrastructure-trust.html#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p></li>
+<li><p>Where the registration of the entity changes, in particular where it is suspended or cancelled, the Onboarding System MUST reflect the change in the notification dataset.</p></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For the <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code>, the use of universal links is preferred over custom URL schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
-Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support for custom URL schemes is also RECOMMENDED according to HAIP <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, and in particular the custom URL <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
+<p>The Lists of Trusted Entities defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2980/">CIR2024/2980</a>] and the Trusted Lists defined by [<a class="reference external" href="https://eur-lex.europa.eu/eli/dec_impl/2015/1505/oj">CID2015/1505</a>] are described in <a class="reference internal" href="infrastructure-trust.html#trusted-list-lists-of-trusted-lists-and-lists-of-trusted-entities"><span class="std std-ref">Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities</span></a>.</p>
 </div>
 </section>
 
 
           </div>
-          <nav class="it-docs-pager d-flex flex-wrap justify-content-between gap-3 mt-5" aria-label="Page navigation">
-            <div class="it-docs-pager-prev">
-              <a class="btn btn-outline-primary" href="wallet-provider-entity-configuration.html">
-                <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
-</svg>
-                <span>9.1.6. Wallet Provider Entity Configuration</span>
-              </a>
-            </div>
-            <div class="it-docs-pager-next ms-auto">
-              <a class="btn btn-primary" href="credential-issuer-solution.html">
-                <span>9.2. Credential Issuer Solution</span>
-                <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
-</svg>
-              </a>
-            </div>
-          </nav>
         </main>
       </div>
 

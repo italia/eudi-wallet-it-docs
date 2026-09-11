@@ -29,10 +29,11 @@ The National Trust Framework is the registration layer for all the Entities of t
 
 The data structures of the registries are defined in :ref:`registry:Registry Infrastructure`, the profiles of the Trust Artifacts in :ref:`infrastructure-trust:Infrastructure of Trust`, the technical mechanisms that publish the status of a certificate in :ref:`infrastructure-trust:Revocation Mechanisms`, and the way the artifacts are consumed at runtime in :ref:`trust-evaluation:Trust Evaluation Process`.
 
-The section is organized in four parts.
+The section is organized in five parts.
 The **Overview** gives the actors, the components and the way the two Trust Frameworks are used.
 The **Registration Model** gives the static view, that is what each role provides and what it obtains.
 The **Onboarding Processes** give the dynamic view, that is how each procedure is carried out.
+The **Notification and Publication** provides the procedure that brings the notified categories into the Lists of Trusted Entities, of which the Onboarding System handles the collection of the data.
 The **Lifecycle Management** gives the states, the events and their effects on the registries and on the Trust Artifacts.
 
 .. include:: onboarding-overview.rst
@@ -41,4 +42,5 @@ The **Lifecycle Management** gives the states, the events and their effects on t
 .. include:: onboarding-processes-entities.rst
 .. include:: onboarding-processes-artifacts.rst
 .. include:: onboarding-processes-credentials.rst
+.. include:: onboarding-notification.rst
 .. include:: onboarding-lifecycle.rst
