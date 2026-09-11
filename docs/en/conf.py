@@ -72,6 +72,12 @@ redoc = [
         'page': 'OAS3-PDND-WP',
         'spec': './oas3/OAS3-PDND-WP.yaml',
         'embed': True,
+    },
+    {
+        'name': 'OAS3-Register-API-READ',
+        'page': 'OAS3-Register-API-READ',
+        'spec': './oas3/OAS3-Register-API-READ.yaml',
+        'embed': True,
     }
 ]
 
@@ -136,6 +142,37 @@ today = pdf_title_release_date(settings_doc_release_date, language)
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = ['.DS_Store', 'README', 'README.md', '.venv*', '.env*']
+
+# Partials pulled in with `.. include::` by an aggregating page. Sphinx reads
+# every .rst in the source dir as a standalone document, so without this they
+# would be parsed twice (standalone + inlined): that duplicates their explicit
+# labels, leaves their figures unnumbered for :numref:, and reports them as
+# documents missing from a toctree. Excluding them here does NOT affect the
+# `include` directive, which reads the files straight from disk.
+# Note: sections of these files are labelled under the *including* page, i.e.
+# `infrastructure-trust:<Section>` / `trust-evaluation:<Section>`.
+exclude_patterns += [
+    # included by infrastructure-trust.rst
+    'trust-pki-architecture.rst',
+    'x509-certificate-profile.rst',
+    'trust-artifact-common.rst',
+    'trust-artifact-eudiw.rst',
+    'trust-artifact-oidfed.rst',
+    'trust-management.rst',
+    # included by trust-evaluation.rst
+    'trust-evaluation-eudiw.rst',
+    'trust-evaluation-oidfed.rst',
+    'trust-override-rules.rst',
+    # included by onboarding-system.rst
+    'onboarding-lifecycle.rst',
+    'onboarding-overview.rst',
+    'onboarding-registration-model.rst',
+    'onboarding-processes.rst',
+    'onboarding-processes-entities.rst',
+    'onboarding-processes-artifacts.rst',
+    'onboarding-processes-credentials.rst',
+    'onboarding-lifecycle.rst',
+]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'

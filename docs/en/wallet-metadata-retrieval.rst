@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via digital-credential-flows.rst at title level '=' (document title).
 
 
 Wallet Metadata Retrieval Flow
@@ -11,7 +12,7 @@ First, using the Immediate Subordinate Listing endpoint they obtain the list of 
 If the responder does not support this feature, it MUST use the HTTP status code 400 and the content type ``application/json``, with the error code ``unsupported_parameter``.
 
 Then, given the ``entity_id``, they fetch the corresponding Entity Configuration for each Wallet Provider using the federation metadata endpoint (GET .well-known/openid-federation)
-and obtain the Wallet Solution metadata (see :ref:`wallet-solution-metadata:Wallet Solution Metadata`). More details on the use of the Trust Anchor's endpoints are provided in :ref:`trust-infrastructure:The Infrastructure of Trust`.
+and obtain the Wallet Solution metadata (see :ref:`wallet-solution-metadata:Wallet Solution Metadata`). More details on the use of the Trust Anchor's endpoints are provided in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 Inside the metadata, the third parties offering the Credential Offer and the Relying Parties retrieve the necessary information for the Selection Page, i.e. the logo and name in full of the Wallet Solutions.
 More details on the design of the Selection Page are provided in :ref:`functionalities:User Experience Design`.

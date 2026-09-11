@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via credential-issuance.rst at title level '=' (document title).
 
 
 Credential Issuance High-Level Flows

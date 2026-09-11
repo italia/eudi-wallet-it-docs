@@ -126,7 +126,11 @@
                     "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
                     "service_documentation_uri": "https://docs.gov.example/transport/api-docs",
                     "update_frequency": "real_time",
-                    "user_information_l10n_id": "authentic_source1.dataset1.userinfo"
+                    "user_information_l10n_id": "authentic_source1.dataset1.userinfo",
+                    "verification_endpoint": {
+                        "method": "oots_edelivery",
+                        "endpoint": "https://api.gov.example/transport/driving-license/edelivery"
+                    }
                 }
             ]
         },

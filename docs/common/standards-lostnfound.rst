@@ -111,12 +111,18 @@ Electronic Signatures and Infrastructures
     :widths: 25 75
     :header-rows: 0
 
+    * - ETSI_TS_119_412_6
+      - Certificate Profiles; Part 6: Certificate profile requirements for PID, Wallet, EAA, QEAA, and PSBEAA providers
     * - ETSI_TS_119_431_1
-      - Policy and security requirements for trust service providers; Part 1: TSP service components operating a remote QSCD / SCDev.
+      - Policy and security requirements for trust service providers; Part 1: TSP service components operating a remote QSCD / SCDev
     * - ETSI_TS_119_431_2
       - Policy and security requirements for trust service providers; Part 2: TSP service components supporting AdES digital signature creation
     * - ETSI_TS_119_432
       - Protocols for remote digital signature creation
+    * - ETSI_TS_119_602
+      - Lists of trusted entities; Data model
+    * - ETSI_TS_119_612
+      - Trusted Lists
     * - ETSI_EN_319_132_1
       - XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures (XAdES)
     * - ETSI_TS_119_182_1
@@ -198,6 +204,8 @@ Json Web Token Standards
       - Jones, M., Sakimura, N., “JSON Web Key (JWK) Thumbprint”, September 2015.
     * - :rfc:`7800`
       - Jones, M., Bradley, J. and H. Tschofenig, "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)", RFC 7800, DOI 10.17487/RFC7800, April 2016.
+    * - :rfc:`8392`
+      - Jones, M., Wahlstroem, E., Erdtman, S., Tschofenig, H., "CBOR Web Token (CWT)", RFC8392, DOI 10.17487/RFC8392, May 2018.
     * - :rfc:`8725`
       - Jones, M., D. Hardt, Sheffer, Y., "JSON Web Token Best Current Practices", February 2020.
     * - `SD-JWT`_

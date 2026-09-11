@@ -1,0 +1,110 @@
+@startuml
+skinparam style strictuml
+skinparam ActivityBackgroundColor #F9F9F9
+skinparam ActivityBorderColor #333333
+skinparam PartitionBackgroundColor #EBF5FB
+skinparam PartitionBorderColor #2980B9
+skinparam NoteBackgroundColor #FEF9E7
+
+start
+
+:Authenticate WRP (Trust Evaluation);
+if (WRP Authenticated?) then (no)
+  :Deem entity untrustworthy;
+  stop
+else (yes)
+endif
+
+partition "Authorization Artifacts Validation" {
+  if (Is WRPRC available?) then (yes)
+    group "Wallet-Relying Party Registration Certificate Validation" {
+      :1. Format verification;
+      :2. Algorithm verification;
+      :3. Signature validation;
+      :4. Trust Anchor validation;
+      :5. WRPRC chain validation;
+      :6. Temporal validity;
+      :7. Status verification;
+      :8. Coherence check;
+    }
+    
+    if (All WRPRC checks successful?) then (yes)
+      #dcedc8:CERTIFICATE_VALID;
+    else (no)
+      #ffccb3:CERTIFICATE_INVALID;
+    endif
+  else (no)
+    :authz_art_state = none;
+  endif
+
+  if (authz_art_state == CERTIFICATE_INVALID OR WRPRC not available) then (yes)
+    group "Register Query Validation" {
+      :1. Extract Registrar URL;
+      :2. Connect to Registrar via HTTPS;
+      :3. Query using entity identifier;
+      :4. Format verification;
+      :5. Verify pertinence;
+      :6. Verify response signature;
+      :7. Trust Anchor validation;
+      :8. Sign/Seal certificate validation;
+      :9. Normalize derived data;
+    }
+
+    if (All Register checks successful?) then (yes)
+      #dcedc8:REGISTER_VALID;
+    else (no)
+      #ffccb3:FAILED;
+    endif
+  else (no)
+  endif
+}
+
+if (authz_art_state == CERTIFICATE_VALID OR authz_art_state == REGISTER_VALID) then (yes)
+  partition "Authorization Validation Procedure" {
+    
+    :1. Binding Verification;
+    
+    if (Binding successful?) then (no)
+      #ffccb3:BINDING_FAILED;
+      stop
+    else (yes)
+      :2. Entitlement Verification;
+      
+      if (Entitlements match?) then (no)
+        #ffccb3:WRONG_ENTITLEMENT;
+      else (yes)
+        
+        if (Interaction Flow Type?) then (Issuance)
+          :3. Attestation Type Verification;
+          
+          if (Attestation Registered?) then (no)
+            :ATTESTATION_TYPE_NOT_REGISTERED;<<#ffccb3>>
+          else (yes)
+            #dcedc8:VERIFICATION_PASSED;
+          endif
+          
+        else (Presentation)
+          :4. Scope Comparison;
+          
+          if (Scope Exceeded?) then (yes)
+            #ffccb3:OVERASKING_DETECTED;
+          else (no)
+            #dcedc8:VERIFICATION_PASSED;
+          endif
+          
+          :5. EDP Evaluation;
+          
+          if (EDP Satisfied or No EDP present?) then (yes)
+            #dcedc8:EDP_SATISFIED;
+          else (no)
+            #ffccb3:EDP_NOT_SATISFIED;
+          endif
+        endif
+      endif
+    endif
+  }
+else (no)
+endif
+
+stop
+@enduml

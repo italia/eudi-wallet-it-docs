@@ -10,7 +10,7 @@ The Relying Party MUST expose a set of endpoints to support remote presentation 
 Federation Endpoint
 """""""""""""""""""""""
 
-The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust-infrastructure:Entity Configuration`. This endpoint enables trust establishment and discovery of the Relying Party's capabilities.
+The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`infrastructure-trust:Entity Configuration`. This endpoint enables trust establishment and discovery of the Relying Party's capabilities.
 
 Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
 

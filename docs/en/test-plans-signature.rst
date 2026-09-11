@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via test-plans.rst at title level '-' (level 1).
 
 
 Signature Evaluation Test Matrix
@@ -12,10 +13,10 @@ This section provides the common set of test cases for Wallet Solutions, Relying
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - **Test Case ID**
+    - **Purpose**
+    - **Description**
+    - **Expected Result**
   * - ATT-001
     - Discovery, Security
     - Evaluation of the issuer

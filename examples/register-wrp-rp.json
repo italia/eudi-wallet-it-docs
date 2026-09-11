@@ -1,0 +1,100 @@
+{
+  "legalPerson": {
+    "legalName": ["ExampleBank S.p.A."]
+  },
+  "identifier": [
+    {
+      "type": "http://data.europa.eu/eudi/id/EUID",
+      "identifier": "IT-EUID-123456789"
+    },
+    {
+      "type": "http://data.europa.eu/eudi/id/VATIN",
+      "identifier": "IT98765432101"
+    }
+  ],
+  "postalAddress": [
+    "Via dei Mille, Roma, IT"
+  ],
+  "country": "IT",
+  "email": [
+    "wallet-rp-registration@examplebank.eu"
+  ],
+  "phone": [
+    "+39100000000"
+  ],
+  "infoURI": [
+    "https://examplebank.eu"
+  ],
+  "providerType": "WalletRelyingParty",
+  "policy": [
+    {
+      "type": "http://data.europa.eu/eudi/policy/terms-and-conditions",
+      "policyURI": "https://examplebank.eu/terms"
+    },
+    {
+      "type": "http://data.europa.eu/eudi/policy/privacy-policy",
+      "policyURI": "https://examplebank.eu/privacy"
+    }
+  ],
+  "tradeName": "ExampleBank Mobile",
+  "supportURI": [
+    "https://examplebank.eu/support"
+  ],
+  "isPSB": false,
+  "supervisoryAuthority": {
+    "legalPerson": {
+      "legalName": ["Autorità di vigilanza"]
+    },
+    "country": "IT",
+    "email": ["contact@supervisor.example.it"],
+    "infoURI": ["https://supervisor.example.it"]
+  },
+  "registryURI": "https://registry.example.it/api",
+  "isIntermediary": false,
+  "srvDescription": [
+    [
+      { 
+        "lang": "en", 
+        "content": "Retail banking services for individuals." 
+      },
+      { 
+        "lang": "it", 
+        "content": "Servizi bancari per privati." 
+      }
+    ]
+  ],
+  "entitlement": [
+    "https://uri.etsi.org/19475/Entitlement/Service_Provider"
+  ],
+  "intendedUse": [
+    {
+      "intendedUseIdentifier": "iu-001",
+      "purpose": [
+        { 
+          "lang": "en", 
+          "content": "Open a bank account remotely." 
+        }
+      ],
+      "privacyPolicy": [
+        {
+          "type": "http://data.europa.eu/eudi/policy/privacy-statement",
+          "policyURI": "https://examplebank.eu/privacy/wallet"
+        }
+      ],
+      "credential": [
+        {
+          "format": "dc+sd-jwt",
+          "meta": {
+            "vct": "https://example.eu/schema/pid"
+          },
+          "claim": [
+            { "path": ["family_name"] },
+            { "path": ["given_name"] },
+            { "path": ["birth_date"] }
+          ]
+        }
+      ],
+      "createdAt": "2026-01-01"
+    }
+  ]
+}

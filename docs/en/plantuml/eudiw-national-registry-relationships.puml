@@ -1,0 +1,42 @@
+@startuml
+!include <C4/C4_Component>
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/database>
+
+Boundary(national_registry, "National Registry Infrastructure") {
+Component(as_registry, "Authentic Source Registry", $sprite="database")
+Component(claim_registry, "Claims Registry", $sprite="database")
+Component(plus1, "+")
+Component(schema_registry, "Schema Registry", $sprite="database")
+Component(catalogue, "Digital Credentials Catalogue", $sprite="database")
+Component(plus2, "+")
+}
+
+Component(equal1, "=")
+Component(equal2, "=")
+
+Boundary(eudiw_registry, "EUDIW Catalogues") {
+Component(a_catalogue, "Catalogue of Attributes", $sprite="database")
+Component(s_catalogue, "Catalogue of Schemes", $sprite="database")
+}
+
+a_catalogue - equal1
+equal1 - claim_registry
+claim_registry - plus1
+plus1 - as_registry 
+
+a_catalogue -down[#white]-> s_catalogue
+claim_registry -down[#white]-> schema_registry
+as_registry -down[#white]-> catalogue
+equal1 -down[#white]-> equal2
+
+
+s_catalogue - equal2
+equal2 - schema_registry
+schema_registry - plus2
+plus2 - catalogue
+
+
+@enduml

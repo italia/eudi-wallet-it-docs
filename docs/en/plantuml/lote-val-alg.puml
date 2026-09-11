@@ -1,0 +1,82 @@
+@startuml
+skinparam ActivityBackgroundColor #ffffff
+skinparam ActivityBorderColor #333333
+skinparam ActivityFontColor #333333
+
+skinparam ConditionBackgroundColor #e7f3fe
+skinparam ConditionBorderColor #0056b3
+skinparam ConditionFontColor #0056b3
+
+title List of Trusted Entities JWT Validation
+
+start
+
+repeat
+    :1. Init & Download List of Trusted Entities\nfrom OJEU-LoTE-Loc;
+    
+    :2. Parse Header:\nExtract Signer Cert x5c;
+    
+    if (3. Found OJEU-Loc URI in history?) then (No (NotFound))
+        : OJEU Loc Not Found\n/Trust Anchor Migration Needed;
+        stop
+    else (Yes (Set n))
+        if (4. Location Conflict?\nOld-List-Loc != New-List-Loc AND\nOld-List != New-List) then (Yes)
+            #f8d7da:File Conflict;
+            stop
+        else (No)
+            ' Freshness check acts as the loop gate
+        endif
+    endif
+
+repeat while (5. Freshness Check\nOld-List-Loc == New-List-Loc AND\nOld-List != New-List) is (Yes (New Version Detected)) not (No (Current is Fresh))
+
+if (6. Validate current List of Trusted Entities Signature) then (Invalid)
+    #f8d7da:Fail: List of Trusted Entities Sig Verification Failed;
+    stop
+else (Valid)
+    :Set Variables:\nCurrent Signer = LoTE-Signer-Cert\nExtract Trusted Set from Payload;
+endif
+
+if (7. Is n = 0 (no Pivots)?) then (No (n > 0, Start Loop))
+    :Start Pivot Loop i=1 to n;
+    
+    repeat
+        :Download Pivot i;
+        
+        if (Link Check:\nIs Current Signer trusted by Pivot i payload?) then (No)
+            #f8d7da:Fail: Broken Trust Chain;
+            stop
+        else (Yes)
+            :Update Current Signer:\nExtract Signer from Pivot i Header;
+        endif
+        
+        if (Validate Pivot i Signature) then (Invalid)
+            #f8d7da:Pivot Signature Invalid;
+            stop
+        else (Valid)
+            ' Continue to loop condition
+        endif
+        
+    repeat while (i < n ?\nMore Pivots?) is (Yes (i++)) not (No)
+else (Yes)
+    ' Skip Pivot Validation Chain if n=0
+endif
+
+if (8. Trust Root Validation) then (No)
+    #f8d7da:LoTE Not authenticated by OJEU;
+    stop
+else (Yes)
+    if (9. Expiration Check:\nNow >= NextUpdate?) then (Yes)
+        #f8d7da:List of Trusted Entities Expired;
+        stop
+    else (No)
+        #d4edda:10. Validation PASSED;
+    endif
+endif
+
+:11. Update Local Bookmark OJEU-LoTE-Loc\nif changed in payload;
+
+#fff3cd:Update Trust Root Configuration;
+
+end
+@enduml

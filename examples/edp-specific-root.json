@@ -1,0 +1,17 @@
+{
+  "policy_uri": "https://example-ap.eu/policies/edp/v1/financial-sector-trust",
+  "policy_type": "specific_root_of_trust",
+  "description": "Access is restricted to Relying Parties possessing an active WRPAC issued by an approved national banking oversight root authority.",
+  "policy_authority": "European Banking Coordination Committee",
+  "policy_info_url": "https://example-ap.eu/policies/edp/finance-roots-laymans.html",
+  "trusted_roots": [
+    {
+      "issuer_dn": "CN=EU Financial Sector Root CA G3,O=European Banking Authority,C=BE",
+      "serial_number": "550e8400e29b41d4a716446655440000"
+    },
+    {
+      "issuer_dn": "CN=National Sandbox Root CA,O=Ministry of Finance,C=DE",
+      "serial_number": "109384729384729384"
+    }
+  ]
+}

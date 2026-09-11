@@ -6,7 +6,16 @@ L'Infrastruttura di Trust
 
 L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata dove le entità partecipanti stabiliscono relazioni di trust crittografiche e mantengono la conformità con standard di sicurezza comuni. Questa infrastruttura fornisce le fondamenta per operazioni sicure di Credenziali Elettroniche tra i partecipanti dell'ecosistema.
 
-Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 `OID-FED`_. Tale infrastruttura nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.
+Nell'IT-Wallet coesistono due trust framework.
+
+  - Il **Trust Framework EUDIW** è definito dal Regolamento eIDAS2 (`EU_2024_1183`_), dai relativi regolamenti di esecuzione e dall'ARF (`EIDAS-ARF`_).
+    È obbligatorio e autorevole per le entità notificate e per l'interoperabilità transfrontaliera.
+  - Il **Trust Framework Nazionale** si basa su OpenID Federation (`OID-FED`_) combinata con una PKI X.509 dedicata alla firma delle Credenziali Digitali che richiedono X.509.
+    È il livello di registrazione e onboarding per tutte le entità dell'ecosistema e fornisce meccanismi di valutazione del trust per le fasi operative in cui il Trust Framework EUDIW non è richiesto.
+    Il Trust Framework Nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, Trust Mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti (Entità di Federazione).
+    Per le Trusted List nazionali (EUMS TL) ai sensi dell'articolo 22 eIDAS, la List of Trusted Lists (LOTL) pubblicata tramite l'`OJEU`_ e le List of Trusted Entities (LoTE) si fa riferimento agli artifact EUDIW e agli HREF in `CID2015/1505`_, `CID2025/2164`_, `CIR2024/2980`_, `EUMS-LOTL`_ e `ETSI-LOTE-SCHEMAS`_.
+
+Questa sezione definisce l'implementazione del Trust Model nazionale conforme a OpenID Federation 1.0 (`OID-FED`_).
 
 Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del Registro (vedi :ref:`registry:Infrastruttura del Registro`) per abilitare i processi di onboarding delle entità dettagliati in :ref:`entity-onboarding:Onboarding delle Entità`. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in :ref:`entity-onboarding:Onboarding delle Entità` e supporta gli scenari operativi illustrati in :ref:`onboarding-high-level:Onboarding Journey Maps`.
 

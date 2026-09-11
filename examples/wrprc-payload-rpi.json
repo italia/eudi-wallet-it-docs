@@ -1,0 +1,23 @@
+{
+  "name": "Small Business Verification",
+  "sub_ln": "Small Business S.p.A.",
+  "sub": "IT123456789",
+  "country": "IT",
+  "entitlements": ["https://uri.etsi.org/19475/Entitlement/Service_Provider"],
+  "credentials": [
+    {
+      "format": "dc+sd-jwt",
+      "meta": { "vct_values": ["https://credentials.example.eu/pid"] },
+      "claim": [{ "path": ["age_over_18"] }]
+    }
+  ],
+  "intermediary": {
+    "sub": {
+      "id": "LEIXG-529900INTERMEDIARY01",
+      "sname": "Verification Service"
+    }
+  },
+  "policy_id": ["0.4.0.19475.3.1"],
+  "iat": 1704067200,
+  "status": { "status_list": { "idx": 567, "uri": "https://status.wrp-register.it/statuslist/2" } }
+}

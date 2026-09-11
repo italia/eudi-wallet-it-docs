@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via index.rst at title level '=' (document title).
 
 
 General Log Retention Policies

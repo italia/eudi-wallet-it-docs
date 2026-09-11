@@ -1,0 +1,15 @@
+{
+  "policy_uri": "https://example-ap.eu/policies/edp/v1/medical-records-access",
+  "policy_type": "authorized_rp_only",
+  "description": "Access is strictly restricted to authorized healthcare institutions and designated medical service providers.",
+  "policy_authority": "National Health and e-ID Authority",
+  "policy_info_url": "https://example-ap.eu/policies/edp/medical-laymans.html",
+  "authorized_parties": [
+    {
+      "subject_dn": "CN=Central University Hospital Pharmacy,O=Central Hospital Group,ORGID=VATES-12345678,C=FI"
+    },
+    {
+      "entitlement_uri": "https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai"
+    }
+  ]
+}

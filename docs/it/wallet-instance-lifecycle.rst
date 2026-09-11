@@ -126,3 +126,8 @@ Un Fornitore di Wallet invece è responsabile per:
 * **Eliminazione dei Dati**: attraverso una richiesta esplicita degli Utenti, l'account Utente presso il Fornitore di Wallet DEVE essere rimosso dallo storage locale.
 
 
+.. note::
+  Il Wallet Provider DEVE scegliere il periodo di validità tecnica della Wallet Instance Attestation e DEVE mantenere la lista di revoca per l’intero periodo di validità della Wallet Instance Attestation Status List, come definito dal claim ``client_status.exp`` nella Wallet Instance Attestation.
+
+
+

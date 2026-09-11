@@ -1,0 +1,73 @@
+@startuml
+skinparam ActivityBackgroundColor #e1f5fe
+skinparam ActivityBorderColor #01579b
+skinparam ConditionBackgroundColor #fff9c4
+skinparam ConditionBorderColor #fbc02d
+skinparam TitleFontColor #01579b
+
+title CRL Validation Process
+
+start
+
+repeat
+  if (Step 1: Time Check\nIs current_time between\nthisUpdate and nextUpdate?) then (No)
+    :Attempt to retrieve updated CRL;
+    if (Update Retrieved?) then (Yes)
+      ' Loops back to top for Step 1 Time Check
+    else (No)
+      #F2F28F:Certificate status: unknown\nReason: CRL Expired/Unavailable;
+      stop
+    endif
+  else (Yes)
+  endif
+repeat while (current_time < thisUpdate OR current_time > nextUpdate)
+
+:Step 2: Verify Issuer;
+if (Does CRL Issuer match\nCertificate Issuer?) then (No)
+  #F2F28F:Certificate status: UNKNOWN\nReason: Issuer Mismatch;
+  stop
+else (Yes)
+endif
+
+:Step 3: Verify Distribution Point;
+if (Do Distribution Points match?) then (No)
+  #F2F28F:Certificate status: UNKNOWN\nReason: Distribution Point Mismatch;
+  stop
+else (Yes)
+  if (Check BasicConstraints) then (Certificate\nhas `CA=TRUE`)
+    if (Is CRL onlyContainsCACerts=TRUE?) then (No)
+      #F2F28F:Certificate status: UNKNOWN\nReason: Distribution Point Mismatch;
+      stop
+    else (Yes)
+    endif
+  else (Certificate defaults\nto `CA=FALSE`)
+    if (Is CRL onlyContainsUserCerts=TRUE?) then (No)
+      #F2F28F:Certificate status: UNKNOWN\nReason: Distribution Point Mismatch;
+      stop
+    else (Yes)
+    endif
+  endif
+endif
+
+:Step 4: Signature & Key Usage;
+if (Validate CRL Signature) then (Invalid)
+  #F2F28F:Certificate status: UNKNOWN\nReason: Invalid CRL Signature;
+  stop
+else (Valid)
+  if (If KeyUsage present:\nIs cRLSign bit set?) then (No)
+    #F2F28F:Certificate status: UNKNOWN\nReason: Invalid CRL Signature;
+    stop
+  else (Yes)
+  endif
+endif
+
+:Step 5: Revocation Lookup;
+if (Is Certificate Serial Number\nin revokedCertificates?) then (Yes)
+  #ffcdd2:Certificate status: revoked;
+  stop
+else (No)
+  #dcedc8:Certificate status: good;
+  stop
+endif
+
+@enduml

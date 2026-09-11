@@ -1,0 +1,230 @@
+{
+  "ListAndSchemeInformation": {
+    "LoTEVersionIdentifier": 1,
+    "LoTESequenceNumber": 1,
+    "LoTEType": "http://uri.etsi.org/19602/LoTEType/EUPIDProvidersList",
+    "SchemeOperatorName": [
+      {
+        "lang": "it",
+        "value": "Agenzia per l'Italia Digitale"
+      },
+      {
+        "lang": "en",
+        "value": "Agency for Digital Italy"
+      }
+    ],
+    "SchemeOperatorAddress": {
+      "SchemeOperatorPostalAddress": [
+        {
+          "lang": "it",
+          "StreetAddress": "Via Liszt 21",
+          "Locality": "Roma",
+          "StateOrProvince": "RM",
+          "PostalCode": "00144",
+          "Country": "IT"
+        }
+      ],
+      "SchemeOperatorElectronicAddress": [
+        {
+          "lang": "it",
+          "uriValue": "mailto:protocollo@pec.agid.gov.it"
+        }
+      ]
+    },
+    "SchemeName": [
+      {
+        "lang": "it",
+        "value": "Elenco di Fiducia Italiano dei Fornitori di PID"
+      },
+      {
+        "lang": "en",
+        "value": "Italian Trusted List of PID Providers"
+      }
+    ],
+    "SchemeInformationURI": [
+      {
+        "lang": "it",
+        "uriValue": "https://www.agid.gov.it/it/piattaforme/eidas-wallet/pid-providers-list"
+      },
+      {
+        "lang": "it",
+        "uriValue": "https://www.agid.gov.it/it/piattaforme/eidas-wallet/pid-providers-list/history"
+      }
+    ],
+    "StatusDeterminationApproach": "http://uri.etsi.org/19602/PIDProvidersList/StatusDetn/EU",
+    "SchemeTypeCommunityRules": [
+      {
+        "lang": "en",
+        "uriValue": "http://uri.etsi.org/19602/PIDProvidersList/schemerules/EU"
+      }
+    ],
+    "SchemeTerritory": "EU",
+    "PolicyOrLegalNotice": [
+      {
+        "LoTEPolicy": {
+          "lang": "en",
+          "uriValue": "https://www.agid.gov.it/legal-notice"
+        }
+      }
+    ],
+    "PointersToOtherLoTE": [
+      {
+        "LoTELocation": "https://www.agid.gov.it/lote/pid-providers.json",
+        "ServiceDigitalIdentities": [
+          {
+            "X509SubjectNames": [
+              "CN=Italian Wallet LoTE Signer, O=AgID, C=IT"
+            ]
+          }
+        ],
+        "LoTEQualifiers": [
+          {
+            "LoTEType": "http://uri.etsi.org/19602/LoTEType/EUPIDProvidersList",
+            "SchemeOperatorName": [
+              {
+                "lang": "it",
+                "value": "Agenzia per l'Italia Digitale"
+              }
+            ],
+            "SchemeTypeCommunityRules": [
+              {
+                "lang": "en",
+                "uriValue": "http://uri.etsi.org/19602/PIDProvidersList/schemerules/EU"
+              }
+            ],
+            "SchemeTerritory": "EU",
+            "MimeType": "application/json"
+          }
+        ]
+      }
+    ],
+    "ListIssueDateTime": "2026-06-27T12:00:00Z",
+    "NextUpdate": "2026-12-27T12:00:00Z",
+    "DistributionPoints": [
+      "https://www.agid.gov.it/lote/pid-providers.json"
+    ],
+    "SchemeExtensions": [
+      {
+        "extensionMetadata": "exampleValue"
+      }
+    ]
+  },
+  "TrustedEntitiesList": [
+    {
+      "TrustedEntityInformation": {
+        "TEName": [
+          {
+            "lang": "it",
+            "value": "Fornitore Nazionale di Identità Digitale S.p.A."
+          },
+          {
+            "lang": "en",
+            "value": "National Digital Identity Provider S.p.A."
+          }
+        ],
+        "TETradeName": [
+          {
+            "lang": "it",
+            "value": "NTRIT-12345678901"
+          }
+        ],
+        "TEAddress": {
+          "TEPostalAddress": [
+            {
+              "lang": "it",
+              "StreetAddress": "Corso Vittorio Emanuele II, 101",
+              "Locality": "Torino",
+              "StateOrProvince": "TO",
+              "PostalCode": "10121",
+              "Country": "IT"
+            }
+          ],
+          "TEElectronicAddress": [
+            {
+              "lang": "it",
+              "uriValue": "mailto:compliance@fornitorepid.it"
+            },
+            {
+              "lang": "it",
+              "uriValue": "tel:+39011555555"
+            }
+          ]
+        },
+        "TEInformationURI": [
+          {
+            "lang": "it",
+            "uriValue": "https://www.fornitorepid.it/policies"
+          },
+          {
+            "lang": "it",
+            "uriValue": "https://www.fornitorepid.it/info"
+          },
+          {
+            "lang": "en",
+            "uriValue": "http://uri.etsi.org/19602/ListOfTrustedEntities/PIDProvider/IT"
+          }
+        ],
+        "TEInformationExtensions": [
+          {
+            "providerStatus": "fully-compliant"
+          }
+        ]
+      },
+      "TrustedEntityServices": [
+        {
+          "ServiceInformation": {
+            "ServiceName": [
+              {
+                "lang": "it",
+                "value": "Servizio di Rilascio e Gestione del Person Identification Data (PID)"
+              },
+              {
+                "lang": "en",
+                "value": "Person Identification Data (PID) Issuance and Management Service"
+              }
+            ],
+            "ServiceDigitalIdentity": {
+              "X509Certificates": [
+                {
+                  "encoding": "http://uri.etsi.org/19602/pkiOb/der",
+                  "specRef": "RFC 5280",
+                  "val": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0y...[BASE64_CERTIFICATE_DATA]..."
+                }
+              ],
+              "X509SubjectNames": [
+                "CN=National PID Provider Issuing CA, O=National Digital Identity Provider S.p.A., C=IT"
+              ]
+            },
+            "ServiceTypeIdentifier": "http://uri.etsi.org/19602/SvcType/PID/Issuance",
+            "SchemeServiceDefinitionURI": [
+              {
+                "lang": "en",
+                "uriValue": "https://www.agid.gov.it/schemes/pid-service-definition"
+              }
+            ],
+            "ServiceSupplyPoints": [
+              {
+                "ServiceType": "http://uri.etsi.org/19602/SupplyPoint/API",
+                "uriValue": "https://api.fornitorepid.it/v1/pid"
+              }
+            ],
+            "ServiceDefinitionURI": [
+              {
+                "lang": "it",
+                "uriValue": "https://www.fornitorepid.it/pid-service-documentation"
+              }
+            ],
+            "ServiceInformationExtensions": [
+              {
+                "supportedAlgorithms": [
+                  "ES256",
+                  "Ed25519"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

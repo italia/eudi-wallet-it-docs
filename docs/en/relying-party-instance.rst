@@ -207,13 +207,13 @@ Relying Parties MUST periodically verify the Relying Party Instance's authentici
 When security issues are detected, Relying Parties MUST revoke the Relying Party Instance, revoking its X.509 Access Certificate (in case of long-lived certificates), and in any case, Relying Parties MUST NOT allow the re-issue of certificates.
 As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Access Certificates validity.
 
-Long-lived X.509 Certificates follows the requirements about their lifecycle, defined in :ref:`trust-infrastructure:The Infrastructure of Trust`.
+Long-lived X.509 Certificates follows the requirements about their lifecycle, defined in :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 
 Web Relying Party Instance
 --------------------------
 
-Web Instances operates server-side security controls that safely store secrets and cryptographic keys in a controlled environment. Web Instances MUST be registered with the Trust Anchor or Intermediary Entities, according to :ref:`trust-infrastructure:The Infrastructure of Trust`.
+Web Instances operates server-side security controls that safely store secrets and cryptographic keys in a controlled environment. Web Instances MUST be registered with the Trust Anchor or Intermediary Entities, according to :ref:`infrastructure-trust:Infrastructure of Trust`.
 
 
 Web Relying Party Instance Functionalities

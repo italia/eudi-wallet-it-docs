@@ -1,18 +1,19 @@
 .. include:: ../common/common_definitions.rst
+.. Included via relying-party-solution.rst at title level '-' (level 1).
 
 
 Relying Party Entity Configuration
 ------------------------------------------
 
-According to Section :ref:`trust-infrastructure:Configuration of the Federation`, as a Federation Entity, the Relying Party is required to maintain a well-known endpoint that hosts its Entity Configuration.
-The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections :ref:`trust-infrastructure:Entity Configuration Leaves and Intermediates` and :ref:`trust-infrastructure:Entity Configurations Common Parameters`.
+According to Section :ref:`infrastructure-trust:Entity Configuration`, as a Federation Entity, the Relying Party is required to maintain a well-known endpoint that hosts its Entity Configuration.
+The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections :ref:`infrastructure-trust:Entity Configuration of a Leaf` and :ref:`infrastructure-trust:Entity Statement Parameters`.
 
 The Relying Parties MUST provide the following metadata types:
 
   - `federation_entity`
   - `openid_credential_verifier`
 
-The *federation_entity* metadata MUST contain the claims as defined in Section :ref:`trust-infrastructure:Metadata of federation_entity Leaves`.
+The *federation_entity* metadata MUST contain the claims as defined in Section :ref:`infrastructure-trust:Entity Type Identifiers and Metadata`.
 
 
 Example of a Relying Party Entity Configuration

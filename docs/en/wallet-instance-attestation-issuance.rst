@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via wallet-instance-functionalities.rst at title level '=' (document title).
 
 
 Wallet Instance Attestation Issuance

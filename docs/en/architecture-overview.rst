@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via index.rst at title level '=' (document title).
 
 
 Architecture Overview
@@ -35,7 +36,7 @@ These three architectural layers work together to enable secure Digital Credenti
 
 The architecture enables the following core interaction processes:
 
-  1. **Entity Onboarding and Federation**: Only qualified entities can participate in the federation through systematic onboarding that ensures compliance and establishes cryptographic trust relationships. The onboarding system includes a **Claims Registry** and **Taxonomy** that standardize semantic definitions for all Credentials, enabling interoperability and governance. Entity authorization follows policy-based approach that grants specific operational scopes based on organizational characteristics and regulatory compliance. See Section :ref:`onboarding-high-level:Onboarding System` and :ref:`registry:Registry Infrastructure`.
+  1. **Entity Onboarding and Federation**: Only qualified entities can participate in the federation through systematic onboarding that ensures compliance and establishes cryptographic trust relationships. The onboarding system includes a **Claims Registry** and **Taxonomy** that standardize semantic definitions for all Credentials, enabling interoperability and governance. Entity authorization follows policy-based approach that grants specific operational scopes based on organizational characteristics and regulatory compliance. See Section :ref:`onboarding-system:Onboarding System and Lifecycle Management` and :ref:`registry:Registry Infrastructure`.
 
   2. **Credential Discovery and Catalog Management**: The ecosystem supports dual Credential discovery mechanisms - public discovery through the :ref:`registry:Digital Credentials Catalog` for general-purpose Credentials, and private discovery via direct Credential Offers for specific use cases. The catalog is automatically populated based on Supervisory Body policies from registered Claims Registry and Taxonomy definitions.
 

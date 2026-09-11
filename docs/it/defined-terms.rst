@@ -473,14 +473,22 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Carta di Identità Elettronica
   * - **EAA**
     - Electronic Attestation of Attributes (Attestato Elettronico di Attributi)
+  * - **EUMS TL**
+    - Lista di Fiducia dello Stato membro dell'Unione europea (Trusted List nazionale ai sensi dell'articolo 22 eIDAS)
   * - **NAB**
     - National Accreditation Body (Ente Nazionale di Accreditamento)
   * - **IAM**
     - Identity and Access Management (Gestione dell'Identità e degli Accessi)
   * - **LoA**
     - Level of Assurance (Livello di Garanzia)
+  * - **LOTL**
+    - List of Trusted Lists (Elenco delle Liste di Fiducia)
+  * - **LoTE**
+    - List of Trusted Entities (Elenco delle Entità Affidabili)
   * - **OID4VP**
     - OpenID for Verifiable Presentation
+  * - **OJEU**
+    - Gazzetta ufficiale dell'Unione europea (Official Journal of the European Union)
   * - **PDND**
     - Piattaforma Digitale Nazionale Dati
   * - **PID**
@@ -497,6 +505,10 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **WRPAC**
+    - Wallet-Relying Party Access Certificate (Certificato di Accesso della Wallet-Relying Party)
+  * - **WRPRC**
+    - Wallet-Relying Party Registration Certificate (Certificato di Registrazione della Wallet-Relying Party)
   * - **WSCA**
     - Wallet Secure Cryptographic Application (Applicazione Crittografica Sicura per il Wallet)
   * - **WSCD**

@@ -1,0 +1,39 @@
+{
+  "iss": "https://intermediary.example.com",
+  "sub": "https://rp.affiliated.example.com",
+  "iat": 1718207217,
+  "exp": 1749743216,
+  "jwks": {
+    "keys": [
+      {
+        "kty": "EC",
+        "crv": "P-256",
+        "kid": "n47zfejmk3V14aKUQCEcA7sTKi-SXMw7E1MFnpQCL-0",
+        "x": "H3_bMVOWJoDSBenUzelAbAj4vanmXNJ3KT2Vk_OaehI",
+        "y": "aMoXkKSssBtMHwSCR-hY8mmFQFs3Hf5iQ0zFWMHAQfc"
+      }
+    ]
+  },
+  "metadata_policy": {
+    "openid_credential_verifier": {
+      "jwks": {
+        "value": { "... the affiliated Relying Party protocol keys registered at onboarding ..." }
+      },
+      "request_uris": {
+        "value": [
+          "https://rp.affiliated.example.com/openid4vp/request"
+        ]
+      },
+      "response_uris": {
+        "value": [
+          "https://rp.affiliated.example.com/openid4vp/response"
+        ]
+      },
+      "redirect_uris": {
+        "value": [
+          "https://rp.affiliated.example.com/openid4vp/callback"
+        ]
+      }
+    }
+  }
+}

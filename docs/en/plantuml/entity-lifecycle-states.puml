@@ -1,0 +1,21 @@
+@startuml
+hide empty description
+skinparam backgroundColor transparent
+skinparam shadowing false
+
+[*] --> UNREGISTERED
+
+UNREGISTERED --> REGISTERED : registration completed
+REGISTERED --> OPERATIONAL : trust artifacts issued
+OPERATIONAL --> REGISTERED : trust artifacts expired\nor revoked
+
+REGISTERED --> SUSPENDED : suspension
+OPERATIONAL --> SUSPENDED : suspension
+SUSPENDED --> REGISTERED : reactivation
+
+REGISTERED --> CANCELLED : cancellation
+OPERATIONAL --> CANCELLED : cancellation
+SUSPENDED --> CANCELLED : cancellation
+
+CANCELLED --> [*]
+@enduml

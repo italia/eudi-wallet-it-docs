@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via entities.rst at title level '=' (document title).
 
 
 Authentic Sources

@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via credential-presentation.rst at title level '=' (document title).
 
 
 Remote Flow
@@ -123,7 +124,7 @@ The details of each step shown in the previous picture are described below.
 
   An official, self-contained HTML template for this **Cross Device** QR code page—including header, footer, accessibility, multilingual copy, and a configurable demonstrative payload—is provided in the :ref:`official-resources:HTML Components` section (**IT-Wallet Presentation QR Code Page**). It is linked from the wallet cards on the **IT-Wallet Selection Page** in the same section.
 
-  Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response redirect (with status code set to 302) or an html page with an href button, containing the URL providing the same information as in the Cross-Device Flow (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`). 
+  Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response redirect (with status code set to 302) or an html page with an href button, containing the URL providing the same information as in the Cross-Device Flow (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`).
   Below is a non-normative example with Request Object by reference:
 
   .. code-block:: http
@@ -147,18 +148,14 @@ The details of each step shown in the previous picture are described below.
       Content-Type: application/x-www-form-urlencoded
       Accept: application/oauth-authz-req+jwt
 
-      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22https%3A%2F%2Fwallet-solution.digital-strategy.europa.eu%2Fauthorization%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D%26wallet_nonce%3DqPmxiNFCR3QTm19POc8u
-
+      wallet_metadata=%7B%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D&wallet_nonce=qPmxiNFCR3QTm19POc8u
+    
     Where the body of the request prior to being encoded in `application/x-www-form-urlencoded` by the Wallet corresponds to:
 
     .. code-block:: json
 
       {
         "wallet_metadata": {
-          "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
-          "response_types_supported": [
-            "vp_token"
-          ],
           "vp_formats_supported": {
             "dc+sd-jwt": {
                 "sd-jwt_alg_values": ["ES256", "ES384"]
@@ -413,8 +410,8 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
    :widths: 20 80
    :header-rows: 1
 
-   * - Parameter
-     - Description
+   * - **Parameter**
+     - **Description**
    * - `wallet_metadata`
      - OPTIONAL. JSON object with metadata parameters. See `OpenID4VP`_, Section 10.1 and the table below, "Wallet Metadata Parameters".
    * - `wallet_nonce`
@@ -427,16 +424,12 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
    :widths: 20 80
    :header-rows: 1
 
-   * - Parameter
-     - Description
+   * - **Parameter**
+     - **Description**
    * - `vp_formats_supported`
      - REQUIRED. Object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Wallet supports. See `OpenID4VP`_ Appendix B. Wallet Instances MUST support the Credential Format Identifiers required by `OPENID4VC-HAIP`_ (including ``dc+sd-jwt`` and ``mso_mdoc``).
    * - `client_id_prefixes_supported`
      - RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include ``openid_federation`` and ``x509_hash``; if omitted, the default is ``pre-registered``.
-   * - `authorization_endpoint`
-     - URL of the authorization server's endpoint, see `OAUTH2`_. Using a universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.
-   * - `response_types_supported`
-     - OPTIONAL. JSON array of OAuth 2.0 ``response_type`` values. If present it MUST be set to ``vp_token`` (:ref:`RPR-82 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
    * - `request_object_signing_alg_values_supported`
      - OPTIONAL. See OpenID Connect Discovery.
 
@@ -448,9 +441,6 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
   The ``wallet_nonce`` parameter is RECOMMENDED for Wallet Instances that want to prevent reply of their http requests to the Relying Parties.
   When present, the Relying Party MUST evaluate it (:ref:`RPR-81 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
-.. note::
-  For the ``authorization_endpoint`` the use of universal links are preferred over custom url-schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
-  Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. The URL schemes ``openid4vp://`` and ``haip-vp://`` defined in `OPENID4VP`_ and `OPENID4VC-HAIP`_ are supported to ensure interoperability.
 
 Request URI Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -516,14 +506,14 @@ The JWT header parameters are described below:
   * - **typ**
     - REQUIRED. Media Type of the JWT, as defined in [:rfc:`7519`] and [:rfc:`9101`]. It SHOULD be set to the value ``oauth-authz-req+jwt`` (:ref:`RPR-89 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **kid**
-    - REQUIRED. Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`].
+    - REQUIRED when ``client_id`` uses the ``openid_federation`` scheme. OPTIONAL when ``client_id`` uses an ``x509_hash`` prefix scheme. Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`].
   * - **trust_chain**
     - OPTIONAL. It is a sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
   * - **x5c**
     - REQUIRED when ``client_id`` uses an ``x509_hash`` prefix scheme. OPTIONAL when ``client_id`` uses the ``openid_federation`` scheme. It contains the X.509 certificate chain about the Relying Party, excluding the Trust Anchor certificate. This certificate MUST be used to verify the JWT signature. The Relying Party’s certificate in ``x5c`` asserts the Relying Party identity information along with the network endpoints used in the presentation flow, including the endpoints Authorization Request and Response endpoints (``response_uri`` and ``redirect_uri``). All the endpoints used in the presentation flow MUST be bound to the FQDN and any further webpath provided in the Relying Party’s certificate, in the form of URI-type SAN for full-URI matching, or a DNSName SAN for host-name matching.
 
 .. note::
-   The ``x5c`` header MUST NOT include the root certificate, as required by `OPENID4VC-HAIP`_. The ``x5c`` certificate chain MUST validate to a preconfigured root certificate; see Section :ref:`trust-infrastructure:X.509 PKI` for background on X.509 certificate chain validation.
+   The ``x5c`` header MUST NOT include the root certificate, as required by `OPENID4VC-HAIP`_. The ``x5c`` certificate chain MUST validate to a preconfigured root certificate; see Section :ref:`infrastructure-trust:X.509 Certificate Profile` for background on X.509 certificate chain validation.
 
 The JWT payload parameters are described herein:
 
@@ -638,7 +628,7 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
   * - **Claim**
     - **Description**
   * - **typ**
-    - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of [RFC8725].
+    - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of :rfc:`8725`.
   * - **alg**
     - REQUIRED. Signature Algorithm using one of the specified in the Section :ref:`algorithms:Cryptographic Algorithms`.
 
@@ -652,7 +642,7 @@ When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same p
   * - **Claim**
     - **Description**
   * - **iat**
-    - REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519].
+    - REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in :rfc:`7519`.
   * - **aud**
     - REQUIRED. The intended receiver of the Key Binding JWT. The value of this parameter MUST match the Relying Party unique entity identifier.
   * - **nonce**

@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via wallet-instance.rst at title level '=' (document title).
 
 
 Wallet Instance Functionalities

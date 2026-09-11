@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via endpoints.rst at title level '-' (level 1).
 
 
 .. role:: raw-html(raw)

@@ -1,0 +1,38 @@
+{
+  "iss": "https://wallet-provider.example.it",
+  "sub": "https://wallet-provider.example.it",
+  "iat": 1718207217,
+  "exp": 1749743216,
+  "authority_hints": [
+    "https://trust-anchor.eid-wallet.example.it"
+  ],
+  "jwks": {
+    "keys": [
+      {
+        "kty": "EC",
+        "crv": "P-256",
+        "kid": "LqZSJoAEybT9V3jUQfZYUjVV-U5jV34sgbhIsIXltSY",
+        "x": "38k73K5mw7Ev34lMwJhMBy5L2PnP9ayGfnMMtk4UZAw",
+        "y": "4ohTh7joeKLhRfPRSXQvnu-OMqUIn9lzoJAp_ztuv1A"
+      }
+    ]
+  },
+  "metadata": {
+    "federation_entity": {
+      "organization_name": "Example Wallet Provider",
+      "homepage_uri": "https://wallet-provider.example.it",
+      "policy_uri": "https://wallet-provider.example.it/policy",
+      "logo_uri": "https://wallet-provider.example.it/logo.svg",
+      "contacts": [
+        "wallet-provider@pec.example.it"
+      ]
+    },
+    "wallet_solution": { ".. as defined in the Wallet Solution Metadata section ..." }
+  },
+  "trust_marks": [
+    {
+      "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/wallet_solution",
+      "trust_mark": "<signed Trust Mark JWT>"
+    }
+  ]
+}

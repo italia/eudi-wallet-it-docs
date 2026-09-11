@@ -1,0 +1,23 @@
+{
+  "iss": "https://trust-anchor.eid-wallet.example.it",
+  "sub": "https://intermediary.example.com",
+  "iat": 1718207217,
+  "exp": 1749743216,
+  "jwks": {
+    "keys": [
+      {
+        "kty": "EC",
+        "crv": "P-256",
+        "kid": "EycKTxHbR_s_aZB46j_1ObHG3n2QEQ0sU0-gRGdBWv0",
+        "x": "4sAmMPyNl21DjQ_i6C4y0erHz3IVsVETYpH4kOoKFb8",
+        "y": "B5nPVnBVBss55KGCJG8_EyT72PJKU8n_k8SMZdPUIaE"
+      }
+    ]
+  },
+  "constraints": {
+    "allowed_entity_types": [
+      "openid_credential_verifier"
+    ],
+    "max_path_length": 1
+  }
+}

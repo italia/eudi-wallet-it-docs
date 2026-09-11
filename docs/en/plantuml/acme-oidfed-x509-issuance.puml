@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam ArrowColor #666666
+skinparam ParticipantBorderColor #333333
+skinparam ActorBorderColor #333333
+skinparam databaseBorderColor #333333
+
+actor Entity as E
+participant "ACME service of the\nCertification Authority" as CA
+database Register as REG
+
+E -> CA : newOrder (identifier type openid-federation)
+CA --> E : openid-federation-01 challenge
+E -> E : sign the key authorization\nwith an acme_requestor key
+E -> CA : challenge response (signature and Trust Chain)
+CA -> CA : validate the Trust Chain\n(Federation Entity Authentication)
+CA -> REG : read entitlements and profile
+note right of CA : Register first,\nregistration Trust Mark as fallback
+CA --> E : order ready
+E -> CA : finalize (CSR)
+CA --> E : X.509 certificate
+@enduml

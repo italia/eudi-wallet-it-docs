@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via wallet-instance-functionalities.rst at title level '=' (document title).
 
 
 Key Attestation Issuance
@@ -35,7 +36,7 @@ Upon a successful request, the Wallet Provider generates and returns the nonce v
 
 **Step 7**: The Wallet Instance performs the following actions (:ref:`WP_140c <wallet-instance-optional-testcases>`):
 
-* Creates ``client_data``, a JSON object that includes the ``nonce`` and a ``jwk_thumbprints`` field containing a JSON array of the JWK thumbprints corresponding to the public keys ``(key_pub_1,...,key_pub_n)`` .
+* Creates ``client_data``, a JSON object that includes the ``nonce`` and a ``jwk_thumbprints`` field containing a JSON array of the JWK thumbprints corresponding to the public keys ``(key_pub_1,...,key_pub_n)``.
 * Computes ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
 
 Below is a non-normative example of the ``client_data`` JSON object.

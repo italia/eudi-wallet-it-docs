@@ -1,0 +1,27 @@
+@startuml
+hide empty description
+
+state "Certificates (WRPAC, WRPRC, Signature/Seal)" as CertGroup {
+   [*] --> VALID : Issuance
+   VALID --> REVOKED : Revocation Trigger \n(CRL, OCSP, or Status List)
+   REVOKED --> [*] : Terminal State
+}
+
+state "Trust Lists (LoTE, LOTL, TL)" as TLGroup {
+    [*] --> TL_CURRENT : Publication of Current Version
+    state "CURRENT" as TL_CURRENT
+        
+   TL_CURRENT --> HISTORICAL : Superseded by New Version \n(The old one is archived to `ServiceHistory`)
+   HISTORICAL --> [*]
+}
+
+state "Trust Marks" as TMGroup {
+
+   state "REVOKED" as TM_REVOKED
+   [*] --> ACTIVE: Issuance and publication of a Trust Mark
+   ACTIVE --> EXPIRED: The expiration time is reached
+   ACTIVE --> TM_REVOKED: The Federation Authority \nremoved the Trust Mark
+   TM_REVOKED --> [*]
+}
+
+@enduml

@@ -15,6 +15,7 @@
     "credentials": [
         {
             "version": "1",
+            "state": "ACTIVE",
             "credential_type": "mDL",
             "credential_name_l10n_id": "mDL.name",
             "legal_type": "pub-eaa",
@@ -107,6 +108,7 @@
                     "issuance_flows": {
                         "wallet_initiated": true,
                         "issuer_initiated": true,
+                        "immediate_flow": false,
                         "deferred_flow": true,
                         "max_deferred_issuance_time_minutes": 1440,
                         "notification_methods": [
@@ -121,7 +123,17 @@
                     "id": "https://motorizzazione.gov.example",
                     "dataset_id": "38832801"
                 }
-            ]
+            ],
+            "trustedAuthorities": [
+                {
+                    "frameworkType": "etsi_tl",
+                    "value": "https://eidas.ec.europa.eu/efda/wallet/lists-of-trusted-entities/mdl-providers",
+                    "isLoTE": true
+                }
+            ],
+            "rulebookURI": "https://github.com/eu-digital-identity-wallet/eudi-doc-attestation-rulebooks-catalog/tree/main/rulebooks/mdl",
+            "bindingType": "key",
+            "attestationLoS": "iso_18045_high"
         }
     ]
 }

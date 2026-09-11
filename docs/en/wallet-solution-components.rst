@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via wallet-solution.rst at title level '=' (document title).
 
 
 Wallet Solution Components
@@ -78,7 +79,7 @@ Following the `OpenID4VCI`_ specification and the implementation profile in Sect
 Presentation Component
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Following the implementation profile in Section :ref:`credential-presentation:Digital Credential Presentation`, this component MUST be compliant with remote flows based on `OpenID4VP`_ and proximity flow based on `ISO18013-5`_ .
+Following the implementation profile in Section :ref:`credential-presentation:Digital Credential Presentation`, this component MUST be compliant with remote flows based on `OpenID4VP`_ and proximity flow based on `ISO18013-5`_.
 
 Backup and Restore Component
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

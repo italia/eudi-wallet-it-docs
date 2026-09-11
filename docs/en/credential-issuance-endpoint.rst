@@ -38,8 +38,8 @@ the request to the Credential Issuer authorization endpoint MUST use the followi
     :header-rows: 1
 
     * - **OAuth-Client-Attestation**
-      - It MUST be set to a value containing the Wallet Instance Attestation JWT.
-      - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+      - **It MUST be set to a value containing the Wallet Instance Attestation JWT.**
+      - **`OAUTH-ATTESTATION-CLIENT-AUTH`_.**
     * - **OAuth-Client-Attestation-PoP**
       - It MUST be set to a value containing the Wallet Instance Attestation JWT Proof of Possession.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
@@ -744,7 +744,7 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
     - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID in SD-JWT VC format, it can be set to ``dc_sd_jwt_pid``.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **proofs**
-    - REQUIRED. Object providing one or more proofs of possession of the cryptographic key material to which the issued Credential instances will be bound to. The ``proofs`` object MUST contain an array parameter named `jwt` containing an array of JWT, where each element within the array is used as proof of possession.
+    - REQUIRED. Object providing one or more proofs of possession of the cryptographic key material to which the issued Credential instances will be bound to. The ``proofs`` object MUST contain an array parameter named ``jwt`` containing an array of JWT, where each element within the array is used as proof of possession.
     - [`OpenID4VCI`_].
 
 

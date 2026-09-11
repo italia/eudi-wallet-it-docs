@@ -4,7 +4,7 @@
 Metadati della Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I metadata *openid_credential_verifier* DEVONO contenere il *client_metadata*, come incluso nei parametri mostrati di seguito. (:ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`). Si noti che *openid_credential_verifier* è un metadata specifico di OpenID Federation considerato per OpenID4VP quando il ``client_id`` della Relying Party è impostato con ``openid_federation``. Quando il parametro ``client_id`` della Relying Party è impostato con ``x509_hash``, i metadata vengono invece trasmessi nel parametro ``client_metadata`` fornito all'interno della richiesta.
+I metadata *openid_credential_verifier* DEVONO contenere il *client_metadata*, come incluso nei parametri mostrati di seguito. (:ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`). Si noti che *openid_credential_verifier* è un metadata specifico di OpenID Federation Wallet Architecture (`OID-FED-WALLET`_) utilizzato per OpenID4VP quando il ``client_id`` della Relying Party è impostato con ``openid_federation``. Quando il parametro ``client_id`` della Relying Party è impostato con ``x509_hash``, i metadata vengono invece trasmessi nel parametro ``client_metadata`` fornito all'interno della richiesta.
 
 .. list-table::
   :class: longtable

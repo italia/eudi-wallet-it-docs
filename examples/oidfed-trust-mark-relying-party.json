@@ -1,0 +1,43 @@
+{
+  "iss": "https://trust-anchor.eid-wallet.example.it",
+  "sub": "https://access.privatecompany.example.com",
+  "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier",
+  "iat": 1718207217,
+  "exp": 1749743216,
+  "public_body": false,
+  "vat_number": "IT12345678901",
+  "legal_identifier": "12345678901",
+  "organization_name": "Private Company S.p.A.",
+  "email": "compliance@privatecompany.example.com",
+  "support_uri": "https://access.privatecompany.example.com/support",
+  "srv_description": [
+    {"lang": "it", "value": "Servizio di controllo dell'accesso fisico"},
+    {"lang": "en", "value": "Physical access control service"}
+  ],
+  "entitlements": ["Service_Provider"],
+  "credentials": [
+    {
+      "format": "dc+sd-jwt",
+      "meta": {
+        "vct_values": ["urn:it-wallet:badge:1"]
+      },
+      "claim": [
+        {"path": ["given_name"]},
+        {"path": ["family_name"]},
+        {"path": ["works_for"]},
+        {"path": ["job_title"]}
+      ]
+    }
+  ],
+  "purpose": [
+    {"lang": "en", "value": "Employee verification for physical access control"},
+    {"lang": "it", "value": "Verifica del dipendente per il controllo dell'accesso fisico"}
+  ],
+  "privacy_policy": "https://access.privatecompany.example.com/privacy",
+  "supervisory_authority": {
+    "uri": "https://www.dpa.example.it/report",
+    "email": "reports@dpa.example.it",
+    "phone": "+390612345678"
+  },
+  "logo_uri": "https://access.privatecompany.example.com/logo.svg"
+}

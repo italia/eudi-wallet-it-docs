@@ -16,10 +16,10 @@ This section provides the set of test cases designed for technical implementers 
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - **Test Case ID**
+    - **Purpose**
+    - **Description**
+    - **Expected Result**
 
   * - PPR-001
     - Device Engagement

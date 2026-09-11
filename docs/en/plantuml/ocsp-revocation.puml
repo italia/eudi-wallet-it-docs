@@ -1,0 +1,60 @@
+@startuml
+skinparam ActivityBackgroundColor #e1f5fe
+skinparam ActivityBorderColor #01579b
+skinparam ConditionBackgroundColor #fff9c4
+skinparam ConditionBorderColor #fbc02d
+skinparam TitleFontColor #01579b
+
+title OCSP Response Validation Process
+
+start
+
+repeat
+    if (Step 1: Verify `responseStatus == successful (0)`) then (no)
+        if (Retry Available?) then (Yes)
+            :Attempt to retrieve\nupdated OCSP response;
+        else (No)
+            #F2F28F:Certificate Status: `unknown`;
+            stop
+        endif
+    else (yes)
+    endif
+repeat while (responseStatus != successful (0))
+
+if (Step 2: Verify `responseType == id-pkix-ocsp-basic`) then (no)
+    #F2F28F:Certificate Status: `unknown`\nReason: Invalid Response Type;
+    stop
+else (id-pkix-ocsp-basic)
+endif
+
+if (Step 3: Verify Signature) then (invalid signature)
+    #F2F28F:Certificate Status: `unknown`\nReason: Invalid Signature;
+    stop
+else (valid signature)
+endif
+
+if (Step 4: Do `responderID` & `CertID` match?) then (no)
+    #F2F28F:Certificate Status: `unknown`\nReason: ID Mismatch;
+    stop
+else (yes)
+endif
+
+if (Is `current_time` between\n`thisUpdate` and `nextUpdate`?) then (no)
+    #F2F28F:Certificate Status: `unknown`\nReason: OCSP Response Expired;
+    stop
+else (yes)
+endif
+
+:Parse `SingleResponse` `certStatus`;
+if (`certStatus == good`?) then (good)
+    #dcedc8:Certificate Status: `good`;
+    stop
+elseif (`certStatus == revoked`?) then (revoked)
+    #ffcdd2:Certificate Status: `revoked`;
+    stop
+else (unknown / other)
+    #F2F28F:Certificate Status: `unknown`;
+    stop
+endif
+
+@enduml

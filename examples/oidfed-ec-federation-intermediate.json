@@ -1,0 +1,39 @@
+{
+  "iss": "https://intermediary.example.com",
+  "sub": "https://intermediary.example.com",
+  "iat": 1718207217,
+  "exp": 1749743216,
+  "authority_hints": [
+    "https://trust-anchor.eid-wallet.example.it"
+  ],
+  "jwks": {
+    "keys": [
+      {
+        "kty": "EC",
+        "crv": "P-256",
+        "kid": "EycKTxHbR_s_aZB46j_1ObHG3n2QEQ0sU0-gRGdBWv0",
+        "x": "4sAmMPyNl21DjQ_i6C4y0erHz3IVsVETYpH4kOoKFb8",
+        "y": "B5nPVnBVBss55KGCJG8_EyT72PJKU8n_k8SMZdPUIaE"
+      }
+    ]
+  },
+  "metadata": {
+    "federation_entity": {
+      "organization_name": "Intermediary S.r.l.",
+      "homepage_uri": "https://intermediary.example.com",
+      "policy_uri": "https://intermediary.example.com/policy",
+      "logo_uri": "https://intermediary.example.com/logo.svg",
+      "contacts": [
+        "intermediary@pec.example.com"
+      ],
+      "federation_fetch_endpoint": "https://intermediary.example.com/fetch",
+      "federation_list_endpoint": "https://intermediary.example.com/list"
+    }
+  },
+  "trust_marks": [
+    {
+      "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate",
+      "trust_mark": "<signed Trust Mark JWT>"
+    }
+  ]
+}

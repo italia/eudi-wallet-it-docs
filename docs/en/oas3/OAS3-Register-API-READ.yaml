@@ -1,0 +1,292 @@
+openapi: 3.1.0
+info:
+  title: Wallet Relying Party Register API
+  version: 1.0.0
+  description: Specification of the Wallet Relying Party (WRP) Register API in IT Wallet
+servers:
+  - url: https://registry.example.eu
+    description: Example register server
+tags:
+  - name: Public Register
+    description: Public query operations.
+paths:
+  /wrp:
+    get:
+      tags:
+        - Public Register
+      summary: Search or list registered Wallet-Relying Parties
+      description: Returns a list of WRP depending on the query parameters (all WRPs are returned if no parameters are provided).
+      operationId: listWrps
+      parameters:
+        - $ref: '#/components/parameters/identifierQuery'
+        - $ref: '#/components/parameters/legalnameQuery'
+        - $ref: '#/components/parameters/tradenameQuery'
+        - $ref: '#/components/parameters/policyQuery'
+        - $ref: '#/components/parameters/entitlementQuery'
+        - $ref: '#/components/parameters/usesintermediaryQuery'
+        - $ref: '#/components/parameters/isintermediaryQuery'
+        - $ref: '#/components/parameters/intendeduseidentifierQuery'
+        - $ref: '#/components/parameters/claimpathQuery'
+        - $ref: '#/components/parameters/credentialmetaQuery'
+        - $ref: '#/components/parameters/credentialformatQuery'
+        - $ref: '#/components/parameters/cursorQuery'
+        - $ref: '#/components/parameters/limitQuery'
+        - $ref: '#/components/parameters/providesattestationQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/JwsWrpArrayResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security: []
+  /wrp/check-intended-use:
+    get:
+      tags:
+        - Public Register
+      summary: Check if a specific intended use identifier, credential/claim type and/or privacy policy URL is registered for a Wallet-Relying Party's intended use.
+      description: This endpoint allows checking if a given Wallet Relying Party has declared an intended use with queried id, or for a specific credential format and claim path or privacy policy.
+      operationId: checkIntendedUse
+      parameters:
+        - $ref: '#/components/parameters/rpidentifierQuery'
+        - $ref: '#/components/parameters/intendeduseidentifierQuery'
+        - $ref: '#/components/parameters/claimpathQuery'
+        - $ref: '#/components/parameters/credentialformatQuery'
+        - $ref: '#/components/parameters/credentialmetaQuery'
+        - $ref: '#/components/parameters/policyurlQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/JwsBooleanResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: WRP with the given rpidentifier not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: WRP with the given rpidentifier was not found.
+      security: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    identifierQuery:
+      name: identifier
+      in: query
+      description: Filter by Wallet-Relying Party identifier.
+      required: false
+      schema:
+        type: string
+    legalnameQuery:
+      name: legalname
+      in: query
+      description: Filter by legal name.
+      required: false
+      schema:
+        type: string
+    tradenameQuery:
+      name: tradename
+      in: query
+      description: Filter by trade name.
+      required: false
+      schema:
+        type: string
+    policyQuery:
+      name: policy
+      in: query
+      description: Filter by policy URI or type.
+      required: false
+      schema:
+        type: string
+        format: uri
+    entitlementQuery:
+      name: entitlement
+      in: query
+      description: Filter by entitlement.
+      required: false
+      schema:
+        type: string
+        format: uri
+    usesintermediaryQuery:
+      name: usesintermediary
+      in: query
+      description: Filter by intermediary identifier.
+      required: false
+      schema:
+        type: string
+    isintermediaryQuery:
+      name: isintermediary
+      in: query
+      description: Filter by intermediary status.
+      required: false
+      schema:
+        type: boolean
+    intendeduseidentifierQuery:
+      name: intendeduseidentifier
+      in: query
+      description: The Registry-level unique identifier of the intended use.
+      required: false
+      schema:
+        type: string
+    claimpathQuery:
+      name: claimpath
+      in: query
+      description: The path of the claim within the credential to check (e.g., 'IBAN')
+      required: false
+      schema:
+        type: string
+    credentialmetaQuery:
+      name: credentialmeta
+      in: query
+      description: Filter by the contents of 'meta' attribute of a Credential (e.g., 'BankAccount').
+      required: false
+      schema:
+        type: string
+    credentialformatQuery:
+      name: credentialformat
+      in: query
+      description: The format of the credential to check (e.g., 'dc+sd-jwt', 'mso_mdoc').
+      required: false
+      schema:
+        type: string
+    cursorQuery:
+      name: cursor
+      in: query
+      description: The cursor for the next page of results.
+      required: false
+      schema:
+        type: string
+    limitQuery:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    providesattestationQuery:
+      name: providesattestation
+      in: query
+      description: Filter by attestation types provided.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Credential'
+          example:
+            format: dc+sd-jwt
+            meta:
+              vct_values:
+                - https://examplebank.eu/schema/bank-account
+    rpidentifierQuery:
+      name: rpidentifier
+      in: query
+      description: Identifier of the WRP whose intended-use registration is being checked.
+      required: true
+      schema:
+        type: string
+    policyurlQuery:
+      name: policyurl
+      in: query
+      description: Used when checking if the privacy policy URL is registered for the identified Wallet Relying Party.
+      required: false
+      schema:
+        type: string
+        format: uri
+  responses:
+    JwsWrpArrayResponse:
+      description: >-
+       JWS-signed list of matching Wallet Relying Party objects
+      headers:
+        X-Next-Cursor:
+          description: Cursor to pass as the cursor query parameter on the next GET /wrp request. Absent on the last page.
+          schema:
+            type: string
+      content:
+        application/jwt:
+          schema:
+            type: string
+            description: JWS compact serialization string.
+    JwsBooleanResponse:
+      description: JWS compact string containing a signed boolean payload.
+      content:
+        application/jwt:
+          schema:
+            type: string
+            description: JWS compact serialization string.
+          example: string
+    BadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Request payload or parameters invalid or incomplete.
+  schemas:
+    Credential:
+      type: object
+      properties:
+        format:
+          type: string
+          description: Credential format identifier.
+          example: dc+sd-jwt
+        meta:
+          type: object
+          description: Additional grouping or type metadata defined per credential format.
+          additionalProperties: true
+        claim:
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+      required:
+        - format
+        - meta
+      example:
+        format: dc+sd-jwt
+        meta:
+          vct: https://example.eu/schema/pid
+        claim:
+          - path:
+              - family_name
+          - path:
+              - given_name
+          - path:
+              - birth_date
+    Claim:
+      type: object
+      properties:
+        path:
+          type: array
+          minItems: 1
+          description: Non-empty path array of strings, nulls, or non-negative integers.
+          items:
+            oneOf:
+              - type: string
+              - type: integer
+                minimum: 0
+              - type: 'null'
+        values:
+          type: array
+          description: Optional allowed values.
+          items:
+            oneOf:
+              - type: string
+              - type: integer
+              - type: boolean
+      required:
+        - path
+      example:
+        path:
+          - org.iso.18013.5.1
+          - age_over_18
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+        - message

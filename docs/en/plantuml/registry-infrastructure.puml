@@ -1,0 +1,68 @@
+@startuml
+
+!include <C4/C4_Component>
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/certificate>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/key>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome-5/exchange_alt>
+!include <tupadr3/font-awesome-5/file_alt>
+!include <tupadr3/font-awesome-5/shield_alt>
+!include <tupadr3/font-awesome-5/users>
+!include <tupadr3/font-awesome/institution>
+
+Boundary(nat_semantic, "National Registries, Semantic and Discovery Purpose") {
+Component(taxonomy, "Taxonomy", $sprite="database")
+Component(claim_registry, "Claims Registry", $sprite="database")
+Component(as_registry, "Authentic Source Registry", $sprite="database")
+Component(schema_registry, "Schema Registry", $sprite="database")
+Component(catalogue, "Digital Credentials Catalogue", $sprite="database")
+}
+
+Boundary(nat_trust, "National Registries, Trust Purpose") {
+Component(register, "Register of WRPs", $sprite="shield_alt")
+Component(fed_api, "Federation API Endpoints, Entity Statements and Trust Marks", $sprite="shield_alt")
+}
+
+Boundary(eu_level, "EU Catalogues and Lists") {
+Component(cat_attributes, "Catalogue of Attributes", $sprite="database")
+Component(cat_schemes, "Catalogue of Schemes", $sprite="database")
+Component(lote, "Lists of Trusted Entities, Trusted Lists and List of Trusted Lists", $sprite="shield_alt")
+}
+
+System(supervisoryBody, "Supervisory Body", $sprite="certificate")
+System(schemeProviders, "Attestation Scheme Providers", $sprite="file_alt")
+System(authenticSources, "Authentic Sources", $sprite="institution")
+Boundary(wrp, "Wallet-Relying Parties") {
+System(issuers, "Digital Credential Issuers", $sprite="id_card")
+System(relyingParties, "Relying Parties", $sprite="exchange_alt")
+}
+System(walletProviders, "Wallet Providers", $sprite="wallet")
+Component(trustAnchor, "Federation Trust Anchor", $sprite="key")
+Component(registrar, "Registrar", $sprite="certificate")
+System(commission, "European Commission", $sprite="users")
+
+' ---- who provides the content ----
+schemeProviders --> nat_semantic: Provide the definition of a Credential type and its schema
+authenticSources --> nat_semantic: Provide the organization information and the data capabilities
+wrp --> nat_trust: Provide the registration data
+issuers --> catalogue: Declare the Credential types they issue
+walletProviders --> fed_api: Provide the federation data
+supervisoryBody --> nat_semantic: Approves the content that is registered
+supervisoryBody --> commission: Notifies the entities of the notified categories
+
+' ---- who signs and publishes ----
+trustAnchor --> nat_semantic: Signs and publishes
+trustAnchor --> fed_api: Signs and publishes
+registrar --> register: Signs and publishes
+commission --> eu_level: Maintains and publishes
+
+' ---- alignment ----
+nat_semantic ..> eu_level: Alignment of the national definitions
+
+@enduml
+

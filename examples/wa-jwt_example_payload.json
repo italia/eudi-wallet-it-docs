@@ -1,4 +1,5 @@
 {
+  
     "cnf": {
       "jwk": {
         "kty": "EC",
@@ -6,13 +7,23 @@
         "x": "8g9qKk3tRCBHsu57pNy3oMPc-jeJW8zU1LvfG9H5__M",
         "y": "KD0MNCPtJqUd1RGiTdAxEL6OCw5trfzqSrU6BHKOy2g",
         "kid": "dd762e6f8b613193",
-        "alg": "ES256"
+        "alg":"ES256"
       }
     },
-    "iss": "https://wallet-provider.example.org",
-    "sub": "dd762e6f8b613193",
+    "client_status": {
+      "status": {
+        "status_list": {
+          "idx": 1337,
+          "uri": "https://revocation_url/wia-statuslists/42"
+        }
+      },
+      "exp": 1772447918
+    },
     "wallet_name": "ExampleOrg",
+    "wallet_version": "1.0.0",
     "wallet_link": "https://example.org/wallets/ExampleOrg/info",
-    "iat": 1772444318,
+    "wallet_solution_certification_information": "https://example.org/wallets/ExampleOrg/certification",
+    "sub": "https://wallet-solution.example.org/dd762e6f8b613193",
     "exp": 1772447918
-  }
+  
+}

@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via index.rst at title level '=' (document title).
 
 
 User Experience Design
@@ -41,7 +42,7 @@ To ensure a correct and consistent implementation, Primary Actors:
 
 - MUST use the :ref:`official-resources:Official Resources` and MUST comply with all related usage specifications provided;
 
-- MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the :ref:`functionalities:Engagement Button` or the :ref:`functionalities:Authentication Button` ;
+- MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the :ref:`functionalities:Engagement Button` or the :ref:`functionalities:Authentication Button`;
 
 - MUST keep used resources up to date, in line with the latest available version of the :ref:`official-resources:Official Resources`.
 
@@ -174,7 +175,7 @@ Depending on the User's specific needs, the type of Electronic Attestation of At
 
 - **from the Wallet Instance Catalog**: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, concluding with the issuance of the Electronic Attestation of Attributes in the Wallet Instance. This pathway is available for Credential types eligible for public discovery as determined by the Supervisory body policies during the onboarding process (see :ref:`registry:Digital Credentials Catalog`).
 
-- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source; (see :ref:`credential-issuance-low-level:Credential Offer Flow` ): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an :ref:`functionalities:Engagement Button`.
+- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source; (see :ref:`credential-issuance-low-level:Credential Offer Flow`): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an :ref:`functionalities:Engagement Button`.
 
 Although the methods for initiating the request are different, the issuance flows share a similar structure and process.
 
@@ -534,7 +535,7 @@ The Wallet Provider is the ultimate responsible party for the visual presentatio
 - MUST display the EAA status, if different from valid to provide transparency on its lifecycle and MAY display it if valid, in both the Detail View and the Preview View. Specific details about the EAA status, if invalid, MAY be provided in the Detail View (e.g., the reason why the EAA is revoked);
 - MAY include optional information to enhance the User Experience and the EAA recognizability, both in the Preview View and the Detail View, such as the logo and/or the color, as defined by the Authentic Source within the Authentic Source Registry (see :ref:`registry:Authentic Source Registry`);
 - MUST include the same data of the Preview View in the Detail View and give a complete representation of all the other Attributes, following the order defined by the Authentic Source within the Authentic Source Registry (see :ref:`registry:Authentic Source Registry`); MAY include specific details in the Detail View, for example information about use case scenario or the reason for the invalid state of the EAA;
-- MUST include Action Buttons in the Detail View to enable the EAA lifecycle management and allow the User to revoke or to update a EAA at any time (see :ref:`functionalities:Management of Electronic Attestations`);
+- MUST include Action Buttons in the Detail View to enable the EAA lifecycle management and allow the User to revoke or to update an EAA at any time (see :ref:`functionalities:Management of Electronic Attestations`);
 - MUST guarantee that the EAA is a functional element, for the User to access services provided by Relying Parties in digital and proximity contexts (see :ref:`functionalities:Presentation of Electronic Attestations`);
 - MUST display in the Detail View a method of assistance given by the Authentic Source via the ``data_capabilities.contacts`` parameter (see :ref:`functionalities:User Assistance` and see :ref:`registry:Authentic Source Registry`).
 
@@ -1132,7 +1133,7 @@ For further details on the use of the Authentication Button, please refer to the
 
 **"Login with IT-Wallet" button - html code**
 
-The button is available in three variants of dimensions (S - default / M / L ) as per the .Italia Design System, and in "get" (call to an external page) and "post" (form inside the button) formats. In addition to the variants of dimensions, are provided two variants of button with fixed width, to be used in situations where it's preferable to keep consistency between similar buttons:
+The button is available in three variants of dimensions (S - default / M / L) as per the .Italia Design System, and in "get" (call to an external page) and "post" (form inside the button) formats. In addition to the variants of dimensions, are provided two variants of button with fixed width, to be used in situations where it's preferable to keep consistency between similar buttons:
 
 - the fixed-width version with icon on the left and centered text;
 - the fixed‑width version with icon and text centered.
@@ -1327,7 +1328,7 @@ Revocation is the procedure that turns an Electronic Attestation from a valid st
 	- The User decides to deactivate their Wallet Instance, thereby revoking all previously obtained Electronic Attestations;
 	- The User no longer has possession of the device on which their Wallet Instance is installed due to loss or theft.
 
-- **Passive revocation**: This refers to the revocation of an Electronic Attestation managed by the respective Electronic Attestation Provider on behalf of the Authentic Source. In this case, the Wallet Instance MUST inform the User of the status change of the Electronic Attestation and the Electronic Attestation Provider MAY additionally notify the User via other Touchpoints . Below is an illustrative list of scenarios that could lead to the revocation of an Electronic Attestation:
+- **Passive revocation**: This refers to the revocation of an Electronic Attestation managed by the respective Electronic Attestation Provider on behalf of the Authentic Source. In this case, the Wallet Instance MUST inform the User of the status change of the Electronic Attestation and the Electronic Attestation Provider MAY additionally notify the User via other Touchpoints. Below is an illustrative list of scenarios that could lead to the revocation of an Electronic Attestation:
 
 	- The physical document corresponding to the Electronic Attestation has been reported lost or damaged by the User through the appropriate channel/ Touchpoint;
 	- The physical document corresponding to the Electronic Attestation has been revoked by the competent authorities;
@@ -1462,8 +1463,8 @@ Activation of the Wallet Instance Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
+  * - **Error type**
+    - **Actor in charge**
   * - The device does not support the Wallet Solution (e.g. absence of minimum security or technological requirements)
     - Wallet Provider
   * - The Wallet Provider's services are unresponsive (e.g. technical errors or lack of connection)
@@ -1483,9 +1484,9 @@ Issuance of Electronic Attestations of Attributes Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
-  * - The Wallet Instance and/or the PID / IT-Wallet ID are not valid
+  * - **Error type**
+    - **Actor in charge**
+  * -  The Wallet Instance and/or the PID / IT-Wallet ID are not valid
     - Wallet Instance
   * - The service for obtaining an Electronic Attestation of Attributes is unavailable (e.g. technical errors)
     - Electronic Attestations of Attributes Provider, Authentic Source
@@ -1505,8 +1506,8 @@ Presentation of Electronic Attestations Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
+  * - **Error type**
+    - **Actor in charge**
   * - The User does not hold the required Attributes contained in one or more Electronic Attestations within their Wallet Instance to access a specific service
     - Wallet Instance
   * - The Wallet Provider's services or the Relying Party's services are unresponsive (e.g. technical errors or lack of connection)
@@ -1519,8 +1520,8 @@ Management of Electronic Attestations Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
+  * - **Error type**
+    - **Actor in charge**
   * - The service for revocation/ backup/ restore of an Electronic Attestation of Attributes is unavailable (e.g. technical errors)
     - Electronic Attestations of Attributes Provider
   * - The service for revocation of PID is unavailable (e.g. technical errors)
@@ -1535,8 +1536,8 @@ Deactivation of the Wallet Instance Errors
   :widths: 80 20
   :header-rows: 1
 
-  * - Error type
-    - Actor in charge
+  * - **Error type**
+    - **Actor in charge**
   * - The service for deactivating the Wallet Instance is unavailable (e.g. technical errors)
     - Wallet Provider
 

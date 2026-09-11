@@ -1,0 +1,50 @@
+@startuml
+
+!include <C4/C4_Component>
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/user>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/exchange_alt>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+Boundary(nat_semantic, "National Registries, Semantic and Discovery Purpose") {
+Component(taxonomy, "Taxonomy", $sprite="database")
+Component(claim_registry, "Claims Registry", $sprite="database")
+Component(as_registry, "Authentic Source Registry", $sprite="database")
+Component(schema_registry, "Schema Registry", $sprite="database")
+Component(catalogue, "Digital Credentials Catalogue", $sprite="database")
+}
+
+Person(user, "User", $sprite="user")
+System(issuers, "Digital Credential Issuers", $sprite="id_card")
+System(relyingParties, "Relying Parties", $sprite="exchange_alt")
+System(authenticSources, "Authentic Sources", $sprite="institution")
+System(walletProviders, "Wallet Providers", $sprite="wallet")
+
+' ---- who reads during the onboarding process ----
+authenticSources -up-> claim_registry: Discover the data capabilities (available claims) to set for the onboarding process
+authenticSources -up-> taxonomy: Discover the data capabilities (intended purposes) to set for the onboarding process
+relyingParties -up-> catalogue: Discover info (e.g., purposes) for the onboarding process
+
+' ---- who reads during the operational activities ----
+user --> catalogue: Discover available Digital Credentials
+
+walletProviders --> catalogue: Discover available Digital Credentials for integration into their Wallet Solutions
+walletProviders --> schema_registry: Discover the schema of the Digital Credentials they integrate in their Wallet Solutions
+
+issuers --> catalogue: Discover the credential_type and issuance requirements (e.g., max_validity_days) of a Digital Credential
+issuers --> schema_registry: Discover the schema of a Digital Credential with a given credential_type
+issuers --> claim_registry: Discover the data format and definition of necessary attributes. During onboarding to select the Authentic Sources, during issuance to ensure consistent data representation
+issuers --> as_registry: Discover which Authentic Source to contact and how for a set of attributes
+
+relyingParties -up-> schema_registry: Discover info (e.g., vct/docType) for the presentation process and to validate Digital Credentials
+relyingParties -up-> claim_registry: Discover info for the presentation process and to validate attributes
+
+@enduml
+
+
+

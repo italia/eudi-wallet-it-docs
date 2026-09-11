@@ -8,16 +8,18 @@
             "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
         }
     ],
-    "iss": "https://wallet-provider.example.org",
-    "key_storage": [ "iso_18045_moderate" ],
-    "status": {
-        "status_list": {
-            "idx": 412,
-            "uri": "https://revocation_url/statuslists/1"
-        }
+    "key_storage_status": {
+        "status": {
+            "status_list": {
+                "idx": 412,
+                "uri": "https://revocation_url/statuslists/1"
+            }
+        },
+        "exp": 1687288395
     },
-    "user_authentication": [ "iso_18045_moderate" ],
     "iat": 1687281195,
-    "exp": 1687288395
+    "exp": 1687288395,
+    "key_storage": [ "iso_18045_moderate" ],
+    "user_authentication": [ "iso_18045_moderate" ]
 }
 

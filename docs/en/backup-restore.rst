@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via wallet-solution.rst at title level '=' (document title).
 
 
 Backup and Restore

@@ -10,7 +10,7 @@ The Relying Party MUST expose a set of endpoints for handling the lifecycle of V
 Relying Party Provider Backend Federation Endpoint
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust-infrastructure:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
+The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`infrastructure-trust:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
 
 
 Relying Party Provider Backend Nonce Endpoint

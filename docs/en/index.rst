@@ -14,12 +14,11 @@ This document provides the technical architecture, implementation framework and 
   introduction.rst
   brand-identity.rst
   architecture-overview.rst
-  onboarding-high-level.rst
   functionalities.rst
-  trust-infrastructure.rst
+  infrastructure-trust.rst
+  trust-evaluation.rst
   registry.rst
-  entity-onboarding.rst
-  x5c-evaluation.rst
+  onboarding-system.rst
   entities.rst
   digital-credential-management.rst
   digital-credential-flows.rst
@@ -31,5 +30,3 @@ This document provides the technical architecture, implementation framework and 
   contribute.rst
   open-source.rst
   appendix.rst
-
-

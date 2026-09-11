@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via digital-credential-management.rst at title level '=' (document title).
 
 
 Digital Credential Data Model
@@ -51,7 +52,7 @@ The following sections provide format-specific attributes and a mapping of the a
 SD-JWT-VC Credential Format
 ---------------------------
 
-When Digital Credentials are issued in the SD-JWT VC format, they MUST be compliant to `SD-JWT`_ and `SD-JWT-VC`_ specifications.
+When Digital Credentials are issued in the SD-JWT VC format, they MUST be compliant with the `SD-JWT`_ and `SD-JWT-VC`_ specifications.
 
 SD-JWT-VC Digital Credentials MUST be signed using the Issuer's private key. SD-JWT VC Digital Credentials MAY be provided along with a Type Metadata Document related to the issued Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload of Digital Credentials MUST contain the **_sd_alg** claim described in Section 4.1.1 `SD-JWT`_ and other claims specified in this section.
 
@@ -358,7 +359,7 @@ The **unprotected header** MUST contain the following parameters, unless otherwi
       - **Reference**
     * - **4**
       - *(tstr, OPTIONAL)*. Unique identifier of the Issuer JWK. Required when the Issuer of mdoc uses OpenID Federation.
-      - :ref:`trust-infrastructure:The Infrastructure of Trust`
+      - :ref:`infrastructure-trust:Infrastructure of Trust`
     * - **33**
       - *(array)*. X.509 certificate chain about the Issuer. Required for X.509 certificate-based authentication.
       - :rfc:`9360`

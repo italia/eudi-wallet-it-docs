@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via entities.rst at title level '=' (document title).
 
 
 Relying Party Solution
@@ -6,14 +7,14 @@ Relying Party Solution
 
 A Relying Party, as an Organizational entity relying upon IT-Wallet, provides Technical Solutions (Relying Party Solution) that could combine software, hardware, services, settings, and configurations, including Relying Party Instances for User authentication and Digital Credential verification.
 
-In order to implement and provide Technical Solutions, a Relying Party may rely on the services of a **Relying Party Intermediary**. Pursuant to Article 5b(8) of `EU_2024_1183`_, intermediaries acting on behalf of Relying Parties are deemed to be Relying Parties and **shall not store data about the content of the transaction** between the Wallet User and the intermediated Relying Party. For the complete definitions and the underlying European legal framework, see **Relying Party Intermediary** and **IT-Wallet Intermediary** in :ref:`defined-terms:Defined Terms and Acronyms`.
+In order to implement and provide Technical Solutions, a Relying Party may rely on the services of a **Relying Party Intermediary**. Pursuant to Article 5b(8) of `EU_2024_1183`_, intermediaries acting on behalf of Relying Parties are deemed to be Relying Parties and **shall not store data about the content of the transaction** between the Wallet User and the intermediated Relying Party. For the complete definitions and the underlying European legal framework, see **Relying Party Intermediary** in :ref:`defined-terms:Defined Terms and Acronyms`.
 
 .. note::
-  In the implementation profile described by these technical specifications, a Relying Party Intermediary is also an OpenID Federation Intermediate Entity (**IT-Wallet Intermediary**).
+  In the implementation profile described by these technical specifications, a Relying Party Intermediary is also an OpenID Federation Intermediate Entity.
 
 A Relying Party provides at least one of the following components:
 
-- **Relying Party Backend**: It handles Relying Party Instances registration and the relative Certificate management. It obtains X.509 Certificate according to the :ref:`trust-infrastructure:The Infrastructure of Trust`. It SHOULD also provide a X.509 Certificate to its Relying Party Instances. It also may implement additional web services and business logic for its own purposes and use cases.
+- **Relying Party Backend**: It handles Relying Party Instances registration and the relative Certificate management. It obtains X.509 Certificate according to the :ref:`infrastructure-trust:Infrastructure of Trust`. It SHOULD also provide a X.509 Certificate to its Relying Party Instances. It also may implement additional web services and business logic for its own purposes and use cases.
 - **Relying Party Instance**: It is a frontend provided to Users in order to access Relying Party Services, and it may be provided as:
 
   - **Web Client**.

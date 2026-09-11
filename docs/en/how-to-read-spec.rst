@@ -23,7 +23,7 @@ The specification is organized into the following major sections:
 - **Section** :ref:`functionalities:User Experience Design`:
   Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`:
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`:
   Defines the federation-based trust model, entity relationships, and trust evaluation mechanisms that secure the entire ecosystem.
 
 - **Section** :ref:`entities:Entities`:
@@ -70,7 +70,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
 - **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
@@ -104,11 +104,11 @@ To implement the technological interfaces required to communicate with Credentia
 
 To become registered as an Authentic Source within the system by completing the administrative and technical procedures required.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Authentic Source registration process.
+- **Section** :ref:`onboarding-system:Overview`: Overview of the onboarding system architecture and the Authentic Source registration process.
 
-- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Authentic Source registration.
+- **Section** :ref:`onboarding-system:Authentic Source Registration`: Focus on technical implementation procedures for Authentic Source registration.
 
-- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`infrastructure-trust:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
 
 Wallet Provider
@@ -124,7 +124,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
 - **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
@@ -164,11 +164,11 @@ To implement the Wallet Solution in line with specific technological standards t
 
 To become registered as a Wallet Provider within the system by completing the administrative and technical procedures so that the Wallet Solution is recognized by the system.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Wallet Provider registration process.
+- **Section** :ref:`onboarding-system:Overview`: Overview of the onboarding system architecture and the Wallet Provider registration process.
 
-- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Wallet Provider registration.
+- **Section** :ref:`onboarding-system:Entity Registration`: Focus on technical implementation procedures for Wallet Provider registration.
 
-- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`infrastructure-trust:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
 
 Credential Issuer
@@ -184,7 +184,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
 - **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
@@ -220,11 +220,11 @@ To develop endpoints based on specific protocols, and to implement (Q)EAA issuan
 
 To become registered as a Credential Issuer within the system, by completing the administrative and technical procedure so that (Q)EAA issued to the Wallet are officially trusted.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Credential Issuer registration process.
+- **Section** :ref:`onboarding-system:Overview`: Overview of the onboarding system architecture and the Credential Issuer registration process.
 
-- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Credential Issuer registration.
+- **Section** :ref:`onboarding-system:Entity Registration`: Focus on technical implementation procedures for Credential Issuer registration.
 
-- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`infrastructure-trust:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
 
 Relying Party
@@ -240,7 +240,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet System architecture in terms of governance and enabled operational processes.
 
-- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
+- **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
 - **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
@@ -274,8 +274,8 @@ To implement verification functionalities following specific protocols, to send 
 
 To become registered as a Relying Party within the system, by completing the administrative and technical procedure and becoming a reliable actor when requesting User data.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Relying Party registration process.
+- **Section** :ref:`onboarding-system:Overview`: Overview of the onboarding system architecture and the Relying Party registration process.
 
-- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on implementation procedures for Relying Party registration.
+- **Section** :ref:`onboarding-system:Entity Registration`: Focus on implementation procedures for Relying Party registration.
 
-- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`infrastructure-trust:X.509 Certificate Profile`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.

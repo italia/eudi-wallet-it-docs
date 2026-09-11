@@ -1,0 +1,28 @@
+@startuml
+!include <C4/C4_Container>
+
+skinparam backgroundColor transparent
+skinparam ArrowColor black
+
+
+rectangle "Federation Authorities" as faContainer #f3F7D1 {
+  rectangle "Trust Anchor" as ta 
+  rectangle "Intermediate" as int1 #f1E7E6 {
+  rectangle "Relying Party \nIntermediary" as rpi
+ }
+}
+
+
+rectangle "Leaves" as leafsContainer #E8F2D6 {
+  rectangle "Wallet Provider" as wp 
+  rectangle "Relying Party" as rp 
+  rectangle "Credential Issuer" as ci
+}
+
+
+rp -up-> rpi
+rp -up-> ta
+ci -up-> ta
+rpi -up-> ta
+wp -up-> ta
+@enduml

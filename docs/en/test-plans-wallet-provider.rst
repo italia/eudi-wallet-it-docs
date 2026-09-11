@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via test-plans.rst at title level '-' (level 1).
 
 Wallet Provider Test Matrix
 ---------------------------
@@ -6,7 +7,7 @@ Wallet Provider Test Matrix
 This section provides the set of test cases for verifying conformance of a Wallet Solution and Wallet Instance implementation to the technical rules defined in the IT-Wallet ecosystem.
 The test plan is based on the requirements extracted from the following Sections:
 
-- :ref:`trust-infrastructure:The Infrastructure of Trust`
+- :ref:`infrastructure-trust:Infrastructure of Trust`
 - :ref:`wallet-solution:Wallet Solution`
 - :ref:`credential-issuance:Digital Credential Issuance`
 - :ref:`credential-presentation:Digital Credential Presentation`
@@ -36,10 +37,10 @@ This section lists the test cases from Sections:
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Result
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Result**
    * - WP_001
      - Trust, Security
      - Entity Configuration publication
@@ -158,10 +159,10 @@ This section lists the test cases from Sections:
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Result
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Result**
    * - WP_013
      - Lifecycle, Interoperability
      - Frontend component architecture
@@ -344,10 +345,10 @@ This section lists the test cases from Sections:
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Result
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Result**
    * - WP_045
      - Issuance, Interoperability
      - Credential Issuer Discovery
@@ -355,7 +356,7 @@ This section lists the test cases from Sections:
    * - WP_045a
      - Trust, Issuance, Interoperability
      - Fetch the Digital Credential catalogue
-     - Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalogue Endpoint, using the ``application/jose`` media type.
+     - Wallet Instance successfully sends an HTTP GET request to the Digital Credentials Catalogue Endpoint, using either the ``application/jwt`` (signed) or the ``application/json`` (plain) media type.
    * - WP_046
      - Issuance, Interoperability
      - Discover Credential Issuer dynamically from federation metadata
@@ -563,7 +564,7 @@ This section lists the test cases from Sections:
    * - WP_069
      - Issuance, Security
      - Check Digital Credential status
-     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per :ref:`credential-revocation:Status List Token`).
+     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating a Status List Token as described in `TOKEN-STATUS-LIST`_ and the profiles specified in `:ref:`credential-revocation:Token Status List (Digital Credentials Profile)`.
    * - WP_070
      - Issuance, Security
      - Re-issuance flow: detect re-issuance necessity (update status)
@@ -614,10 +615,10 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Result
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Result**
    * - WP_076
      - Remote-flow, Presentation, Interoperability
      - Obtain Authorization Request URL in Same Device flow
@@ -653,7 +654,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_083a
      - Remote-flow, Presentation, Interoperability
      - Construct ``wallet_metadata``
-     - Wallet Instance formats ``wallet_metadata`` as a JSON object per :ref:`remote-flow:Request URI Request` that includes ``vp_formats_supported``, ``client_id_prefixes_supported``, ``authorization_endpoint``, ``response_types_supported`` set to ``["vp_token"]`` when present.
+     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, and optionally ``client_id_prefixes_supported`` and ``request_object_signing_alg_values_supported`` per Section 10.1 of [`OpenID4VP`_].
    * - WP_083b
      - Remote-flow, Presentation, Privacy
      - Exclude PII in ``wallet_metadata``
@@ -946,10 +947,10 @@ This section lists the test cases from Sections:
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Results
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Results**
    * - WP_115
      - Attribute Deletion, Lifecycle, Privacy
      - Attribute deletion function
@@ -995,10 +996,10 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Results
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Results**
    * - WP_120
      - Backup and Restore, UX
      - Credential backup initiation
@@ -1106,10 +1107,10 @@ These test cases are optional and have been designed for the IT Wallet implement
    :widths: 15 15 20 55
    :header-rows: 1
 
-   * - Test Case ID
-     - Purpose
-     - Description
-     - Expected Results
+   * - **Test Case ID**
+     - **Purpose**
+     - **Description**
+     - **Expected Results**
    * - WP_131
      - Wallet Initialization / Registration, Lifecycle, Security
      - Nonce request for replay protection

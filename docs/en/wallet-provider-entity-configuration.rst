@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via wallet-solution.rst at title level '-' (level 1).
 
 
 Wallet Provider Entity Configuration
@@ -8,7 +9,7 @@ An HTTP GET request to the Federation endpoint allows the retrieval of the Walle
 
 The returned Entity Configuration of the Wallet Provider MUST contain the attributes described in the sections below.
 
-The Wallet Provider Entity Configuration is a signed JWT containing the public keys and supported algorithms of the Wallet Solution as a component of the Wallet Provider. It is structured in accordance with the `OID-FED`_ and :ref:`trust-infrastructure:The Infrastructure of Trust` outlined in this specification (:ref:`WP_002 <wallet-provider-backend-testcases>`).
+The Wallet Provider Entity Configuration is a signed JWT containing the public keys and supported algorithms of the Wallet Solution as a component of the Wallet Provider. It is structured in accordance with the `OID-FED`_ and :ref:`infrastructure-trust:Infrastructure of Trust` outlined in this specification (:ref:`WP_002 <wallet-provider-backend-testcases>`).
 
 
 Wallet Provider Entity Configuration JWT Header

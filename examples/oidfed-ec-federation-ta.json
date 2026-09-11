@@ -1,0 +1,72 @@
+{
+  "iss": "https://trust-anchor.eid-wallet.example.it",
+  "sub": "https://trust-anchor.eid-wallet.example.it",
+  "iat": 1718207217,
+  "exp": 1749743216,
+  "jwks": {
+    "keys": [
+      {
+        "kty": "EC",
+        "crv": "P-256",
+        "kid": "yRnq6oEvrxcZ1zYStADzTLX-qSw3Pb7E6mqJGNqnygA",
+        "x": "xrk5H1nEWrNYRb7FBamuSRHHf-XWjv1k-uZCSVCSAnc",
+        "y": "FM5YI7GvkTB8xxTiMTTSycDL0nguRowbibgfyqKjB0k"
+      },
+      {
+        "kty": "EC",
+        "crv": "P-256",
+        "use": "sig",
+        "kid": "signing-trust-anchor-01",
+        "x": "B0sj_kZRT4A-oP9Y57dinEiDFTG-tjuPu7MiiQHHQ_g",
+        "y": "iMDCuatE53HiX2VTDJ_q7LbQ-A7fgjXZpJsW-eZzge0",
+        "x5c": [
+          "<Signing Trust Anchor X.509 certificate>"
+        ]
+      },
+      {
+        "kty": "EC",
+        "crv": "P-256",
+        "use": "sig",
+        "kid": "authentication-trust-anchor-01",
+        "x": "Zm3kQp9rB1xYtA5nF2wEsRHHf-XWjv1k-uZCSVCSAn8",
+        "y": "Km9ZI7GvkTB8xxTiMTTSycDL0nguRowbibgfyqKjB2m",
+        "x5c": [
+          "<Authentication Trust Anchor X.509 certificate>"
+        ]
+      }
+    ]
+  },
+  "metadata": {
+    "federation_entity": {
+      "organization_name": "IT-Wallet Federation Trust Anchor",
+      "homepage_uri": "https://trust-anchor.eid-wallet.example.it",
+      "policy_uri": "https://trust-anchor.eid-wallet.example.it/policy",
+      "logo_uri": "https://trust-anchor.eid-wallet.example.it/logo.svg",
+      "contacts": [
+        "trust-anchor@pec.example.it"
+      ],
+      "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/fetch",
+      "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
+      "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
+      "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+      "federation_trust_mark_list_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_marked_list",
+      "federation_trust_mark_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark",
+      "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/historical_keys",
+      "federation_subordinate_events_endpoint": "https://trust-anchor.eid-wallet.example.it/subordinate_events"
+    }
+  },
+  "trust_mark_issuers": {
+    "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/wallet_solution": [
+      "https://trust-anchor.eid-wallet.example.it"
+    ],
+    "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_issuer": [
+      "https://trust-anchor.eid-wallet.example.it"
+    ],
+    "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/openid_credential_verifier": [
+      "https://trust-anchor.eid-wallet.example.it"
+    ],
+    "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate": [
+      "https://trust-anchor.eid-wallet.example.it"
+    ]
+  }
+}

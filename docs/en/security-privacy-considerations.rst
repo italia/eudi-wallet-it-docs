@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
+.. Included via index.rst at title level '=' (document title).
 
 Security and Privacy Considerations
 ===================================

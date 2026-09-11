@@ -1,0 +1,26 @@
+@startuml
+!include <C4/C4_Component>
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/database>
+
+Boundary(national_registry, "National Registry Infrastructure") {
+Component(catalogue, "Digital Credentials Catalogue", $sprite="database")
+Component(as_registry, "Authentic Source Registry", $sprite="database")
+Component(schema_registry, "Schema Registry", $sprite="database")
+Component(claim_registry, "Claims Registry", $sprite="database")
+Component(taxonomy, "Taxonomy", $sprite="database")
+}
+
+as_registry -> taxonomy: Authentic Sources capabilities declared using taxonomy classifications for standardized categorization
+as_registry -> claim_registry: Authentic Sources capabilities on available claims declared using the Claim Registry
+
+
+catalogue -up-> as_registry: Credential types reference AS capabilities for data source validation
+
+catalogue -right-> taxonomy: Credential entries specify domains and purposes from the taxonomy for discovery and authorization
+
+catalogue -left-> schema_registry: Credential types reference to the Schema Registry for data discovery and validation
+
+@enduml

@@ -1,0 +1,24 @@
+{
+  "iss": "https://trust-anchor.eid-wallet.example.it",
+  "sub": "https://intermediary.example.com",
+  "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/registration-entity/intermediate",
+  "iat": 1718207217,
+  "exp": 1749743216,
+  "public_body": false,
+  "vat_number": "IT98765432109",
+  "legal_identifier": "98765432109",
+  "organization_name": "Intermediary S.r.l.",
+  "email": "info@intermediary.example.com",
+  "support_uri": "https://intermediary.example.com/support",
+  "srv_description": [
+    {"lang": "it", "value": "Servizio di intermediazione per Relying Party"},
+    {"lang": "en", "value": "Intermediation service for Relying Parties"}
+  ],
+  "entitlements": ["Service_Provider"],
+  "supervisory_authority": {
+    "uri": "https://www.dpa.example.it/report",
+    "email": "reports@dpa.example.it",
+    "phone": "+390612345678"
+  },
+  "logo_uri": "https://intermediary.example.com/logo.svg"
+}

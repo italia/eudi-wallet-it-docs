@@ -1,0 +1,93 @@
+@startuml
+skinparam TitleFontColor #01579b
+skinparam ActivityBackgroundColor #e1f5fe
+skinparam ActivityBorderColor #01579b
+skinparam TitleFontSize 16
+
+title X.509 Certificate Path Validation Process
+
+start
+
+:Inputs:
+certificate path = [C1,...,Cn],
+trust_anchor, 
+current_time;
+
+:Step 1: Initialization
+Initialize state variables:
+valid_policy_tree, 
+explicit_policy=n+1,
+inhibit_any_policy=n+1, 
+policy_mapping=n+1, 
+working_public_key,
+working_public_key_parameters, 
+working_issuer_name, 
+max_path_length=n.
+
+:Set loop index i = 1;
+
+while (Is i <= n?) is (Yes)
+    :Process Certificate Ci;
+    
+    :Step 2.1: Basic Integrity & Binding Checks
+    - Verify signature using working_public_key
+    - Check validity period against current_time
+    - Check revocation status
+    - Verify issuer name matches working_issuer_name;
+    
+    if (Basic Checks Pass?) then (Yes)
+        :Step 2.2: Policy Processing
+        - If present, process certificatePolicies
+        - Update/prune valid_policy_tree based on Ci;
+        
+        :Step 2.3: Policy State Verification
+        Check if explicit_policy > 0 OR valid_policy_tree is not NULL;
+        
+        if (Policy State Verified?) then (Yes)
+            
+            if (Is i < n?\nIntermediate CA check) then (Yes)
+                :Step 3.1: Update Working State
+                - Update working_issuer_name from Ci
+                - Update working_public_key parameters from Ci;
+                
+                :Step 3.2: Constraint Checks
+                - Verify basicConstraints cA=TRUE
+                - Verify keyUsage keyCertSign bit
+                - Verify max_path_length > 0, decrement it
+                - Handle pathLenConstraint if present;
+                
+                if (Constraints Pass?) then (Yes)
+                    :Step 3.3: Policy Counters
+                    Decrement explicit_policy and 
+                    inhibit_any_policy if > 0;
+                else (No)
+                    #ffccb3:Validation FAILED;
+                    stop
+                endif
+            else (No (current Cert is Cn))
+                ' Step 3 is skipped for target certificate
+            endif
+            
+            :Increment i : i = i + 1;
+            
+        else (No)
+            #ffccb3:Validation FAILED;
+            stop
+        endif
+    else (No)
+        #ffccb3:Validation FAILED;
+        stop
+    endif
+endwhile (No)
+
+:Step 4. Wrap-up
+If explicit_policy > 0, decrement it.;
+
+if (Final Decision:\nIs explicit_policy > 0 OR\nvalid_policy_tree is NOT NULL?) then (Yes)
+    #dcedc8:Validation SUCCESSFUL;
+    stop
+else (No)
+    #ffccb3:Validation FAILED;
+    stop
+endif
+@enduml

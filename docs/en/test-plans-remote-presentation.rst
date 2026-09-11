@@ -15,10 +15,10 @@ This section provides the set of test cases designed for technical implementers 
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - **Test Case ID**
+    - **Purpose**
+    - **Description**
+    - **Expected Result**
   * - RPR-01
     - Same Device Flow
     - Verify HTTP redirect (302) URL.

@@ -435,15 +435,6 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **iss**
-      - REQUIRED. String containing the URL identifying the Wallet Provider.
-      - :rfc:`7519`.
-    * - **sub**
-      - REQUIRED. JWK Thumbprint of the public key included in the ``cnf`` claim.
-      - :rfc:`7519` and `EUDI-TS 3`_.
-    * - **iat**
-      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
-      - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT. This should be set to the maximum of 24 hours.
       - :rfc:`9126` and :rfc:`7519` and `EUDI-TS 3`_.
@@ -459,6 +450,21 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
     * - **wallet_name**
       - REQUIRED. String containing a human-readable name of the Wallet.
       - `OpenID4VCI`_.
+    * - **wallet_version**
+      - REQUIRED. String value of the Wallet Solution version.
+      - `OpenID4VCI`_ and `EUDI-TS 3`_.
+    * - **wallet_solution_certification_information**
+      - OPTIONAL. String value that contains a URL that links to the certification of the Wallet Solution.
+      - `EUDI-TS 3`_.
+    * - **client_status**
+      - REQUIRED. Status mechanism for the Wallet Attestation.
+
+        - **status**: REQUIRED. a status list reference as specified in Appendix E of `OpenID4VCI`_. The value represents the revocation state of the Wallet Instance.
+        - **exp**: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in ``status``.
+      - `EUDI-TS 3`_.
+    * - **sub**
+      - REQUIRED. Identifier of the Wallet Instance, which is the unique identifier of Wallet Solution in URL format.
+      - `EUDI-TS 3`_.
 
 
 Below is a non-normative example of the Wallet Instance Attestation JWT header and payload, without encoding and signature applied:
@@ -471,8 +477,15 @@ Below is a non-normative example of the Wallet Instance Attestation JWT header a
 
 
 .. note::
+    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. This content will be defined in a future update.
+
+
+.. note::
     As a revocation mechanism for WIA, the per-issuer reuse option described in Section 2.5.1 of `EUDI-TS 3`_ is preferred.
 
+
+.. note::
+    The ``iss`` claim is not needed anymore in the WIA body as Wallet Provider identity is now inferred from the signing certificate in the ``x5c`` JOSE header parameter.
 
 
 
@@ -487,7 +500,7 @@ Key Attestation Issuance Request
 
 The Key Attestation Issuance Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` and :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-The ``typ`` header of the Key Attestation Issuance Request JWT assumes the value ``wua-request+jwt``.
+The ``typ`` header of the Key Attestation Issuance Request JWT assumes the value ``ka-request+jwt``.
 
 The Key Attestation Issuance Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below.
 
@@ -521,7 +534,7 @@ In particular, the Key Attestation Issuance JWT includes the following HTTP head
       - Thumbprint of the Wallet Instance's JWK contained in the ``cnf`` claim.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - The type of the JWT, it MUST set to ``wua-request+jwt``.
+      - The type of the JWT, it MUST be set to ``ka-request+jwt``.
       -
 
 The Key Attestation Request JWT includes the following body claims:
@@ -580,7 +593,7 @@ Below is a non-normative example of a Key Attestation Request JWT header and pay
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wua-request+jwt"
+      "typ": "ka-request+jwt"
     }
 
 .. code-block:: json
@@ -654,13 +667,6 @@ The following table lists HTTP Status Codes and related error codes for the ones
       - ``invalid_request``
       - The signature of the Key Attestation Request is invalid or does not match the associated public key (JWK).
 
-
-
-
-
-
-
-
 Key Attestation JWT
 """"""""""""""""""""""""""""
 
@@ -701,9 +707,6 @@ The body of the Key Attestation JWT contains the following claims:
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **iss**
-      - REQUIRED. String containing the URL identifying the Wallet Provider.
-      - :rfc:`7519`.
     * - **exp**
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
@@ -729,10 +732,11 @@ The body of the Key Attestation JWT contains the following claims:
         - ``iso_18045_enhanced-basic``: It MUST be used when user authentication is resistant to attack with attack potential ``Enhanced-Basic``.
         - ``iso_18045_basic``: It MUST be used when user authentication is resistant to attack with attack potential ``Basic``.
       - `OpenID4VCI`_.
-    * - **status**
+    * - **key_storage_status**
       - REQUIRED. Status mechanism for the Key Attestation.
 
-        - **status_list**: REQUIRED. a status list reference as specified in Appendix D of `OpenID4VCI`_. The value represents the revocation state of the WSCD or Keystore.
+        - **status**: REQUIRED. a status list reference as specified in Appendix D of `OpenID4VCI`_. The value represents the revocation state of the WSCD or Keystore.
+        - **exp**: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in ``status``.
       - `EUDI-TS 3`_.
     * - **certification**
       - OPTIONAL. A String that contains a URL that links to the certification of the key storage component.
@@ -757,7 +761,53 @@ Below is a non-normative example of the Key Attestation JWT header and payload, 
     As a revocation mechanism for KA, the Type-shared index described in Section 2.5.2 of `EUDI-TS 3`_ is preferred.
 
 
+.. note::
+    A Wallet Provider SHALL choose the technical validity period of the KA and SHALL maintain the revocation status list for the whole validity period of this list as identified by ``key_storage_status.exp``.
 
+
+Token Status List (Wallet Unit Attestation Profile)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This section profiles the Token Status List (TSL) mechanism of `TOKEN-STATUS-LIST`_ for Wallet Unit Attestations. A TSL conveys the current status of many Wallet Unit Attestations in a compact, signed Status List Token (SLT).
+
+The SLT Provider MUST be the Wallet Provider.
+
+**Status List**
+
+A Status List contains a compressed byte array whose entries represent the statuses of many Wallet Instance Attestations (WIAs) or Key Attestations (KAs). A WIA MUST include its Status List reference in ``client_status.status.status_list``, and a KA MUST include its Status List reference in ``key_storage_status.status.status_list``. Each Status List reference MUST contain ``idx`` and ``uri``. Both WIAs and KAs are JWTs; therefore, ``idx`` is a JSON integer and ``uri`` is a JSON string in each reference. In both cases, ``uri`` MUST be a URI conforming to :rfc:`3986`.
+
+According to this specification, a WIA or KA can have one of the following statuses:
+
+  - ``VALID``. The WIA or KA is valid. This status is represented by ``0x00`` in the SLT.
+  - ``INVALID``. The WIA or KA is revoked. This status is represented by ``0x01`` in the SLT.
+
+As a result, the Wallet Provider MUST set the ``bits`` parameter in the SLT's ``status_list`` object to ``1``.
+
+The Wallet Provider MUST pack entries starting with the least significant bit of each byte, compress the byte array using DEFLATE with the ZLIB data format, and publish the resulting Status List in the SLT.
+
+**Key Attestation Index Assignment**
+
+According to R_KA_1 of `CIR2026/1731`_, a Wallet Provider MUST choose one of the following index-assignment options for the ``key_storage_status.status`` claim in a KA. The selected option determines whether the status-list index is shared by KAs for the same type of key storage or is specific to an individual KA:
+
+* **Type-shared index.** All KAs attesting keys stored in the same type of WSCD or keystore MUST contain the same index value in ``key_storage_status.status``. Consequently, the status represented by that index is shared by all such KAs.
+* **Per-key-attestation index.** A KA attesting keys stored in an individual WSCD or keystore MUST contain a pairwise-unique index value in ``key_storage_status.status``. Consequently, each KA has a distinct status-list entry and its revocation status can be managed independently.
+
+The requirement for distinct ``idx`` values applies only to the per-key-attestation option. KAs using a type-shared index are exempt.
+
+**Status List Token**
+
+The Wallet Provider MUST act as both the Status Issuer and the Status Provider. It MUST make each SLT available via HTTP GET at the URI specified by either the WIA's ``client_status.status.status_list.uri`` member or the KA's ``key_storage_status.status.status_list.uri`` member, using ``application/statuslist+jwt`` for a JWT SLT or ``application/statuslist+cwt`` for a CWT SLT.
+
+The SLT format MAY be either a JWT or a CWT and MUST be protected by a cryptographic signature. Regardless of the chosen format, the SLT MUST conform to Section 5.1 for JWTs or Section 5.2 for CWTs of `TOKEN-STATUS-LIST`_.
+
+Regardless of the format, the Wallet Provider MUST sign the SLT using one of the following:
+
+- a valid X.509 certificate whose trust chain terminates at the Trust Anchor published in the Wallet Providers LoTE when it is registered in the EUDIW Trust Framework; or
+- a valid key attested by the Wallet Provider's Entity Configuration when it is registered in the National Trust Framework.
+
+**Privacy Considerations**
+
+To prevent Wallet Providers from tracking or profiling users based on their use of Wallet Unit Attestations, Wallet Providers MUST aggregate the status information for multiple WIAs or KAs using per-key-attestation indexes in the same Status List and MUST publish the SLT at the same ``uri`` for those attestations. Where appropriate, each Status List SHOULD contain approximately 10,000 entries, in accordance with `EUDI-TS 3`_ and `CIR2026/1731`_. These aggregation and size requirements do not apply to KAs using a type-shared index.
 
 e-Service PDND Wallet Provider Catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -789,5 +839,4 @@ Notify User Death
       - Wallet Provider
     * - **Consumer**
       - PID Provider
-
 

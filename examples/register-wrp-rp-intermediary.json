@@ -1,0 +1,62 @@
+{
+  "legalPerson": {
+    "legalName": ["TrustBridge Services B.V."]
+  },
+  "identifier": [
+    {
+      "type": "http://data.europa.eu/eudi/id/EUID",
+      "identifier": "IT-EUID-112233445"
+    },
+    {
+      "type": "http://data.europa.eu/eudi/id/VATIN",
+      "identifier": "IT112233445B01"
+    }
+  ],
+  "postalAddress": [
+    " Corso Venezia, Milano, IT"
+  ],
+  "country": "IT",
+  "email": ["wallet-intermediary@trustbridge.example"],
+  "phone": ["+39200000000"],
+  "infoURI": ["https://trustbridge.example"],
+  "providerType": "WalletRelyingParty",
+  "policy": [
+    {
+      "type": "http://data.europa.eu/eudi/policy/terms-and-conditions",
+      "policyURI": "https://trustbridge.example/terms"
+    },
+    {
+      "type": "http://data.europa.eu/eudi/policy/privacy-policy",
+      "policyURI": "https://trustbridge.example/privacy"
+    }
+  ],
+  "tradeName": "TrustBridge",
+  "supportURI": ["https://trustbridge.example/support"],
+  "srvDescription": [
+    [
+      {
+        "lang": "en",
+        "content": "Intermediary for wallet-relying parties operating in the Netherlands."
+      },
+      {
+        "lang": "it",
+        "content": "Intermediario per WRP che operano in Italia."
+      }
+    ]
+  ],
+  "isPSB": false,
+  "entitlement": [
+    "https://uri.etsi.org/19475/Entitlement/Service_Provider"
+  ],
+  "supervisoryAuthority": {
+    "legalPerson": {
+      "legalName": ["Autorità di vigilanza"]
+    },
+    "country": "IT",
+    "email": ["contact@supervisor.example.it"],
+    "infoURI": ["https://supervisor.example.it"]
+  },
+  "registryURI": "https://registry.example.it/api",
+  "isIntermediary": true
+}
+

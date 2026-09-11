@@ -147,7 +147,7 @@ This command:
 - runs `./utils/build-pdf-local.sh`, which for each language in `docs/en` and `docs/it`:
   - builds LaTeX with Sphinx,
   - compiles the main `.tex` file with LuaLaTeX,
-  - compresses the PDF with Ghostscript (`/ebook`, typically ~35MB → ~16MB),
+  - compresses the PDF with Ghostscript (`/printed`, typically ~35MB → ~16MB),
   - and copies the resulting PDFs into the `pdf_output/` directory in your working tree.
 
 Optional: set `PDF_COMPRESS_SETTINGS=/screen` for a smaller output (~13MB).

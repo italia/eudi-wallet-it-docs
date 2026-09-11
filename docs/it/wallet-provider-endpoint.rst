@@ -435,15 +435,6 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
     * - **Claim**
       - **Descrizione**
       - **Riferimento**
-    * - **iss**
-      - OBBLIGATORIO. Stringa contenente l'URL che identifica il Fornitore di Wallet.
-      - :rfc:`7519`.
-    * - **sub**
-      - OBBLIGATORIO. JWK Thumbprint della chiave pubblica inclusa nel claim ``cnf``.
-      - :rfc:`7519` e `EUDI-TS 3`_.
-    * - **iat**
-      - OBBLIGATORIO. Timestamp UNIX con il tempo di emissione del JWT.
-      - :rfc:`9126` e :rfc:`7519`.
     * - **exp**
       - OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT. Questo dovrebbe essere impostato a un massimo di 24 ore.
       - :rfc:`9126` e :rfc:`7519` e `EUDI-TS 3`_.
@@ -459,6 +450,21 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
     * - **wallet_name**
       - OBBLIGATORIO. Stringa contenente un nome leggibile dall'uomo del Wallet.
       - `OpenID4VCI`_.
+    * - **wallet_version**
+      - OBBLIGATORIO. Valore stringa della versione della Wallet Solution.
+      - `OpenID4VCI`_ e `EUDI-TS 3`_.
+    * - **wallet_solution_certification_information**
+      - OPZIONALE. Valore stringa che contiene un URL che rimanda alla certificazione della Wallet Solution.
+      - `EUDI-TS 3`_.
+    * - **client_status**
+      - OBBLIGATORIO. Meccanismo di stato per la Wallet Attestation.
+
+        - **status**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell’Appendice E di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca dell’istanza del Wallet.
+        - **exp**: OBBLIGATORIO. Timestamp UNIX che specifica il momento fino al quale il Wallet Provider si impegna a mantenere lo stato di revoca nell’indice della lista di stato referenziato in ``status``.
+      - `EUDI-TS 3`_.
+    * - **sub**
+      - OBBLIGATORIO. Identificatore dell’istanza del Wallet, che è l’identificatore univoco della Wallet Solution in formato URL.
+      - `EUDI-TS 3`_.
 
 
 Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Instance Attestation JWT senza codifica e firma applicata:
@@ -471,7 +477,14 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
 
 
 .. note::
-    Come meccanismo di revoca per la WIA, è preferita l'opzione di riutilizzo per emittente descritta nella Sezione 2.5.1 di `EUDI-TS 3`_.
+    Poiché lo schema di certificazione non è ancora stato definito, il contenuto esatto di ``wallet_solution_certification_information`` è indefinito. Questo contenuto sarà definito in un aggiornamento futuro.
+
+.. note::
+    Come meccanismo di revoca per la WIA, è preferita l’opzione di riutilizzo per emittente descritta nella Sezione 2.5.1 di `EUDI-TS 3`_.
+
+
+.. note::
+    Il claim ``iss`` non è più necessario nel corpo della WIA, poiché l’identità del Wallet Provider viene ora dedotta dal certificato di firma nel parametro di intestazione JOSE ``x5c``.
 
 
 
@@ -487,7 +500,7 @@ Richiesta di Emissione della Key Attestation
 
 La  richiesta di emissione della Key Attestation utilizza il metodo HTTP POST con ``Content-Type`` impostato a ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` e :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-L'header ``typ`` del JWT della richiesta di emissione Key Attestation Issuance assume il valore ``wua-request+jwt``.
+L'header ``typ`` del JWT della richiesta di emissione Key Attestation Issuance assume il valore ``ka-request+jwt``.
 
 Il body della richiesta di emissione Key Attestation contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di header e i claim del body descritti di seguito.
 
@@ -521,7 +534,7 @@ In particolare, il JWT della Key Attestation Issuance include i seguenti paramet
       - Thumbprint della JWK della Wallet Instance contenuta nel claim ``cnf``.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - Il tipo del JWT; DEVE essere impostato a ``wua-request+jwt``.
+      - Il tipo del JWT; DEVE essere impostato a ``ka-request+jwt``.
       -
 
 Il JWT della Key Attestation Request include i seguenti claim nel body:
@@ -580,7 +593,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload JWT d
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wua-request+jwt"
+      "typ": "ka-request+jwt"
     }
 
 .. code-block:: json
@@ -701,9 +714,6 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
     * - **Claim**
       - **Descrizione**
       - **Riferimento**
-    * - **iss**
-      - OBBLIGATORIO. Stringa contenente l'URL che identifica il Fornitore di Wallet.
-      - :rfc:`7519`.
     * - **exp**
       - OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT.
       - :rfc:`9126` e :rfc:`7519`.
@@ -729,10 +739,11 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
         - ``iso_18045_enhanced-basic``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Enhanced-Basic``.
         - ``iso_18045_basic``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Basic``.
       - `OpenID4VCI`_.
-    * - **status**
+    * - **key_storage_status**
       - OBBLIGATORIO. Meccanismo di stato per la Key Attestation.
 
-        - **status_list**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell'Appendice D di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca del WSCD o del Keystore.
+        - **status**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell’Appendice D di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca del WSCD o del Keystore.
+        - **exp**: OBBLIGATORIO. Timestamp UNIX che specifica il momento fino al quale il Wallet Provider si impegna a mantenere lo stato di revoca nell’indice della lista di stato referenziato in ``status``.
       - `EUDI-TS 3`_.
     * - **certification**
       - OPZIONALE. Una stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.
@@ -755,6 +766,9 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
 
 .. note::
     Come meccanismo di revoca per la KA, è preferito l'indice condiviso per tipo descritto nella Sezione 2.5.2 di `EUDI-TS 3`_.
+
+.. note::
+    Un fornitore di Wallet DEVE scegliere il periodo di validità tecnica della KA e DEVE mantenere l'elenco degli stati di revoca per l'intero periodo di validità di tale elenco, come indicato nel claim ``key_storage_status.exp``.
 
 
 

@@ -1,0 +1,37 @@
+{
+  "name": "Online Shop",
+  "sub_ln": "Online Shop",
+  "sub": "LEIXG-529900T8BM49AURSDO55",
+  "country": "IT",
+  "registry_uri": "https://wrp-register.it/api/v1/relying-parties/IT-WRP-00789",
+  "srv_description": [
+    { "lang": "it", "value": "Servizio di shopping online" },
+    { "lang": "en", "value": "Online shopping platform" }
+  ],
+  "entitlements": ["https://uri.etsi.org/19475/Entitlement/Service_Provider"],
+  "purpose": [
+    { "lang": "it", "value": "Verifica dell'età per i prodotti soggetti a restrizioni di età" },
+    { "lang": "en", "value": "Age verification for age-restricted products" }
+  ],
+  "credentials": [
+    {
+      "format": "dc+sd-jwt",
+      "meta": { "vct_values": ["https://credentials.example.eu/pid"] },
+      "claim": [{ "path": ["age_over_18"] }]
+    }
+  ],
+  "privacy_policy": "https://shop.example.it/privacy",
+  "info_uri": "https://shop.example.it",
+  "support_uri": "https://shop.example.it/support",
+  "supervisory_authority": {
+    "uri": "https://www.dpa.example.it/report",
+    "email": "reports@dpa.example.it",
+    "phone": "+390612345678"
+  },
+  "public_body": false,
+  "policy_id": ["0.4.0.19475.3.1"],
+  "certificate_policy": "https://wrp-register.it/policies/service-provider",
+  "iat": 1704067200,
+  "exp": 1735689600,
+  "status": { "status_list": { "idx": 156, "uri": "https://status.wrp-register.it/statuslist/1" } }
+}

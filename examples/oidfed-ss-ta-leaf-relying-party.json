@@ -1,0 +1,45 @@
+{
+  "iss": "https://trust-anchor.eid-wallet.example.it",
+  "sub": "https://access.privatecompany.example.com",
+  "iat": 1718207217,
+  "exp": 1749743216,
+  "jwks": {
+    "keys": [
+      {
+        "kty": "EC",
+        "crv": "P-256",
+        "kid": "cwdtstHkIOqwWD8UeXjY_NdKfB-d1bzIx7XKBQNVbsg",
+        "x": "y8ahuTA-G4oLpTFYp7YrTd99kLPSlNoLPmwGJcXvWY8",
+        "y": "HNRLc-1ennbeBtF3LbtBdq_0c7EX4samlHnwXilH_i0"
+      }
+    ]
+  },
+  "metadata_policy": {
+    "openid_credential_verifier": {
+      "jwks": {
+        "value": { "... the Relying Party protocol keys registered at onboarding ..." }
+      },
+      "request_uris": {
+        "value": [
+          "https://access.privatecompany.example.com/openid4vp/request"
+        ]
+      },
+      "response_uris": {
+        "value": [
+          "https://access.privatecompany.example.com/openid4vp/response"
+        ]
+      },
+      "redirect_uris": {
+        "value": [
+          "https://access.privatecompany.example.com/openid4vp/callback"
+        ]
+      }
+    }
+  },
+  "constraints": {
+    "allowed_entity_types": [
+      "openid_credential_verifier"
+    ],
+    "max_path_length": 0
+  }
+}
